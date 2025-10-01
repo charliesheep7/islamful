@@ -36,6 +36,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: './',
+    languages: {
+      es: '/es',
+      'zh-Hans': '/zh',
+    },
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
@@ -58,12 +62,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export async function generateStaticParams() {
+  return [{ lang: 'en' }]
+}
+
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ lang?: string }>
+}) {
   const basePath = process.env.BASE_PATH || ''
+  const { lang } = await params
+  const locale = lang || 'en'
 
   return (
     <html
-      lang={siteMetadata.language}
+      lang={locale}
       className={`${space_grotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
@@ -90,11 +106,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         href={`${basePath}/static/favicons/safari-pinned-tab.svg`}
         color="#5bbad5"
       />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+      <meta name="msapplication-TileColor" content="#D97757" />
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF9F5" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
-      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
+      <body className="bg-gray-50 pl-[calc(100vw-100%)] text-gray-800 antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>

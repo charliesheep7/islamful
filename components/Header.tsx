@@ -1,3 +1,4 @@
+'use client'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
@@ -5,9 +6,24 @@ import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
+import LocaleSwitcher from './LocaleSwitcher'
+import { usePathname } from 'next/navigation'
 
 const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
+  const pathname = usePathname()
+  const lang = pathname.startsWith('/es') ? 'es' : pathname.startsWith('/zh') ? 'zh' : 'en'
+
+  // Simple translation function - we'll fetch from server for now
+  const getNavText = (key: string) => {
+    const translations: Record<string, Record<string, string>> = {
+      en: { home: 'Home', blog: 'Blog', about: 'About' },
+      es: { home: 'Inicio', blog: 'Blog', about: 'Acerca de' },
+      zh: { home: '首页', blog: '博客', about: '关于' },
+    }
+    return translations[lang]?.[key] || key
+  }
+  let headerClass =
+    'flex items-center w-full bg-gray-50 dark:bg-gray-950 justify-between py-10'
   if (siteMetadata.stickyNav) {
     headerClass += ' sticky top-0 z-50'
   }
@@ -36,12 +52,13 @@ const Header = () => {
               <Link
                 key={link.title}
                 href={link.href}
-                className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
+                className="hover:text-accent-600 dark:hover:text-accent-400 m-1 font-medium text-gray-800 dark:text-gray-100"
               >
-                {link.title}
+                {getNavText(link.title.toLowerCase())}
               </Link>
             ))}
         </div>
+        <LocaleSwitcher />
         <SearchButton />
         <ThemeSwitch />
         <MobileNav />

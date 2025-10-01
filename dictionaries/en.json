@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About"
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "home": {
+    "latest": "Latest",
+    "noPosts": "No posts found.",
+    "readMore": "Read more →",
+    "allPosts": "All Posts →",
+    "publishedOn": "Published on"
+  }
+}
+

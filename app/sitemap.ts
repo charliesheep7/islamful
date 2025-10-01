@@ -14,10 +14,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
-  const routes = ['', 'blog', 'projects', 'tags'].map((route) => ({
+  // Localized blog routes for ES and ZH
+  const localizedBlogRoutes = allBlogs
+    .filter((post) => !post.draft)
+    .flatMap((post) => [
+      { url: `${siteUrl}/es/${post.path}`, lastModified: post.lastmod || post.date },
+      { url: `${siteUrl}/zh/${post.path}`, lastModified: post.lastmod || post.date },
+    ])
+
+  const routes = ['', 'blog', 'es', 'es/blog', 'zh', 'zh/blog'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...blogRoutes]
+  return [...routes, ...blogRoutes, ...localizedBlogRoutes]
 }

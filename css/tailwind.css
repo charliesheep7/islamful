@@ -10,31 +10,51 @@
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  /* Colors */
-  /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
+  /* Colors - VisaCalm Brand Palette */
 
-  --color-gray-50: oklch(0.985 0.002 247.839);
-  --color-gray-100: oklch(0.967 0.003 264.542);
-  --color-gray-200: oklch(0.928 0.006 264.531);
-  --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
-  --color-gray-800: oklch(0.278 0.033 256.848);
-  --color-gray-900: oklch(0.21 0.034 264.665);
-  --color-gray-950: oklch(0.13 0.028 261.692);
+  /* Accent color scale (warm terracotta) - Primary brand color */
+  --color-accent-50: #FDEFE9;
+  --color-accent-100: #F9DFD4;
+  --color-accent-200: #F2C2AF;
+  --color-accent-300: #EAA287;
+  --color-accent-400: #E38F72;
+  --color-accent-500: #D97757;
+  --color-accent-600: #C66547;
+  --color-accent-700: #A94E36;
+  --color-accent-800: #8A3E2C;
+  --color-accent-900: #6E3123;
+  --color-accent-950: #571F18;
+
+  /* Map primary to accent for compatibility */
+  --color-primary-50: #FDEFE9;
+  --color-primary-100: #F9DFD4;
+  --color-primary-200: #F2C2AF;
+  --color-primary-300: #EAA287;
+  --color-primary-400: #E38F72;
+  --color-primary-500: #D97757;
+  --color-primary-600: #C66547;
+  --color-primary-700: #A94E36;
+  --color-primary-800: #8A3E2C;
+  --color-primary-900: #6E3123;
+  --color-primary-950: #571F18;
+
+  /* Neutral colors - Warm grays derived from brand colors */
+  --color-bg: #FAF9F5;
+  --color-surface: #F0EEE6;
+  --color-text: #3D3D3A;
+
+  /* Extended neutral scale for flexibility */
+  --color-gray-50: #FAF9F5;
+  --color-gray-100: #F0EEE6;
+  --color-gray-200: #E3E1D7;
+  --color-gray-300: #CCC9BC;
+  --color-gray-400: #AAA69A;
+  --color-gray-500: #8A8679;
+  --color-gray-600: #6D6A5F;
+  --color-gray-700: #57544C;
+  --color-gray-800: #3D3D3A;
+  --color-gray-900: #2A2926;
+  --color-gray-950: #1A1917;
 
   /* Line heights */
   --line-height-11: 2.75rem;
