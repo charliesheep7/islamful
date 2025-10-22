@@ -1,14 +1,20 @@
-# Multilingual Implementation PRD — VisaCalm
+# Multilingual Implementation PRD — DeenUp
 
-**Version:** 1.0
-**Date:** 2025-09-29
-**Status:** Implemented ✅
+**Version:** 2.0
+**Date:** 2025-10-21
+**Status:** Updated for DeenUp
 
 ---
 
 ## 1. Overview
 
-This document describes the simplified multilingual (i18n) implementation for VisaCalm, following the official Next.js internationalization patterns. The implementation removes complexity from third-party libraries (`next-intl`) and adopts a native, lightweight approach aligned with Next.js 15 best practices.
+This document describes the simplified multilingual (i18n) implementation for DeenUp, following the official Next.js internationalization patterns. The implementation removes complexity from third-party libraries (`next-intl`) and adopts a native, lightweight approach aligned with Next.js 15 best practices.
+
+**DeenUp-Specific Requirements:**
+
+- Full RTL (Right-to-Left) support for Arabic, including component positioning mirroring
+- Bilingual focus on English and Arabic for global Muslim audience
+- SEO optimization for both English-speaking and Arabic-speaking Muslims
 
 ## 2. Implementation Approach
 
@@ -21,16 +27,48 @@ Based on the [Next.js Internationalization Documentation](https://nextjs.org/doc
 - **Route-based locale organization** with `app/[lang]/` structure
 - **Static generation** for all supported locales
 - **No client-side i18n library** — translations loaded server-side
+- **RTL layout support** with automatic direction switching and component mirroring for Arabic
 
 ### 2.2 Supported Locales
 
-| Locale | Code | Path Pattern | hreflang |
-|--------|------|--------------|----------|
-| English (Default) | `en` | `/` | `en-US` |
-| Spanish | `es` | `/es/*` | `es-ES` |
-| Chinese (Simplified) | `zh` | `/zh/*` | `zh-Hans` |
+| Locale            | Code | Path Pattern | hreflang | Direction |
+| ----------------- | ---- | ------------ | -------- | --------- |
+| English (Default) | `en` | `/`          | `en-US`  | LTR       |
+| Arabic            | `ar` | `/ar/*`      | `ar`     | RTL       |
 
 **Note:** English is the default locale and doesn't require a path prefix.
+
+### 2.3 RTL (Right-to-Left) Support
+
+Arabic requires comprehensive RTL support:
+
+**Layout Direction:**
+
+- `<html dir="rtl">` attribute for Arabic locale
+- `<html dir="ltr">` attribute for English locale
+
+**Component Mirroring:**
+
+- Entire layout mirrors horizontally for Arabic
+- Navigation menu position flips (left ↔ right)
+- Text alignment reverses automatically
+- Flexbox and Grid layouts use `dir` for automatic mirroring
+- Custom components use logical CSS properties (`margin-inline-start` instead of `margin-left`)
+
+**Implementation Strategy:**
+
+```tsx
+// Layout component
+<html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+```
+
+```css
+/* Use logical properties instead of directional */
+.component {
+  margin-inline-start: 1rem; /* Instead of margin-left */
+  padding-inline-end: 2rem; /* Instead of padding-right */
+}
+```
 
 ---
 
@@ -65,6 +103,7 @@ middleware.ts                   # Locale detection and routing
 **Location:** `middleware.ts`
 
 **Responsibilities:**
+
 1. Detect user's preferred language from `Accept-Language` header
 2. Redirect non-English users to appropriate locale path (`/es` or `/zh`)
 3. Allow English users to stay at root path (`/`)
@@ -75,11 +114,12 @@ middleware.ts                   # Locale detection and routing
    - RSS feed
 
 **Key Code:**
+
 ```typescript
 import { NextResponse } from 'next/server'
 import Negotiator from 'negotiator'
 
-const locales = ['en', 'es', 'zh']
+const locales = ['en', 'ar']
 const defaultLocale = 'en'
 
 function getLocale(request: NextRequest): string {
@@ -87,7 +127,7 @@ function getLocale(request: NextRequest): string {
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
-  // Match against available locales
+  // Match against available locales (en, ar)
   for (const lang of languages) {
     const locale = locales.find((l) => lang.startsWith(l))
     if (locale) return locale
@@ -118,20 +158,21 @@ export function middleware(request: NextRequest) {
 **Location:** `app/[lang]/dictionaries.ts`
 
 **Structure:**
+
 ```typescript
 import 'server-only'
 
 const dictionaries = {
   en: () => import('../../dictionaries/en.json').then((module) => module.default),
-  es: () => import('../../dictionaries/es.json').then((module) => module.default),
-  zh: () => import('../../dictionaries/zh.json').then((module) => module.default),
+  ar: () => import('../../dictionaries/ar.json').then((module) => module.default),
 }
 
-export const getDictionary = async (locale: 'en' | 'es' | 'zh') =>
+export const getDictionary = async (locale: 'en' | 'ar') =>
   dictionaries[locale]?.() ?? dictionaries.en()
 ```
 
 **Dictionary Format** (`dictionaries/en.json`):
+
 ```json
 {
   "nav": {
@@ -156,20 +197,24 @@ export const getDictionary = async (locale: 'en' | 'es' | 'zh') =>
 ### 3.4 Layout Implementation
 
 **Root Layout** (`app/layout.tsx`):
+
 - Handles English locale (default)
 - Accepts optional `lang` param from route
 - Sets `<html lang={locale}>` attribute
 
 **Lang Layout** (`app/[lang]/layout.tsx`):
-- Generates static params for `es` and `zh`
+
+- Generates static params for `ar` only (English is default at root)
 - Loads dictionary for the locale
 - Provides localized metadata (OpenGraph, alternates)
+- **Sets `dir` attribute for RTL support**
 
 **Key Code:**
+
 ```typescript
 // app/[lang]/layout.tsx
 export function generateStaticParams() {
-  return [{ lang: 'es' }, { lang: 'zh' }]
+  return [{ lang: 'ar' }]
 }
 
 export default async function LangLayout({
@@ -177,11 +222,19 @@ export default async function LangLayout({
   params,
 }: {
   children: React.ReactNode
-  params: Promise<{ lang: 'es' | 'zh' }>
+  params: Promise<{ lang: 'ar' }>
 }) {
   const { lang } = await params
   const dict = await getDictionary(lang)
-  return <DictionaryProvider dictionary={dict}>{children}</DictionaryProvider>
+  const direction = lang === 'ar' ? 'rtl' : 'ltr'
+
+  return (
+    <html lang={lang} dir={direction}>
+      <body>
+        <DictionaryProvider dictionary={dict}>{children}</DictionaryProvider>
+      </body>
+    </html>
+  )
 }
 ```
 
@@ -194,6 +247,7 @@ export default async function LangLayout({
 **Location:** `components/LocaleSwitcher.tsx`
 
 **Features:**
+
 - Smooth dropdown menu with flag emojis
 - Auto-detects current locale from pathname
 - Preserves current path when switching languages
@@ -201,21 +255,23 @@ export default async function LangLayout({
 - Visual indicator for active language
 
 **UI:**
+
 - Default button shows: 🇺🇸 English (or current locale)
 - Dropdown shows all 3 options with flags
 - Active language highlighted with checkmark
 - Smooth transitions and hover states
 
 **Locales:**
+
 - 🇺🇸 English
-- 🇪🇸 Español
-- 🇨🇳 中文
+- 🇸🇦 العربية (Arabic)
 
 ### 4.2 Header Navigation
 
 **Location:** `components/Header.tsx`
 
 **Translation Strategy:**
+
 - Detects current locale from pathname
 - Uses inline translation object (synced with dictionaries)
 - Translates navigation links: Home, Blog, About
@@ -226,6 +282,7 @@ export default async function LangLayout({
 **Location:** `components/Footer.tsx`
 
 **Translation Strategy:**
+
 - Uses simple capitalization for "Privacy" and "Terms"
 - Future: could be enhanced to use full translation system
 
@@ -236,6 +293,7 @@ export default async function LangLayout({
 ### 5.1 Metadata
 
 Each page includes:
+
 - **Localized `<title>`** and `<meta name="description">`
 - **`lang` attribute** on `<html>` tag
 - **Canonical URL** pointing to current page
@@ -244,8 +302,7 @@ Each page includes:
   alternates: {
     languages: {
       en: '/',
-      es: '/es',
-      'zh-Hans': '/zh',
+      ar: '/ar',
     },
   }
   ```
@@ -253,10 +310,10 @@ Each page includes:
 ### 5.2 hreflang Implementation
 
 The `alternates.languages` metadata automatically generates:
+
 ```html
-<link rel="alternate" hreflang="en" href="https://visacalm.com/" />
-<link rel="alternate" hreflang="es" href="https://visacalm.com/es" />
-<link rel="alternate" hreflang="zh-Hans" href="https://visacalm.com/zh" />
+<link rel="alternate" hreflang="en" href="https://deenup.app/" />
+<link rel="alternate" hreflang="ar" href="https://deenup.app/ar" />
 ```
 
 ### 5.3 Sitemap
@@ -264,6 +321,7 @@ The `alternates.languages` metadata automatically generates:
 **Location:** `app/sitemap.ts`
 
 **Requirements:**
+
 - Include all localized routes
 - Generate entries for each blog post in all languages
 - Use correct hreflang values
@@ -274,16 +332,17 @@ The `alternates.languages` metadata automatically generates:
 
 ### 6.1 Translation Levels
 
-| Content Type | Translation Approach |
-|--------------|---------------------|
-| UI Strings | Fully translated in dictionaries |
-| Navigation | Fully translated |
+| Content Type | Translation Approach              |
+| ------------ | --------------------------------- |
+| UI Strings   | Fully translated in dictionaries  |
+| Navigation   | Fully translated                  |
 | Blog Content | Per-post basis (frontmatter flag) |
-| Legal Pages | Translated for compliance |
+| Legal Pages  | Translated for compliance         |
 
 ### 6.2 Blog Post Localization
 
 **Approach 1: Separate MDX files** (Recommended)
+
 ```
 data/blog/
 ├── en/
@@ -295,9 +354,10 @@ data/blog/
 ```
 
 **Approach 2: Frontmatter flag** (Current)
+
 ```mdx
 ---
-title: "H-1B 101"
+title: 'H-1B 101'
 lang: en
 translations:
   es: /es/blog/h1b-101
@@ -310,6 +370,7 @@ translations:
 **Goal:** Not just translations, but Spanish-optimized content
 
 **Examples:**
+
 - English: "H-1B Visa Guide" → Spanish: "Guía completa de la visa H-1B"
 - Target Spanish search queries: "requisitos visa H-1B", "cómo aplicar visa trabajo USA"
 - Use localized examples (Mexican vs. Spanish perspective)
@@ -323,6 +384,7 @@ translations:
 ### Adding New UI Strings (Navigation, Buttons, Labels)
 
 **Files to Edit:**
+
 1. `dictionaries/en.json` — Add English text
 2. `dictionaries/es.json` — Add Spanish translation
 3. `dictionaries/zh.json` — Add Chinese translation
@@ -364,6 +426,7 @@ translations:
 **Using in Components:**
 
 For **server components** (pages):
+
 ```typescript
 import { getDictionary } from './[lang]/dictionaries'
 
@@ -374,12 +437,13 @@ export default async function Page({ params }) {
 ```
 
 For **client components** (Header, Footer):
+
 ```typescript
 // Add to inline translations object
 const translations = {
   en: { contact: 'Contact' },
   es: { contact: 'Contacto' },
-  zh: { contact: '联系我们' }
+  zh: { contact: '联系我们' },
 }
 ```
 
@@ -399,6 +463,7 @@ app/
 ```
 
 **English version** (`app/contact/page.tsx`):
+
 ```typescript
 export default function ContactPage() {
   return <div>Contact content in English</div>
@@ -406,6 +471,7 @@ export default function ContactPage() {
 ```
 
 **Localized version** (`app/[lang]/contact/page.tsx`):
+
 ```typescript
 import { getDictionary } from '../dictionaries'
 
@@ -426,6 +492,7 @@ export default async function ContactPage({
 ```
 
 **Add translations to dictionaries:**
+
 ```json
 // dictionaries/en.json
 {
@@ -443,6 +510,7 @@ export default async function ContactPage({
 **Option 1: English-only first (Quick)**
 
 Create post in `data/blog/`:
+
 ```mdx
 ---
 title: 'New H-1B Changes 2025'
@@ -467,6 +535,7 @@ data/blog/
 ```
 
 **Spanish version:**
+
 ```mdx
 ---
 title: 'Cambios en la visa H-1B 2025'
@@ -481,6 +550,7 @@ Tu contenido en español aquí...
 ```
 
 **Key Points:**
+
 - Use **localized slugs** for better SEO
 - Translate **all frontmatter** (title, summary, tags)
 - Keep `date` consistent across translations
@@ -491,6 +561,7 @@ Tu contenido en español aquí...
 ### Adding New Components with Text
 
 **Server Component** (Recommended):
+
 ```typescript
 import { getDictionary } from '@/app/[lang]/dictionaries'
 
@@ -501,6 +572,7 @@ export default async function MyComponent({ lang = 'en' }) {
 ```
 
 **Client Component** (when needed):
+
 ```typescript
 'use client'
 import { usePathname } from 'next/navigation'
@@ -525,23 +597,25 @@ export default function MyComponent() {
 ### Updating Navigation Links
 
 **1. Add to Header (`data/headerNavLinks.ts`):**
+
 ```typescript
 const headerNavLinks = [
   { href: '/', title: 'Home' },
   { href: '/blog', title: 'Blog' },
   { href: '/about', title: 'About' },
-  { href: '/contact', title: 'Contact' },  // ← Add
+  { href: '/contact', title: 'Contact' }, // ← Add
 ]
 ```
 
 **2. Add translations to dictionaries** (see "Adding New UI Strings" above)
 
 **3. Update Header component** (`components/Header.tsx`):
+
 ```typescript
 const translations: Record<string, Record<string, string>> = {
   en: { home: 'Home', blog: 'Blog', about: 'About', contact: 'Contact' },
   es: { home: 'Inicio', blog: 'Blog', about: 'Acerca de', contact: 'Contacto' },
-  zh: { home: '首页', blog: '博客', about: '关于', contact: '联系我们' }
+  zh: { home: '首页', blog: '博客', about: '关于', contact: '联系我们' },
 }
 ```
 
@@ -565,18 +639,21 @@ const translations: Record<string, Record<string, string>> = {
 ### Translation Quality Guidelines
 
 **Spanish (es):**
+
 - Target: Mexican/Latin American Spanish (more users)
 - Use formal "usted" for professional tone
 - Localize visa terminology: "aplicar" (not "solicitar"), "patrocinio" (not "esponsorización")
 - Examples: "visa de trabajo" not just translated but contextually appropriate
 
 **Chinese (zh):**
+
 - Use Simplified Chinese (mainland China audience)
 - Professional terminology: 签证 (visa), 工作许可 (work permit)
 - Keep English terms when commonly used: H-1B, USCIS
 - Date format: 2025年1月15日
 
 **Both:**
+
 - Don't just translate — **localize** for the target audience
 - Research keywords in target language for SEO
 - Use native speakers for review when possible
@@ -589,6 +666,7 @@ const translations: Record<string, Record<string, string>> = {
 ### 7.1 Static Generation
 
 All localized routes are statically generated at build time:
+
 ```typescript
 export function generateStaticParams() {
   return [{ lang: 'es' }, { lang: 'zh' }]
@@ -614,14 +692,14 @@ export function generateStaticParams() {
 
 ### 8.1 Changes Made
 
-| Item | Before | After |
-|------|--------|-------|
-| Library | `next-intl` | Native Next.js |
-| Route param | `[locale]` | `[lang]` |
-| Folder | `messages/` | `dictionaries/` |
-| Client hooks | `useTranslations()` | Server `getDictionary()` |
-| Navigation | `next-intl/navigation` | `next/navigation` |
-| Middleware | `createMiddleware()` | Custom with `negotiator` |
+| Item         | Before                 | After                    |
+| ------------ | ---------------------- | ------------------------ |
+| Library      | `next-intl`            | Native Next.js           |
+| Route param  | `[locale]`             | `[lang]`                 |
+| Folder       | `messages/`            | `dictionaries/`          |
+| Client hooks | `useTranslations()`    | Server `getDictionary()` |
+| Navigation   | `next-intl/navigation` | `next/navigation`        |
+| Middleware   | `createMiddleware()`   | Custom with `negotiator` |
 
 ### 8.2 Files Modified
 
@@ -664,12 +742,14 @@ export function generateStaticParams() {
 ## 10. Future Enhancements
 
 ### 10.1 Short-term
+
 - [ ] Complete sitemap with localized blog posts
 - [ ] Add language detection from cookies (preference persistence)
 - [ ] Translate blog post content (Spanish/Chinese versions)
 - [ ] Add "This page is also available in:" banner
 
 ### 10.2 Long-term
+
 - [ ] Add more locales (Portuguese, French, etc.)
 - [ ] Implement regional variants (es-MX, es-ES)
 - [ ] Build translation management workflow
@@ -698,7 +778,7 @@ export function generateStaticParams() {
 ```json
 {
   "dependencies": {
-    "next-intl": "^3.16.0"  // ❌ Removed
+    "next-intl": "^3.16.0" // ❌ Removed
   }
 }
 ```
@@ -717,6 +797,7 @@ export function generateStaticParams() {
 ## 13. Support
 
 For questions or issues related to the i18n implementation:
+
 - Check this PRD first
 - Review the official Next.js i18n docs
 - Open an issue in the project repo

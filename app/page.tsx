@@ -1,9 +1,19 @@
-import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
-import Main from './Main'
+import Hero from '@/components/landing/Hero'
+import Features from '@/components/landing/Features'
+import CTA from '@/components/landing/CTA'
+import MediaTicker from '@/components/landing/MediaTicker'
+import Testimonials from '@/components/landing/Testimonials'
+import FAQ from '@/components/landing/FAQ'
 
 export default async function Page() {
-  const sortedPosts = sortPosts(allBlogs)
-  const posts = allCoreContent(sortedPosts)
-  return <Main posts={posts} />
+  return (
+    <div className="flex flex-col">
+      <Hero />
+      <Features />
+      <CTA />
+      <MediaTicker />
+      <Testimonials />
+      <FAQ />
+    </div>
+  )
 }

@@ -6,7 +6,7 @@ import ListLayout from '@/layouts/ListLayout'
 const POSTS_PER_PAGE = 5
 
 export function generateStaticParams() {
-  return [{ lang: 'es' }, { lang: 'zh' }]
+  return [{ lang: 'ar' }]
 }
 
 export const metadata = genPageMetadata({
@@ -14,17 +14,12 @@ export const metadata = genPageMetadata({
   alternates: {
     languages: {
       en: '/blog',
-      es: '/es/blog',
-      'zh-Hans': '/zh/blog',
+      ar: '/ar/blog',
     },
   },
 })
 
-export default async function LocaleBlogPage({
-  params,
-}: {
-  params: Promise<{ lang: 'es' | 'zh' }>
-}) {
+export default async function LocaleBlogPage({ params }: { params: Promise<{ lang: 'ar' }> }) {
   const posts = allCoreContent(sortPosts(allBlogs))
   const pageNumber = 1
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)

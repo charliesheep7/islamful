@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import Negotiator from 'negotiator'
 
-const locales = ['en', 'es', 'zh'] as const
+// DeenUp supports English (default) and Arabic
+const locales = ['en', 'ar'] as const
 const defaultLocale = 'en' as const
 
 function getLocale(request: NextRequest): string {

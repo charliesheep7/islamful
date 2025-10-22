@@ -2,7 +2,7 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
-import { Space_Grotesk } from 'next/font/google'
+import { Noto_Sans, Noto_Sans_Arabic, DM_Serif_Text } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -12,10 +12,25 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 
-const space_grotesk = Space_Grotesk({
+const noto_sans = Noto_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-noto-sans',
+})
+
+const noto_sans_arabic = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-noto-sans-arabic',
+})
+
+const dm_serif = DM_Serif_Text({
+  weight: '400',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-space-grotesk',
+  variable: '--font-dm-serif',
 })
 
 export const metadata: Metadata = {
@@ -37,8 +52,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
     languages: {
-      es: '/es',
-      'zh-Hans': '/zh',
+      ar: '/ar',
     },
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
@@ -80,7 +94,8 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      className={`${noto_sans.variable} ${noto_sans_arabic.variable} ${dm_serif.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link
@@ -110,7 +125,7 @@ export default async function RootLayout({
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF9F5" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
-      <body className="bg-gray-50 pl-[calc(100vw-100%)] text-gray-800 antialiased dark:bg-gray-950 dark:text-white">
+      <body className="bg-gray-50 pl-[calc(100vw-100%)] font-sans text-gray-800 antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>

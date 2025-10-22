@@ -1,26 +1,36 @@
-import { sortPosts, allCoreContent } from 'pliny/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
-import Main from '../Main'
+import Hero from '@/components/landing/Hero'
+import Features from '@/components/landing/Features'
+import CTA from '@/components/landing/CTA'
+import MediaTicker from '@/components/landing/MediaTicker'
+import Testimonials from '@/components/landing/Testimonials'
+import FAQ from '@/components/landing/FAQ'
 import { getDictionary } from './dictionaries'
 
 export function generateStaticParams() {
-  return [{ lang: 'es' }, { lang: 'zh' }]
+  return [{ lang: 'ar' }]
 }
 
-export default async function LangHome({ params }: { params: Promise<{ lang: 'es' | 'zh' }> }) {
+export default async function LangHome({ params }: { params: Promise<{ lang: 'ar' }> }) {
   const { lang } = await params
   const dict = await getDictionary(lang)
-  const sortedPosts = sortPosts(allBlogs)
-  const posts = allCoreContent(sortedPosts)
-  return <Main posts={posts} dict={dict} />
+
+  return (
+    <div className="flex flex-col">
+      <Hero lang={lang} dict={dict} />
+      <Features lang={lang} dict={dict} />
+      <CTA lang={lang} dict={dict} />
+      <MediaTicker />
+      <Testimonials lang={lang} dict={dict} />
+      <FAQ lang={lang} dict={dict} />
+    </div>
+  )
 }
 
 export const metadata = {
   alternates: {
     languages: {
       en: '/',
-      es: '/es',
-      'zh-Hans': '/zh',
+      ar: '/ar',
     },
   },
 }

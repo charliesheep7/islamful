@@ -7,54 +7,57 @@
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-arabic: var(--font-noto-sans-arabic), var(--font-noto-sans), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-serif: var(--font-dm-serif), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
-  /* Colors - VisaCalm Brand Palette */
+  /* Colors - DeenUp Brand Palette */
 
   /* Accent color scale (warm terracotta) - Primary brand color */
-  --color-accent-50: #FDEFE9;
-  --color-accent-100: #F9DFD4;
-  --color-accent-200: #F2C2AF;
-  --color-accent-300: #EAA287;
-  --color-accent-400: #E38F72;
-  --color-accent-500: #D97757;
-  --color-accent-600: #C66547;
-  --color-accent-700: #A94E36;
-  --color-accent-800: #8A3E2C;
-  --color-accent-900: #6E3123;
-  --color-accent-950: #571F18;
+  --color-accent-50: #fdefe9;
+  --color-accent-100: #f9dfd4;
+  --color-accent-200: #f2c2af;
+  --color-accent-300: #eaa287;
+  --color-accent-400: #e38f72;
+  --color-accent-500: #d97757;
+  --color-accent-600: #c66547;
+  --color-accent-700: #a94e36;
+  --color-accent-800: #8a3e2c;
+  --color-accent-900: #6e3123;
+  --color-accent-950: #571f18;
 
   /* Map primary to accent for compatibility */
-  --color-primary-50: #FDEFE9;
-  --color-primary-100: #F9DFD4;
-  --color-primary-200: #F2C2AF;
-  --color-primary-300: #EAA287;
-  --color-primary-400: #E38F72;
-  --color-primary-500: #D97757;
-  --color-primary-600: #C66547;
-  --color-primary-700: #A94E36;
-  --color-primary-800: #8A3E2C;
-  --color-primary-900: #6E3123;
-  --color-primary-950: #571F18;
+  --color-primary-50: #fdefe9;
+  --color-primary-100: #f9dfd4;
+  --color-primary-200: #f2c2af;
+  --color-primary-300: #eaa287;
+  --color-primary-400: #e38f72;
+  --color-primary-500: #d97757;
+  --color-primary-600: #c66547;
+  --color-primary-700: #a94e36;
+  --color-primary-800: #8a3e2c;
+  --color-primary-900: #6e3123;
+  --color-primary-950: #571f18;
 
   /* Neutral colors - Warm grays derived from brand colors */
-  --color-bg: #FAF9F5;
-  --color-surface: #F0EEE6;
-  --color-text: #3D3D3A;
+  --color-bg: #faf9f5;
+  --color-surface: #f0eee6;
+  --color-text: #3d3d3a;
 
   /* Extended neutral scale for flexibility */
-  --color-gray-50: #FAF9F5;
-  --color-gray-100: #F0EEE6;
-  --color-gray-200: #E3E1D7;
-  --color-gray-300: #CCC9BC;
-  --color-gray-400: #AAA69A;
-  --color-gray-500: #8A8679;
-  --color-gray-600: #6D6A5F;
-  --color-gray-700: #57544C;
-  --color-gray-800: #3D3D3A;
-  --color-gray-900: #2A2926;
-  --color-gray-950: #1A1917;
+  --color-gray-50: #faf9f5;
+  --color-gray-100: #f0eee6;
+  --color-gray-200: #e3e1d7;
+  --color-gray-300: #ccc9bc;
+  --color-gray-400: #aaa69a;
+  --color-gray-500: #8a8679;
+  --color-gray-600: #6d6a5f;
+  --color-gray-700: #57544c;
+  --color-gray-800: #3d3d3a;
+  --color-gray-900: #2a2926;
+  --color-gray-950: #1a1917;
 
   /* Line heights */
   --line-height-11: 2.75rem;
@@ -192,4 +195,78 @@ input:-webkit-autofill:focus {
 .linkicon {
   display: inline-block;
   vertical-align: middle;
+}
+
+/* Custom animations for landing page */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Arabic font support */
+.font-arabic {
+  font-family: var(--font-arabic);
+}
+
+/* RTL (Right-to-Left) support for Arabic */
+[dir='rtl'] {
+  direction: rtl;
+}
+
+[dir='ltr'] {
+  direction: ltr;
+}
+
+/* Use logical properties for RTL support */
+@layer utilities {
+  .ms-auto {
+    margin-inline-start: auto;
+  }
+
+  .me-auto {
+    margin-inline-end: auto;
+  }
+
+  .ps-4 {
+    padding-inline-start: 1rem;
+  }
+
+  .pe-4 {
+    padding-inline-end: 1rem;
+  }
 }

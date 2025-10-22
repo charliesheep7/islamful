@@ -14,15 +14,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
-  // Localized blog routes for ES and ZH
+  // Localized blog routes for Arabic
   const localizedBlogRoutes = allBlogs
     .filter((post) => !post.draft)
-    .flatMap((post) => [
-      { url: `${siteUrl}/es/${post.path}`, lastModified: post.lastmod || post.date },
-      { url: `${siteUrl}/zh/${post.path}`, lastModified: post.lastmod || post.date },
-    ])
+    .map((post) => ({
+      url: `${siteUrl}/ar/${post.path}`,
+      lastModified: post.lastmod || post.date,
+    }))
 
-  const routes = ['', 'blog', 'es', 'es/blog', 'zh', 'zh/blog'].map((route) => ({
+  const routes = ['', 'blog', 'ar', 'ar/blog'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
