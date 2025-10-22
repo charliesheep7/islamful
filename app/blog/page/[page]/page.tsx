@@ -6,7 +6,8 @@ import { notFound } from 'next/navigation'
 const POSTS_PER_PAGE = 5
 
 export const generateStaticParams = async () => {
-  const totalPages = Math.ceil(allBlogs.length / POSTS_PER_PAGE)
+  const filteredBlogs = allBlogs.filter((post) => post.lang === 'en' || !post.lang)
+  const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
 
   return paths
@@ -14,7 +15,9 @@ export const generateStaticParams = async () => {
 
 export default async function Page(props: { params: Promise<{ page: string }> }) {
   const params = await props.params
-  const posts = allCoreContent(sortPosts(allBlogs))
+  // Filter posts by language (default to English)
+  const filteredBlogs = allBlogs.filter((post) => post.lang === 'en' || !post.lang)
+  const posts = allCoreContent(sortPosts(filteredBlogs))
   const pageNumber = parseInt(params.page as string)
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
 

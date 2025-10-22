@@ -26,7 +26,8 @@ export async function generateMetadata(props: {
 }): Promise<Metadata | undefined> {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  const post = allBlogs.find((p) => p.slug === slug)
+  // Find English post by slug
+  const post = allBlogs.find((p) => p.slug === slug && (p.lang === 'en' || !p.lang))
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
@@ -54,8 +55,8 @@ export async function generateMetadata(props: {
     description: post.summary,
     alternates: {
       languages: {
-        es: `/es/blog/${post.slug}`,
-        'zh-Hans': `/zh/blog/${post.slug}`,
+        en: `/blog/${post.slug}`,
+        ar: `/ar/blog/${post.slug}`,
       },
     },
     openGraph: {
@@ -79,14 +80,17 @@ export async function generateMetadata(props: {
 }
 
 export const generateStaticParams = async () => {
-  return allBlogs.map((p) => ({ slug: p.slug.split('/').map((name) => decodeURI(name)) }))
+  // Generate params for English posts only
+  const englishBlogs = allBlogs.filter((p) => p.lang === 'en' || !p.lang)
+  return englishBlogs.map((p) => ({ slug: p.slug.split('/').map((name) => decodeURI(name)) }))
 }
 
 export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  // Filter out drafts in production
-  const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
+  // Filter to English posts only
+  const filteredBlogs = allBlogs.filter((post) => post.lang === 'en' || !post.lang)
+  const sortedCoreContents = allCoreContent(sortPosts(filteredBlogs))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
     return notFound()
@@ -94,7 +98,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
   const prev = sortedCoreContents[postIndex + 1]
   const next = sortedCoreContents[postIndex - 1]
-  const post = allBlogs.find((p) => p.slug === slug) as Blog
+  const post = allBlogs.find((p) => p.slug === slug && (p.lang === 'en' || !p.lang)) as Blog
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)

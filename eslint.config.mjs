@@ -67,4 +67,16 @@ export default [
       '@typescript-eslint/ban-ts-comment': 'off',
     },
   },
+  {
+    files: ['**/*.mjs'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: false,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
 ]

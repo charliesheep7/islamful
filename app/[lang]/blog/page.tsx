@@ -20,7 +20,10 @@ export const metadata = genPageMetadata({
 })
 
 export default async function LocaleBlogPage({ params }: { params: Promise<{ lang: 'ar' }> }) {
-  const posts = allCoreContent(sortPosts(allBlogs))
+  const { lang } = await params
+  // Filter posts by the specified language
+  const filteredBlogs = allBlogs.filter((post) => post.lang === lang)
+  const posts = allCoreContent(sortPosts(filteredBlogs))
   const pageNumber = 1
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE * pageNumber)

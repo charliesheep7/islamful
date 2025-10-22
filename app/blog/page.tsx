@@ -9,14 +9,16 @@ export const metadata = genPageMetadata({
   title: 'Blog',
   alternates: {
     languages: {
-      es: '/es/blog',
-      'zh-Hans': '/zh/blog',
+      en: '/blog',
+      ar: '/ar/blog',
     },
   },
 })
 
 export default async function BlogPage(props: { searchParams: Promise<{ page: string }> }) {
-  const posts = allCoreContent(sortPosts(allBlogs))
+  // Filter posts by language (default to English)
+  const filteredBlogs = allBlogs.filter((post) => post.lang === 'en' || !post.lang)
+  const posts = allCoreContent(sortPosts(filteredBlogs))
   const pageNumber = 1
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE * pageNumber)
