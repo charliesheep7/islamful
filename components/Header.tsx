@@ -6,11 +6,10 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import LocaleSwitcher from './LocaleSwitcher'
-import { usePathname } from 'next/navigation'
+import { useLocale } from './hooks/useLocale'
 
 const Header = () => {
-  const pathname = usePathname()
-  const lang = pathname.startsWith('/ar') ? 'ar' : 'en'
+  const { currentLang } = useLocale()
 
   // Simple translation function
   const getNavText = (key: string) => {
@@ -18,7 +17,7 @@ const Header = () => {
       en: { home: 'Home', blog: 'Blog' },
       ar: { home: 'الرئيسية', blog: 'المدونة' },
     }
-    return translations[lang]?.[key] || key
+    return translations[currentLang]?.[key] || key
   }
   let headerClass =
     'flex items-center w-full bg-[--color-bg] dark:bg-gray-950 justify-between py-6 backdrop-blur-sm transition-all duration-300 relative z-50'

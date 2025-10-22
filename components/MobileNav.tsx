@@ -5,10 +5,21 @@ import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'bo
 import { Fragment, useState, useEffect, useRef } from 'react'
 import Link from './Link'
 import headerNavLinks from '@/data/headerNavLinks'
+import { useLocale } from './hooks/useLocale'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
   const navRef = useRef(null)
+  const { currentLang } = useLocale()
+
+  // Simple translation function
+  const getNavText = (key: string) => {
+    const translations: Record<string, Record<string, string>> = {
+      en: { home: 'Home', blog: 'Blog' },
+      ar: { home: 'الرئيسية', blog: 'المدونة' },
+    }
+    return translations[currentLang]?.[key] || key
+  }
 
   const onToggleNav = () => {
     setNavShow((status) => {
@@ -76,10 +87,10 @@ const MobileNav = () => {
                   <Link
                     key={link.title}
                     href={link.href}
-                    className="hover:text-accent-600 dark:hover:text-accent-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
+                    className="hover:text-accent-600 dark:hover:text-accent-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
                     onClick={onToggleNav}
                   >
-                    {link.title}
+                    {getNavText(link.title.toLowerCase())}
                   </Link>
                 ))}
               </nav>
