@@ -11,6 +11,7 @@ import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import { headers } from 'next/headers'
 
 const noto_sans = Noto_Sans({
   subsets: ['latin'],
@@ -80,16 +81,12 @@ export async function generateStaticParams() {
   return [{ lang: 'en' }]
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode
-  params: Promise<{ lang?: string }>
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const basePath = process.env.BASE_PATH || ''
-  const { lang } = await params
-  const locale = lang || 'en'
+
+  // Get locale from middleware header
+  const headersList = await headers()
+  const locale = (headersList.get('x-locale') as 'en' | 'ar') || 'en'
 
   return (
     <html
@@ -125,7 +122,7 @@ export default async function RootLayout({
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF9F5" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
-      <body className="bg-gray-50 pl-[calc(100vw-100%)] font-sans text-gray-800 antialiased dark:bg-gray-950 dark:text-white">
+      <body className="bg-gray-50 font-sans text-gray-800 antialiased ltr:pl-[calc(100vw-100%)] rtl:pr-[calc(100vw-100%)] dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SectionContainer>

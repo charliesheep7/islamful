@@ -29,18 +29,34 @@ export function middleware(request: NextRequest) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
-  // If locale is already in path, don't redirect - let user's choice persist
-  if (pathnameHasLocale) return
+  // Determine the current locale
+  let currentLocale: (typeof locales)[number] = defaultLocale
+  if (pathnameHasLocale) {
+    // Extract locale from pathname
+    const localeMatch = locales.find(
+      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    )
+    if (localeMatch) currentLocale = localeMatch
+  }
 
-  // Only auto-detect locale for requests without a locale prefix
-  // This allows users to manually switch languages without being redirected back
-  const locale = getLocale(request)
+  // Create response
+  const response = pathnameHasLocale
+    ? NextResponse.next()
+    : (() => {
+        // Only auto-detect locale for requests without a locale prefix
+        const locale = getLocale(request)
 
-  // Don't add locale prefix for default locale (en)
-  if (locale === defaultLocale) return
+        // Don't add locale prefix for default locale (en)
+        if (locale === defaultLocale) return NextResponse.next()
 
-  request.nextUrl.pathname = `/${locale}${pathname}`
-  return NextResponse.redirect(request.nextUrl)
+        request.nextUrl.pathname = `/${locale}${pathname}`
+        return NextResponse.redirect(request.nextUrl)
+      })()
+
+  // Add custom header with the detected locale
+  response.headers.set('x-locale', currentLocale)
+
+  return response
 }
 
 export const config = {
