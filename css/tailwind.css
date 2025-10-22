@@ -7,10 +7,11 @@
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+  --font-sans:
+    var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-arabic: var(--font-noto-sans-arabic), var(--font-noto-sans), ui-sans-serif, system-ui,
-    sans-serif;
+  --font-arabic:
+    var(--font-noto-sans-arabic), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-dm-serif), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   /* Colors - DeenUp Brand Palette */

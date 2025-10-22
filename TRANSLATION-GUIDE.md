@@ -5,11 +5,13 @@
 ## 📝 When Adding New UI Text
 
 Edit these **3 files**:
+
 1. `dictionaries/en.json`
 2. `dictionaries/es.json`
 3. `dictionaries/zh.json`
 
 **Example:** Adding a "Contact" button
+
 ```json
 // In each dictionary file, add:
 "nav": {
@@ -24,10 +26,12 @@ Edit these **3 files**:
 ## 📄 When Adding New Pages
 
 Create **2 pages**:
+
 - `app/new-page/page.tsx` — English
 - `app/[lang]/new-page/page.tsx` — Spanish & Chinese
 
 **Template for localized page:**
+
 ```typescript
 import { getDictionary } from '../dictionaries'
 
@@ -47,11 +51,13 @@ export default async function Page({ params }: { params: Promise<{ lang: 'es' | 
 ## ✍️ When Writing New Blog Posts
 
 ### Quick: English only
+
 ```
 data/blog/my-new-post.mdx
 ```
 
 ### Full: With translations
+
 ```
 data/blog/
 ├── my-new-post.mdx              # English
@@ -60,11 +66,12 @@ data/blog/
 ```
 
 **Include in frontmatter:**
+
 ```yaml
 ---
-title: "Your Title"
-date: "2025-01-15"
-lang: es  # Add this for Spanish/Chinese
+title: 'Your Title'
+date: '2025-01-15'
+lang: es # Add this for Spanish/Chinese
 ---
 ```
 
@@ -75,6 +82,7 @@ lang: es  # Add this for Spanish/Chinese
 **3 steps:**
 
 1. **Add to navigation** (`data/headerNavLinks.ts`):
+
 ```typescript
 { href: '/contact', title: 'Contact' }
 ```
@@ -82,11 +90,12 @@ lang: es  # Add this for Spanish/Chinese
 2. **Add to dictionaries** (see "When Adding New UI Text" above)
 
 3. **Update Header translations** (`components/Header.tsx`):
+
 ```typescript
 const translations = {
   en: { contact: 'Contact' },
   es: { contact: 'Contacto' },
-  zh: { contact: '联系我们' }
+  zh: { contact: '联系我们' },
 }
 ```
 
@@ -132,16 +141,19 @@ data/blog/
 ## 🌍 Translation Tips
 
 **Spanish:**
+
 - Use Mexican/Latin American Spanish
 - Formal tone (usted)
 - Localize visa terms properly
 
 **Chinese:**
+
 - Use Simplified Chinese
 - Keep common English terms: H-1B, USCIS
 - Professional terminology
 
 **Both:**
+
 - Localize, don't just translate!
 - Research SEO keywords in target language
 - Use native speakers for review

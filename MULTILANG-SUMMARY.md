@@ -8,11 +8,13 @@
 ## What Was Done
 
 ### 1. Simplified i18n Implementation
+
 - **Removed:** `next-intl` library (heavy, complex)
 - **Adopted:** Official Next.js i18n patterns (lightweight, native)
 - **Result:** 90% reduction in i18n dependencies (50KB → 5KB)
 
 ### 2. Smooth Language Switcher
+
 - Beautiful dropdown with flag emojis
 - 🇺🇸 English | 🇪🇸 Español | 🇨🇳 中文
 - Click-outside-to-close
@@ -20,6 +22,7 @@
 - Path preservation when switching
 
 ### 3. Navigation Translations
+
 - Header links fully translated:
   - EN: Home, Blog, About
   - ES: Inicio, Blog, Acerca de
@@ -27,11 +30,13 @@
 - Footer links: Privacy, Terms
 
 ### 4. Static Generation Fixed
+
 - Added `generateStaticParams()` to all localized pages
 - No more redirect loops or flashing
 - `/es` and `/zh` routes pre-rendered at build time
 
 ### 5. Documentation
+
 - **[prd-multilang.md](prd-multilang.md)** — Complete technical documentation
 - **[TRANSLATION-GUIDE.md](TRANSLATION-GUIDE.md)** — Quick reference for adding content
 - **[prd-mvp.md](prd-mvp.md)** — Updated with i18n completion status
@@ -41,17 +46,20 @@
 ## Architecture
 
 ### Middleware
+
 - Detects browser language preference
 - Redirects to `/es` or `/zh` if needed
 - Respects user's manual language choice
 
 ### Dictionaries
+
 - `dictionaries/en.json` — English UI strings
 - `dictionaries/es.json` — Spanish UI strings
 - `dictionaries/zh.json` — Chinese UI strings
 - Loaded server-side only (no client overhead)
 
 ### Routes
+
 ```
 /                    → English home
 /blog                → English blog
@@ -71,6 +79,7 @@
 ## Build Output
 
 All localized routes successfully generated:
+
 ```
 ● /[lang]                              (es, zh)
 ● /[lang]/about                        (es/about, zh/about)
@@ -110,33 +119,34 @@ All localized routes successfully generated:
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `middleware.ts` | Locale detection & routing |
-| `app/[lang]/dictionaries.ts` | Dictionary loader |
-| `dictionaries/*.json` | UI translations |
-| `components/LocaleSwitcher.tsx` | Language dropdown |
-| `components/Header.tsx` | Translated navigation |
-| `app/[lang]/` | Localized pages |
+| File                            | Purpose                    |
+| ------------------------------- | -------------------------- |
+| `middleware.ts`                 | Locale detection & routing |
+| `app/[lang]/dictionaries.ts`    | Dictionary loader          |
+| `dictionaries/*.json`           | UI translations            |
+| `components/LocaleSwitcher.tsx` | Language dropdown          |
+| `components/Header.tsx`         | Translated navigation      |
+| `app/[lang]/`                   | Localized pages            |
 
 ---
 
 ## Migration Details
 
-| Before | After |
-|--------|-------|
-| `next-intl` library | Native Next.js |
-| `app/[locale]/` | `app/[lang]/` |
-| `messages/` folder | `dictionaries/` folder |
+| Before                            | After                     |
+| --------------------------------- | ------------------------- |
+| `next-intl` library               | Native Next.js            |
+| `app/[locale]/`                   | `app/[lang]/`             |
+| `messages/` folder                | `dictionaries/` folder    |
 | Client hooks: `useTranslations()` | Server: `getDictionary()` |
-| `next-intl/navigation` | `next/navigation` |
-| 50KB dependencies | 5KB dependencies |
+| `next-intl/navigation`            | `next/navigation`         |
+| 50KB dependencies                 | 5KB dependencies          |
 
 ---
 
 ## Questions?
 
 See full documentation:
+
 - **Technical details:** [prd-multilang.md](prd-multilang.md)
 - **Translation workflow:** [TRANSLATION-GUIDE.md](TRANSLATION-GUIDE.md)
 - **MVP status:** [prd-mvp.md](prd-mvp.md)

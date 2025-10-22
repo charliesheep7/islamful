@@ -1,8 +1,5 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "i18n-ally.localesPaths": [
-    "i18n",
-    "messages"
-  ]
+  "i18n-ally.localesPaths": ["i18n", "messages"]
 }
