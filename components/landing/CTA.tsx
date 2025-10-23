@@ -41,13 +41,13 @@ export default function CTA({ lang = 'en', dict }: CTAProps) {
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <div
-            className={`inline-flex cursor-not-allowed items-center gap-3 rounded-2xl bg-gray-300 px-10 py-5 text-xl font-bold text-gray-600 opacity-50 dark:bg-gray-700 dark:text-gray-400 ${lang === 'ar' ? 'font-arabic' : ''}`}
+            className={`inline-flex cursor-not-allowed items-center gap-3 rounded-2xl bg-gray-300 px-10 py-5 text-xl font-bold text-gray-900 opacity-50 dark:bg-gray-700 dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
             <Download className="h-6 w-6" />
             {dict?.cta?.downloadIOS || 'Download on iOS'}
           </div>
           <div
-            className={`inline-flex cursor-not-allowed items-center gap-3 rounded-2xl bg-gray-300 px-10 py-5 text-xl font-bold text-gray-600 opacity-50 dark:bg-gray-700 dark:text-gray-400 ${lang === 'ar' ? 'font-arabic' : ''}`}
+            className={`inline-flex cursor-not-allowed items-center gap-3 rounded-2xl bg-gray-300 px-10 py-5 text-xl font-bold text-gray-900 opacity-50 dark:bg-gray-700 dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
             <Download className="h-6 w-6" />
             {dict?.cta?.downloadAndroid || 'Download on Android'}

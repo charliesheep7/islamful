@@ -23,6 +23,7 @@
       "@/css/*": ["css/*"],
       "@/types/*": ["types/*"],
       "@/app/*": ["app/*"],
+      "@/utils/*": ["utils/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
       "pliny/*": ["node_modules/pliny/*"]
     },

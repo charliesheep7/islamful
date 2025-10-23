@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next'
 import { allBlogs } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
+import { getSeoBotPosts } from '@/utils/seobot'
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = siteMetadata.siteUrl
 
   const blogRoutes = allBlogs
@@ -22,10 +23,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
+  // Fetch SEObot posts and add to sitemap (English only)
+  const seoBotPosts = await getSeoBotPosts()
+  const seoBotRoutes = seoBotPosts
+    .filter((post) => !post.draft)
+    .map((post) => ({
+      url: `${siteUrl}/${post.path}`,
+      lastModified: post.lastmod || post.date,
+    }))
+
   const routes = ['', 'blog', 'ar', 'ar/blog'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...blogRoutes, ...localizedBlogRoutes]
+  return [...routes, ...blogRoutes, ...localizedBlogRoutes, ...seoBotRoutes]
 }

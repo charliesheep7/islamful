@@ -70,7 +70,7 @@ export default function Hero({ lang = 'en', dict }: HeroProps) {
             <div className="group relative">
               <button
                 disabled
-                className={`inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-gradient-to-br from-[--color-accent-500] via-[--color-accent-600] to-[--color-accent-700] px-8 py-4 text-lg font-semibold text-white opacity-75 shadow-[--color-accent-500]/30 shadow-lg ${lang === 'ar' ? 'font-arabic' : ''}`}
+                className={`inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-gray-300 px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg dark:bg-gray-700 dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
               >
                 {dict?.hero?.ctaPrimary || 'Download App'}
               </button>
