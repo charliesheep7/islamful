@@ -41,7 +41,10 @@ export async function generateMetadata(props: {
     post = seoBotPost as any
   }
 
-  const authorList = post?.authors || ['default']
+  // At this point, post is guaranteed to be defined
+  if (!post) return
+
+  const authorList = post.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
     return coreContent(authorResults as Authors)
