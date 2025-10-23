@@ -165,7 +165,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
-        {isSeoBotPost ? (
+        {isSeoBotPost && seoBotPost ? (
           <>
             {seoBotPost.images && seoBotPost.images[0] && (
               <div className="mb-8">
@@ -182,9 +182,9 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
               dangerouslySetInnerHTML={{ __html: seoBotPost.body.raw }}
             />
           </>
-        ) : (
+        ) : post ? (
           <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
-        )}
+        ) : null}
       </Layout>
     </>
   )
