@@ -132,7 +132,10 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const currentPost = post || seoBotPost
   const isSeoBotPost = !post && seoBotPost
 
-  const authorList = currentPost?.authors || ['default']
+  // TypeScript guard - currentPost is guaranteed to exist at this point
+  if (!currentPost) return notFound()
+
+  const authorList = currentPost.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
     return coreContent(authorResults as Authors)
