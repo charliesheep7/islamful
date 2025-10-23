@@ -1,6 +1,8 @@
 'use client'
+
+import clsx from 'clsx'
+import { BookOpen, CheckCircle2, ChevronDown, Mail } from 'lucide-react'
 import { useState } from 'react'
-import { BookOpen, CheckCircle2, Mail, ChevronDown } from 'lucide-react'
 import type { Dictionary } from '@/types/dictionary'
 
 interface TestimonialsProps {
@@ -78,9 +80,12 @@ export default function Testimonials({ lang = 'en', dict }: TestimonialsProps) {
             return (
               <div
                 key={index}
-                className={`group relative rounded-2xl border-2 ${testimonial.borderColor} ${testimonial.bgColor} p-6 transition-all duration-300 hover:shadow-xl ${
-                  isExpanded ? 'shadow-2xl ring-2 ring-[--color-accent-500]' : ''
-                }`}
+                className={clsx(
+                  'group relative rounded-2xl border-2 p-6 transition-all duration-300 hover:shadow-xl',
+                  testimonial.borderColor,
+                  testimonial.bgColor,
+                  isExpanded && ['ring-2', 'shadow-2xl', 'ring-[--color-accent-500]']
+                )}
               >
                 {/* Icon and category badge */}
                 <div className="mb-4 flex items-center gap-3">

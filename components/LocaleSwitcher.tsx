@@ -1,9 +1,10 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
+import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { Fragment } from 'react'
-import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
+import { usePathname } from 'next/navigation'
 
 const locales = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
@@ -53,7 +54,16 @@ export default function LocaleSwitcher() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <MenuItems className="ring-opacity-5 absolute right-0 z-50 mt-2 w-48 origin-top-right divide-y divide-gray-100 rounded-lg border-2 border-gray-200 bg-white shadow-2xl ring-1 ring-black focus:outline-hidden dark:border-gray-700 dark:bg-gray-800">
+        <MenuItems
+          className={clsx(
+            'ring-opacity-5 absolute right-0 z-50 mt-2 w-48 origin-top-right divide-y divide-gray-100 rounded-lg border-2 border-gray-200',
+            'bg-white',
+            'ring-1',
+            'shadow-2xl',
+            'ring-black',
+            'focus:outline-hidden dark:border-gray-700 dark:bg-gray-800'
+          )}
+        >
           <div className="py-1">
             {locales.map((locale) => (
               <MenuItem key={locale.code}>
