@@ -8,18 +8,19 @@ export const dynamic = 'force-dynamic'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = siteMetadata.siteUrl
 
+  // English blog routes - exclude Arabic (.ar) posts
   const blogRoutes = allBlogs
-    .filter((post) => !post.draft)
+    .filter((post) => !post.draft && post.lang !== 'ar')
     .map((post) => ({
       url: `${siteUrl}/${post.path}`,
       lastModified: post.lastmod || post.date,
     }))
 
-  // Localized blog routes for Arabic
+  // Arabic blog routes - only include Arabic posts, strip .ar suffix from path
   const localizedBlogRoutes = allBlogs
-    .filter((post) => !post.draft)
+    .filter((post) => !post.draft && post.lang === 'ar')
     .map((post) => ({
-      url: `${siteUrl}/ar/${post.path}`,
+      url: `${siteUrl}/ar/${post.path.replace(/\.ar$/, '')}`,
       lastModified: post.lastmod || post.date,
     }))
 
