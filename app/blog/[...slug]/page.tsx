@@ -59,7 +59,7 @@ export async function generateMetadata(props: {
       url: img && img.includes('http') ? img : siteMetadata.siteUrl + img,
     }
   })
-  // Add keywords if available (SEObot posts have metaKeywords)
+  // Add the keywords if available (SEObot posts have metaKeywords)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const keywords = (post as any).metaKeywords
 
