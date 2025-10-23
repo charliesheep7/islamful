@@ -1,15 +1,13 @@
 'use client'
 
-// Placeholder media logos - replace with actual logos post-MVP
+import Image from 'next/image'
+
 const mediaLogos = [
-  { name: 'TechCrunch', color: '#0A0' },
-  { name: 'Forbes', color: '#000' },
-  { name: 'Bloomberg', color: '#000' },
-  { name: 'WSJ', color: '#000' },
-  { name: 'Reuters', color: '#F37021' },
-  { name: 'CNN', color: '#C00' },
-  { name: 'NBC', color: '#000' },
-  { name: 'ABC', color: '#000' },
+  { name: 'Harvard', src: '/static/images/harvard.svg' },
+  { name: 'BBC', src: '/static/images/bbc.svg' },
+  { name: 'Oxford', src: '/static/images/oxford.png' },
+  { name: 'Forbes', src: '/static/images/forbes.svg' },
+  { name: 'New York Times', src: '/static/images/nytimes.svg' },
 ]
 
 export default function MediaTicker() {
@@ -29,11 +27,14 @@ export default function MediaTicker() {
         <div className="animate-scroll-infinite flex">
           {allLogos.map((logo, index) => (
             <div key={index} className="mx-8 flex flex-shrink-0 items-center justify-center">
-              {/* Placeholder boxes - replace with actual logo images */}
-              <div className="rounded-lg border border-gray-200 bg-[--color-surface] px-8 py-4 shadow-sm transition-all duration-300 hover:scale-105 hover:border-[--color-accent-300] hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-[--color-accent-700]">
-                <span className="text-lg font-bold text-gray-600 dark:text-gray-300">
-                  {logo.name}
-                </span>
+              <div className="flex h-16 w-32 items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm transition-all duration-300 hover:scale-105 hover:border-[--color-accent-300] hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-[--color-accent-700]">
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={80}
+                  height={40}
+                  className="max-h-10 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:invert dark:hover:invert-0"
+                />
               </div>
             </div>
           ))}
