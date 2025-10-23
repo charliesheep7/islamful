@@ -41,14 +41,17 @@ export interface SeoBotPost {
  */
 export async function getSeoBotPosts(): Promise<SeoBotPost[]> {
   try {
+    console.log('Fetching SEObot posts...')
     // Fetch the first 100 posts (adjust if you need more)
     const { articles } = await client.getArticles(0, 100)
+    console.log(`Successfully fetched ${articles?.length || 0} SEObot articles`)
 
     // Normalize SEObot posts to match ContentLayer structure
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return articles.map((post: any) => normalizeSeoBotPost(post))
   } catch (error) {
     console.error('Error fetching SEObot posts:', error)
+    console.error('Full error details:', JSON.stringify(error, null, 2))
     return []
   }
 }
