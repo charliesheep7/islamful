@@ -95,7 +95,7 @@ function normalizeSeoBotPost(post: any): SeoBotPost {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tags: post.tags?.map((tag: any) => tag.title || tag) || [],
     lang: 'en', // SEObot posts are English only for now
-    draft: !post.published,
+    draft: false, // Always include SEObot posts in sitemap
     lastmod: post.updatedAt || post.modifiedAt,
     images: post.image ? [post.image] : [],
     authors: ['default'], // Use default author for SEObot posts
