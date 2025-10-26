@@ -13,6 +13,7 @@ import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
+import { buildLanguageAlternates } from 'app/seo'
 
 const defaultLayout = 'PostLayout'
 const layouts = {
@@ -96,18 +97,14 @@ export async function generateMetadata(props: {
     (p) => p.slug === post.slug && (p.lang === 'en' || !p.lang)
   )
 
+  const alternates = hasEnglishVersion
+    ? buildLanguageAlternates(`/blog/${post.slug}`, { currentLanguage: 'ar' })
+    : undefined
+
   return {
     title: post.title,
     description: post.summary,
-    alternates: hasEnglishVersion
-      ? {
-          languages: {
-            'x-default': `/blog/${post.slug}`,
-            en: `/blog/${post.slug}`,
-            ar: `/ar/blog/${post.slug}`,
-          },
-        }
-      : undefined,
+    alternates,
     openGraph: {
       title: post.title,
       description: post.summary,

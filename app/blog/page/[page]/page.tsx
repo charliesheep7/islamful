@@ -23,9 +23,14 @@ export async function generateMetadata(props: {
   const rawPage = Number(params.page)
   const pageNumber = Number.isFinite(rawPage) && rawPage > 1 ? rawPage : 1
   const path = pageNumber <= 1 ? '/blog' : `/blog/page/${pageNumber}`
+  const description =
+    pageNumber <= 1
+      ? 'Browse the latest DeenUp blog posts covering faith, lifestyle, and product learnings.'
+      : `Continue exploring older DeenUp blog posts in archive page ${pageNumber}.`
 
   return genPageMetadata({
     title: pageNumber <= 1 ? 'Blog' : `Blog - Page ${pageNumber}`,
+    description,
     alternates: buildLanguageAlternates(path, { includeArabic: false }),
   })
 }

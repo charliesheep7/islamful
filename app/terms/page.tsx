@@ -3,6 +3,8 @@ import SectionContainer from '@/components/SectionContainer'
 
 export const metadata = genPageMetadata({
   title: 'Terms of Service',
+  description:
+    'Read the rules, acceptable use guidelines, and legal terms that govern your use of the DeenUp app.',
   alternates: buildLanguageAlternates('/terms'),
 })
 

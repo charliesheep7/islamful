@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export const metadata = genPageMetadata({
   title: 'Blog',
-  alternates: buildLanguageAlternates('/blog'),
+  alternates: buildLanguageAlternates('/blog', { currentLanguage: 'ar' }),
 })
 
 export default async function LocaleBlogPage({ params }: { params: Promise<{ lang: 'ar' }> }) {

@@ -33,7 +33,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: post.lastmod || post.date,
     }))
 
-  const routes = ['', 'blog', 'ar', 'ar/blog'].map((route) => ({
+  // Only include canonical URLs (English versions)
+  // Arabic pages /ar and /ar/blog have canonical tags pointing to / and /blog
+  const routes = ['', 'blog'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))

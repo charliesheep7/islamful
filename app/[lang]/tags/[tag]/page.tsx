@@ -2,7 +2,7 @@ import { slug } from 'github-slugger'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import ListLayout from '@/layouts/ListLayout'
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -16,12 +16,7 @@ export async function generateMetadata(props: {
   return genPageMetadata({
     title: tag,
     description: `${tag} tags - ${process.env.NEXT_PUBLIC_SITE_NAME}`,
-    alternates: {
-      languages: {
-        en: `/tags/${tag}`,
-        ar: `/ar/tags/${tag}`,
-      },
-    },
+    alternates: buildLanguageAlternates(`/tags/${tag}`, { currentLanguage: 'ar' }),
   })
 }
 

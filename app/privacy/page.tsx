@@ -3,6 +3,8 @@ import SectionContainer from '@/components/SectionContainer'
 
 export const metadata = genPageMetadata({
   title: 'Privacy Policy',
+  description:
+    'Understand what personal data DeenUp collects, how it is used, and the safeguards that protect it.',
   alternates: buildLanguageAlternates('/privacy'),
 })
 

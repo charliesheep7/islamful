@@ -28,5 +28,5 @@ export default async function LangHome({ params }: { params: Promise<{ lang: 'ar
 }
 
 export const metadata = {
-  alternates: buildLanguageAlternates('/'),
+  alternates: buildLanguageAlternates('/', { currentLanguage: 'ar' }),
 }

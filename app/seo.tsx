@@ -23,6 +23,7 @@ interface LanguageAlternatesOptions {
   englishPath?: string
   arabicPath?: string
   canonical?: string
+  currentLanguage?: 'en' | 'ar'
 }
 
 export function buildLanguageAlternates(
@@ -34,12 +35,17 @@ export function buildLanguageAlternates(
     englishPath,
     arabicPath,
     canonical,
+    currentLanguage = 'en',
   }: LanguageAlternatesOptions = {}
 ): Metadata['alternates'] {
   const normalizedEnglish = normalizePath(englishPath ?? path)
   const derivedArabic = normalizedEnglish === '/' ? '/ar' : `/ar${normalizedEnglish}`
   const normalizedArabic = normalizePath(arabicPath ?? derivedArabic)
-  const normalizedCanonical = normalizePath(canonical ?? normalizedEnglish)
+  const normalizedCanonical = canonical
+    ? normalizePath(canonical)
+    : currentLanguage === 'ar'
+      ? normalizedArabic
+      : normalizedEnglish
 
   const languages: Record<string, string> = {}
 

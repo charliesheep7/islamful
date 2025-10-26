@@ -4,11 +4,14 @@ import CTA from '@/components/landing/CTA'
 import MediaTicker from '@/components/landing/MediaTicker'
 import Testimonials from '@/components/landing/Testimonials'
 import FAQ from '@/components/landing/FAQ'
-import { buildLanguageAlternates } from 'app/seo'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 
-export const metadata = {
+export const metadata = genPageMetadata({
+  title: 'DeenUp - Your Islamic Companion',
+  description:
+    "Stay consistent with Salah, Quran, and community through DeenUp's AI-powered Islamic companion.",
   alternates: buildLanguageAlternates('/'),
-}
+})
 
 export default async function Page() {
   return (
