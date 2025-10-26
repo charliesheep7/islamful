@@ -50,7 +50,8 @@ const computedFields: ComputedFields = {
       // Remove blog/ prefix and language folder (en/ar) from slug
       // blog/en/my-post.mdx → my-post
       // blog/ar/my-post.mdx → my-post
-      return doc._raw.flattenedPath.replace(/^blog\/(en|ar)\//, '')
+      // authors/mathias-yussif.mdx → mathias-yussif
+      return doc._raw.flattenedPath.replace(/^(blog\/(en|ar)\/|authors\/)/, '')
     },
   },
   path: {
