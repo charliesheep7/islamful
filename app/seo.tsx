@@ -9,6 +9,61 @@ interface PageSEOProps {
   [key: string]: any
 }
 
+const normalizePath = (path?: string) => {
+  if (!path || path === '/') {
+    return '/'
+  }
+  return path.startsWith('/') ? path : `/${path}`
+}
+
+interface LanguageAlternatesOptions {
+  includeArabic?: boolean
+  includeEnglish?: boolean
+  xDefault?: 'en' | 'ar' | string
+  englishPath?: string
+  arabicPath?: string
+  canonical?: string
+}
+
+export function buildLanguageAlternates(
+  path: string,
+  {
+    includeArabic = true,
+    includeEnglish = true,
+    xDefault,
+    englishPath,
+    arabicPath,
+    canonical,
+  }: LanguageAlternatesOptions = {}
+): Metadata['alternates'] {
+  const normalizedEnglish = normalizePath(englishPath ?? path)
+  const derivedArabic = normalizedEnglish === '/' ? '/ar' : `/ar${normalizedEnglish}`
+  const normalizedArabic = normalizePath(arabicPath ?? derivedArabic)
+  const normalizedCanonical = normalizePath(canonical ?? normalizedEnglish)
+
+  const languages: Record<string, string> = {}
+
+  if (xDefault === 'ar') {
+    languages['x-default'] = normalizedArabic
+  } else if (xDefault && xDefault !== 'en') {
+    languages['x-default'] = normalizePath(xDefault)
+  } else {
+    languages['x-default'] = normalizedEnglish
+  }
+
+  if (includeEnglish) {
+    languages.en = normalizedEnglish
+  }
+  if (includeArabic) {
+    languages.ar = normalizedArabic
+  }
+
+  return {
+    canonical: normalizedCanonical,
+    languages,
+  }
+}
+
 export function genPageMetadata({ title, description, image, ...rest }: PageSEOProps): Metadata {
   // If alternates.languages is provided, automatically add x-default pointing to English version
   const alternates = rest.alternates

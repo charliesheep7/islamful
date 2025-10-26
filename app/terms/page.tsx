@@ -1,7 +1,10 @@
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
 
-export const metadata = genPageMetadata({ title: 'Terms of Service' })
+export const metadata = genPageMetadata({
+  title: 'Terms of Service',
+  alternates: buildLanguageAlternates('/terms'),
+})
 
 export default function TermsPage() {
   return (

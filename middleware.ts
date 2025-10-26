@@ -23,6 +23,7 @@ function getLocale(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const requestHeaders = new Headers(request.headers)
 
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = locales.some(
@@ -37,23 +38,27 @@ export function middleware(request: NextRequest) {
       (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
     if (localeMatch) currentLocale = localeMatch
+  } else {
+    // Only auto-detect locale for requests without a locale prefix
+    const detectedLocale = getLocale(request)
+
+    if (detectedLocale !== defaultLocale) {
+      request.nextUrl.pathname = `/${detectedLocale}${pathname}`
+      const redirectResponse = NextResponse.redirect(request.nextUrl)
+      redirectResponse.headers.set('x-locale', detectedLocale)
+      return redirectResponse
+    }
+
+    currentLocale = detectedLocale
   }
 
-  // Create response
-  const response = pathnameHasLocale
-    ? NextResponse.next()
-    : (() => {
-        // Only auto-detect locale for requests without a locale prefix
-        const locale = getLocale(request)
-
-        // Don't add locale prefix for default locale (en)
-        if (locale === defaultLocale) return NextResponse.next()
-
-        request.nextUrl.pathname = `/${locale}${pathname}`
-        return NextResponse.redirect(request.nextUrl)
-      })()
-
-  // Add custom header with the detected locale
+  // Pass locale information down to the app via a custom request header
+  requestHeaders.set('x-locale', currentLocale)
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
   response.headers.set('x-locale', currentLocale)
 
   return response

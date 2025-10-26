@@ -5,6 +5,7 @@ import MediaTicker from '@/components/landing/MediaTicker'
 import Testimonials from '@/components/landing/Testimonials'
 import FAQ from '@/components/landing/FAQ'
 import { getDictionary } from './dictionaries'
+import { buildLanguageAlternates } from 'app/seo'
 
 export function generateStaticParams() {
   return [{ lang: 'ar' }]
@@ -27,10 +28,5 @@ export default async function LangHome({ params }: { params: Promise<{ lang: 'ar
 }
 
 export const metadata = {
-  alternates: {
-    languages: {
-      en: '/',
-      ar: '/ar',
-    },
-  },
+  alternates: buildLanguageAlternates('/'),
 }

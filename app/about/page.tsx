@@ -2,9 +2,12 @@ import { Authors, allAuthors } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import AuthorLayout from '@/layouts/AuthorLayout'
 import { coreContent } from 'pliny/utils/contentlayer'
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'About' })
+export const metadata = genPageMetadata({
+  title: 'About',
+  alternates: buildLanguageAlternates('/about'),
+})
 
 const featuredAuthorSlugs = ['mathias-yussif', 'sih-c']
 

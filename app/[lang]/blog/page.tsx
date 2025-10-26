@@ -1,6 +1,6 @@
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import ListLayout from '@/layouts/ListLayout'
 
 const POSTS_PER_PAGE = 5
@@ -11,12 +11,7 @@ export function generateStaticParams() {
 
 export const metadata = genPageMetadata({
   title: 'Blog',
-  alternates: {
-    languages: {
-      en: '/blog',
-      ar: '/ar/blog',
-    },
-  },
+  alternates: buildLanguageAlternates('/blog'),
 })
 
 export default async function LocaleBlogPage({ params }: { params: Promise<{ lang: 'ar' }> }) {

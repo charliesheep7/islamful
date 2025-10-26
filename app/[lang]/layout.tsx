@@ -14,12 +14,6 @@ export async function generateMetadata({
     openGraph: {
       locale: 'ar',
     },
-    alternates: {
-      languages: {
-        en: '/',
-        ar: '/ar',
-      },
-    },
   }
 }
 

@@ -1,7 +1,10 @@
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
 
-export const metadata = genPageMetadata({ title: 'Privacy Policy' })
+export const metadata = genPageMetadata({
+  title: 'Privacy Policy',
+  alternates: buildLanguageAlternates('/privacy'),
+})
 
 export default function PrivacyPage() {
   return (

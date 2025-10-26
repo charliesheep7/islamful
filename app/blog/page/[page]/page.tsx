@@ -3,6 +3,8 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { getSeoBotPosts, mergePosts } from '@/utils/seobot'
+import type { Metadata } from 'next'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 
 const POSTS_PER_PAGE = 5
 
@@ -12,6 +14,20 @@ export const generateStaticParams = async () => {
   const paths = Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
 
   return paths
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{ page: string }>
+}): Promise<Metadata> {
+  const params = await props.params
+  const rawPage = Number(params.page)
+  const pageNumber = Number.isFinite(rawPage) && rawPage > 1 ? rawPage : 1
+  const path = pageNumber <= 1 ? '/blog' : `/blog/page/${pageNumber}`
+
+  return genPageMetadata({
+    title: pageNumber <= 1 ? 'Blog' : `Blog - Page ${pageNumber}`,
+    alternates: buildLanguageAlternates(path, { includeArabic: false }),
+  })
 }
 
 export default async function Page(props: { params: Promise<{ page: string }> }) {
