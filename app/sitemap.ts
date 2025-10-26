@@ -8,23 +8,23 @@ export const dynamic = 'force-dynamic'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = siteMetadata.siteUrl
 
-  // English blog routes - exclude Arabic (.ar) posts
+  // English blog routes - exclude Arabic posts
   const blogRoutes = allBlogs
-    .filter((post) => !post.draft && post.lang !== 'ar')
+    .filter((post) => !post.draft && (post.lang === 'en' || !post.lang))
     .map((post) => ({
       url: `${siteUrl}/${post.path}`,
       lastModified: post.lastmod || post.date,
     }))
 
-  // Arabic blog routes - only include Arabic posts, strip .ar suffix from path
+  // Arabic blog routes - only include posts that exist in Arabic
   const localizedBlogRoutes = allBlogs
     .filter((post) => !post.draft && post.lang === 'ar')
     .map((post) => ({
-      url: `${siteUrl}/ar/${post.path.replace(/\.ar$/, '')}`,
+      url: `${siteUrl}/ar/${post.path}`,
       lastModified: post.lastmod || post.date,
     }))
 
-  // Fetch SEObot posts and add to sitemap (English only)
+  // Fetch SEObot posts and add to sitemap (English only, no Arabic versions)
   const seoBotPosts = await getSeoBotPosts()
   const seoBotRoutes = seoBotPosts
     .filter((post) => !post.draft)

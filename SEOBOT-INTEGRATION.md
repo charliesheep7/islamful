@@ -77,7 +77,7 @@ SEObot posts are normalized to match ContentLayer's Blog structure:
   tags: string[]
   lang: 'en'
   draft: boolean
-  authors: ['default']
+  authors: ['mathias-yussif']
   layout: 'PostLayout'
   readingTime: { text, minutes, time, words }
   structuredData: { ... }

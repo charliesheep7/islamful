@@ -8,6 +8,7 @@ import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import BasmalahIntro from '@/components/BasmalahIntro'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -60,32 +61,27 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <dd>
                 <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
                   {authorDetails.map((author) => (
-                    <li className="flex items-center space-x-2" key={author.name}>
+                    <li className="flex items-center space-x-3 text-left" key={author.name}>
                       {author.avatar && (
                         <Image
                           src={author.avatar}
-                          width={38}
-                          height={38}
-                          alt="avatar"
-                          className="h-10 w-10 rounded-full"
+                          width={42}
+                          height={42}
+                          alt={author.name}
+                          className="h-12 w-12 rounded-full"
                         />
                       )}
-                      <dl className="text-sm leading-5 font-medium whitespace-nowrap">
+                      <dl className="text-sm leading-5 font-medium">
                         <dt className="sr-only">Name</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                        <dt className="sr-only">Twitter</dt>
-                        <dd>
-                          {author.twitter && (
-                            <Link
-                              href={author.twitter}
-                              className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                            >
-                              {author.twitter
-                                .replace('https://twitter.com/', '@')
-                                .replace('https://x.com/', '@')}
-                            </Link>
-                          )}
-                        </dd>
+                        {(author.occupation || author.company) && (
+                          <>
+                            <dt className="sr-only">Role</dt>
+                            <dd className="text-gray-500 dark:text-gray-400">
+                              {[author.occupation, author.company].filter(Boolean).join(' • ')}
+                            </dd>
+                          </>
+                        )}
                       </dl>
                     </li>
                   ))}
@@ -93,7 +89,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
+              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">
+                <BasmalahIntro />
+                {children}
+              </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on X

@@ -1,4 +1,5 @@
 import { BlogClient } from 'seobot'
+import siteMetadata from '@/data/siteMetadata'
 
 // Initialize the SEObot client
 const client = new BlogClient(process.env.SEOBOT_API_KEY || '')
@@ -78,6 +79,7 @@ export async function getSeoBotPostBySlug(slug: string): Promise<SeoBotPost | nu
 function normalizeSeoBotPost(post: any): SeoBotPost {
   const slug = post.slug || post.id
   const path = `blog/${slug}`
+  const defaultAuthorSlug = siteMetadata.authorSlug || 'mathias-yussif'
 
   // Calculate reading time (rough estimate: 200 words per minute)
   const wordCount = post.html?.split(/\s+/).length || 0
@@ -98,7 +100,7 @@ function normalizeSeoBotPost(post: any): SeoBotPost {
     draft: false, // Always include SEObot posts in sitemap
     lastmod: post.updatedAt || post.modifiedAt,
     images: post.image ? [post.image] : [],
-    authors: ['default'], // Use default author for SEObot posts
+    authors: [defaultAuthorSlug], // Use Mathias as the default author for SEObot posts
     layout: 'PostLayout', // Use default layout
     path: path,
     filePath: `seobot/${slug}`,

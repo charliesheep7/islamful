@@ -21,6 +21,49 @@ const layouts = {
   PostLayout,
   PostBanner,
 }
+const DEFAULT_AUTHOR_SLUG = siteMetadata.authorSlug || 'mathias-yussif'
+
+const resolveAuthorDetails = (authorSlugs?: string[]) => {
+  const slugs = authorSlugs && authorSlugs.length > 0 ? authorSlugs : [DEFAULT_AUTHOR_SLUG]
+
+  const resolvedAuthors = slugs
+    .map((author) => allAuthors.find((p) => p.slug === author))
+    .filter((author): author is Authors => Boolean(author))
+    .map((author) => coreContent(author))
+
+  if (resolvedAuthors.length > 0) {
+    return resolvedAuthors
+  }
+
+  const fallbackAuthor = allAuthors.find((p) => p.slug === DEFAULT_AUTHOR_SLUG)
+  return fallbackAuthor ? [coreContent(fallbackAuthor as Authors)] : []
+}
+
+const buildJsonLdAuthors = (authorDetails: ReturnType<typeof resolveAuthorDetails>) => {
+  return authorDetails.map((author) => {
+    const sameAs = [
+      author.linkedin,
+      author.twitter,
+      author.github,
+      author.bluesky,
+      ...(author.seoProfiles || []),
+    ].filter(Boolean)
+
+    return {
+      '@type': 'Person',
+      name: author.name,
+      jobTitle: author.occupation || undefined,
+      worksFor: author.company
+        ? {
+            '@type': 'Organization',
+            name: author.company,
+          }
+        : undefined,
+      image: author.avatar ? `${siteMetadata.siteUrl}${author.avatar}` : undefined,
+      sameAs: sameAs.length > 0 ? Array.from(new Set(sameAs)) : undefined,
+    }
+  })
+}
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string[] }>
@@ -44,11 +87,7 @@ export async function generateMetadata(props: {
   // At this point, post is guaranteed to be defined
   if (!post) return
 
-  const authorList = post.authors || ['default']
-  const authorDetails = authorList.map((author) => {
-    const authorResults = allAuthors.find((p) => p.slug === author)
-    return coreContent(authorResults as Authors)
-  })
+  const authorDetails = resolveAuthorDetails(post.authors)
 
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
@@ -66,16 +105,22 @@ export async function generateMetadata(props: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const keywords = (post as any).metaKeywords
 
+  // Check if this post has an Arabic version
+  const hasArabicVersion = allBlogs.some((p) => p.slug === post.slug && p.lang === 'ar')
+
   return {
     title: post.title,
     description: post.summary,
     keywords: keywords || undefined,
-    alternates: {
-      languages: {
-        en: `/blog/${post.slug}`,
-        ar: `/ar/blog/${post.slug}`,
-      },
-    },
+    alternates: hasArabicVersion
+      ? {
+          languages: {
+            'x-default': `/blog/${post.slug}`,
+            en: `/blog/${post.slug}`,
+            ar: `/ar/blog/${post.slug}`,
+          },
+        }
+      : undefined,
     openGraph: {
       title: post.title,
       description: post.summary,
@@ -135,11 +180,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   // TypeScript guard - currentPost is guaranteed to exist at this point
   if (!currentPost) return notFound()
 
-  const authorList = currentPost.authors || ['default']
-  const authorDetails = authorList.map((author) => {
-    const authorResults = allAuthors.find((p) => p.slug === author)
-    return coreContent(authorResults as Authors)
-  })
+  const authorDetails = resolveAuthorDetails(currentPost.authors)
 
   const mainContent = post
     ? coreContent(post)
@@ -149,12 +190,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       }
 
   const jsonLd = currentPost.structuredData || {}
-  jsonLd['author'] = authorDetails.map((author) => {
-    return {
-      '@type': 'Person',
-      name: author.name,
-    }
-  })
+  jsonLd['author'] = buildJsonLdAuthors(authorDetails)
 
   const Layout = layouts[currentPost.layout || defaultLayout]
 

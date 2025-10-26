@@ -183,7 +183,7 @@ npx degit 'timlrx/tailwind-nextjs-starter-blog'
 2. Personalize `siteMetadata.js` (site related information)
 3. Modify the content security policy in `next.config.js` if you want to use
    other analytics provider or a commenting solution other than giscus.
-4. Personalize `authors/default.md` (main author)
+4. Personalize `data/authors/mathias-yussif.mdx` (main author)
 5. Modify `projectsData.ts`
 6. Modify `headerNavLinks.ts` to customize navigation links
 7. Add blog posts
@@ -217,7 +217,7 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 `data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
 
-`data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
+`data/authors/mathias-yussif.mdx` - primary author information (required). Additional authors can be added as files in `data/authors`.
 
 `data/projectsData.js` - data used to generate styled card on the projects page.
 
@@ -264,7 +264,7 @@ lastmod (optional)
 draft (optional)
 summary (optional)
 images (optional)
-authors (optional list which should correspond to the file names in `data/authors`. Uses `default` if none is specified)
+authors (optional list which should correspond to the file names in `data/authors`. Uses the slug defined in `siteMetadata.authorSlug` if none is specified)
 layout (optional list which should correspond to the file names in `data/layouts`)
 canonicalUrl (optional, canonical url for the post for SEO)
 ```
@@ -280,7 +280,7 @@ tags: ['next-js', 'tailwind', 'guide']
 draft: false
 summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
 images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
-authors: ['default', 'sparrowhawk']
+authors: ['mathias-yussif', 'sparrowhawk']
 layout: PostLayout
 canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
 ---

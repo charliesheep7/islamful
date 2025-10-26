@@ -2,12 +2,13 @@
 const siteMetadata = {
   title: 'DeenUp - Your Islamic Companion',
   author: 'DeenUp',
+  authorSlug: 'mathias-yussif',
   headerTitle: 'DeenUp',
   description:
     'Track your daily Deen, get Quranic-cited answers 24/7, and connect with Muslim brothers and sisters worldwide. Your AI-powered Islamic companion.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://deenup.app',
+  siteUrl: 'https://www.deenup.app',
   siteRepo: '',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/Apple/App_store_1024_1x.svg`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,

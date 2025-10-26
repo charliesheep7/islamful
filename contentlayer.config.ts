@@ -47,14 +47,18 @@ const computedFields: ComputedFields = {
   slug: {
     type: 'string',
     resolve: (doc) => {
-      // Remove blog/ prefix and language suffix (.ar, .en, etc) from slug
-      const slug = doc._raw.flattenedPath.replace(/^.+?(\/)/, '')
-      return slug.replace(/\.(ar|en)$/, '')
+      // Remove blog/ prefix and language folder (en/ar) from slug
+      // blog/en/my-post.mdx → my-post
+      // blog/ar/my-post.mdx → my-post
+      return doc._raw.flattenedPath.replace(/^blog\/(en|ar)\//, '')
     },
   },
   path: {
     type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath,
+    resolve: (doc) => {
+      // Remove language folder from path for URL generation
+      return doc._raw.flattenedPath.replace(/^blog\/(en|ar)\//, 'blog/')
+    },
   },
   filePath: {
     type: 'string',
@@ -104,7 +108,6 @@ export const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
-    lang: { type: 'string', default: 'en' },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
@@ -117,6 +120,14 @@ export const Blog = defineDocumentType(() => ({
   },
   computedFields: {
     ...computedFields,
+    lang: {
+      type: 'string',
+      resolve: (doc) => {
+        // Detect language from folder path: blog/en/... or blog/ar/...
+        const match = doc._raw.sourceFilePath.match(/blog\/(en|ar)\//)
+        return match ? match[1] : 'en'
+      },
+    },
     structuredData: {
       type: 'json',
       resolve: (doc) => ({
@@ -147,6 +158,7 @@ export const Authors = defineDocumentType(() => ({
     bluesky: { type: 'string' },
     linkedin: { type: 'string' },
     github: { type: 'string' },
+    seoProfiles: { type: 'list', of: { type: 'string' }, default: [] },
     layout: { type: 'string' },
   },
   computedFields,

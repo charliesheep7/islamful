@@ -6,15 +6,24 @@ import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({ title: 'About' })
 
+const featuredAuthorSlugs = ['mathias-yussif', 'sih-c']
+
 export default function Page() {
-  const author = allAuthors.find((p) => p.slug === 'default') as Authors
-  const mainContent = coreContent(author)
+  const featuredAuthors = featuredAuthorSlugs
+    .map((slug) => allAuthors.find((author) => author.slug === slug))
+    .filter((author): author is Authors => Boolean(author))
+  const authorsToRender = featuredAuthors.length > 0 ? featuredAuthors : (allAuthors as Authors[])
 
   return (
     <>
-      <AuthorLayout content={mainContent}>
-        <MDXLayoutRenderer code={author.body.code} />
-      </AuthorLayout>
+      {authorsToRender.map((author) => {
+        const mainContent = coreContent(author)
+        return (
+          <AuthorLayout content={mainContent} key={author.slug}>
+            <MDXLayoutRenderer code={author.body.code} />
+          </AuthorLayout>
+        )
+      })}
     </>
   )
 }

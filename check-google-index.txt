@@ -1,0 +1,24 @@
+Copy-paste these into Google to check if 404s are indexed:
+================================================================
+
+1. Arabic blog posts with .ar suffix:
+   site:deenup.app/ar/blog/top-10-islamic-practices.ar
+
+2. Non-existent Arabic translations of SEObot posts:
+   site:deenup.app/ar/blog/build-consistent-prayer-habits-busy-life
+   site:deenup.app/ar/blog/common-questions-halal-food-answered
+   site:deenup.app/ar/blog/struggling-fajr-solutions-work
+   site:deenup.app/ar/blog/islamic-goal-tracking-apps-guide
+   site:deenup.app/ar/blog/daily-islamic-habits-transform-faith
+
+3. Tags pages (these now exist, so should be OK):
+   site:deenup.app/tags/best-practices
+   site:deenup.app/tags/deen
+   site:deenup.app/tags/islam
+   site:deenup.app/tags/quran
+
+Expected results:
+- ✅ "No results" = Not indexed (GOOD - nothing to fix)
+- ❌ Shows results = Indexed (BAD - need to remove from Google)
+
+Note: Tags pages NOW WORK after our fix, so they should be fine!

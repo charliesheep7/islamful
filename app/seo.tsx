@@ -10,6 +10,15 @@ interface PageSEOProps {
 }
 
 export function genPageMetadata({ title, description, image, ...rest }: PageSEOProps): Metadata {
+  // If alternates.languages is provided, automatically add x-default pointing to English version
+  const alternates = rest.alternates
+  if (alternates?.languages && !alternates.languages['x-default']) {
+    alternates.languages = {
+      'x-default': alternates.languages.en || '/',
+      ...alternates.languages,
+    }
+  }
+
   return {
     title,
     description: description || siteMetadata.description,
