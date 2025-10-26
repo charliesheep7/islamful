@@ -9,6 +9,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+import SectionContainer from '@/components/SectionContainer'
 
 interface PaginationProps {
   totalPages: number
@@ -80,7 +81,7 @@ export default function ListLayoutWithTags({
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
   return (
-    <>
+    <SectionContainer>
       <div>
         <div className="pt-6 pb-6">
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
@@ -166,6 +167,6 @@ export default function ListLayoutWithTags({
           </div>
         </div>
       </div>
-    </>
+    </SectionContainer>
   )
 }

@@ -1,4 +1,8 @@
 'use client'
+
+import { useEffect, useState } from 'react'
+import clsx from 'clsx'
+import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
@@ -10,8 +14,16 @@ import { useLocale } from './hooks/useLocale'
 
 const Header = () => {
   const { currentLang } = useLocale()
+  const [scrolled, setScrolled] = useState(false)
 
-  // Simple translation function
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const getNavText = (key: string) => {
     const translations: Record<string, Record<string, string>> = {
       en: { home: 'Home', blog: 'Blog' },
@@ -19,43 +31,47 @@ const Header = () => {
     }
     return translations[currentLang]?.[key] || key
   }
-  let headerClass =
-    'flex items-center w-full bg-[--color-bg] dark:bg-gray-950 justify-between py-6 backdrop-blur-sm transition-all duration-300 relative z-50'
-  if (siteMetadata.stickyNav) {
-    headerClass += ' sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50'
-  }
+
+  const headerClass = clsx(
+    'sticky top-0 z-50 w-full border-b border-transparent transition-all duration-500 ease-out',
+    scrolled
+      ? 'bg-white/80 dark:bg-gray-950/85 backdrop-blur-xl shadow-[0_18px_48px_rgba(15,23,42,0.12)] border-white/50 dark:border-white/10'
+      : 'bg-transparent'
+  )
 
   return (
-    <header className={headerClass}>
-      <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center justify-between">
-          {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="font-serif text-3xl font-normal text-[--color-accent-600] transition-colors duration-200 hover:text-[--color-accent-700] dark:text-[--color-accent-400] dark:hover:text-[--color-accent-300]">
-              {siteMetadata.headerTitle}
-            </div>
-          ) : (
-            siteMetadata.headerTitle
-          )}
+    <header className={headerClass} role="banner">
+      <div className="flex w-full items-center justify-between px-4 py-2 sm:px-6 sm:py-3 lg:px-10">
+        <Link href="/" aria-label={siteMetadata.headerTitle}>
+          <div className="flex items-center justify-between">
+            <Image
+              src={siteMetadata.siteLogo}
+              alt={siteMetadata.headerTitle}
+              width={96}
+              height={96}
+              className="h-24 w-24 transition-opacity duration-200 hover:opacity-80"
+            />
+          </div>
+        </Link>
+        <div className="flex items-center space-x-3 leading-5 sm:space-x-5">
+          <div className="no-scrollbar hidden items-center gap-x-1 sm:flex">
+            {headerNavLinks
+              .filter((link) => link.href !== '/')
+              .map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.href}
+                  className="rounded-lg px-4 py-2 font-medium text-[--color-text] transition-all duration-200 hover:bg-[--color-surface] hover:text-[--color-accent-600] dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-[--color-accent-400]"
+                >
+                  {getNavText(link.title.toLowerCase())}
+                </Link>
+              ))}
+          </div>
+          <LocaleSwitcher />
+          <SearchButton />
+          <ThemeSwitch />
+          <MobileNav />
         </div>
-      </Link>
-      <div className="flex items-center space-x-3 leading-5 sm:space-x-5">
-        <div className="no-scrollbar hidden items-center gap-x-1 sm:flex">
-          {headerNavLinks
-            .filter((link) => link.href !== '/')
-            .map((link) => (
-              <Link
-                key={link.title}
-                href={link.href}
-                className="rounded-lg px-4 py-2 font-medium text-[--color-text] transition-all duration-200 hover:bg-[--color-surface] hover:text-[--color-accent-600] dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-[--color-accent-400]"
-              >
-                {getNavText(link.title.toLowerCase())}
-              </Link>
-            ))}
-        </div>
-        <LocaleSwitcher />
-        <SearchButton />
-        <ThemeSwitch />
-        <MobileNav />
       </div>
     </header>
   )
