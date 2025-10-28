@@ -94,6 +94,22 @@ module.exports = () => {
         },
       ]
     },
+    async redirects() {
+      return [
+        // Redirect old .ar extension URLs to correct Arabic routes
+        // These URLs were mistakenly crawled by Google
+        {
+          source: '/blog/:slug.ar',
+          destination: '/ar/blog/:slug',
+          permanent: true,
+        },
+        {
+          source: '/ar/blog/:slug.ar',
+          destination: '/ar/blog/:slug',
+          permanent: true,
+        },
+      ]
+    },
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.svg$/,

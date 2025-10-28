@@ -49,12 +49,16 @@ export function buildLanguageAlternates(
 
   const languages: Record<string, string> = {}
 
-  if (xDefault === 'ar') {
-    languages['x-default'] = normalizedArabic
-  } else if (xDefault && xDefault !== 'en') {
-    languages['x-default'] = normalizePath(xDefault)
-  } else {
-    languages['x-default'] = normalizedEnglish
+  // Only add x-default for English pages (default locale)
+  // Arabic pages should not have x-default to avoid canonical conflicts
+  if (currentLanguage === 'en') {
+    if (xDefault === 'ar') {
+      languages['x-default'] = normalizedArabic
+    } else if (xDefault && xDefault !== 'en') {
+      languages['x-default'] = normalizePath(xDefault)
+    } else {
+      languages['x-default'] = normalizedEnglish
+    }
   }
 
   if (includeEnglish) {
@@ -71,15 +75,8 @@ export function buildLanguageAlternates(
 }
 
 export function genPageMetadata({ title, description, image, ...rest }: PageSEOProps): Metadata {
-  // If alternates.languages is provided, automatically add x-default pointing to English version
-  const alternates = rest.alternates
-  if (alternates?.languages && !alternates.languages['x-default']) {
-    alternates.languages = {
-      'x-default': alternates.languages.en || '/',
-      ...alternates.languages,
-    }
-  }
-
+  // Let buildLanguageAlternates handle x-default logic based on currentLanguage
+  // Don't automatically add x-default here to avoid conflicts
   return {
     title,
     description: description || siteMetadata.description,

@@ -33,12 +33,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: post.lastmod || post.date,
     }))
 
-  // Only include canonical URLs (English versions)
-  // Arabic pages /ar and /ar/blog have canonical tags pointing to / and /blog
-  const routes = ['', 'blog'].map((route) => ({
+  // Include canonical URLs for both English and Arabic main routes
+  // Both languages are canonical (independent content strategy)
+  const routes = ['', 'blog', 'privacy', 'terms'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...blogRoutes, ...localizedBlogRoutes, ...seoBotRoutes]
+  // Add Arabic route equivalents (all are canonical)
+  const arabicRoutes = ['', 'blog', 'privacy', 'terms'].map((route) => ({
+    url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
+
+  return [...routes, ...arabicRoutes, ...blogRoutes, ...localizedBlogRoutes, ...seoBotRoutes]
 }

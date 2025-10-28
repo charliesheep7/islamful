@@ -5,7 +5,7 @@ import MediaTicker from '@/components/landing/MediaTicker'
 import Testimonials from '@/components/landing/Testimonials'
 import FAQ from '@/components/landing/FAQ'
 import { getDictionary } from './dictionaries'
-import { buildLanguageAlternates } from 'app/seo'
+import { buildLanguageAlternates, genPageMetadata } from 'app/seo'
 
 export function generateStaticParams() {
   return [{ lang: 'ar' }]
@@ -27,6 +27,9 @@ export default async function LangHome({ params }: { params: Promise<{ lang: 'ar
   )
 }
 
-export const metadata = {
+export const metadata = genPageMetadata({
+  title: 'ديّن أب - رفيقك الإسلامي',
+  description:
+    'حافظ على اتساقك مع الصلاة والقرآن والمجتمع من خلال رفيق ديّن أب الإسلامي المدعوم بالذكاء الاصطناعي.',
   alternates: buildLanguageAlternates('/', { currentLanguage: 'ar' }),
-}
+})
