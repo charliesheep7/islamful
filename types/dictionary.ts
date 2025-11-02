@@ -44,6 +44,7 @@ export type Dictionary = {
     badge: string
     heading: string
     subtitle: string
+    joinWaitlist: string
     downloadIOS: string
     downloadAndroid: string
     comingSoonText: string
