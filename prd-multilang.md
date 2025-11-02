@@ -1,803 +1,817 @@
 # Multilingual Implementation PRD — DeenUp
 
-**Version:** 2.0
-**Date:** 2025-10-21
-**Status:** Updated for DeenUp
+**Version:** 3.0
+**Date:** 2025-10-27
+**Status:** Production - SEO Optimized with Independent Canonical Strategy
 
 ---
 
 ## 1. Overview
 
-This document describes the simplified multilingual (i18n) implementation for DeenUp, following the official Next.js internationalization patterns. The implementation removes complexity from third-party libraries (`next-intl`) and adopts a native, lightweight approach aligned with Next.js 15 best practices.
+This document describes the bilingual (English/Arabic) implementation for DeenUp, following Next.js 15 best practices with **Strategy B: Independent Canonical Languages** for optimal SEO in both English and Arabic markets.
 
 **DeenUp-Specific Requirements:**
 
-- Full RTL (Right-to-Left) support for Arabic, including component positioning mirroring
+- Full RTL (Right-to-Left) support for Arabic
+- **Independent canonical pages** - Each language version is treated as unique content
 - Bilingual focus on English and Arabic for global Muslim audience
-- SEO optimization for both English-speaking and Arabic-speaking Muslims
+- SEO optimization targeting both English-speaking and Arabic-speaking Muslims
+- Unique content for each language (not simple translations)
 
-## 2. Implementation Approach
+---
 
-### 2.1 Official Next.js Pattern
+## 2. SEO Strategy: Independent Canonical Languages (Strategy B)
 
-Based on the [Next.js Internationalization Documentation](https://nextjs.org/docs/app/building-your-application/routing/internationalization), we implement:
+### 2.1 Why Strategy B?
 
-- **Dictionary-based translations** using dynamic imports
-- **Middleware for locale detection** using `negotiator` for browser language preferences
-- **Route-based locale organization** with `app/[lang]/` structure
-- **Static generation** for all supported locales
-- **No client-side i18n library** — translations loaded server-side
-- **RTL layout support** with automatic direction switching and component mirroring for Arabic
+DeenUp uses **Strategy B** because:
 
-### 2.2 Supported Locales
+- ✅ Arabic content is **independent**, not just translations
+- ✅ Arabic market is huge and deserves dedicated content
+- ✅ Different blog topics for different audiences
+- ✅ Each language targets different search queries
 
-| Locale            | Code | Path Pattern | hreflang | Direction |
-| ----------------- | ---- | ------------ | -------- | --------- |
-| English (Default) | `en` | `/`          | `en-US`  | LTR       |
-| Arabic            | `ar` | `/ar/*`      | `ar`     | RTL       |
+### 2.2 How It Works
 
-**Note:** English is the default locale and doesn't require a path prefix.
+**English Pages (Default Locale):**
 
-### 2.3 RTL (Right-to-Left) Support
-
-Arabic requires comprehensive RTL support:
-
-**Layout Direction:**
-
-- `<html dir="rtl">` attribute for Arabic locale
-- `<html dir="ltr">` attribute for English locale
-
-**Component Mirroring:**
-
-- Entire layout mirrors horizontally for Arabic
-- Navigation menu position flips (left ↔ right)
-- Text alignment reverses automatically
-- Flexbox and Grid layouts use `dir` for automatic mirroring
-- Custom components use logical CSS properties (`margin-inline-start` instead of `margin-left`)
-
-**Implementation Strategy:**
-
-```tsx
-// Layout component
-<html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+```html
+<link rel="canonical" href="https://deenup.app/" />
+<link rel="alternate" hreflang="en" href="https://deenup.app/" />
+<link rel="alternate" hreflang="ar" href="https://deenup.app/ar" />
+<link rel="alternate" hreflang="x-default" href="https://deenup.app/" />
 ```
 
-```css
-/* Use logical properties instead of directional */
-.component {
-  margin-inline-start: 1rem; /* Instead of margin-left */
-  padding-inline-end: 2rem; /* Instead of padding-right */
-}
+**Arabic Pages:**
+
+```html
+<link rel="canonical" href="https://deenup.app/ar" />
+<link rel="alternate" hreflang="en" href="https://deenup.app/" />
+<link rel="alternate" hreflang="ar" href="https://deenup.app/ar" />
+<!-- NO x-default on Arabic pages to avoid canonical conflicts -->
 ```
+
+**Key Points:**
+
+- ✅ Both `/` and `/ar` are canonical (independent content)
+- ✅ x-default only on English pages (default locale)
+- ✅ hreflang on both for language targeting
+- ✅ Sitemap includes both language versions
 
 ---
 
 ## 3. Technical Architecture
 
-### 3.1 File Structure
+### 3.1 Current File Structure
 
 ```
 app/
-├── [lang]/
-│   ├── dictionaries.ts          # Dictionary loader function
-│   ├── DictionaryProvider.tsx   # Client context for translations (future)
-│   ├── layout.tsx              # Lang-specific layout with metadata
-│   ├── page.tsx                # Localized home page
-│   └── blog/                   # Localized blog routes
-│       ├── page.tsx
-│       └── [...slug]/page.tsx
-├── layout.tsx                  # Root layout (handles 'en')
-├── page.tsx                    # English home page
-└── blog/                       # English blog routes
+├── [lang]/                         # Arabic locale routes
+│   ├── dictionaries.ts            # Dictionary loader
+│   ├── DictionaryProvider.tsx     # Client context
+│   ├── layout.tsx                 # Arabic layout (dir="rtl")
+│   ├── page.tsx                   # Arabic homepage (unique content)
+│   ├── blog/
+│   │   ├── page.tsx              # Arabic blog listing
+│   │   └── [...slug]/page.tsx    # Arabic blog posts
+│   ├── privacy/
+│   │   └── page.tsx              # Arabic privacy policy (unique content)
+│   ├── terms/
+│   │   └── page.tsx              # Arabic terms of service (unique content)
+│   └── about/
+│       └── page.tsx              # Arabic about page
+├── layout.tsx                     # Root layout (handles English)
+├── page.tsx                       # English homepage
+├── blog/
+│   ├── page.tsx                  # English blog listing
+│   └── [...slug]/page.tsx        # English blog posts
+├── privacy/page.tsx              # English privacy policy
+├── terms/page.tsx                # English terms of service
+├── about/page.tsx                # English about page
+├── seo.tsx                       # SEO utilities (buildLanguageAlternates)
+├── sitemap.ts                    # Dynamic sitemap generator
+└── robots.ts                     # robots.txt generator
+
+data/
+└── blog/
+    ├── en/                       # English blog posts
+    │   ├── post-1.mdx
+    │   └── post-2.mdx
+    └── ar/                       # Arabic blog posts
+        ├── post-1.mdx
+        └── post-2.mdx
 
 dictionaries/
-├── en.json                     # English translations
-├── es.json                     # Spanish translations
-└── zh.json                     # Chinese translations
-
-middleware.ts                   # Locale detection and routing
+├── en.json                       # English UI translations
+└── ar.json                       # Arabic UI translations
 ```
 
-### 3.2 Middleware Implementation
+### 3.2 SEO Utilities (app/seo.tsx)
 
-**Location:** `middleware.ts`
-
-**Responsibilities:**
-
-1. Detect user's preferred language from `Accept-Language` header
-2. Redirect non-English users to appropriate locale path (`/es` or `/zh`)
-3. Allow English users to stay at root path (`/`)
-4. Skip redirects for:
-   - API routes
-   - Static files (images, fonts, etc.)
-   - Next.js internals (`_next`)
-   - RSS feed
-
-**Key Code:**
+**Core Functions:**
 
 ```typescript
-import { NextResponse } from 'next/server'
-import Negotiator from 'negotiator'
-
-const locales = ['en', 'ar']
-const defaultLocale = 'en'
-
-function getLocale(request: NextRequest): string {
-  const negotiatorHeaders: Record<string, string> = {}
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
-
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
-  // Match against available locales (en, ar)
-  for (const lang of languages) {
-    const locale = locales.find((l) => lang.startsWith(l))
-    if (locale) return locale
+// Build language alternates with proper canonical strategy
+buildLanguageAlternates(
+  path: string,
+  options?: {
+    includeArabic?: boolean
+    includeEnglish?: boolean
+    xDefault?: 'en' | 'ar' | string
+    englishPath?: string
+    arabicPath?: string
+    canonical?: string
+    currentLanguage?: 'en' | 'ar'  // IMPORTANT: Controls x-default
   }
-  return defaultLocale
+): Metadata['alternates']
+
+// Generate page metadata with localized content
+genPageMetadata({
+  title: string
+  description?: string
+  image?: string
+  alternates?: Metadata['alternates']
+  ...rest
+}): Metadata
+```
+
+**Key Implementation Detail:**
+
+```typescript
+// x-default ONLY appears on English pages (currentLanguage === 'en')
+// This prevents canonical conflicts with Arabic pages
+if (currentLanguage === 'en') {
+  languages['x-default'] = normalizedEnglish
 }
+```
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+---
 
-  // Check if locale already in path
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+## 4. Adding New Pages - Step-by-Step Guide
+
+### 4.1 Rule: Always Create Both Versions
+
+When adding a new page, you **MUST** create:
+
+1. English version in `app/`
+2. Arabic version in `app/[lang]/`
+3. Unique content for each (not just translations)
+
+### 4.2 Example: Adding a "Contact" Page
+
+**Step 1: Create English Version**
+
+`app/contact/page.tsx`:
+
+```typescript
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
+import SectionContainer from '@/components/SectionContainer'
+
+export const metadata = genPageMetadata({
+  title: 'Contact Us',
+  description: 'Get in touch with the DeenUp team for support and inquiries.',
+  alternates: buildLanguageAlternates('/contact'), // currentLanguage defaults to 'en'
+})
+
+export default function ContactPage() {
+  return (
+    <SectionContainer>
+      <div className="prose dark:prose-invert max-w-none py-8">
+        <h1>Contact Us</h1>
+        <p>Email: support@deenup.app</p>
+        {/* English content here */}
+      </div>
+    </SectionContainer>
   )
-  if (pathnameHasLocale) return
-
-  // Detect and redirect for non-default locales
-  const locale = getLocale(request)
-  if (locale === defaultLocale) return
-
-  request.nextUrl.pathname = `/${locale}${pathname}`
-  return NextResponse.redirect(request.nextUrl)
 }
 ```
 
-### 3.3 Dictionary System
+**Step 2: Create Arabic Version**
 
-**Location:** `app/[lang]/dictionaries.ts`
-
-**Structure:**
+`app/[lang]/contact/page.tsx`:
 
 ```typescript
-import 'server-only'
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
+import SectionContainer from '@/components/SectionContainer'
 
-const dictionaries = {
-  en: () => import('../../dictionaries/en.json').then((module) => module.default),
-  ar: () => import('../../dictionaries/ar.json').then((module) => module.default),
-}
+export const metadata = genPageMetadata({
+  title: 'اتصل بنا',
+  description: 'تواصل مع فريق ديّن أب للدعم والاستفسارات.',
+  alternates: buildLanguageAlternates('/contact', { currentLanguage: 'ar' }), // Important!
+})
 
-export const getDictionary = async (locale: 'en' | 'ar') =>
-  dictionaries[locale]?.() ?? dictionaries.en()
-```
-
-**Dictionary Format** (`dictionaries/en.json`):
-
-```json
-{
-  "nav": {
-    "home": "Home",
-    "blog": "Blog",
-    "about": "About"
-  },
-  "footer": {
-    "privacy": "Privacy",
-    "terms": "Terms"
-  },
-  "home": {
-    "latest": "Latest",
-    "noPosts": "No posts found.",
-    "readMore": "Read more →",
-    "allPosts": "All Posts →",
-    "publishedOn": "Published on"
-  }
-}
-```
-
-### 3.4 Layout Implementation
-
-**Root Layout** (`app/layout.tsx`):
-
-- Handles English locale (default)
-- Accepts optional `lang` param from route
-- Sets `<html lang={locale}>` attribute
-
-**Lang Layout** (`app/[lang]/layout.tsx`):
-
-- Generates static params for `ar` only (English is default at root)
-- Loads dictionary for the locale
-- Provides localized metadata (OpenGraph, alternates)
-- **Sets `dir` attribute for RTL support**
-
-**Key Code:**
-
-```typescript
-// app/[lang]/layout.tsx
 export function generateStaticParams() {
-  return [{ lang: 'ar' }]
+  return [{ lang: 'ar' }] // Required for static generation
 }
 
-export default async function LangLayout({
-  children,
+export default async function ContactPageAr({
   params,
 }: {
-  children: React.ReactNode
   params: Promise<{ lang: 'ar' }>
 }) {
-  const { lang } = await params
-  const dict = await getDictionary(lang)
-  const direction = lang === 'ar' ? 'rtl' : 'ltr'
-
   return (
-    <html lang={lang} dir={direction}>
-      <body>
-        <DictionaryProvider dictionary={dict}>{children}</DictionaryProvider>
-      </body>
-    </html>
+    <SectionContainer>
+      <div className="prose dark:prose-invert max-w-none py-8" dir="rtl">
+        <h1>اتصل بنا</h1>
+        <p>البريد الإلكتروني: support@deenup.app</p>
+        {/* Arabic content here */}
+      </div>
+    </SectionContainer>
   )
 }
 ```
 
----
+**Step 3: Add to Sitemap**
 
-## 4. Component Implementations
+Update `app/sitemap.ts`:
 
-### 4.1 Language Switcher
+```typescript
+const routes = ['', 'blog', 'privacy', 'terms', 'contact'].map((route) => ({
+  // Add 'contact'
+  url: `${siteUrl}/${route}`,
+  lastModified: new Date().toISOString().split('T')[0],
+}))
 
-**Location:** `components/LocaleSwitcher.tsx`
-
-**Features:**
-
-- Smooth dropdown menu with flag emojis
-- Auto-detects current locale from pathname
-- Preserves current path when switching languages
-- Click-outside-to-close functionality
-- Visual indicator for active language
-
-**UI:**
-
-- Default button shows: 🇺🇸 English (or current locale)
-- Dropdown shows all 3 options with flags
-- Active language highlighted with checkmark
-- Smooth transitions and hover states
-
-**Locales:**
-
-- 🇺🇸 English
-- 🇸🇦 العربية (Arabic)
-
-### 4.2 Header Navigation
-
-**Location:** `components/Header.tsx`
-
-**Translation Strategy:**
-
-- Detects current locale from pathname
-- Uses inline translation object (synced with dictionaries)
-- Translates navigation links: Home, Blog, About
-- Server-side component, no client hooks needed
-
-### 4.3 Footer
-
-**Location:** `components/Footer.tsx`
-
-**Translation Strategy:**
-
-- Uses simple capitalization for "Privacy" and "Terms"
-- Future: could be enhanced to use full translation system
-
----
-
-## 5. SEO Implementation
-
-### 5.1 Metadata
-
-Each page includes:
-
-- **Localized `<title>`** and `<meta name="description">`
-- **`lang` attribute** on `<html>` tag
-- **Canonical URL** pointing to current page
-- **Alternate language links** via `alternates.languages`:
-  ```typescript
-  alternates: {
-    languages: {
-      en: '/',
-      ar: '/ar',
-    },
-  }
-  ```
-
-### 5.2 hreflang Implementation
-
-The `alternates.languages` metadata automatically generates:
-
-```html
-<link rel="alternate" hreflang="en" href="https://deenup.app/" />
-<link rel="alternate" hreflang="ar" href="https://deenup.app/ar" />
+const arabicRoutes = ['', 'blog', 'privacy', 'terms', 'contact'].map((route) => ({
+  // Add 'contact'
+  url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
+  lastModified: new Date().toISOString().split('T')[0],
+}))
 ```
 
-### 5.3 Sitemap
+**Step 4: Run Prettier**
 
-**Location:** `app/sitemap.ts`
+```bash
+npx prettier --write "app/contact/page.tsx" "app/[lang]/contact/page.tsx"
+```
 
-**Requirements:**
+**Step 5: Test Build**
 
-- Include all localized routes
-- Generate entries for each blog post in all languages
-- Use correct hreflang values
+```bash
+npm run build
+```
+
+### 4.3 Checklist for New Pages
+
+- [ ] English page created in `app/{page}/page.tsx`
+- [ ] Arabic page created in `app/[lang]/{page}/page.tsx`
+- [ ] Both have unique `title` and `description`
+- [ ] Arabic page uses `currentLanguage: 'ar'` in `buildLanguageAlternates()`
+- [ ] Arabic page has `generateStaticParams()` returning `[{ lang: 'ar' }]`
+- [ ] Arabic content wrapped in `<div dir="rtl">`
+- [ ] Both pages added to sitemap.ts (English and Arabic routes)
+- [ ] Run prettier on both files
+- [ ] Test build succeeds
 
 ---
 
-## 6. Content Strategy
+## 5. Adding New Blog Posts - Step-by-Step Guide
 
-### 6.1 Translation Levels
+### 5.1 Blog Post Structure
 
-| Content Type | Translation Approach              |
-| ------------ | --------------------------------- |
-| UI Strings   | Fully translated in dictionaries  |
-| Navigation   | Fully translated                  |
-| Blog Content | Per-post basis (frontmatter flag) |
-| Legal Pages  | Translated for compliance         |
-
-### 6.2 Blog Post Localization
-
-**Approach 1: Separate MDX files** (Recommended)
+Blog posts are stored in `data/blog/` organized by language:
 
 ```
 data/blog/
 ├── en/
-│   └── h1b-101.mdx
-├── es/
-│   └── h1b-101.mdx
-└── zh/
-    └── h1b-101.mdx
+│   └── my-post-slug.mdx
+└── ar/
+    └── my-post-slug.mdx
 ```
 
-**Approach 2: Frontmatter flag** (Current)
+### 5.2 Example: Adding a Blog Post
+
+**Step 1: Create English Post**
+
+`data/blog/en/ramadan-preparation-guide.mdx`:
 
 ```mdx
 ---
-title: 'H-1B 101'
-lang: en
-translations:
-  es: /es/blog/h1b-101
-  zh: /zh/blog/h1b-101
----
-```
-
-### 6.3 Spanish SEO Strategy
-
-**Goal:** Not just translations, but Spanish-optimized content
-
-**Examples:**
-
-- English: "H-1B Visa Guide" → Spanish: "Guía completa de la visa H-1B"
-- Target Spanish search queries: "requisitos visa H-1B", "cómo aplicar visa trabajo USA"
-- Use localized examples (Mexican vs. Spanish perspective)
-
+title: 'Complete Guide to Preparing for Ramadan 2025'
+date: '2025-03-01'
+lastmod: '2025-03-01'
+tags: ['Ramadan', 'Fasting', 'Preparation', 'Guide']
+draft: false
+summary: 'Everything you need to know to prepare spiritually and physically for the blessed month of Ramadan.'
+images: ['/static/images/ramadan-prep.jpg']
+authors: ['mathias-yussif']
+layout: 'PostLayout'
 ---
 
-## 6.4 Content Translation Workflow — Quick Reference
+## Introduction
 
-> **When you add new content or features, follow this guide to properly translate everything.**
+Ramadan is approaching, and proper preparation is key to maximizing...
 
-### Adding New UI Strings (Navigation, Buttons, Labels)
-
-**Files to Edit:**
-
-1. `dictionaries/en.json` — Add English text
-2. `dictionaries/es.json` — Add Spanish translation
-3. `dictionaries/zh.json` — Add Chinese translation
-
-**Example: Adding a "Contact" link**
-
-```json
-// dictionaries/en.json
-{
-  "nav": {
-    "home": "Home",
-    "blog": "Blog",
-    "about": "About",
-    "contact": "Contact"  // ← Add this
-  }
-}
-
-// dictionaries/es.json
-{
-  "nav": {
-    "home": "Inicio",
-    "blog": "Blog",
-    "about": "Acerca de",
-    "contact": "Contacto"  // ← Add this
-  }
-}
-
-// dictionaries/zh.json
-{
-  "nav": {
-    "home": "首页",
-    "blog": "博客",
-    "about": "关于",
-    "contact": "联系我们"  // ← Add this
-  }
-}
+{/* English content here */}
 ```
 
-**Using in Components:**
+**Step 2: Create Arabic Post (Optional but Recommended)**
 
-For **server components** (pages):
+`data/blog/ar/ramadan-preparation-guide.mdx`:
 
-```typescript
-import { getDictionary } from './[lang]/dictionaries'
+```mdx
+---
+title: 'دليل شامل للاستعداد لرمضان 2025'
+date: '2025-03-01'
+lastmod: '2025-03-01'
+tags: ['رمضان', 'صيام', 'استعداد', 'دليل']
+draft: false
+summary: 'كل ما تحتاج معرفته للاستعداد روحيًا وجسديًا لشهر رمضان المبارك.'
+images: ['/static/images/ramadan-prep.jpg']
+authors: ['mathias-yussif']
+layout: 'PostLayout'
+---
 
-export default async function Page({ params }) {
-  const dict = await getDictionary(params.lang)
-  return <h1>{dict.nav.contact}</h1>
-}
+## مقدمة
+
+يقترب شهر رمضان، والاستعداد السليم هو مفتاح الاستفادة القصوى...
+
+{/* Arabic content here */}
 ```
 
-For **client components** (Header, Footer):
+**Step 3: ContentLayer Will Auto-Detect**
 
-```typescript
-// Add to inline translations object
-const translations = {
-  en: { contact: 'Contact' },
-  es: { contact: 'Contacto' },
-  zh: { contact: '联系我们' },
-}
+Your `contentlayer.config.ts` automatically:
+
+- Detects language from folder (`/en/` or `/ar/`)
+- Generates correct paths (`blog/ramadan-preparation-guide`)
+- Adds `lang` field to frontmatter
+- Includes in sitemap when you rebuild
+
+**Step 4: Build & Verify**
+
+```bash
+npm run build
 ```
+
+Verify these URLs work:
+
+- `/blog/ramadan-preparation-guide` (English)
+- `/ar/blog/ramadan-preparation-guide` (Arabic)
+
+### 5.3 Blog Post Best Practices
+
+**Frontmatter Requirements:**
+
+- ✅ `title` - Unique for each language
+- ✅ `date` - Same for both versions
+- ✅ `summary` - Different for SEO optimization
+- ✅ `tags` - Translate for Arabic, keep English for English
+- ✅ `draft: false` - Must be false to appear on site
+- ✅ `authors` - Array of author slugs (e.g., `['mathias-yussif']`)
+
+**Content Guidelines:**
+
+- Write **unique content**, not just translations
+- Arabic posts can cover different topics than English
+- Use RTL-friendly formatting (markdown handles this automatically)
+- Add images that work for both audiences
+
+**Slug Guidelines:**
+
+- Keep the same slug for related posts: `ramadan-guide.mdx` (both languages)
+- This helps with:
+  - Easier content management
+  - Language switcher (future feature)
+  - URL consistency
 
 ---
 
-### Adding New Pages
+## 6. RTL (Right-to-Left) Support
 
-**For each new page, create 3 versions:**
+### 6.1 Automatic RTL
 
-```
-app/
-├── contact/
-│   └── page.tsx          # English version
-└── [lang]/
-    └── contact/
-        └── page.tsx      # Spanish/Chinese version
-```
-
-**English version** (`app/contact/page.tsx`):
+The root layout automatically sets `dir="rtl"` for Arabic pages:
 
 ```typescript
-export default function ContactPage() {
-  return <div>Contact content in English</div>
+// app/layout.tsx
+const locale = (headersList.get('x-locale') as 'en' | 'ar') || 'en'
+
+<html
+  lang={locale}
+  dir={locale === 'ar' ? 'rtl' : 'ltr'}  // Automatic RTL
+  // ...
+>
+```
+
+### 6.2 Component Guidelines
+
+**Use Logical CSS Properties:**
+
+```css
+/* Good - Works with RTL */
+.component {
+  margin-inline-start: 1rem; /* Instead of margin-left */
+  padding-inline-end: 2rem; /* Instead of padding-right */
+  border-inline: 1px solid; /* Instead of border-left/right */
+}
+
+/* Bad - Breaks in RTL */
+.component {
+  margin-left: 1rem; /* Will be on wrong side in RTL */
+  padding-right: 2rem; /* Will be on wrong side in RTL */
 }
 ```
 
-**Localized version** (`app/[lang]/contact/page.tsx`):
+**Testing RTL:**
+
+1. Visit `/ar` route
+2. Inspect element - should see `<html dir="rtl">`
+3. Check that layout mirrors horizontally
+
+---
+
+## 7. Sitemap Configuration
+
+### 7.1 Current Implementation
+
+`app/sitemap.ts` generates a dynamic sitemap including:
+
+1. **English main routes:** `/`, `/blog`, `/privacy`, `/terms`
+2. **Arabic main routes:** `/ar`, `/ar/blog`, `/ar/privacy`, `/ar/terms`
+3. **English blog posts:** All posts in `data/blog/en/`
+4. **Arabic blog posts:** All posts in `data/blog/ar/`
+5. **SEObot posts:** AI-generated English posts (if enabled)
+
+**Code Structure:**
 
 ```typescript
-import { getDictionary } from '../dictionaries'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const siteUrl = siteMetadata.siteUrl
+
+  // English blog routes
+  const blogRoutes = allBlogs
+    .filter((post) => !post.draft && (post.lang === 'en' || !post.lang))
+    .map((post) => ({
+      url: `${siteUrl}/${post.path}`,
+      lastModified: post.lastmod || post.date,
+    }))
+
+  // Arabic blog routes
+  const localizedBlogRoutes = allBlogs
+    .filter((post) => !post.draft && post.lang === 'ar')
+    .map((post) => ({
+      url: `${siteUrl}/ar/${post.path}`,
+      lastModified: post.lastmod || post.date,
+    }))
+
+  // English main routes
+  const routes = ['', 'blog', 'privacy', 'terms'].map((route) => ({
+    url: `${siteUrl}/${route}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
+
+  // Arabic main routes
+  const arabicRoutes = ['', 'blog', 'privacy', 'terms'].map((route) => ({
+    url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
+
+  return [...routes, ...arabicRoutes, ...blogRoutes, ...localizedBlogRoutes]
+}
+```
+
+### 7.2 Adding New Routes to Sitemap
+
+When you add a new page, update **both** arrays:
+
+```typescript
+// Add to English routes
+const routes = ['', 'blog', 'privacy', 'terms', 'contact'].map(...)
+
+// Add to Arabic routes
+const arabicRoutes = ['', 'blog', 'privacy', 'terms', 'contact'].map(...)
+```
+
+---
+
+## 8. Metadata Best Practices
+
+### 8.1 Required Metadata for All Pages
+
+Every page MUST have:
+
+```typescript
+export const metadata = genPageMetadata({
+  title: 'Page Title', // Required
+  description: 'Unique page description', // Required for SEO
+  alternates: buildLanguageAlternates('/path', {
+    currentLanguage: 'ar', // 'ar' for Arabic pages, 'en' (default) for English
+  }),
+})
+```
+
+### 8.2 English Page Template
+
+```typescript
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
+
+export const metadata = genPageMetadata({
+  title: 'Your Page Title',
+  description: 'Your unique English description here.',
+  alternates: buildLanguageAlternates('/your-page'), // Default is English
+})
+
+export default function YourPage() {
+  return <div>{/* Content */}</div>
+}
+```
+
+### 8.3 Arabic Page Template
+
+```typescript
+import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
+
+export const metadata = genPageMetadata({
+  title: 'عنوان صفحتك',
+  description: 'وصف فريد باللغة العربية هنا.',
+  alternates: buildLanguageAlternates('/your-page', {
+    currentLanguage: 'ar' // CRITICAL: Must specify for Arabic
+  }),
+})
 
 export function generateStaticParams() {
-  return [{ lang: 'es' }, { lang: 'zh' }]
+  return [{ lang: 'ar' }] // Required for static generation
 }
 
-export default async function ContactPage({
+export default async function YourPageAr({
   params,
 }: {
-  params: Promise<{ lang: 'es' | 'zh' }>
+  params: Promise<{ lang: 'ar' }>
 }) {
-  const { lang } = await params
-  const dict = await getDictionary(lang)
-
-  return <div>{dict.contact.title}</div>
+  return (
+    <div dir="rtl">{/* Arabic content */}</div>
+  )
 }
 ```
 
-**Add translations to dictionaries:**
+### 8.4 Common Mistakes to Avoid
 
-```json
-// dictionaries/en.json
-{
-  "contact": {
-    "title": "Contact Us",
-    "description": "Get in touch with our team"
-  }
-}
-```
-
----
-
-### Adding New Blog Posts
-
-**Option 1: English-only first (Quick)**
-
-Create post in `data/blog/`:
-
-```mdx
----
-title: 'New H-1B Changes 2025'
-date: '2025-01-15'
-tags: ['h1b', 'visa']
-draft: false
-summary: 'Latest updates on H-1B visa regulations'
----
-
-Your English content here...
-```
-
-**Option 2: Add Spanish/Chinese translations**
-
-When ready, create translated versions with localized slugs:
-
-```
-data/blog/
-├── new-h1b-changes-2025.mdx          # English
-├── cambios-h1b-2025.mdx              # Spanish
-└── h1b-2025-xinzhengce.mdx           # Chinese (pinyin slug)
-```
-
-**Spanish version:**
-
-```mdx
----
-title: 'Cambios en la visa H-1B 2025'
-date: '2025-01-15'
-tags: ['h1b', 'visa']
-draft: false
-summary: 'Últimas actualizaciones sobre las regulaciones de visa H-1B'
-lang: es
----
-
-Tu contenido en español aquí...
-```
-
-**Key Points:**
-
-- Use **localized slugs** for better SEO
-- Translate **all frontmatter** (title, summary, tags)
-- Keep `date` consistent across translations
-- Add `lang` field to indicate language
-
----
-
-### Adding New Components with Text
-
-**Server Component** (Recommended):
+❌ **WRONG:**
 
 ```typescript
-import { getDictionary } from '@/app/[lang]/dictionaries'
+// Arabic page WITHOUT currentLanguage: 'ar'
+alternates: buildLanguageAlternates('/page') // Will have x-default conflict!
+```
 
-export default async function MyComponent({ lang = 'en' }) {
-  const dict = await getDictionary(lang)
-  return <div>{dict.mySection.text}</div>
+✅ **CORRECT:**
+
+```typescript
+// Arabic page WITH currentLanguage: 'ar'
+alternates: buildLanguageAlternates('/page', { currentLanguage: 'ar' })
+```
+
+❌ **WRONG:**
+
+```typescript
+// Forgetting generateStaticParams on Arabic pages
+export default function PageAr() {
+  /* Won't be statically generated! */
 }
 ```
 
-**Client Component** (when needed):
-
-```typescript
-'use client'
-import { usePathname } from 'next/navigation'
-
-export default function MyComponent() {
-  const pathname = usePathname()
-  const lang = pathname.startsWith('/es') ? 'es' :
-               pathname.startsWith('/zh') ? 'zh' : 'en'
-
-  const text = {
-    en: 'English text',
-    es: 'Texto en español',
-    zh: '中文文本'
-  }[lang]
-
-  return <div>{text}</div>
-}
-```
-
----
-
-### Updating Navigation Links
-
-**1. Add to Header (`data/headerNavLinks.ts`):**
-
-```typescript
-const headerNavLinks = [
-  { href: '/', title: 'Home' },
-  { href: '/blog', title: 'Blog' },
-  { href: '/about', title: 'About' },
-  { href: '/contact', title: 'Contact' }, // ← Add
-]
-```
-
-**2. Add translations to dictionaries** (see "Adding New UI Strings" above)
-
-**3. Update Header component** (`components/Header.tsx`):
-
-```typescript
-const translations: Record<string, Record<string, string>> = {
-  en: { home: 'Home', blog: 'Blog', about: 'About', contact: 'Contact' },
-  es: { home: 'Inicio', blog: 'Blog', about: 'Acerca de', contact: 'Contacto' },
-  zh: { home: '首页', blog: '博客', about: '关于', contact: '联系我们' },
-}
-```
-
----
-
-### Checklist Before Deployment
-
-**When adding new content/features, verify:**
-
-- [ ] English content created in `app/` or `data/blog/`
-- [ ] Localized versions created in `app/[lang]/`
-- [ ] UI strings added to all 3 dictionaries (`en`, `es`, `zh`)
-- [ ] `generateStaticParams()` includes `es` and `zh`
-- [ ] Metadata includes `alternates.languages` for all locales
-- [ ] Test navigation between languages preserves new pages
-- [ ] Build succeeds: `yarn build`
-- [ ] Preview all locales: `/`, `/es`, `/zh`
-
----
-
-### Translation Quality Guidelines
-
-**Spanish (es):**
-
-- Target: Mexican/Latin American Spanish (more users)
-- Use formal "usted" for professional tone
-- Localize visa terminology: "aplicar" (not "solicitar"), "patrocinio" (not "esponsorización")
-- Examples: "visa de trabajo" not just translated but contextually appropriate
-
-**Chinese (zh):**
-
-- Use Simplified Chinese (mainland China audience)
-- Professional terminology: 签证 (visa), 工作许可 (work permit)
-- Keep English terms when commonly used: H-1B, USCIS
-- Date format: 2025年1月15日
-
-**Both:**
-
-- Don't just translate — **localize** for the target audience
-- Research keywords in target language for SEO
-- Use native speakers for review when possible
-- Test readability with target demographic
-
----
-
-## 7. Performance Considerations
-
-### 7.1 Static Generation
-
-All localized routes are statically generated at build time:
+✅ **CORRECT:**
 
 ```typescript
 export function generateStaticParams() {
-  return [{ lang: 'es' }, { lang: 'zh' }]
+  return [{ lang: 'ar' }]
 }
 ```
 
-### 7.2 Dictionary Loading
-
-- Dictionaries loaded **server-side only**
-- Dynamic imports ensure code-splitting
-- Only the required locale dictionary is loaded per page
-- No client-side translation overhead
-
-### 7.3 Bundle Size Impact
-
-**Before:** ~50KB (next-intl + formatjs dependencies)
-**After:** ~5KB (negotiator only)
-**Savings:** 90% reduction in i18n dependencies
-
 ---
 
-## 8. Migration Summary
+## 9. Redirects for Legacy URLs
 
-### 8.1 Changes Made
+### 9.1 Current Redirects (next.config.js)
 
-| Item         | Before                 | After                    |
-| ------------ | ---------------------- | ------------------------ |
-| Library      | `next-intl`            | Native Next.js           |
-| Route param  | `[locale]`             | `[lang]`                 |
-| Folder       | `messages/`            | `dictionaries/`          |
-| Client hooks | `useTranslations()`    | Server `getDictionary()` |
-| Navigation   | `next-intl/navigation` | `next/navigation`        |
-| Middleware   | `createMiddleware()`   | Custom with `negotiator` |
+```javascript
+async redirects() {
+  return [
+    // Redirect old .ar extension URLs to correct Arabic routes
+    {
+      source: '/blog/:slug.ar',
+      destination: '/ar/blog/:slug',
+      permanent: true,
+    },
+    {
+      source: '/ar/blog/:slug.ar',
+      destination: '/ar/blog/:slug',
+      permanent: true,
+    },
+  ]
+}
+```
 
-### 8.2 Files Modified
+### 9.2 When to Add Redirects
 
-- ✅ `middleware.ts` — Custom locale detection
-- ✅ `app/[lang]/dictionaries.ts` — Dictionary loader
-- ✅ `app/[lang]/layout.tsx` — Simplified layout
-- ✅ `app/layout.tsx` — Root layout with lang support
-- ✅ `components/LocaleSwitcher.tsx` — Dropdown with flags
-- ✅ `components/Header.tsx` — Pathname-based translations
-- ✅ `components/Footer.tsx` — Simplified translations
-- ✅ `components/Link.tsx` — Native Next.js Link
+Add redirects when:
 
-### 8.3 Files Removed
+- You change URL structure
+- You rename pages
+- Google crawled incorrect URLs
+- You migrate from old structure
 
-- ❌ `app/[locale]/` — Renamed to `[lang]`
-- ❌ `i18n/request.ts` — No longer needed
-- ❌ `messages/` — Renamed to `dictionaries/`
-- ❌ `next-intl` package — Removed from dependencies
+**Format:**
 
----
-
-## 9. Testing Checklist
-
-- [x] English users stay at `/` (default locale)
-- [x] Spanish users redirect to `/es/*`
-- [x] Chinese users redirect to `/zh/*`
-- [x] Language switcher dropdown works smoothly
-- [x] Language switcher shows correct flags (🇺🇸 English, 🇪🇸 Español, 🇨🇳 中文)
-- [x] Navigation links translate properly (Home/Blog/About)
-- [x] Path preservation when switching languages
-- [x] Static generation for all locale routes (`generateStaticParams`)
-- [x] No redirect loops or flashing when accessing `/es` or `/zh`
-- [x] Build succeeds with all localized routes
-- [ ] hreflang tags present on all pages
-- [ ] Sitemap includes all localized routes
-- [ ] Lighthouse scores maintained (>95)
-
----
-
-## 10. Future Enhancements
-
-### 10.1 Short-term
-
-- [ ] Complete sitemap with localized blog posts
-- [ ] Add language detection from cookies (preference persistence)
-- [ ] Translate blog post content (Spanish/Chinese versions)
-- [ ] Add "This page is also available in:" banner
-
-### 10.2 Long-term
-
-- [ ] Add more locales (Portuguese, French, etc.)
-- [ ] Implement regional variants (es-MX, es-ES)
-- [ ] Build translation management workflow
-- [ ] Add automatic translation suggestions
-- [ ] Implement content translation status dashboard
-
----
-
-## 11. Dependencies
-
-### 11.1 Required Packages
-
-```json
+```javascript
 {
-  "dependencies": {
-    "negotiator": "^0.6.3"
-  },
-  "devDependencies": {
-    "@types/negotiator": "^0.6.4"
-  }
-}
-```
-
-### 11.2 Removed Packages
-
-```json
-{
-  "dependencies": {
-    "next-intl": "^3.16.0" // ❌ Removed
-  }
+  source: '/old-url',
+  destination: '/new-url',
+  permanent: true, // 301 redirect (passes SEO authority)
 }
 ```
 
 ---
 
-## 12. References
+## 10. Testing Checklist
+
+### 10.1 Before Every Deployment
+
+- [ ] **Build succeeds:** `npm run build`
+- [ ] **No TypeScript errors**
+- [ ] **No ESLint errors**
+- [ ] **Prettier formatted:** Run on all modified files
+
+### 10.2 SEO Validation
+
+- [ ] **Check hreflang tags:** View source on `/ar` page
+  - Should have `hreflang="en"` and `hreflang="ar"`
+  - Should NOT have `x-default` on Arabic pages
+  - Should have `x-default` on English pages
+- [ ] **Check canonical tags:** Each page should have correct canonical
+  - English: `<link rel="canonical" href="https://deenup.app/" />`
+  - Arabic: `<link rel="canonical" href="https://deenup.app/ar" />`
+- [ ] **Check sitemap:** Visit `/sitemap.xml`
+  - Should include both English and Arabic routes
+  - Should include all blog posts
+
+### 10.3 Content Validation
+
+- [ ] **Unique titles:** No duplicate titles across pages
+- [ ] **Unique descriptions:** Each page has unique meta description
+- [ ] **RTL works:** Arabic pages display correctly right-to-left
+- [ ] **Links work:** All internal links navigate correctly
+- [ ] **Images load:** All images display on both languages
+
+### 10.4 Performance Validation
+
+- [ ] **Lighthouse score:** >90 on both English and Arabic pages
+- [ ] **Load time:** <2s on both languages
+- [ ] **No console errors:** Check browser console
+
+---
+
+## 11. Common Issues & Solutions
+
+### 11.1 Hreflang Conflicts
+
+**Issue:** Semrush reports "Conflicting hreflang and rel=canonical"
+
+**Cause:** Arabic page has x-default pointing to English while canonical points to itself
+
+**Solution:** Ensure Arabic pages use `currentLanguage: 'ar'`:
+
+```typescript
+alternates: buildLanguageAlternates('/path', { currentLanguage: 'ar' })
+```
+
+### 11.2 Duplicate Meta Descriptions
+
+**Issue:** Google reports duplicate descriptions
+
+**Cause:** Missing or shared descriptions between pages
+
+**Solution:** Add unique descriptions to all pages:
+
+```typescript
+export const metadata = genPageMetadata({
+  title: 'Unique Title',
+  description: 'Unique description specific to this page', // Required!
+  alternates: buildLanguageAlternates('/path'),
+})
+```
+
+### 11.3 Pages Not in Sitemap
+
+**Issue:** New pages don't appear in sitemap
+
+**Cause:** Forgot to add route to sitemap.ts
+
+**Solution:** Add to both English and Arabic route arrays in `app/sitemap.ts`
+
+### 11.4 Build Fails with Prettier Errors
+
+**Issue:** `prettier/prettier` errors in build
+
+**Cause:** Code not formatted
+
+**Solution:**
+
+```bash
+npx prettier --write "path/to/file.tsx"
+```
+
+Or format all modified files:
+
+```bash
+npx prettier --write "app/**/*.tsx"
+```
+
+---
+
+## 12. Future Enhancements
+
+### 12.1 Short-term Roadmap
+
+- [ ] Language switcher component (preserve current page when switching)
+- [ ] "This page is available in Arabic/English" banner
+- [ ] Automatic Arabic slug generation for blog posts
+- [ ] Translation status dashboard
+
+### 12.2 Long-term Roadmap
+
+- [ ] Add more languages (Urdu, Turkish, French)
+- [ ] Translation management system
+- [ ] Automatic translation suggestions for new content
+- [ ] Language-specific analytics tracking
+
+---
+
+## 13. Quick Reference
+
+### 13.1 Key Files
+
+| File                     | Purpose                                                  |
+| ------------------------ | -------------------------------------------------------- |
+| `app/seo.tsx`            | SEO utilities (buildLanguageAlternates, genPageMetadata) |
+| `app/sitemap.ts`         | Dynamic sitemap generator                                |
+| `app/robots.ts`          | robots.txt generator                                     |
+| `app/layout.tsx`         | Root layout (English + locale detection)                 |
+| `app/[lang]/layout.tsx`  | Arabic layout (dir="rtl")                                |
+| `contentlayer.config.ts` | Blog post processing and language detection              |
+| `next.config.js`         | Redirects and Next.js config                             |
+
+### 13.2 Common Commands
+
+```bash
+# Build for production
+npm run build
+
+# Format code
+npx prettier --write "path/to/file.tsx"
+
+# Check sitemap
+curl http://localhost:3000/sitemap.xml
+
+# Test Arabic page
+curl http://localhost:3000/ar
+```
+
+### 13.3 Environment Variables
+
+```bash
+# Required for SEObot integration
+SEOBOT_API_KEY=your_key_here
+
+# Site URL (used in sitemap and metadata)
+NEXT_PUBLIC_SITE_URL=https://deenup.app
+```
+
+---
+
+## 14. Support & Resources
+
+### 14.1 Documentation
 
 - [Next.js Internationalization](https://nextjs.org/docs/app/building-your-application/routing/internationalization)
-- [Negotiator Library](https://www.npmjs.com/package/negotiator)
-- [hreflang Best Practices](https://developers.google.com/search/docs/specialty/international/localized-versions)
-- [Accept-Language Header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language)
+- [Google hreflang Guidelines](https://developers.google.com/search/docs/specialty/international/localized-versions)
+- [Contentlayer Docs](https://contentlayer.dev/docs)
+
+### 14.2 Tools
+
+- [Google Search Console](https://search.google.com/search-console) - Monitor SEO
+- [Semrush](https://www.semrush.com/) - SEO auditing
+- [hreflang Testing Tool](https://technicalseo.com/tools/hreflang/) - Validate hreflang tags
+
+### 14.3 Internal Support
+
+For questions about this implementation:
+
+1. Check this PRD first
+2. Review the code in `app/seo.tsx`
+3. Test locally before asking
+4. Open an issue with reproduction steps
 
 ---
 
-## 13. Support
+## 15. Version History
 
-For questions or issues related to the i18n implementation:
+| Version | Date       | Changes                                                                  |
+| ------- | ---------- | ------------------------------------------------------------------------ |
+| 3.0     | 2025-10-27 | Complete rewrite for Strategy B, SEO optimization, production guidelines |
+| 2.0     | 2025-10-21 | Initial bilingual implementation (English/Arabic)                        |
+| 1.0     | -          | Legacy next-intl implementation (deprecated)                             |
 
-- Check this PRD first
-- Review the official Next.js i18n docs
-- Open an issue in the project repo
+---
+
+**End of Document**

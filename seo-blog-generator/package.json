@@ -1,0 +1,32 @@
+{
+  "name": "seo-blog-generator",
+  "version": "1.0.0",
+  "description": "SEO Blog Generator for Fapulous using OpenAI API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "generate": "node index.js",
+    "generate:safe": "node safe-index.js",
+    "test": "node test-counter.js",
+    "test:counter": "node test-counter.js",
+    "audit:links": "node utils/audit-links.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.4.5",
+    "inquirer": "^12.0.0",
+    "openai": "^4.67.1",
+    "ora": "^8.1.0",
+    "slugify": "^1.6.6"
+  },
+  "keywords": [
+    "seo",
+    "blog",
+    "openai",
+    "content-generation"
+  ],
+  "author": "Fapulous Team",
+  "license": "MIT"
+}

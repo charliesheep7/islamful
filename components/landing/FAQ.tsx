@@ -110,15 +110,17 @@ export default function FAQ({ lang = 'en', dict }: FAQProps) {
         {/* Additional help */}
         <div className="mt-12 rounded-2xl border border-gray-200 bg-gradient-to-br from-[--color-surface] to-[--color-bg] p-8 text-center dark:border-gray-700 dark:from-gray-800 dark:to-gray-900">
           <p
-            className={`mb-4 text-lg text-gray-600 dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
+            className={`mb-4 text-lg text-black dark:text-white ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
             {dict?.faq?.stillHaveQuestions || 'Still have questions?'}
           </p>
           <a
-            href="mailto:support@deenup.app"
-            className={`inline-flex items-center gap-2 rounded-lg bg-[--color-accent-600] px-6 py-3 font-semibold text-white shadow-[--color-accent-500]/30 shadow-lg transition-all duration-200 hover:scale-105 hover:bg-[--color-accent-700] ${lang === 'ar' ? 'font-arabic' : ''}`}
+            href="https://chat.whatsapp.com/Ea023Ghn0PJ27Iji2Ms6Fp?mode=wwt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 rounded-xl bg-[var(--color-accent-500)] px-10 py-4 text-xl font-bold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:bg-[var(--color-accent-600)] ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
-            {dict?.faq?.contactSupport || 'Contact Support'}
+            {dict?.faq?.contactSupport || 'Join Waitlist'}
           </a>
         </div>
       </div>

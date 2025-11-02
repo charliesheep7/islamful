@@ -18,10 +18,10 @@
     "badge": "رفيقك الإسلامي",
     "tagline": "DeenUp",
     "subtitle": "عزز دينك بالإرشاد المدعوم بالذكاء الاصطناعي، وتتبع العادات اليومية، ومجتمع المسلمين العالمي",
-    "ctaPrimary": "تحميل التطبيق",
+    "ctaPrimary": "انضم لقائمة الانتظار",
     "ctaSecondary": "اعرف المزيد",
     "comingSoon": "قريباً",
-    "appStatus": "قريباً على iOS و Android"
+    "appStatus": "انضم لمجتمعنا على WhatsApp"
   },
   "features": {
     "heading": "رفيقك الإسلامي الشامل",
@@ -43,10 +43,11 @@
   "cta": {
     "badge": "قريباً على iOS و Android",
     "heading": "ابدأ بتعزيز دينك اليوم",
-    "subtitle": "انضم لقائمة الانتظار وكن أول من يعرف عند إطلاق DeenUp",
+    "subtitle": "انضم لمجتمعنا على WhatsApp وكن أول من يعرف عند إطلاق DeenUp",
+    "joinWaitlist": "انضم لقائمة الانتظار",
     "downloadIOS": "تحميل على iOS",
     "downloadAndroid": "تحميل على Android",
-    "comingSoonText": "قريباً • سجل للحصول على وصول مبكر"
+    "comingSoonText": "انضم لمجتمعنا على WhatsApp"
   },
   "testimonials": {
     "heading": "قصص من الأمة",
@@ -59,7 +60,7 @@
     "heading": "الأسئلة المتكررة",
     "subtitle": "كل ما تحتاج معرفته عن DeenUp",
     "stillHaveQuestions": "لا تزال لديك أسئلة؟",
-    "contactSupport": "اتصل بالدعم",
+    "contactSupport": "انضم لقائمة الانتظار",
     "items": [
       {
         "question": "كيف يمكنني الوثوق بالدقة الإسلامية لإرشادات DeenUp؟",

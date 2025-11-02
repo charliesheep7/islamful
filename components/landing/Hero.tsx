@@ -67,24 +67,13 @@ export default function Hero({ lang = 'en', dict }: HeroProps) {
 
           {/* CTAs */}
           <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
-            <div className="group relative">
-              <button
-                disabled
-                className={`inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-gray-300 px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg dark:bg-gray-700 dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
-              >
-                {dict?.hero?.ctaPrimary || 'Download App'}
-              </button>
-              <span
-                className={`absolute -top-8 left-1/2 -translate-x-1/2 rounded-full border border-[--color-accent-200] bg-white px-3 py-1 text-xs font-medium whitespace-nowrap text-[--color-accent-600] dark:border-[--color-accent-900] dark:bg-gray-800 dark:text-[--color-accent-400] ${lang === 'ar' ? 'font-arabic' : ''}`}
-              >
-                {dict?.hero?.comingSoon || 'Coming Soon'}
-              </span>
-            </div>
             <a
-              href="#features"
-              className={`inline-flex items-center gap-2 rounded-xl border-2 border-gray-200 bg-white px-8 py-4 text-lg font-semibold text-[--color-text] transition-all duration-300 hover:border-[--color-accent-300] hover:bg-[--color-surface] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-[--color-accent-700] dark:hover:bg-gray-700 ${lang === 'ar' ? 'font-arabic' : ''}`}
+              href="https://chat.whatsapp.com/Ea023Ghn0PJ27Iji2Ms6Fp?mode=wwt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 rounded-xl bg-[var(--color-accent-500)] px-12 py-5 text-2xl font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[var(--color-accent-600)] ${lang === 'ar' ? 'font-arabic' : ''}`}
             >
-              {dict?.hero?.ctaSecondary || 'Learn More'}
+              {dict?.hero?.ctaPrimary || 'Join Waitlist'}
             </a>
           </div>
 
@@ -92,7 +81,7 @@ export default function Hero({ lang = 'en', dict }: HeroProps) {
           <p
             className={`pt-4 text-sm text-gray-500 dark:text-gray-400 ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
-            {dict?.hero?.appStatus || 'Coming Soon to iOS and Android'}
+            {dict?.hero?.appStatus || 'Join our WhatsApp community'}
           </p>
         </div>
       </div>

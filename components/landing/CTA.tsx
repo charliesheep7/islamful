@@ -36,28 +36,23 @@ export default function CTA({ lang = 'en', dict }: CTAProps) {
         <p
           className={`mx-auto mb-10 max-w-2xl text-xl text-gray-600 dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
         >
-          {dict?.cta?.subtitle || 'Join the waitlist and be the first to know when DeenUp launches'}
+          {dict?.cta?.subtitle ||
+            'Join our WhatsApp community and be the first to know when DeenUp launches'}
         </p>
 
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <div
-            className={`inline-flex cursor-not-allowed items-center gap-3 rounded-2xl bg-gray-300 px-10 py-5 text-xl font-bold text-gray-900 opacity-50 dark:bg-gray-700 dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
-          >
-            <Download className="h-6 w-6" />
-            {dict?.cta?.downloadIOS || 'Download on iOS'}
-          </div>
-          <div
-            className={`inline-flex cursor-not-allowed items-center gap-3 rounded-2xl bg-gray-300 px-10 py-5 text-xl font-bold text-gray-900 opacity-50 dark:bg-gray-700 dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
-          >
-            <Download className="h-6 w-6" />
-            {dict?.cta?.downloadAndroid || 'Download on Android'}
-          </div>
-        </div>
+        <a
+          href="https://chat.whatsapp.com/Ea023Ghn0PJ27Ijs6Fp?mode=wwt"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex items-center gap-3 rounded-2xl bg-[var(--color-accent-500)] px-10 py-5 text-xl font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[var(--color-accent-600)] ${lang === 'ar' ? 'font-arabic' : ''}`}
+        >
+          {dict?.cta?.joinWaitlist || 'Join Waitlist'}
+        </a>
 
         <p
           className={`mt-6 text-sm text-gray-500 dark:text-gray-400 ${lang === 'ar' ? 'font-arabic' : ''}`}
         >
-          {dict?.cta?.comingSoonText || 'Coming Soon • Sign up for early access'}
+          {dict?.cta?.comingSoonText || 'Join our community on WhatsApp'}
         </p>
       </div>
     </section>

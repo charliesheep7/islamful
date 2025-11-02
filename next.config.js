@@ -108,6 +108,9 @@ module.exports = () => {
           destination: '/ar/blog/:slug',
           permanent: true,
         },
+        // Note: www/non-www and HTTP/HTTPS redirects should be handled at hosting level
+        // (Vercel/Netlify) for better performance, not in Next.js
+        // This ensures consistent canonical URLs across all page variations
       ]
     },
     webpack: (config, options) => {

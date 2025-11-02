@@ -18,10 +18,10 @@
     "badge": "Your Islamic Companion",
     "tagline": "DeenUp",
     "subtitle": "Strengthen your Deen with AI-powered guidance, daily habit tracking, and a global Muslim community",
-    "ctaPrimary": "Download App",
+    "ctaPrimary": "Join Waitlist",
     "ctaSecondary": "Learn More",
     "comingSoon": "Coming Soon",
-    "appStatus": "Coming Soon to iOS and Android"
+    "appStatus": "Join our WhatsApp community"
   },
   "features": {
     "heading": "Your Complete Islamic Companion",
@@ -43,10 +43,11 @@
   "cta": {
     "badge": "Coming Soon to iOS & Android",
     "heading": "Start strengthening your Deen today",
-    "subtitle": "Join the waitlist and be the first to know when DeenUp launches",
+    "subtitle": "Join our WhatsApp community and be the first to know when DeenUp launches",
+    "joinWaitlist": "Join Waitlist",
     "downloadIOS": "Download on iOS",
     "downloadAndroid": "Download on Android",
-    "comingSoonText": "Coming Soon • Sign up for early access"
+    "comingSoonText": "Join our community on WhatsApp"
   },
   "testimonials": {
     "heading": "Stories from the Ummah",
@@ -59,7 +60,7 @@
     "heading": "Frequently asked questions",
     "subtitle": "Everything you need to know about DeenUp",
     "stillHaveQuestions": "Still have questions?",
-    "contactSupport": "Contact Support",
+    "contactSupport": "Join Waitlist",
     "items": [
       {
         "question": "How can I trust the Islamic accuracy of DeenUp's guidance?",

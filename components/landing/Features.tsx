@@ -122,7 +122,7 @@ export default function Features({ lang = 'en', dict }: FeaturesProps) {
                     {/* Learn More Button */}
                     <button
                       onClick={() => openModal(feature.id)}
-                      className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:from-emerald-700 hover:to-teal-700 hover:shadow-lg dark:from-emerald-500 dark:to-teal-500"
+                      className="inline-flex items-center justify-center rounded-lg bg-[var(--color-accent-500)] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[var(--color-accent-600)] hover:shadow-lg"
                     >
                       {dict?.features?.learnMore || 'Learn More'}
                     </button>
@@ -182,7 +182,7 @@ export default function Features({ lang = 'en', dict }: FeaturesProps) {
             <div className="flex gap-3">
               <button
                 onClick={closeModal}
-                className="flex-1 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:from-emerald-700 hover:to-teal-700 hover:shadow-lg dark:from-emerald-500 dark:to-teal-500"
+                className="flex-1 rounded-lg bg-[var(--color-accent-500)] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[var(--color-accent-600)] hover:shadow-lg"
               >
                 Get Started
               </button>

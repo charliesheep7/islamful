@@ -47,29 +47,37 @@ export function buildLanguageAlternates(
       ? normalizedArabic
       : normalizedEnglish
 
+  // CRITICAL FIX: Use absolute URLs for canonical and hreflang
+  // Relative URLs cause "Duplicate canonical" errors in Google Search Console
+  // because www.deenup.app and deenup.app resolve relative URLs differently
+  const baseUrl = siteMetadata.siteUrl
+  const absoluteEnglish = `${baseUrl}${normalizedEnglish}`
+  const absoluteArabic = `${baseUrl}${normalizedArabic}`
+  const absoluteCanonical = `${baseUrl}${normalizedCanonical}`
+
   const languages: Record<string, string> = {}
 
   // Only add x-default for English pages (default locale)
   // Arabic pages should not have x-default to avoid canonical conflicts
   if (currentLanguage === 'en') {
     if (xDefault === 'ar') {
-      languages['x-default'] = normalizedArabic
+      languages['x-default'] = absoluteArabic
     } else if (xDefault && xDefault !== 'en') {
-      languages['x-default'] = normalizePath(xDefault)
+      languages['x-default'] = `${baseUrl}${normalizePath(xDefault)}`
     } else {
-      languages['x-default'] = normalizedEnglish
+      languages['x-default'] = absoluteEnglish
     }
   }
 
   if (includeEnglish) {
-    languages.en = normalizedEnglish
+    languages.en = absoluteEnglish
   }
   if (includeArabic) {
-    languages.ar = normalizedArabic
+    languages.ar = absoluteArabic
   }
 
   return {
-    canonical: normalizedCanonical,
+    canonical: absoluteCanonical,
     languages,
   }
 }
