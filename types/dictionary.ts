@@ -17,6 +17,7 @@ export type Dictionary = {
   hero: {
     badge: string
     tagline: string
+    question: string
     subtitle: string
     ctaPrimary: string
     ctaSecondary: string

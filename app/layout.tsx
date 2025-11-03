@@ -108,16 +108,40 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         sizes="16x16"
         href={`${basePath}/static/favicons/favicon-16x16.png`}
       />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href={`${basePath}/static/favicons/android-chrome-192x192.png`}
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href={`${basePath}/static/favicons/android-chrome-512x512.png`}
+      />
       <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
       <link
         rel="mask-icon"
         href={`${basePath}/static/favicons/safari-pinned-tab.svg`}
-        color="#5bbad5"
+        color="#D97757"
       />
       <meta name="msapplication-TileColor" content="#D97757" />
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF9F5" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'DeenUp',
+            url: 'https://www.deenup.app',
+            logo: 'https://www.deenup.app/static/favicons/android-chrome-512x512.png',
+          }),
+        }}
+      />
       <body className="bg-gray-50 font-sans text-gray-800 antialiased ltr:pl-[calc(100vw-100%)] rtl:pr-[calc(100vw-100%)] dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />

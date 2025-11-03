@@ -1,6 +1,6 @@
 'use client'
-import Link from 'next/link'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import Image from 'next/image'
+import { Sparkles } from 'lucide-react'
 import type { Dictionary } from '@/types/dictionary'
 
 interface HeroProps {
@@ -9,6 +9,8 @@ interface HeroProps {
 }
 
 export default function Hero({ lang = 'en', dict }: HeroProps) {
+  const isRTL = lang === 'ar'
+
   return (
     <section className="relative overflow-hidden">
       {/* Animated gradient background */}
@@ -16,72 +18,98 @@ export default function Hero({ lang = 'en', dict }: HeroProps) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(217,119,87,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(217,119,87,0.05),transparent_50%)]" />
 
-      <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32 lg:px-8">
-        <div className="animate-fade-in space-y-8 text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[--color-accent-200] bg-[--color-surface] px-4 py-2 shadow-sm dark:border-[--color-accent-900] dark:bg-gray-800">
-            <Sparkles className="h-4 w-4 text-[--color-accent-600]" />
-            <span
-              className={`text-sm font-medium text-[--color-text] dark:text-gray-200 ${lang === 'ar' ? 'font-arabic' : ''}`}
+      <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32 lg:px-8">
+        {/* Two-column layout: Text left, Image right */}
+        <div
+          className={`animate-fade-in grid items-center gap-12 lg:grid-cols-2 lg:gap-16 ${isRTL ? 'lg:flex-row-reverse' : ''}`}
+          dir={isRTL ? 'rtl' : 'ltr'}
+        >
+          {/* Left Column: Text Content */}
+          <div className={`space-y-6 ${isRTL ? 'text-right lg:order-2' : 'text-left lg:order-1'}`}>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-[--color-accent-200] bg-[--color-surface] px-4 py-2 shadow-sm dark:border-[--color-accent-900] dark:bg-gray-800">
+              <Sparkles className="h-4 w-4 text-[--color-accent-600]" />
+              <span
+                className={`text-sm font-medium text-[--color-text] dark:text-gray-200 ${isRTL ? 'font-arabic' : ''}`}
+              >
+                {dict?.hero?.badge || 'Your Islamic Companion'}
+              </span>
+            </div>
+
+            {/* Main tagline */}
+            <h1
+              className={`text-4xl leading-tight font-bold tracking-tight text-[--color-text] sm:text-5xl lg:text-6xl dark:text-white ${isRTL ? 'font-arabic' : ''}`}
             >
-              {dict?.hero?.badge || 'Your Islamic Companion'}
-            </span>
-          </div>
+              {dict?.hero?.tagline || 'The first AI rooted in Quranic values'}
+            </h1>
 
-          {/* Main tagline */}
-          <h1
-            className={`text-5xl leading-tight font-bold tracking-tight text-[--color-text] sm:text-6xl lg:text-7xl dark:text-white ${lang === 'ar' ? 'font-arabic' : ''}`}
-          >
-            {dict?.hero?.tagline || 'DeenUp'}
-          </h1>
+            {/* Question/Heading */}
+            <h2
+              className={`text-xl leading-relaxed font-semibold text-[--color-accent-700] sm:text-2xl dark:text-[--color-accent-400] ${isRTL ? 'font-arabic' : ''}`}
+            >
+              {dict?.hero?.question || 'AI is shaping the future, but whose values will shape AI?'}
+            </h2>
 
-          {/* Subtitle */}
-          <p
-            className={`mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 sm:text-2xl dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
-          >
-            {dict?.hero?.subtitle ||
-              'Strengthen your Deen with AI-powered guidance, daily habit tracking, and a global Muslim community'}
-          </p>
-
-          {/* Quranic Quote */}
-          <div className="mx-auto max-w-4xl rounded-2xl border border-[--color-accent-200] bg-white/50 px-6 py-8 shadow-sm dark:border-[--color-accent-900] dark:bg-gray-800/50">
+            {/* Subtitle */}
             <p
-              className="font-arabic mb-4 text-2xl leading-relaxed text-[--color-text] sm:text-3xl dark:text-white"
-              dir="rtl"
-              lang="ar"
+              className={`text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
             >
-              لَا خَيْرَ فِي كَثِيرٍ مِن نَّجْوَاهُمْ إِلَّا مَنْ أَمَرَ بِصَدَقَةٍ أَوْ مَعْرُوفٍ
-              أَوْ إِصْلَاحٍ بَيْنَ النَّاسِ…
+              {dict?.hero?.subtitle ||
+                "Nearly every AI today is built by tech companies, with little regard for the ummah. At DeenUp, we're building an alternative: AI that starts from the Quran, honors authentic scholarship, and serves believers everywhere. We don't use AI to interpret the Quran. Instead, the Quran shapes our AI—and answers are cited from trusted scholars, not generated by algorithms."}
             </p>
-            <p className="mb-3 text-base text-gray-600 italic sm:text-lg dark:text-gray-300">
-              "No good is in much of their private talk—except those who encourage charity,
-              goodness, or making peace between people; and whoever does so seeking Allah's
-              pleasure, We will grant a great reward."
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">— Qur'an 4:114</p>
-            <p className="mt-2 text-xs text-gray-400 italic dark:text-gray-500">
-              Lā khayra fī kathīrin min najwāhum illā man amara biṣ-ṣadaqati aw maʿrūfin aw iṣlāḥin
-              bayna an-nās…
+
+            {/* CTA Button */}
+            <div className="pt-4">
+              <a
+                href="https://chat.whatsapp.com/Ea023Ghn0PJ27Iji2Ms6Fp?mode=wwt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 rounded-xl bg-[var(--color-accent-500)] px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[var(--color-accent-600)] ${isRTL ? 'font-arabic' : ''}`}
+              >
+                {dict?.hero?.ctaPrimary || 'Join Waitlist'}
+              </a>
+            </div>
+
+            {/* Trust signal */}
+            <p className={`text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}>
+              {dict?.hero?.appStatus || 'Join our WhatsApp community'}
             </p>
           </div>
 
-          {/* CTAs */}
-          <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
-            <a
-              href="https://chat.whatsapp.com/Ea023Ghn0PJ27Iji2Ms6Fp?mode=wwt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 rounded-xl bg-[var(--color-accent-500)] px-12 py-5 text-2xl font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[var(--color-accent-600)] ${lang === 'ar' ? 'font-arabic' : ''}`}
-            >
-              {dict?.hero?.ctaPrimary || 'Join Waitlist'}
-            </a>
+          {/* Right Column: Hero Image */}
+          <div className={`relative ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-2xl">
+              <Image
+                src="/static/images/hero.webp"
+                alt="DeenUp Islamic Companion"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              />
+            </div>
           </div>
+        </div>
 
-          {/* Trust signal */}
+        {/* Quranic Quote - Below the two-column section */}
+        <div className="mx-auto mt-16 max-w-4xl rounded-2xl border border-[--color-accent-200] bg-white/50 px-6 py-8 shadow-sm dark:border-[--color-accent-900] dark:bg-gray-800/50">
           <p
-            className={`pt-4 text-sm text-gray-500 dark:text-gray-400 ${lang === 'ar' ? 'font-arabic' : ''}`}
+            className="font-arabic mb-4 text-2xl leading-relaxed text-[--color-text] sm:text-3xl dark:text-white"
+            dir="rtl"
+            lang="ar"
           >
-            {dict?.hero?.appStatus || 'Join our WhatsApp community'}
+            لَا خَيْرَ فِي كَثِيرٍ مِن نَّجْوَاهُمْ إِلَّا مَنْ أَمَرَ بِصَدَقَةٍ أَوْ مَعْرُوفٍ
+            أَوْ إِصْلَاحٍ بَيْنَ النَّاسِ…
+          </p>
+          <p className="mb-3 text-base text-gray-600 italic sm:text-lg dark:text-gray-300">
+            "No good is in much of their private talk—except those who encourage charity, goodness,
+            or making peace between people; and whoever does so seeking Allah's pleasure, We will
+            grant a great reward."
+          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">— Qur'an 4:114</p>
+          <p className="mt-2 text-xs text-gray-400 italic dark:text-gray-500">
+            Lā khayra fī kathīrin min najwāhum illā man amara biṣ-ṣadaqati aw maʿrūfin aw iṣlāḥin
+            bayna an-nās…
           </p>
         </div>
       </div>
