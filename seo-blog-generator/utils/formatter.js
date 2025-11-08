@@ -144,3 +144,38 @@ export class BlogFormatter {
     fs.appendFileSync(logFile, logLine)
   }
 }
+
+// Named exports for generate-en.js compatibility
+export function formatMDX({ topic, content, faqs, imagePath, date }) {
+  const faqsYaml = faqs
+    .map(
+      (faq) =>
+        `  - question: "${faq.question.replace(/"/g, '\\"')}"\n    answer: "${faq.answer.replace(/"/g, '\\"')}"`
+    )
+    .join('\n')
+
+  return `---
+title: "${topic.title}"
+date: "${date}"
+lastmod: "${date}"
+summary: "${topic.description}"
+tags: ${JSON.stringify(topic.keywords)}
+authors: ["mathias-yussif"]
+draft: false
+images: ["${imagePath}"]
+layout: "PostLayout"
+faqs:
+${faqsYaml}
+---
+
+${content}
+`
+}
+
+export function validateMDX(content) {
+  // Basic MDX validation
+  if (!content || typeof content !== 'string') return false
+  if (!content.includes('---')) return false
+  if (!content.includes('title:')) return false
+  return true
+}

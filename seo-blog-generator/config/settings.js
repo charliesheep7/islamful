@@ -33,4 +33,6 @@ export const config = {
     ],
     productUsage: 'Daily journaling, trigger tracking, community support',
   },
+  TOPICS_EN: './data/topics-en.jsonl',
+  OUTPUT_DIR_EN: '../data/blog/en',
 }

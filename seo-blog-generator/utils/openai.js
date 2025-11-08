@@ -173,3 +173,31 @@ class OpenAIClient {
 }
 
 export default OpenAIClient
+
+// Create singleton instance for named exports
+const client = new OpenAIClient()
+
+// Named exports for generate-en.js compatibility
+export async function generateBlogContent(prompt) {
+  try {
+    const response = await client.client.responses.create({
+      model: config.openai.textModel,
+      input: [
+        {
+          role: 'user',
+          content: [{ type: 'input_text', text: prompt }],
+        },
+      ],
+      reasoning: { effort: 'low' },
+      text: { verbosity: 'high' },
+    })
+    return response.output_text
+  } catch (error) {
+    console.error('Error generating blog content:', error)
+    throw error
+  }
+}
+
+export async function generateHeroImage(title, slug, lang = 'en') {
+  return await client.generateImage(title, 'guide', slug)
+}
