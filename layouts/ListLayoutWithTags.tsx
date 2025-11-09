@@ -6,10 +6,10 @@ import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
-import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
 import SectionContainer from '@/components/SectionContainer'
+import Image from 'next/image'
 
 interface PaginationProps {
   totalPages: number
@@ -127,35 +127,42 @@ export default function ListLayoutWithTags({
           <div>
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
+                const { path, date, title, summary, images } = post
                 return (
-                  <li key={path} className="py-5">
-                    <article className="flex flex-col space-y-2 xl:space-y-0">
-                      <dl>
-                        <dt className="sr-only">Published on</dt>
-                        <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                          <time dateTime={date} suppressHydrationWarning>
-                            {formatDate(date, siteMetadata.locale)}
-                          </time>
-                        </dd>
-                      </dl>
-                      <div className="space-y-3">
-                        <div>
-                          <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                            <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags?.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
+                  <li key={path} className="py-8">
+                    <article>
+                      <Link href={`/${path}`}>
+                        <div className="flex gap-4 xl:gap-6">
+                          {images && images.length > 0 && (
+                            <div className="relative h-32 w-48 flex-shrink-0 overflow-hidden rounded-lg xl:h-40 xl:w-60">
+                              <Image
+                                src={images[0]}
+                                alt={title}
+                                fill
+                                className="object-cover transition-transform duration-300 hover:scale-105"
+                              />
+                            </div>
+                          )}
+                          <div className="flex-1 space-y-3">
+                            <dl>
+                              <dt className="sr-only">Published on</dt>
+                              <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
+                                <time dateTime={date} suppressHydrationWarning>
+                                  {formatDate(date, siteMetadata.locale)}
+                                </time>
+                              </dd>
+                            </dl>
+                            <div>
+                              <h2 className="text-2xl leading-8 font-bold tracking-tight text-gray-900 dark:text-gray-100">
+                                {title}
+                              </h2>
+                            </div>
+                            <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                              {summary}
+                            </div>
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
+                      </Link>
                     </article>
                   </li>
                 )
