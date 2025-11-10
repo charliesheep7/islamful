@@ -10,6 +10,7 @@ import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import BasmalahIntro from '@/components/BasmalahIntro'
+import Share from '@/components/Share'
 
 interface LayoutProps {
   content: CoreContent<Blog>
@@ -19,7 +20,7 @@ interface LayoutProps {
 }
 
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
-  const { slug, title, images } = content
+  const { slug, title, images, summary } = content
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
 
@@ -41,6 +42,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
             </div>
           </div>
           <div className="prose dark:prose-invert max-w-none py-4">
+            <Share title={title} slug={slug} summary={summary} />
             <BasmalahIntro />
             {children}
           </div>

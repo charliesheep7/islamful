@@ -1,6 +1,7 @@
 import OpenAI from 'openai'
 import { config } from '../config/settings.js'
-import { masterPrompt, youtubeSearchPrompt, imagePrompt } from '../prompts/masterPrompt.js'
+import { masterPrompt, youtubeSearchPrompt } from '../prompts/masterPrompt.js'
+import { imagePrompt } from '../prompts/master-prompt-en.js'
 import fs from 'fs-extra'
 import path from 'path'
 
