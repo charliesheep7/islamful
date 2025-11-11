@@ -101,6 +101,9 @@ data/
         ├── post-1.mdx
         └── post-2.mdx
 
+components/
+└── RTLHandler.tsx                # Client component for RTL navigation handling
+
 dictionaries/
 ├── en.json                       # English UI translations
 └── ar.json                       # Arabic UI translations
@@ -379,45 +382,175 @@ Verify these URLs work:
 
 ## 6. RTL (Right-to-Left) Support
 
-### 6.1 Automatic RTL
+### 6.1 Automatic RTL Implementation
 
-The root layout automatically sets `dir="rtl"` for Arabic pages:
+DeenUp uses a **dual-approach RTL system** that handles both initial page loads and client-side navigation:
+
+#### Initial Page Load (SEO-friendly)
+
+Inline script in `<head>` detects Arabic URLs and sets `dir="rtl"` immediately:
 
 ```typescript
 // app/layout.tsx
-const locale = (headersList.get('x-locale') as 'en' | 'ar') || 'en'
-
-<html
-  lang={locale}
-  dir={locale === 'ar' ? 'rtl' : 'ltr'}  // Automatic RTL
-  // ...
->
+<script
+  dangerouslySetInnerHTML={{
+    __html: `
+      (function() {
+        const path = window.location.pathname;
+        const isArabic = path.startsWith('/ar/') || path === '/ar';
+        if (isArabic) {
+          document.documentElement.setAttribute('lang', 'ar');
+          document.documentElement.setAttribute('dir', 'rtl');
+        }
+      })();
+    `,
+  }}
+/>
 ```
 
-### 6.2 Component Guidelines
+#### Client-Side Navigation
 
-**Use Logical CSS Properties:**
+`RTLHandler` component listens to route changes and updates HTML attributes:
+
+```typescript
+// components/RTLHandler.tsx
+'use client'
+
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+
+export default function RTLHandler() {
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const isArabic = pathname.startsWith('/ar/') || pathname === '/ar'
+
+    if (isArabic) {
+      document.documentElement.setAttribute('lang', 'ar')
+      document.documentElement.setAttribute('dir', 'rtl')
+    } else {
+      document.documentElement.setAttribute('lang', 'en')
+      document.documentElement.setAttribute('dir', 'ltr')
+    }
+  }, [pathname])
+
+  return null
+}
+```
+
+**Why Both Approaches?**
+
+- ✅ Inline script ensures RTL on first load (prevents FOUC - Flash of Unstyled Content)
+- ✅ Client component handles Next.js client-side navigation
+- ✅ SEO-friendly (crawlers see correct `dir` attribute immediately)
+- ✅ Works seamlessly when navigating from homepage to Arabic pages
+
+### 6.2 Tailwind RTL Classes
+
+DeenUp uses **Tailwind v4** which has built-in RTL support via the `rtl:` variant:
+
+**PostLayout RTL Classes:**
+
+```typescript
+// layouts/PostLayout.tsx
+
+// Author section - spacing reverses in RTL
+<ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0 sm:rtl:space-x-reverse">
+  <li className="flex items-center space-x-3 text-start rtl:space-x-reverse">
+    {/* Content */}
+  </li>
+</ul>
+
+// Navigation - arrows flip direction
+{isArabic ? 'العودة إلى المدونة →' : '← Back to the blog'}
+```
+
+**Key RTL Classes Used:**
+
+| Class                 | Purpose                                            |
+| --------------------- | -------------------------------------------------- |
+| `rtl:space-x-reverse` | Reverses horizontal spacing between flex items     |
+| `text-start`          | Logical property for text alignment (auto RTL/LTR) |
+| `ltr:pl-[calc(...)]`  | Left padding for LTR scrollbar compensation        |
+| `rtl:pr-[calc(...)]`  | Right padding for RTL scrollbar compensation       |
+
+### 6.3 Component-Level RTL Adaptations
+
+**PostLayout.tsx Localization:**
+
+The blog post layout adapts content based on language:
+
+```typescript
+const isArabic = lang === 'ar'
+
+// Date formatting
+{new Date(date).toLocaleDateString(
+  isArabic ? 'ar-SA' : siteMetadata.locale,
+  postDateTemplate
+)}
+
+// Labels
+<dt className="sr-only">{isArabic ? 'نُشر في' : 'Published on'}</dt>
+<dt className="sr-only">{isArabic ? 'المؤلفون' : 'Authors'}</dt>
+<Link>{isArabic ? 'ناقش على X' : 'Discuss on X'}</Link>
+
+// Navigation order (prev/next swap for RTL reading direction)
+const firstArticle = isArabic ? next : prev
+const secondArticle = isArabic ? prev : next
+```
+
+### 6.4 Logical CSS Properties
+
+**Use Tailwind's Logical Properties:**
 
 ```css
-/* Good - Works with RTL */
+/* ✅ Good - Works with RTL */
 .component {
-  margin-inline-start: 1rem; /* Instead of margin-left */
-  padding-inline-end: 2rem; /* Instead of padding-right */
-  border-inline: 1px solid; /* Instead of border-left/right */
+  ms-4    /* margin-inline-start (auto left/right based on dir) */
+  me-4    /* margin-inline-end */
+  ps-4    /* padding-inline-start */
+  pe-4    /* padding-inline-end */
+  text-start  /* logical text-align */
 }
 
-/* Bad - Breaks in RTL */
+/* ❌ Bad - Breaks in RTL */
 .component {
-  margin-left: 1rem; /* Will be on wrong side in RTL */
-  padding-right: 2rem; /* Will be on wrong side in RTL */
+  ml-4    /* margin-left (always left, ignores RTL) */
+  mr-4    /* margin-right (always right, ignores RTL) */
+  text-left  /* always left-aligned */
 }
 ```
 
-**Testing RTL:**
+### 6.5 Testing RTL
 
-1. Visit `/ar` route
-2. Inspect element - should see `<html dir="rtl">`
-3. Check that layout mirrors horizontally
+**Manual Testing:**
+
+1. Visit English homepage: `http://localhost:3000/`
+2. Navigate to Arabic blog: Click "المدونة" or go to `/ar/blog`
+3. Check that layout **automatically switches to RTL** without refresh
+4. Inspect `<html>` element - should show `dir="rtl"` and `lang="ar"`
+5. Verify:
+   - ✅ Text flows right-to-left
+   - ✅ Author avatar on RIGHT side
+   - ✅ Spacing reversed (margins, padding)
+   - ✅ Navigation labels in Arabic
+   - ✅ Arrows point correct direction (→ for "back")
+
+**DevTools Verification:**
+
+```javascript
+// Check in browser console
+document.documentElement.getAttribute('dir') // Should be "rtl"
+document.documentElement.getAttribute('lang') // Should be "ar"
+```
+
+**Common Issues:**
+
+| Issue                                 | Cause                    | Fix                                              |
+| ------------------------------------- | ------------------------ | ------------------------------------------------ |
+| RTL not working on navigation         | Cache not cleared        | Hard refresh (Cmd+Shift+R)                       |
+| Layout doesn't switch when navigating | `RTLHandler` not mounted | Check `app/layout.tsx` includes `<RTLHandler />` |
+| FOUC (flash of wrong direction)       | Inline script missing    | Verify `<script>` in `<head>` before body        |
 
 ---
 
@@ -741,15 +874,18 @@ npx prettier --write "app/**/*.tsx"
 
 ### 13.1 Key Files
 
-| File                     | Purpose                                                  |
-| ------------------------ | -------------------------------------------------------- |
-| `app/seo.tsx`            | SEO utilities (buildLanguageAlternates, genPageMetadata) |
-| `app/sitemap.ts`         | Dynamic sitemap generator                                |
-| `app/robots.ts`          | robots.txt generator                                     |
-| `app/layout.tsx`         | Root layout (English + locale detection)                 |
-| `app/[lang]/layout.tsx`  | Arabic layout (dir="rtl")                                |
-| `contentlayer.config.ts` | Blog post processing and language detection              |
-| `next.config.js`         | Redirects and Next.js config                             |
+| File                        | Purpose                                                  |
+| --------------------------- | -------------------------------------------------------- |
+| `app/seo.tsx`               | SEO utilities (buildLanguageAlternates, genPageMetadata) |
+| `app/sitemap.ts`            | Dynamic sitemap generator                                |
+| `app/robots.ts`             | robots.txt generator                                     |
+| `app/layout.tsx`            | Root layout (English + RTL script injection)             |
+| `app/[lang]/layout.tsx`     | Arabic layout wrapper                                    |
+| `components/RTLHandler.tsx` | Client-side RTL handler for navigation                   |
+| `layouts/PostLayout.tsx`    | Blog post layout with RTL adaptations                    |
+| `contentlayer.config.ts`    | Blog post processing and language detection              |
+| `middleware.ts`             | Locale detection and header injection                    |
+| `next.config.js`            | Redirects and Next.js config                             |
 
 ### 13.2 Common Commands
 
@@ -806,11 +942,12 @@ For questions about this implementation:
 
 ## 15. Version History
 
-| Version | Date       | Changes                                                                  |
-| ------- | ---------- | ------------------------------------------------------------------------ |
-| 3.0     | 2025-10-27 | Complete rewrite for Strategy B, SEO optimization, production guidelines |
-| 2.0     | 2025-10-21 | Initial bilingual implementation (English/Arabic)                        |
-| 1.0     | -          | Legacy next-intl implementation (deprecated)                             |
+| Version | Date       | Changes                                                                               |
+| ------- | ---------- | ------------------------------------------------------------------------------------- |
+| 3.1     | 2025-11-10 | Added dual-approach RTL system (inline script + RTLHandler component), PostLayout RTL |
+| 3.0     | 2025-10-27 | Complete rewrite for Strategy B, SEO optimization, production guidelines              |
+| 2.0     | 2025-10-21 | Initial bilingual implementation (English/Arabic)                                     |
+| 1.0     | -          | Legacy next-intl implementation (deprecated)                                          |
 
 ---
 

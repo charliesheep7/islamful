@@ -32,8 +32,9 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags, faqs, summary } = content
+  const { filePath, path, slug, date, title, tags, faqs, summary, lang } = content
   const basePath = path.split('/')[0]
+  const isArabic = lang === 'ar'
 
   return (
     <SectionContainer>
@@ -44,10 +45,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
                 <div>
-                  <dt className="sr-only">Published on</dt>
+                  <dt className="sr-only">{isArabic ? 'نُشر في' : 'Published on'}</dt>
                   <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
                     <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      {new Date(date).toLocaleDateString(
+                        isArabic ? 'ar-SA' : siteMetadata.locale,
+                        postDateTemplate
+                      )}
                     </time>
                   </dd>
                 </div>
@@ -59,11 +63,14 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
             <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
-              <dt className="sr-only">Authors</dt>
+              <dt className="sr-only">{isArabic ? 'المؤلفون' : 'Authors'}</dt>
               <dd>
-                <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
+                <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0 sm:rtl:space-x-reverse">
                   {authorDetails.map((author) => (
-                    <li className="flex items-center space-x-3 text-left" key={author.name}>
+                    <li
+                      className="flex items-center space-x-3 text-start rtl:space-x-reverse"
+                      key={author.name}
+                    >
                       {author.avatar && (
                         <Image
                           src={author.avatar}
@@ -74,11 +81,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                         />
                       )}
                       <dl className="text-sm leading-5 font-medium">
-                        <dt className="sr-only">Name</dt>
+                        <dt className="sr-only">{isArabic ? 'الاسم' : 'Name'}</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                         {(author.occupation || author.company) && (
                           <>
-                            <dt className="sr-only">Role</dt>
+                            <dt className="sr-only">{isArabic ? 'الدور' : 'Role'}</dt>
                             <dd className="text-gray-500 dark:text-gray-400">
                               {[author.occupation, author.company].filter(Boolean).join(' • ')}
                             </dd>
@@ -99,7 +106,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
-                  Discuss on X
+                  {isArabic ? 'ناقش على X' : 'Discuss on X'}
                 </Link>
               </div>
               {siteMetadata.comments && (
@@ -115,26 +122,38 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <div className="divide-gray-200 text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y dark:divide-gray-700">
                 {(next || prev) && (
                   <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                    {prev && prev.path && (
-                      <div>
-                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Previous Article
-                        </h2>
-                        <div className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400">
-                          <Link href={`/${prev.path}`}>{prev.title}</Link>
-                        </div>
-                      </div>
-                    )}
-                    {next && next.path && (
-                      <div>
-                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Next Article
-                        </h2>
-                        <div className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400">
-                          <Link href={`/${next.path}`}>{next.title}</Link>
-                        </div>
-                      </div>
-                    )}
+                    {(() => {
+                      const firstArticle = isArabic ? next : prev
+                      return (
+                        firstArticle &&
+                        firstArticle.path && (
+                          <div>
+                            <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                              {isArabic ? 'المقال التالي' : 'Previous Article'}
+                            </h2>
+                            <div className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400">
+                              <Link href={`/${firstArticle.path}`}>{firstArticle.title}</Link>
+                            </div>
+                          </div>
+                        )
+                      )
+                    })()}
+                    {(() => {
+                      const secondArticle = isArabic ? prev : next
+                      return (
+                        secondArticle &&
+                        secondArticle.path && (
+                          <div>
+                            <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                              {isArabic ? 'المقال السابق' : 'Next Article'}
+                            </h2>
+                            <div className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400">
+                              <Link href={`/${secondArticle.path}`}>{secondArticle.title}</Link>
+                            </div>
+                          </div>
+                        )
+                      )
+                    })()}
                   </div>
                 )}
               </div>
@@ -142,9 +161,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <Link
                   href={`/${basePath}`}
                   className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                  aria-label="Back to the blog"
+                  aria-label={isArabic ? 'العودة إلى المدونة' : 'Back to the blog'}
                 >
-                  &larr; Back to the blog
+                  {isArabic ? 'العودة إلى المدونة →' : '← Back to the blog'}
                 </Link>
               </div>
             </footer>

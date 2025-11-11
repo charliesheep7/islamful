@@ -52,14 +52,16 @@ export function middleware(request: NextRequest) {
     currentLocale = detectedLocale
   }
 
-  // Pass locale information down to the app via a custom request header
+  // Pass locale information down to the app via custom request headers
   requestHeaders.set('x-locale', currentLocale)
+  requestHeaders.set('x-pathname', pathname)
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   })
   response.headers.set('x-locale', currentLocale)
+  response.headers.set('x-pathname', pathname)
 
   return response
 }

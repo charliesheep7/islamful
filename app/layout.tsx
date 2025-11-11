@@ -9,7 +9,7 @@ import Header from '@/components/Header'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
-import { headers } from 'next/headers'
+import RTLHandler from '@/components/RTLHandler'
 
 const noto_sans = Noto_Sans({
   subsets: ['latin'],
@@ -79,17 +79,27 @@ export async function generateStaticParams() {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const basePath = process.env.BASE_PATH || ''
 
-  // Get locale from middleware header
-  const headersList = await headers()
-  const locale = (headersList.get('x-locale') as 'en' | 'ar') || 'en'
-
   return (
     <html
-      lang={locale}
-      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      lang="en"
+      dir="ltr"
       className={`${noto_sans.variable} ${noto_sans_arabic.variable} ${dm_serif.variable} scroll-smooth`}
       suppressHydrationWarning
     >
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              const path = window.location.pathname;
+              const isArabic = path.startsWith('/ar/') || path === '/ar';
+              if (isArabic) {
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+              }
+            })();
+          `,
+        }}
+      />
       <link
         rel="apple-touch-icon"
         sizes="76x76"
@@ -142,6 +152,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         }}
       />
       <body className="bg-gray-50 font-sans text-gray-800 antialiased ltr:pl-[calc(100vw-100%)] rtl:pr-[calc(100vw-100%)] dark:bg-gray-950 dark:text-white">
+        <RTLHandler />
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>

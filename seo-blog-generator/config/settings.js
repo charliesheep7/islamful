@@ -35,4 +35,6 @@ export const config = {
   },
   TOPICS_EN: './data/topics-en.jsonl',
   OUTPUT_DIR_EN: '../data/blog/en',
+  TOPICS_AR: './data/topics-ar.jsonl',
+  OUTPUT_DIR_AR: '../data/blog/ar',
 }
