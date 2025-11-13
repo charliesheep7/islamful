@@ -178,23 +178,38 @@ export default OpenAIClient
 // Create singleton instance for named exports
 const client = new OpenAIClient()
 
+async function submitTextPrompt(prompt, options = {}) {
+  return await client.client.responses.create({
+    model: config.openai.textModel,
+    input: [
+      {
+        role: 'user',
+        content: [{ type: 'input_text', text: prompt }],
+      },
+    ],
+    reasoning: { effort: options.reasoningEffort || 'low' },
+    text: { verbosity: options.verbosity || 'high' },
+    // Note: temperature not supported by gpt-5-mini model
+  })
+}
+
 // Named exports for generate-en.js compatibility
 export async function generateBlogContent(prompt) {
   try {
-    const response = await client.client.responses.create({
-      model: config.openai.textModel,
-      input: [
-        {
-          role: 'user',
-          content: [{ type: 'input_text', text: prompt }],
-        },
-      ],
-      reasoning: { effort: 'low' },
-      text: { verbosity: 'high' },
-    })
+    const response = await submitTextPrompt(prompt, { reasoningEffort: 'low' })
     return response.output_text
   } catch (error) {
     console.error('Error generating blog content:', error)
+    throw error
+  }
+}
+
+export async function runQaPrompt(prompt) {
+  try {
+    const response = await submitTextPrompt(prompt, { reasoningEffort: 'medium' })
+    return response.output_text?.trim()
+  } catch (error) {
+    console.error('Error running QA prompt:', error)
     throw error
   }
 }
