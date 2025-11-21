@@ -78,7 +78,7 @@ class OpenAIClient {
   }
 
   async generateImage(topic, articleType, slug) {
-    console.log('🎨 Starting GPT-5 image generation (this may take 60+ seconds)...')
+    console.log('🎨 Starting image generation...')
     console.log(`   Topic: ${topic}`)
     console.log(`   Article Type: ${articleType}`)
     console.log(`   Slug: ${slug}`)
@@ -101,26 +101,21 @@ class OpenAIClient {
       const imagePromptText = promptResponse.output_text.trim()
       console.log(`✅ Image prompt generated: "${imagePromptText}"`)
 
-      // Generate the image using GPT-5 with image_generation tool
-      console.log('🖼️  Calling GPT-5 with image_generation tool...')
+      // Generate the image using gpt-image-1
+      console.log('🖼️  Calling gpt-image-1...')
 
-      const imageResponse = await this.client.responses.create({
-        model: 'gpt-5',
-        input: `Generate an image: ${imagePromptText}`,
-        tools: [{ type: 'image_generation' }],
+      const imageResponse = await this.client.images.generate({
+        model: 'gpt-image-1',
+        prompt: imagePromptText,
+        n: 1,
+        size: '1024x1024',
+        response_format: 'b64_json',
       })
 
-      console.log('📊 Raw API response:', JSON.stringify(imageResponse, null, 2))
+      console.log('📊 API response received')
 
-      // Extract the image data from response
-      const imageOutputs = imageResponse.output?.filter(
-        (output) => output.type === 'image_generation_call'
-      )
-
-      console.log(`🔍 Found ${imageOutputs?.length || 0} image outputs`)
-
-      if (imageOutputs && imageOutputs.length > 0) {
-        const imageBase64 = imageOutputs[0].result
+      if (imageResponse.data && imageResponse.data.length > 0) {
+        const imageBase64 = imageResponse.data[0].b64_json
         console.log(`📏 Image data length: ${imageBase64?.length || 0} characters`)
 
         // Save the image (use relative path from public/images/blog)
@@ -137,37 +132,22 @@ class OpenAIClient {
           success: true,
           imagePath,
           prompt: imagePromptText,
-          model: 'gpt-5',
+          model: 'gpt-image-1',
         }
       } else {
-        const errorMsg = 'No image generation outputs found in response'
+        const errorMsg = 'No image data found in response'
         console.error('❌', errorMsg)
-        console.log(
-          '📋 Available outputs:',
-          imageResponse.output?.map((o) => o.type)
-        )
         throw new Error(errorMsg)
       }
     } catch (error) {
       console.error('❌ Image generation error:', error.message)
       console.error('📋 Full error:', error)
 
-      // Log detailed error information
-      if (error.status) {
-        console.error(`🌐 HTTP Status: ${error.status}`)
-      }
-      if (error.code) {
-        console.error(`🏷️  Error Code: ${error.code}`)
-      }
-      if (error.type) {
-        console.error(`📝 Error Type: ${error.type}`)
-      }
-
       return {
         success: false,
         error: error.message,
         fullError: error,
-        model: 'gpt-5',
+        model: 'gpt-image-1',
       }
     }
   }

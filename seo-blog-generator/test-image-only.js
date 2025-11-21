@@ -18,14 +18,16 @@ async function testImageGeneration() {
       'A young man looking confident and hopeful, standing by a bright window at sunrise, modern clean room'
     console.log(`📝 Prompt: ${testPrompt}`)
 
-    console.log('🖼️  Calling GPT-5 with image_generation tool...')
+    console.log('🖼️  Calling gpt-image-1...')
 
     const startTime = Date.now()
 
-    const response = await openai.responses.create({
-      model: 'gpt-5',
-      input: `Generate an image: ${testPrompt}`,
-      tools: [{ type: 'image_generation' }],
+    const response = await openai.images.generate({
+      model: 'gpt-image-1',
+      prompt: testPrompt,
+      n: 1,
+      size: '1024x1024',
+      response_format: 'b64_json',
     })
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(2)
