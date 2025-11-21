@@ -47,5 +47,5 @@ yarn-error.log*
 .contentlayer
 
 # SEO Blog Generator scripts
-/seo-blog-generator
+# /seo-blog-generator
 prd-seogen.md

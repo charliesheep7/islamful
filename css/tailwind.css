@@ -106,20 +106,25 @@
   .prose {
     & a {
       color: var(--color-primary-500);
+
       &:hover {
         color: var(--color-primary-600);
       }
+
       & code {
         color: var(--color-primary-400);
       }
     }
+
     & :where(h1, h2) {
       font-weight: 700;
       letter-spacing: var(--tracking-tight);
     }
+
     & h3 {
       font-weight: 600;
     }
+
     & :where(code):not(pre code) {
       color: var(--color-indigo-500);
     }
@@ -128,13 +133,16 @@
   .prose-invert {
     & a {
       color: var(--color-primary-500);
+
       &:hover {
         color: var(--color-primary-400);
       }
+
       & code {
         color: var(--color-primary-400);
       }
     }
+
     & :where(h1, h2, h3, h4, h5, h6) {
       color: var(--color-gray-100);
     }
@@ -166,8 +174,10 @@
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
@@ -204,6 +214,7 @@ input:-webkit-autofill:focus {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -215,9 +226,11 @@ input:-webkit-autofill:focus {
   100% {
     transform: translate(0, 0) scale(1);
   }
+
   33% {
     transform: translate(30px, -50px) scale(1.1);
   }
+
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
