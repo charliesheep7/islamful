@@ -33,6 +33,7 @@ jobs:
         working-directory: ./seo-blog-generator
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GOOGLE_GENAI_API_KEY: ${{ secrets.GOOGLE_GENAI_API_KEY }}
         run: node run-batch.js
 
       - name: Commit and push changes
