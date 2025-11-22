@@ -11,7 +11,7 @@ const siteMetadata = {
   siteUrl: 'https://www.deenup.app',
   siteRepo: '',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/Apple/App_store_1024_1x.svg`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   mastodon: '',
   email: '',
   github: '',
