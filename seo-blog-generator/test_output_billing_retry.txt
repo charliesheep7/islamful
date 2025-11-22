@@ -1,0 +1,21 @@
+🧪 Starting image generation test...
+🎨 Starting image generation...
+   Topic: Test Article Title
+   Article Type: guide
+   Slug: test-article-slug
+📝 Generating image prompt...
+✅ Image prompt generated: "I can do this — could you confirm the specific topic to represent, or should I proceed using "Test Article Title"? 
+
+If you want me to proceed now, here’s a concise painting description using "Test Article Title":
+
+A single, clear visual concept: a gilded open book set on a low desert stone at the canvas center, its illuminated pages unfurling into a flowing ribbon of water that transforms into interlaced geometric patterns and arabesque motifs. Olive branches frame the midground while dunes recede into a starlit azure sky; warm golden-hour light from the upper-left bathes the scene in rich golds, deep emeralds and burgundies, with soft cream highlights and visible, expressive brushstrokes and thick oil texture. Horizontal 16:9 layout with a gentle vignette at the edges, ample breathing space around the central book, and a quieter cream-toned upper third reserved for title text—no human figures, serene and contemplative."
+🖼️  Calling Google GenAI (gemini-2.5-flash-image)...
+📊 API response received
+❌ No image data found in Google GenAI response
+❌ Image generation error: No image data found in Google GenAI response
+📋 Full error: Error: No image data found in Google GenAI response
+    at OpenAIClient.generateImage (file:///Users/sihancheng/Projects/DeenUp-website/seo-blog-generator/utils/openai.js:161:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async generateHeroImage (file:///Users/sihancheng/Projects/DeenUp-website/seo-blog-generator/utils/openai.js:220:10)
+    at async runTest (file:///Users/sihancheng/Projects/DeenUp-website/seo-blog-generator/test-image-gen.js:9:24)
+❌ Test Failed: No image data found in Google GenAI response

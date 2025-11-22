@@ -1,20 +1,21 @@
 import OpenAI from 'openai'
+import { GoogleGenAI } from '@google/genai'
 import { config } from '../config/settings.js'
 import { masterPrompt, youtubeSearchPrompt } from '../prompts/masterPrompt.js'
 import { imagePrompt } from '../prompts/master-prompt-en.js'
 import fs from 'fs-extra'
 import path from 'path'
 
-class OpenAIClient {
+export class OpenAIClient {
   constructor() {
-    if (!config.openai.apiKey) {
-      throw new Error('OpenAI API key is required. Please set OPENAI_API_KEY in your .env file.')
-    }
-
     this.client = new OpenAI({
-      apiKey: config.openai.apiKey,
+      apiKey: process.env.OPENAI_API_KEY,
       organization: config.openai.orgId,
     })
+
+    // Google GenAI setup
+    this.googleApiKey = process.env.GOOGLE_GENAI_API_KEY
+    this.googleAi = new GoogleGenAI({ apiKey: this.googleApiKey })
   }
 
   async generateBlogContent(topic, articleType) {
@@ -84,7 +85,7 @@ class OpenAIClient {
     console.log(`   Slug: ${slug}`)
 
     try {
-      // First, generate the image prompt
+      // First, generate the image prompt using OpenAI (keeping this as is for now)
       const promptText = imagePrompt.replace('{topic}', topic).replace('{articleType}', articleType)
       console.log('📝 Generating image prompt...')
 
@@ -101,41 +102,59 @@ class OpenAIClient {
       const imagePromptText = promptResponse.output_text.trim()
       console.log(`✅ Image prompt generated: "${imagePromptText}"`)
 
-      // Generate the image using gpt-image-1
-      console.log('🖼️  Calling gpt-image-1...')
+      // Generate the image using Google GenAI
+      console.log('🖼️  Calling Google GenAI (gemini-2.5-flash-image)...')
 
-      const imageResponse = await this.client.images.generate({
-        model: 'gpt-image-1',
-        prompt: imagePromptText,
-        n: 1,
-        size: '1024x1024',
-        response_format: 'b64_json',
+      const finalImagePrompt = `Generate an image of ${imagePromptText}`
+      const response = await this.googleAi.models.generateContent({
+        model: 'gemini-2.5-flash-image',
+        contents: finalImagePrompt,
       })
 
       console.log('📊 API response received')
 
-      if (imageResponse.data && imageResponse.data.length > 0) {
-        const imageBase64 = imageResponse.data[0].b64_json
-        console.log(`📏 Image data length: ${imageBase64?.length || 0} characters`)
+      let imageSaved = false
+      let imagePath = ''
 
-        // Save the image (use relative path from public/images/blog)
-        const imageDir = path.join(config.generation.imageDir, slug)
-        await fs.ensureDir(imageDir)
+      for (const part of response.candidates[0].content.parts) {
+        if (part.inlineData) {
+          const imageData = part.inlineData.data
+          const buffer = Buffer.from(imageData, 'base64')
 
-        const imagePath = path.join(imageDir, 'hero.webp')
-        console.log(`💾 Saving image to: ${imagePath}`)
+          // Save the image (use relative path from public/images/blog)
+          const imageDir = path.join(config.generation.imageDir, slug)
+          await fs.ensureDir(imageDir)
 
-        await fs.writeFile(imagePath, Buffer.from(imageBase64, 'base64'))
-        console.log('✅ Image saved successfully!')
+          imagePath = path.join(imageDir, 'hero.webp') // Keeping .webp extension but content might be png/jpeg, usually fine or can convert. Google example saves as png. Let's stick to webp filename for consistency or change if needed. The buffer is raw image data.
+          // Actually, the example saves as .png. Let's check if we should rename. The project seems to use .webp.
+          // If the buffer is PNG, saving as .webp extension is misleading but might work in browsers.
+          // However, to be safe, let's save as .png if that's what comes back, or just overwrite hero.webp.
+          // The user's example saves as 'gemini-native-image.png'.
+          // I will save as hero.png to be safe and match the format, but the existing code expects hero.webp in some places?
+          // The previous code saved as hero.webp.
+          // Let's stick to hero.png if it's a PNG.
+          // Wait, the previous step I updated the frontmatter to .png for some files.
+          // Let's save as hero.png and return that path.
 
+          imagePath = path.join(imageDir, 'hero.png')
+          console.log(`💾 Saving image to: ${imagePath}`)
+
+          await fs.writeFile(imagePath, buffer)
+          console.log('✅ Image saved successfully!')
+          imageSaved = true
+          break
+        }
+      }
+
+      if (imageSaved) {
         return {
           success: true,
           imagePath,
           prompt: imagePromptText,
-          model: 'gpt-image-1',
+          model: 'gemini-2.5-flash-image',
         }
       } else {
-        const errorMsg = 'No image data found in response'
+        const errorMsg = 'No image data found in Google GenAI response'
         console.error('❌', errorMsg)
         throw new Error(errorMsg)
       }
@@ -147,7 +166,7 @@ class OpenAIClient {
         success: false,
         error: error.message,
         fullError: error,
-        model: 'gpt-image-1',
+        model: 'gemini-2.5-flash-image',
       }
     }
   }

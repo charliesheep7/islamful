@@ -1,0 +1,65 @@
+🧪 Starting image generation test...
+🎨 Starting image generation...
+   Topic: Test Article Title
+   Article Type: guide
+   Slug: test-article-slug
+📝 Generating image prompt...
+✅ Image prompt generated: "I don’t have the specific {topic}—could you tell me what topic you want the painting to capture? 
+
+If helpful, here’s a concise example for the topic “spiritual journey (suluk)” to show the format you’ll get:
+
+- Visual concept: A single, flowing ribbon of water winding across a desert plain at golden hour, its surface reflecting a starlit sky; geometric tile fragments and Arabesque vines rise gently from the banks and olive branches lean toward the water like quiet witnesses. Deep emerald dunes and rich burgundy rocks frame the scene; a softly glowing open book rests on a stone near the foreground, leaving negative space in the upper third for text. Expressive oil brushstrokes, layered texture, and a warm vignette create a meditative, peaceful atmosphere."
+🖼️  Calling Google GenAI (gemini-2.5-flash-image)...
+📊 API response received
+🔍 Full Response: {
+  "sdkHttpResponse": {
+    "headers": {
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "content-encoding": "gzip",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Fri, 21 Nov 2025 21:16:33 GMT",
+      "server": "scaffolding on HTTPServer2",
+      "server-timing": "gfet4t7; dur=1093",
+      "transfer-encoding": "chunked",
+      "vary": "Origin, X-Origin, Referer",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "x-xss-protection": "0"
+    }
+  },
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "- Visual concept: A breathtaking painting of a bustling, vibrant marketplace in a futuristic cyberpunk city. Neon lights from towering skyscrapers illuminate the scene, casting dynamic reflections on wet streets. Holographic advertisements flicker, displaying exotic goods and services. A diverse crowd of people, some with cybernetic enhancements, navigate through stalls overflowing with unusual tech gadgets, glowing flora, and synthetic foods. Expressive oil brushstrokes, layered texture, and a cool, atmospheric haze create an immersive and energetic mood. \n\n"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "modelVersion": "gemini-2.5-flash-image",
+  "responseId": "sdYgadHACpuyjMcPt4ud6AY",
+  "usageMetadata": {
+    "promptTokenCount": 162,
+    "candidatesTokenCount": 98,
+    "totalTokenCount": 260,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 162
+      }
+    ]
+  }
+}
+❌ No image data found in Google GenAI response
+❌ Image generation error: No image data found in Google GenAI response
+📋 Full error: Error: No image data found in Google GenAI response
+    at OpenAIClient.generateImage (file:///Users/sihancheng/Projects/DeenUp-website/seo-blog-generator/utils/openai.js:162:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async generateHeroImage (file:///Users/sihancheng/Projects/DeenUp-website/seo-blog-generator/utils/openai.js:221:10)
+    at async runTest (file:///Users/sihancheng/Projects/DeenUp-website/seo-blog-generator/test-image-gen.js:9:24)
+❌ Test Failed: No image data found in Google GenAI response
