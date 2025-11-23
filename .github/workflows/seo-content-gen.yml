@@ -42,6 +42,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/blog/ seo-blog-generator/state.json
+          git add data/blog/ seo-blog-generator/state.json public/images/blog/
           git commit -m "chore: auto-generate seo content [skip ci]" || echo "No changes to commit"
           git push
