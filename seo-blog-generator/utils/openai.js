@@ -15,6 +15,15 @@ export class OpenAIClient {
 
     // Google GenAI setup
     this.googleApiKey = process.env.GOOGLE_GENAI_API_KEY
+
+    if (!this.googleApiKey) {
+      console.warn(
+        '⚠️ Warning: GOOGLE_GENAI_API_KEY is not set. Google GenAI calls may fail or require ADC.'
+      )
+    } else {
+      console.log('🔑 Google GenAI API Key found.')
+    }
+
     this.googleAi = new GoogleGenAI({ apiKey: this.googleApiKey })
   }
 
