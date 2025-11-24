@@ -87,7 +87,7 @@ node generate-ar.js 1
 This will generate:
 
 - **MDX file**: `../data/blog/ar/salat-al-fajr-kayfa-uwazib.mdx`
-- **Hero image**: `../public/images/blog/salat-al-fajr-kayfa-uwazib/hero.webp`
+- **Hero image**: `../public/images/blog/salat-al-fajr-kayfa-uwazib/hero.png`
 - **URL**: `https://www.deenup.app/ar/blog/salat-al-fajr-kayfa-uwazib`
 
 ### Generate Multiple Posts

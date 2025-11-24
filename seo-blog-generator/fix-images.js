@@ -28,15 +28,16 @@ async function fixImages() {
     const ruqyahPng = path.join(ruqyahDir, 'hero.png')
     const ruqyahWebp = path.join(ruqyahDir, 'hero.webp')
 
-    if (await fs.pathExists(ruqyahPng)) {
-      console.log('Converting Al-Ruqyah image to webp...')
-      await sharp(ruqyahPng).webp().toFile(ruqyahWebp)
-      console.log('✅ Converted Al-Ruqyah image to webp.')
-      // Optional: remove png? Let's keep it for now or remove it to be clean.
-      await fs.remove(ruqyahPng)
-    } else {
-      console.log('⚠️  Could not find hero.png for Al-Ruqyah.')
-    }
+    // if (await fs.pathExists(ruqyahPng)) {
+    //   console.log('Converting Al-Ruqyah image to webp...')
+    //   await sharp(ruqyahPng).webp().toFile(ruqyahWebp)
+    //   console.log('✅ Converted Al-Ruqyah image to webp.')
+    //   // Optional: remove png? Let's keep it for now or remove it to be clean.
+    //   await fs.remove(ruqyahPng)
+    // } else {
+    //   console.log('⚠️  Could not find hero.png for Al-Ruqyah.')
+    // }
+    console.log('Skipping WebP conversion as we are now using PNGs.')
   } catch (error) {
     console.error('❌ Error fixing images:', error)
   }

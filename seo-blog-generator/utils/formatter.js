@@ -51,8 +51,8 @@ export class BlogFormatter {
 
     // Replace image src with correct slug - handle multiple possible patterns
     formattedContent = formattedContent.replace(
-      /src="\/images\/blog\/[^"]+\/hero\.webp"/g,
-      `src="/images/blog/${slug}/hero.webp"`
+      /src="\/images\/blog\/[^"]+\/hero\.png"/g,
+      `src="/images/blog/${slug}/hero.png"`
     )
 
     // Replace YouTube video ID - handle multiple possible patterns

@@ -362,7 +362,7 @@ summary: "${topic.description}"
 tags: ${JSON.stringify(topic.keywords)}
 authors: ["mathias-yussif"]
 draft: false
-images: ["/images/blog/${topic.slug}/hero.webp"]
+images: ["/images/blog/${topic.slug}/hero.png"]
 layout: "PostLayout"
 faqs:
   - question: "السؤال 1؟"
@@ -379,7 +379,7 @@ faqs:
     answer: "الإجابة 6."
 ---
 
-<Image src="/images/blog/${topic.slug}/hero.webp" alt="${topic.title}" width={1200} height={630} />
+<Image src="/images/blog/${topic.slug}/hero.png" alt="${topic.title}" width={1200} height={630} />
 
 {المقدمة باتباع جميع الإرشادات أعلاه، بدءًا بجملة جريئة من 1-2 تعيد صياغة افتراض القارئ وتعد بالنتيجة}
 

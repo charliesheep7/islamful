@@ -134,17 +134,6 @@ export class OpenAIClient {
           const imageDir = path.join(config.generation.imageDir, slug)
           await fs.ensureDir(imageDir)
 
-          imagePath = path.join(imageDir, 'hero.webp') // Keeping .webp extension but content might be png/jpeg, usually fine or can convert. Google example saves as png. Let's stick to webp filename for consistency or change if needed. The buffer is raw image data.
-          // Actually, the example saves as .png. Let's check if we should rename. The project seems to use .webp.
-          // If the buffer is PNG, saving as .webp extension is misleading but might work in browsers.
-          // However, to be safe, let's save as .png if that's what comes back, or just overwrite hero.webp.
-          // The user's example saves as 'gemini-native-image.png'.
-          // I will save as hero.png to be safe and match the format, but the existing code expects hero.webp in some places?
-          // The previous code saved as hero.webp.
-          // Let's stick to hero.png if it's a PNG.
-          // Wait, the previous step I updated the frontmatter to .png for some files.
-          // Let's save as hero.png and return that path.
-
           imagePath = path.join(imageDir, 'hero.png')
           console.log(`💾 Saving image to: ${imagePath}`)
 

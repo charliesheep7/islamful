@@ -173,7 +173,7 @@ CONTENT STRUCTURE:
 ## [Title]
 
 <Image
-  src="/images/blog/[slug]/hero.webp"
+  src="/images/blog/[slug]/hero.png"
   alt="[Descriptive alt text based on article topic]"
   width={800}
   height={600}

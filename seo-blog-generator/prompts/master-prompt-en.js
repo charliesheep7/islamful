@@ -367,7 +367,7 @@ summary: "${topic.description}"
 tags: ${JSON.stringify(topic.keywords)}
 authors: ["mathias-yussif"]
 draft: false
-images: ["/images/blog/${topic.slug}/hero.webp"]
+images: ["/images/blog/${topic.slug}/hero.png"]
 layout: "PostLayout"
 faqs:
   - question: "Question 1?"
@@ -384,7 +384,7 @@ faqs:
     answer: "Answer 6."
 ---
 
-<Image src="/images/blog/${topic.slug}/hero.webp" alt="${topic.title}" width={1200} height={630} />
+<Image src="/images/blog/${topic.slug}/hero.png" alt="${topic.title}" width={1200} height={630} />
 
 {Introduction following all guidelines above, beginning with a bold 1–2 sentence hook that reframes the reader’s assumption and promises the outcome}
 

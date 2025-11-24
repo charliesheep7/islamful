@@ -47,7 +47,7 @@ async function testImageGeneration() {
       console.log(`📏 Image data length: ${imageBase64.length} characters`)
 
       // Save test image
-      const testPath = './test-image.webp'
+      const testPath = './test-image.png'
       await fs.writeFile(testPath, Buffer.from(imageBase64, 'base64'))
 
       console.log('✅ SUCCESS: Image generated and saved!')

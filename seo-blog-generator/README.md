@@ -15,12 +15,14 @@ This tool generates high-quality SEO blog posts for the Fapulous recovery app us
 ## Setup
 
 1. **Install Dependencies**
+
    ```bash
    cd seo-blog-generator
    npm install
    ```
 
 2. **Configure Environment**
+
    ```bash
    cp .env.example .env
    # Edit .env and add your OpenAI API key
@@ -35,18 +37,22 @@ This tool generates high-quality SEO blog posts for the Fapulous recovery app us
 ## Usage
 
 ### From Project Root
+
 ```bash
 npm run generate-blog
 ```
 
 ### From Generator Directory
+
 ```bash
 cd seo-blog-generator
 npm run generate
 ```
 
 ### Interactive Menu
+
 The tool will guide you through:
+
 1. **Topic Selection**: Choose from categories or enter custom topic
 2. **Article Type**: How-to, Guide, Comparison, or List
 3. **Image Generation**: Create hero image with GPT Image 1
@@ -57,24 +63,24 @@ The tool will guide you through:
 
 ```mdx
 ---
-title: "SEO-optimized title"
-date: "2025-01-XX"
-updated: "2025-01-XX"
-description: "50-160 character meta description"
-author: "Fapulous Team"
-reviewedBy: "AI Content Review"
-tags: ["tag1", "tag2", "tag3", "tag4", "tag5"]
+title: 'SEO-optimized title'
+date: '2025-01-XX'
+updated: '2025-01-XX'
+description: '50-160 character meta description'
+author: 'Fapulous Team'
+reviewedBy: 'AI Content Review'
+tags: ['tag1', 'tag2', 'tag3', 'tag4', 'tag5']
 featured: false
 draft: true
 faqs:
-  - question: "Question 1"
-    answer: "Answer 1"
+  - question: 'Question 1'
+    answer: 'Answer 1'
   # ... 6 total FAQs
 ---
 
 ## Title
 
-<Image src="/images/blog/slug/hero.webp" alt="..." width={800} height={600} />
+<Image src="/images/blog/slug/hero.png" alt="..." width={800} height={600} />
 
 Introduction with immediate value...
 
@@ -83,6 +89,7 @@ Introduction with immediate value...
 </div>
 
 ## Main Content Sections
+
 ...
 
 ## Conclusion
@@ -100,13 +107,16 @@ Introduction with immediate value...
 ## Output
 
 Generated files are automatically saved to:
+
 - **Main Blog Post**: `/content/blog/[number]-[slug].mdx` (ready to publish)
 - **Backup Copy**: `./output/[number]-[slug].mdx`
 - **Hero Image**: `../public/images/blog/[number]-[slug]/hero.webp`
 - **Logs**: `./logs/generation-YYYY-MM-DD.log`
 
 ### Auto-Numbering System
+
 The generator automatically:
+
 - Scans `/content/blog/` for the highest numbered post (currently 98)
 - Creates the next sequential number (99, 100, 101, etc.)
 - Uses format: `99-how-to-overcome-addiction.mdx`
@@ -121,6 +131,7 @@ The generator automatically:
 ## Configuration
 
 Edit `config/settings.js` to customize:
+
 - OpenAI model settings
 - Output directories
 - Default metadata
@@ -129,17 +140,21 @@ Edit `config/settings.js` to customize:
 ## Troubleshooting
 
 ### API Key Issues
+
 ```bash
 Error: OpenAI API key is required
 ```
+
 **Solution**: Set `OPENAI_API_KEY` in your `.env` file
 
 ### Image Generation Fails
+
 - Check if GPT Image 1 model is available in your account
 - Verify sufficient API credits
 - Review image prompt for inappropriate content
 
 ### YouTube Video Search
+
 - AI-powered video search (no YouTube API key required)
 - Falls back to motivational videos if search fails
 
@@ -152,6 +167,7 @@ Error: OpenAI API key is required
 ## Content Guidelines
 
 All generated content follows:
+
 - Evidence-based information only
 - Empathetic, non-judgmental tone
 - No medical advice or diagnoses
