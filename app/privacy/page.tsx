@@ -4,7 +4,7 @@ import SectionContainer from '@/components/SectionContainer'
 export const metadata = genPageMetadata({
   title: 'Privacy Policy',
   description:
-    'Understand what personal data DeenUp collects, how it is used, and the safeguards that protect it.',
+    'Understand what personal data DeenBack collects, how it is used, and the safeguards that protect it.',
   alternates: buildLanguageAlternates('/privacy'),
 })
 
@@ -17,12 +17,12 @@ export default function PrivacyPage() {
           <strong>Last updated: [Oct 25, 2025]</strong>
         </p>
         <p>
-          DeenUp ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy
+          DeenBack ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy
           explains how we collect, use, and protect your information when you use our mobile
           application or related services ("Services").
         </p>
         <p>
-          <strong>If you do not agree with this Privacy Policy, please do not use DeenUp.</strong>
+          <strong>If you do not agree with this Privacy Policy, please do not use DeenBack.</strong>
         </p>
 
         <h2>Information We Collect</h2>
@@ -100,7 +100,7 @@ export default function PrivacyPage() {
         <p>No system can be fully secure, though we work hard to protect your data.</p>
 
         <h2>Children's Privacy</h2>
-        <p>DeenUp is for users 13 years and older.</p>
+        <p>DeenBack is for users 13 years and older.</p>
         <p>
           We do not knowingly collect personal data from children under 13. If we discover such
           data, we will delete it quickly.
@@ -118,7 +118,7 @@ export default function PrivacyPage() {
 
         <h2>Changes to This Policy</h2>
         <p>
-          We may update this Privacy Policy as needed. Continued use of DeenUp means you accept the
+          We may update this Privacy Policy as needed. Continued use of DeenBack means you accept the
           updated policy.
         </p>
 
