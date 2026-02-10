@@ -35,13 +35,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Include canonical URLs for both English and Arabic main routes
   // Both languages are canonical (independent content strategy)
-  const routes = ['', 'blog', 'privacy', 'terms'].map((route) => ({
+  const routes = ['', 'blog', 'privacy', 'terms', 'support'].map((route) => ({
     url: `${siteUrl}/${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
   // Add Arabic route equivalents (all are canonical)
-  const arabicRoutes = ['', 'blog', 'privacy', 'terms'].map((route) => ({
+  const arabicRoutes = ['', 'blog', 'privacy', 'terms', 'support'].map((route) => ({
     url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))

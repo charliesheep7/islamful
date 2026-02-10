@@ -15,8 +15,8 @@ const MobileNav = () => {
   // Simple translation function
   const getNavText = (key: string) => {
     const translations: Record<string, Record<string, string>> = {
-      en: { home: 'Home', blog: 'Blog' },
-      ar: { home: 'الرئيسية', blog: 'المدونة' },
+      en: { home: 'Home', blog: 'Blog', support: 'Support' },
+      ar: { home: 'الرئيسية', blog: 'المدونة', support: 'الدعم' },
     }
     return translations[currentLang]?.[key] || key
   }
