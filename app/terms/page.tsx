@@ -130,8 +130,8 @@ export default function TermsPage() {
 
         <h2>12. Intellectual Property</h2>
         <p>
-          DeenBack, including its name, logo, design, software, and content, is owned by DeenBack
-          or its licensors and protected by intellectual property laws.
+          DeenBack, including its name, logo, design, software, and content, is owned by DeenBack or
+          its licensors and protected by intellectual property laws.
         </p>
         <p>
           If you believe content infringes your rights, contact vip@deenup.app and we will review
