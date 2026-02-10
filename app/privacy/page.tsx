@@ -17,8 +17,8 @@ export default function PrivacyPage() {
           <strong>Last updated: [Oct 25, 2025]</strong>
         </p>
         <p>
-          DeenBack ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy
-          explains how we collect, use, and protect your information when you use our mobile
+          DeenBack ("we," "us," or "our") is committed to protecting your privacy. This Privacy
+          Policy explains how we collect, use, and protect your information when you use our mobile
           application or related services ("Services").
         </p>
         <p>
@@ -118,8 +118,8 @@ export default function PrivacyPage() {
 
         <h2>Changes to This Policy</h2>
         <p>
-          We may update this Privacy Policy as needed. Continued use of DeenBack means you accept the
-          updated policy.
+          We may update this Privacy Policy as needed. Continued use of DeenBack means you accept
+          the updated policy.
         </p>
 
         <h2>Contact Us</h2>

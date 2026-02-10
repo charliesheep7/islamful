@@ -17,9 +17,9 @@ export default function TermsPage() {
           <strong>Last updated: [Jan 29, 2026]</strong>
         </p>
         <p>
-          Welcome to DeenBack. Please read these Terms of Service ("Terms") carefully. By accessing or
-          using DeenBack's mobile application or related services ("Services"), you agree to be bound
-          by these Terms. If you do not agree, please stop using the Services.
+          Welcome to DeenBack. Please read these Terms of Service ("Terms") carefully. By accessing
+          or using DeenBack's mobile application or related services ("Services"), you agree to be
+          bound by these Terms. If you do not agree, please stop using the Services.
         </p>
 
         <h2>1. Eligibility</h2>
@@ -130,8 +130,8 @@ export default function TermsPage() {
 
         <h2>12. Intellectual Property</h2>
         <p>
-          DeenBack, including its name, logo, design, software, and content, is owned by DeenBack or its
-          licensors and protected by intellectual property laws.
+          DeenBack, including its name, logo, design, software, and content, is owned by DeenBack
+          or its licensors and protected by intellectual property laws.
         </p>
         <p>
           If you believe content infringes your rights, contact vip@deenup.app and we will review
@@ -161,7 +161,8 @@ export default function TermsPage() {
             damages
           </li>
           <li>
-            DeenBack is not liable for lost data, lost profits, emotional harm, or reputational damage
+            DeenBack is not liable for lost data, lost profits, emotional harm, or reputational
+            damage
           </li>
           <li>
             Our total liability for any claim will not exceed: The greater of 50 USD or the amount
