@@ -1,8 +1,8 @@
 import { BlogClient } from 'seobot'
 import siteMetadata from '@/data/siteMetadata'
 
-// Initialize the SEObot client
-const client = new BlogClient(process.env.SEOBOT_API_KEY || '')
+// Initialize the SEObot client only if API key is provided
+const client = process.env.SEOBOT_API_KEY ? new BlogClient(process.env.SEOBOT_API_KEY) : null
 
 // Type definition for normalized blog post
 export interface SeoBotPost {
@@ -44,6 +44,7 @@ export async function getSeoBotPosts(): Promise<SeoBotPost[]> {
   // SEObot disabled — add a SEOBOT_API_KEY for deenback.com when ready
   return []
   try {
+    if (!client) return []
     // Fetch the first 100 posts (adjust if you need more)
     const { articles } = await client.getArticles(0, 100)
 
@@ -61,6 +62,7 @@ export async function getSeoBotPosts(): Promise<SeoBotPost[]> {
  */
 export async function getSeoBotPostBySlug(slug: string): Promise<SeoBotPost | null> {
   try {
+    if (!client) return null
     const post = await client.getArticle(slug)
 
     if (!post) {
