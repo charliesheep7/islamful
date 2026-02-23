@@ -1,19 +1,19 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'DeenUp - Your Islamic Companion',
-  author: 'DeenUp',
+  title: 'Deen Back - Your Islamic Companion',
+  author: 'Deen Back',
   authorSlug: 'mathias-yussif',
-  headerTitle: 'DeenUp',
+  headerTitle: 'Deen Back',
   description:
-    'Track your daily Deen, get Quranic-cited answers 24/7, and connect with Muslim brothers and sisters worldwide. Your AI-powered Islamic companion.',
+    'Your daily companion for Islamic growth, spiritual reflection, and building lasting positive habits.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://www.deenup.app',
+  siteUrl: 'https://www.deenback.com',
   siteRepo: '',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/Apple/App_store_1024_1x.svg`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/App_store_1024_1x.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   mastodon: '',
-  email: '',
+  email: 'vip@deenback.com',
   github: '',
   x: '', // Placeholder - to be added later
   // twitter: 'https://twitter.com/Twitter',

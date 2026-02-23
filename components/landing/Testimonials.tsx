@@ -20,9 +20,9 @@ const testimonials = [
     name: 'Aisha M.',
     title: 'New Revert',
     quote:
-      'DeenUp helped me understand Islam with authentic Quranic guidance. The AI companion answered my questions with proper references.',
+      'Deen Back helped me understand Islam with authentic Quranic guidance. The AI companion answered my questions with proper references.',
     fullStory:
-      "As a new Muslim, I had so many questions about daily practices and Islamic teachings. DeenUp's AI companion provided instant answers backed by Quranic verses and Hadith references. I could ask anything at 3 AM and get authentic guidance. It's like having a knowledgeable friend available 24/7, helping me grow in my faith with confidence.",
+      "As a new Muslim, I had so many questions about daily practices and Islamic teachings. Deen Back's AI companion provided instant answers backed by Quranic verses and Hadith references. I could ask anything at 3 AM and get authentic guidance. It's like having a knowledgeable friend available 24/7, helping me grow in my faith with confidence.",
   },
   {
     category: 'Daily Habits',
@@ -48,7 +48,7 @@ const testimonials = [
     quote:
       'The anonymous letters feature connected me with Muslims worldwide. I received encouragement during my hardest times.',
     fullStory:
-      "Living far from family as a Muslim student felt isolating. Through DeenUp's letter feature, I connected with Muslim brothers and sisters globally. The anonymous support and encouragement I received reminded me I'm never alone in this journey. I've also been able to help others, which strengthened my own faith immensely. Truly a blessing.",
+      "Living far from family as a Muslim student felt isolating. Through Deen Back's letter feature, I connected with Muslim brothers and sisters globally. The anonymous support and encouragement I received reminded me I'm never alone in this journey. I've also been able to help others, which strengthened my own faith immensely. Truly a blessing.",
   },
 ]
 
@@ -68,7 +68,7 @@ export default function Testimonials({ lang = 'en', dict }: TestimonialsProps) {
             className={`mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
             {dict?.testimonials?.subtitle ||
-              'See how DeenUp is helping Muslims strengthen their faith journey'}
+              'See how Deen Back is helping Muslims strengthen their faith journey'}
           </p>
         </div>
 

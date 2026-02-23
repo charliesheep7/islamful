@@ -129,6 +129,7 @@ export default function ListLayout({
                             src={images[0]}
                             alt={title}
                             fill
+                            sizes="(max-width: 768px) 192px, 240px"
                             className="object-cover transition-transform duration-300 hover:scale-105"
                           />
                         </div>

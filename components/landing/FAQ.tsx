@@ -10,14 +10,14 @@ interface FAQProps {
 
 const faqs = [
   {
-    question: "How can I trust the Islamic accuracy of DeenUp's guidance?",
+    question: "How can I trust the Islamic accuracy of Deen Back's guidance?",
     answer:
-      "DeenUp does not rely on AI to generate Islamic rulings. Instead, we use AI as a powerful search tool to help you find authentic guidance directly from the Holy Quran and authentic Hadith. Every answer includes proper citations and references to original sources, allowing you to verify the information yourself. Our AI helps you access the wisdom of the Quran more efficiently, but the guidance comes from Allah's words, not artificial intelligence.",
+      "Deen Back does not rely on AI to generate Islamic rulings. Instead, we use AI as a powerful search tool to help you find authentic guidance directly from the Holy Quran and authentic Hadith. Every answer includes proper citations and references to original sources, allowing you to verify the information yourself. Our AI helps you access the wisdom of the Quran more efficiently, but the guidance comes from Allah's words, not artificial intelligence.",
   },
   {
-    question: 'Is DeenUp suitable for new Muslims and reverts?',
+    question: 'Is Deen Back suitable for new Muslims and reverts?',
     answer:
-      'Absolutely! DeenUp is designed for Muslims at all stages of their faith journey. New Muslims and reverts particularly benefit from our 24/7 AI companion that can answer questions anytime, without judgment. The Daily Good Deen checklist helps establish foundational habits, and the community letter feature connects you with supportive brothers and sisters worldwide.',
+      'Absolutely! Deen Back is designed for Muslims at all stages of their faith journey. New Muslims and reverts particularly benefit from our 24/7 AI companion that can answer questions anytime, without judgment. The Daily Good Deen checklist helps establish foundational habits, and the community letter feature connects you with supportive brothers and sisters worldwide.',
   },
   {
     question: 'How does the anonymous letter feature work?',
@@ -27,12 +27,12 @@ const faqs = [
   {
     question: 'Can I customize the Daily Good Deen checklist?',
     answer:
-      'Yes! While DeenUp provides a default checklist based on essential Islamic practices, you can customize it to match your personal spiritual goals and daily routine. Track prayers, Quran reading, dhikr, charity, and other acts of worship that are meaningful to your faith journey.',
+      'Yes! While Deen Back provides a default checklist based on essential Islamic practices, you can customize it to match your personal spiritual goals and daily routine. Track prayers, Quran reading, dhikr, charity, and other acts of worship that are meaningful to your faith journey.',
   },
   {
-    question: 'What languages does DeenUp support?',
+    question: 'What languages does Deen Back support?',
     answer:
-      'DeenUp currently supports English and Arabic, with the interface automatically switching to right-to-left (RTL) layout for Arabic. We chose these languages to serve both English-speaking Muslims globally and Arabic-speaking Muslims in the Middle East and North Africa. More languages may be added based on community needs.',
+      'Deen Back currently supports English and Arabic, with the interface automatically switching to right-to-left (RTL) layout for Arabic. We chose these languages to serve both English-speaking Muslims globally and Arabic-speaking Muslims in the Middle East and North Africa. More languages may be added based on community needs.',
   },
 ]
 
@@ -60,7 +60,7 @@ export default function FAQ({ lang = 'en', dict }: FAQProps) {
           <p
             className={`text-lg text-gray-600 dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
-            {dict?.faq?.subtitle || 'Everything you need to know about DeenUp'}
+            {dict?.faq?.subtitle || 'Everything you need to know about Deen Back'}
           </p>
         </div>
 

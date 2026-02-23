@@ -49,7 +49,7 @@ export function buildLanguageAlternates(
 
   // CRITICAL FIX: Use absolute URLs for canonical and hreflang
   // Relative URLs cause "Duplicate canonical" errors in Google Search Console
-  // because www.deenup.app and deenup.app resolve relative URLs differently
+  // because www.deenback.com and deenback.com resolve relative URLs differently
   const baseUrl = siteMetadata.siteUrl
   const absoluteEnglish = `${baseUrl}${normalizedEnglish}`
   const absoluteArabic = `${baseUrl}${normalizedArabic}`

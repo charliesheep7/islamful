@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export const metadata = genPageMetadata({
   title: 'المدونة',
-  description: 'إرشادات، تأملات، وتحديثات من فريق ديّن أب لدعم عباداتك اليومية.',
+  description: 'إرشادات، تأملات، وتحديثات من فريق دين باك لدعم عباداتك اليومية.',
   alternates: buildLanguageAlternates('/blog', { currentLanguage: 'ar' }),
 })
 

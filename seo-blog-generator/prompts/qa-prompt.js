@@ -76,7 +76,7 @@ export function buildQaPrompt({
   const youtubeSection = formatYouTubeStatus(youtubeStatus)
 
   return `
-You are DeenUp's Islamic content QA assistant for ${language === 'ar' ? 'Arabic' : 'English'} SEO blogs.
+You are Deen Back's Islamic content QA assistant for ${language === 'ar' ? 'Arabic' : 'English'} SEO blogs.
 Your job: quietly fix ALL issues so the MDX is flawless for publication—do not produce a report or commentary.
 
 Reader context: ${languageHint}

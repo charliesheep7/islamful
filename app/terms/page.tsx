@@ -31,8 +31,8 @@ export default function TermsPage() {
         <h2>2. Your Account</h2>
         <p>
           You may sign in using email, Apple, or Google. You are responsible for maintaining the
-          confidentiality of your login information. Notify us immediately at vip@deenup.app if you
-          believe your account has been compromised.
+          confidentiality of your login information. Notify us immediately at vip@deenback.com if
+          you believe your account has been compromised.
         </p>
         <p>
           We may suspend or terminate your account if you violate these Terms or engage in harmful
@@ -84,7 +84,7 @@ export default function TermsPage() {
         </p>
         <p>
           We may review, remove, or restrict content that violates these Terms or legal
-          requirements. You may report concerns to vip@deenup.app.
+          requirements. You may report concerns to vip@deenback.com.
         </p>
 
         <h2>7. AI-Generated Content and No Professional Advice</h2>
@@ -134,7 +134,7 @@ export default function TermsPage() {
           its licensors and protected by intellectual property laws.
         </p>
         <p>
-          If you believe content infringes your rights, contact vip@deenup.app and we will review
+          If you believe content infringes your rights, contact vip@deenback.com and we will review
           promptly.
         </p>
 
@@ -200,7 +200,7 @@ export default function TermsPage() {
 
         <h2>21. Contact Us</h2>
         <p>If you have questions, concerns, or complaints, contact:</p>
-        <p>📩 vip@deenup.app</p>
+        <p>📩 vip@deenback.com</p>
       </div>
     </SectionContainer>
   )

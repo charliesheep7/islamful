@@ -35,22 +35,25 @@ const Header = () => {
   const headerClass = clsx(
     'sticky top-0 z-50 w-full border-b border-transparent transition-all duration-500 ease-out',
     scrolled
-      ? 'bg-white/80 dark:bg-gray-950/85 backdrop-blur-xl shadow-[0_18px_48px_rgba(15,23,42,0.12)] border-white/50 dark:border-white/10'
-      : 'bg-transparent'
+      ? 'bg-[#F6F5EE]/90 dark:bg-gray-950/85 backdrop-blur-xl shadow-[0_18px_48px_rgba(15,23,42,0.08)] border-[#F6F5EE]/50 dark:border-white/10'
+      : 'bg-[#F6F5EE] dark:bg-gray-950'
   )
 
   return (
     <header className={headerClass} role="banner">
       <div className="flex w-full items-center justify-between px-4 py-2 sm:px-6 sm:py-3 lg:px-10">
         <Link href="/" aria-label={siteMetadata.headerTitle}>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <Image
               src={siteMetadata.siteLogo}
               alt={siteMetadata.headerTitle}
-              width={96}
-              height={96}
-              className="h-24 w-24 transition-opacity duration-200 hover:opacity-80"
+              width={48}
+              height={48}
+              className="h-12 w-12 transition-opacity duration-200 hover:opacity-80"
             />
+            <span className="text-xl font-bold text-[--color-primary-700] dark:text-[--color-primary-300]">
+              {siteMetadata.headerTitle}
+            </span>
           </div>
         </Link>
         <div className="flex items-center space-x-3 leading-5 sm:space-x-5">

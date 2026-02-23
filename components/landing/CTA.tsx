@@ -37,7 +37,7 @@ export default function CTA({ lang = 'en', dict }: CTAProps) {
           className={`mx-auto mb-10 max-w-2xl text-xl text-gray-600 dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
         >
           {dict?.cta?.subtitle ||
-            'Join our WhatsApp community and be the first to know when DeenUp launches'}
+            'Join our WhatsApp community and be the first to know when Deen Back launches'}
         </p>
 
         <a

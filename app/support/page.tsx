@@ -3,7 +3,7 @@ import SectionContainer from '@/components/SectionContainer'
 
 export const metadata = genPageMetadata({
   title: 'Support',
-  description: 'Need help with DeenBack? Contact support at vip@deenup.app.',
+  description: 'Need help with DeenBack? Contact support at vip@deenback.com.',
   alternates: buildLanguageAlternates('/support'),
 })
 
@@ -19,7 +19,7 @@ export default function SupportPage() {
 
         <h2>Contact</h2>
         <p>
-          <strong>Email:</strong> <a href="mailto:vip@deenup.app">vip@deenup.app</a>
+          <strong>Email:</strong> <a href="mailto:vip@deenback.com">vip@deenback.com</a>
         </p>
 
         <h2>What to Include</h2>

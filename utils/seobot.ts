@@ -41,6 +41,8 @@ export interface SeoBotPost {
  * Fetch all posts from SEObot API
  */
 export async function getSeoBotPosts(): Promise<SeoBotPost[]> {
+  // SEObot disabled — add a SEOBOT_API_KEY for deenback.com when ready
+  return []
   try {
     // Fetch the first 100 posts (adjust if you need more)
     const { articles } = await client.getArticles(0, 100)

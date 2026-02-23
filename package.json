@@ -1,5 +1,5 @@
 {
-  "name": "visacalm",
+  "name": "deenback",
   "version": "2.4.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,6 @@
     "@headlessui/react": "2.2.0",
     "@next/bundle-analyzer": "15.2.4",
     "@tailwindcss/forms": "^0.5.9",
-    "@tailwindcss/oxide-linux-x64-gnu": "^4.0.5",
     "@tailwindcss/postcss": "^4.0.5",
     "@tailwindcss/typography": "^0.5.15",
     "body-scroll-lock": "^4.0.0-beta.0",

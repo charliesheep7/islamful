@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       <div className="prose dark:prose-invert max-w-none py-8">
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Last updated: [Oct 25, 2025]</strong>
+          <strong>Last updated: [Jan 29, 2026]</strong>
         </p>
         <p>
           DeenBack ("we," "us," or "our") is committed to protecting your privacy. This Privacy
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
           <li>Request help by contacting us if needed</li>
         </ul>
         <p>
-          <strong>Email:</strong> vip@deenup.app
+          <strong>Email:</strong> vip@deenback.com
         </p>
 
         <h2>Changes to This Policy</h2>
@@ -124,7 +124,7 @@ export default function PrivacyPage() {
 
         <h2>Contact Us</h2>
         <p>If you have any questions, please contact:</p>
-        <p>📩 vip@deenup.app</p>
+        <p>📩 vip@deenback.com</p>
       </div>
     </SectionContainer>
   )

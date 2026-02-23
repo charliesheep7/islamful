@@ -3,7 +3,7 @@ import { runQaPrompt } from './openai.js'
 
 const HTTP_TIMEOUT_MS = 12000
 const MAX_CONCURRENT_FETCHES = 5
-const USER_AGENT = 'DeenUpSEOQA/1.0 (+https://www.deenup.app)'
+const USER_AGENT = 'Deen BackSEOQA/1.0 (+https://www.deenback.com)'
 
 const URL_REGEX = /(https?:\/\/[^\s"'()<>]+(?:\([\w\d]+\))?)/gi
 const SKIP_URL_PATTERNS = [/^https?:\/\/localhost/i, /^https?:\/\/127\./i]

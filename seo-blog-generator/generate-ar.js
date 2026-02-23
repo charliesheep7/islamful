@@ -77,7 +77,7 @@ async function generateArabicBlog(topicNumber = 1) {
     console.log(`📊 عدد الكلمات: ~${generatedContent.split(' ').length} كلمة`)
     console.log(`❓ الأسئلة الشائعة: ${faqs.length}`)
     console.log(`🖼️  الصورة: ${imagePath}`)
-    console.log(`🌐 الرابط: https://www.deenup.app/ar/blog/${topic.slug}`)
+    console.log(`🌐 الرابط: https://www.deenback.com/ar/blog/${topic.slug}`)
   } catch (error) {
     console.error('\n❌ خطأ في توليد المدونة:', error.message)
     console.error(error.stack)

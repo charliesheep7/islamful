@@ -9,7 +9,7 @@ const POSTS_PER_PAGE = 5
 export const metadata = genPageMetadata({
   title: 'Blog',
   description:
-    'Guides, reflections, and product updates from the DeenUp team to support your daily ibadah.',
+    'Guides, reflections, and product updates from the Deen Back team to support your daily ibadah.',
   alternates: buildLanguageAlternates('/blog'),
 })
 

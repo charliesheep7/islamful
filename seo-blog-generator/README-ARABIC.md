@@ -1,8 +1,8 @@
-# Arabic Blog Generator for DeenUp
+# Arabic Blog Generator for Deen Back
 
 ## Overview
 
-Complete SEO-optimized Arabic blog content generation system for DeenUp, tailored specifically for Arabic-speaking Muslim readers.
+Complete SEO-optimized Arabic blog content generation system for Deen Back, tailored specifically for Arabic-speaking Muslim readers.
 
 ## 📁 File Structure
 
@@ -88,7 +88,7 @@ This will generate:
 
 - **MDX file**: `../data/blog/ar/salat-al-fajr-kayfa-uwazib.mdx`
 - **Hero image**: `../public/images/blog/salat-al-fajr-kayfa-uwazib/hero.png`
-- **URL**: `https://www.deenup.app/ar/blog/salat-al-fajr-kayfa-uwazib`
+- **URL**: `https://www.deenback.com/ar/blog/salat-al-fajr-kayfa-uwazib`
 
 ### Generate Multiple Posts
 
@@ -208,27 +208,35 @@ faqs:
 All Arabic blog posts follow the multilingual PRD structure:
 
 ```
-English:  https://www.deenup.app/blog/{slug}
-Arabic:   https://www.deenup.app/ar/blog/{slug}
+English:  https://www.deenback.com/blog/{slug}
+Arabic:   https://www.deenback.com/ar/blog/{slug}
 ```
 
 ### Hreflang Tags (Automatic):
 
 ```html
 <!-- English page -->
-<link rel="canonical" href="https://deenup.app/blog/salat-al-fajr-kayfa-uwazib" />
-<link rel="alternate" hreflang="en" href="https://deenup.app/blog/salat-al-fajr-kayfa-uwazib" />
-<link rel="alternate" hreflang="ar" href="https://deenup.app/ar/blog/salat-al-fajr-kayfa-uwazib" />
+<link rel="canonical" href="https://deenback.com/blog/salat-al-fajr-kayfa-uwazib" />
+<link rel="alternate" hreflang="en" href="https://deenback.com/blog/salat-al-fajr-kayfa-uwazib" />
+<link
+  rel="alternate"
+  hreflang="ar"
+  href="https://deenback.com/ar/blog/salat-al-fajr-kayfa-uwazib"
+/>
 <link
   rel="alternate"
   hreflang="x-default"
-  href="https://deenup.app/blog/salat-al-fajr-kayfa-uwazib"
+  href="https://deenback.com/blog/salat-al-fajr-kayfa-uwazib"
 />
 
 <!-- Arabic page -->
-<link rel="canonical" href="https://deenup.app/ar/blog/salat-al-fajr-kayfa-uwazib" />
-<link rel="alternate" hreflang="en" href="https://deenup.app/blog/salat-al-fajr-kayfa-uwazib" />
-<link rel="alternate" hreflang="ar" href="https://deenup.app/ar/blog/salat-al-fajr-kayfa-uwazib" />
+<link rel="canonical" href="https://deenback.com/ar/blog/salat-al-fajr-kayfa-uwazib" />
+<link rel="alternate" hreflang="en" href="https://deenback.com/blog/salat-al-fajr-kayfa-uwazib" />
+<link
+  rel="alternate"
+  hreflang="ar"
+  href="https://deenback.com/ar/blog/salat-al-fajr-kayfa-uwazib"
+/>
 ```
 
 ## ✅ Quality Checklist

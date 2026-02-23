@@ -8,57 +8,70 @@
 @theme {
   /* Font families */
   --font-sans:
-    var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    var(--font-libre-baskerville), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-arabic:
     var(--font-noto-sans-arabic), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-dm-serif), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-serif:
+    var(--font-libre-baskerville), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
-  /* Colors - DeenUp Brand Palette */
+  /* Colors - Deen Back Brand Palette */
 
-  /* Accent color scale (warm terracotta) - Primary brand color */
-  --color-accent-50: #fdefe9;
-  --color-accent-100: #f9dfd4;
-  --color-accent-200: #f2c2af;
-  --color-accent-300: #eaa287;
-  --color-accent-400: #e38f72;
-  --color-accent-500: #d97757;
-  --color-accent-600: #c66547;
-  --color-accent-700: #a94e36;
-  --color-accent-800: #8a3e2c;
-  --color-accent-900: #6e3123;
-  --color-accent-950: #571f18;
+  /* Primary Green Scale */
+  --color-primary-50: #f0f9f4;
+  --color-primary-100: #d1edde;
+  --color-primary-200: #a8dbc0;
+  --color-primary-300: #7cc9a2;
+  --color-primary-400: #51a780;
+  --color-primary-500: #327952;
+  --color-primary-600: #2a6645;
+  --color-primary-700: #1f4d34;
+  --color-primary-800: #163626;
+  --color-primary-900: #0e2119;
+  --color-primary-950: #0e2119;
 
-  /* Map primary to accent for compatibility */
-  --color-primary-50: #fdefe9;
-  --color-primary-100: #f9dfd4;
-  --color-primary-200: #f2c2af;
-  --color-primary-300: #eaa287;
-  --color-primary-400: #e38f72;
-  --color-primary-500: #d97757;
-  --color-primary-600: #c66547;
-  --color-primary-700: #a94e36;
-  --color-primary-800: #8a3e2c;
-  --color-primary-900: #6e3123;
-  --color-primary-950: #571f18;
+  /* Map accent to primary for compatibility */
+  --color-accent-50: var(--color-primary-50);
+  --color-accent-100: var(--color-primary-100);
+  --color-accent-200: var(--color-primary-200);
+  --color-accent-300: var(--color-primary-300);
+  --color-accent-400: var(--color-primary-400);
+  --color-accent-500: var(--color-primary-500);
+  --color-accent-600: var(--color-primary-600);
+  --color-accent-700: var(--color-primary-700);
+  --color-accent-800: var(--color-primary-800);
+  --color-accent-900: var(--color-primary-900);
+  --color-accent-950: var(--color-primary-950);
 
-  /* Neutral colors - Warm grays derived from brand colors */
-  --color-bg: #faf9f5;
-  --color-surface: #f0eee6;
-  --color-text: #3d3d3a;
+  /* Cream/Background Scale */
+  --color-cream-50: #f6f5ee;
+  --color-cream-100: #f6f5ee;
+  --color-cream-200: #eeede6;
+  --color-cream-300: #f9f9f9;
+  --color-cream-400: #e7ded8;
+  --color-cream-500: #c6c4c2;
+  --color-cream-600: #8a7f7a;
+  --color-cream-700: #666666;
+  --color-cream-800: #5c3926;
+  --color-cream-900: #3d2518;
 
-  /* Extended neutral scale for flexibility */
-  --color-gray-50: #faf9f5;
-  --color-gray-100: #f0eee6;
-  --color-gray-200: #e3e1d7;
-  --color-gray-300: #ccc9bc;
-  --color-gray-400: #aaa69a;
-  --color-gray-500: #8a8679;
-  --color-gray-600: #6d6a5f;
-  --color-gray-700: #57544c;
-  --color-gray-800: #3d3d3a;
-  --color-gray-900: #2a2926;
+  /* Map Gray to Cream for warm theme */
+  --color-gray-50: var(--color-cream-50);
+  --color-gray-100: var(--color-cream-100);
+  --color-gray-200: var(--color-cream-200);
+  --color-gray-300: var(--color-cream-300);
+  --color-gray-400: var(--color-cream-400);
+  --color-gray-500: var(--color-cream-500);
+  --color-gray-600: var(--color-cream-600);
+  --color-gray-700: var(--color-cream-700);
+  --color-gray-800: var(--color-cream-800);
+  --color-gray-900: var(--color-cream-900);
   --color-gray-950: #1a1917;
+
+  /* Semantic Colors */
+  --color-bg: var(--color-cream-100);
+  --color-surface: var(--color-cream-50);
+  --color-text: var(--color-cream-700);
 
   /* Line heights */
   --line-height-11: 2.75rem;

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import Negotiator from 'negotiator'
 
-// DeenUp supports English (default) and Arabic
+// Deen Back supports English (default) and Arabic
 const locales = ['en', 'ar'] as const
 const defaultLocale = 'en' as const
 
