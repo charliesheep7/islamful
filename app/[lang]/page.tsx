@@ -1,7 +1,6 @@
 import Hero from '@/components/landing/Hero'
 import Features from '@/components/landing/Features'
 import CTA from '@/components/landing/CTA'
-import MediaTicker from '@/components/landing/MediaTicker'
 import Testimonials from '@/components/landing/Testimonials'
 import FAQ from '@/components/landing/FAQ'
 import { getDictionary } from './dictionaries'
@@ -20,7 +19,6 @@ export default async function LangHome({ params }: { params: Promise<{ lang: 'ar
       <Hero lang={lang} dict={dict} />
       <Features lang={lang} dict={dict} />
       <CTA lang={lang} dict={dict} />
-      <MediaTicker />
       <Testimonials lang={lang} dict={dict} />
       <FAQ lang={lang} dict={dict} />
     </div>
@@ -28,8 +26,8 @@ export default async function LangHome({ params }: { params: Promise<{ lang: 'ar
 }
 
 export const metadata = genPageMetadata({
-  title: 'دين باك - رفيقك الإسلامي',
+  title: 'دين باك – تغلّب على نفسك، وعُد إلى الله',
   description:
-    'حافظ على اتساقك مع الصلاة والقرآن والمجتمع من خلال رفيق دين باك الإسلامي المدعوم بالذكاء الاصطناعي.',
+    'دين باك يساعد المسلمين على التغلب على إدمان المحتوى الحرام من خلال سوس القرآن، الذكر اليومي، ودعم المجتمع الإيماني.',
   alternates: buildLanguageAlternates('/', { currentLanguage: 'ar' }),
 })

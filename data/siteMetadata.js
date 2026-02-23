@@ -1,11 +1,11 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Deen Back - Your Islamic Companion',
+  title: 'Deen Back – Overcome Your Nafs',
   author: 'Deen Back',
   authorSlug: 'mathias-yussif',
   headerTitle: 'Deen Back',
   description:
-    'Your daily companion for Islamic growth, spiritual reflection, and building lasting positive habits.',
+    "Deen Back helps Muslims overcome addiction to haram content through Qur'an SOS, daily dhikr, and a faith-centered support community.",
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.deenback.com',

@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { BookOpen, CheckCircle2, ChevronDown, Mail } from 'lucide-react'
+import { BookOpen, ShieldCheck, ChevronDown, Users } from 'lucide-react'
 import { useState } from 'react'
 import type { Dictionary } from '@/types/dictionary'
 
@@ -12,43 +12,43 @@ interface TestimonialsProps {
 
 const testimonials = [
   {
-    category: 'Spiritual Growth',
+    category: 'Quran SOS',
     icon: BookOpen,
     iconColor: 'text-emerald-600 dark:text-emerald-400',
     bgColor: 'bg-emerald-50 dark:bg-emerald-900/20',
     borderColor: 'border-emerald-200 dark:border-emerald-800',
-    name: 'Aisha M.',
-    title: 'New Revert',
-    quote:
-      'Deen Back helped me understand Islam with authentic Quranic guidance. The AI companion answered my questions with proper references.',
-    fullStory:
-      "As a new Muslim, I had so many questions about daily practices and Islamic teachings. Deen Back's AI companion provided instant answers backed by Quranic verses and Hadith references. I could ask anything at 3 AM and get authentic guidance. It's like having a knowledgeable friend available 24/7, helping me grow in my faith with confidence.",
-  },
-  {
-    category: 'Daily Habits',
-    icon: CheckCircle2,
-    iconColor: 'text-blue-600 dark:text-blue-400',
-    bgColor: 'bg-blue-50 dark:bg-blue-900/20',
-    borderColor: 'border-blue-200 dark:border-blue-800',
-    name: 'Omar K.',
-    title: 'Working Professional',
-    quote:
-      "The Daily Good Deen checklist keeps me consistent. I've built a 60-day streak and my faith has never been stronger.",
-    fullStory:
-      'Between work deadlines and family responsibilities, I was struggling to maintain my Islamic practices. The Daily Good Deen checklist helped me track my progress and build lasting habits. Seeing my streak grow motivated me to stay consistent with my prayers and Quran reading. The gentle reminders and beautiful unlocked postcards make spiritual growth feel rewarding.',
-  },
-  {
-    category: 'Community Support',
-    icon: Mail,
-    iconColor: 'text-purple-600 dark:text-purple-400',
-    bgColor: 'bg-purple-50 dark:bg-purple-900/20',
-    borderColor: 'border-purple-200 dark:border-purple-800',
-    name: 'Fatima S.',
+    name: 'Ahmad R.',
     title: 'University Student',
     quote:
-      'The anonymous letters feature connected me with Muslims worldwide. I received encouragement during my hardest times.',
+      'The Quran SOS mode changed everything for me. Whenever I feel an urge, I open it immediately and the verses pull me back. I have not relapsed in 47 days.',
     fullStory:
-      "Living far from family as a Muslim student felt isolating. Through Deen Back's letter feature, I connected with Muslim brothers and sisters globally. The anonymous support and encouragement I received reminded me I'm never alone in this journey. I've also been able to help others, which strengthened my own faith immensely. Truly a blessing.",
+      "I had struggled with a haram habit for years — ashamed, isolated, and feeling like Allah had given up on me. Deen Back showed me that Allah's mercy is greater than my weakness. The Quran SOS mode is the most powerful tool I have ever used. When the urge hits, I open it immediately and let the Qur'an words wash over me. The reflection prompts help me understand why I was feeling that way. 47 days clean and counting — not because I am strong, but because I learned to turn to Allah the moment I am weak.",
+  },
+  {
+    category: 'Faith Button',
+    icon: ShieldCheck,
+    iconColor: 'text-orange-600 dark:text-orange-400',
+    bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+    borderColor: 'border-orange-200 dark:border-orange-800',
+    name: 'Mariam K.',
+    title: 'Working Professional',
+    quote:
+      'The Panic Button is my instant reset. Late nights at work used to be my weakness — now I tap it and do dhikr instead. My iman has never felt this steady.',
+    fullStory:
+      "I used to think my problem was unique to me, too embarrassing to share. Late nights working alone were always when I would slip. Deen Back's Panic Button changed my reaction completely — the moment I feel the pull, I tap it. The guided dhikr that comes up is so calming. I do not fight the urge with willpower alone anymore; I replace it with remembrance of Allah. My Iman Tracker now shows 3 months of consistent spiritual practice. That consistency has made me more present at work, more patient as a mother, and more connected to my Deen.",
+  },
+  {
+    category: 'Support Group',
+    icon: Users,
+    iconColor: 'text-teal-600 dark:text-teal-400',
+    bgColor: 'bg-teal-50 dark:bg-teal-900/20',
+    borderColor: 'border-teal-200 dark:border-teal-800',
+    name: 'Yusuf T.',
+    title: 'Father of Three',
+    quote:
+      'Knowing there are brothers going through the same struggle — and winning — gave me the courage to keep going. The support group is a real brotherhood.',
+    fullStory:
+      "The hardest part of my struggle was the silence. No one to talk to. Too ashamed to tell my wife or imam. When I found the Deen Back Support Group, I cried. Finally — brothers who understood, who did not judge, who shared the same fight. We remind each other of Allah when one of us is low. We celebrate each other's clean streaks. We hold each other accountable with kindness, not shame. Allah says believers are like a single body — when one part suffers, the rest responds. That is exactly what this group feels like.",
   },
 ]
 
@@ -62,13 +62,13 @@ export default function Testimonials({ lang = 'en', dict }: TestimonialsProps) {
           <h2
             className={`mb-4 text-3xl font-bold text-[--color-text] sm:text-4xl lg:text-5xl dark:text-white ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
-            {dict?.testimonials?.heading || 'Stories from the Ummah'}
+            {dict?.testimonials?.heading || 'Real Journeys Back to Allah'}
           </h2>
           <p
             className={`mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-300 ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
             {dict?.testimonials?.subtitle ||
-              'See how Deen Back is helping Muslims strengthen their faith journey'}
+              'Brothers and sisters who used Deen Back to overcome their struggles and return to their Deen'}
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function Testimonials({ lang = 'en', dict }: TestimonialsProps) {
                 {/* Quote */}
                 <blockquote className="mb-4">
                   <p className="leading-relaxed text-gray-700 italic dark:text-gray-200">
-                    "{testimonial.quote}"
+                    &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </blockquote>
 

@@ -8,37 +8,37 @@ interface FAQProps {
   dict?: Dictionary
 }
 
-const faqs = [
+const defaultFaqs = [
   {
-    question: "How can I trust the Islamic accuracy of Deen Back's guidance?",
+    question: 'What is Deen Back and who is it for?',
     answer:
-      "Deen Back does not rely on AI to generate Islamic rulings. Instead, we use AI as a powerful search tool to help you find authentic guidance directly from the Holy Quran and authentic Hadith. Every answer includes proper citations and references to original sources, allowing you to verify the information yourself. Our AI helps you access the wisdom of the Quran more efficiently, but the guidance comes from Allah's words, not artificial intelligence.",
+      "Deen Back is an Islamic app designed to help Muslims overcome addiction to haram content — including pornography, social media compulsion, and other harmful habits. Whether you are struggling in secret or simply want to build stronger spiritual discipline, Deen Back provides guided tools rooted in the Qur'an and Sunnah.",
   },
   {
-    question: 'Is Deen Back suitable for new Muslims and reverts?',
+    question: 'How does Quran SOS work?',
     answer:
-      'Absolutely! Deen Back is designed for Muslims at all stages of their faith journey. New Muslims and reverts particularly benefit from our 24/7 AI companion that can answer questions anytime, without judgment. The Daily Good Deen checklist helps establish foundational habits, and the community letter feature connects you with supportive brothers and sisters worldwide.',
+      "When urges arise, open Quran SOS and you will be guided to read a short Qur'an verse, reflect on its meaning, and answer simple prompts designed to slow you down and reset your focus. The experience is gamified to encourage consistency and progress. Each session helps reduce guilt, increase awareness, and strengthen iman over time.",
   },
   {
-    question: 'How does the anonymous letter feature work?',
+    question: 'What is the Panic Button (Faith Button)?',
     answer:
-      'The letter feature allows you to write and receive anonymous messages to help Muslim brothers and sisters globally. You can share encouragement, ask for advice, or offer support—all while maintaining privacy. This feature is inspired by Quran 4:114, encouraging charity, goodness, and making peace between people. Every letter is moderated to ensure it aligns with Islamic values.',
+      'The Faith Button offers immediate grounding when you feel overwhelmed or tempted. With one tap, access calming dhikr, short guided dua, and reflection prompts designed to interrupt impulses and help you regain clarity and control.',
   },
   {
-    question: 'Can I customize the Daily Good Deen checklist?',
+    question: 'Is my data and activity private?',
     answer:
-      'Yes! While Deen Back provides a default checklist based on essential Islamic practices, you can customize it to match your personal spiritual goals and daily routine. Track prayers, Quran reading, dhikr, charity, and other acts of worship that are meaningful to your faith journey.',
+      'Yes. Your spiritual journey is personal. Deen Back is designed with your privacy in mind — your sessions, streaks, and progress are only visible to you. The Support Group uses respectful, moderated communication without exposing your personal activity.',
   },
   {
-    question: 'What languages does Deen Back support?',
+    question: 'What subscription plans are available?',
     answer:
-      'Deen Back currently supports English and Arabic, with the interface automatically switching to right-to-left (RTL) layout for Arabic. We chose these languages to serve both English-speaking Muslims globally and Arabic-speaking Muslims in the Middle East and North Africa. More languages may be added based on community needs.',
+      'A Deen Back subscription is required for full access to features and content. Payment is charged to your iTunes Account at confirmation of purchase. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription anytime in your iTunes Account Settings.',
   },
 ]
 
 export default function FAQ({ lang = 'en', dict }: FAQProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
-  const faqItems = dict?.faq?.items || faqs
+  const faqItems = dict?.faq?.items || defaultFaqs
 
   return (
     <section className="bg-white py-20 sm:py-28 dark:bg-gray-950">
@@ -107,7 +107,7 @@ export default function FAQ({ lang = 'en', dict }: FAQProps) {
           })}
         </div>
 
-        {/* Additional help */}
+        {/* Contact support */}
         <div className="mt-12 rounded-2xl border border-gray-200 bg-gradient-to-br from-[--color-surface] to-[--color-bg] p-8 text-center dark:border-gray-700 dark:from-gray-800 dark:to-gray-900">
           <p
             className={`mb-4 text-lg text-black dark:text-white ${lang === 'ar' ? 'font-arabic' : ''}`}
@@ -115,12 +115,10 @@ export default function FAQ({ lang = 'en', dict }: FAQProps) {
             {dict?.faq?.stillHaveQuestions || 'Still have questions?'}
           </p>
           <a
-            href="https://chat.whatsapp.com/Ea023Ghn0PJ27Iji2Ms6Fp?mode=wwt"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:vip@deenback.com"
             className={`inline-flex items-center gap-2 rounded-xl bg-[var(--color-accent-500)] px-10 py-4 text-xl font-bold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:bg-[var(--color-accent-600)] ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
-            {dict?.faq?.contactSupport || 'Join Waitlist'}
+            {dict?.faq?.contactSupport || 'Contact Us'}
           </a>
         </div>
       </div>
