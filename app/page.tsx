@@ -24,10 +24,10 @@ export default async function Page() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/static/images/apple-app-store-badge.svg"
           alt="Download on the App Store"
-          width={180}
           height={60}
           style={{ width: 'auto', height: '60px' }}
         />

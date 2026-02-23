@@ -5,7 +5,6 @@ import ListLayout from '@/layouts/ListLayout'
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getSeoBotPosts, mergePosts } from '@/utils/seobot'
 
 const POSTS_PER_PAGE = 5
 
@@ -40,17 +39,6 @@ export const generateStaticParams = async () => {
     }
   })
 
-  // Get tags from SEObot posts
-  const seoBotPosts = await getSeoBotPosts()
-  seoBotPosts.forEach((post) => {
-    if (post.tags && !post.draft) {
-      post.tags.forEach((tag) => {
-        const formattedTag = slug(tag)
-        tagCounts[formattedTag] = (tagCounts[formattedTag] || 0) + 1
-      })
-    }
-  })
-
   return Object.keys(tagCounts).map((tag) => ({ tag }))
 }
 
@@ -63,16 +51,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   const filteredPosts = englishBlogs.filter(
     (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)
   )
-  const contentLayerPosts = allCoreContent(sortPosts(filteredPosts))
-
-  // Filter SEObot posts
-  const seoBotPosts = await getSeoBotPosts()
-  const filteredSeoBotPosts = seoBotPosts.filter(
-    (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)
-  )
-
-  // Merge both sources
-  const posts = mergePosts(contentLayerPosts, filteredSeoBotPosts)
+  const posts = allCoreContent(sortPosts(filteredPosts))
 
   if (posts.length === 0) {
     return notFound()

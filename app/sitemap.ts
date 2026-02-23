@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import { allBlogs } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
-import { getSeoBotPosts } from '@/utils/seobot'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,15 +23,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: post.lastmod || post.date,
     }))
 
-  // Fetch SEObot posts and add to sitemap (English only, no Arabic versions)
-  const seoBotPosts = await getSeoBotPosts()
-  const seoBotRoutes = seoBotPosts
-    .filter((post) => !post.draft)
-    .map((post) => ({
-      url: `${siteUrl}/${post.path}`,
-      lastModified: post.lastmod || post.date,
-    }))
-
   // Include canonical URLs for both English and Arabic main routes
   // Both languages are canonical (independent content strategy)
   const routes = ['', 'blog', 'privacy', 'terms', 'support'].map((route) => ({
@@ -46,5 +36,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...arabicRoutes, ...blogRoutes, ...localizedBlogRoutes, ...seoBotRoutes]
+  return [...routes, ...arabicRoutes, ...blogRoutes, ...localizedBlogRoutes]
 }
