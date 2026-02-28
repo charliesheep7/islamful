@@ -5,6 +5,8 @@ import type { MDXComponents } from 'mdx/types'
 import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
+import HaramChecker from './tools/HaramChecker'
+import PrayerTimes from './tools/PrayerTimes'
 
 export const components: MDXComponents = {
   Image,
@@ -13,4 +15,6 @@ export const components: MDXComponents = {
   pre: Pre,
   table: TableWrapper,
   BlogNewsletterForm,
+  HaramChecker,
+  PrayerTimes,
 }

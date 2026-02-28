@@ -8,12 +8,11 @@
 @theme {
   /* Font families */
   --font-sans:
-    var(--font-libre-baskerville), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif,
+    var(--font-spectral), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-arabic:
     var(--font-noto-sans-arabic), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif:
-    var(--font-libre-baskerville), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-serif: var(--font-spectral), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   /* Colors - Deen Back Brand Palette */
 
@@ -45,15 +44,15 @@
 
   /* Cream/Background Scale */
   --color-cream-50: #f6f5ee;
-  --color-cream-100: #f6f5ee;
-  --color-cream-200: #eeede6;
-  --color-cream-300: #f9f9f9;
-  --color-cream-400: #e7ded8;
-  --color-cream-500: #c6c4c2;
-  --color-cream-600: #8a7f7a;
-  --color-cream-700: #666666;
-  --color-cream-800: #5c3926;
-  --color-cream-900: #3d2518;
+  --color-cream-100: #f0efe8;
+  --color-cream-200: #e5e3db;
+  --color-cream-300: #d4d1c7;
+  --color-cream-400: #a8a49a;
+  --color-cream-500: #858075;
+  --color-cream-600: #6b665c;
+  --color-cream-700: #4a4640;
+  --color-cream-800: #33302b;
+  --color-cream-900: #1f1d19;
 
   /* Map Gray to Cream for warm theme */
   --color-gray-50: var(--color-cream-50);

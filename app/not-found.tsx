@@ -1,23 +1,49 @@
 import Link from '@/components/Link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Page Not Found — Islamful',
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-start justify-start md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6">
-      <div className="space-x-2 pt-6 pb-8 md:space-y-5">
-        <h1 className="text-6xl leading-9 font-extrabold tracking-tight text-gray-900 md:border-r-2 md:px-6 md:text-8xl md:leading-14 dark:text-gray-100">
-          404
-        </h1>
-      </div>
-      <div className="max-w-md">
-        <p className="mb-4 text-xl leading-normal font-bold md:text-2xl">
-          Sorry we couldn't find this page.
-        </p>
-        <p className="mb-8">But dont worry, you can find plenty of other things on our homepage.</p>
+    <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+      <h1 className="mb-2 text-7xl font-bold text-[var(--color-accent-500)]">404</h1>
+      <p className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">Page not found</p>
+      <p className="mb-8 max-w-md text-gray-600 dark:text-gray-400">
+        The page you&apos;re looking for doesn&apos;t exist. But there&apos;s plenty to explore on
+        Islamful.
+      </p>
+      <div className="flex flex-wrap justify-center gap-3">
         <Link
           href="/"
-          className="focus:shadow-outline-blue inline rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm leading-5 font-medium text-white shadow-xs transition-colors duration-150 hover:bg-blue-700 focus:outline-hidden dark:hover:bg-blue-500"
+          className="rounded-lg bg-[var(--color-accent-500)] px-6 py-3 font-semibold text-white transition-colors hover:bg-[var(--color-accent-600)]"
         >
           Back to homepage
+        </Link>
+        <Link
+          href="/prayer-times"
+          className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition-colors hover:border-[var(--color-accent-300)] hover:text-[var(--color-accent-600)] dark:border-gray-700 dark:text-gray-300"
+        >
+          Prayer Times
+        </Link>
+        <Link
+          href="/haram-check"
+          className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition-colors hover:border-[var(--color-accent-300)] hover:text-[var(--color-accent-600)] dark:border-gray-700 dark:text-gray-300"
+        >
+          Haram Checker
+        </Link>
+        <Link
+          href="/blog"
+          className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition-colors hover:border-[var(--color-accent-300)] hover:text-[var(--color-accent-600)] dark:border-gray-700 dark:text-gray-300"
+        >
+          Blog
         </Link>
       </div>
     </div>

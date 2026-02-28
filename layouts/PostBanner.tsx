@@ -9,7 +9,8 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import BasmalahIntro from '@/components/BasmalahIntro'
+import Breadcrumbs from '@/components/seo/Breadcrumbs'
+
 import Share from '@/components/Share'
 
 interface LayoutProps {
@@ -20,13 +21,18 @@ interface LayoutProps {
 }
 
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
-  const { slug, title, images, summary } = content
-  const displayImage =
-    images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
+  const { path, slug, title, images, summary } = content
+  const displayImage = images && images.length > 0 ? images[0] : '/static/images/og-image.png'
 
   return (
     <SectionContainer>
       <ScrollTopAndComment />
+      <Breadcrumbs
+        items={[
+          { name: 'Blog', href: '/blog' },
+          { name: title, href: `/${path}` },
+        ]}
+      />
       <article>
         <div>
           <div className="space-y-1 pb-10 text-center dark:border-gray-700">
@@ -49,7 +55,6 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
           </div>
           <div className="prose dark:prose-invert max-w-none py-4">
             <Share title={title} slug={slug} summary={summary} />
-            <BasmalahIntro />
             {children}
           </div>
           {siteMetadata.comments && (

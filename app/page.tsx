@@ -1,18 +1,22 @@
 import Hero from '@/components/landing/Hero'
-import Features from '@/components/landing/Features'
+import ToolsGrid from '@/components/landing/ToolsGrid'
 import CTA from '@/components/landing/CTA'
-import Testimonials from '@/components/landing/Testimonials'
 import FAQ from '@/components/landing/FAQ'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import type { Dictionary } from '@/types/dictionary'
 import enDict from '../dictionaries/en.json'
 
-export const metadata = genPageMetadata({
-  title: 'Deen Back – Overcome Your Nafs',
-  description:
-    "Deen Back helps Muslims overcome addiction to haram content through Qur'an SOS, daily dhikr, and a faith-centered support community.",
-  alternates: buildLanguageAlternates('/'),
-})
+export const metadata = {
+  ...genPageMetadata({
+    title: 'Islamful — Your Complete Islamic Companion',
+    description:
+      'Prayer times, halal checker, Quran, dua, dhikr, and more — all in one place. Free Islamic tools for every Muslim.',
+    alternates: buildLanguageAlternates('/'),
+  }),
+  title: {
+    absolute: 'Islamful — Your Complete Islamic Companion',
+  },
+}
 
 export default function Page() {
   const dict = enDict as Dictionary
@@ -20,9 +24,8 @@ export default function Page() {
   return (
     <div className="flex flex-col">
       <Hero lang="en" dict={dict} />
-      <Features lang="en" dict={dict} />
+      <ToolsGrid lang="en" dict={dict} />
       <CTA lang="en" dict={dict} />
-      <Testimonials lang="en" dict={dict} />
       <FAQ lang="en" dict={dict} />
     </div>
   )

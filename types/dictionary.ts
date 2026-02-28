@@ -2,6 +2,8 @@ export type Dictionary = {
   nav: {
     home: string
     blog: string
+    prayerTimes: string
+    haramCheck: string
   }
   footer: {
     privacy: string
@@ -17,44 +19,19 @@ export type Dictionary = {
   hero: {
     badge: string
     tagline: string
-    question: string
     subtitle: string
-    ctaPrimary: string
-    ctaSecondary: string
-    comingSoon: string
-    appStatus: string
+    exploreCta: string
   }
-  features: {
+  tools: {
     heading: string
     subtitle: string
-    learnMore: string
-    aiCompanion: {
-      title: string
-      description: string
-    }
-    dailyChecklist: {
-      title: string
-      description: string
-    }
-    letters: {
-      title: string
-      description: string
-    }
+    explore: string
+    comingSoon: string
   }
   cta: {
-    badge: string
     heading: string
     subtitle: string
-    joinWaitlist: string
-    downloadIOS: string
-    downloadAndroid: string
-    comingSoonText: string
-  }
-  testimonials: {
-    heading: string
-    subtitle: string
-    readMore: string
-    showLess: string
+    exploreCta: string
   }
   faq: {
     badge: string

@@ -2,13 +2,15 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
-import { Noto_Sans, Noto_Sans_Arabic, Libre_Baskerville } from 'next/font/google'
+import { Noto_Sans, Noto_Sans_Arabic, Spectral } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import { headers } from 'next/headers'
 import RTLHandler from '@/components/RTLHandler'
 
 const noto_sans = Noto_Sans({
@@ -25,11 +27,11 @@ const noto_sans_arabic = Noto_Sans_Arabic({
   variable: '--font-noto-sans-arabic',
 })
 
-const libre_baskerville = Libre_Baskerville({
-  weight: ['400', '700'],
+const spectral = Spectral({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-libre-baskerville',
+  variable: '--font-spectral',
 })
 
 export const metadata: Metadata = {
@@ -67,6 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: siteMetadata.title,
+    description: siteMetadata.description,
     card: 'summary_large_image',
     images: [siteMetadata.socialBanner],
   },
@@ -78,12 +81,15 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const basePath = process.env.BASE_PATH || ''
+  const headersList = await headers()
+  const locale = headersList.get('x-locale') || 'en'
+  const isArabic = locale === 'ar'
 
   return (
     <html
-      lang="en"
-      dir="ltr"
-      className={`${noto_sans.variable} ${noto_sans_arabic.variable} ${libre_baskerville.variable} scroll-smooth`}
+      lang={isArabic ? 'ar' : 'en'}
+      dir={isArabic ? 'rtl' : 'ltr'}
+      className={`${noto_sans.variable} ${noto_sans_arabic.variable} ${spectral.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
@@ -140,26 +146,67 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F5EE" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
+        <link rel="preconnect" href="https://api.aladhan.com" />
+        <link rel="preconnect" href="https://fkifiwgbroehluxksfte.supabase.co" />
+        <link rel="dns-prefetch" href="https://api.bigdatacloud.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Deen Back',
-              url: 'https://www.deenback.com',
-              logo: 'https://www.deenback.com/static/images/logo.png',
+              '@id': 'https://www.islamful.com/#organization',
+              name: 'Islamful',
+              url: 'https://www.islamful.com',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://www.islamful.com/static/images/logo.png',
+              },
+              description:
+                'Islamful is the all-in-one Islamic tools platform — prayer times, halal/haram checker, Quran, dua, dhikr, and more.',
+              email: 'hello@islamful.com',
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              '@id': 'https://www.islamful.com/#website',
+              name: 'Islamful',
+              url: 'https://www.islamful.com',
+              publisher: { '@id': 'https://www.islamful.com/#organization' },
+              inLanguage: ['en', 'ar'],
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://www.islamful.com/blog?q={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
             }),
           }}
         />
       </head>
       <body className="bg-[#F6F5EE] font-sans text-gray-800 antialiased ltr:pl-[calc(100vw-100%)] rtl:pr-[calc(100vw-100%)] dark:bg-gray-950 dark:text-white">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-[var(--color-accent-500)] focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         <RTLHandler />
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <Header />
-            <main className="mb-auto">{children}</main>
+            <main id="main-content" className="min-h-[60vh]">
+              {children}
+            </main>
+            <Footer />
           </SearchProvider>
         </ThemeProviders>
       </body>

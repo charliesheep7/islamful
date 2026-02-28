@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
@@ -26,8 +25,18 @@ const Header = () => {
 
   const getNavText = (key: string) => {
     const translations: Record<string, Record<string, string>> = {
-      en: { home: 'Home', blog: 'Blog', support: 'Support' },
-      ar: { home: 'الرئيسية', blog: 'المدونة', support: 'الدعم' },
+      en: {
+        home: 'Home',
+        blog: 'Blog',
+        'prayer times': 'Prayer Times',
+        'haram check': 'Haram Check',
+      },
+      ar: {
+        home: 'الرئيسية',
+        blog: 'المدونة',
+        'prayer times': 'مواقيت الصلاة',
+        'haram check': 'هل هذا حرام؟',
+      },
     }
     return translations[currentLang]?.[key] || key
   }
@@ -43,15 +52,8 @@ const Header = () => {
     <header className={headerClass} role="banner">
       <div className="flex w-full items-center justify-between px-4 py-2 sm:px-6 sm:py-3 lg:px-10">
         <Link href="/" aria-label={siteMetadata.headerTitle}>
-          <div className="flex items-center gap-3">
-            <Image
-              src={siteMetadata.siteLogo}
-              alt={siteMetadata.headerTitle}
-              width={48}
-              height={48}
-              className="h-12 w-12 transition-opacity duration-200 hover:opacity-80"
-            />
-            <span className="text-xl font-bold text-[--color-primary-700] dark:text-[--color-primary-300]">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold text-[--color-primary-700] dark:text-[--color-primary-300]">
               {siteMetadata.headerTitle}
             </span>
           </div>

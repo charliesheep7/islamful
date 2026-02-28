@@ -1,8 +1,8 @@
-# Deen Back – claude.md
+# Islamful — CLAUDE.md
 
 ## Project Overview
 
-**Deen Back** (`deenback.com`) is an Islamic companion app website built with Next.js 15 + ContentLayer + Tailwind CSS v4. It was originally cloned from the **DeenUp** site and rebranded for DeenBack.
+**Islamful** (`islamful.com`) is an all-in-one Islamic tools platform built with Next.js 15 + ContentLayer + Tailwind CSS v4 + Supabase Edge Functions. It provides web-based tools every Muslim needs daily (prayer times, AI-powered halal checker, Quran, dua, etc.) combined with an SEO-driven blog.
 
 ## Tech Stack
 
@@ -11,16 +11,15 @@
 - **Styling**: Tailwind CSS v4 (`css/tailwind.css`)
 - **Fonts**: Libre Baskerville (serif), Noto Sans, Noto Sans Arabic
 - **i18n**: English (`en`) + Arabic (`ar`) via middleware + `app/[lang]/` routing
-- **Blog (optional)**: SEObot integration via `utils/seobot.ts` – requires `SEOBOT_API_KEY` in `.env.local`
+- **AI Backend**: Supabase Edge Functions → Gemini 3 Flash (`gemini-3-flash-preview`)
+- **APIs**: Aladhan API (prayer times), BigDataCloud (reverse geocode)
 
 ## Brand / Design
 
-- **App Store URL**: https://apps.apple.com/tn/app/deen-back-daily-dua-dhikr/id6755876142
-- **App Store badge**: `/public/static/images/app-store-badge.svg`
-- **Hero image**: `/public/static/images/hero.webp`
-- **Background color**: `rgb(246, 245, 238)` = `#F6F5EE` (warm off-white)
+- **Domain**: `islamful.com`
+- **Tagline**: "Your Complete Islamic Companion"
+- **Background color**: `#F6F5EE` (warm off-white)
 - **Primary color**: `#327952` (green)
-- **Logo/icon**: `/public/static/images/App_store_1024_1x.png` (app icon used in header & og)
 
 ## Color Palette (`css/tailwind.css`)
 
@@ -28,43 +27,111 @@
 | --------------------- | ----------------------- |
 | `--color-primary-500` | `#327952` (brand green) |
 | `--color-cream-50`    | `#F6F5EE` (main bg)     |
-| `--color-cream-100`   | `#F6F5EE` (alt bg)      |
+
+## Architecture
+
+### Frontend (Next.js)
+
+```
+/                      → Homepage (Hero + ToolsGrid + CTA + FAQ)
+/prayer-times          → Prayer times by location (Aladhan API, client-side)
+/haram-check           → AI-powered halal/haram checker
+/blog                  → Blog index
+/blog/[slug]           → Blog post (MDX, can embed tool widgets)
+/ar/...                → Arabic mirrors of all routes
+/about, /privacy, /terms → Static pages
+```
+
+### Backend (Supabase Edge Functions)
+
+```
+supabase/functions/haram-check/  → Gemini 3 Flash AI for halal/haram rulings
+```
+
+The haram checker has a dual strategy:
+
+1. **Static database** (23 items) — instant local results for common queries
+2. **AI fallback** (Gemini 3 Flash via Supabase) — handles any query not in the static DB
+
+### Data Flow
+
+```
+User query → Static DB match? → Return instantly
+                    ↓ (no match)
+           → Supabase Edge Function → Gemini 3 Flash → Structured JSON response
+```
 
 ## Project Structure
 
 ```
-app/              # Next.js App Router pages
-  page.tsx        # Homepage (hero + App Store button)
-  layout.tsx      # Root layout (fonts, metadata, header)
-  blog/           # Blog list + detail pages
-  [lang]/         # Arabic locale pages
-components/       # Reusable UI components (Header, Footer, etc.)
-css/tailwind.css  # Global styles + Tailwind v4 theme tokens
+app/
+  page.tsx              # Homepage
+  layout.tsx            # Root layout (fonts, metadata, header, footer)
+  seo.tsx               # SEO utilities (canonical, hreflang, metadata)
+  sitemap.ts            # Auto-generated sitemap
+  robots.ts             # Robots.txt
+  prayer-times/         # Prayer Times tool page
+  haram-check/          # Haram Check tool page
+  blog/                 # Blog list + detail + pagination
+  [lang]/               # Arabic locale (mirrors all routes)
+
+components/
+  Header.tsx            # Sticky navigation
+  Footer.tsx            # 4-column footer (brand, tools, content, legal)
+  landing/
+    Hero.tsx            # Homepage hero
+    ToolsGrid.tsx       # Tool cards grid
+    CTA.tsx             # Call-to-action
+    FAQ.tsx             # FAQ accordion
+  tools/
+    PrayerTimes.tsx     # Prayer times (Aladhan API + geolocation)
+    HaramChecker.tsx    # AI haram checker (static DB + Supabase/Gemini)
+  seo/
+    JsonLd.tsx          # Reusable JSON-LD schema
+    Breadcrumbs.tsx     # Breadcrumbs with schema
+
+supabase/
+  functions/
+    haram-check/        # Edge function: Gemini 3 Flash proxy
+      index.ts
+
 data/
-  blog/en/        # English MDX blog posts
-  blog/ar/        # Arabic MDX blog posts
-  siteMetadata.js # Site-wide metadata (title, URL, socials)
-  headerNavLinks.ts
-utils/seobot.ts   # SEObot API integration (disable by leaving SEOBOT_API_KEY empty)
-public/static/    # Images, favicons
+  siteMetadata.js       # Site-wide metadata
+  headerNavLinks.ts     # Navigation links
+  tools.ts              # Tool registry (8 tools, 2 live, 6 coming-soon)
+  blog/en/              # English MDX blog posts
+  blog/ar/              # Arabic MDX blog posts
+
+dictionaries/           # i18n translations (en.json, ar.json)
 ```
-
-## Blog
-
-- MDX files live in `data/blog/en/` and `data/blog/ar/`
-- **SEObot**: only fetches if `SEOBOT_API_KEY` is set in `.env.local`. Leave blank to disable external posts.
-- To add a new blog post, copy `data/blog/en/template-post.mdx` and fill in frontmatter.
 
 ## Environment Variables (`.env.local`)
 
-| Variable         | Purpose                                                          |
-| ---------------- | ---------------------------------------------------------------- |
-| `SEOBOT_API_KEY` | SEObot API key for automated blog posts. Leave empty to disable. |
-| `NEXT_UMAMI_ID`  | Umami analytics website ID (optional)                            |
+| Variable                        | Purpose                               |
+| ------------------------------- | ------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Supabase project URL                  |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase publishable/anon key         |
+| `NEXT_UMAMI_ID`                 | Umami analytics website ID (optional) |
+
+### Supabase Secrets (set via `supabase secrets set`)
+
+| Secret           | Purpose                      |
+| ---------------- | ---------------------------- |
+| `GEMINI_API_KEY` | Google Gemini API key for AI |
+
+## Deployment
+
+### Edge Function
+
+```bash
+supabase functions deploy haram-check --project-ref fkifiwgbroehluxksfte
+supabase secrets set GEMINI_API_KEY=your_key --project-ref fkifiwgbroehluxksfte
+```
 
 ## Key Notes
 
-- This site was **cloned from DeenUp** — always verify that old DeenUp branding/content has been replaced.
-- Arabic RTL is handled via `middleware.ts` + `RTLHandler` component.
-- The header logo is the app icon (`App_store_1024_1x.png`), not the App Store badge.
-- Use `app-store-badge.svg` for the "Download on the App Store" CTA button.
+- `tsconfig.json` excludes `supabase/` directory (Deno code, not Node)
+- Arabic RTL handled via `middleware.ts` + `RTLHandler` component
+- Tool components work both standalone and embedded in MDX blog posts
+- The haram checker gracefully degrades: if Supabase/Gemini is unavailable, static DB still works
+- Static DB entries return instantly (no loading state), AI results show a loading spinner

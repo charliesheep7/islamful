@@ -1,19 +1,19 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Deen Back – Overcome Your Nafs',
-  author: 'Deen Back',
-  authorSlug: 'mathias-yussif',
-  headerTitle: 'Deen Back',
+  title: 'Islamful — Your Complete Islamic Companion',
+  author: 'Islamful',
+  authorSlug: 'islamful',
+  headerTitle: 'Islamful',
   description:
-    "Deen Back helps Muslims overcome addiction to haram content through Qur'an SOS, daily dhikr, and a faith-centered support community.",
+    'Islamful is the all-in-one Islamic tools platform — prayer times, halal/haram checker, Quran, dua, dhikr, and more. Everything a Muslim needs, every day.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://www.deenback.com',
+  siteUrl: 'https://www.islamful.com',
   siteRepo: '',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/App_store_1024_1x.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/og-image.png`,
   mastodon: '',
-  email: 'vip@deenback.com',
+  email: 'hello@islamful.com',
   github: '',
   x: '', // Placeholder - to be added later
   // twitter: 'https://twitter.com/Twitter',
