@@ -11,24 +11,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const today = new Date().toISOString().split('T')[0]
 
   // Static pages (English)
-  const staticRoutes = ['', 'blog', 'about', 'privacy', 'terms'].map((route) => ({
-    url: `${siteUrl}/${route}`,
-    lastModified: '2025-02-01',
-    changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
-      | 'weekly'
-      | 'monthly',
-    priority: route === '' ? 1.0 : route === 'blog' ? 0.8 : 0.3,
-  }))
+  const staticRoutes = ['', 'blog', 'mission', 'quran', 'support', 'privacy', 'terms'].map(
+    (route) => ({
+      url: `${siteUrl}/${route}`,
+      lastModified: today,
+      changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
+        | 'weekly'
+        | 'monthly',
+      priority:
+        route === ''
+          ? 1.0
+          : route === 'blog'
+            ? 0.8
+            : route === 'mission' || route === 'quran'
+              ? 0.7
+              : 0.3,
+    })
+  )
 
   // Static pages (Arabic)
-  const arabicStaticRoutes = ['', 'blog', 'about', 'privacy', 'terms'].map((route) => ({
-    url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
-    lastModified: '2025-02-01',
-    changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
-      | 'weekly'
-      | 'monthly',
-    priority: route === '' ? 0.9 : route === 'blog' ? 0.7 : 0.2,
-  }))
+  const arabicStaticRoutes = ['', 'blog', 'mission', 'quran', 'support', 'privacy', 'terms'].map(
+    (route) => ({
+      url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
+      lastModified: today,
+      changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
+        | 'weekly'
+        | 'monthly',
+      priority:
+        route === ''
+          ? 0.9
+          : route === 'blog'
+            ? 0.7
+            : route === 'mission' || route === 'quran'
+              ? 0.6
+              : 0.2,
+    })
+  )
 
   // Tool pages (English)
   const toolRoutes = tools

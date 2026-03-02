@@ -18,8 +18,9 @@
   },
   "hero": {
     "badge": "All-in-One Islamic Tools",
-    "tagline": "Everything a Muslim Needs. Every Day.",
-    "subtitle": "Prayer times, halal checker, Quran, dua, dhikr, and more — all in one place. Every tool a Muslim needs, every day.",
+    "tagline": "Everything A Muslim Needs.",
+    "tagline2": "all in one place",
+    "subtitle": "Prayer times, halal checker, Quran, dua, dhikr, and more — free Islamic tools for your daily worship.",
     "exploreCta": "Explore Tools"
   },
   "tools": {

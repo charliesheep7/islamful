@@ -10,7 +10,7 @@ export const metadata = {
   ...genPageMetadata({
     title: 'Islamful — Every Tool a Muslim Needs',
     description:
-      'Prayer times, halal checker, Quran, dua, dhikr, and more — all in one place. Free Islamic tools for every Muslim.',
+      'Smart Islamic tools powered by AI — prayer times, halal checker, Quran, dua, dhikr, and more. Everything a Muslim needs, all in one place.',
     alternates: buildLanguageAlternates('/'),
   }),
   title: {

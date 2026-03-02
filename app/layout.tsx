@@ -163,7 +163,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 url: 'https://www.islamful.com/static/images/logo.png',
               },
               description:
-                'Free Islamic tools — prayer times, halal checker, Quran, dua, dhikr, and more. Every tool a Muslim needs.',
+                'AI-powered Islamic tools platform — prayer times, halal checker, Quran, dua, dhikr, and more. Everything a Muslim needs, all in one place.',
+              knowsAbout: [
+                'Islamic AI tools',
+                'Halal food checker AI',
+                'Muslim daily tools',
+                'Prayer times',
+                'Quran',
+                'Dua',
+                'Dhikr',
+                'Islamic lifestyle',
+                'Artificial intelligence for Muslims',
+              ],
             }),
           }}
         />
@@ -176,7 +187,42 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               '@id': 'https://www.islamful.com/#website',
               name: 'Islamful',
               url: 'https://www.islamful.com',
+              description:
+                'AI-powered Islamic tools and resources — everything a Muslim needs for daily worship, all in one place.',
               publisher: { '@id': 'https://www.islamful.com/#organization' },
+              inLanguage: ['en', 'ar'],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebApplication',
+              '@id': 'https://www.islamful.com/#app',
+              name: 'Islamful',
+              url: 'https://www.islamful.com',
+              applicationCategory: 'LifestyleApplication',
+              operatingSystem: 'All',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'USD',
+              },
+              description:
+                'AI-powered Islamic toolkit with smart halal checker, accurate prayer times, Quran, dua, dhikr counter, and more. The #1 AI-native platform for Muslim daily life.',
+              featureList: [
+                'AI-powered halal/haram checker',
+                'Accurate prayer times by location',
+                'Quran reading',
+                'Dua collection',
+                'Digital dhikr counter',
+                '99 Names of Allah',
+                'Islamic calendar converter',
+                'Zakat calculator',
+              ],
+              creator: { '@id': 'https://www.islamful.com/#organization' },
               inLanguage: ['en', 'ar'],
             }),
           }}

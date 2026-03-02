@@ -7,7 +7,7 @@ import { useLocale } from './hooks/useLocale'
 
 const translations = {
   en: {
-    tagline: 'Your complete Islamic companion on the web.',
+    tagline: 'Everything a Muslim needs, all in one place.',
     tools: 'Tools',
     content: 'Content',
     legal: 'Legal',
@@ -18,7 +18,7 @@ const translations = {
     rights: 'All rights reserved.',
   },
   ar: {
-    tagline: 'رفيقك الإسلامي الشامل على الويب.',
+    tagline: 'كل ما يحتاجه المسلم، في مكان واحد.',
     tools: 'الأدوات',
     content: 'المحتوى',
     legal: 'قانوني',
@@ -77,14 +77,6 @@ export default function Footer() {
                   className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 >
                   {t.blog}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${prefix}/about`}
-                  className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                >
-                  {t.about}
                 </Link>
               </li>
             </ul>

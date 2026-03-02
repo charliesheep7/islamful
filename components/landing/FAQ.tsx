@@ -119,7 +119,7 @@ export default function FAQ({ lang = 'en', dict }: FAQProps) {
             {dict?.faq?.stillHaveQuestions || 'Still have questions?'}
           </p>
           <a
-            href="mailto:hello@islamful.com"
+            href="mailto:hello@infinique.org"
             className="font-medium text-[var(--color-accent-600)] hover:text-[var(--color-accent-700)] dark:text-[var(--color-accent-400)]"
           >
             {dict?.faq?.contactSupport || 'Contact Us'} &rarr;

@@ -28,14 +28,12 @@ const Header = () => {
       en: {
         home: 'Home',
         blog: 'Blog',
-        'prayer times': 'Prayer Times',
-        'haram check': 'Haram Check',
+        mission: 'Mission',
       },
       ar: {
         home: 'الرئيسية',
         blog: 'المدونة',
-        'prayer times': 'مواقيت الصلاة',
-        'haram check': 'هل هذا حرام؟',
+        mission: 'رسالتنا',
       },
     }
     return translations[currentLang]?.[key] || key

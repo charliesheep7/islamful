@@ -5,7 +5,7 @@ const siteMetadata = {
   authorSlug: 'sih-c',
   headerTitle: 'Islamful',
   description:
-    'Free Islamic tools — prayer times, halal checker, Quran, dua, dhikr, and more. Everything a Muslim needs, every day.',
+    'AI-powered Islamic tools — prayer times, halal checker, Quran, dua, dhikr, and more. Everything a Muslim needs, all in one place.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.islamful.com',
