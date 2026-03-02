@@ -11,8 +11,31 @@ End-to-end pipeline for publishing an SEO-optimized blog post on Islamful.com.
 
 **Input**: `$ARGUMENTS` is optional:
 
-- Empty (default) → auto-pick the next unwritten keyword from the sheet
-- A specific keyword (e.g., `is music haram`) → use that keyword instead
+- Empty (default) → auto-pick the next unwritten keyword, generate 1 article
+- A number (e.g., `5`) → auto-pick and generate that many articles in sequence
+- A specific keyword (e.g., `is music haram`) → use that keyword, generate 1 article
+
+## Batch Mode
+
+When `$ARGUMENTS` is a number N, run the **entire pipeline (Steps 1-6) N times in a loop**. Each iteration auto-picks the next unwritten keyword. Between iterations, re-fetch the existing blog posts list so the next keyword is correctly identified.
+
+Show a progress header before each iteration:
+
+```
+========================================
+ARTICLE [X/N] — Starting...
+========================================
+```
+
+After all iterations, show a final batch summary:
+
+```
+BATCH COMPLETE: [X/N] articles published
+=========================================
+1. [slug-1] — [title] — Indexed: [Yes/No]
+2. [slug-2] — [title] — Indexed: [Yes/No]
+...
+```
 
 ## Pipeline Steps
 
@@ -43,7 +66,7 @@ Show: the picked keyword, article type, and slug.
    - `is-x-haram` → `<HaramChecker lang="en" />`
    - `dua` → `<DuaCollection lang="en" />`
    - prayer-related `how-to` → `<PrayerTimes lang="en" />`
-4. Write to `data/blog/en/[SLUG].mdx` with full frontmatter (title, date, summary, tags, authors, images, layout, faqs).
+4. Write to `data/blog/en/[SLUG].mdx` with full frontmatter (title, date, summary, tags, authors, images, layout, faqs). Always use `authors: ['sih-c']` — never use any other author.
 
 Show: filename, title, summary, word count, which tool was embedded.
 
@@ -51,7 +74,12 @@ Show: filename, title, summary, word count, which tool was embedded.
 
 1. Read `IMAGE_PROMPT_RULES` from `data/seo-prompts.ts`.
 2. Craft an image prompt following those rules (John Singer Sargent oil painting style, warm muted palette, no text/faces).
-3. Call Gemini 2.5 Flash image generation API.
+3. Call the Gemini image generation API using model `gemini-2.5-flash-image` (exact model ID — no other model is acceptable):
+   ```bash
+   curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=$GEMINI_API_KEY" \
+     -H "Content-Type: application/json" \
+     -d '{"contents":[{"parts":[{"text":"Generate an image: [PROMPT]"}]}],"generationConfig":{"responseModalities":["TEXT","IMAGE"]}}'
+   ```
 4. Save to `public/static/images/blog/[SLUG].webp`.
 
 Show: image path, file size.

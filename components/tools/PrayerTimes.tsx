@@ -190,45 +190,12 @@ export default function PrayerTimes({
   const fetchByLocation = useCallback(async () => {
     setLoading(true)
     setError(null)
-
-    // Try browser geolocation first (more accurate)
-    if (navigator.geolocation) {
-      try {
-        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject, {
-            timeout: 5000,
-            enableHighAccuracy: false,
-            maximumAge: 300000,
-          })
-        })
-        const { latitude, longitude } = position.coords
-        let locationName = `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`
-        try {
-          const geoRes = await fetch(
-            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-          )
-          const geoJson = await geoRes.json()
-          if (geoJson.city && geoJson.countryName) {
-            locationName = `${geoJson.city}, ${geoJson.countryName}`
-            setCity(geoJson.city)
-            setCountry(geoJson.countryName)
-          }
-        } catch {
-          /* coords fine */
-        }
-        await fetchByCoords(latitude, longitude, locationName)
-        setLoading(false)
-        return
-      } catch {
-        // Browser geolocation failed — fall through to IP
-      }
-    }
-
-    // Fallback: IP-based geolocation (city-level accuracy, no permissions)
     try {
       const success = await fetchByIP()
       if (!success) {
-        setError(isRTL ? 'تعذر تحديد موقعك.' : 'Could not detect your location.')
+        setError(
+          isRTL ? 'تعذر تحديد موقعك.' : 'Could not detect your location. Enter your city manually.'
+        )
       }
     } catch {
       setError(
@@ -236,7 +203,7 @@ export default function PrayerTimes({
       )
     }
     setLoading(false)
-  }, [fetchByCoords, fetchByIP, isRTL])
+  }, [fetchByIP, isRTL])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

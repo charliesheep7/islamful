@@ -12,7 +12,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src *.s3.amazonaws.com;
-  connect-src 'self' https://*.supabase.co https://api.aladhan.com https://api.bigdatacloud.net https://analytics.umami.is;
+  connect-src 'self' https://*.supabase.co https://api.aladhan.com https://api.bigdatacloud.net https://ipapi.co https://analytics.umami.is;
   font-src 'self';
   frame-src giscus.app youtube.com www.youtube.com youtube-nocookie.com www.youtube-nocookie.com
 `
