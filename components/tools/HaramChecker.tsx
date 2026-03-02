@@ -165,6 +165,161 @@ const database: HaramEntry[] = [
       'Conventional mortgages involve riba (interest). Islamic mortgages (Murabaha, Ijara) are halal alternatives.',
     source: 'European Council for Fatwa and Research',
   },
+  // --- Activities & Lifestyle ---
+  {
+    name: 'dating',
+    ruling: 'haram',
+    explanation:
+      'Casual dating involving khalwa (seclusion) with the opposite gender is prohibited. Islam encourages marriage through halal courtship with family involvement.',
+    source: 'Quran 17:32, Islamic Jurisprudence',
+  },
+  {
+    name: 'gambling',
+    ruling: 'haram',
+    explanation:
+      'All forms of gambling (maysir) are explicitly prohibited in the Quran, including lotteries, betting, and casino games.',
+    source: 'Quran 5:90-91',
+  },
+  {
+    name: 'smoking',
+    ruling: 'haram',
+    explanation:
+      'The majority of contemporary scholars rule smoking as haram due to its proven harm to the body. Islam prohibits self-harm.',
+    source: 'Quran 2:195, WHO fatwa consensus',
+  },
+  {
+    name: 'vaping',
+    ruling: 'haram',
+    explanation:
+      'Scholars apply the same ruling as smoking — it contains nicotine, is addictive, and causes bodily harm.',
+    source: 'Contemporary scholarly opinions',
+  },
+  {
+    name: 'tattoo',
+    ruling: 'haram',
+    explanation:
+      "The Prophet (peace be upon him) cursed the one who does tattoos and the one who has them done. Permanent tattoos alter Allah's creation.",
+    source: 'Sahih al-Bukhari 5937',
+  },
+  {
+    name: 'interest',
+    ruling: 'haram',
+    explanation:
+      'Riba (interest/usury) is strictly forbidden. Both paying and receiving interest are prohibited in Islam.',
+    source: 'Quran 2:275-279',
+  },
+  {
+    name: 'dog',
+    ruling: 'depends',
+    explanation:
+      'Keeping dogs as pets is discouraged by most scholars, as angels do not enter a house with a dog. However, dogs for guarding, herding, hunting, or service purposes are permitted.',
+    source: 'Sahih al-Bukhari 3225, Sahih Muslim 1574',
+  },
+  {
+    name: 'cat',
+    ruling: 'halal',
+    explanation:
+      'Keeping cats is permissible and encouraged. The Prophet (peace be upon him) was known to love cats, and his companion Abu Hurairah was named "Father of Kittens."',
+    source: 'Sunan Abu Dawud, Sahih Muslim',
+  },
+  {
+    name: 'astrology',
+    ruling: 'haram',
+    explanation:
+      'Believing in horoscopes or astrology is haram. Claiming knowledge of the unseen (ghayb) belongs only to Allah.',
+    source: 'Sahih Muslim 2230',
+  },
+  {
+    name: 'horoscope',
+    ruling: 'haram',
+    explanation:
+      'Reading and believing in horoscopes is forbidden. The Prophet (peace be upon him) said whoever goes to a fortune-teller has disbelieved in what was revealed to Muhammad.',
+    source: 'Sahih Muslim 2230',
+  },
+  {
+    name: 'yoga',
+    ruling: 'depends',
+    explanation:
+      'Physical yoga exercises for fitness are generally permissible. However, spiritual yoga involving meditation, chanting, or Hindu religious elements is prohibited.',
+    source: 'Contemporary scholarly opinions',
+  },
+  {
+    name: 'christmas',
+    ruling: 'haram',
+    explanation:
+      'Celebrating Christmas as a religious festival is not permissible as it involves imitating non-Muslim religious practices. Being kind to non-Muslim neighbors during their holidays is encouraged.',
+    source: 'Islamic Jurisprudence, Quran 109:6',
+  },
+  {
+    name: 'halloween',
+    ruling: 'haram',
+    explanation:
+      'Halloween has pagan origins and involves imitating non-Islamic traditions. Muslims are advised to avoid participating in its rituals and celebrations.',
+    source: 'Islamic Jurisprudence',
+  },
+  {
+    name: 'birthday',
+    ruling: 'depends',
+    explanation:
+      'Scholars differ. Some consider birthday celebrations as imitation of non-Muslim customs. Others permit simple gatherings without extravagance or un-Islamic practices.',
+    source: 'Varied scholarly opinions',
+  },
+  {
+    name: 'shaving beard',
+    ruling: 'depends',
+    explanation:
+      'The majority of scholars consider shaving the beard makruh (disliked) or haram, as the Prophet (peace be upon him) commanded letting the beard grow. Some scholars allow trimming.',
+    source: 'Sahih al-Bukhari 5893, Sahih Muslim 259',
+  },
+  {
+    name: 'stocks',
+    ruling: 'depends',
+    explanation:
+      "Investing in stocks is permissible if the company's business is halal and does not involve interest, alcohol, gambling, or other haram activities. Sharia-compliant screening is recommended.",
+    source: 'AAOIFI Standards, Islamic Fiqh Academy',
+  },
+  {
+    name: 'trading',
+    ruling: 'depends',
+    explanation:
+      'Halal trading involves buying and selling real assets. Day trading with excessive speculation (gharar) or margin trading with interest is prohibited.',
+    source: 'Islamic Fiqh Academy',
+  },
+  {
+    name: 'video games',
+    ruling: 'depends',
+    explanation:
+      'Permissible in moderation if the content does not include gambling, explicit material, or shirk. Should not distract from prayers or obligations.',
+    source: 'Contemporary scholarly opinions',
+  },
+  {
+    name: 'movies',
+    ruling: 'depends',
+    explanation:
+      'Watching movies is permissible if the content is clean and does not contain explicit scenes, promote haram, or distract from Islamic duties.',
+    source: 'Contemporary scholarly opinions',
+  },
+  {
+    name: 'silk',
+    ruling: 'depends',
+    explanation:
+      'Wearing pure silk is haram for men but halal for women. The Prophet (peace be upon him) prohibited silk and gold for men of his ummah.',
+    source: 'Sahih al-Bukhari 5426, Sunan Abu Dawud',
+  },
+  {
+    name: 'gold',
+    ruling: 'depends',
+    explanation:
+      'Wearing gold jewelry is haram for men but halal for women. Owning gold as an investment or asset is permissible for both.',
+    source: 'Sahih Muslim 2078',
+  },
+  {
+    name: 'nail polish',
+    ruling: 'depends',
+    explanation:
+      'Wearing nail polish is permissible outside of prayer times. However, regular nail polish prevents water from reaching the nails during wudu, invalidating it. Breathable/halal nail polish exists as an alternative.',
+    source: 'Islamic Fiqh, contemporary opinions',
+  },
 ]
 
 function searchDatabase(query: string): HaramEntry | null {
@@ -242,9 +397,14 @@ const rulingConfig: Record<
 interface HaramCheckerProps {
   lang?: string
   defaultQuery?: string
+  standalone?: boolean
 }
 
-export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCheckerProps) {
+export default function HaramChecker({
+  lang = 'en',
+  defaultQuery = '',
+  standalone = false,
+}: HaramCheckerProps) {
   const isRTL = lang === 'ar'
   const [query, setQuery] = useState(defaultQuery)
   const [result, setResult] = useState<HaramEntry | null>(null)
@@ -252,15 +412,14 @@ export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCh
   const [searched, setSearched] = useState(false)
   const [isAiResult, setIsAiResult] = useState(false)
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!query.trim()) return
+  const doSearch = async (searchQuery: string) => {
+    if (!searchQuery.trim()) return
 
     setSearched(true)
     setIsAiResult(false)
 
     // 1. Try static database first (instant)
-    const localResult = searchDatabase(query)
+    const localResult = searchDatabase(searchQuery)
     if (localResult) {
       setResult(localResult)
       return
@@ -270,7 +429,7 @@ export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCh
     setLoading(true)
     setResult(null)
     try {
-      const aiResult = await askAI(query, lang)
+      const aiResult = await askAI(searchQuery, lang)
       if (aiResult) {
         setResult(aiResult)
         setIsAiResult(true)
@@ -280,11 +439,16 @@ export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCh
     }
   }
 
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault()
+    doSearch(query)
+  }
+
   const config = result ? rulingConfig[result.ruling] || rulingConfig.depends : null
   const Icon = config?.icon
 
-  return (
-    <div className="mx-auto max-w-lg" dir={isRTL ? 'rtl' : 'ltr'}>
+  const inner = (
+    <>
       {/* Search */}
       <form onSubmit={handleSearch} className="mb-6">
         <div className="flex gap-2">
@@ -296,8 +460,8 @@ export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCh
               onChange={(e) => setQuery(e.target.value)}
               placeholder={
                 isRTL
-                  ? 'ابحث عن طعام أو مكون أو نشاط...'
-                  : 'Search any food, ingredient, or activity...'
+                  ? 'اكتب أي شيء... طعام، نشاط، أسلوب حياة...'
+                  : 'Type anything... food, activity, lifestyle...'
               }
               className={`w-full rounded-lg border border-gray-300 py-2.5 ps-10 pe-3 text-sm text-gray-900 focus:border-[var(--color-accent-500)] focus:ring-[var(--color-accent-500)] dark:border-gray-600 dark:bg-gray-800 dark:text-white ${isRTL ? 'font-arabic' : ''}`}
             />
@@ -311,6 +475,28 @@ export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCh
           </button>
         </div>
       </form>
+
+      {/* Suggestion chips */}
+      {!searched && (
+        <div className={`-mt-3 mb-6 flex flex-wrap gap-2 ${isRTL ? 'font-arabic' : ''}`}>
+          {(isRTL
+            ? ['موسيقى', 'كلاب', 'وشم', 'تدخين', 'أسهم', 'مواعدة', 'يوغا', 'ذهب']
+            : ['Music', 'Dogs', 'Tattoos', 'Smoking', 'Stocks', 'Dating', 'Yoga', 'Gold']
+          ).map((chip) => (
+            <button
+              key={chip}
+              type="button"
+              onClick={() => {
+                setQuery(chip)
+                doSearch(chip)
+              }}
+              className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 transition-colors hover:border-[var(--color-accent-500)] hover:text-[var(--color-accent-500)] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-[var(--color-accent-400)] dark:hover:text-[var(--color-accent-400)]"
+            >
+              {chip}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Loading */}
       {loading && (
@@ -376,6 +562,43 @@ export default function HaramChecker({ lang = 'en', defaultQuery = '' }: HaramCh
             : 'For informational purposes only. When in doubt, consult a trusted scholar.'}
         </p>
       )}
+    </>
+  )
+
+  // When embedded in a blog post (no standalone prop), wrap in a card
+  if (!standalone) {
+    return (
+      <div
+        className="not-prose my-8 rounded-2xl border border-[var(--color-cream-300)] bg-[var(--color-cream-50)] p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900"
+        dir={isRTL ? 'rtl' : 'ltr'}
+      >
+        <div className="mb-4 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[var(--color-primary-500)]/10 px-3 py-1 text-xs font-semibold tracking-wide text-[var(--color-primary-500)] uppercase">
+            <Search className="h-3.5 w-3.5" />
+            {isRTL ? 'أداة مجانية' : 'Free Tool'}
+          </span>
+          <h3
+            className={`mt-2 text-lg font-bold text-gray-900 dark:text-white ${isRTL ? 'font-arabic' : ''}`}
+          >
+            {isRTL ? 'فاحص الحلال والحرام' : 'Islamic Ruling Checker'}
+          </h3>
+          <p
+            className={`mt-1 text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
+          >
+            {isRTL
+              ? 'تحقق من حكم أي شيء — طعام، أنشطة، أسلوب حياة، والمزيد'
+              : 'Check the ruling on anything — food, activities, lifestyle, and more'}
+          </p>
+        </div>
+        {inner}
+      </div>
+    )
+  }
+
+  // Standalone page — no card wrapper
+  return (
+    <div className="mx-auto max-w-lg" dir={isRTL ? 'rtl' : 'ltr'}>
+      {inner}
     </div>
   )
 }

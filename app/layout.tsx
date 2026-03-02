@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
   title: {
     default: siteMetadata.title,
-    template: `%s | ${siteMetadata.title}`,
+    template: `%s | Islamful`,
   },
   description: siteMetadata.description,
   openGraph: {
@@ -163,8 +163,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 url: 'https://www.islamful.com/static/images/logo.png',
               },
               description:
-                'Islamful is the all-in-one Islamic tools platform — prayer times, halal/haram checker, Quran, dua, dhikr, and more.',
-              email: 'hello@islamful.com',
+                'Free Islamic tools — prayer times, halal checker, Quran, dua, dhikr, and more. Every tool a Muslim needs.',
             }),
           }}
         />
@@ -179,14 +178,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               url: 'https://www.islamful.com',
               publisher: { '@id': 'https://www.islamful.com/#organization' },
               inLanguage: ['en', 'ar'],
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: 'https://www.islamful.com/blog?q={search_term_string}',
-                },
-                'query-input': 'required name=search_term_string',
-              },
             }),
           }}
         />

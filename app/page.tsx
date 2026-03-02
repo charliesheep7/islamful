@@ -8,13 +8,13 @@ import enDict from '../dictionaries/en.json'
 
 export const metadata = {
   ...genPageMetadata({
-    title: 'Islamful — Your Complete Islamic Companion',
+    title: 'Islamful — Every Tool a Muslim Needs',
     description:
       'Prayer times, halal checker, Quran, dua, dhikr, and more — all in one place. Free Islamic tools for every Muslim.',
     alternates: buildLanguageAlternates('/'),
   }),
   title: {
-    absolute: 'Islamful — Your Complete Islamic Companion',
+    absolute: 'Islamful — Every Tool a Muslim Needs',
   },
 }
 

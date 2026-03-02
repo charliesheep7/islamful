@@ -7,6 +7,7 @@ import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 import HaramChecker from './tools/HaramChecker'
 import PrayerTimes from './tools/PrayerTimes'
+import DuaCollection from './tools/DuaCollection'
 
 export const components: MDXComponents = {
   Image,
@@ -17,4 +18,5 @@ export const components: MDXComponents = {
   BlogNewsletterForm,
   HaramChecker,
   PrayerTimes,
+  DuaCollection,
 }

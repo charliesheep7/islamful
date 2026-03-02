@@ -3,7 +3,7 @@ import SectionContainer from '@/components/SectionContainer'
 
 export const metadata = genPageMetadata({
   title: 'Support',
-  description: 'Need help with DeenBack? Contact support at vip@deenback.com.',
+  description: 'Need help with Islamful? Find support information here.',
   alternates: buildLanguageAlternates('/support'),
 })
 
@@ -13,21 +13,15 @@ export default function SupportPage() {
       <div className="prose dark:prose-invert max-w-none py-8">
         <h1>Support</h1>
         <p>
-          If you need help with your account, billing, or app issues, contact our support team by
-          email.
+          If you need help with any of our Islamic tools, please check the FAQ section on our
+          homepage for common questions and answers.
         </p>
 
-        <h2>Contact</h2>
-        <p>
-          <strong>Email:</strong> <a href="mailto:vip@deenback.com">vip@deenback.com</a>
-        </p>
-
-        <h2>What to Include</h2>
+        <h2>What to Include When Reporting Issues</h2>
         <ul>
-          <li>Your account email address</li>
           <li>A short description of the issue</li>
           <li>Screenshots (if applicable)</li>
-          <li>Your device and app version (if known)</li>
+          <li>Your device and browser (if known)</li>
         </ul>
       </div>
     </SectionContainer>

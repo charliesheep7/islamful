@@ -1,19 +1,19 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Islamful — Your Complete Islamic Companion',
+  title: 'Islamful — Every Tool a Muslim Needs',
   author: 'Islamful',
-  authorSlug: 'islamful',
+  authorSlug: 'sih-c',
   headerTitle: 'Islamful',
   description:
-    'Islamful is the all-in-one Islamic tools platform — prayer times, halal/haram checker, Quran, dua, dhikr, and more. Everything a Muslim needs, every day.',
+    'Free Islamic tools — prayer times, halal checker, Quran, dua, dhikr, and more. Everything a Muslim needs, every day.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.islamful.com',
   siteRepo: '',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/og-image.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/images/og.png`,
   mastodon: '',
-  email: 'hello@islamful.com',
+  email: '',
   github: '',
   x: '', // Placeholder - to be added later
   // twitter: 'https://twitter.com/Twitter',

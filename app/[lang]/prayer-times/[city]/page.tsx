@@ -13,11 +13,11 @@ import type { PrayerTimesData } from '@/components/tools/PrayerTimes'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 interface Props {
-  params: Promise<{ city: string }>
+  params: Promise<{ lang: string; city: string }>
 }
 
-export async function generateStaticParams() {
-  return cities.map((city) => ({ city: city.slug }))
+export function generateStaticParams() {
+  return cities.map((city) => ({ lang: 'ar', city: city.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -25,17 +25,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = getCityBySlug(slug)
   if (!city) return {}
 
-  const title = `Prayer Times in ${city.name} Today | Islamful`
-  const description = `Accurate prayer times for ${city.name}, ${city.country}. Live Fajr, Dhuhr, Asr, Maghrib & Isha times with countdown. Updated daily.`
+  const title = `مواقيت الصلاة في ${city.nameAr} اليوم`
+  const description = `أوقات الصلاة اليوم في ${city.nameAr}، ${city.countryAr}. الفجر والظهر والعصر والمغرب والعشاء مع عداد تنازلي للصلاة القادمة.`
 
   return {
     title,
     description,
-    alternates: buildLanguageAlternates(`/prayer-times/${city.slug}`),
+    alternates: buildLanguageAlternates(`/prayer-times/${city.slug}`, {
+      currentLanguage: 'ar',
+    }),
     openGraph: {
       title,
       description,
-      url: `${siteMetadata.siteUrl}/prayer-times/${city.slug}`,
+      url: `${siteMetadata.siteUrl}/ar/prayer-times/${city.slug}`,
       siteName: siteMetadata.title,
       images: [siteMetadata.socialBanner],
       type: 'website',
@@ -49,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function CityPrayerTimesPage({ params }: Props) {
+export default async function CityPrayerTimesPageAr({ params }: Props) {
   const { city: slug } = await params
   const city = getCityBySlug(slug)
   if (!city) notFound()
@@ -60,47 +62,47 @@ export default async function CityPrayerTimesPage({ params }: Props) {
     city.lat,
     city.lng,
     city.method,
-    `${city.name}, ${city.country}`
+    `${city.nameAr}، ${city.countryAr}`
   )
 
   const relatedCities = getRelatedCities(city.slug)
 
-  const methodName = PRAYER_METHODS[String(city.method)] || 'standard'
+  const methodName = PRAYER_METHODS[String(city.method)] || 'قياسية'
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6" dir="rtl">
       <Breadcrumbs
         items={[
-          { name: 'Prayer Times', href: '/prayer-times' },
-          { name: city.name, href: `/prayer-times/${city.slug}` },
+          { name: 'مواقيت الصلاة', href: '/ar/prayer-times' },
+          { name: city.nameAr, href: `/ar/prayer-times/${city.slug}` },
         ]}
       />
 
       <JsonLd
         data={{
           '@type': 'WebPage',
-          name: `Prayer Times in ${city.name} Today`,
-          description: `Accurate prayer times for ${city.name}, ${city.country}`,
-          url: `${siteUrl}/prayer-times/${city.slug}`,
-          inLanguage: 'en',
+          name: `مواقيت الصلاة في ${city.nameAr} اليوم`,
+          description: `أوقات الصلاة اليوم في ${city.nameAr}، ${city.countryAr}`,
+          url: `${siteUrl}/ar/prayer-times/${city.slug}`,
+          inLanguage: 'ar',
           dateModified: new Date().toISOString().split('T')[0],
           isPartOf: {
             '@type': 'WebApplication',
-            name: 'Islamful Prayer Times',
-            url: `${siteUrl}/prayer-times`,
+            name: 'إسلامفُل - مواقيت الصلاة',
+            url: `${siteUrl}/ar/prayer-times`,
           },
           about: {
             '@type': 'City',
-            name: city.name,
-            containedInPlace: { '@type': 'Country', name: city.country },
+            name: city.nameAr,
+            containedInPlace: { '@type': 'Country', name: city.countryAr },
           },
         }}
       />
 
-      {/* Hero: city + dates */}
+      {/* Hero */}
       <div className="mt-4 mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-          Prayer Times in {city.name}
+        <h1 className="font-arabic text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
+          مواقيت الصلاة في {city.nameAr}
         </h1>
         {prayerData && (
           <div className="mt-2 flex items-center gap-3">
@@ -115,36 +117,35 @@ export default async function CityPrayerTimesPage({ params }: Props) {
         )}
       </div>
 
-      {/* The main widget — interactive, with countdown */}
       <PrayerTimesWidget
         prayerData={prayerData}
-        cityName={city.name}
-        cityCountry={city.country}
+        cityName={city.nameAr}
+        cityCountry={city.countryAr}
         cityMethod={String(city.method)}
       />
 
       {/* Related cities */}
       <section className="mt-14">
-        <h2 className="mb-4 text-sm font-semibold tracking-wide text-[var(--color-cream-600)] uppercase dark:text-gray-400">
-          Other Cities
+        <h2 className="font-arabic mb-4 text-sm font-semibold tracking-wide text-[var(--color-cream-600)] uppercase dark:text-gray-400">
+          مدن أخرى
         </h2>
         <div className="flex flex-wrap gap-2">
           {relatedCities.map((c) => (
             <Link
               key={c.slug}
-              href={`/prayer-times/${c.slug}`}
+              href={`/ar/prayer-times/${c.slug}`}
               className="rounded-lg border border-[var(--color-cream-300)] px-3 py-1.5 text-sm text-gray-700 transition hover:border-[var(--color-primary-400)] hover:text-[var(--color-primary-600)] dark:border-gray-800 dark:text-gray-300"
             >
-              {c.name}
+              {c.nameAr}
             </Link>
           ))}
         </div>
         <div className="mt-4">
           <Link
-            href="/prayer-times"
+            href="/ar/prayer-times"
             className="text-sm text-[var(--color-primary-600)] hover:underline dark:text-[var(--color-primary-400)]"
           >
-            View all cities →
+            ← عرض جميع المدن
           </Link>
         </div>
       </section>
@@ -153,22 +154,21 @@ export default async function CityPrayerTimesPage({ params }: Props) {
       <section className="mt-14 border-t border-[var(--color-cream-300)] pt-10 dark:border-gray-800">
         <div className="prose prose-sm prose-gray dark:prose-invert max-w-none text-[var(--color-cream-600)]">
           <p>
-            Prayer times in {city.name} are calculated using the city&apos;s geographic coordinates
-            ({Math.abs(city.lat).toFixed(4)}°{city.lat >= 0 ? 'N' : 'S'},{' '}
-            {Math.abs(city.lng).toFixed(4)}°{city.lng >= 0 ? 'E' : 'W'}) with the {methodName}{' '}
-            calculation method. Each prayer time is determined by the sun&apos;s position relative
-            to {city.name}, {city.country}, and updates automatically every day.
+            تُحسب مواقيت الصلاة في {city.nameAr} بناءً على إحداثيات المدينة (خط العرض{' '}
+            {Math.abs(city.lat).toFixed(4)}° {city.lat >= 0 ? 'شمالاً' : 'جنوباً'}، خط الطول{' '}
+            {Math.abs(city.lng).toFixed(4)}° {city.lng >= 0 ? 'شرقاً' : 'غرباً'}) باستخدام طريقة
+            حساب {methodName}. تتغير الأوقات يومياً حسب موقع الشمس بالنسبة لمدينة {city.nameAr}،{' '}
+            {city.countryAr}.
           </p>
           <p>
-            The five daily prayers — Fajr (dawn), Dhuhr (midday), Asr (afternoon), Maghrib (sunset),
-            and Isha (night) — are obligatory for every Muslim. Sunrise is also shown to mark the
-            end of the Fajr prayer window. A live countdown helps you stay on track for the next
-            prayer.
+            تشمل الصلوات الخمس المفروضة: الفجر (قبل شروق الشمس)، والظهر (بعد زوال الشمس)، والعصر
+            (بعد الظهر)، والمغرب (بعد غروب الشمس مباشرة)، والعشاء (بعد اختفاء الشفق). يتم تحديث
+            الأوقات يومياً مع عداد تنازلي للصلاة القادمة.
           </p>
         </div>
       </section>
 
-      <CrossToolLinks currentTool="prayer-times" />
+      <CrossToolLinks currentTool="prayer-times" lang="ar" />
     </div>
   )
 }

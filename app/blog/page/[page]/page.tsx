@@ -24,8 +24,8 @@ export async function generateMetadata(props: {
   const path = pageNumber <= 1 ? '/blog' : `/blog/page/${pageNumber}`
   const description =
     pageNumber <= 1
-      ? 'Browse the latest Deen Back blog posts covering faith, lifestyle, and product learnings.'
-      : `Continue exploring older Deen Back blog posts in archive page ${pageNumber}.`
+      ? 'Browse the latest Islamful blog posts covering faith, lifestyle, and product learnings.'
+      : `Continue exploring older Islamful blog posts in archive page ${pageNumber}.`
 
   return genPageMetadata({
     title: pageNumber <= 1 ? 'Blog' : `Blog - Page ${pageNumber}`,

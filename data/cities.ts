@@ -623,3 +623,95 @@ export default cities
 export function getCityBySlug(slug: string): City | undefined {
   return cities.find((c) => c.slug === slug)
 }
+
+export interface Region {
+  name: string
+  nameAr: string
+  slugs: string[]
+}
+
+export const regions: Region[] = [
+  {
+    name: 'Middle East',
+    nameAr: 'الشرق الأوسط',
+    slugs: [
+      'mecca',
+      'medina',
+      'riyadh',
+      'jeddah',
+      'dubai',
+      'abu-dhabi',
+      'doha',
+      'kuwait-city',
+      'amman',
+      'beirut',
+      'baghdad',
+    ],
+  },
+  {
+    name: 'North Africa',
+    nameAr: 'شمال أفريقيا',
+    slugs: ['cairo', 'alexandria', 'casablanca', 'tunis', 'algiers'],
+  },
+  {
+    name: 'South & Southeast Asia',
+    nameAr: 'جنوب وجنوب شرق آسيا',
+    slugs: [
+      'jakarta',
+      'bali',
+      'kuala-lumpur',
+      'dhaka',
+      'karachi',
+      'lahore',
+      'islamabad',
+      'delhi',
+      'mumbai',
+      'singapore',
+    ],
+  },
+  { name: 'Turkey', nameAr: 'تركيا', slugs: ['istanbul', 'ankara'] },
+  {
+    name: 'Europe',
+    nameAr: 'أوروبا',
+    slugs: [
+      'london',
+      'paris',
+      'berlin',
+      'amsterdam',
+      'brussels',
+      'rome',
+      'madrid',
+      'vienna',
+      'stockholm',
+      'oslo',
+    ],
+  },
+  {
+    name: 'Americas',
+    nameAr: 'الأمريكتان',
+    slugs: ['new-york', 'los-angeles', 'chicago', 'houston', 'toronto'],
+  },
+  {
+    name: 'Africa & Oceania',
+    nameAr: 'أفريقيا وأوقيانوسيا',
+    slugs: ['lagos', 'nairobi', 'johannesburg', 'sydney', 'melbourne', 'tokyo'],
+  },
+]
+
+/** Returns related cities: same country first, then same region, excluding self */
+export function getRelatedCities(slug: string, limit = 12): City[] {
+  const city = getCityBySlug(slug)
+  if (!city) return cities.slice(0, limit)
+
+  const sameCountry = cities.filter((c) => c.countryCode === city.countryCode && c.slug !== slug)
+
+  const cityRegion = regions.find((r) => r.slugs.includes(slug))
+  const sameRegion = cityRegion
+    ? cityRegion.slugs
+        .filter((s) => s !== slug && !sameCountry.some((c) => c.slug === s))
+        .map((s) => getCityBySlug(s))
+        .filter((c): c is City => c !== undefined)
+    : []
+
+  return [...sameCountry, ...sameRegion].slice(0, limit)
+}

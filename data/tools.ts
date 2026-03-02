@@ -32,9 +32,8 @@ const tools: Tool[] = [
     name: 'Is This Haram?',
     nameAr: 'هل هذا حرام؟',
     description:
-      'Check whether food, ingredients, or everyday items are halal or haram according to Islamic guidelines.',
-    descriptionAr:
-      'تحقق مما إذا كانت الأطعمة أو المكونات أو المنتجات حلالاً أم حراماً وفقاً للإسلام.',
+      'Check whether anything is halal or haram — food, activities, lifestyle choices, finance, and more.',
+    descriptionAr: 'تحقق من حكم أي شيء — طعام، أنشطة، أسلوب حياة، معاملات مالية، والمزيد.',
     icon: ShieldCheck,
     iconBg: 'bg-orange-100 dark:bg-orange-900/30',
     iconColor: 'text-orange-600 dark:text-orange-400',

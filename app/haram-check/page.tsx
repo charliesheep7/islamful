@@ -3,11 +3,12 @@ import HaramChecker from '@/components/tools/HaramChecker'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
+import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export const metadata: Metadata = {
-  title: 'Is This Haram? — Halal & Haram Checker',
+  title: 'Is This Haram? — Free Islamic Ruling Checker',
   description:
-    'Check whether food, ingredients, or everyday items are halal or haram according to Islamic guidelines. Free halal checker with scholarly references.',
+    'Check whether anything is halal or haram in Islam — food, activities, lifestyle, finance, and more. Free AI-powered checker with Quran & Hadith references.',
   alternates: buildLanguageAlternates('/haram-check'),
 }
 
@@ -19,12 +20,13 @@ export default function HaramCheckPage() {
       <JsonLd
         data={{
           '@type': 'WebApplication',
-          name: 'Islamful Haram Checker',
+          name: 'Islamful Islamic Ruling Checker',
           description:
-            'Check whether food, ingredients, or products are halal, haram, or doubtful according to Islamic guidelines.',
+            'Check whether anything is halal or haram — food, activities, lifestyle choices, finance, and more. AI-powered with scholarly references.',
           url: 'https://www.islamful.com/haram-check',
           applicationCategory: 'LifestyleApplication',
           operatingSystem: 'Web',
+          inLanguage: 'en',
           offers: {
             '@type': 'Offer',
             price: '0',
@@ -38,12 +40,12 @@ export default function HaramCheckPage() {
           Is This Haram?
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-          Search for food, ingredients, or products to find out whether they are halal, haram, or
-          doubtful according to Islamic guidelines.
+          Wondering if something is halal or haram? Search anything — food, activities, finance,
+          lifestyle, and more.
         </p>
       </div>
 
-      <HaramChecker lang="en" />
+      <HaramChecker lang="en" standalone />
 
       <JsonLd
         data={{
@@ -71,6 +73,14 @@ export default function HaramCheckPage() {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Common ingredients to check include gelatin, glycerin, L-cysteine (E920), carmine (E120), and animal-derived emulsifiers. Always look for halal certification or verify the source of these ingredients.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I check activities and lifestyle choices, not just food?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes! This tool covers all aspects of daily life — not just food. You can check activities (music, yoga, tattoos), financial matters (stocks, crypto, insurance), lifestyle choices (dating, celebrations), and more. Each ruling includes scholarly references.',
               },
             },
           ],
@@ -118,8 +128,18 @@ export default function HaramCheckPage() {
             animal-derived emulsifiers. Always look for halal certification or verify the source of
             these ingredients.
           </p>
+          <h3>Beyond Food: Activities, Finance &amp; Lifestyle</h3>
+          <p>
+            Halal and haram extend far beyond food. Muslims regularly seek guidance on everyday
+            matters like whether music, tattoos, or keeping dogs is permissible. Financial topics
+            such as interest (riba), stock trading, cryptocurrency, and insurance also require
+            Islamic guidance. This tool covers all these areas, providing rulings with references to
+            the Quran, Hadith, and recognized scholarly bodies.
+          </p>
         </div>
       </section>
+
+      <CrossToolLinks currentTool="haram-check" />
     </div>
   )
 }

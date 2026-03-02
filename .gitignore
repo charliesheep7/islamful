@@ -49,3 +49,6 @@ yarn-error.log*
 # SEO Blog Generator scripts
 # /seo-blog-generator
 prd-seogen.md
+
+# Google Indexing API service account key
+google-indexing-key.json

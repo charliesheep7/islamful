@@ -51,7 +51,7 @@ const buildJsonLdAuthors = (authorDetails: ReturnType<typeof resolveAuthorDetail
 
     return {
       '@type': 'Person',
-      name: author.name,
+      name: author.fullName || author.name,
       jobTitle: author.occupation || undefined,
       worksFor: author.company
         ? {

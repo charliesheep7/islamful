@@ -4,7 +4,8 @@ import PrayerTimes from '@/components/tools/PrayerTimes'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
-import cities from '@/data/cities'
+import cities, { regions } from '@/data/cities'
+import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export const metadata: Metadata = {
   title: 'Prayer Times — Accurate Salah Times for Any City',
@@ -12,69 +13,6 @@ export const metadata: Metadata = {
     'Get accurate prayer times for Fajr, Dhuhr, Asr, Maghrib, and Isha for any city worldwide. Supports ISNA, MWL, Umm Al-Qura, and other calculation methods.',
   alternates: buildLanguageAlternates('/prayer-times'),
 }
-
-// Group cities by region for display
-const regions = [
-  {
-    name: 'Middle East',
-    slugs: [
-      'mecca',
-      'medina',
-      'riyadh',
-      'jeddah',
-      'dubai',
-      'abu-dhabi',
-      'doha',
-      'kuwait-city',
-      'amman',
-      'beirut',
-      'baghdad',
-    ],
-  },
-  {
-    name: 'North Africa',
-    slugs: ['cairo', 'alexandria', 'casablanca', 'tunis', 'algiers'],
-  },
-  {
-    name: 'South & Southeast Asia',
-    slugs: [
-      'jakarta',
-      'bali',
-      'kuala-lumpur',
-      'dhaka',
-      'karachi',
-      'lahore',
-      'islamabad',
-      'delhi',
-      'mumbai',
-      'singapore',
-    ],
-  },
-  { name: 'Turkey', slugs: ['istanbul', 'ankara'] },
-  {
-    name: 'Europe',
-    slugs: [
-      'london',
-      'paris',
-      'berlin',
-      'amsterdam',
-      'brussels',
-      'rome',
-      'madrid',
-      'vienna',
-      'stockholm',
-      'oslo',
-    ],
-  },
-  {
-    name: 'Americas',
-    slugs: ['new-york', 'los-angeles', 'chicago', 'houston', 'toronto'],
-  },
-  {
-    name: 'Africa & Oceania',
-    slugs: ['lagos', 'nairobi', 'johannesburg', 'sydney', 'melbourne', 'tokyo'],
-  },
-]
 
 export default function PrayerTimesPage() {
   return (
@@ -90,6 +28,7 @@ export default function PrayerTimesPage() {
           url: 'https://www.islamful.com/prayer-times',
           applicationCategory: 'LifestyleApplication',
           operatingSystem: 'Web',
+          inLanguage: 'en',
           offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         }}
       />
@@ -211,6 +150,8 @@ export default function PrayerTimesPage() {
           </p>
         </div>
       </section>
+
+      <CrossToolLinks currentTool="prayer-times" />
     </div>
   )
 }

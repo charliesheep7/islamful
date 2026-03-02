@@ -75,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${siteUrl}/prayer-times/${city.slug}`,
     lastModified: today,
     changeFrequency: 'daily' as const,
-    priority: 0.6,
+    priority: 0.8,
   }))
 
   // Prayer times city pages — Arabic (pSEO)
@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${siteUrl}/ar/prayer-times/${city.slug}`,
     lastModified: today,
     changeFrequency: 'daily' as const,
-    priority: 0.5,
+    priority: 0.7,
   }))
 
   return [

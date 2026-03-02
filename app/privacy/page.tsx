@@ -1,10 +1,11 @@
+import Link from 'next/link'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
 
 export const metadata = genPageMetadata({
   title: 'Privacy Policy',
   description:
-    'Understand what personal data DeenBack collects, how it is used, and the safeguards that protect it.',
+    'Understand what personal data Islamful collects, how it is used, and the safeguards that protect it.',
   alternates: buildLanguageAlternates('/privacy'),
 })
 
@@ -17,12 +18,12 @@ export default function PrivacyPage() {
           <strong>Last updated: [Jan 29, 2026]</strong>
         </p>
         <p>
-          DeenBack ("we," "us," or "our") is committed to protecting your privacy. This Privacy
+          Islamful ("we," "us," or "our") is committed to protecting your privacy. This Privacy
           Policy explains how we collect, use, and protect your information when you use our mobile
           application or related services ("Services").
         </p>
         <p>
-          <strong>If you do not agree with this Privacy Policy, please do not use DeenBack.</strong>
+          <strong>If you do not agree with this Privacy Policy, please do not use Islamful.</strong>
         </p>
 
         <h2>Information We Collect</h2>
@@ -100,7 +101,7 @@ export default function PrivacyPage() {
         <p>No system can be fully secure, though we work hard to protect your data.</p>
 
         <h2>Children's Privacy</h2>
-        <p>DeenBack is for users 13 years and older.</p>
+        <p>Islamful is for users 13 years and older.</p>
         <p>
           We do not knowingly collect personal data from children under 13. If we discover such
           data, we will delete it quickly.
@@ -113,18 +114,19 @@ export default function PrivacyPage() {
           <li>Request help by contacting us if needed</li>
         </ul>
         <p>
-          <strong>Email:</strong> vip@deenback.com
+          Visit our <Link href="/support">support page</Link> for assistance.
         </p>
 
         <h2>Changes to This Policy</h2>
         <p>
-          We may update this Privacy Policy as needed. Continued use of DeenBack means you accept
+          We may update this Privacy Policy as needed. Continued use of Islamful means you accept
           the updated policy.
         </p>
 
         <h2>Contact Us</h2>
-        <p>If you have any questions, please contact:</p>
-        <p>📩 vip@deenback.com</p>
+        <p>
+          If you have any questions, please visit our <Link href="/support">support page</Link>.
+        </p>
       </div>
     </SectionContainer>
   )

@@ -94,7 +94,7 @@ If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling
               role: 'user',
               parts: [
                 {
-                  text: `Is "${query.trim()}" halal or haram in Islam? Respond in ${responseLang}.`,
+                  text: `What is the Islamic ruling on "${query.trim()}"? Is it halal or haram? Respond in ${responseLang}.`,
                 },
               ],
             },
