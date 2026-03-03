@@ -1,5 +1,4 @@
 import 'css/tailwind.css'
-import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
 import { Noto_Sans, Noto_Sans_Arabic, Spectral } from 'next/font/google'

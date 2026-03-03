@@ -8,11 +8,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is cloud.umami.is;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src *.s3.amazonaws.com;
-  connect-src 'self' https://*.supabase.co https://api.aladhan.com https://api.bigdatacloud.net https://ipapi.co https://analytics.umami.is;
+  connect-src 'self' https://*.supabase.co https://api.aladhan.com https://api.bigdatacloud.net https://ipapi.co https://analytics.umami.is https://cloud.umami.is;
   font-src 'self';
   frame-src giscus.app youtube.com www.youtube.com youtube-nocookie.com www.youtube-nocookie.com
 `
@@ -70,6 +70,9 @@ module.exports = () => {
     reactStrictMode: true,
     trailingSlash: false,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+    experimental: {
+      optimizePackageImports: ['pliny', 'lucide-react', 'rehype-preset-minify'],
+    },
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
