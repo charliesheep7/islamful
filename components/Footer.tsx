@@ -58,7 +58,7 @@ export default function Footer() {
                     href={`${prefix}/${tool.slug}`}
                     className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                   >
-                    {tool.name}
+                    {currentLang === 'ar' ? tool.nameAr : tool.name}
                   </Link>
                 </li>
               ))}

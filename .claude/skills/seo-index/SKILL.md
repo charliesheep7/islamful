@@ -244,36 +244,7 @@ IndexNow: Submitted [N] URLs → [SUCCESS (HTTP 200/202) / FAILED: reason]
 
 HTTP 200 or 202 = success. HTTP 422 = invalid key. HTTP 429 = rate limited.
 
-### Step 6: Ping Sitemap to Search Engines
-
-Ping Google and Bing to notify them about the sitemap update.
-
-```python
-import urllib.request
-
-ping_urls = [
-    "https://www.google.com/ping?sitemap=https://www.islamful.com/sitemap.xml",
-    "https://www.bing.com/ping?sitemap=https://www.islamful.com/sitemap.xml",
-]
-
-for ping_url in ping_urls:
-    try:
-        resp = urllib.request.urlopen(ping_url, timeout=10)
-        engine = "Google" if "google" in ping_url else "Bing"
-        print(f"  {engine} sitemap ping → HTTP {resp.status}")
-    except Exception as e:
-        print(f"  Ping failed: {e}")
-```
-
-Show result:
-
-```
-Sitemap Ping:
-  Google → HTTP 200
-  Bing   → HTTP 200
-```
-
-### Step 7: Summary
+### Step 6: Summary
 
 ```
 INDEXING COMPLETE

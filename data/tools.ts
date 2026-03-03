@@ -1,4 +1,15 @@
-import { Clock, ShieldCheck, HandHeart, Repeat, Star, Calendar, Calculator } from 'lucide-react'
+import {
+  Clock,
+  ShieldCheck,
+  HandHeart,
+  Repeat,
+  Star,
+  Calendar,
+  Calculator,
+  Compass,
+  Scale,
+  Landmark,
+} from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 export interface Tool {
@@ -98,6 +109,45 @@ const tools: Tool[] = [
     icon: Calculator,
     iconBg: 'bg-indigo-100 dark:bg-indigo-900/30',
     iconColor: 'text-indigo-600 dark:text-indigo-400',
+    status: 'live',
+  },
+  {
+    slug: 'qibla-finder',
+    name: 'Qibla Finder',
+    nameAr: 'محدد القبلة',
+    description:
+      'Find the exact Qibla direction from anywhere in the world. Live compass for mobile, bearing angle for desktop.',
+    descriptionAr:
+      'حدد اتجاه القبلة من أي مكان في العالم. بوصلة حية للجوال وزاوية الاتجاه لسطح المكتب.',
+    icon: Compass,
+    iconBg: 'bg-cyan-100 dark:bg-cyan-900/30',
+    iconColor: 'text-cyan-600 dark:text-cyan-400',
+    status: 'live',
+  },
+  {
+    slug: 'inheritance-calculator',
+    name: 'Inheritance Calculator',
+    nameAr: 'حاسبة المواريث',
+    description:
+      "Calculate Islamic inheritance shares (Faraid) per Quran 4:11-12. See each heir's share with Quranic references.",
+    descriptionAr:
+      'احسب أنصبة الميراث الشرعية (الفرائض) وفق القرآن الكريم. اطلع على نصيب كل وارث مع المراجع القرآنية.',
+    icon: Scale,
+    iconBg: 'bg-violet-100 dark:bg-violet-900/30',
+    iconColor: 'text-violet-600 dark:text-violet-400',
+    status: 'live',
+  },
+  {
+    slug: 'islamic-mortgage',
+    name: 'Islamic Mortgage Calculator',
+    nameAr: 'حاسبة التمويل الإسلامي',
+    description:
+      'Compare Murabaha, Ijara, and Diminishing Musharaka against conventional mortgages. See total costs side by side.',
+    descriptionAr:
+      'قارن بين المرابحة والإجارة والمشاركة المتناقصة والرهن التقليدي. شاهد التكاليف الإجمالية جنباً إلى جنب.',
+    icon: Landmark,
+    iconBg: 'bg-sky-100 dark:bg-sky-900/30',
+    iconColor: 'text-sky-600 dark:text-sky-400',
     status: 'live',
   },
 ]
