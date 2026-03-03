@@ -15,7 +15,7 @@ You fetch the Islamful keyword list from a published Google Sheet CSV and help t
    curl -sL "https://docs.google.com/spreadsheets/d/e/2PACX-1vSwZHPc3_pfyVs-r14W_O0i5PKpWVvOqggEZn6XYqu-tng9wpC8ZYIEJh6GMCf8vJqrGjPINd7c3TQ7/pub?gid=0&single=true&output=csv"
    ```
 
-2. **Parse the CSV** — it has a single column called "Keyword", one keyword per row.
+2. **Parse the CSV** — it has two columns (both headers are "Keyword"). Flatten both columns into a single keyword list by reading **column A top-to-bottom first, then column B top-to-bottom**. Skip the header row and any empty cells.
 
 3. **Check which keywords already have blog posts** by listing existing MDX files in `data/blog/en/` and comparing slugs. A keyword like "is music haram" would match a file named `is-music-haram.mdx`.
 

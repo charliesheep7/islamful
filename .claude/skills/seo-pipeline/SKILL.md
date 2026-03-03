@@ -47,10 +47,11 @@ Execute these steps in order. After each step, briefly show the result before pr
    ```
    curl -sL "https://docs.google.com/spreadsheets/d/e/2PACX-1vSwZHPc3_pfyVs-r14W_O0i5PKpWVvOqggEZn6XYqu-tng9wpC8ZYIEJh6GMCf8vJqrGjPINd7c3TQ7/pub?gid=0&single=true&output=csv"
    ```
-2. List existing blog posts in `data/blog/en/` to find which keywords are already written.
-3. If `$ARGUMENTS` is empty, pick the **first keyword from the sheet that doesn't have a matching MDX file**. A keyword like "is music haram" matches `is-music-haram.mdx`.
-4. If `$ARGUMENTS` is a specific keyword, use that instead.
-5. Auto-detect the article type:
+2. Parse the CSV — it has **two columns** (both headers are "Keyword"). Flatten both columns into a single keyword list by reading **column A top-to-bottom first, then column B top-to-bottom**. Skip the header row and any empty cells.
+3. List existing blog posts in `data/blog/en/` to find which keywords are already written.
+4. If `$ARGUMENTS` is empty, pick the **first keyword from the flattened list that doesn't have a matching MDX file**. A keyword like "is music haram" matches `is-music-haram.mdx`.
+5. If `$ARGUMENTS` is a specific keyword, use that instead.
+6. Auto-detect the article type:
    - "haram", "halal", "permissible", "forbidden", "allowed", "sinful" → `is-x-haram`
    - "dua", "supplication", "prayer for", "dhikr" → `dua`
    - "how to", "guide", "step", "tutorial" → `how-to`

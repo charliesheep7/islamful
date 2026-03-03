@@ -11,7 +11,7 @@ export default function JsonLd({ data }: JsonLdProps) {
         __html: JSON.stringify({
           '@context': 'https://schema.org',
           ...data,
-        }),
+        }).replace(/</g, '\\u003c'),
       }}
     />
   )

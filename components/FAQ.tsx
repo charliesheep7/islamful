@@ -42,7 +42,7 @@ export default function FAQ({ faqs }: FAQProps) {
                 text: faq.answer,
               },
             })),
-          }),
+          }).replace(/</g, '\\u003c'),
         }}
       />
     </section>

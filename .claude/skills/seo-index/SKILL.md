@@ -201,22 +201,71 @@ Show progress:
 Submitting [X/Y]: [url] → [SUCCESS / FAILED: reason]
 ```
 
-### Step 5: Summary
+### Step 5: Submit Non-Indexed URLs to IndexNow
+
+Submit all non-indexed URLs to IndexNow. This notifies Bing, Yandex, and other participating search engines (Google has started honoring IndexNow as well).
+
+**IndexNow key**: `58177d47b0dc5d40d790d5b276f81b2b`
+**Key file**: `public/58177d47b0dc5d40d790d5b276f81b2b.txt` (serves as verification)
+
+IndexNow supports batch submission of up to 10,000 URLs in a single POST request.
+
+```python
+import urllib.request, json
+
+def submit_indexnow(urls):
+    indexnow_key = "58177d47b0dc5d40d790d5b276f81b2b"
+    req = urllib.request.Request(
+        "https://api.indexnow.org/indexnow",
+        data=json.dumps({
+            "host": "www.islamful.com",
+            "key": indexnow_key,
+            "keyLocation": f"https://www.islamful.com/{indexnow_key}.txt",
+            "urlList": urls
+        }).encode(),
+        headers={
+            "Content-Type": "application/json; charset=utf-8"
+        }
+    )
+    try:
+        resp = urllib.request.urlopen(req)
+        return {"success": True, "status": resp.status, "urls_submitted": len(urls)}
+    except urllib.error.HTTPError as e:
+        return {"success": False, "status": e.code, "error": e.read().decode()}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+```
+
+Show result:
+
+```
+IndexNow: Submitted [N] URLs → [SUCCESS (HTTP 200/202) / FAILED: reason]
+```
+
+HTTP 200 or 202 = success. HTTP 422 = invalid key. HTTP 429 = rate limited.
+
+### Step 6: Summary
 
 ```
 INDEXING COMPLETE
 =================
 URLs Scanned:     [total]
 Already Indexed:  [count]
-Submitted:        [count submitted]
+
+Google Indexing API:
+  Submitted:      [count]
   Successful:     [count]
   Failed:         [count]
-Skipped (quota):  [count, if any]
+  Note: Only effective for JobPosting/BroadcastEvent pages. Best-effort for regular pages.
+
+IndexNow:
+  Submitted:      [count]
+  Status:         [SUCCESS / FAILED]
+  Engines:        Bing, Yandex, Seznam, Naver (+ Google experimental)
 
 SUBMITTED URLs:
-  [url1] → Success
-  [url2] → Success
-  [url3] → Failed: [reason]
+  [url1] → Google: Success | IndexNow: Success
+  [url2] → Google: Success | IndexNow: Success
 
 FAILED URLs (need manual review):
   [url] — [error reason]
@@ -233,7 +282,9 @@ Next: run /seo-index again tomorrow to continue indexing remaining URLs.
 
 - **Never skip rate limiting** — Google will reject requests if sent too fast
 - City pages can number in the thousands — always sample by default, warn about quota
-- The Indexing API is officially designed for JobPosting and BroadcastEvent schema, but works for regular URLs too
+- The Google Indexing API is officially designed for JobPosting and BroadcastEvent schema — it may silently ignore regular pages (returns 200 but doesn't process). We submit anyway as best-effort.
+- IndexNow is the more reliable method for regular pages — it's honored by Bing, Yandex, and experimentally by Google
+- IndexNow key file must be accessible at `https://www.islamful.com/58177d47b0dc5d40d790d5b276f81b2b.txt`
 - If `google-indexing-key.json` is missing, show an error and stop
 - If authentication fails, check that the service account is added as an owner in Google Search Console
 - All Python code should be run with `python3 -c "..."` to stay within the allowed Bash permissions

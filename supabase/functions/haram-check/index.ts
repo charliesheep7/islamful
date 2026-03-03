@@ -1,15 +1,51 @@
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+// Rate limiting: 10 requests/min per IP + 100 requests/day global
+const PER_IP_LIMIT = 10
+const PER_IP_WINDOW_MS = 60_000
+const DAILY_LIMIT = 100
+const ipCounts = new Map<string, { count: number; resetAt: number }>()
+let dailyCount = 0
+let dailyResetAt = Date.now() + 86_400_000
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+
+  // Global daily cap
+  if (now > dailyResetAt) {
+    dailyCount = 0
+    dailyResetAt = now + 86_400_000
+  }
+  if (dailyCount >= DAILY_LIMIT) return false
+  dailyCount++
+
+  // Per-IP per-minute limit
+  const entry = ipCounts.get(ip)
+  if (!entry || now > entry.resetAt) {
+    ipCounts.set(ip, { count: 1, resetAt: now + PER_IP_WINDOW_MS })
+    return true
+  }
+  if (entry.count >= PER_IP_LIMIT) return false
+  entry.count++
+  return true
 }
 
-function jsonResponse(data: unknown, status = 200) {
+const ALLOWED_ORIGINS = ['https://islamful.com', 'https://www.islamful.com']
+
+function getCorsHeaders(origin: string | null) {
+  const allowedOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  }
+}
+
+function jsonResponse(data: unknown, status = 200, req?: Request) {
+  const origin = req?.headers.get('origin') ?? null
   return new Response(JSON.stringify(data), {
     status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: { ...getCorsHeaders(origin), 'Content-Type': 'application/json' },
   })
 }
 
@@ -45,24 +81,32 @@ function extractJson(text: string): Record<string, unknown> | null {
 }
 
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'))
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
+  }
+
+  // Rate limit by IP
+  const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  if (!checkRateLimit(clientIP)) {
+    return jsonResponse({ error: 'Too many requests. Please try again later.' }, 429, req)
   }
 
   try {
     const { query, lang = 'en' } = await req.json()
 
     if (!query || typeof query !== 'string' || query.trim().length === 0) {
-      return jsonResponse({ error: 'Query is required' }, 400)
+      return jsonResponse({ error: 'Query is required' }, 400, req)
     }
 
     if (query.trim().length > 200) {
-      return jsonResponse({ error: 'Query too long (max 200 characters)' }, 400)
+      return jsonResponse({ error: 'Query too long (max 200 characters)' }, 400, req)
     }
 
     const apiKey = Deno.env.get('GEMINI_API_KEY')
     if (!apiKey) {
-      return jsonResponse({ error: 'Service unavailable' }, 503)
+      return jsonResponse({ error: 'Service unavailable' }, 503, req)
     }
 
     const isArabic = lang === 'ar'
@@ -115,7 +159,7 @@ If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling
     if (!res.ok) {
       const errText = await res.text()
       console.error('Gemini API error:', res.status, errText)
-      return jsonResponse({ error: 'AI service error' }, 502)
+      return jsonResponse({ error: 'AI service error' }, 502, req)
     }
 
     const geminiData = await res.json()
@@ -132,27 +176,31 @@ If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling
 
     if (!text) {
       console.error('No text in response:', JSON.stringify(geminiData).slice(0, 500))
-      return jsonResponse({ error: 'No response from AI' }, 502)
+      return jsonResponse({ error: 'No response from AI' }, 502, req)
     }
 
     const result = extractJson(text)
     if (!result) {
       console.error('Failed to extract JSON from:', text.slice(0, 500))
-      return jsonResponse({ error: 'Failed to parse AI response' }, 502)
+      return jsonResponse({ error: 'Failed to parse AI response' }, 502, req)
     }
 
     // Validate and sanitize
     const validRulings = ['halal', 'haram', 'mashbooh', 'depends', 'not_applicable']
     const ruling = validRulings.includes(result.ruling as string) ? result.ruling : 'depends'
 
-    return jsonResponse({
-      name: (result.name as string) || query.trim(),
-      ruling,
-      explanation: (result.explanation as string) || '',
-      source: (result.source as string) || '',
-    })
+    return jsonResponse(
+      {
+        name: (result.name as string) || query.trim(),
+        ruling,
+        explanation: (result.explanation as string) || '',
+        source: (result.source as string) || '',
+      },
+      200,
+      req
+    )
   } catch (err) {
     console.error('Edge function error:', err)
-    return jsonResponse({ error: 'Internal server error' }, 500)
+    return jsonResponse({ error: 'Internal server error' }, 500, req)
   }
 })

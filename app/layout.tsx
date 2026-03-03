@@ -107,39 +107,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           }}
         />
         <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href={`${basePath}/static/favicons/apple-touch-icon.png`}
-        />
-        <link
           rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`${basePath}/static/favicons/favicon-32x32.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`${basePath}/static/favicons/favicon-16x16.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href={`${basePath}/static/favicons/android-chrome-192x192.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="512x512"
-          href={`${basePath}/static/favicons/android-chrome-512x512.png`}
-        />
-        <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
-        <link
-          rel="mask-icon"
-          href={`${basePath}/static/favicons/safari-pinned-tab.svg`}
-          color="#F6F5EE"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕋</text></svg>"
         />
         <meta name="msapplication-TileColor" content="#F6F5EE" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F5EE" />
@@ -174,7 +143,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 'Islamic lifestyle',
                 'Artificial intelligence for Muslims',
               ],
-            }),
+            }).replace(/</g, '\\u003c'),
           }}
         />
         <script
@@ -190,7 +159,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 'AI-powered Islamic tools and resources — everything a Muslim needs for daily worship, all in one place.',
               publisher: { '@id': 'https://www.islamful.com/#organization' },
               inLanguage: ['en', 'ar'],
-            }),
+            }).replace(/</g, '\\u003c'),
           }}
         />
         <script
@@ -223,7 +192,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               ],
               creator: { '@id': 'https://www.islamful.com/#organization' },
               inLanguage: ['en', 'ar'],
-            }),
+            }).replace(/</g, '\\u003c'),
           }}
         />
       </head>
