@@ -38,7 +38,7 @@ export default function DuaPageAr() {
           أدعية صحيحة من القرآن والسنة لكل لحظة في يومك.
         </p>
       </div>
-      <DuaCollection lang="ar" />
+      <DuaCollection lang="ar" limit={0} />
     </div>
   )
 }

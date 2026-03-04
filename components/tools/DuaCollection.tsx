@@ -8,9 +8,10 @@ const FAVORITES_KEY = 'islamful-dua-favorites'
 
 interface DuaCollectionProps {
   lang?: string
+  limit?: number
 }
 
-export default function DuaCollection({ lang = 'en' }: DuaCollectionProps) {
+export default function DuaCollection({ lang = 'en', limit = 3 }: DuaCollectionProps) {
   const isRTL = lang === 'ar'
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [search, setSearch] = useState('')
@@ -152,7 +153,7 @@ export default function DuaCollection({ lang = 'en' }: DuaCollectionProps) {
           </p>
         )}
 
-        {filtered.map((dua) => (
+        {(limit ? filtered.slice(0, limit) : filtered).map((dua) => (
           <div
             key={dua.id}
             className="rounded-2xl bg-white p-6 ring-1 ring-gray-200/60 sm:p-8 dark:bg-white/[0.03] dark:ring-white/10"
@@ -212,6 +213,15 @@ export default function DuaCollection({ lang = 'en' }: DuaCollectionProps) {
             <p className="mt-4 text-xs text-gray-400">{dua.source}</p>
           </div>
         ))}
+
+        {limit > 0 && filtered.length > limit && (
+          <a
+            href={isRTL ? '/ar/dua' : '/dua'}
+            className="mt-6 block text-center text-sm font-medium text-[var(--color-primary-500)] hover:underline"
+          >
+            {isRTL ? `عرض جميع الأدعية (${filtered.length})` : `View all ${filtered.length} duas →`}
+          </a>
+        )}
       </div>
     </div>
   )

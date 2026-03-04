@@ -37,7 +37,7 @@ export default function DuaPage() {
         </p>
       </div>
 
-      <DuaCollection lang="en" />
+      <DuaCollection lang="en" limit={0} />
     </div>
   )
 }
