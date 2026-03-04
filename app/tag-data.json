@@ -1,9 +1,9 @@
 {
   "haram": 8,
   "halal": 7,
-  "fiqh": 9,
+  "fiqh": 11,
   "body": 2,
-  "islamic-rulings": 4,
+  "islamic-rulings": 6,
   "dua": 5,
   "anxiety": 1,
   "mental-health": 1,
@@ -22,12 +22,17 @@
   "life": 1,
   "family": 1,
   "rulings": 1,
+  "halal-haram": 4,
+  "games": 1,
+  "relationships": 1,
+  "marriage": 1,
   "health": 4,
-  "halal-haram": 1,
   "music": 1,
   "islamful": 1,
   "prayer-times": 1,
   "halal-checker": 1,
   "islamic-tools": 1,
-  "about": 1
+  "about": 1,
+  "finance": 1,
+  "riba": 1
 }
