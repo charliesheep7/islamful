@@ -78,6 +78,14 @@ The SEO prompts live in `data/seo-prompts.ts`. Read this file first. It contains
 
    Place the tool embed naturally within the article flow — typically near the end of the article, before the summary section. Only embed ONE tool per article. Only embed if genuinely relevant.
 
+   **Always embed `<ToolsBox />`** in every article — no exceptions. Place it roughly two-thirds through the article, after the main scholarly/content sections and before the final summary or conclusion. It shows readers 6 free Islamic tools and encourages further exploration:
+
+   ```mdx
+   <ToolsBox />
+   ```
+
+   No props needed. It renders automatically from `data/tools.ts`.
+
 6. **Generate the MDX file** with this exact frontmatter structure:
 
    ```yaml

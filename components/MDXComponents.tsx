@@ -8,6 +8,7 @@ import TableWrapper from './TableWrapper'
 import HaramChecker from './tools/HaramChecker'
 import PrayerTimes from './tools/PrayerTimes'
 import DuaCollection from './tools/DuaCollection'
+import ToolsBox from './ToolsBox'
 
 export const components: MDXComponents = {
   Image,
@@ -19,4 +20,5 @@ export const components: MDXComponents = {
   HaramChecker,
   PrayerTimes,
   DuaCollection,
+  ToolsBox,
 }
