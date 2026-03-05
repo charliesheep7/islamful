@@ -100,29 +100,40 @@ Run the full SEO validation checklist:
 
 If CRITICAL issues found, fix them and re-validate. Show the validation report.
 
-### Step 5: Submit to Google Indexing API
+### Step 5: Submit to IndexNow
 
-After validation passes, submit the new blog URL to Google for indexing using the service account key at `google-indexing-key.json`.
+After validation passes, notify Bing, Yandex, and other participating engines via IndexNow.
 
-1. Load the service account JSON from `google-indexing-key.json`
-2. Create a JWT signed with the private key, requesting scope `https://www.googleapis.com/auth/indexing`
-3. Exchange the JWT for an access token at `https://oauth2.googleapis.com/token`
-4. POST to `https://indexing.googleapis.com/v3/urlNotifications:publish` with:
-   ```json
-   {
-     "url": "https://islamful.com/blog/[SLUG]",
-     "type": "URL_UPDATED"
-   }
-   ```
-5. Use Python with the `cryptography` library for JWT signing:
-   ```python
-   from cryptography.hazmat.primitives import hashes, serialization
-   from cryptography.hazmat.primitives.asymmetric import padding
-   ```
+**IndexNow key**: `58177d47b0dc5d40d790d5b276f81b2b`
 
-Show: success/failure status and the submitted URL.
+```python
+import urllib.request, json
 
-If the key file is missing or the API call fails, show a warning but do NOT fail the pipeline — the article is still published.
+url = "https://www.islamful.com/blog/[SLUG]"
+indexnow_key = "58177d47b0dc5d40d790d5b276f81b2b"
+
+req = urllib.request.Request(
+    "https://api.indexnow.org/indexnow",
+    data=json.dumps({
+        "host": "www.islamful.com",
+        "key": indexnow_key,
+        "keyLocation": f"https://www.islamful.com/{indexnow_key}.txt",
+        "urlList": [url]
+    }).encode(),
+    headers={"Content-Type": "application/json; charset=utf-8"}
+)
+try:
+    resp = urllib.request.urlopen(req)
+    print(f"IndexNow: SUCCESS (HTTP {resp.status})")
+except urllib.error.HTTPError as e:
+    print(f"IndexNow: FAILED (HTTP {e.code}: {e.read().decode()})")
+except Exception as e:
+    print(f"IndexNow: FAILED ({e})")
+```
+
+HTTP 200 or 202 = success. Show the status and submitted URL.
+
+If the API call fails, show a warning but do NOT fail the pipeline — the article is still published.
 
 ### Step 6: Summary
 
@@ -138,7 +149,7 @@ Summary:    [meta description]
 Word Count: [count]
 Tool Embed: [HaramChecker / DuaCollection / PrayerTimes / None]
 SEO Score:  [X/Y checks passed]
-Indexed:    [Yes / No (reason)]
+IndexNow:   [Success (HTTP 200) / Failed (reason)]
 Status:     READY
 
 Next: run /seo-pipeline again to generate the next article.

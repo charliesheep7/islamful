@@ -1,11 +1,11 @@
 ---
 name: seo-index
-description: Scan all site URLs for indexing status and submit non-indexed ones to Google Indexing API
+description: Scan all site URLs for indexing status and submit non-indexed ones to IndexNow
 ---
 
 # SEO Index — Bulk Indexing Scanner
 
-Fetches all URLs from the islamful.com sitemap, checks their Google indexing status, and submits non-indexed URLs to the Google Indexing API.
+Fetches all URLs from the islamful.com sitemap, checks their Google indexing status, and submits non-indexed URLs to IndexNow (Bing, Yandex, and other participating engines).
 
 **Input**: `$ARGUMENTS` is optional:
 
@@ -19,10 +19,9 @@ Fetches all URLs from the islamful.com sitemap, checks their Google indexing sta
 
 ## Prerequisites
 
-- Service account key: `google-indexing-key.json` (in project root)
-- Service account email: `islamful-indexing@islamful.iam.gserviceaccount.com`
-- The service account must be added as an owner in Google Search Console for `sc-domain:islamful.com`
-- Python 3 with `cryptography` library installed
+- Python 3 (standard library only — no external packages needed)
+- IndexNow key: `58177d47b0dc5d40d790d5b276f81b2b` (key file at `public/58177d47b0dc5d40d790d5b276f81b2b.txt`)
+- For indexing status checks: service account key at `google-indexing-key.json` + `cryptography` library
 
 ## Pipeline Steps
 
@@ -157,51 +156,7 @@ TOTAL            127    72       55           0
 
 If `$ARGUMENTS` is `check`, stop here and don't submit.
 
-### Step 4: Submit Non-Indexed URLs to Google Indexing API
-
-For each non-indexed URL, submit it to the Google Indexing API.
-
-**Authentication**: Reuse the same JWT flow but with scope `https://www.googleapis.com/auth/indexing`.
-
-```python
-# (same JWT creation as Step 2, but with indexing scope)
-scope = "https://www.googleapis.com/auth/indexing"
-
-def submit_url(url, access_token):
-    req = urllib.request.Request(
-        "https://indexing.googleapis.com/v3/urlNotifications:publish",
-        data=json.dumps({
-            "url": url,
-            "type": "URL_UPDATED"
-        }).encode(),
-        headers={
-            "Authorization": f"Bearer {access_token}",
-            "Content-Type": "application/json"
-        }
-    )
-    try:
-        resp = json.loads(urllib.request.urlopen(req).read())
-        return {"url": url, "success": True, "notifyTime": resp.get("urlNotificationMetadata", {}).get("latestUpdate", {}).get("notifyTime", "")}
-    except urllib.error.HTTPError as e:
-        error_body = e.read().decode()
-        return {"url": url, "success": False, "error": f"HTTP {e.code}: {error_body}"}
-    except Exception as e:
-        return {"url": url, "success": False, "error": str(e)}
-```
-
-**IMPORTANT rate limiting**: The Indexing API has a quota of ~200 publish requests/day by default. Add a 1-second delay between submissions. If there are more than 200 non-indexed URLs:
-
-1. Prioritize in this order: blog posts → tool pages → static pages → city pages
-2. Submit up to 200 URLs
-3. Warn the user about remaining URLs and suggest running again tomorrow
-
-Show progress:
-
-```
-Submitting [X/Y]: [url] → [SUCCESS / FAILED: reason]
-```
-
-### Step 5: Submit Non-Indexed URLs to IndexNow
+### Step 4: Submit Non-Indexed URLs to IndexNow
 
 Submit all non-indexed URLs to IndexNow. This notifies Bing, Yandex, and other participating search engines (Google has started honoring IndexNow as well).
 
@@ -244,7 +199,7 @@ IndexNow: Submitted [N] URLs → [SUCCESS (HTTP 200/202) / FAILED: reason]
 
 HTTP 200 or 202 = success. HTTP 422 = invalid key. HTTP 429 = rate limited.
 
-### Step 6: Summary
+### Step 5: Summary
 
 ```
 INDEXING COMPLETE
@@ -252,40 +207,27 @@ INDEXING COMPLETE
 URLs Scanned:     [total]
 Already Indexed:  [count]
 
-Google Indexing API:
-  Submitted:      [count]
-  Successful:     [count]
-  Failed:         [count]
-  Note: Only effective for JobPosting/BroadcastEvent pages. Best-effort for regular pages.
-
 IndexNow:
   Submitted:      [count]
-  Status:         [SUCCESS / FAILED]
-  Engines:        Bing, Yandex, Seznam, Naver (+ Google experimental)
+  Status:         [SUCCESS (HTTP 200/202) / FAILED: reason]
+  Engines:        Bing, Yandex, Seznam, Naver
 
 SUBMITTED URLs:
-  [url1] → Google: Success | IndexNow: Success
-  [url2] → Google: Success | IndexNow: Success
+  [url1] → IndexNow: Success
+  [url2] → IndexNow: Success
 
 FAILED URLs (need manual review):
   [url] — [error reason]
 
-STILL NOT INDEXED (quota exceeded, run again tomorrow):
-  [url1]
-  [url2]
-  ...
-
-Next: run /seo-index again tomorrow to continue indexing remaining URLs.
+Next: run /seo-index again to check newly indexed pages.
 ```
 
 ## Important Notes
 
-- **Never skip rate limiting** — Google will reject requests if sent too fast
-- City pages can number in the thousands — always sample by default, warn about quota
-- The Google Indexing API is officially designed for JobPosting and BroadcastEvent schema — it may silently ignore regular pages (returns 200 but doesn't process). We submit anyway as best-effort.
-- IndexNow is the more reliable method for regular pages — it's honored by Bing, Yandex, and experimentally by Google
+- **Never skip rate limiting** on the URL Inspection API (Step 2) — 1-second delay between requests
+- City pages can number in the hundreds — always sample by default (50), warn about quota
+- IndexNow supports batch submission of up to 10,000 URLs in a single request — no per-URL looping needed
 - IndexNow key file must be accessible at `https://www.islamful.com/58177d47b0dc5d40d790d5b276f81b2b.txt`
-- If `google-indexing-key.json` is missing, show an error and stop
-- If authentication fails, check that the service account is added as an owner in Google Search Console
+- If `$ARGUMENTS` is `check`, stop after Step 3 — do not submit to IndexNow
 - All Python code should be run with `python3 -c "..."` to stay within the allowed Bash permissions
 - Combine the check + submit into a single Python script for efficiency when possible

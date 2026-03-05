@@ -493,43 +493,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 ## 8. Sitemap & Indexing
 
-### Sitemap Structure
+### Sitemap Structure (Segmented)
 
-All pages are generated in `app/sitemap.ts`. Priority hierarchy:
+Sitemaps are split into 4 segments via `generateSitemaps()` in `app/sitemap.ts`. Next.js generates a sitemap index at `/sitemap.xml` referencing each segment:
 
-| Page Type        | Priority | changeFrequency | lastModified   | Status      |
-| ---------------- | -------- | --------------- | -------------- | ----------- |
-| Homepage         | 1.0      | weekly          | Static date    | Implemented |
-| Tool hubs (en)   | 0.9      | daily           | `today`        | Implemented |
-| Tool hubs (ar)   | 0.8      | daily           | `today`        | Implemented |
-| City spokes (en) | 0.8      | daily           | `today`        | Implemented |
-| City spokes (ar) | 0.7      | daily           | `today`        | Implemented |
-| Blog posts       | 0.7      | monthly         | `post.lastmod` | Implemented |
-| Static pages     | 0.3      | monthly         | Static date    | Implemented |
+| Segment          | Path         | Content                        | lastModified                  |
+| ---------------- | ------------ | ------------------------------ | ----------------------------- |
+| `/sitemap/0.xml` | Static pages | Homepage, blog index, about... | Omitted (pages rarely change) |
+| `/sitemap/1.xml` | Tool hubs    | prayer-times, haram-check hubs | Omitted (hub content stable)  |
+| `/sitemap/2.xml` | City spokes  | All 49 city prayer pages x2    | `today` (data changes daily)  |
+| `/sitemap/3.xml` | Blog posts   | All en + ar blog posts         | `post.lastmod \|\| post.date` |
 
-**Important:** Google officially ignores BOTH `priority` AND `changeFrequency` (confirmed in Google docs, Dec 2025). The only tag Google uses is `lastmod`, and only if it's consistently accurate. We keep `priority`/`changeFrequency` because some other search engines may still use them, but `lastmod` is what matters.
+**lastmod rules (critical for indexing):**
+
+- **Omit** `lastmod` for pages that don't change frequently (static, tool hubs). An absent `lastmod` is neutral; a false `lastmod` actively destroys Google's trust in the entire sitemap.
+- **Use `today`** only for city prayer pages, where the underlying data genuinely changes daily.
+- **Use real content dates** for blog posts (`post.lastmod` or `post.date`).
+- **Never inflate** `lastmod` for cosmetic changes (copyright year, layout tweaks). Google explicitly warns it uses `lastmod` only if "consistently and verifiably accurate."
+
+**Note:** Google ignores `priority` and `changeFrequency` (confirmed Dec 2025). We keep them for other search engines, but `lastmod` is the only tag Google uses.
 
 ### Ensuring Indexing
 
-1. **Internal links are the #1 signal.** Every spoke page must be linked from the hub, other spokes, and ideally the footer.
-2. **Submit sitemap** in Google Search Console manually.
+1. **Internal links are the #1 signal.** Every spoke page must be linked from the hub, other spokes, and ideally the footer. Run `/internal-links` to add cross-links between blog posts.
+2. **Submit sitemap** in Google Search Console after each deploy.
 3. **Use URL Inspection** in GSC to request indexing for top 10 pages first.
 4. **Monitor "Pages" report** in GSC:
    - "Discovered — currently not indexed" = Google found it but didn't bother crawling (thin content signal)
    - "Crawled — currently not indexed" = Google crawled it but didn't think it was worth indexing (quality issue)
-5. **robots.txt** must allow all tool and city pages (currently correct).
+5. **robots.txt** allows all tool and city pages; blocks `/api/` and `/tags/*/feed.xml` (crawl waste).
 6. **No `noindex` tags** on tool or city pages.
 
-### Future: Sitemap Splitting
+### Crawl Budget Hygiene
 
-When you exceed 200+ URLs, consider splitting into multiple sitemaps:
-
-- `sitemap-static.xml` — homepage, about, privacy, terms
-- `sitemap-tools.xml` — tool hub pages
-- `sitemap-cities.xml` — all city spoke pages
-- `sitemap-blog.xml` — all blog posts
-
-This helps monitor indexing per category in Search Console.
+- **Tag feed files** (`/tags/*/feed.xml`) are blocked via robots.txt to prevent 130+ low-value URLs from consuming crawl budget.
+- **Avoid soft-404s** — if a page returns 200 but shows "not found" content, Google wastes crawl budget on it.
+- **Keep server fast** — 5xx errors and slow TTFB reduce Google's crawl capacity for the site.
+- **No duplicate URL variants** — don't expose filter/sort/parameter URLs in sitemaps.
 
 ### IndexNow (Optional)
 
