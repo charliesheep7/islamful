@@ -170,25 +170,31 @@ ${IMAGE_PROMPT_RULES}
 <article-structure>
 Target length: 800–1,500 words. Do NOT pad to reach word count — only write what's useful.
 
+The #1 goal: give the reader the answer FAST. Most people searching "is X haram" want the ruling in seconds, not after 5 paragraphs of context. Structure the article like an inverted pyramid — answer first, evidence second, deep context last.
+
 ## Structure
 
-### 1. Introduction (100-200 words)
-Start with the direct answer immediately. No buildup.
+### 1. The Ruling (50-100 words) — THIS COMES FIRST
+Open with the ruling immediately. No preamble, no "Islam is a beautiful religion" filler.
 
 Format:
-- **Hook** (1 sentence): State the question and give the ruling upfront
-- **Nuance** (2-3 sentences): Brief context — is it unanimously agreed? Are there conditions?
-- **Quick Answer Box**: A bold summary readers can screenshot/reference:
+- **First sentence**: Direct answer. "**[X] is [haram/halal/depends].** Here's what you need to know."
+- **Quick Answer Box** (immediately after):
 
-> **Quick Answer:** [Ruling in 1-2 sentences with the primary evidence]
+> **Quick Answer:** [Ruling in 1-2 sentences with the primary evidence. Include the key condition if there is one.]
 
-### 2. What Does Islam Say About [X]? (150-300 words)
-- Present the primary Quran/hadith evidence
-- Quote the actual Arabic text with translation for key evidence
-- Explain the reasoning behind the ruling (not just "because scholars said so")
+- **Tool CTA** (right after the quick answer):
+
+Want to check if something else is halal or haram? Try our free [Haram Checker](/haram-check) — instant AI-powered rulings with sources.
+
+### 2. The Evidence (150-250 words)
+- Present the 1-2 strongest pieces of evidence (Quran verse or hadith) that support the ruling
+- Quote the actual Arabic text with translation
+- Briefly explain the reasoning — WHY is it haram/halal? (not just "because scholars said so")
+- Keep this focused. Don't dump every tangentially related verse.
 
 ### 3. Scholar Opinions (150-300 words)
-- Present the majority scholarly view
+- Lead with the majority opinion and label it clearly: "**The majority of scholars** (including [names/madhabs]) hold that..."
 - If there's legitimate ikhtilaf (difference of opinion), present 2-3 positions
 - Use a comparison table if 3+ distinct positions exist:
 
@@ -198,20 +204,20 @@ Format:
 
 - Always note which opinion is the majority/strongest
 
-### 4. Conditions and Exceptions (100-200 words)
+### 4. Conditions and Gray Areas (100-200 words)
 - When does the ruling change?
-- Are there specific scenarios that alter the ruling?
-- Common gray areas people ask about
+- Specific scenarios that alter the ruling (e.g., medical necessity, no alternative)
+- Common "what about..." questions readers have
 
-### 5. Common Misconceptions (100-200 words)
+### 5. Common Questions (100-200 words)
 - Address 2-3 "People Also Ask" style questions
 - Format as mini Q&A:
   **Q: [Common question]**
   [Direct answer with evidence]
 
 ### 6. Summary (50-100 words)
-- Restate the ruling clearly
-- List the key conditions as bullet points
+- Restate the ruling in one sentence
+- Bullet-point the key conditions
 - End with: "Allah knows best" (والله أعلم)
 </article-structure>
 
@@ -244,17 +250,18 @@ ${SEO_FORMATTING}
 ${IMAGE_PROMPT_RULES}
 
 <article-structure>
-Target length: 500–1,000 words. These are reference articles — readers want the dua quickly, then context.
+Target length: 500–1,000 words. These are reference articles — readers want the dua IMMEDIATELY, then optional context.
+
+The #1 goal: show the dua in Arabic + transliteration + translation within the first scroll. Most people landing on this page want to read or recite the dua RIGHT NOW. Everything else is secondary.
 
 ## Structure
 
-### 1. Introduction (50-100 words)
-- State what this dua is for in one sentence
-- When/where it's recited
-- Its source (Quran or which hadith collection)
+### 1. One-Line Intro (1-2 sentences max)
+- State what this dua is for and when it's recited. That's it. No history, no buildup.
+- Example: "This is the dua recited before sleeping, taught by the Prophet ﷺ."
 
-### 2. The Dua (primary content block)
-Present each dua in this exact format:
+### 2. The Dua (THIS IS THE MAIN EVENT — show it immediately)
+Present the dua right away in this exact format:
 
 **Arabic:**
 > [Full Arabic text in Arabic script]
@@ -267,30 +274,30 @@ Present each dua in this exact format:
 
 **Source:** [Hadith collection and number, or Quran reference]
 
-If there are multiple versions (e.g., different madhabs or varying hadith), present each one under a clear subheading:
+If there are multiple authentic versions, present each one under a clear subheading:
 - "### Version 1: From [Source]"
 - "### Version 2: From [Source]"
 
-### 3. When to Recite This Dua (100-200 words)
+**Tool CTA** (right after the dua):
+
+Looking for more duas? Browse our complete [Dua Collection](/dua) — organized by occasion with Arabic text, transliteration, and translation.
+
+### 3. When and How to Recite (100-150 words)
 - Specific time, occasion, or situation
 - Any conditions (wudu required? facing qiblah?)
 - How many times to recite (if specified in sunnah)
 - What to do before/after (if applicable)
+- Keep this practical and scannable — use bullet points
 
-### 4. Virtues and Benefits (100-200 words)
+### 4. Virtues and Rewards (100-150 words)
 - What hadiths say about the reward or significance
 - Why this dua is special
-- Any related prophetic stories or context
-- Cite specific hadith for every claimed benefit
+- Cite specific hadith for every claimed benefit — no unsourced "benefits"
 
-### 5. Tips for Memorization (50-100 words, optional)
-- Break the dua into phrases if it's long
-- Suggest phonetic tricks only if genuinely helpful
-- Skip this section entirely for short duas (1-2 lines)
-
-### 6. Related Duas (50-100 words)
+### 5. Related Duas (50-100 words)
 - Mention 2-3 related duas with internal links
 - Brief one-line description of each
+- Skip the "Tips for Memorization" section unless the dua is genuinely long (5+ lines)
 </article-structure>
 
 <output-format>
