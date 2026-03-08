@@ -1,5 +1,4 @@
 import 'css/tailwind.css'
-import 'remark-github-blockquote-alert/alert.css'
 
 import { Noto_Sans, Noto_Sans_Arabic, Spectral } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
@@ -28,7 +27,7 @@ const noto_sans_arabic = Noto_Sans_Arabic({
 
 const spectral = Spectral({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '700'],
   display: 'swap',
   variable: '--font-spectral',
 })
@@ -114,8 +113,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F5EE" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
-        <link rel="preconnect" href="https://api.aladhan.com" />
-        <link rel="preconnect" href="https://fkifiwgbroehluxksfte.supabase.co" />
+        <link rel="dns-prefetch" href="https://api.aladhan.com" />
+        <link rel="dns-prefetch" href="https://fkifiwgbroehluxksfte.supabase.co" />
         <link rel="dns-prefetch" href="https://api.bigdatacloud.net" />
         <script
           type="application/ld+json"

@@ -1,5 +1,6 @@
 import 'css/prism.css'
 import 'katex/dist/katex.css'
+import 'remark-github-blockquote-alert/alert.css'
 
 import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
