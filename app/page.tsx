@@ -1,4 +1,5 @@
 import Hero from '@/components/landing/Hero'
+import FeaturedTool from '@/components/landing/FeaturedTool'
 import ToolsGrid from '@/components/landing/ToolsGrid'
 import GamesGrid from '@/components/landing/GamesGrid'
 import CTA from '@/components/landing/CTA'
@@ -25,6 +26,7 @@ export default function Page() {
   return (
     <div className="flex flex-col">
       <Hero lang="en" dict={dict} />
+      <FeaturedTool lang="en" dict={dict} />
       <ToolsGrid lang="en" dict={dict} />
       <GamesGrid />
       <CTA lang="en" dict={dict} />

@@ -1,4 +1,5 @@
 import Hero from '@/components/landing/Hero'
+import FeaturedTool from '@/components/landing/FeaturedTool'
 import ToolsGrid from '@/components/landing/ToolsGrid'
 import CTA from '@/components/landing/CTA'
 import FAQ from '@/components/landing/FAQ'
@@ -16,6 +17,7 @@ export default async function LangHome({ params }: { params: Promise<{ lang: 'ar
   return (
     <div className="flex flex-col">
       <Hero lang={lang} dict={dict} />
+      <FeaturedTool lang={lang} dict={dict} />
       <ToolsGrid lang={lang} dict={dict} />
       <CTA lang={lang} dict={dict} />
       <FAQ lang={lang} dict={dict} />

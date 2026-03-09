@@ -11,6 +11,7 @@ import {
   Landmark,
   Baby,
   Cake,
+  BookOpen,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -27,6 +28,19 @@ export interface Tool {
 }
 
 const tools: Tool[] = [
+  {
+    slug: 'answers',
+    name: 'Quran Answers',
+    nameAr: 'إجابات القرآن',
+    description:
+      'Ask any question and receive a beautiful Quran verse as your answer. Generate and share stunning verse cards.',
+    descriptionAr:
+      'اسأل أي سؤال واحصل على آية جميلة من القرآن الكريم كإجابة. أنشئ وشارك بطاقات آيات رائعة.',
+    icon: BookOpen,
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+    status: 'live',
+  },
   {
     slug: 'prayer-times',
     name: 'Prayer Times',
