@@ -9,6 +9,8 @@ import {
   Compass,
   Scale,
   Landmark,
+  Baby,
+  Cake,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -138,6 +140,19 @@ const tools: Tool[] = [
     status: 'live',
   },
   {
+    slug: 'muslim-names',
+    name: 'Muslim Baby Names',
+    nameAr: 'أسماء إسلامية',
+    description:
+      'Search 265+ Islamic baby names with Arabic script, meanings, and origins. Filter by gender, category, and more.',
+    descriptionAr:
+      'ابحث في أكثر من 265 اسمًا إسلاميًا مع الكتابة العربية والمعاني والأصول. فلتر حسب الجنس والفئة والمزيد.',
+    icon: Baby,
+    iconBg: 'bg-green-100 dark:bg-green-900/30',
+    iconColor: 'text-green-600 dark:text-green-400',
+    status: 'live',
+  },
+  {
     slug: 'islamic-mortgage',
     name: 'Islamic Mortgage Calculator',
     nameAr: 'حاسبة التمويل الإسلامي',
@@ -148,6 +163,19 @@ const tools: Tool[] = [
     icon: Landmark,
     iconBg: 'bg-sky-100 dark:bg-sky-900/30',
     iconColor: 'text-sky-600 dark:text-sky-400',
+    status: 'live',
+  },
+  {
+    slug: 'hijri-birthday',
+    name: 'Hijri Birthday Calculator',
+    nameAr: 'حاسبة عيد الميلاد الهجري',
+    description:
+      'Find your Islamic birthday in the Hijri calendar, your age in lunar years, and when your next Hijri birthday falls.',
+    descriptionAr:
+      'اكتشف تاريخ ميلادك الهجري وعمرك بالسنوات القمرية وموعد عيد ميلادك الهجري القادم.',
+    icon: Cake,
+    iconBg: 'bg-pink-100 dark:bg-pink-900/30',
+    iconColor: 'text-pink-600 dark:text-pink-400',
     status: 'live',
   },
 ]

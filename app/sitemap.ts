@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { allBlogs } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 import tools from '@/data/tools'
+import games from '@/data/games'
 import cities from '@/data/cities'
 
 // Force static generation at build time so ContentLayer data (allBlogs) is available
@@ -12,35 +13,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const today = new Date().toISOString().split('T')[0]
 
   // Static pages
-  const enRoutes = ['', 'blog', 'mission', 'quran', 'support', 'privacy', 'terms'].map((route) => ({
-    url: `${siteUrl}/${route}`,
-    changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
-      | 'weekly'
-      | 'monthly',
-    priority:
-      route === ''
-        ? 1.0
-        : route === 'blog'
-          ? 0.8
-          : route === 'mission' || route === 'quran'
-            ? 0.7
-            : 0.3,
-  }))
+  const enRoutes = ['', 'blog', 'games', 'mission', 'quran', 'support', 'privacy', 'terms'].map(
+    (route) => ({
+      url: `${siteUrl}/${route}`,
+      changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
+        | 'weekly'
+        | 'monthly',
+      priority:
+        route === ''
+          ? 1.0
+          : route === 'blog'
+            ? 0.8
+            : route === 'mission' || route === 'quran'
+              ? 0.7
+              : 0.3,
+    })
+  )
 
-  const arRoutes = ['', 'blog', 'mission', 'quran', 'support', 'privacy', 'terms'].map((route) => ({
-    url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
-    changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
-      | 'weekly'
-      | 'monthly',
-    priority:
-      route === ''
-        ? 0.9
-        : route === 'blog'
-          ? 0.7
-          : route === 'mission' || route === 'quran'
-            ? 0.6
-            : 0.2,
-  }))
+  const arRoutes = ['', 'blog', 'games', 'mission', 'quran', 'support', 'privacy', 'terms'].map(
+    (route) => ({
+      url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
+      changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
+        | 'weekly'
+        | 'monthly',
+      priority:
+        route === ''
+          ? 0.9
+          : route === 'blog'
+            ? 0.7
+            : route === 'mission' || route === 'quran'
+              ? 0.6
+              : 0.2,
+    })
+  )
 
   // Tool pages
   const liveTools = tools.filter((tool) => tool.status === 'live')
@@ -53,6 +58,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${siteUrl}/ar/${tool.slug}`,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
+  }))
+
+  // Game pages
+  const enGames = games.map((game) => ({
+    url: `${siteUrl}/games/${game.slug}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+  const arGames = games.map((game) => ({
+    url: `${siteUrl}/ar/games/${game.slug}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
   }))
 
   // City prayer pages
@@ -92,6 +109,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...arRoutes,
     ...enTools,
     ...arTools,
+    ...enGames,
+    ...arGames,
     ...enCities,
     ...arCities,
     ...enBlogs,

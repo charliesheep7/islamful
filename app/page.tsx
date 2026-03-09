@@ -1,5 +1,6 @@
 import Hero from '@/components/landing/Hero'
 import ToolsGrid from '@/components/landing/ToolsGrid'
+import GamesGrid from '@/components/landing/GamesGrid'
 import CTA from '@/components/landing/CTA'
 import FAQ from '@/components/landing/FAQ'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
@@ -25,6 +26,7 @@ export default function Page() {
     <div className="flex flex-col">
       <Hero lang="en" dict={dict} />
       <ToolsGrid lang="en" dict={dict} />
+      <GamesGrid />
       <CTA lang="en" dict={dict} />
       <FAQ lang="en" dict={dict} />
     </div>

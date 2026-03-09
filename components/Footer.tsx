@@ -79,6 +79,14 @@ export default function Footer() {
                   {t.blog}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`${prefix}/games`}
+                  className="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                >
+                  {currentLang === 'ar' ? 'الألعاب' : 'Games'}
+                </Link>
+              </li>
             </ul>
           </div>
 
