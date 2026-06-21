@@ -1,0 +1,2 @@
+# sharp is auto-installed on first run by generate-hero-image.js — never commit the binaries
+node_modules/

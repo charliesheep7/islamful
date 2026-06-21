@@ -1,0 +1,8 @@
+{
+  "name": "islamful-blog-writer",
+  "private": true,
+  "description": "Local hero-image generator deps (sharp) for the islamful-blog-writer skill",
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
