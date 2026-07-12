@@ -203,31 +203,42 @@ type target in `seo-prompts.ts` (≥800 min) · ≥1 reference table where the t
 frontmatter · 3–5 internal links (all valid) · 2–5 external links (all 200/301/302) · image file
 exists, WebP, >10 KB.
 
-### Step 7 — Submit to IndexNow
+### Step 7 — Submit to IndexNow (gated on the page being live)
 
-Notify Bing, Yandex, and participating engines (Google honors IndexNow too). Non-fatal on failure.
+Notify Bing, Yandex, and participating engines (Google honors IndexNow too). **IndexNow must point at a
+LIVE page** — submitting a not-yet-deployed URL makes engines crawl a 404. So this step is **gated**: it
+only submits if the post is already deployed (HTTP 200). In a manual run before deploy it cleanly skips,
+and you index after deploying; the daily routine (`daily-islamful-blogs`) does the post-deploy IndexNow
+ping for you. Non-fatal either way.
 
 ```bash
 SLUG='[SLUG]' python3 - <<'PY'
 import os, json, urllib.request, urllib.error
 slug = os.environ['SLUG']; key = "58177d47b0dc5d40d790d5b276f81b2b"
-payload = {"host":"www.islamful.com","key":key,
-           "keyLocation":f"https://www.islamful.com/{key}.txt",
-           "urlList":[f"https://www.islamful.com/blog/{slug}"]}
-req = urllib.request.Request("https://api.indexnow.org/indexnow",
-        data=json.dumps(payload).encode(),
-        headers={"Content-Type":"application/json; charset=utf-8"})
+url = f"https://www.islamful.com/blog/{slug}"
 try:
-    r = urllib.request.urlopen(req, timeout=30)
-    print(f"IndexNow: SUCCESS (HTTP {r.status})")
+    code = urllib.request.urlopen(url, timeout=15).status
 except urllib.error.HTTPError as e:
-    print(f"IndexNow: FAILED (HTTP {e.code}: {e.read().decode()[:200]})")
-except Exception as e:
-    print(f"IndexNow: FAILED ({e})")
+    code = e.code
+except Exception:
+    code = 0
+if code != 200:
+    print(f"IndexNow: SKIPPED — {url} not live yet (HTTP {code}). Index after deploy.")
+else:
+    payload = {"host":"www.islamful.com","key":key,
+               "keyLocation":f"https://www.islamful.com/{key}.txt","urlList":[url]}
+    req = urllib.request.Request("https://api.indexnow.org/indexnow",
+            data=json.dumps(payload).encode(),
+            headers={"Content-Type":"application/json; charset=utf-8"})
+    try:
+        r = urllib.request.urlopen(req, timeout=30)
+        print(f"IndexNow: SUCCESS (HTTP {r.status})")
+    except Exception as e:
+        print(f"IndexNow: FAILED ({e})")
 PY
 ```
 
-HTTP 200/202 = success. On failure, warn but continue — the post is still published.
+HTTP 200/202 = success. If skipped (not live yet), the daily routine indexes it after deploy.
 
 ### Step 8 — Track
 
