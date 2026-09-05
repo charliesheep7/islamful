@@ -52,6 +52,9 @@ const buildJsonLdAuthors = (authorDetails: ReturnType<typeof resolveAuthorDetail
     return {
       '@type': 'Person',
       name: author.fullName || author.name,
+      // Google reads @type plus url/sameAs to work out which person this is.
+      // The bio page is the stable anchor; sameAs carries the off-site profiles.
+      url: `${siteMetadata.siteUrl}/mission`,
       jobTitle: author.occupation || undefined,
       worksFor: author.company
         ? {
