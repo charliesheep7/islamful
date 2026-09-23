@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Search, CheckCircle, XCircle, AlertTriangle, Info, Loader2, Sparkles } from 'lucide-react'
+import { findLocalEntry } from './haram-search'
 
 type Ruling = 'halal' | 'haram' | 'mashbooh' | 'depends' | 'not_applicable'
 
@@ -10,16 +11,16 @@ interface HaramEntry {
   ruling: Ruling
   explanation: string
   source?: string
+  sourceUrl?: string
 }
 
-// Static fallback database for instant results
+// Prewritten summaries. The full set has not received a comprehensive scholarly source audit.
 const database: HaramEntry[] = [
   {
     name: 'gelatin',
     ruling: 'depends',
     explanation:
       'Pork-derived gelatin is haram. Gelatin from halal-slaughtered animals or fish is halal.',
-    source: 'Islamic Fiqh Academy',
   },
   {
     name: 'alcohol',
@@ -37,13 +38,11 @@ const database: HaramEntry[] = [
     name: 'chicken',
     ruling: 'depends',
     explanation: 'Halal if slaughtered according to Islamic guidelines (zabiha).',
-    source: 'Islamic Jurisprudence',
   },
   {
     name: 'beef',
     ruling: 'depends',
     explanation: 'Halal when slaughtered according to Islamic guidelines (zabiha).',
-    source: 'Islamic Jurisprudence',
   },
   {
     name: 'fish',
@@ -56,114 +55,97 @@ const database: HaramEntry[] = [
     ruling: 'halal',
     explanation:
       "Halal by the majority of scholars (Shafi'i, Maliki, Hanbali). Some Hanafi scholars differ.",
-    source: 'Majority scholarly opinion',
   },
   {
     name: 'vanilla extract',
     ruling: 'depends',
     explanation:
       'Contains alcohol as a solvent. Most scholars permit it when alcohol evaporates in cooking.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'vinegar',
     ruling: 'halal',
     explanation:
       'The Prophet (peace be upon him) praised vinegar. Transformation to acetic acid makes it permissible.',
-    source: 'Sahih Muslim',
   },
   {
     name: 'soy sauce',
     ruling: 'depends',
     explanation:
       'Naturally brewed soy sauce may contain trace alcohol. Most scholars consider it halal.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'whey',
     ruling: 'depends',
     explanation:
       'Halal itself, but questionable if it contains animal-derived rennet from non-halal sources.',
-    source: 'Islamic Food Guidelines',
   },
   {
     name: 'rennet',
     ruling: 'depends',
     explanation:
       'Halal from halal-slaughtered animals. Pork-derived is haram. Microbial/vegetable rennet is halal.',
-    source: 'Islamic Fiqh Council',
   },
   {
     name: 'e120',
     ruling: 'haram',
     explanation: 'E120 (carmine/cochineal) is from crushed insects. Haram by most scholars.',
-    source: 'Majority scholarly opinion',
   },
   {
     name: 'carmine',
     ruling: 'haram',
     explanation:
       'Derived from crushed cochineal insects. Found in red-colored foods and cosmetics.',
-    source: 'Majority scholarly opinion',
   },
   {
     name: 'glycerin',
     ruling: 'depends',
     explanation: 'Plant-based is halal. Pork-derived is haram. Check the source.',
-    source: 'Islamic Food Guidelines',
   },
   {
     name: 'l-cysteine',
     ruling: 'depends',
     explanation: 'Can be from human hair (haram), duck feathers, or synthetic (halal).',
-    source: 'Islamic Food Guidelines',
   },
   {
     name: 'mushroom',
     ruling: 'halal',
     explanation: 'Halal. Mushrooms are a fungus, not an animal product.',
-    source: 'General scholarly consensus',
   },
   {
     name: 'chocolate',
     ruling: 'depends',
     explanation:
       'Plain chocolate is halal. Check for alcohol, non-halal gelatin, or animal emulsifiers.',
-    source: 'Islamic Food Guidelines',
   },
   {
     name: 'coffee',
     ruling: 'halal',
     explanation: 'Halal by scholarly consensus. Not an intoxicant.',
-    source: 'Scholarly consensus',
   },
   {
     name: 'music',
     ruling: 'depends',
     explanation:
       'Debated among scholars. Some prohibit instruments except the daff. Nasheeds are generally permissible.',
-    source: 'Varied scholarly opinions',
   },
   {
     name: 'cryptocurrency',
     ruling: 'depends',
     explanation:
       'Varied opinions. Some permit it as a digital asset, others cite speculation (gharar) concerns.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'insurance',
     ruling: 'depends',
     explanation:
       'Conventional insurance involves gharar and riba. Takaful (Islamic insurance) is the halal alternative.',
-    source: 'Islamic Fiqh Academy',
   },
   {
     name: 'mortgages',
     ruling: 'depends',
     explanation:
       'Conventional mortgages involve riba (interest). Islamic mortgages (Murabaha, Ijara) are halal alternatives.',
-    source: 'European Council for Fatwa and Research',
   },
   // --- Activities & Lifestyle ---
   {
@@ -171,7 +153,6 @@ const database: HaramEntry[] = [
     ruling: 'haram',
     explanation:
       'Casual dating involving khalwa (seclusion) with the opposite gender is prohibited. Islam encourages marriage through halal courtship with family involvement.',
-    source: 'Quran 17:32, Islamic Jurisprudence',
   },
   {
     name: 'gambling',
@@ -183,16 +164,15 @@ const database: HaramEntry[] = [
   {
     name: 'smoking',
     ruling: 'haram',
-    explanation:
-      'The majority of contemporary scholars rule smoking as haram due to its proven harm to the body. Islam prohibits self-harm.',
-    source: 'Quran 2:195, WHO fatwa consensus',
+    explanation: "Egypt's Dar Al-Ifta prohibits smoking because of its documented harm to health.",
+    source: "Egypt's Dar Al-Ifta, fatwa 3699",
+    sourceUrl: 'https://www.dar-alifta.org/en/fatwa/details/4530/smoking',
   },
   {
     name: 'vaping',
     ruling: 'haram',
     explanation:
       'Scholars apply the same ruling as smoking — it contains nicotine, is addictive, and causes bodily harm.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'tattoo',
@@ -219,50 +199,51 @@ const database: HaramEntry[] = [
     name: 'cat',
     ruling: 'halal',
     explanation:
-      'Keeping cats is permissible and encouraged. The Prophet (peace be upon him) was known to love cats, and his companion Abu Hurairah was named "Father of Kittens."',
-    source: 'Sunan Abu Dawud, Sahih Muslim',
+      'Keeping cats is permissible if their needs are met. The companion Abu Hurayrah was nicknamed for caring for a kitten.',
+    source: 'SeekersGuidance: Can We Keep Cats as Indoor Pets?',
+    sourceUrl: 'https://seekersguidance.org/answers/hanafi-fiqh/can-we-keep-cats-as-indoor-pets/',
   },
   {
     name: 'astrology',
     ruling: 'haram',
     explanation:
-      'Believing in horoscopes or astrology is haram. Claiming knowledge of the unseen (ghayb) belongs only to Allah.',
-    source: 'Sahih Muslim 2230',
+      'Following astrology or horoscopes as a way to predict the future is prohibited in the cited scholarly answer. This is different from astronomy.',
+    source: 'SeekersGuidance: Is It Permissible to Believe In Astrology and Horoscopes?',
+    sourceUrl:
+      'https://seekersguidance.org/answers/general-counsel/is-it-permissible-to-believe-in-astrology-and-horoscopes/',
   },
   {
     name: 'horoscope',
     ruling: 'haram',
     explanation:
-      'Reading and believing in horoscopes is forbidden. The Prophet (peace be upon him) said whoever goes to a fortune-teller has disbelieved in what was revealed to Muhammad.',
-    source: 'Sahih Muslim 2230',
+      'Following horoscope predictions is prohibited in the cited scholarly answer. Sahih Muslim 2230 warns about consulting a diviner, but does not mention horoscopes by name.',
+    source: 'SeekersGuidance: Is It Permissible to Believe In Astrology and Horoscopes?',
+    sourceUrl:
+      'https://seekersguidance.org/answers/general-counsel/is-it-permissible-to-believe-in-astrology-and-horoscopes/',
   },
   {
     name: 'yoga',
     ruling: 'depends',
     explanation:
       'Physical yoga exercises for fitness are generally permissible. However, spiritual yoga involving meditation, chanting, or Hindu religious elements is prohibited.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'christmas',
     ruling: 'haram',
     explanation:
       'Celebrating Christmas as a religious festival is not permissible as it involves imitating non-Muslim religious practices. Being kind to non-Muslim neighbors during their holidays is encouraged.',
-    source: 'Islamic Jurisprudence, Quran 109:6',
   },
   {
     name: 'halloween',
     ruling: 'haram',
     explanation:
       'Halloween has pagan origins and involves imitating non-Islamic traditions. Muslims are advised to avoid participating in its rituals and celebrations.',
-    source: 'Islamic Jurisprudence',
   },
   {
     name: 'birthday',
     ruling: 'depends',
     explanation:
       'Scholars differ. Some consider birthday celebrations as imitation of non-Muslim customs. Others permit simple gatherings without extravagance or un-Islamic practices.',
-    source: 'Varied scholarly opinions',
   },
   {
     name: 'shaving beard',
@@ -276,28 +257,24 @@ const database: HaramEntry[] = [
     ruling: 'depends',
     explanation:
       "Investing in stocks is permissible if the company's business is halal and does not involve interest, alcohol, gambling, or other haram activities. Sharia-compliant screening is recommended.",
-    source: 'AAOIFI Standards, Islamic Fiqh Academy',
   },
   {
     name: 'trading',
     ruling: 'depends',
     explanation:
       'Halal trading involves buying and selling real assets. Day trading with excessive speculation (gharar) or margin trading with interest is prohibited.',
-    source: 'Islamic Fiqh Academy',
   },
   {
     name: 'video games',
     ruling: 'depends',
     explanation:
       'Permissible in moderation if the content does not include gambling, explicit material, or shirk. Should not distract from prayers or obligations.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'movies',
     ruling: 'depends',
     explanation:
       'Watching movies is permissible if the content is clean and does not contain explicit scenes, promote haram, or distract from Islamic duties.',
-    source: 'Contemporary scholarly opinions',
   },
   {
     name: 'silk',
@@ -317,18 +294,12 @@ const database: HaramEntry[] = [
     name: 'nail polish',
     ruling: 'depends',
     explanation:
-      'Wearing nail polish is permissible outside of prayer times. However, regular nail polish prevents water from reaching the nails during wudu, invalidating it. Breathable/halal nail polish exists as an alternative.',
-    source: 'Islamic Fiqh, contemporary opinions',
+      'Ordinary nail polish may block water during wudu. Products marketed as breathable still need product-specific verification; ask a qualified scholar if you are unsure about your practice.',
   },
 ]
 
 function searchDatabase(query: string): HaramEntry | null {
-  const normalized = query.toLowerCase().trim()
-  if (!normalized) return null
-  return (
-    database.find((entry) => entry.name.includes(normalized) || normalized.includes(entry.name)) ||
-    null
-  )
+  return findLocalEntry(query, database)
 }
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
@@ -505,7 +476,9 @@ export default function HaramChecker({
           <span
             className={`text-sm text-gray-600 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL ? 'جارٍ البحث بالذكاء الاصطناعي...' : 'Asking AI scholar...'}
+            {isRTL
+              ? 'جارٍ إعداد معلومات عامة بالذكاء الاصطناعي...'
+              : 'Preparing AI-generated information...'}
           </span>
         </div>
       )}
@@ -532,13 +505,16 @@ export default function HaramChecker({
             <span className="text-sm font-semibold text-gray-900 capitalize dark:text-white">
               &middot; {result.name}
             </span>
-            {isAiResult && (
-              <span className="ms-auto flex items-center gap-1 rounded-full bg-white/60 px-2 py-0.5 text-xs text-gray-500 dark:bg-gray-800/60 dark:text-gray-400">
-                <Sparkles className="h-3 w-3" />
-                AI
-              </span>
-            )}
+            <span className="ms-auto flex items-center gap-1 rounded-full bg-white/60 px-2 py-0.5 text-xs text-gray-500 dark:bg-gray-800/60 dark:text-gray-400">
+              {isAiResult && <Sparkles className="h-3 w-3" />}
+              {isAiResult ? 'AI' : isRTL ? 'ملخص مكتوب مسبقاً' : 'Prewritten'}
+            </span>
           </div>
+          <p className="mb-2 text-xs text-gray-600 dark:text-gray-400">
+            {isRTL
+              ? 'معلومات عامة، وليست فتوى معتمدة.'
+              : 'General information, not a verified fatwa.'}
+          </p>
           <p
             className={`text-sm leading-relaxed text-gray-700 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
           >
@@ -546,7 +522,19 @@ export default function HaramChecker({
           </p>
           {result.source && (
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              {isRTL ? 'المصدر' : 'Source'}: {result.source}
+              {isRTL ? 'مرجع للتحقق' : 'Reference to verify'}:{' '}
+              {result.sourceUrl ? (
+                <a
+                  href={result.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {result.source}
+                </a>
+              ) : (
+                result.source
+              )}
             </p>
           )}
         </div>
@@ -558,8 +546,8 @@ export default function HaramChecker({
           className={`mt-6 text-xs text-gray-400 dark:text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
         >
           {isRTL
-            ? 'تنويه: للمعلومات العامة فقط. عند الشك، استشر عالماً موثوقاً.'
-            : 'For informational purposes only. When in doubt, consult a trusted scholar.'}
+            ? 'الملخصات المكتوبة مسبقاً وإجابات الذكاء الاصطناعي لم تخضع جميعها لمراجعة علمية مستقلة، وقد تكون ناقصة أو خاطئة. تحقق من المراجع بنفسك، واستشر عالماً موثوقاً عند الحاجة إلى فتوى.'
+            : 'Prewritten and AI-generated summaries have not all been independently reviewed and may be incomplete or wrong. Verify any reference yourself; consult a qualified scholar for a personal ruling.'}
         </p>
       )}
     </>
@@ -580,14 +568,14 @@ export default function HaramChecker({
           <h3
             className={`mt-2 text-lg font-bold text-gray-900 dark:text-white ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL ? 'فاحص الحلال والحرام' : 'Islamic Ruling Checker'}
+            {isRTL ? 'دليل موضوعات الحلال والحرام' : 'Halal and Haram Topic Guide'}
           </h3>
           <p
             className={`mt-1 text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
           >
             {isRTL
-              ? 'تحقق من حكم أي شيء — طعام، أنشطة، أسلوب حياة، والمزيد'
-              : 'Check the ruling on anything — food, activities, lifestyle, and more'}
+              ? 'ابحث عن معلومات عامة حول الطعام والأنشطة والحياة اليومية'
+              : 'Explore general information about food, activities, and daily life'}
           </p>
         </div>
         {inner}
