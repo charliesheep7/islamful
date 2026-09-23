@@ -41,7 +41,8 @@ export default async function QiblaFinderPageAr() {
         data={{
           '@type': 'WebApplication',
           name: 'إسلامفُل - محدد القبلة',
-          description: 'احسب زاوية اتجاه القبلة من موقعك أو الإحداثيات التي تدخلها، مع بوصلة حية على الأجهزة المدعومة.',
+          description:
+            'احسب زاوية اتجاه القبلة من موقعك أو الإحداثيات التي تدخلها، مع بوصلة حية على الأجهزة المدعومة.',
           url: 'https://www.islamful.com/ar/qibla-finder',
           applicationCategory: 'LifestyleApplication',
           operatingSystem: 'Web',

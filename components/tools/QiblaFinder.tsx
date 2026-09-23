@@ -595,7 +595,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 value={manualLat}
                 onChange={(e) => setManualLat(e.target.value)}
                 placeholder={isRTL ? 'مثال: 21.4225' : 'e.g. 21.4225'}
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
+                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors outline-none focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
               />
             </div>
             <div>
@@ -614,7 +614,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 value={manualLng}
                 onChange={(e) => setManualLng(e.target.value)}
                 placeholder={isRTL ? 'مثال: 39.8262' : 'e.g. 39.8262'}
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
+                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors outline-none focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
               />
             </div>
             <button
