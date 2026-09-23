@@ -15,8 +15,11 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   const [latitude, setLatitude] = useState<number | null>(null)
   const [longitude, setLongitude] = useState<number | null>(null)
   const [locationName, setLocationName] = useState<string | null>(null)
+  const [locationSource, setLocationSource] = useState<'ip' | 'device' | 'manual' | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const manualLocationRef = useRef(false)
+  const geocodeRequestRef = useRef(0)
 
   // Manual input state
   const [manualLat, setManualLat] = useState('')
@@ -34,14 +37,26 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   const distance =
     latitude !== null && longitude !== null ? distanceToKaaba(latitude, longitude) : null
   const compassDirection = bearing !== null ? bearingToCompass(bearing) : null
+  const arabicDirections: Record<string, string> = {
+    N: 'شمال',
+    NE: 'شمال شرق',
+    E: 'شرق',
+    SE: 'جنوب شرق',
+    S: 'جنوب',
+    SW: 'جنوب غرب',
+    W: 'غرب',
+    NW: 'شمال غرب',
+  }
 
   // Reverse geocode to get city name
   const reverseGeocode = useCallback(async (lat: number, lng: number) => {
+    const requestId = ++geocodeRequestRef.current
     try {
       const res = await fetch(
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
       )
       const data = await res.json()
+      if (requestId !== geocodeRequestRef.current) return
       const city = data.city || data.locality || ''
       const country = data.countryName || ''
       if (city && country) {
@@ -56,12 +71,28 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
 
   // Detect location via IP (fast, no permission needed)
   const fetchByIP = useCallback(async () => {
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), 4000)
     try {
-      const res = await fetch('https://ipapi.co/json/')
+      const res = await fetch('https://ipapi.co/json/', { signal: controller.signal })
       const geo = await res.json()
-      if (geo.latitude && geo.longitude) {
-        setLatitude(geo.latitude)
-        setLongitude(geo.longitude)
+      const lat = Number(geo.latitude)
+      const lng = Number(geo.longitude)
+      if (
+        geo.latitude !== null &&
+        geo.latitude !== undefined &&
+        geo.latitude !== '' &&
+        geo.longitude !== null &&
+        geo.longitude !== undefined &&
+        geo.longitude !== '' &&
+        Number.isFinite(lat) &&
+        Number.isFinite(lng) &&
+        Math.abs(lat) <= 90 &&
+        Math.abs(lng) <= 180
+      ) {
+        setLatitude(lat)
+        setLongitude(lng)
+        setLocationSource('ip')
         const city = geo.city || ''
         const country = geo.country_name || ''
         if (city && country) {
@@ -73,6 +104,8 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
       }
     } catch {
       // Silently fail — will fall back to browser geolocation
+    } finally {
+      window.clearTimeout(timeout)
     }
     return false
   }, [])
@@ -90,6 +123,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
 
     setLoading(true)
     setError(null)
+    manualLocationRef.current = false
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -97,6 +131,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         const lng = position.coords.longitude
         setLatitude(lat)
         setLongitude(lng)
+        setLocationSource('device')
         setLoading(false)
         reverseGeocode(lat, lng)
       },
@@ -142,16 +177,17 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            if (!mounted) return
+            if (!mounted || manualLocationRef.current) return
             const lat = position.coords.latitude
             const lng = position.coords.longitude
             setLatitude(lat)
             setLongitude(lng)
+            setLocationSource('device')
             reverseGeocode(lat, lng)
           },
           () => {
             // If browser geolocation fails and IP also failed, show manual input
-            if (!mounted) return
+            if (!mounted || manualLocationRef.current) return
             if (!ipSuccess) {
               setError(
                 isRTL
@@ -162,6 +198,12 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
           },
           { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
         )
+      } else if (!ipSuccess) {
+        setError(
+          isRTL
+            ? 'تعذر تحديد الموقع. يرجى إدخال الإحداثيات يدوياً.'
+            : 'Could not determine your location. Please enter coordinates manually.'
+        )
       }
     }
     init()
@@ -171,41 +213,16 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Device orientation / compass
-  useEffect(() => {
-    if (typeof DeviceOrientationEvent === 'undefined') {
-      setCompassAvailable(false)
-      return
-    }
-
-    // Check if iOS 13+ permission API exists
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
-      setCompassPermissionNeeded(true)
-      setCompassAvailable(true)
-    } else {
-      // Android or older iOS — add listener directly
-      setCompassAvailable(true)
-      setCompassPermissionNeeded(false)
-      addOrientationListener()
-    }
-
-    return () => {
-      window.removeEventListener('deviceorientation', handleOrientation)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  function handleOrientation(event: DeviceOrientationEvent) {
+  // Only absolute orientation can be used as a north-referenced compass.
+  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
     let heading: number | null = null
-
-    // iOS provides webkitCompassHeading
-
-    if ((event as unknown as Record<string, number>).webkitCompassHeading !== undefined) {
-      heading = (event as unknown as Record<string, number>).webkitCompassHeading
-    } else if (event.alpha !== null) {
-      // Android: alpha is the compass heading (inverted)
-      heading = (360 - event.alpha!) % 360
+    const webkitHeading = (event as DeviceOrientationEvent & { webkitCompassHeading?: number })
+      .webkitCompassHeading
+    if (typeof webkitHeading === 'number' && Number.isFinite(webkitHeading)) {
+      heading = webkitHeading
+    } else if (event.absolute && typeof event.alpha === 'number' && Number.isFinite(event.alpha)) {
+      // Relative orientation has no geographic north and cannot point to the Qibla.
+      heading = (360 - event.alpha) % 360
     }
 
     if (heading === null) return
@@ -221,11 +238,36 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     }
 
     setDeviceHeading(smoothedHeadingRef.current)
-  }
+  }, [])
 
-  function addOrientationListener() {
+  const addOrientationListener = useCallback(() => {
     window.addEventListener('deviceorientation', handleOrientation, true)
-  }
+    window.addEventListener('deviceorientationabsolute', handleOrientation)
+  }, [handleOrientation])
+
+  // Device orientation / compass
+  useEffect(() => {
+    if (typeof DeviceOrientationEvent === 'undefined') {
+      setCompassAvailable(false)
+      return
+    }
+
+    // Check if iOS 13+ permission API exists
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+      setCompassPermissionNeeded(true)
+      setCompassAvailable(true)
+    } else {
+      setCompassAvailable(true)
+      setCompassPermissionNeeded(false)
+      addOrientationListener()
+    }
+
+    return () => {
+      window.removeEventListener('deviceorientation', handleOrientation, true)
+      window.removeEventListener('deviceorientationabsolute', handleOrientation)
+    }
+  }, [addOrientationListener, handleOrientation])
 
   async function requestCompassPermission() {
     try {
@@ -258,8 +300,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     }
 
     setError(null)
+    manualLocationRef.current = true
     setLatitude(lat)
     setLongitude(lng)
+    setLocationSource('manual')
     setLocationName(null)
     reverseGeocode(lat, lng)
   }
@@ -294,6 +338,40 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
       {/* Compass and results */}
       {bearing !== null && !loading && (
         <div className="flex flex-col items-center">
+          {locationSource === 'ip' && (
+            <div
+              role="status"
+              className="mb-6 w-full max-w-sm rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-100"
+            >
+              <p className={isRTL ? 'font-arabic' : ''}>
+                {isRTL
+                  ? 'موقعك تقريبي اعتماداً على عنوان الإنترنت، وقد يختلف عن مكانك الفعلي. استخدم موقع الجهاز للحصول على اتجاه أدق.'
+                  : 'This is an approximate location based on your internet address. Use your device location for a more reliable direction.'}
+              </p>
+              <button
+                type="button"
+                onClick={detectLocation}
+                className={`me-4 mt-2 font-semibold underline underline-offset-2 ${isRTL ? 'font-arabic' : ''}`}
+              >
+                {isRTL ? 'استخدم موقع الجهاز' : 'Use device location'}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  manualLocationRef.current = true
+                  setLatitude(null)
+                  setLongitude(null)
+                  setLocationName(null)
+                  geocodeRequestRef.current++
+                  setLocationSource(null)
+                  setError(null)
+                }}
+                className={`mt-2 font-semibold underline underline-offset-2 ${isRTL ? 'font-arabic' : ''}`}
+              >
+                {isRTL ? 'أدخل الإحداثيات بدلاً من ذلك' : 'Enter coordinates instead'}
+              </button>
+            </div>
+          )}
           {/* iOS compass permission button */}
           {compassAvailable && compassPermissionNeeded && (
             <button
@@ -430,7 +508,8 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 </span>
               </div>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
-                {bearing.toFixed(1)}&deg; {compassDirection}
+                {bearing.toFixed(1)}&deg;{' '}
+                {isRTL && compassDirection ? arabicDirections[compassDirection] : compassDirection}
               </p>
             </div>
 
@@ -464,15 +543,15 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
             )}
 
             {/* Desktop hint */}
-            {compassAvailable === false && (
+            {!isCompassActive && !compassPermissionNeeded && (
               <div className="flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
                 <Smartphone className="h-4 w-4 text-gray-400" />
                 <p
                   className={`text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
                   {isRTL
-                    ? 'افتح على هاتفك للحصول على بوصلة حية'
-                    : 'Open on your phone for a live compass'}
+                    ? 'البوصلة الحية غير متوفرة هنا. استخدم الزاوية مع بوصلة موثوقة.'
+                    : 'Live compass is unavailable here. Use the bearing with a reliable compass.'}
                 </p>
               </div>
             )}
@@ -516,7 +595,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 value={manualLat}
                 onChange={(e) => setManualLat(e.target.value)}
                 placeholder={isRTL ? 'مثال: 21.4225' : 'e.g. 21.4225'}
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors outline-none focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
+                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
               />
             </div>
             <div>
@@ -535,7 +614,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 value={manualLng}
                 onChange={(e) => setManualLng(e.target.value)}
                 placeholder={isRTL ? 'مثال: 39.8262' : 'e.g. 39.8262'}
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors outline-none focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
+                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
               />
             </div>
             <button
