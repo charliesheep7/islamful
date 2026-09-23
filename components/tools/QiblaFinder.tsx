@@ -132,6 +132,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         setLatitude(lat)
         setLongitude(lng)
         setLocationSource('device')
+        setLocationName(null)
         setLoading(false)
         reverseGeocode(lat, lng)
       },
@@ -183,6 +184,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
             setLatitude(lat)
             setLongitude(lng)
             setLocationSource('device')
+            setLocationName(null)
             reverseGeocode(lat, lng)
           },
           () => {
