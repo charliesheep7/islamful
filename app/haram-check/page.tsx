@@ -6,9 +6,9 @@ import { buildLanguageAlternates } from 'app/seo'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export const metadata: Metadata = {
-  title: 'Is This Haram? — Free Islamic Ruling Checker',
+  title: 'Is This Haram? — Halal and Haram Topic Guide',
   description:
-    'Check whether anything is halal or haram in Islam — food, activities, lifestyle, finance, and more. Free AI-powered checker with Quran & Hadith references.',
+    'Explore general information on halal and haram questions about food, activities, and daily life. Check sources and ask a qualified scholar for personal rulings.',
   alternates: buildLanguageAlternates('/haram-check'),
 }
 
@@ -20,9 +20,9 @@ export default function HaramCheckPage() {
       <JsonLd
         data={{
           '@type': 'WebApplication',
-          name: 'Islamful Islamic Ruling Checker',
+          name: 'Islamful Halal and Haram Topic Guide',
           description:
-            'Check whether anything is halal or haram — food, activities, lifestyle choices, finance, and more. AI-powered with scholarly references.',
+            'Search prewritten and AI-generated general information on common halal and haram questions. Results are not verified fatwas.',
           url: 'https://www.islamful.com/haram-check',
           applicationCategory: 'LifestyleApplication',
           operatingSystem: 'Web',
@@ -40,8 +40,8 @@ export default function HaramCheckPage() {
           Is This Haram?
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-          Wondering if something is halal or haram? Search anything — food, activities, finance,
-          lifestyle, and more.
+          Search common questions about food, activities, finance, and daily life. Results are
+          starting points for research, not personal fatwas.
         </p>
       </div>
 
@@ -80,7 +80,7 @@ export default function HaramCheckPage() {
               name: 'Can I check activities and lifestyle choices, not just food?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Yes! This tool covers all aspects of daily life — not just food. You can check activities (music, yoga, tattoos), financial matters (stocks, crypto, insurance), lifestyle choices (dating, celebrations), and more. Each ruling includes scholarly references.',
+                text: 'Yes. You can search activities, financial topics, and lifestyle questions. The tool returns a prewritten summary for an exact topic match or an AI-generated response otherwise. References, when shown, require independent verification; the result is not a fatwa.',
               },
             },
           ],
@@ -133,8 +133,9 @@ export default function HaramCheckPage() {
             Halal and haram extend far beyond food. Muslims regularly seek guidance on everyday
             matters like whether music, tattoos, or keeping dogs is permissible. Financial topics
             such as interest (riba), stock trading, cryptocurrency, and insurance also require
-            Islamic guidance. This tool covers all these areas, providing rulings with references to
-            the Quran, Hadith, and recognized scholarly bodies.
+            Islamic guidance. This tool offers short summaries to help you start researching these
+            questions. Its answers and reference labels have not all been independently reviewed, so
+            verify them before relying on them.
           </p>
         </div>
       </section>

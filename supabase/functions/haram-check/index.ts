@@ -112,17 +112,17 @@ Deno.serve(async (req) => {
     const isArabic = lang === 'ar'
     const responseLang = isArabic ? 'Arabic' : 'English'
 
-    const systemPrompt = `You are an Islamic scholar assistant. Determine if the queried item is halal, haram, or needs investigation.
+    const systemPrompt = `You provide general information about Islamic perspectives. You are not a scholar and do not issue fatwas. Do not present a generated answer as a verified religious ruling.
 
 RESPOND ONLY WITH A SINGLE JSON OBJECT. No other text, no markdown.
 
 The JSON must have these exact keys:
 - "name": the item name in ${responseLang}
-- "ruling": exactly one of: "halal", "haram", "mashbooh", "depends", "not_applicable"
-- "explanation": 2-3 sentence explanation in ${responseLang}. Cite Quran/Hadith when possible.
-- "source": the reference (Quran verse, Hadith, or scholarly body) in ${responseLang}
+- "ruling": exactly one of: "halal", "haram", "mashbooh", "depends", "not_applicable". These are general labels, not personal fatwas.
+- "explanation": 2-3 sentences in ${responseLang}. State relevant conditions or scholarly disagreement instead of claiming consensus without evidence.
+- "source": an exact Quran verse or numbered Hadith reference only if you are confident it directly supports the explanation; otherwise an empty string. Do not invent a citation or attribute a view to an unnamed scholarly body.
 
-If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling.`
+Use "depends" when a question has missing context, a product needs ingredient or certification checks, or schools differ. Pay attention to negation and qualifiers such as "pork-free" or "without alcohol"; do not classify a whole question from a single keyword. If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling.`
 
     const res = await fetch(
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent',
@@ -138,7 +138,7 @@ If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling
               role: 'user',
               parts: [
                 {
-                  text: `What is the Islamic ruling on "${query.trim()}"? Is it halal or haram? Respond in ${responseLang}.`,
+                  text: `Give general information about this halal-or-haram question in ${responseLang}: ${JSON.stringify(query.trim())}`,
                 },
               ],
             },
@@ -147,7 +147,7 @@ If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling
             parts: [{ text: systemPrompt }],
           },
           generationConfig: {
-            temperature: 1.0,
+            temperature: 0.2,
             maxOutputTokens: 512,
             responseMimeType: 'application/json',
             thinkingConfig: { thinkingBudget: 0 },
@@ -189,12 +189,17 @@ If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling
     const validRulings = ['halal', 'haram', 'mashbooh', 'depends', 'not_applicable']
     const ruling = validRulings.includes(result.ruling as string) ? result.ruling : 'depends'
 
+    const name = typeof result.name === 'string' ? result.name.trim().slice(0, 200) : ''
+    const explanation =
+      typeof result.explanation === 'string' ? result.explanation.trim().slice(0, 1200) : ''
+    const source = typeof result.source === 'string' ? result.source.trim().slice(0, 200) : ''
+
     return jsonResponse(
       {
-        name: (result.name as string) || query.trim(),
+        name: name || query.trim(),
         ruling,
-        explanation: (result.explanation as string) || '',
-        source: (result.source as string) || '',
+        explanation,
+        source,
       },
       200,
       req

@@ -6,23 +6,23 @@ import { buildLanguageAlternates } from 'app/seo'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export const metadata: Metadata = {
-  title: 'Qibla Finder — Accurate Qibla Direction Tool | Islamful',
+  title: 'Qibla Finder — Qibla Direction & Compass | Islamful',
   description:
-    'Find the exact Qibla direction from your location. Live compass on mobile, bearing angle on desktop. Free Qibla finder with distance to Kaaba.',
+    'Find your Qibla bearing from device location or entered coordinates. IP-based results are approximate; a live compass works on supported devices.',
   alternates: buildLanguageAlternates('/qibla-finder'),
   openGraph: {
-    title: 'Qibla Finder — Accurate Qibla Direction Tool | Islamful',
+    title: 'Qibla Finder — Qibla Direction & Compass | Islamful',
     description:
-      'Find the exact Qibla direction from your location. Live compass on mobile, bearing angle on desktop. Free, no app required.',
+      'Find the Qibla bearing from your location, with a live compass on supported devices. IP-based location results are approximate. Free, no app required.',
     url: 'https://www.islamful.com/qibla-finder',
     siteName: 'Islamful',
     images: ['/static/images/og-image.png'],
     type: 'website',
   },
   twitter: {
-    title: 'Qibla Finder — Accurate Qibla Direction Tool | Islamful',
+    title: 'Qibla Finder — Qibla Direction & Compass | Islamful',
     description:
-      'Find the exact Qibla direction from your location. Live compass on mobile, bearing angle on desktop. Free, no app required.',
+      'Find the Qibla bearing from your location, with a live compass on supported devices. IP-based location results are approximate. Free, no app required.',
     card: 'summary_large_image',
     images: ['/static/images/og-image.png'],
   },
@@ -38,7 +38,7 @@ export default function QiblaFinderPage() {
           '@type': 'WebApplication',
           name: 'Islamful Qibla Finder',
           description:
-            'Find the exact Qibla direction from anywhere in the world with live compass.',
+            'Calculate the Qibla bearing from your location or coordinates, with a live compass on supported devices.',
           url: 'https://www.islamful.com/qibla-finder',
           applicationCategory: 'LifestyleApplication',
           operatingSystem: 'Web',
@@ -52,7 +52,8 @@ export default function QiblaFinderPage() {
           Qibla Finder
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-          Find the exact direction to face for prayer from anywhere in the world.
+          Find the Qibla direction from your location, with a bearing and a live compass on
+          supported devices.
         </p>
       </div>
 
@@ -174,18 +175,19 @@ export default function QiblaFinderPage() {
           <h3>Why Accurate Qibla Direction Matters</h3>
           <p>
             While scholars agree that a reasonable effort to face the Qibla is sufficient —
-            especially when the exact direction is difficult to determine — using precise tools
-            ensures you are facing as close to the correct direction as possible. The great circle
-            method used by this tool provides accuracy within a fraction of a degree, which is
-            significantly more precise than estimating by looking at a flat map or relying on
-            general knowledge of where Makkah lies relative to your country.
+            especially when the exact direction is difficult to determine — knowing the bearing
+            helps you face the Kaaba. This tool calculates the bearing from your coordinates using
+            the great circle method. Actual accuracy still depends on your location estimate and
+            your phone's compass calibration. If the tool shows an approximate internet location,
+            use your device location or enter coordinates before relying on the direction.
           </p>
           <p>
             For Muslims living in regions where the Qibla direction is not commonly known or where
             it might be counterintuitive (such as the Americas, East Asia, or the Pacific), having a
-            reliable digital tool is invaluable. Our Qibla Finder works entirely in your browser,
-            requires no app installation, and provides instant results with both the bearing angle
-            and a live compass direction on supported mobile devices.
+            reliable digital tool is invaluable. Our Qibla Finder requires no app installation. The
+            bearing is calculated in your browser after finding your location; external services may
+            be used to suggest a location and city name. A live compass appears on devices that
+            provide reliable heading data.
           </p>
         </div>
       </section>
