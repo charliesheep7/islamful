@@ -210,7 +210,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <main id="main-content" className="min-h-[60vh]">
               {children}
             </main>
-            <Footer />
+            <Footer year={new Date().getUTCFullYear()} />
           </SearchProvider>
         </ThemeProviders>
       </body>

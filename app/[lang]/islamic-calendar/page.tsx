@@ -1,5 +1,7 @@
+import { calendarSnapshot, DEFAULT_CALENDAR } from '@/data/islamic-calendar'
 import { Metadata } from 'next'
 import IslamicCalendar from '@/components/tools/IslamicCalendar'
+import CalendarGuide from '@/components/tools/CalendarGuide'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
@@ -7,6 +9,8 @@ import { buildLanguageAlternates } from 'app/seo'
 export function generateStaticParams() {
   return [{ lang: 'ar' }]
 }
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'التقويم الهجري — محول التاريخ الهجري والميلادي',
@@ -16,6 +20,8 @@ export const metadata: Metadata = {
 }
 
 export default function IslamicCalendarPageAr() {
+  const initialNow = new Date().toISOString()
+  const initialSnapshot = calendarSnapshot(initialNow.slice(0, 10), DEFAULT_CALENDAR)
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8" dir="rtl">
       <Breadcrumbs items={[{ name: 'التقويم الهجري', href: '/ar/islamic-calendar' }]} />
@@ -39,7 +45,8 @@ export default function IslamicCalendarPageAr() {
           التاريخ الهجري اليوم ومحول التاريخ والمناسبات الإسلامية القادمة.
         </p>
       </div>
-      <IslamicCalendar lang="ar" />
+      <IslamicCalendar lang="ar" initialNow={initialNow} initialSnapshot={initialSnapshot} />
+      <CalendarGuide lang="ar" />
     </div>
   )
 }
