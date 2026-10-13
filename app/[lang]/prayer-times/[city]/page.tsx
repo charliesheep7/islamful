@@ -118,6 +118,7 @@ export default async function CityPrayerTimesPageAr({ params }: Props) {
       </div>
 
       <PrayerTimesWidget
+        lang="ar"
         prayerData={prayerData}
         cityName={city.nameAr}
         cityCountry={city.countryAr}

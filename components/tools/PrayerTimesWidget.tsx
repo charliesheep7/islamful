@@ -10,6 +10,7 @@ interface Props {
   cityName: string
   cityCountry: string
   cityMethod: string
+  lang?: 'en' | 'ar'
 }
 
 function parseTime(timeStr: string): Date {
@@ -49,6 +50,7 @@ export default function PrayerTimesWidget({
   cityName,
   cityCountry,
   cityMethod,
+  lang = 'en',
 }: Props) {
   const [data, setData] = useState<PrayerTimesData | null>(prayerData)
   const [countdown, setCountdown] = useState('')
@@ -101,32 +103,45 @@ export default function PrayerTimesWidget({
     refetch(newMethod)
   }
 
-  if (!data || upcomingIdx === null) return null
+  // Render the supplied timetable before hydration; only the live countdown needs the browser.
+  if (!data)
+    return (
+      <p
+        role="status"
+        className="rounded-xl border border-gray-200 p-5 text-gray-600 dark:text-gray-300"
+      >
+        {lang === 'ar'
+          ? 'مواقيت الصلاة غير متاحة مؤقتًا. يرجى تحديث الصفحة أو الرجوع إلى جدول المسجد المحلي.'
+          : 'Prayer times are temporarily unavailable. Please refresh this page or check your local mosque timetable.'}
+      </p>
+    )
 
-  const nextPrayer = data.prayers[upcomingIdx]
+  const nextPrayer = upcomingIdx === null ? null : data.prayers[upcomingIdx]
 
   return (
     <div>
       {/* Next prayer banner */}
-      <div className="mb-5 flex items-center justify-between rounded-2xl bg-[var(--color-primary-700)] px-5 py-4 text-white">
-        <div>
-          <p className="text-xs font-medium tracking-widest text-green-200 uppercase">
-            Next Prayer
-          </p>
-          <p className="mt-0.5 text-xl font-bold">{nextPrayer.name}</p>
-          <p className="font-arabic text-sm text-green-200">{nextPrayer.nameAr}</p>
+      {nextPrayer && (
+        <div className="mb-5 flex items-center justify-between rounded-2xl bg-[var(--color-primary-700)] px-5 py-4 text-white">
+          <div>
+            <p className="text-xs font-medium tracking-widest text-green-200 uppercase">
+              {lang === 'ar' ? 'الصلاة القادمة' : 'Next Prayer'}
+            </p>
+            <p className="mt-0.5 text-xl font-bold">{nextPrayer.name}</p>
+            <p className="font-arabic text-sm text-green-200">{nextPrayer.nameAr}</p>
+          </div>
+          <div className="text-right">
+            <p className="font-mono text-3xl font-bold tracking-tight tabular-nums">{countdown}</p>
+            <p className="mt-0.5 text-sm text-green-200">{to12h(nextPrayer.time)}</p>
+          </div>
         </div>
-        <div className="text-right">
-          <p className="font-mono text-3xl font-bold tracking-tight tabular-nums">{countdown}</p>
-          <p className="mt-0.5 text-sm text-green-200">{to12h(nextPrayer.time)}</p>
-        </div>
-      </div>
+      )}
 
       {/* Prayer cards */}
       <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-6">
         {data.prayers.map((prayer, i) => {
           const isNext = i === upcomingIdx
-          const isDim = i < upcomingIdx || i === 1 // past or sunrise
+          const isDim = (upcomingIdx !== null && i < upcomingIdx) || i === 1 // past or sunrise
 
           return (
             <div
