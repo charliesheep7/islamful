@@ -62,5 +62,11 @@
     ]
   },
   "prepared_at": "2026-10-13T14:16:32.874Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-13T14:22:21.579Z",
+    "commit": "c1bde7e3d7d0ef81f636236700e80a87d1b37498",
+    "deployment_id": 7041042965,
+    "url": "https://www.islamful.com/blog/how-to-do-istikhara-prayer"
+  }
 }
