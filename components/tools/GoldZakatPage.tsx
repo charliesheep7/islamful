@@ -76,6 +76,7 @@ export default function GoldZakatPage({ lang }: { lang: 'en' | 'ar' }) {
       className="mx-auto max-w-4xl px-4 py-10 sm:px-6"
     >
       <Breadcrumbs
+        lang={lang}
         items={[
           { name: ar ? 'حاسبة الزكاة' : 'Zakat Calculator', href: `${prefix}/zakat-calculator` },
           { name: ar ? 'زكاة الذهب' : 'Gold Zakat', href: `${prefix}/zakat-calculator/gold` },
