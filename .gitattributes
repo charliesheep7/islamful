@@ -203,3 +203,6 @@ Procfile          text
 
 # Preserve publisher source bytes, including original mixed line endings.
 data/quran/source/* -text
+
+# Preserve the original research bytes used by the publishing queue checksum.
+data/seo/semrush-observations-2026-10-13.csv -text
