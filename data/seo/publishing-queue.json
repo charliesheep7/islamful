@@ -1,0 +1,2849 @@
+{
+  "schema_version": 1,
+  "site": "islamful",
+  "created_at": "2026-10-13",
+  "goal": "useful search traffic and repeat web tool use",
+  "inventory_head": "3ab0ab915b57b9ba0ab4523cdccf5f0f37e776a7",
+  "research_source": "semrush-observations-2026-10-13.csv",
+  "research_sha256": "dbe1096764321e644ed779519c8d00252e1c474300707c4c16387a6cbc2287c0",
+  "notes": [
+    "SEMrush numbers are estimated market-specific searches; never sum variants/countries into a unique-audience forecast.",
+    "Null metrics are unknown; explicit zero is preserved. Complete evidence requires both volume and KD in the original observation.",
+    "Queued means an editorial/implementation assignment, not source-approved or already published. Existing-file matches do not prove content quality.",
+    "The legacy Google Sheet, repository topic counters and existing CSVs are preserved. This queue is consumed by scripts/publishing-queue.mjs; no scheduler is silently switched.",
+    "Snapshot priorities do not impose a production-capacity ceiling; dependency/source/intent checks determine sequencing."
+  ],
+  "items": [
+    {
+      "id": "is-023",
+      "priority": 1,
+      "locale": "en",
+      "primary_keyword": "wudu",
+      "secondary_keywords": [],
+      "proposed_title": "How to Perform Wudu",
+      "target_path": "/blog/how-to-perform-wudu",
+      "source_file": "data/blog/en/how-to-perform-wudu.mdx",
+      "action": "update_article",
+      "status": "queued",
+      "brief": "Keep URL/title/date. Source-review obligations/order and school differences; link specific bleeding and sleep answers without universalizing disputed rules.",
+      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "conversion_or_tool_path": "/blog/how-to-perform-wudu",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-perform-ghusl",
+          "file": "data/blog/en/how-to-perform-ghusl.mdx",
+          "title": "How to Perform Ghusl: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-perform-tayammum",
+          "file": "data/blog/en/how-to-perform-tayammum.mdx",
+          "title": "How to Perform Tayammum: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-perform-wudu",
+          "file": "data/blog/en/how-to-perform-wudu.mdx",
+          "title": "How to Perform Wudu: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 60,
+          "research_group": "islamful_daily_needs",
+          "keyword": "wudu",
+          "database": "US",
+          "monthly_volume": 12100,
+          "kd_percent": 29,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 61,
+          "research_group": "islamful_daily_needs",
+          "keyword": "wudu",
+          "database": "UK",
+          "monthly_volume": 8100,
+          "kd_percent": 17,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+    },
+    {
+      "id": "is-024",
+      "priority": 2,
+      "locale": "en",
+      "primary_keyword": "does bleeding break wudu",
+      "secondary_keywords": [],
+      "proposed_title": "Does Bleeding Break Wudu? Differences by School",
+      "target_path": "/blog/does-bleeding-break-wudu",
+      "source_file": "data/blog/en/does-bleeding-break-wudu.mdx",
+      "action": "new_article",
+      "status": "queued",
+      "brief": "Give the answer by named school and type/extent of bleeding. Cite primary scholarly sources and distinguish medical first aid from the ritual question. Link main wudu guide.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/blog/does-bleeding-break-wudu",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-perform-wudu",
+          "file": "data/blog/en/how-to-perform-wudu.mdx",
+          "title": "How to Perform Wudu: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 88,
+          "research_group": "islamful_daily_needs",
+          "keyword": "does bleeding break wudu",
+          "database": "US",
+          "monthly_volume": 260,
+          "kd_percent": 6,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 89,
+          "research_group": "islamful_daily_needs",
+          "keyword": "does bleeding break wudu",
+          "database": "UK",
+          "monthly_volume": 390,
+          "kd_percent": 10,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-025",
+      "priority": 3,
+      "locale": "en",
+      "primary_keyword": "does sleeping break wudu",
+      "secondary_keywords": [],
+      "proposed_title": "Does Sleeping Break Wudu? Drowsiness, Posture and Awareness",
+      "target_path": "/blog/does-sleeping-break-wudu",
+      "source_file": "data/blog/en/does-sleeping-break-wudu.mdx",
+      "action": "new_article",
+      "status": "queued",
+      "brief": "Explain named-school differences, level of awareness and circumstances. No generic all-sleep rule; link wudu pillar.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/blog/does-sleeping-break-wudu",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-perform-wudu",
+          "file": "data/blog/en/how-to-perform-wudu.mdx",
+          "title": "How to Perform Wudu: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 90,
+          "research_group": "islamful_daily_needs",
+          "keyword": "does sleeping break wudu",
+          "database": "US",
+          "monthly_volume": 210,
+          "kd_percent": 4,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 91,
+          "research_group": "islamful_daily_needs",
+          "keyword": "does sleeping break wudu",
+          "database": "UK",
+          "monthly_volume": 260,
+          "kd_percent": 13,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-026",
+      "priority": 4,
+      "locale": "en",
+      "primary_keyword": "how to pray istikhara",
+      "secondary_keywords": [],
+      "proposed_title": "How to Pray Istikhara",
+      "target_path": "/blog/how-to-do-istikhara-prayer",
+      "source_file": "data/blog/en/how-to-do-istikhara-prayer.mdx",
+      "action": "update_article",
+      "status": "queued",
+      "brief": "Preserve URL/date; verify method and complete dua from primary hadith, clarify dreams/colors are not required signs; link existing dua page rather than create another synonym.",
+      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "conversion_or_tool_path": "/blog/how-to-do-istikhara-prayer",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-do-istikhara-prayer",
+          "file": "data/blog/en/how-to-do-istikhara-prayer.mdx",
+          "title": "How to Do Istikhara Prayer: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/dua-for-istikhara",
+          "file": "data/blog/en/dua-for-istikhara.mdx",
+          "title": "Dua for Istikhara: Full Arabic, Transliteration & Meaning"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 64,
+          "research_group": "islamful_daily_needs",
+          "keyword": "how to pray istikhara",
+          "database": "US",
+          "monthly_volume": 2900,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 65,
+          "research_group": "islamful_daily_needs",
+          "keyword": "how to pray istikhara",
+          "database": "UK",
+          "monthly_volume": 2900,
+          "kd_percent": 22,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+    },
+    {
+      "id": "is-035",
+      "priority": 5,
+      "locale": "en",
+      "primary_keyword": "does vaping break your fast",
+      "secondary_keywords": [],
+      "proposed_title": "Does Vaping Break Your Fast?",
+      "target_path": "/blog/does-vaping-break-your-fast",
+      "source_file": "data/blog/en/does-vaping-break-your-fast.mdx",
+      "action": "new_article",
+      "status": "queued",
+      "brief": "Address the fasting question with named sources, distinctions and make-up obligations; link fasting tool and practical nicotine support contextually. Keep distinct from DeenBack quitting/ruling funnel.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/blog/does-vaping-break-your-fast",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/dua-for-opening-fast",
+          "file": "data/blog/en/dua-for-opening-fast.mdx",
+          "title": "Dua for Opening Fast (Iftar) — Arabic Text and Meaning"
+        },
+        {
+          "path": "/blog/dua-for-fasting",
+          "file": "data/blog/en/dua-for-fasting.mdx",
+          "title": "Dua for Fasting: Before, During, and When Breaking Fast"
+        },
+        {
+          "path": "/blog/is-vaping-haram",
+          "file": "data/blog/en/is-vaping-haram.mdx",
+          "title": "Is Vaping Haram? What Islam Says"
+        },
+        {
+          "path": "/blog/is-nicotine-haram",
+          "file": "data/blog/en/is-nicotine-haram.mdx",
+          "title": "Is Nicotine Haram? The Islamic Ruling on Cigarettes, Vaping, and NRT"
+        },
+        {
+          "path": "/blog/dua-for-iftar",
+          "file": "data/blog/en/dua-for-iftar.mdx",
+          "title": "Dua for Iftar — What to Say When Breaking Your Fast"
+        },
+        {
+          "path": "/blog/dua-for-breaking-fast",
+          "file": "data/blog/en/dua-for-breaking-fast.mdx",
+          "title": "Dua for Breaking Fast: Arabic, Transliteration & Meaning"
+        },
+        {
+          "path": "/blog/what-is-sawm",
+          "file": "data/blog/en/what-is-sawm.mdx",
+          "title": "What Is Sawm? Fasting in Islam Explained"
+        },
+        {
+          "path": "/blog/dua-for-breaking-fast-ramadan",
+          "file": "data/blog/en/dua-for-breaking-fast-ramadan.mdx",
+          "title": "Dua for Breaking Fast in Ramadan — Iftar Dua with Arabic Text"
+        },
+        {
+          "path": "/blog/dua-for-open-fasting",
+          "file": "data/blog/en/dua-for-open-fasting.mdx",
+          "title": "Dua for Opening a Fast: Niyyah and Suhoor"
+        },
+        {
+          "path": "/blog/dua-for-beginning-fasting",
+          "file": "data/blog/en/dua-for-beginning-fasting.mdx",
+          "title": "Dua for Beginning Fasting: Intention and Supplications at Suhoor"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 92,
+          "research_group": "islamful_daily_needs",
+          "keyword": "does vaping break your fast",
+          "database": "US",
+          "monthly_volume": 320,
+          "kd_percent": 4,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 93,
+          "research_group": "islamful_daily_needs",
+          "keyword": "does vaping break your fast",
+          "database": "UK",
+          "monthly_volume": 320,
+          "kd_percent": 6,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-027",
+      "priority": 6,
+      "locale": "en",
+      "primary_keyword": "how to pray salah",
+      "secondary_keywords": [],
+      "proposed_title": "How to Pray Salah for Beginners",
+      "target_path": "/blog/how-to-pray-salah-for-beginners",
+      "source_file": "data/blog/en/how-to-pray-salah-for-beginners.mdx",
+      "action": "update_article",
+      "status": "queued",
+      "brief": "Review sequence, conditions and school differences; explain what a beginner can do next, link prayer times and existing prayer-specific guides.",
+      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "conversion_or_tool_path": "/blog/how-to-pray-salah-for-beginners",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-pray-while-traveling",
+          "file": "data/blog/en/how-to-pray-while-traveling.mdx",
+          "title": "How to Pray While Traveling: Shorten and Combine"
+        },
+        {
+          "path": "/blog/how-to-pray-witr",
+          "file": "data/blog/en/how-to-pray-witr.mdx",
+          "title": "How to Pray Witr: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-maghrib",
+          "file": "data/blog/en/how-to-pray-maghrib.mdx",
+          "title": "How to Pray Maghrib: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-tahajjud",
+          "file": "data/blog/en/how-to-pray-tahajjud.mdx",
+          "title": "How to Pray Tahajjud: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-dhuhr",
+          "file": "data/blog/en/how-to-pray-dhuhr.mdx",
+          "title": "How to Pray Dhuhr: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-janazah",
+          "file": "data/blog/en/how-to-pray-janazah.mdx",
+          "title": "How to Pray Janazah: Step-by-Step Funeral Prayer"
+        },
+        {
+          "path": "/blog/how-to-pray-salah-for-beginners",
+          "file": "data/blog/en/how-to-pray-salah-for-beginners.mdx",
+          "title": "How to Pray Salah for Beginners: Step-by-Step"
+        },
+        {
+          "path": "/blog/how-to-pray-fajr",
+          "file": "data/blog/en/how-to-pray-fajr.mdx",
+          "title": "How to Pray Fajr: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-asr",
+          "file": "data/blog/en/how-to-pray-asr.mdx",
+          "title": "How to Pray Asr: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-taraweeh",
+          "file": "data/blog/en/how-to-pray-taraweeh.mdx",
+          "title": "How to Pray Taraweeh: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-isha",
+          "file": "data/blog/en/how-to-pray-isha.mdx",
+          "title": "How to Pray Isha: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-eid-salah",
+          "file": "data/blog/en/how-to-pray-eid-salah.mdx",
+          "title": "How to Pray Eid Salah: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-pray-sunnah-prayers",
+          "file": "data/blog/en/how-to-pray-sunnah-prayers.mdx",
+          "title": "How to Pray Sunnah Prayers: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 62,
+          "research_group": "islamful_daily_needs",
+          "keyword": "how to pray salah",
+          "database": "US",
+          "monthly_volume": 720,
+          "kd_percent": 38,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 63,
+          "research_group": "islamful_daily_needs",
+          "keyword": "how to pray salah",
+          "database": "UK",
+          "monthly_volume": 1300,
+          "kd_percent": 20,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+    },
+    {
+      "id": "is-056",
+      "priority": 7,
+      "locale": "ar",
+      "primary_keyword": "مبطلات الوضوء",
+      "secondary_keywords": [],
+      "proposed_title": "مبطلات الوضوء: ما المتفق عليه وأين تختلف المذاهب؟",
+      "target_path": "/ar/blog/mubtilat-al-wudu",
+      "source_file": "data/blog/ar/mubtilat-al-wudu.mdx",
+      "action": "new_article",
+      "status": "queued",
+      "brief": "Native SA2400/KD21. Present sourced distinctions by school and relevant daily scenarios; link genuine English counterparts only if equivalent content exists.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/blog/mubtilat-al-wudu",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 200,
+          "research_group": "native_arabic",
+          "keyword": "مبطلات الوضوء",
+          "database": "SA",
+          "monthly_volume": 2400,
+          "kd_percent": 21,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-001",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "prayer times",
+      "secondary_keywords": [],
+      "proposed_title": "Prayer times",
+      "target_path": "/prayer-times",
+      "source_file": "app/prayer-times/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Dated city/local times, saved city, method and next prayer. Continue measured discovery and useful verified city expansion.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/prayer-times",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 2,
+          "research_group": "islamful_daily_needs",
+          "keyword": "prayer times",
+          "database": "US",
+          "monthly_volume": 90500,
+          "kd_percent": 15,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 3,
+          "research_group": "islamful_daily_needs",
+          "keyword": "prayer times",
+          "database": "UK",
+          "monthly_volume": 27100,
+          "kd_percent": 29,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-002",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "qibla finder",
+      "secondary_keywords": [],
+      "proposed_title": "Qibla finder",
+      "target_path": "/qibla-finder",
+      "source_file": "app/qibla-finder/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Maintain opt-in location, manual coordinates and true-north bearing; physical compass testing remains separate.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/qibla-finder",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 4,
+          "research_group": "islamful_daily_needs",
+          "keyword": "qibla finder",
+          "database": "US",
+          "monthly_volume": 74000,
+          "kd_percent": 50,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 5,
+          "research_group": "islamful_daily_needs",
+          "keyword": "qibla finder",
+          "database": "UK",
+          "monthly_volume": 40500,
+          "kd_percent": 29,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-003",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "quran",
+      "secondary_keywords": ["quran online", "quran recitation"],
+      "proposed_title": "Quran reader and recitation",
+      "target_path": "/quran",
+      "source_file": "app/quran/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "One reader family owns these broad variants. Do not publish separate generic Quran blogs for each phrase.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 6,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran",
+          "database": "US",
+          "monthly_volume": 135000,
+          "kd_percent": 99,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 7,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran",
+          "database": "UK",
+          "monthly_volume": 60500,
+          "kd_percent": 97,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 8,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran online",
+          "database": "US",
+          "monthly_volume": 5400,
+          "kd_percent": 66,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 9,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran online",
+          "database": "UK",
+          "monthly_volume": 5400,
+          "kd_percent": 44,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 10,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran recitation",
+          "database": "US",
+          "monthly_volume": 4400,
+          "kd_percent": 56,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 11,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran recitation",
+          "database": "UK",
+          "monthly_volume": 1900,
+          "kd_percent": 47,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-004",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "surah yasin",
+      "secondary_keywords": [],
+      "proposed_title": "Surah Ya-Sin",
+      "target_path": "/quran/ya-sin",
+      "source_file": "app/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Accurate complete surah text, translation and usable recitation/repeat controls; retain licensed source bytes.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran/ya-sin",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 12,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah yasin",
+          "database": "US",
+          "monthly_volume": 14800,
+          "kd_percent": 60,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 13,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah yasin",
+          "database": "UK",
+          "monthly_volume": 9900,
+          "kd_percent": 67,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-005",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "surah kahf",
+      "secondary_keywords": [],
+      "proposed_title": "Surah Al-Kahf",
+      "target_path": "/quran/al-kahf",
+      "source_file": "app/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Accurate complete surah text, translation and usable recitation/repeat controls; retain licensed source bytes.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran/al-kahf",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 14,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah kahf",
+          "database": "US",
+          "monthly_volume": 22200,
+          "kd_percent": 43,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 15,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah kahf",
+          "database": "UK",
+          "monthly_volume": 27100,
+          "kd_percent": 41,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-006",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "surah mulk",
+      "secondary_keywords": [],
+      "proposed_title": "Surah Al-Mulk",
+      "target_path": "/quran/al-mulk",
+      "source_file": "app/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Accurate complete surah text, translation and usable recitation/repeat controls; retain licensed source bytes.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran/al-mulk",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 16,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah mulk",
+          "database": "US",
+          "monthly_volume": 49500,
+          "kd_percent": 51,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 17,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah mulk",
+          "database": "UK",
+          "monthly_volume": 110000,
+          "kd_percent": 50,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-007",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "surah rahman",
+      "secondary_keywords": [],
+      "proposed_title": "Surah Ar-Rahman",
+      "target_path": "/quran/ar-rahman",
+      "source_file": "app/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Accurate complete surah text, translation and usable recitation/repeat controls; retain licensed source bytes.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran/ar-rahman",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 104,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah rahman",
+          "database": "US",
+          "monthly_volume": 18100,
+          "kd_percent": 43,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 105,
+          "research_group": "islamful_daily_needs",
+          "keyword": "surah rahman",
+          "database": "UK",
+          "monthly_volume": 27100,
+          "kd_percent": 40,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-010",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "morning adhkar",
+      "secondary_keywords": [],
+      "proposed_title": "Morning Adhkar",
+      "target_path": "/adhkar/morning",
+      "source_file": "app/adhkar/[routine]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Use the existing sourced routine/counter. Do not duplicate it with a thin article; expand only source-verified additional items.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/adhkar/morning",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 22,
+          "research_group": "islamful_daily_needs",
+          "keyword": "morning adhkar",
+          "database": "US",
+          "monthly_volume": 2900,
+          "kd_percent": 21,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 23,
+          "research_group": "islamful_daily_needs",
+          "keyword": "morning adhkar",
+          "database": "UK",
+          "monthly_volume": 4400,
+          "kd_percent": 31,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-011",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "evening adhkar",
+      "secondary_keywords": [],
+      "proposed_title": "Evening Adhkar",
+      "target_path": "/adhkar/evening",
+      "source_file": "app/adhkar/[routine]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Use the existing sourced routine/counter. Do not duplicate it with a thin article; expand only source-verified additional items.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/adhkar/evening",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 24,
+          "research_group": "islamful_daily_needs",
+          "keyword": "evening adhkar",
+          "database": "US",
+          "monthly_volume": 1000,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 25,
+          "research_group": "islamful_daily_needs",
+          "keyword": "evening adhkar",
+          "database": "UK",
+          "monthly_volume": 1900,
+          "kd_percent": 15,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-012",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "dua after prayer",
+      "secondary_keywords": [],
+      "proposed_title": "Dua After Prayer",
+      "target_path": "/adhkar/after-prayer",
+      "source_file": "app/adhkar/[routine]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Use the existing sourced routine/counter. Do not duplicate it with a thin article; expand only source-verified additional items.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/adhkar/after-prayer",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 86,
+          "research_group": "islamful_daily_needs",
+          "keyword": "dua after prayer",
+          "database": "US",
+          "monthly_volume": 880,
+          "kd_percent": 7,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 87,
+          "research_group": "islamful_daily_needs",
+          "keyword": "dua after prayer",
+          "database": "UK",
+          "monthly_volume": 1000,
+          "kd_percent": 19,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-013",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "tasbih counter",
+      "secondary_keywords": ["dhikr counter"],
+      "proposed_title": "Dhikr counter",
+      "target_path": "/dhikr",
+      "source_file": "app/dhikr/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Both variants share one functioning counter. No two synonym URLs.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/dhikr",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 26,
+          "research_group": "islamful_daily_needs",
+          "keyword": "tasbih counter",
+          "database": "US",
+          "monthly_volume": 1900,
+          "kd_percent": 34,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 27,
+          "research_group": "islamful_daily_needs",
+          "keyword": "tasbih counter",
+          "database": "UK",
+          "monthly_volume": 2900,
+          "kd_percent": 28,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 28,
+          "research_group": "islamful_daily_needs",
+          "keyword": "dhikr counter",
+          "database": "US",
+          "monthly_volume": 720,
+          "kd_percent": 36,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 29,
+          "research_group": "islamful_daily_needs",
+          "keyword": "dhikr counter",
+          "database": "UK",
+          "monthly_volume": 720,
+          "kd_percent": 26,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-014",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "zakat calculator",
+      "secondary_keywords": [],
+      "proposed_title": "Zakat calculator",
+      "target_path": "/zakat-calculator",
+      "source_file": "app/zakat-calculator/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Dated manual basis is live. Automatic price feed and asset scenarios remain separate improvements, not already complete.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/zakat-calculator",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 30,
+          "research_group": "islamful_daily_needs",
+          "keyword": "zakat calculator",
+          "database": "US",
+          "monthly_volume": 8100,
+          "kd_percent": 33,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 31,
+          "research_group": "islamful_daily_needs",
+          "keyword": "zakat calculator",
+          "database": "UK",
+          "monthly_volume": 14800,
+          "kd_percent": 9,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-017",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "islamic date today",
+      "secondary_keywords": ["hijri calendar", "hijri to gregorian"],
+      "proposed_title": "Islamic date and Hijri conversion",
+      "target_path": "/islamic-calendar",
+      "source_file": "app/islamic-calendar/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "One calendar covers current date and both conversion directions. Preserve method/local-observation distinctions.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/islamic-calendar",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 36,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic date today",
+          "database": "US",
+          "monthly_volume": 14800,
+          "kd_percent": 53,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 37,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic date today",
+          "database": "UK",
+          "monthly_volume": 18100,
+          "kd_percent": 57,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 38,
+          "research_group": "islamful_daily_needs",
+          "keyword": "hijri calendar",
+          "database": "US",
+          "monthly_volume": 3600,
+          "kd_percent": 51,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 39,
+          "research_group": "islamful_daily_needs",
+          "keyword": "hijri calendar",
+          "database": "UK",
+          "monthly_volume": 1900,
+          "kd_percent": 41,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 40,
+          "research_group": "islamful_daily_needs",
+          "keyword": "hijri to gregorian",
+          "database": "US",
+          "monthly_volume": 590,
+          "kd_percent": 17,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 41,
+          "research_group": "islamful_daily_needs",
+          "keyword": "hijri to gregorian",
+          "database": "UK",
+          "monthly_volume": 390,
+          "kd_percent": 22,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-018",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "ramadan calendar",
+      "secondary_keywords": [],
+      "proposed_title": "Ramadan calendar",
+      "target_path": "/ramadan-calendar",
+      "source_file": "app/ramadan-calendar/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Use accurate city timetables and date assumptions; no separate spelling variants for the same place.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ramadan-calendar",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 42,
+          "research_group": "islamful_daily_needs",
+          "keyword": "ramadan calendar",
+          "database": "US",
+          "monthly_volume": 2900,
+          "kd_percent": 15,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 43,
+          "research_group": "islamful_daily_needs",
+          "keyword": "ramadan calendar",
+          "database": "UK",
+          "monthly_volume": 2400,
+          "kd_percent": 35,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-019",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "iftar time",
+      "secondary_keywords": ["sehri time", "fasting times"],
+      "proposed_title": "Suhoor and iftar times",
+      "target_path": "/fasting-times",
+      "source_file": "app/fasting-times/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Same dated utility handles these variants; seasonal reach is not a year-round audience forecast.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/fasting-times",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 44,
+          "research_group": "islamful_daily_needs",
+          "keyword": "iftar time",
+          "database": "US",
+          "monthly_volume": 8100,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 45,
+          "research_group": "islamful_daily_needs",
+          "keyword": "iftar time",
+          "database": "UK",
+          "monthly_volume": 3600,
+          "kd_percent": 20,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 46,
+          "research_group": "islamful_daily_needs",
+          "keyword": "sehri time",
+          "database": "US",
+          "monthly_volume": 1600,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 47,
+          "research_group": "islamful_daily_needs",
+          "keyword": "sehri time",
+          "database": "UK",
+          "monthly_volume": 590,
+          "kd_percent": 19,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 48,
+          "research_group": "islamful_daily_needs",
+          "keyword": "fasting times",
+          "database": "US",
+          "monthly_volume": 2900,
+          "kd_percent": 56,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 49,
+          "research_group": "islamful_daily_needs",
+          "keyword": "fasting times",
+          "database": "UK",
+          "monthly_volume": 1900,
+          "kd_percent": 41,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-020",
+      "priority": 10,
+      "locale": "en",
+      "primary_keyword": "tahajjud time",
+      "secondary_keywords": ["tahajjud calculator", "last third of the night calculator"],
+      "proposed_title": "Tonight planner",
+      "target_path": "/last-third-of-night",
+      "source_file": "app/last-third-of-night/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Retain exact local night interval, next-day Fajr and method assumptions.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/last-third-of-night",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 50,
+          "research_group": "islamful_daily_needs",
+          "keyword": "tahajjud time",
+          "database": "US",
+          "monthly_volume": 390,
+          "kd_percent": 21,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 51,
+          "research_group": "islamful_daily_needs",
+          "keyword": "tahajjud time",
+          "database": "UK",
+          "monthly_volume": 720,
+          "kd_percent": 20,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 52,
+          "research_group": "islamful_daily_needs",
+          "keyword": "tahajjud calculator",
+          "database": "US",
+          "monthly_volume": 110,
+          "kd_percent": 12,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 53,
+          "research_group": "islamful_daily_needs",
+          "keyword": "tahajjud calculator",
+          "database": "UK",
+          "monthly_volume": 480,
+          "kd_percent": 6,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 54,
+          "research_group": "islamful_daily_needs",
+          "keyword": "last third of the night calculator",
+          "database": "US",
+          "monthly_volume": 170,
+          "kd_percent": 5,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 55,
+          "research_group": "islamful_daily_needs",
+          "keyword": "last third of the night calculator",
+          "database": "UK",
+          "monthly_volume": 480,
+          "kd_percent": 8,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-042",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "مواقيت الصلاة",
+      "secondary_keywords": [],
+      "proposed_title": "مواقيت الصلاة",
+      "target_path": "/ar/prayer-times",
+      "source_file": "app/[lang]/prayer-times/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/prayer-times",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 184,
+          "research_group": "native_arabic",
+          "keyword": "مواقيت الصلاة",
+          "database": "SA",
+          "monthly_volume": 550000,
+          "kd_percent": 30,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-043",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "اتجاه القبلة",
+      "secondary_keywords": [],
+      "proposed_title": "اتجاه القبلة",
+      "target_path": "/ar/qibla-finder",
+      "source_file": "app/[lang]/qibla-finder/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/qibla-finder",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 185,
+          "research_group": "native_arabic",
+          "keyword": "اتجاه القبلة",
+          "database": "SA",
+          "monthly_volume": 246000,
+          "kd_percent": 30,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-044",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "سورة الملك",
+      "secondary_keywords": [],
+      "proposed_title": "سورة الملك",
+      "target_path": "/ar/quran/al-mulk",
+      "source_file": "app/[lang]/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/quran/al-mulk",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 188,
+          "research_group": "native_arabic",
+          "keyword": "سورة الملك",
+          "database": "SA",
+          "monthly_volume": 135000,
+          "kd_percent": 50,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-045",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "سورة الكهف",
+      "secondary_keywords": [],
+      "proposed_title": "سورة الكهف",
+      "target_path": "/ar/quran/al-kahf",
+      "source_file": "app/[lang]/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/quran/al-kahf",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 189,
+          "research_group": "native_arabic",
+          "keyword": "سورة الكهف",
+          "database": "SA",
+          "monthly_volume": 673000,
+          "kd_percent": 64,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-046",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "آية الكرسي",
+      "secondary_keywords": [],
+      "proposed_title": "آية الكرسي",
+      "target_path": "/ar/quran/al-baqarah#ayah-255",
+      "source_file": "app/[lang]/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/quran/al-baqarah#ayah-255",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 190,
+          "research_group": "native_arabic",
+          "keyword": "آية الكرسي",
+          "database": "SA",
+          "monthly_volume": 2900,
+          "kd_percent": 34,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-047",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "التاريخ الهجري اليوم",
+      "secondary_keywords": ["تحويل التاريخ من هجري الى ميلادي"],
+      "proposed_title": "التاريخ الهجري والتحويل",
+      "target_path": "/ar/islamic-calendar",
+      "source_file": "app/[lang]/islamic-calendar/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/islamic-calendar",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 192,
+          "research_group": "native_arabic",
+          "keyword": "التاريخ الهجري اليوم",
+          "database": "SA",
+          "monthly_volume": 110000,
+          "kd_percent": 47,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 193,
+          "research_group": "native_arabic",
+          "keyword": "تحويل التاريخ من هجري الى ميلادي",
+          "database": "SA",
+          "monthly_volume": 165000,
+          "kd_percent": 25,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-048",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "حاسبة الزكاة",
+      "secondary_keywords": [],
+      "proposed_title": "حاسبة الزكاة",
+      "target_path": "/ar/zakat-calculator",
+      "source_file": "app/[lang]/zakat-calculator/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/zakat-calculator",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 194,
+          "research_group": "native_arabic",
+          "keyword": "حاسبة الزكاة",
+          "database": "SA",
+          "monthly_volume": 8100,
+          "kd_percent": 20,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-049",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "مسبحة الكترونية",
+      "secondary_keywords": [],
+      "proposed_title": "مسبحة إلكترونية",
+      "target_path": "/ar/dhikr",
+      "source_file": "app/[lang]/dhikr/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/dhikr",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 196,
+          "research_group": "native_arabic",
+          "keyword": "مسبحة الكترونية",
+          "database": "SA",
+          "monthly_volume": 4400,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-050",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "دعاء بعد الصلاة",
+      "secondary_keywords": [],
+      "proposed_title": "الأذكار بعد الصلاة",
+      "target_path": "/ar/adhkar/after-prayer",
+      "source_file": "app/[lang]/adhkar/[routine]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/adhkar/after-prayer",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 197,
+          "research_group": "native_arabic",
+          "keyword": "دعاء بعد الصلاة",
+          "database": "SA",
+          "monthly_volume": 5400,
+          "kd_percent": 20,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-051",
+      "priority": 10,
+      "locale": "ar",
+      "primary_keyword": "وقت صلاة التهجد",
+      "secondary_keywords": ["حساب الثلث الأخير من الليل"],
+      "proposed_title": "مواقيت ليلتك",
+      "target_path": "/ar/last-third-of-night",
+      "source_file": "app/[lang]/last-third-of-night/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Native Saudi observations support this existing localized tool. Preserve complete Arabic controls/results and reciprocal actual language counterparts.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/last-third-of-night",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 198,
+          "research_group": "native_arabic",
+          "keyword": "وقت صلاة التهجد",
+          "database": "SA",
+          "monthly_volume": 2400,
+          "kd_percent": 30,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 199,
+          "research_group": "native_arabic",
+          "keyword": "حساب الثلث الأخير من الليل",
+          "database": "SA",
+          "monthly_volume": 390,
+          "kd_percent": 15,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-015",
+      "priority": 11,
+      "locale": "en",
+      "primary_keyword": "gold zakat calculator",
+      "secondary_keywords": [],
+      "proposed_title": "Gold Zakat calculator",
+      "target_path": "/zakat-calculator/gold",
+      "source_file": "app/zakat-calculator/gold/page.tsx",
+      "action": "new_tool",
+      "status": "queued",
+      "brief": "Build a genuinely distinct gold-weight/purity/price experience with documented school assumptions, dated rates/manual fallback and comparison to the main calculator. Do not publish a generic keyword-swapped blog.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/zakat-calculator/gold",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-calculate-zakat",
+          "file": "data/blog/en/how-to-calculate-zakat.mdx",
+          "title": "How to Calculate Zakat: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 32,
+          "research_group": "islamful_daily_needs",
+          "keyword": "gold zakat calculator",
+          "database": "US",
+          "monthly_volume": 480,
+          "kd_percent": 33,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 33,
+          "research_group": "islamful_daily_needs",
+          "keyword": "gold zakat calculator",
+          "database": "UK",
+          "monthly_volume": 1300,
+          "kd_percent": 31,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-034",
+      "priority": 12,
+      "locale": "en",
+      "primary_keyword": "umrah guide",
+      "secondary_keywords": [],
+      "proposed_title": "How to Perform Umrah",
+      "target_path": "/blog/how-to-perform-umrah-step-by-step",
+      "source_file": "data/blog/en/how-to-perform-umrah-step-by-step.mdx",
+      "action": "update_article",
+      "status": "queued",
+      "brief": "Source-check rites, common practical questions and differences; add usable checklist. Do not invent visa or entry guidance; link dated official rules if needed.",
+      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "conversion_or_tool_path": "/blog/how-to-perform-umrah-step-by-step",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-perform-umrah-step-by-step",
+          "file": "data/blog/en/how-to-perform-umrah-step-by-step.mdx",
+          "title": "How to Perform Umrah Step by Step: Full Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 84,
+          "research_group": "islamful_daily_needs",
+          "keyword": "umrah guide",
+          "database": "US",
+          "monthly_volume": 390,
+          "kd_percent": 15,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 85,
+          "research_group": "islamful_daily_needs",
+          "keyword": "umrah guide",
+          "database": "UK",
+          "monthly_volume": 880,
+          "kd_percent": 22,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+    },
+    {
+      "id": "is-055",
+      "priority": 12,
+      "locale": "ar",
+      "primary_keyword": "حساب زكاة الذهب",
+      "secondary_keywords": [],
+      "proposed_title": "حاسبة زكاة الذهب",
+      "target_path": "/ar/zakat-calculator/gold",
+      "source_file": "app/[lang]/zakat-calculator/gold/page.tsx",
+      "action": "new_tool",
+      "status": "queued",
+      "brief": "Native SA3600/KD14; pair with actual English gold calculator when implemented, use Arabic inputs/output and independently verified rules. No article-only substitute.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/zakat-calculator/gold",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 195,
+          "research_group": "native_arabic",
+          "keyword": "حساب زكاة الذهب",
+          "database": "SA",
+          "monthly_volume": 3600,
+          "kd_percent": 14,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-039",
+      "priority": 14,
+      "locale": "en",
+      "primary_keyword": "quran memorization",
+      "secondary_keywords": [],
+      "proposed_title": "How to Memorize the Quran",
+      "target_path": "/blog/how-to-memorize-the-quran",
+      "source_file": "data/blog/en/how-to-memorize-the-quran.mdx",
+      "action": "update_article",
+      "status": "queued",
+      "brief": "Source-check the existing guide, demonstrate reader repeat/hide/reveal/bookmarks and practical flexible routines; no guaranteed fixed-duration memorization.",
+      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "conversion_or_tool_path": "/blog/how-to-memorize-the-quran",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/is-it-haram-to-force-your-child-to-read-quran",
+          "file": "data/blog/en/is-it-haram-to-force-your-child-to-read-quran.mdx",
+          "title": "Is It Haram to Force Your Child to Read Quran?"
+        },
+        {
+          "path": "/blog/how-to-read-quran-for-beginners",
+          "file": "data/blog/en/how-to-read-quran-for-beginners.mdx",
+          "title": "How to Read the Quran for Beginners"
+        },
+        {
+          "path": "/blog/how-to-memorize-the-quran",
+          "file": "data/blog/en/how-to-memorize-the-quran.mdx",
+          "title": "How to Memorize the Quran: Step-by-Step Hifz Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 100,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran memorization",
+          "database": "US",
+          "monthly_volume": 480,
+          "kd_percent": 23,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 101,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran memorization",
+          "database": "UK",
+          "monthly_volume": 320,
+          "kd_percent": 28,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+    },
+    {
+      "id": "is-037",
+      "priority": 15,
+      "locale": "en",
+      "primary_keyword": "kaffarah",
+      "secondary_keywords": [],
+      "proposed_title": "Kaffarah: Different Obligations and When They Apply",
+      "target_path": "/blog/kaffarah",
+      "source_file": "data/blog/en/kaffarah.mdx",
+      "action": "new_article",
+      "status": "queued",
+      "brief": "One Islamful guide owns both duplicated research-group rows. Distinguish oath, fasting and other expiations and school/context differences; no universal cash amount.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/blog/kaffarah",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/dua-for-opening-fast",
+          "file": "data/blog/en/dua-for-opening-fast.mdx",
+          "title": "Dua for Opening Fast (Iftar) — Arabic Text and Meaning"
+        },
+        {
+          "path": "/blog/dua-for-fasting",
+          "file": "data/blog/en/dua-for-fasting.mdx",
+          "title": "Dua for Fasting: Before, During, and When Breaking Fast"
+        },
+        {
+          "path": "/blog/dua-for-iftar",
+          "file": "data/blog/en/dua-for-iftar.mdx",
+          "title": "Dua for Iftar — What to Say When Breaking Your Fast"
+        },
+        {
+          "path": "/blog/dua-for-breaking-fast",
+          "file": "data/blog/en/dua-for-breaking-fast.mdx",
+          "title": "Dua for Breaking Fast: Arabic, Transliteration & Meaning"
+        },
+        {
+          "path": "/blog/what-is-sawm",
+          "file": "data/blog/en/what-is-sawm.mdx",
+          "title": "What Is Sawm? Fasting in Islam Explained"
+        },
+        {
+          "path": "/blog/dua-for-breaking-fast-ramadan",
+          "file": "data/blog/en/dua-for-breaking-fast-ramadan.mdx",
+          "title": "Dua for Breaking Fast in Ramadan — Iftar Dua with Arabic Text"
+        },
+        {
+          "path": "/blog/dua-for-open-fasting",
+          "file": "data/blog/en/dua-for-open-fasting.mdx",
+          "title": "Dua for Opening a Fast: Niyyah and Suhoor"
+        },
+        {
+          "path": "/blog/dua-for-beginning-fasting",
+          "file": "data/blog/en/dua-for-beginning-fasting.mdx",
+          "title": "Dua for Beginning Fasting: Intention and Supplications at Suhoor"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 96,
+          "research_group": "islamful_daily_needs",
+          "keyword": "kaffarah",
+          "database": "US",
+          "monthly_volume": 590,
+          "kd_percent": 13,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 97,
+          "research_group": "islamful_daily_needs",
+          "keyword": "kaffarah",
+          "database": "UK",
+          "monthly_volume": 1000,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 176,
+          "research_group": "deenback_conversion",
+          "keyword": "kaffarah",
+          "database": "US",
+          "monthly_volume": 590,
+          "kd_percent": 13,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 177,
+          "research_group": "deenback_conversion",
+          "keyword": "kaffarah",
+          "database": "UK",
+          "monthly_volume": 1000,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-016",
+      "priority": 16,
+      "locale": "en",
+      "primary_keyword": "nisab",
+      "secondary_keywords": [],
+      "proposed_title": "Nisab: Gold, Silver and the Zakat Threshold",
+      "target_path": "/blog/nisab",
+      "source_file": "data/blog/en/nisab.mdx",
+      "action": "new_article",
+      "status": "queued",
+      "brief": "Explain bases, weight conventions, currency/date and evidence. Reuse main tool; never publish an undated universal currency amount.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/blog/nisab",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-calculate-zakat",
+          "file": "data/blog/en/how-to-calculate-zakat.mdx",
+          "title": "How to Calculate Zakat: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 34,
+          "research_group": "islamful_daily_needs",
+          "keyword": "nisab",
+          "database": "US",
+          "monthly_volume": 480,
+          "kd_percent": 23,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 35,
+          "research_group": "islamful_daily_needs",
+          "keyword": "nisab",
+          "database": "UK",
+          "monthly_volume": 390,
+          "kd_percent": 25,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-030",
+      "priority": 18,
+      "locale": "en",
+      "primary_keyword": "muslim boy names",
+      "secondary_keywords": ["muslim girl names"],
+      "proposed_title": "Muslim names: evidence and search",
+      "target_path": "/muslim-names",
+      "source_file": "app/muslim-names/page.tsx",
+      "action": "improve_tool",
+      "status": "queued",
+      "brief": "Audit existing meanings/Arabic/origins/religious labels, sources and filters. Consider meaningful gender facets after SERP review; do not auto-create one article per name. False Arabic alternate already fixed.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/muslim-names",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 74,
+          "research_group": "islamful_daily_needs",
+          "keyword": "muslim boy names",
+          "database": "US",
+          "monthly_volume": 5400,
+          "kd_percent": 18,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 75,
+          "research_group": "islamful_daily_needs",
+          "keyword": "muslim boy names",
+          "database": "UK",
+          "monthly_volume": 3600,
+          "kd_percent": 26,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 76,
+          "research_group": "islamful_daily_needs",
+          "keyword": "muslim girl names",
+          "database": "US",
+          "monthly_volume": 4400,
+          "kd_percent": 39,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 77,
+          "research_group": "islamful_daily_needs",
+          "keyword": "muslim girl names",
+          "database": "UK",
+          "monthly_volume": 3600,
+          "kd_percent": 34,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-008",
+      "priority": 20,
+      "locale": "en",
+      "primary_keyword": "ayat al kursi",
+      "secondary_keywords": [],
+      "proposed_title": "Ayat al-Kursi reading",
+      "target_path": "/quran/al-baqarah#ayah-255",
+      "source_file": "app/quran/[surah]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Existing reader verse is the current destination. Fragment is not a separate indexed page; assess standalone intent before proposing one.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran/al-baqarah#ayah-255",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 18,
+          "research_group": "islamful_daily_needs",
+          "keyword": "ayat al kursi",
+          "database": "US",
+          "monthly_volume": 9900,
+          "kd_percent": 55,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 19,
+          "research_group": "islamful_daily_needs",
+          "keyword": "ayat al kursi",
+          "database": "UK",
+          "monthly_volume": 2900,
+          "kd_percent": 52,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-040",
+      "priority": 20,
+      "locale": "en",
+      "primary_keyword": "quran transliteration",
+      "secondary_keywords": [],
+      "proposed_title": "Quran transliteration",
+      "target_path": "/quran",
+      "source_file": "app/quran/page.tsx",
+      "action": "improve_tool",
+      "status": "needs_licensed_data",
+      "brief": "Source a licensed accurate phonetic text with verse alignment and reviewer checks. Do not generate Quran transliteration from memory or claim the existing reader includes it.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/quran",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 102,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran transliteration",
+          "database": "US",
+          "monthly_volume": 2900,
+          "kd_percent": 31,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 103,
+          "research_group": "islamful_daily_needs",
+          "keyword": "quran transliteration",
+          "database": "UK",
+          "monthly_volume": 1300,
+          "kd_percent": 30,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-052",
+      "priority": 20,
+      "locale": "ar",
+      "primary_keyword": "أذكار الصباح",
+      "secondary_keywords": [],
+      "proposed_title": "أذكار الصباح",
+      "target_path": "/ar/adhkar/morning",
+      "source_file": "app/[lang]/adhkar/[routine]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Existing useful tool is live; this specific Arabic SEMrush observation has missing KD/refresh status. Recheck demand before claiming complete native keyword validation.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/adhkar/morning",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 186,
+          "research_group": "native_arabic",
+          "keyword": "أذكار الصباح",
+          "database": "SA",
+          "monthly_volume": 1000000,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-053",
+      "priority": 20,
+      "locale": "ar",
+      "primary_keyword": "أذكار المساء",
+      "secondary_keywords": [],
+      "proposed_title": "أذكار المساء",
+      "target_path": "/ar/adhkar/evening",
+      "source_file": "app/[lang]/adhkar/[routine]/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Existing useful tool is live; this specific Arabic SEMrush observation has missing KD/refresh status. Recheck demand before claiming complete native keyword validation.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/adhkar/evening",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 187,
+          "research_group": "native_arabic",
+          "keyword": "أذكار المساء",
+          "database": "SA",
+          "monthly_volume": 673000,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-054",
+      "priority": 20,
+      "locale": "ar",
+      "primary_keyword": "القرآن الكريم",
+      "secondary_keywords": [],
+      "proposed_title": "القرآن الكريم",
+      "target_path": "/ar/quran",
+      "source_file": "app/[lang]/quran/page.tsx",
+      "action": "live",
+      "status": "live_reviewed",
+      "brief": "Existing useful tool is live; this specific Arabic SEMrush observation has missing KD/refresh status. Recheck demand before claiming complete native keyword validation.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/quran",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 191,
+          "research_group": "native_arabic",
+          "keyword": "القرآن الكريم",
+          "database": "SA",
+          "monthly_volume": 74000,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "reviewed_in_oct13_release",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-033",
+      "priority": 22,
+      "locale": "en",
+      "primary_keyword": "hajj guide",
+      "secondary_keywords": [],
+      "proposed_title": "How to Perform Hajj",
+      "target_path": "/blog/how-to-perform-hajj-step-by-step",
+      "source_file": "data/blog/en/how-to-perform-hajj-step-by-step.mdx",
+      "action": "update_article",
+      "status": "queued",
+      "brief": "Preserve existing URL; verify rite sequence and school differences, distinguish religious guide from changing permits/health/travel rules. Verify official current rules only when included.",
+      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "conversion_or_tool_path": "/blog/how-to-perform-hajj-step-by-step",
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-pray-tahajjud",
+          "file": "data/blog/en/how-to-pray-tahajjud.mdx",
+          "title": "How to Pray Tahajjud: Step-by-Step Guide"
+        },
+        {
+          "path": "/blog/how-to-perform-hajj-step-by-step",
+          "file": "data/blog/en/how-to-perform-hajj-step-by-step.mdx",
+          "title": "How to Perform Hajj: Step-by-Step Guide"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 82,
+          "research_group": "islamful_daily_needs",
+          "keyword": "hajj guide",
+          "database": "US",
+          "monthly_volume": 70,
+          "kd_percent": 30,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 83,
+          "research_group": "islamful_daily_needs",
+          "keyword": "hajj guide",
+          "database": "UK",
+          "monthly_volume": 140,
+          "kd_percent": 31,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+    },
+    {
+      "id": "is-029",
+      "priority": 25,
+      "locale": "en",
+      "primary_keyword": "islamic inheritance calculator",
+      "secondary_keywords": [],
+      "proposed_title": "Inheritance calculator audit",
+      "target_path": "/inheritance-calculator",
+      "source_file": "app/inheritance-calculator/page.tsx",
+      "action": "improve_tool",
+      "status": "queued",
+      "brief": "Audit existing logic against independent worked cases, heirs, exclusions, debt/bequest order and school assumptions before expansion. Explain complex-case limits; no legally definitive estate allocation.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/inheritance-calculator",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 72,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic inheritance calculator",
+          "database": "US",
+          "monthly_volume": 590,
+          "kd_percent": 6,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 73,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic inheritance calculator",
+          "database": "UK",
+          "monthly_volume": 880,
+          "kd_percent": 8,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-036",
+      "priority": 26,
+      "locale": "en",
+      "primary_keyword": "fidya calculator",
+      "secondary_keywords": [],
+      "proposed_title": "Fidya calculation",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "needs_sources",
+      "brief": "US40/KD3 is complete; UK partial. Verify liability, feeding basis and dated local rates; design truthful input logic before selecting a public calculator URL.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 94,
+          "research_group": "islamful_daily_needs",
+          "keyword": "fidya calculator",
+          "database": "US",
+          "monthly_volume": 40,
+          "kd_percent": 3,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 95,
+          "research_group": "islamful_daily_needs",
+          "keyword": "fidya calculator",
+          "database": "UK",
+          "monthly_volume": 40,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-009",
+      "priority": 30,
+      "locale": "en",
+      "primary_keyword": "99 names of allah",
+      "secondary_keywords": [],
+      "proposed_title": "Names of Allah reference review",
+      "target_path": "/names-of-allah",
+      "source_file": "app/names-of-allah/page.tsx",
+      "action": "improve_tool",
+      "status": "queued",
+      "brief": "Audit each name, meaning and audio claim against sources; clarify enumeration differences. Add usable learning tools without fabricated religious claims.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/names-of-allah",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 20,
+          "research_group": "islamful_daily_needs",
+          "keyword": "99 names of allah",
+          "database": "US",
+          "monthly_volume": 18100,
+          "kd_percent": 39,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 21,
+          "research_group": "islamful_daily_needs",
+          "keyword": "99 names of allah",
+          "database": "UK",
+          "monthly_volume": 18100,
+          "kd_percent": 50,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-041",
+      "priority": 30,
+      "locale": "en",
+      "primary_keyword": "azan",
+      "secondary_keywords": [],
+      "proposed_title": "Adhan reference and audio",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "needs_sources",
+      "brief": "Check search intent, source text/pronunciation, licensed recordings and browser audio expectations. Never promise background adhan notifications not implemented.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 106,
+          "research_group": "islamful_daily_needs",
+          "keyword": "azan",
+          "database": "US",
+          "monthly_volume": 8100,
+          "kd_percent": 51,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 107,
+          "research_group": "islamful_daily_needs",
+          "keyword": "azan",
+          "database": "UK",
+          "monthly_volume": 3600,
+          "kd_percent": 45,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-057",
+      "priority": 31,
+      "locale": "ar",
+      "primary_keyword": "أسماء الله الحسنى",
+      "secondary_keywords": [],
+      "proposed_title": "أسماء الله الحسنى",
+      "target_path": "/ar/names-of-allah",
+      "source_file": "app/[lang]/names-of-allah/page.tsx",
+      "action": "improve_tool",
+      "status": "needs_keyword_refresh",
+      "brief": "Existing reference needs source/data audit; native observation is partial. Do not invent a complete KD or certify all current audio/meanings.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/ar/names-of-allah",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 201,
+          "research_group": "native_arabic",
+          "keyword": "أسماء الله الحسنى",
+          "database": "SA",
+          "monthly_volume": 9900,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-038",
+      "priority": 32,
+      "locale": "en",
+      "primary_keyword": "prayer tracker",
+      "secondary_keywords": [],
+      "proposed_title": "Private prayer tracker",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "needs_product_design",
+      "brief": "Potential daily retention feature; search head is small and UK partial. Design optional browser-local state without religious scoring or sensitive analytics before assigning a route.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 98,
+          "research_group": "islamful_daily_needs",
+          "keyword": "prayer tracker",
+          "database": "US",
+          "monthly_volume": 90,
+          "kd_percent": 21,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 99,
+          "research_group": "islamful_daily_needs",
+          "keyword": "prayer tracker",
+          "database": "UK",
+          "monthly_volume": 20,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-021",
+      "priority": 35,
+      "locale": "en",
+      "primary_keyword": "mosque near me",
+      "secondary_keywords": ["jummah time"],
+      "proposed_title": "Mosque and Jumuah directory",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "needs_data",
+      "brief": "Audit licensed/current mosque data, congregation times and local SERPs. Calculated Dhuhr is not Jumuah congregation time. No generic city prose substitute.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 56,
+          "research_group": "islamful_daily_needs",
+          "keyword": "mosque near me",
+          "database": "US",
+          "monthly_volume": 74000,
+          "kd_percent": 41,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 57,
+          "research_group": "islamful_daily_needs",
+          "keyword": "mosque near me",
+          "database": "UK",
+          "monthly_volume": 74000,
+          "kd_percent": 50,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 66,
+          "research_group": "islamful_daily_needs",
+          "keyword": "jummah time",
+          "database": "US",
+          "monthly_volume": 480,
+          "kd_percent": 11,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 67,
+          "research_group": "islamful_daily_needs",
+          "keyword": "jummah time",
+          "database": "UK",
+          "monthly_volume": 1300,
+          "kd_percent": 27,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-022",
+      "priority": 35,
+      "locale": "en",
+      "primary_keyword": "halal food near me",
+      "secondary_keywords": [],
+      "proposed_title": "Halal food local directory",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "needs_data",
+      "brief": "Verify listing rights, current businesses and halal claims. Large volume includes map/zero-click intent; do not fabricate directory entries.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 58,
+          "research_group": "islamful_daily_needs",
+          "keyword": "halal food near me",
+          "database": "US",
+          "monthly_volume": 201000,
+          "kd_percent": 42,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 59,
+          "research_group": "islamful_daily_needs",
+          "keyword": "halal food near me",
+          "database": "UK",
+          "monthly_volume": 74000,
+          "kd_percent": 32,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-028",
+      "priority": 35,
+      "locale": "en",
+      "primary_keyword": "qada prayer calculator",
+      "secondary_keywords": ["missed prayer calculator"],
+      "proposed_title": "Missed prayer planning",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "needs_keyword_refresh",
+      "brief": "All observed exact calculator metrics are partial. Recheck native expressions and scholarly calculation assumptions; keep existing missed-prayer guide rather than invent a total debt.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [
+        {
+          "path": "/blog/how-to-make-up-missed-prayers",
+          "file": "data/blog/en/how-to-make-up-missed-prayers.mdx",
+          "title": "How to Make Up Missed Prayers (Qada Salah)"
+        }
+      ],
+      "observations": [
+        {
+          "source_row": 68,
+          "research_group": "islamful_daily_needs",
+          "keyword": "qada prayer calculator",
+          "database": "US",
+          "monthly_volume": null,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 69,
+          "research_group": "islamful_daily_needs",
+          "keyword": "qada prayer calculator",
+          "database": "UK",
+          "monthly_volume": 20,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 70,
+          "research_group": "islamful_daily_needs",
+          "keyword": "missed prayer calculator",
+          "database": "US",
+          "monthly_volume": 10,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 71,
+          "research_group": "islamful_daily_needs",
+          "keyword": "missed prayer calculator",
+          "database": "UK",
+          "monthly_volume": 20,
+          "kd_percent": null,
+          "status": "partial_refresh_required",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-031",
+      "priority": 40,
+      "locale": "en",
+      "primary_keyword": "islamic quiz",
+      "secondary_keywords": [],
+      "proposed_title": "Islamic quiz and learning games",
+      "target_path": "/games",
+      "source_file": "app/games/page.tsx",
+      "action": "improve_tool",
+      "status": "queued",
+      "brief": "Audit factual questions/sources and accessible useful play; retain web engagement goal without forcing app downloads.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": "/games",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 78,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic quiz",
+          "database": "US",
+          "monthly_volume": 480,
+          "kd_percent": 23,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 79,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic quiz",
+          "database": "UK",
+          "monthly_volume": 880,
+          "kd_percent": 27,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-032",
+      "priority": 90,
+      "locale": "en",
+      "primary_keyword": "islamic dream interpretation",
+      "secondary_keywords": [],
+      "proposed_title": "Dream interpretation",
+      "target_path": null,
+      "source_file": null,
+      "action": "research",
+      "status": "not_selected",
+      "brief": "Not a priority acquisition family because personalized certainty and unverifiable predictions do not support the daily utility proposition. Existing content is not deleted.",
+      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "conversion_or_tool_path": null,
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "source_row": 80,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic dream interpretation",
+          "database": "US",
+          "monthly_volume": 4400,
+          "kd_percent": 33,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        },
+        {
+          "source_row": 81,
+          "research_group": "islamful_daily_needs",
+          "keyword": "islamic dream interpretation",
+          "database": "UK",
+          "monthly_volume": 8100,
+          "kd_percent": 33,
+          "status": "complete",
+          "observed_date": "2026-10-13",
+          "source": "SEMrush Chrome Bulk Analysis"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    }
+  ]
+}
