@@ -1,6 +1,6 @@
 # Islamful researched publishing queue
 
-`data/seo/publishing-queue.json` is the current editorial work list for this growth project. Its 164 assignments group search variants by reader task, distinguish published work from remaining work, and retain original market-specific observations. The adjacent CSV is the original research evidence, not an article-per-row command. No search volumes are added together as an audience forecast.
+`data/seo/publishing-queue.json` is the current editorial work list for this growth project. Its 165 assignments group search variants by reader task, distinguish published work from remaining work, and retain original market-specific observations. The adjacent CSV is the original research evidence, not an article-per-row command. No search volumes are added together as an audience forecast.
 
 ## Choose work
 
@@ -48,3 +48,5 @@ Schema version 2 retains the original CSV and adds `semrush-scale-evidence-2026-
 Queries with the same task share one destination. Existing prayer guides own their rak‘ah variants; adjacent wudu cases are consolidated where one answer serves them; broad ruling references are lower priority than DeenBack recovery content. An old-year search observation is never relabelled as current-year demand. Mixed fasting queries require intent checks before drafting.
 
 The selector remains read-only. The scheduled generator has not yet been migrated; do not claim this expanded queue is unattended publishing. Source checks, authoring, validation and verified live release are still required for every queued item.
+
+A separate queued tool assignment, `is-165`, covers the Ramadan countdown/current-day extension. The existing timetable remains recorded as live; new feature work is not silently treated as already implemented.

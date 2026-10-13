@@ -1511,14 +1511,7 @@
       "priority": 10,
       "locale": "en",
       "primary_keyword": "ramadan calendar",
-      "secondary_keywords": [
-        "when is ramadan 2027",
-        "how many days until ramadan",
-        "what day of ramadan is it",
-        "when is ramadan in morocco",
-        "when is ramadan in dubai",
-        "when is ramadan in saudi arabia"
-      ],
+      "secondary_keywords": [],
       "proposed_title": "Ramadan calendar",
       "target_path": "/ramadan-calendar",
       "source_file": "app/ramadan-calendar/page.tsx",
@@ -1550,154 +1543,13 @@
           "status": "complete",
           "observed_date": "2026-10-13",
           "source": "SEMrush Chrome Bulk Analysis"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "493fb975be7f853a:33",
-          "source_row": 33,
-          "keyword": "when is ramadan 2027",
-          "database": "UK",
-          "monthly_volume": 1600,
-          "kd_percent": 13,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:31:49.309Z",
-          "source": "SEMrush visible keyword table"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "493fb975be7f853a:13",
-          "source_row": 13,
-          "keyword": "how many days until ramadan",
-          "database": "UK",
-          "monthly_volume": 3600,
-          "kd_percent": 13,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:31:49.309Z",
-          "source": "SEMrush visible keyword table"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "493fb975be7f853a:48",
-          "source_row": 48,
-          "keyword": "what day of ramadan is it",
-          "database": "UK",
-          "monthly_volume": 1000,
-          "kd_percent": 47,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:31:49.309Z",
-          "source": "SEMrush visible keyword table"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "72b2cd9a39fe94be:22",
-          "source_row": 22,
-          "keyword": "what day of ramadan is it",
-          "database": "UK",
-          "monthly_volume": 1000,
-          "kd_percent": 47,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:38:32.111Z",
-          "source": "SEMrush visible keyword table"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "7bce0399c747c3be:10",
-          "source_row": 10,
-          "keyword": "when is ramadan in morocco",
-          "database": "UK",
-          "monthly_volume": 480,
-          "kd_percent": 16,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:35:29.315Z",
-          "source": "SEMrush visible keyword table"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "7bce0399c747c3be:46",
-          "source_row": 46,
-          "keyword": "when is ramadan in dubai",
-          "database": "UK",
-          "monthly_volume": 390,
-          "kd_percent": 26,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:35:29.315Z",
-          "source": "SEMrush visible keyword table"
-        },
-        {
-          "research_source": "semrush-scale-evidence-2026-10-13.json",
-          "evidence_id": "61962c18e8a645d6:17",
-          "source_row": 17,
-          "keyword": "when is ramadan in saudi arabia",
-          "database": "UK",
-          "monthly_volume": 260,
-          "kd_percent": 36,
-          "status": "complete",
-          "observed_date": "2026-10-13T10:35:57.534Z",
-          "source": "SEMrush visible keyword table"
         }
       ],
       "source_review_status": "reviewed_in_oct13_release",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
-      "research_additions": [
-        {
-          "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": [
-            "is-scale-097",
-            "is-scale-098",
-            "is-scale-099",
-            "is-scale-113",
-            "is-scale-114",
-            "is-scale-115"
-          ],
-          "decision": "Existing target reused",
-          "canonical_target": "/ramadan-calendar",
-          "stage": "assigned_not_written"
-        }
-      ],
-      "brief_addenda": [
-        {
-          "questions": [
-            "when is ramadan 2027",
-            "how many days until ramadan",
-            "what day of ramadan is it",
-            "when is ramadan in morocco",
-            "when is ramadan in dubai",
-            "when is ramadan in saudi arabia"
-          ],
-          "outline": [
-            "Answer the exact question: when is ramadan 2027",
-            "Explain the applicable distinctions and exceptions for when is ramadan 2027",
-            "Give a worked example or practical steps for when is ramadan 2027",
-            "Link to /fasting-times when it helps this task; include dated primary-source references",
-            "Answer the exact question: how many days until ramadan",
-            "Explain the applicable distinctions and exceptions for how many days until ramadan",
-            "Give a worked example or practical steps for how many days until ramadan",
-            "Answer the exact question: what day of ramadan is it",
-            "Explain the applicable distinctions and exceptions for what day of ramadan is it",
-            "Give a worked example or practical steps for what day of ramadan is it",
-            "Answer the exact question: when is ramadan in morocco",
-            "Explain the applicable distinctions and exceptions for when is ramadan in morocco",
-            "Give a worked example or practical steps for when is ramadan in morocco",
-            "Answer the exact question: when is ramadan in dubai",
-            "Explain the applicable distinctions and exceptions for when is ramadan in dubai",
-            "Give a worked example or practical steps for when is ramadan in dubai",
-            "Answer the exact question: when is ramadan in saudi arabia",
-            "Explain the applicable distinctions and exceptions for when is ramadan in saudi arabia",
-            "Give a worked example or practical steps for when is ramadan in saudi arabia"
-          ],
-          "source_requirements": [
-            "Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Preserve this exact historical keyword evidence; do not relabel its volume as another year. Check whether an evergreen page should own the task.",
-            "Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword."
-          ],
-          "cta_policy": "Lead to the relevant usable website tool; do not show an app-download CTA.",
-          "intent_notes": [
-            "Queries are UK estimates, not all-Muslim or global demand.",
-            "Do not create separate pages for these combined keyword variants.",
-            "Keep original year-specific metrics. Use the chosen evergreen destination with dated current information; never transfer old-year volume to a new-year keyword."
-          ]
-        }
-      ]
+      "research_additions": [],
+      "brief_addenda": []
     },
     {
       "id": "is-019",
@@ -2424,6 +2276,177 @@
       "source_review_status": "required_before_publication",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+    },
+    {
+      "id": "is-165",
+      "priority": 12,
+      "locale": "en",
+      "primary_keyword": "how many days until ramadan",
+      "secondary_keywords": [
+        "when is ramadan 2027",
+        "what day of ramadan is it",
+        "when is ramadan in morocco",
+        "when is ramadan in dubai",
+        "when is ramadan in saudi arabia"
+      ],
+      "proposed_title": "Ramadan countdown and current-day view",
+      "target_path": "/ramadan-calendar",
+      "source_file": "app/ramadan-calendar/page.tsx",
+      "action": "improve_tool",
+      "status": "queued",
+      "brief": "Extend the existing Ramadan timetable with days until the selected Ramadan start and the current Ramadan day in the selected city timezone. Preserve calculated-versus-locally-announced date labels, 29/30-day choice, manual correction and future-year selection. Verify Morocco, UAE and Saudi coverage without claiming universal confirmed moon-sighting dates. Keep country questions on the shared utility until separate useful sourced country pages are justified.",
+      "next_step": "Implement and test this distinct extension of the already-live timetable, including timezone boundary, before/during/after Ramadan and local-date override cases; then deploy and verify live.",
+      "conversion_or_tool_path": "/ramadan-calendar",
+      "existing_overlap_candidates": [],
+      "observations": [
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "493fb975be7f853a:33",
+          "source_row": 33,
+          "keyword": "when is ramadan 2027",
+          "database": "UK",
+          "monthly_volume": 1600,
+          "kd_percent": 13,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:31:49.309Z",
+          "source": "SEMrush visible keyword table"
+        },
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "493fb975be7f853a:13",
+          "source_row": 13,
+          "keyword": "how many days until ramadan",
+          "database": "UK",
+          "monthly_volume": 3600,
+          "kd_percent": 13,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:31:49.309Z",
+          "source": "SEMrush visible keyword table"
+        },
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "493fb975be7f853a:48",
+          "source_row": 48,
+          "keyword": "what day of ramadan is it",
+          "database": "UK",
+          "monthly_volume": 1000,
+          "kd_percent": 47,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:31:49.309Z",
+          "source": "SEMrush visible keyword table"
+        },
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "72b2cd9a39fe94be:22",
+          "source_row": 22,
+          "keyword": "what day of ramadan is it",
+          "database": "UK",
+          "monthly_volume": 1000,
+          "kd_percent": 47,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:38:32.111Z",
+          "source": "SEMrush visible keyword table"
+        },
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "7bce0399c747c3be:10",
+          "source_row": 10,
+          "keyword": "when is ramadan in morocco",
+          "database": "UK",
+          "monthly_volume": 480,
+          "kd_percent": 16,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:35:29.315Z",
+          "source": "SEMrush visible keyword table"
+        },
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "7bce0399c747c3be:46",
+          "source_row": 46,
+          "keyword": "when is ramadan in dubai",
+          "database": "UK",
+          "monthly_volume": 390,
+          "kd_percent": 26,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:35:29.315Z",
+          "source": "SEMrush visible keyword table"
+        },
+        {
+          "research_source": "semrush-scale-evidence-2026-10-13.json",
+          "evidence_id": "61962c18e8a645d6:17",
+          "source_row": 17,
+          "keyword": "when is ramadan in saudi arabia",
+          "database": "UK",
+          "monthly_volume": 260,
+          "kd_percent": 36,
+          "status": "complete",
+          "observed_date": "2026-10-13T10:35:57.534Z",
+          "source": "SEMrush visible keyword table"
+        }
+      ],
+      "source_review_status": "required_before_publication",
+      "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
+      "research_additions": [
+        {
+          "batch": "semrush-scale-2026-10-13",
+          "candidate_ids": [
+            "is-scale-097",
+            "is-scale-098",
+            "is-scale-099",
+            "is-scale-113",
+            "is-scale-114",
+            "is-scale-115"
+          ],
+          "decision": "Existing target reused",
+          "canonical_target": "/ramadan-calendar",
+          "stage": "assigned_not_written"
+        }
+      ],
+      "brief_addenda": [
+        {
+          "questions": [
+            "when is ramadan 2027",
+            "how many days until ramadan",
+            "what day of ramadan is it",
+            "when is ramadan in morocco",
+            "when is ramadan in dubai",
+            "when is ramadan in saudi arabia"
+          ],
+          "outline": [
+            "Answer the exact question: when is ramadan 2027",
+            "Explain the applicable distinctions and exceptions for when is ramadan 2027",
+            "Give a worked example or practical steps for when is ramadan 2027",
+            "Link to /fasting-times when it helps this task; include dated primary-source references",
+            "Answer the exact question: how many days until ramadan",
+            "Explain the applicable distinctions and exceptions for how many days until ramadan",
+            "Give a worked example or practical steps for how many days until ramadan",
+            "Answer the exact question: what day of ramadan is it",
+            "Explain the applicable distinctions and exceptions for what day of ramadan is it",
+            "Give a worked example or practical steps for what day of ramadan is it",
+            "Answer the exact question: when is ramadan in morocco",
+            "Explain the applicable distinctions and exceptions for when is ramadan in morocco",
+            "Give a worked example or practical steps for when is ramadan in morocco",
+            "Answer the exact question: when is ramadan in dubai",
+            "Explain the applicable distinctions and exceptions for when is ramadan in dubai",
+            "Give a worked example or practical steps for when is ramadan in dubai",
+            "Answer the exact question: when is ramadan in saudi arabia",
+            "Explain the applicable distinctions and exceptions for when is ramadan in saudi arabia",
+            "Give a worked example or practical steps for when is ramadan in saudi arabia"
+          ],
+          "source_requirements": [
+            "Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Preserve this exact historical keyword evidence; do not relabel its volume as another year. Check whether an evergreen page should own the task.",
+            "Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword."
+          ],
+          "cta_policy": "Lead to the relevant usable website tool; do not show an app-download CTA.",
+          "intent_notes": [
+            "Queries are UK estimates, not all-Muslim or global demand.",
+            "Do not create separate pages for these combined keyword variants.",
+            "Keep original year-specific metrics. Use the chosen evergreen destination with dated current information; never transfer old-year volume to a new-year keyword."
+          ]
+        }
+      ],
+      "admission_batch": "semrush-scale-2026-10-13"
     },
     {
       "id": "is-039",
