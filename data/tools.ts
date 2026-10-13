@@ -29,6 +29,30 @@ export interface Tool {
 
 const tools: Tool[] = [
   {
+    slug: 'fasting-times',
+    name: 'Suhoor & Iftar Times',
+    nameAr: 'مواقيت السحور والإفطار',
+    description:
+      'Find Fajr and Maghrib for a city or enter your local timetable, with today’s countdown.',
+    descriptionAr: 'اعرف الفجر والمغرب لمدينة أو أدخل جدولك المحلي مع العد التنازلي لليوم.',
+    icon: Clock,
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+    status: 'live',
+  },
+  {
+    slug: 'ramadan-calendar',
+    name: 'Ramadan Calendar',
+    nameAr: 'تقويم رمضان',
+    description:
+      'Plan and download a city fasting timetable using calculated or locally entered Ramadan dates.',
+    descriptionAr: 'خطط لجدول الصيام في مدينتك ونزّله بتواريخ رمضان المحسوبة أو المدخلة محليًا.',
+    icon: Calendar,
+    iconBg: 'bg-indigo-100 dark:bg-indigo-900/30',
+    iconColor: 'text-indigo-600 dark:text-indigo-400',
+    status: 'live',
+  },
+  {
     slug: 'last-third-of-night',
     name: 'Tonight Planner',
     nameAr: 'مواقيت ليلتك',

@@ -405,6 +405,14 @@ export default function TodayDashboard({
                   Icon: Moon,
                 },
                 {
+                  href: 'fasting-times',
+                  title: ar ? 'السحور والإفطار' : 'Suhoor and iftar',
+                  desc: ar
+                    ? 'مواقيت الصيام وتقويم رمضان لمدينتك.'
+                    : 'Fasting times and a Ramadan calendar for your city.',
+                  Icon: Moon,
+                },
+                {
                   href: 'zakat-calculator',
                   title: ar ? 'احسب زكاتك' : 'Calculate your zakat',
                   desc: ar ? 'النصاب والمال والذهب والفضة.' : 'Nisab, money, gold and silver.',

@@ -115,7 +115,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   )
 
+  const ramadanCities = ['en', 'ar'].flatMap((lang) =>
+    cities.map((city) => ({
+      url: `${siteUrl}${lang === 'ar' ? '/ar' : ''}/ramadan-calendar/${city.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${siteUrl}/ramadan-calendar/${city.slug}`,
+          ar: `${siteUrl}/ar/ramadan-calendar/${city.slug}`,
+        },
+      },
+    }))
+  )
+
   return [
+    ...ramadanCities,
     ...adhkarPages,
     ...quranPages,
     ...enRoutes,

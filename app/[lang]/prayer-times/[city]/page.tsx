@@ -131,6 +131,10 @@ export default async function CityPrayerTimesPageAr({ params }: Props) {
         cityMethod={String(city.method)}
       />
 
+      <Link className="mt-6 inline-block underline" href={`/ar/ramadan-calendar/${city.slug}`}>
+        تقويم رمضان والسحور والإفطار في {city.nameAr}
+      </Link>
+
       {/* Related cities */}
       <section className="mt-14">
         <h2 className="font-arabic mb-4 text-sm font-semibold tracking-wide text-[var(--color-cream-600)] uppercase dark:text-gray-400">

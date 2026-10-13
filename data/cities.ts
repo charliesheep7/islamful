@@ -219,7 +219,7 @@ const cities: City[] = [
     countryCode: 'ID',
     lat: -6.2088,
     lng: 106.8456,
-    method: 11,
+    method: 20,
     timezone: 'Asia/Jakarta',
   },
   {
@@ -231,7 +231,7 @@ const cities: City[] = [
     countryCode: 'ID',
     lat: -8.3405,
     lng: 115.092,
-    method: 11,
+    method: 20,
     timezone: 'Asia/Makassar',
   },
   {

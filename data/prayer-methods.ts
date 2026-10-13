@@ -7,6 +7,8 @@ export const PRAYER_METHODS: Record<string, string> = {
   '8': 'Gulf Region',
   '9': 'Kuwait',
   '10': 'Qatar',
+  '11': 'MUIS (Singapore)',
+  '20': 'Kementerian Agama (Indonesia)',
   '13': 'Turkey (Diyanet)',
   '15': 'Moonsighting Committee Worldwide',
 }
@@ -20,6 +22,8 @@ export const ARABIC_PRAYER_METHODS: Record<string, string> = {
   '8': 'منطقة الخليج',
   '9': 'الكويت',
   '10': 'قطر',
+  '11': 'المجلس الإسلامي السنغافوري',
+  '20': 'وزارة الشؤون الدينية الإندونيسية',
   '13': 'رئاسة الشؤون الدينية التركية',
   '15': 'لجنة رؤية الهلال العالمية',
 }
