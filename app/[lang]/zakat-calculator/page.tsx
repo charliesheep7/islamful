@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import ZakatCalculator from '@/components/tools/ZakatCalculator'
+import ZakatGuide from '@/components/tools/ZakatGuide'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
@@ -10,7 +11,8 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: 'حاسبة الزكاة — احسب زكاتك بدقة',
-  description: 'احسب زكاتك بدقة بناءً على النقد والذهب والفضة والاستثمارات والديون.',
+  description:
+    'قدّر زكاة النقد والذهب والفضة والاستثمارات المؤهلة. اختر النصاب والأسعار وحالة الحول، واطّلع على الحساب ونزّل ملخصك.',
   alternates: buildLanguageAlternates('/zakat-calculator', { currentLanguage: 'ar' }),
 }
 
@@ -35,10 +37,11 @@ export default function ZakatCalculatorPageAr() {
           حاسبة الزكاة
         </h1>
         <p className="font-arabic mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-          احسب زكاتك بدقة. أدخل أصولك أدناه.
+          قدّر زكاة مدخراتك وذهبك وأموالك المؤهلة. اختر النصاب واطّلع على تفاصيل الحساب.
         </p>
       </div>
-      <ZakatCalculator lang="ar" />
+      <ZakatCalculator lang="ar" initialDate={new Date().toISOString().slice(0, 10)} />
+      <ZakatGuide lang="ar" />
     </div>
   )
 }
