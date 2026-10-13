@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import fs from 'node:fs'
+import crypto from 'node:crypto'
 import os from 'node:os'
 import path from 'node:path'
 import { validateQueue, selectAssignments, describePlan } from '../scripts/publishing-queue.mjs'
@@ -93,3 +94,73 @@ test('invalid source paths, duplicate evidence and duplicate new targets are rej
   assert.match(check(doc([c])).join(' '), /mismatch/)
 })
 process.on('exit', () => fs.rmSync(root, { recursive: true, force: true }))
+
+function capturedFixture() {
+  const record = {
+    evidence_id: 'capture-hash:1',
+    source_row: 1,
+    keyword: 'quit example',
+    country: 'UK',
+    monthly_volume: 100,
+    kd_percent: null,
+    metric_status: 'partial',
+    observed_at: '2026-10-13T10:30:00Z',
+  }
+  const file = 'capture.json'
+  fs.mkdirSync(path.join(root, 'data/seo'), { recursive: true })
+  const bytes = JSON.stringify({ schema_version: 1, records: [record] })
+  fs.writeFileSync(path.join(root, 'data/seo', file), bytes)
+  const x = item()
+  x.observations = [
+    {
+      research_source: file,
+      evidence_id: record.evidence_id,
+      source_row: 1,
+      keyword: record.keyword,
+      database: record.country,
+      monthly_volume: 100,
+      kd_percent: null,
+      status: 'partial',
+      observed_date: record.observed_at,
+    },
+  ]
+  const d = {
+    ...doc([x]),
+    schema_version: 2,
+    research_sources: [
+      {
+        file,
+        format: 'semrush-evidence-v1',
+        sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+      },
+    ],
+  }
+  return { d, x, file }
+}
+test('captured evidence supports row one, preserves missing KD and rejects fabricated metrics or markets', () => {
+  const { d, x } = capturedFixture()
+  assert.deepEqual(check(d), [])
+  x.observations[0].monthly_volume = 9999
+  assert.match(check(d).join(' '), /differs from captured/)
+  x.observations[0].monthly_volume = 100
+  x.observations[0].database = 'US'
+  assert.match(check(d).join(' '), /differs from captured/)
+})
+test('capture checksum, source identity and path are enforced', () => {
+  const { d, file } = capturedFixture()
+  fs.appendFileSync(path.join(root, 'data/seo', file), ' ')
+  assert.match(check(d).join(' '), /checksum/)
+  d.research_sources[0].file = '../capture.json'
+  assert.match(check(d).join(' '), /Invalid.*research source/)
+  assert.match(check(d).join(' '), /Missing.*research evidence/)
+})
+test('one captured observation cannot silently feed two page assignments', () => {
+  const { d, x } = capturedFixture()
+  d.items.push({
+    ...x,
+    id: 'de-2',
+    target_path: '/blog/another-topic',
+    source_file: 'data/blog/en/another-topic.mdx',
+  })
+  assert.match(check(d).join(' '), /duplicate captured research/)
+})

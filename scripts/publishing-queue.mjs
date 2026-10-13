@@ -34,7 +34,7 @@ export function validateQueue(doc, root, { verifyResearch = true } = {}) {
     rows = new Set(),
     newTargets = new Set()
   if (
-    doc.schema_version !== 1 ||
+    ![1, 2].includes(doc.schema_version) ||
     !['deenback', 'islamful'].includes(doc.site) ||
     !Array.isArray(doc.items)
   )
@@ -47,6 +47,34 @@ export function validateQueue(doc, root, { verifyResearch = true } = {}) {
         doc.research_sha256
     )
       errors.push('Research CSV does not match the recorded checksum')
+  }
+  const evidenceSources = new Map()
+  for (const source of doc.research_sources || []) {
+    if (
+      !/^[a-z0-9][a-z0-9._-]*\.json$/.test(source.file || '') ||
+      source.format !== 'semrush-evidence-v1' ||
+      evidenceSources.has(source.file)
+    ) {
+      errors.push('Invalid or duplicate additional research source')
+      continue
+    }
+    try {
+      const bytes = fs.readFileSync(path.join(root, 'data/seo', source.file))
+      if (crypto.createHash('sha256').update(bytes).digest('hex') !== source.sha256)
+        errors.push(`Research evidence does not match checksum: ${source.file}`)
+      const data = JSON.parse(bytes)
+      if (data.schema_version !== 1 || !Array.isArray(data.records))
+        throw new Error('Invalid evidence envelope')
+      const records = new Map()
+      for (const record of data.records) {
+        if (!record.evidence_id || records.has(record.evidence_id))
+          throw new Error('Duplicate or missing evidence ID')
+        records.set(record.evidence_id, record)
+      }
+      evidenceSources.set(source.file, records)
+    } catch (error) {
+      errors.push(`Cannot validate research evidence ${source.file}: ${error.message}`)
+    }
   }
   for (const item of doc.items) {
     const fail = (message) => errors.push(`${item.id || 'missing-id'}: ${message}`)
@@ -66,9 +94,27 @@ export function validateQueue(doc, root, { verifyResearch = true } = {}) {
     if (!Array.isArray(item.observations) || !item.observations.length)
       fail('Search evidence is required')
     for (const o of item.observations || []) {
-      if (!Number.isInteger(o.source_row) || o.source_row < 2 || rows.has(o.source_row))
-        fail('Duplicate or invalid research source row')
-      rows.add(o.source_row)
+      if (o.evidence_id || o.research_source) {
+        const key = `${o.research_source}:${o.evidence_id}`
+        const source = evidenceSources.get(o.research_source)?.get(o.evidence_id)
+        if (!source || rows.has(key)) fail('Missing or duplicate captured research evidence')
+        rows.add(key)
+        if (
+          source &&
+          (o.keyword !== source.keyword ||
+            o.database !== source.country ||
+            o.monthly_volume !== source.monthly_volume ||
+            o.kd_percent !== source.kd_percent ||
+            o.source_row !== source.source_row ||
+            o.observed_date !== source.observed_at ||
+            o.status !== source.metric_status)
+        )
+          fail('Observation differs from captured research evidence')
+      } else {
+        if (!Number.isInteger(o.source_row) || o.source_row < 2 || rows.has(o.source_row))
+          fail('Duplicate or invalid research source row')
+        rows.add(o.source_row)
+      }
       if (![item.primary_keyword, ...(item.secondary_keywords || [])].includes(o.keyword))
         fail('Observation does not match assigned keywords')
       if (
