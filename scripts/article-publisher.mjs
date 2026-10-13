@@ -502,6 +502,7 @@ export async function verifyRelease(
   assert(/^[a-f0-9]{40}$/.test(sha || ''), 'A full deployment commit SHA is required')
   const doc = loadQueue(root),
     repo = doc.site === 'deenback' ? 'charliesheep7/deenback-website' : 'charliesheep7/islamful'
+  const queueSnapshot = hash(fs.readFileSync(path.join(root, QUEUE)))
   const pending = doc.items.filter((x) => x.status === 'awaiting_release')
   if (!pending.length) return []
   const deployments = await githubRead(
@@ -541,6 +542,17 @@ export async function verifyRelease(
       item,
       release: { date: new Date().toISOString(), commit: sha, deployment_id: deployment.id, url },
     })
+  }
+  assert(
+    hash(fs.readFileSync(path.join(root, QUEUE))) === queueSnapshot,
+    'Queue changed during live verification'
+  )
+  for (const { item } of verified) {
+    assert(
+      hash(fs.readFileSync(path.join(root, item.source_file))) === item.publication.content_sha256,
+      'Article changed during live verification'
+    )
+    assert(item.publication.audit_file === `${AUDITS}/${item.id}.json`, 'Invalid audit destination')
   }
   for (const { item, release } of verified) {
     const auditPath = path.join(root, item.publication.audit_file),

@@ -226,3 +226,31 @@ test('completion requires successful exact-commit production deployment AND exac
   )
   assert.equal(loadQueue(f.root).items[0].status, 'live_reviewed')
 })
+
+test('concurrent queue edits during live verification cannot be overwritten', async () => {
+  const f = fixture()
+  await applyBundle(f.bundle, f.root)
+  const git = (args) => execFileSync('git', args, { cwd: f.root, encoding: 'utf8' }).trim()
+  git(['init', '-q'])
+  git(['add', '.'])
+  git(['-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'fixture'])
+  const sha = git(['rev-parse', 'HEAD']),
+    marker = loadQueue(f.root).items[0].publication.marker
+  await assert.rejects(
+    verifyRelease(f.root, sha, {
+      githubRead: async (route) =>
+        route.endsWith('/statuses')
+          ? [{ state: 'success' }]
+          : [{ id: 1, sha, environment: 'Production' }],
+      fetcher: async () => {
+        const q = loadQueue(f.root)
+        q.items[0].brief = 'A concurrent editorial correction'
+        fs.writeFileSync(path.join(f.root, 'data/seo/publishing-queue.json'), JSON.stringify(q))
+        return new Response(`<span data-publication-id="${marker}"></span>`)
+      },
+    }),
+    /Queue changed/
+  )
+  assert.equal(loadQueue(f.root).items[0].brief, 'A concurrent editorial correction')
+  assert.equal(loadQueue(f.root).items[0].status, 'awaiting_release')
+})
