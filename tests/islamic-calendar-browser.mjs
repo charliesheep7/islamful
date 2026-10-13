@@ -189,6 +189,24 @@ assert.equal(
   await rendered.locator('link[rel="canonical"]').getAttribute('href'),
   'https://www.islamful.com/islamic-calendar'
 )
+assert.equal(await rendered.locator('html').getAttribute('lang'), 'en')
+assert.equal(await rendered.locator('html').getAttribute('dir'), 'ltr')
+await rendered.goto(base + '/ar/islamic-calendar')
+assert.equal(await rendered.locator('html').getAttribute('lang'), 'ar')
+assert.equal(await rendered.locator('html').getAttribute('dir'), 'rtl')
+assert.ok((await rendered.getByTestId('hijri-month-grid').locator('td[data-date]').count()) >= 29)
+assert.equal(
+  await rendered.locator('link[rel="canonical"]').getAttribute('href'),
+  'https://www.islamful.com/ar/islamic-calendar'
+)
+// Locale headers must survive server rendering on the rest of the Arabic tree.
+await rendered.goto(base + '/ar/qibla-finder')
+assert.equal(await rendered.locator('html').getAttribute('lang'), 'ar')
+assert.equal(await rendered.locator('html').getAttribute('dir'), 'rtl')
+for (const path of ['/fr', '/pricing', '/ar/not-a-real-tool']) {
+  const response = await rendered.goto(base + path)
+  assert.equal(response.status(), 404, path)
+}
 await noJs.close()
 await browser.close()
 console.log(
