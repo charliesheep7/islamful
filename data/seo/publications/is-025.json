@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "is-025",
+  "action": "new_article",
+  "target_path": "/blog/does-sleeping-break-wudu",
+  "source_file": "data/blog/en/does-sleeping-break-wudu.mdx",
+  "assignment_sha256": "984391974c6e7862e592820e91a95a9109c019dbe691818761da4d48f777a405",
+  "baseline_sha256": null,
+  "content_sha256": "f6ca8bc7ac7ea3999030197df60d67ad20dbf959b68099244e281801fcf00af1",
+  "marker": "36cb8079a04c6477cff746b9",
+  "sources": [
+    {
+      "url": "https://www.dar-alifta.org/ar/fatwa/details/17475/%D8%AA%D8%A3%D8%AB%D9%8A%D8%B1-%D8%A7%D9%84%D9%86%D8%B9%D8%A7%D8%B3-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%88%D8%A7%D9%84%D8%B5%D9%84%D8%A7%D8%A9",
+      "checked_at": "2026-10-13T13:42:59.160633+00:00",
+      "content_sha256": "d89335c14431a1f4c64aa4d06925e82ebc2de847f42fec6daf2a7aead95e24ae",
+      "capture_method": "curl_https_page",
+      "title": "Dar al-Ifta: The effect of drowsiness on wudu and prayer",
+      "supports": "Drowsiness while retaining awareness does not invalidate wudu; includes Hanafi, Maliki, Shafii and Hanbali quotations, with a Maliki heavy/light distinction. This is not a complete four-school posture comparison."
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/does-light-sleeping-break-the-wudhu/",
+      "checked_at": "2026-10-13T13:42:59.160829+00:00",
+      "content_sha256": "cbb68daadbc81b8f5ef977e68b78c7fc3d25403a99fc727bc6da832c675491ca",
+      "capture_method": "curl_https_page",
+      "title": "Darul Ifta Birmingham: Does light sleeping break the wudhu?",
+      "supports": "Cited Hanafi account distinguishes firmly seated buttocks from reclining or dependence on support such that removing it would cause a fall."
+    },
+    {
+      "url": "https://sunnah.com/abudawud/1/200",
+      "checked_at": "2026-10-13T13:59:23.042Z",
+      "content_sha256": "0861a889c55885bd29c333f720ecd22575db735b6dfeb906d310155203744b64",
+      "capture_method": "web_tool_page_text",
+      "title": "Sunan Abi Dawud 200: Wudu from sleeping",
+      "supports": "Anas reports the Companions dozing while waiting for Isha, then praying without renewing ablution. The page gives an al-Albani grading of sahih."
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "745f813ace9de04353b29fbca4a8867157a31f7359ef12dad84485b9ff1592b4",
+    "issues": [],
+    "notes": "Read the captured Arabic Dar al-Ifta answer, the Hanafi institutional answer and Abi Dawud 200. Kept named-source and posture/awareness limitations, avoided a universal deep-seated-sleep rule or invented minute threshold. The Maliki contrast and Ibn Qudamah uncertainty statement are explicitly attributed. No diagnosis, invented scholar review, app CTA or duplicate how-to-wudu intent. Three main headings, practical examples and existing generated purity hero follow the user’s simplification request.",
+    "claim_checks": [
+      {
+        "claim": "Drowsiness while retaining awareness does not invalidate wudu; includes Hanafi, Maliki, Shafii and Hanbali quotations, with a Maliki heavy/light distinction. This is not a complete four-school posture comparison.",
+        "source_url": "https://www.dar-alifta.org/ar/fatwa/details/17475/%D8%AA%D8%A3%D8%AB%D9%8A%D8%B1-%D8%A7%D9%84%D9%86%D8%B9%D8%A7%D8%B3-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%88%D8%A7%D9%84%D8%B5%D9%84%D8%A7%D8%A9",
+        "supported": true,
+        "explanation": "Checked the actual primary passage in the saved capture; article wording preserves its conditions and identifies school-specific claims."
+      },
+      {
+        "claim": "Cited Hanafi account distinguishes firmly seated buttocks from reclining or dependence on support such that removing it would cause a fall.",
+        "source_url": "https://daruliftabirmingham.co.uk/does-light-sleeping-break-the-wudhu/",
+        "supported": true,
+        "explanation": "Checked the actual primary passage in the saved capture; article wording preserves its conditions and identifies school-specific claims."
+      },
+      {
+        "claim": "Anas reports the Companions dozing while waiting for Isha, then praying without renewing ablution. The page gives an al-Albani grading of sahih.",
+        "source_url": "https://sunnah.com/abudawud/1/200",
+        "supported": true,
+        "explanation": "Checked the actual primary passage in the saved capture; article wording preserves its conditions and identifies school-specific claims."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-13T14:01:06.213Z",
+  "state": "awaiting_release"
+}
