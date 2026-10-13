@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { BookOpen, Compass, Moon, Sun, CalendarDays, Calculator } from 'lucide-react'
+import { ArrowUpRight, BookOpen, Compass, Moon, Sun, CalendarDays, Calculator } from 'lucide-react'
 import cities from '@/data/cities'
 import { chapters, quranPath } from '@/data/quran'
 import { routineEntries } from '@/data/adhkar'
@@ -137,24 +137,29 @@ export default function TodayDashboard({
   )
 
   return (
-    <section
-      aria-labelledby="today-heading"
-      className="bg-gradient-to-b from-emerald-50/70 to-transparent py-10 sm:py-16 dark:from-emerald-950/30"
-      dir={ar ? 'rtl' : 'ltr'}
-    >
+    <section aria-labelledby="today-heading" className="pb-10 sm:pb-16" dir={ar ? 'rtl' : 'ltr'}>
       <div className="mx-auto max-w-5xl space-y-6 px-4 sm:px-6">
-        <header className="max-w-3xl">
-          <p className="text-sm font-semibold tracking-wide text-emerald-800 dark:text-emerald-300">
-            {ar ? 'إسلامفُل · أدوات ليومك' : 'ISLAMFUL · TOOLS FOR YOUR DAY'}
-          </p>
-          <h1 id="today-heading" className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-            {ar ? 'ماذا تحتاج اليوم؟' : 'What do you need today?'}
+        <header className="border-b border-emerald-950/10 py-16 text-center sm:py-24 dark:border-white/10">
+          <h1
+            id="today-heading"
+            className={`mx-auto max-w-4xl text-[2.75rem] leading-[1.12] font-normal tracking-[-0.035em] text-emerald-950 sm:text-7xl lg:text-[5.5rem] dark:text-stone-100 ${ar ? 'font-arabic leading-[1.5] tracking-normal' : ''}`}
+          >
+            <span className="block">{ar ? 'كل أدوات المسلم،' : 'Every tool'}</span>{' '}
+            <span className={`block text-emerald-800 dark:text-emerald-300 ${ar ? '' : 'italic'}`}>
+              {ar ? 'في مكان واحد.' : 'a Muslim needs.'}
+            </span>
           </h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-            {ar
-              ? 'مواقيت صلاتك، وردك من القرآن، وأذكارك اليومية — في مكان واحد، دون حساب.'
-              : 'Your prayer times, Quran reading and daily remembrance — together, without an account.'}
-          </p>
+          <Link
+            href="#tools"
+            className="mt-8 inline-flex items-center gap-3 rounded-full bg-emerald-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700 sm:mt-10 dark:bg-emerald-200 dark:text-emerald-950 dark:hover:bg-emerald-100"
+          >
+            {ar ? 'اكتشف الأدوات' : 'Explore tools'}
+            <ArrowUpRight
+              aria-hidden="true"
+              className="h-4 w-4 rtl:-scale-x-100"
+              strokeWidth={1.5}
+            />
+          </Link>
         </header>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
