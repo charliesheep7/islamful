@@ -80,5 +80,11 @@
     ]
   },
   "prepared_at": "2026-10-13T12:29:51.894Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-13T12:52:11.956Z",
+    "commit": "195c28e382808ea67abb29585fcfcf6466dc5382",
+    "deployment_id": 7038948830,
+    "url": "https://www.islamful.com/blog/does-bleeding-break-wudu"
+  }
 }

@@ -27,10 +27,10 @@
       "proposed_title": "How to Perform Wudu",
       "target_path": "/blog/how-to-perform-wudu",
       "source_file": "data/blog/en/how-to-perform-wudu.mdx",
-      "action": "update_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Keep URL/title/date. Source-review obligations/order and school differences; link specific bleeding and sleep answers without universalizing disputed rules.",
-      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/how-to-perform-wudu",
       "existing_overlap_candidates": [
         {
@@ -150,6 +150,12 @@
         "content_sha256": "dae2d29aa77a5638397439b789360ae9caf8df723e75d66c9a7e7357309fc2f0",
         "marker": "82cec0e09750462b5aebf658",
         "audit_file": "data/seo/publications/is-023.json"
+      },
+      "release": {
+        "date": "2026-10-13T12:52:11.157Z",
+        "commit": "195c28e382808ea67abb29585fcfcf6466dc5382",
+        "deployment_id": 7038948830,
+        "url": "https://www.islamful.com/blog/how-to-perform-wudu"
       }
     },
     {
@@ -165,10 +171,10 @@
       "proposed_title": "Does Bleeding Break Wudu? Differences by School",
       "target_path": "/blog/does-bleeding-break-wudu",
       "source_file": "data/blog/en/does-bleeding-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Give the answer by named school and type/extent of bleeding. Cite primary scholarly sources and distinguish medical first aid from the ritual question. Link main wudu guide.",
-      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/does-bleeding-break-wudu",
       "existing_overlap_candidates": [
         {
@@ -310,6 +316,12 @@
         "content_sha256": "5daf955f74b8d99d466bce7af1eec1f4880c0062d7e157693025e95664db1dbd",
         "marker": "4b4a0bf273a7d74d2c54fb9c",
         "audit_file": "data/seo/publications/is-024.json"
+      },
+      "release": {
+        "date": "2026-10-13T12:52:11.956Z",
+        "commit": "195c28e382808ea67abb29585fcfcf6466dc5382",
+        "deployment_id": 7038948830,
+        "url": "https://www.islamful.com/blog/does-bleeding-break-wudu"
       }
     },
     {
