@@ -19,6 +19,8 @@ interface Props {
   longitude?: number
   timezone: string
   lang?: 'en' | 'ar'
+  onMethodChange?: (method: string) => void
+  showFasting?: boolean
 }
 
 function countdown(milliseconds: number) {
@@ -37,6 +39,8 @@ export default function PrayerTimesWidget({
   longitude,
   timezone,
   lang = 'en',
+  onMethodChange,
+  showFasting = false,
 }: Props) {
   const ar = lang === 'ar'
   const [data, setData] = useState(prayerData)
@@ -46,6 +50,8 @@ export default function PrayerTimesWidget({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const day = now === null ? null : localDateISO(timezone, new Date(now))
+
+  useEffect(() => setRequestedMethod(cityMethod), [cityMethod])
 
   useEffect(() => {
     const tick = () => setNow(Date.now())
@@ -163,6 +169,28 @@ export default function PrayerTimesWidget({
             {ar ? 'طريقة الحساب المعروضة: ' : 'Displayed calculation method: '}
             {methods[data.method] || data.method}
           </p>
+          {showFasting && !stale && (
+            <div
+              className="mt-4 rounded-xl border border-gray-200 p-4 dark:border-gray-700"
+              data-testid="fasting-times"
+            >
+              <h3 className="font-semibold">
+                {ar ? 'إن كنت صائمًا اليوم' : 'If you are fasting today'}
+              </h3>
+              <p className="mt-1 text-sm">
+                {ar ? 'الفجر: ' : 'Fajr: '}
+                {data.prayers.find((p) => p.name === 'Fajr')?.time || '—'}
+                {' · '}
+                {ar ? 'المغرب: ' : 'Maghrib: '}
+                {data.prayers.find((p) => p.name === 'Maghrib')?.time || '—'}
+              </p>
+              <p className="mt-1 text-xs">
+                {ar
+                  ? 'من الجدول المعروض؛ اتبع التوقيت المعتمد محليًا للصيام.'
+                  : 'From the displayed timetable; follow your locally approved fasting times.'}
+              </p>
+            </div>
+          )}
           {(!data.tomorrow.length || data.prayers.some((prayer) => prayer.at === null)) && (
             <p className="mt-2 text-sm" role="status">
               {ar
@@ -182,7 +210,10 @@ export default function PrayerTimesWidget({
           <select
             aria-label={ar ? 'طريقة الحساب' : 'Calculation method'}
             value={requestedMethod}
-            onChange={(event) => setRequestedMethod(event.target.value)}
+            onChange={(event) => {
+              setRequestedMethod(event.target.value)
+              onMethodChange?.(event.target.value)
+            }}
             className="max-w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 dark:bg-gray-900 dark:text-white"
           >
             {Object.entries(methods).map(([key, label]) => (
