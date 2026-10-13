@@ -12,7 +12,10 @@ const { routineEntries } = await import(
   `data:text/javascript;base64,${Buffer.from(source.outputFiles[0].text).toString('base64')}`
 )
 const origin = process.env.TEST_ORIGIN || 'http://localhost:3098'
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({
+  headless: true,
+  ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}),
+})
 const context = await browser.newContext({
   timezoneId: 'America/Los_Angeles',
   viewport: { width: 390, height: 844 },
@@ -61,7 +64,7 @@ await context.route('https://api.aladhan.com/**', async (route) => {
 })
 try {
   await page.goto(origin)
-  await page.getByRole('heading', { name: 'What do you need today?' }).waitFor()
+  await page.getByRole('heading', { name: 'Every tool a Muslim needs.' }).waitFor()
   await page.waitForFunction(() =>
     document
       .querySelector('[data-testid="today-calendar"]')
