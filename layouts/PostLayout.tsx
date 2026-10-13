@@ -36,7 +36,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
   const { filePath, path, slug, date, title, tags, faqs, summary, lang } = content
   const basePath = path.split('/')[0]
   const isArabic = lang === 'ar'
-  const purityHero = ['how-to-perform-wudu', 'does-bleeding-break-wudu'].includes(slug)
+  const purityHero = [
+    'how-to-perform-wudu',
+    'does-bleeding-break-wudu',
+    'does-sleeping-break-wudu',
+  ].includes(slug)
 
   return (
     <SectionContainer>
