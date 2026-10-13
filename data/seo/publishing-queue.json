@@ -511,7 +511,7 @@
       "target_path": "/blog/does-vaping-break-your-fast",
       "source_file": "data/blog/en/does-vaping-break-your-fast.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Address the fasting question with named sources, distinctions and make-up obligations; link fasting tool and practical nicotine support contextually. Keep distinct from DeenBack quitting/ruling funnel.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/blog/does-vaping-break-your-fast",
@@ -615,7 +615,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
       "research_additions": [
@@ -646,7 +646,17 @@
             "Distinguish Islamic fasting from intermittent fasting and medical-test instructions; do not claim all observed demand has Islamic intent."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "53800716d6b1cc4d17e744e53472d3aa086379fcd083a89c9e2c39c561a4467b",
+        "marker": "38ce96b7ffbfad25487c21ac",
+        "audit_file": "data/seo/publications/is-035.json",
+        "hero": {
+          "src": "/static/images/blog/does-vaping-break-your-fast.webp",
+          "alt": "Dates and a glass of water on a quiet table in warm evening light",
+          "sha256": "9fd639c917bc72149d7cdb21bbba0811d91a9ee7cd62c4a4ee71b1b867a336fb"
+        }
+      }
     },
     {
       "id": "is-027",
