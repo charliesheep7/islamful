@@ -2,22 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react'
 import cities from '@/data/cities'
-import { PRAYER_METHODS } from './PrayerTimes'
+import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
 import { fetchPrayerSchedule, localDateISO, type PrayerSchedule } from '@/utils/prayer-schedule'
 import { manualNight, nightCalendar, nightTimes, zonedTime } from '@/utils/night-times'
 
-const arabicMethods: Record<string, string> = {
-  '1': 'جامعة العلوم الإسلامية، كراتشي',
-  '2': 'الجمعية الإسلامية لأمريكا الشمالية',
-  '3': 'رابطة العالم الإسلامي',
-  '4': 'أم القرى',
-  '5': 'الهيئة المصرية العامة للمساحة',
-  '8': 'منطقة الخليج',
-  '9': 'الكويت',
-  '10': 'قطر',
-  '13': 'رئاسة الشؤون الدينية التركية',
-  '15': 'لجنة رؤية الهلال العالمية',
-}
 type Result = ReturnType<typeof nightTimes> & {
   timezone: string
   date: string
@@ -104,7 +92,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
           ...nightTimes(start, end),
           timezone: city.timezone,
           date,
-          label: `${ar ? city.nameAr : city.name} · ${(ar ? arabicMethods : PRAYER_METHODS)[method]}`,
+          label: `${ar ? city.nameAr : city.name} · ${(ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS)[method]}`,
           schedule,
         }
         try {
@@ -219,7 +207,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
                   setMethod(e.target.value)
                 }}
               >
-                {Object.entries(ar ? arabicMethods : PRAYER_METHODS).map(([key, label]) => (
+                {Object.entries(ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS).map(([key, label]) => (
                   <option key={key} value={key}>
                     {label}
                   </option>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { MapPin, RefreshCw } from 'lucide-react'
-import { PRAYER_METHODS } from './PrayerTimes'
+import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
 import {
   fetchPrayerSchedule,
   localDateISO,
@@ -15,23 +15,12 @@ interface Props {
   cityName: string
   cityCountry: string
   cityMethod: string
-  latitude: number
-  longitude: number
+  latitude?: number
+  longitude?: number
   timezone: string
   lang?: 'en' | 'ar'
 }
-const arabicMethods: Record<string, string> = {
-  '1': 'جامعة العلوم الإسلامية، كراتشي',
-  '2': 'الجمعية الإسلامية لأمريكا الشمالية',
-  '3': 'رابطة العالم الإسلامي',
-  '4': 'أم القرى',
-  '5': 'الهيئة المصرية العامة للمساحة',
-  '8': 'منطقة الخليج',
-  '9': 'الكويت',
-  '10': 'قطر',
-  '13': 'رئاسة الشؤون الدينية التركية',
-  '15': 'لجنة رؤية الهلال العالمية',
-}
+
 function countdown(milliseconds: number) {
   const seconds = Math.max(0, Math.floor(milliseconds / 1000))
   return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
@@ -73,7 +62,13 @@ export default function PrayerTimesWidget({
     setLoading(true)
     setError(false)
     fetchPrayerSchedule(
-      { lat: latitude, lng: longitude, timezone, name: `${cityName}, ${cityCountry}` },
+      {
+        ...(latitude !== undefined && longitude !== undefined
+          ? { lat: latitude, lng: longitude }
+          : { city: cityName, country: cityCountry }),
+        timezone,
+        name: `${cityName}, ${cityCountry}`,
+      },
       requestedMethod,
       new Date(),
       { signal: controller.signal }
@@ -97,7 +92,7 @@ export default function PrayerTimesWidget({
 
   const stale = !!data && day !== null && data.dateISO !== day
   const next = data && now !== null ? upcomingPrayer(data, now) : null
-  const methods = ar ? arabicMethods : PRAYER_METHODS
+  const methods = ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS
 
   return (
     <div aria-busy={loading}>

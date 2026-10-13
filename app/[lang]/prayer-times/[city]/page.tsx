@@ -8,7 +8,7 @@ import cities, { getCityBySlug, getRelatedCities } from '@/data/cities'
 import { fetchPrayerTimes } from '@/utils/prayer-api'
 import { buildLanguageAlternates } from 'app/seo'
 import siteMetadata from '@/data/siteMetadata'
-import { PRAYER_METHODS } from '@/components/tools/PrayerTimes'
+import { ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
 import type { PrayerSchedule } from '@/utils/prayer-schedule'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
@@ -70,7 +70,7 @@ export default async function CityPrayerTimesPageAr({ params }: Props) {
 
   const relatedCities = getRelatedCities(city.slug)
 
-  const methodName = PRAYER_METHODS[String(city.method)] || 'قياسية'
+  const methodName = ARABIC_PRAYER_METHODS[String(city.method)] || 'قياسية'
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6" dir="rtl">

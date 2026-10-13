@@ -1,4 +1,14 @@
-import type { PrayerTimesData, PrayerTime } from '@/components/tools/PrayerTimes'
+export interface PrayerTime {
+  name: string
+  nameAr: string
+  time: string
+}
+export interface PrayerTimesData {
+  date: string
+  hijriDate: string
+  location: string
+  prayers: PrayerTime[]
+}
 
 export interface ScheduledPrayer extends PrayerTime {
   at: number | null
@@ -10,12 +20,10 @@ export interface PrayerSchedule extends PrayerTimesData {
   prayers: ScheduledPrayer[]
   tomorrow: ScheduledPrayer[]
 }
-export interface PrayerLocation {
-  lat: number
-  lng: number
-  timezone: string
-  name: string
-}
+export type PrayerLocation = { timezone: string; name: string } & (
+  | { lat: number; lng: number; city?: never; country?: never }
+  | { city: string; country: string; lat?: never; lng?: never }
+)
 
 export function localDateISO(timezone: string, now = new Date()): string {
   const parts = new Intl.DateTimeFormat('en-US', {
@@ -78,15 +86,17 @@ export async function fetchPrayerSchedule(
   const requests = await Promise.allSettled(
     dates.map(async (date) => {
       const [year, month, day] = date.split('-')
+      const byCity = typeof location.city === 'string'
       const query = new URLSearchParams({
-        latitude: String(location.lat),
-        longitude: String(location.lng),
+        ...(byCity
+          ? { city: location.city!, country: location.country! }
+          : { latitude: String(location.lat), longitude: String(location.lng) }),
         method,
         timezonestring: location.timezone,
         iso8601: 'true',
       })
       const response = await fetch(
-        `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?${query}`,
+        `https://api.aladhan.com/v1/${byCity ? 'timingsByCity' : 'timings'}/${day}-${month}-${year}?${query}`,
         options
       )
       if (!response.ok) throw new Error('Prayer service unavailable')

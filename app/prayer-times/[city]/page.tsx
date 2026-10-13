@@ -8,7 +8,7 @@ import cities, { getCityBySlug, getRelatedCities } from '@/data/cities'
 import { fetchPrayerTimes } from '@/utils/prayer-api'
 import { buildLanguageAlternates } from 'app/seo'
 import siteMetadata from '@/data/siteMetadata'
-import { PRAYER_METHODS } from '@/components/tools/PrayerTimes'
+import { PRAYER_METHODS } from '@/data/prayer-methods'
 import type { PrayerSchedule } from '@/utils/prayer-schedule'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
