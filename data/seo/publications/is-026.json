@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "is-026",
+  "action": "update_article",
+  "target_path": "/blog/how-to-do-istikhara-prayer",
+  "source_file": "data/blog/en/how-to-do-istikhara-prayer.mdx",
+  "assignment_sha256": "e3255b3d2c08fd8ddb2b153f0f7c83b6e9e71438aa03df4366186fd505ad20e9",
+  "baseline_sha256": "ba64e2a50025acb8031129a3d65c19318cf86ce5236e57934e9b4a69e6daf851",
+  "content_sha256": "4b22bf81b751462a29502942e1b43f34e6d621935f3e6f6f3475dc04b6541a84",
+  "marker": "e39725c7309fe04b4466586e",
+  "sources": [
+    {
+      "url": "https://sunnah.com/bukhari:1166",
+      "title": "Sahih al-Bukhari 1166: The prayer and supplication of Istikhara",
+      "checked_at": "2026-10-13T14:13:48.008Z",
+      "content_sha256": "3967cc0cc22b8d1f79006518ce8eba7eaeaa7c2861dcddcdbab12a83df10c5a4",
+      "capture_method": "web_tool_page_text",
+      "supports": "Jabir narrates two non-obligatory rakahs followed by the supplication, naming the matter. The Arabic includes facilitation and blessing, unlike the shorter wording in 6382; it records two alternative phrases about the outcome."
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/6466/istikhara-prayer-seeking-a-choice-and-its-results",
+      "title": "Dar al-Ifta: Istikhara prayer and its results",
+      "supports": "The institution describes two voluntary rakahs outside prohibited prayer times, specifying the contemplated choice when making dua, and entrusting its outcome to Allah.",
+      "checked_at": "2026-10-13T14:16:32.808Z",
+      "content_sha256": "5b04abb56d81241b9090d13f2c98e3317dc9ec9aac2878eb7c03a1e0cf0b1795",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7938/how-to-recognize-the-result-of-istikhara-prayer",
+      "title": "Dar al-Ifta: How to recognize the result of Istikhara",
+      "supports": "A dream or a feeling of pleasure is not necessary after Istikhara; the answer discusses whether the matter becomes possible.",
+      "checked_at": "2026-10-13T14:16:32.809Z",
+      "content_sha256": "e9fdfbfff0d1f239ef51b36d5eb59ae84d7050b5a960082ce73a80f996b0b021",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "652d49d810ae26c40b87166b8759a3648179f77cd38c241d073ea7f4f267140c",
+    "issues": [],
+    "notes": "Compared the actual Arabic of Bukhari 6382 and 1166. Cited 1166 for the full wording including facilitation and blessing; retained one narrated alternative rather than concatenating variants. English meaning is independently phrased from Arabic. Dar al-Ifta captures support method and absence of required dreams/feelings. Removed unsupported repeat-count and outcome certainty claims; practical examples are explicitly editorial. Three headings with no redundant FAQs; existing title/date/authors/image path preserved, title-placeholder image replaced by user-authorized generated artwork.",
+    "claim_checks": [
+      {
+        "claim": "Jabir narrates two non-obligatory rakahs followed by the supplication, naming the matter. The Arabic includes facilitation and blessing, unlike the shorter wording in 6382; it records two alternative phrases about the outcome.",
+        "source_url": "https://sunnah.com/bukhari:1166",
+        "supported": true,
+        "explanation": "Read the complete relevant passage in the saved capture and checked the article wording against its scope."
+      },
+      {
+        "claim": "The institution describes two voluntary rakahs outside prohibited prayer times, specifying the contemplated choice when making dua, and entrusting its outcome to Allah.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/6466/istikhara-prayer-seeking-a-choice-and-its-results",
+        "supported": true,
+        "explanation": "Read the complete relevant passage in the saved capture and checked the article wording against its scope."
+      },
+      {
+        "claim": "A dream or a feeling of pleasure is not necessary after Istikhara; the answer discusses whether the matter becomes possible.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7938/how-to-recognize-the-result-of-istikhara-prayer",
+        "supported": true,
+        "explanation": "Read the complete relevant passage in the saved capture and checked the article wording against its scope."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-13T14:16:32.874Z",
+  "state": "awaiting_release"
+}

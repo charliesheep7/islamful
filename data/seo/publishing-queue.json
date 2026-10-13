@@ -446,7 +446,7 @@
       "target_path": "/blog/how-to-do-istikhara-prayer",
       "source_file": "data/blog/en/how-to-do-istikhara-prayer.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Preserve URL/date; verify method and complete dua from primary hadith, clarify dreams/colors are not required signs; link existing dua page rather than create another synonym.",
       "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
       "conversion_or_tool_path": "/blog/how-to-do-istikhara-prayer",
@@ -486,9 +486,14 @@
           "source": "SEMrush Chrome Bulk Analysis"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
-      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed.",
+      "publication": {
+        "content_sha256": "4b22bf81b751462a29502942e1b43f34e6d621935f3e6f6f3475dc04b6541a84",
+        "marker": "e39725c7309fe04b4466586e",
+        "audit_file": "data/seo/publications/is-026.json"
+      }
     },
     {
       "id": "is-035",
