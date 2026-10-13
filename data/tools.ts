@@ -29,6 +29,18 @@ export interface Tool {
 
 const tools: Tool[] = [
   {
+    slug: 'last-third-of-night',
+    name: 'Tonight Planner',
+    nameAr: 'مواقيت ليلتك',
+    description:
+      'Find the last third of the night, Islamic midnight and Fajr for your city or local timetable.',
+    descriptionAr: 'احسب الثلث الأخير ومنتصف الليل والفجر حسب مدينتك أو جدولك المحلي.',
+    icon: Clock,
+    iconBg: 'bg-indigo-100 dark:bg-indigo-900/30',
+    iconColor: 'text-indigo-600 dark:text-indigo-400',
+    status: 'live',
+  },
+  {
     slug: 'answers',
     name: 'Quran Answers',
     nameAr: 'إجابات القرآن',
