@@ -310,13 +310,20 @@ export default function TodayDashboard({
                         : 'Evening adhkar'}
                   </span>
                   <span className="text-sm" data-testid={`progress-${id}`}>
-                    {progress[id] === null
-                      ? ar
-                        ? 'افتح'
-                        : 'Open'
-                      : ar
-                        ? `${progress[id]} / ${targets[id].length} بطاقة`
-                        : `${progress[id]} / ${targets[id].length} cards`}
+                    {progress[id] === null ? (
+                      ar ? (
+                        'افتح'
+                      ) : (
+                        'Open'
+                      )
+                    ) : (
+                      <>
+                        <bdi dir="ltr">
+                          {progress[id]} / {targets[id].length}
+                        </bdi>{' '}
+                        {ar ? 'بطاقة' : 'cards'}
+                      </>
+                    )}
                   </span>
                 </Link>
               ))}

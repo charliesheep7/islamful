@@ -160,6 +160,11 @@ try {
     path: process.env.TODAY_AR_SCREENSHOT || '/tmp/islamful-today-ar.png',
     fullPage: true,
   })
+  assert.equal(
+    await page.getByTestId('progress-morning').locator('bdi').getAttribute('dir'),
+    'ltr',
+    'progress fraction has explicit numeric direction in Arabic'
+  )
   const peer = await context.newPage()
   await peer.goto(origin)
   await peer.evaluate(() => {
