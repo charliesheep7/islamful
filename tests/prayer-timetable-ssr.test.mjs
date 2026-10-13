@@ -21,7 +21,14 @@ new Function('require', 'module', 'exports', result.outputFiles[0].text)(
   module.exports
 )
 const Widget = module.exports.default
-const props = { cityName: 'London', cityCountry: 'UK', cityMethod: '3' }
+const props = {
+  cityName: 'London',
+  cityCountry: 'UK',
+  cityMethod: '3',
+  latitude: 51.5074,
+  longitude: -0.1278,
+  timezone: 'Europe/London',
+}
 const prayers = [
   ['Fajr', 'الفجر', '05:18'],
   ['Sunrise', 'الشروق', '06:49'],
@@ -35,11 +42,20 @@ test('all six prayer times are present before browser effects run', () => {
   const html = renderToStaticMarkup(
     React.createElement(Widget, {
       ...props,
-      prayerData: { date: '13 Oct 2026', hijriDate: '', location: 'London', prayers },
+      prayerData: {
+        date: '13 Oct 2026',
+        hijriDate: '',
+        location: 'London',
+        prayers,
+        tomorrow: [],
+        dateISO: '2026-10-13',
+        timezone: 'Europe/London',
+        method: '3',
+      },
     })
   )
   for (const prayer of prayers) assert.ok(html.includes(prayer.name), prayer.name)
-  for (const time of ['5:18', '6:49', '12:51', '3:49', '6:53', '8:24'])
+  for (const time of ['05:18', '06:49', '12:51', '15:49', '18:53', '20:24'])
     assert.ok(html.includes(time), time)
   assert.ok(!html.includes('Next Prayer'), 'countdown waits for browser clock')
 })
@@ -49,6 +65,6 @@ test('upstream failure has a visible localized fallback', () => {
   const ar = renderToStaticMarkup(
     React.createElement(Widget, { ...props, prayerData: null, lang: 'ar' })
   )
-  assert.ok(en.includes('temporarily unavailable'))
-  assert.ok(ar.includes('غير متاحة مؤقتًا'))
+  assert.ok(en.includes('Could not update prayer times'))
+  assert.ok(ar.includes('تعذر تحديث المواقيت'))
 })
