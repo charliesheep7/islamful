@@ -13,7 +13,6 @@ import {
   applyBundle,
   loadQueue,
   readSource,
-  response,
   verifyRelease,
 } from '../scripts/article-publisher.mjs'
 function fixture(action = 'new_article') {
@@ -177,20 +176,6 @@ test('source redirects outside approved domains and unavailable sources fail clo
     readSource('https://quran.com/5/6', async () => new Response('', { status: 403 })),
     /403/
   )
-})
-test('API incomplete response and refusal never produce a fallback draft', async () => {
-  const old = process.env.OPENAI_API_KEY
-  process.env.OPENAI_API_KEY = 'synthetic-test-key'
-  try {
-    for (const data of [
-      { status: 'incomplete' },
-      { status: 'completed', output: [{ type: 'message', content: [{ type: 'refusal' }] }] },
-    ])
-      await assert.rejects(response('test', { fetcher: async () => Response.json(data) }))
-  } finally {
-    if (old === undefined) delete process.env.OPENAI_API_KEY
-    else process.env.OPENAI_API_KEY = old
-  }
 })
 test('completion requires successful exact-commit production deployment AND exact live marker', async () => {
   const f = fixture()

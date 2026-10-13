@@ -36,6 +36,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
   const { filePath, path, slug, date, title, tags, faqs, summary, lang } = content
   const basePath = path.split('/')[0]
   const isArabic = lang === 'ar'
+  const purityHero = ['how-to-perform-wudu', 'does-bleeding-break-wudu'].includes(slug)
 
   return (
     <SectionContainer>
@@ -67,6 +68,16 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <PageTitle>{title}</PageTitle>
               </div>
             </div>
+            {purityHero && (
+              <Image
+                src="/static/images/purity-hero-v2.webp"
+                width={1536}
+                height={1024}
+                priority
+                alt="Sunlit wash basin with clear running water"
+                className="mt-8 aspect-[5/2] w-full rounded-2xl object-cover"
+              />
+            )}
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
             <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
@@ -105,7 +116,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">
+              <div
+                className={`prose dark:prose-invert max-w-none pt-10 pb-8 ${purityHero ? 'purity-article' : ''}`}
+              >
                 <Share title={title} slug={slug} summary={summary} />
                 {children}
                 {faqs && <FAQ faqs={faqs} />}

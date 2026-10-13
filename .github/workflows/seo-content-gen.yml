@@ -1,14 +1,9 @@
-name: SEO Content Generation
+name: Verify reviewed SEO releases
 
 on:
   schedule:
     - cron: '0 0,12 * * *'
   workflow_dispatch:
-    inputs:
-      limit:
-        description: Number of queued article assignments to attempt
-        default: '10'
-        type: string
 
 concurrency:
   group: canonical-seo-publisher
@@ -19,9 +14,9 @@ permissions:
   deployments: read
 
 jobs:
-  publish:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,77 +27,18 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Validate publisher
+      - name: Validate reviewed assignments
         run: node --test tests/publishing-queue.mjs tests/article-publisher.mjs
-      - name: Reconcile any earlier unverified release
+      - name: Verify pending production articles
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if node -e "const q=require('./data/seo/publishing-queue.json');process.exit(q.items.some(x=>x.status==='awaiting_release')?0:1)"; then
-            node scripts/article-publisher.mjs --verify "$(git rev-parse HEAD)"
-            git config user.name 'github-actions[bot]'
-            git config user.email 'github-actions[bot]@users.noreply.github.com'
-            git add data/seo/publishing-queue.json
-          if [ -d data/seo/publications ]; then git add data/seo/publications/; fi
-            git commit -m 'chore: verify previous SEO publication'
-            git push origin HEAD:main
-          fi
-      - name: Research, draft and review queued articles
-        id: generate
-        continue-on-error: true
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SEO_MODEL: ${{ vars.SEO_MODEL }}
-          BATCH_LIMIT: ${{ inputs.limit || vars.SEO_BATCH_SIZE || '10' }}
-        run: node scripts/article-publisher.mjs --generate --limit "$BATCH_LIMIT"
-      - name: Retain failure evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: publisher-failures-${{ github.run_id }}
-          path: .publishing-runs/*/failure.json
-          include-hidden-files: true
-          if-no-files-found: ignore
-      - name: Validate complete site before publication
-        run: |
-          node scripts/publishing-queue.mjs --validate
-          npm run build
-      - name: Commit reviewed content and per-assignment outcomes
-        id: commit
-        run: |
+          node scripts/article-publisher.mjs --verify "$(git rev-parse HEAD)"
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/blog/ data/seo/publishing-queue.json
-          if [ -d data/seo/publications ]; then git add data/seo/publications/; fi
-          if ! git diff --cached --quiet; then
-            git commit -m 'content: publish reviewed queue assignments'
-            git push origin HEAD:main
-            echo "published=true" >> "$GITHUB_OUTPUT"
-            echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Verify production deployment and exact live article version
-        if: steps.commit.outputs.published == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_SHA: ${{ steps.commit.outputs.commit }}
-        run: |
-          verified=false
-          for attempt in $(seq 1 20); do
-            if node scripts/article-publisher.mjs --verify "$RELEASE_SHA"; then
-              verified=true
-              break
-            fi
-            sleep 30
-          done
-          if [ "$verified" != true ]; then exit 1; fi
           git add data/seo/publishing-queue.json
           if [ -d data/seo/publications ]; then git add data/seo/publications/; fi
           if ! git diff --cached --quiet; then
             git commit -m 'chore: record verified live SEO assignments'
             git push origin HEAD:main
           fi
-      - name: Report failed source or generation checks
-        if: steps.generate.outcome == 'failure'
-        run: |
-          echo 'One or more assignments failed. Successful articles are separately verified; failed assignments are not marked published.'
-          exit 1

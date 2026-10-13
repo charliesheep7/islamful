@@ -325,3 +325,7 @@ input:-webkit-autofill:focus {
   font-weight: 400;
   letter-spacing: normal;
 }
+
+.purity-article > p:has(> img) {
+  display: none;
+}

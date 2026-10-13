@@ -31,28 +31,21 @@ The selector is read-only. It validates sources and destinations and emits a com
 
 ## Assignment publisher
 
-`scripts/article-publisher.mjs` replaces the numbered EN/AR runner. The legacy `run-batch.js` delegates to it; numbered input files remain preserved. The scheduler keeps its existing cadence and accepts a configurable batch size (default 10 attempts, not a capacity ceiling). It selects queued articles only; tools retain their own implementation work.
+Codex researches and writes from the canonical queue. No OpenAI API key is needed. The legacy batch entry point now prepares assignments only; it does not generate or publish articles. The scheduled workflow verifies already reviewed releases and is a clean no-op when no release is pending. It does not author content unattended.
 
 ```sh
+node scripts/article-publisher.mjs --prepare --limit 10
 node scripts/article-publisher.mjs --prepare --id ASSIGNMENT_ID
-node scripts/article-publisher.mjs --generate --limit 10
 node scripts/article-publisher.mjs --apply .publishing-runs/ASSIGNMENT_ID/bundle.json
-node scripts/article-publisher.mjs --prepare --retry FAILED_ASSIGNMENT_ID
 node scripts/article-publisher.mjs --verify FULL_PRODUCTION_COMMIT_SHA
 node --test tests/publishing-queue.mjs tests/article-publisher.mjs
 ```
 
-Prepare captures the complete brief/addenda and an existing-file hash. Generate uses the Responses API with primary-domain web search, fetches cited pages, writes a structured draft and performs a separate source/content review. It retains the previous default model, `gpt-5-mini-2025-08-07`; `SEO_MODEL` can configure it. See [web search](https://developers.openai.com/api/docs/guides/tools-web-search) and [structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs). Credentials stay in `OPENAI_API_KEY`, outside the repository.
+Prepare captures the full assignment, addenda and existing-file hash. Codex checks primary sources, authors the article and supplies an `agent_source_review` bundle with exact article hash, scoped source evidence and supported claim checks. Apply validates evidence, links and hashes before writing. Failed checks stop publication without marking an assignment complete. Correct the bundle and retry; never invent evidence.
 
-An editor/agent can also provide a genuinely source-reviewed bundle through the same validator and guarded writer. Record `agent_source_review`; do not claim API generation or independent scholar/clinician review. The initial real articles use that route because no local API key or repository Actions secret was available during migration. **API-backed generation and unattended deployment still need their first verified real run.** Islamful's inactivity-disabled workflow is not silently described as running.
+Updates preserve their existing metadata except summary, FAQs and lastmod. New articles use an explicit AI-assisted editorial byline. Full extracts and draft bundles stay in ignored `.publishing-runs`; committed audits contain source identities, hashes and review findings. This is not independent scholar or clinician review.
 
-Failed reviews, stale evidence, unchecked links, executable MDX, invented individual bylines and stale assignment/file hashes stop publication. Updates retain existing metadata except summary, FAQs and lastmod. New articles use an explicit AI-assisted editorial byline and cannot overwrite a file. Full source extracts/drafts stay in ignored `.publishing-runs`; committed audits contain source identities, hashes, scoped claim checks and review method.
-
-`awaiting_release` is separate from `live_reviewed`. A full production build runs before pushing content. Completion requires GitHub's successful Production deployment for the exact commit, matching article bytes at that commit and the version marker on the live canonical page. A failed deployment stays pending; the next scheduled run reconciles it before selecting another batch. Never regenerate it as a new article.
-
-Source/draft/review failures become `needs_sources` with per-assignment failure details. Correct the cause and explicitly requeue with `--prepare --retry ID`. Successful assignments in a mixed batch may proceed only after the full build passes. Missing credentials fail before queue changes. There is no fallback to an unreviewed draft or a legacy topic. Failed source fetches need working primary-source access; they must not be replaced by invented evidence.
-
-The checks reduce predictable publication errors. A model review is not religious or clinical expertise, and build success is not factual endorsement. DeenBack articles receive a truthful direct-download block. Enrolment in its optional recovery quiz remains an explicit reviewed entry in `data/recovery.ts`; broad reference articles do not automatically enter that cohort.
+Run the full production build before publishing. An applied article remains `awaiting_release` until verification confirms a successful exact-commit Production deployment, matching article bytes and the live version marker. Concurrent edits stop verification instead of being overwritten. Failed releases stay pending. Tools remain separate implementation assignments. DeenBack uses truthful direct stores; quiz enrolment is an explicit reviewed entry in `data/recovery.ts`.
 
 ## Expanded SEMrush assignments (October 13)
 
@@ -64,6 +57,6 @@ Schema version 2 retains the original CSV and adds `semrush-scale-evidence-2026-
 
 Queries with the same task share one destination. Existing prayer guides own their rak‘ah variants; adjacent wudu cases are consolidated where one answer serves them; broad ruling references are lower priority than DeenBack recovery content. An old-year search observation is never relabelled as current-year demand. Mixed fasting queries require intent checks before drafting.
 
-The selector remains read-only. The separate assignment publisher handles authoring and release state. Source checks and verified live release remain required; its API-backed scheduled path still needs a real credentialed run.
+The selector remains read-only. The separate assignment publisher handles authoring and release state. Source checks and verified live release remain required; authoring happens in Codex without an API key.
 
 A separate queued tool assignment, `is-165`, covers the Ramadan countdown/current-day extension. The existing timetable remains recorded as live; new feature work is not silently treated as already implemented.
