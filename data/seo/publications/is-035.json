@@ -81,5 +81,11 @@
     ]
   },
   "prepared_at": "2026-10-13T14:46:58.383Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-13T14:52:03.323Z",
+    "commit": "d6af9bd7b99e92b19a073eeac741ac1dc775a4e5",
+    "deployment_id": 7041788092,
+    "url": "https://www.islamful.com/blog/does-vaping-break-your-fast"
+  }
 }

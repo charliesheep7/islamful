@@ -510,10 +510,10 @@
       "proposed_title": "Does Vaping Break Your Fast?",
       "target_path": "/blog/does-vaping-break-your-fast",
       "source_file": "data/blog/en/does-vaping-break-your-fast.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Address the fasting question with named sources, distinctions and make-up obligations; link fasting tool and practical nicotine support contextually. Keep distinct from DeenBack quitting/ruling funnel.",
-      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/does-vaping-break-your-fast",
       "existing_overlap_candidates": [
         {
@@ -656,6 +656,12 @@
           "alt": "Dates and a glass of water on a quiet table in warm evening light",
           "sha256": "9fd639c917bc72149d7cdb21bbba0811d91a9ee7cd62c4a4ee71b1b867a336fb"
         }
+      },
+      "release": {
+        "date": "2026-10-13T14:52:03.323Z",
+        "commit": "d6af9bd7b99e92b19a073eeac741ac1dc775a4e5",
+        "deployment_id": 7041788092,
+        "url": "https://www.islamful.com/blog/does-vaping-break-your-fast"
       }
     },
     {
