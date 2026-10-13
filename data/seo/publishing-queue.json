@@ -2098,8 +2098,8 @@
       "proposed_title": "Gold Zakat calculator",
       "target_path": "/zakat-calculator/gold",
       "source_file": "app/zakat-calculator/gold/page.tsx",
-      "action": "new_tool",
-      "status": "awaiting_tool_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Build a genuinely distinct gold-weight/purity/price experience with documented school assumptions, dated rates/manual fallback and comparison to the main calculator. Do not publish a generic keyword-swapped blog.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/zakat-calculator/gold",
@@ -2215,6 +2215,13 @@
             "sha256": "d2506f8614323ba8f2d330c8d4734cf79f372743107dd35eefed79df627091b9"
           }
         ]
+      },
+      "completion": {
+        "date": "2026-10-13T13:25:56.867Z",
+        "commit": "9eaa4ddc564c406f8ce5fa5901545cc84f9568f8",
+        "deployment_id": 7039699036,
+        "url": "https://www.islamful.com/zakat-calculator/gold",
+        "verification": "Exact deployed file hashes, public canonical/version marker and English/Arabic production browser calculations"
       }
     },
     {
@@ -2315,8 +2322,8 @@
       "proposed_title": "حاسبة زكاة الذهب",
       "target_path": "/ar/zakat-calculator/gold",
       "source_file": "app/[lang]/zakat-calculator/gold/page.tsx",
-      "action": "new_tool",
-      "status": "awaiting_tool_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Native SA3600/KD14; pair with actual English gold calculator when implemented, use Arabic inputs/output and independently verified rules. No article-only substitute.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/ar/zakat-calculator/gold",
@@ -2375,6 +2382,13 @@
             "sha256": "d2506f8614323ba8f2d330c8d4734cf79f372743107dd35eefed79df627091b9"
           }
         ]
+      },
+      "completion": {
+        "date": "2026-10-13T13:25:57.342Z",
+        "commit": "9eaa4ddc564c406f8ce5fa5901545cc84f9568f8",
+        "deployment_id": 7039699036,
+        "url": "https://www.islamful.com/ar/zakat-calculator/gold",
+        "verification": "Exact deployed file hashes, public canonical/version marker and English/Arabic production browser calculations"
       }
     },
     {
