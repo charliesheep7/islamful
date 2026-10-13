@@ -29,13 +29,23 @@ The selector is read-only. It validates sources and destinations and emits a com
 5. Run relevant content/link checks and the production build for website changes, review the diff and publish under the user’s standing production authorization. Verify the actual live page and corresponding deployment commit. A passing selector does not prove article quality or live publication.
 6. Update the queue row after successful release: `action: live`, `status: live_reviewed`, actual source file, source-review state and release evidence (date/commit/URL). Keep metrics unchanged. Revalidate. Update/refine remaining briefs when evidence changes; do not reset progress by regenerating the October13 snapshot.
 
-## Existing publisher state
+## Assignment publisher
 
-The old Google Sheet and repository topic/keyword files remain preserved. The legacy `seo-blog-generator/run-batch.js` uses numbered EN/AR JSONL lists and state counters, not these queue assignments. Its current English counter is38 but topic38 is absent. It can overwrite an existing target and falls back to original model output if its QA fails. This is not the workflow to feed all new rows into blindly.
+Codex researches and writes from the canonical queue. No OpenAI API key is needed. The legacy batch entry point now prepares assignments only; it does not generate or publish articles. The scheduled workflow verifies already reviewed releases and is a clean no-op when no release is pending. It does not author content unattended.
 
-The Islamful GitHub workflow is disabled for inactivity; the last visible runs in June failed. This change does not silently re-enable it. No scheduled publisher is migrated or re-enabled by this change. Future integration must consume these action types and completion records, handle exhausted queues cleanly, enforce no-overwrite and source/content validation, and verify a real run before claiming automatic publishing works.
+```sh
+node scripts/article-publisher.mjs --prepare --limit 10
+node scripts/article-publisher.mjs --prepare --id ASSIGNMENT_ID
+node scripts/article-publisher.mjs --apply .publishing-runs/ASSIGNMENT_ID/bundle.json
+node scripts/article-publisher.mjs --verify FULL_PRODUCTION_COMMIT_SHA
+node --test tests/publishing-queue.mjs tests/article-publisher.mjs
+```
 
-Current entry point for an agent/editor is the selector above. Preserve unrelated existing publishing processes and successful content until their ownership and behavior are known.
+Prepare captures the full assignment, addenda and existing-file hash. Codex checks primary sources, authors the article and supplies an `agent_source_review` bundle with exact article hash, scoped source evidence and supported claim checks. Apply validates evidence, links and hashes before writing. Failed checks stop publication without marking an assignment complete. Correct the bundle and retry; never invent evidence.
+
+Updates preserve their existing metadata except summary, FAQs and lastmod. New articles use an explicit AI-assisted editorial byline. Full extracts and draft bundles stay in ignored `.publishing-runs`; committed audits contain source identities, hashes and review findings. This is not independent scholar or clinician review.
+
+Run the full production build before publishing. An applied article remains `awaiting_release` until verification confirms a successful exact-commit Production deployment, matching article bytes and the live version marker. Concurrent edits stop verification instead of being overwritten. Failed releases stay pending. Tools remain separate implementation assignments. DeenBack uses truthful direct stores; quiz enrolment is an explicit reviewed entry in `data/recovery.ts`.
 
 ## Expanded SEMrush assignments (October 13)
 
@@ -47,6 +57,6 @@ Schema version 2 retains the original CSV and adds `semrush-scale-evidence-2026-
 
 Queries with the same task share one destination. Existing prayer guides own their rak‘ah variants; adjacent wudu cases are consolidated where one answer serves them; broad ruling references are lower priority than DeenBack recovery content. An old-year search observation is never relabelled as current-year demand. Mixed fasting queries require intent checks before drafting.
 
-The selector remains read-only. The scheduled generator has not yet been migrated; do not claim this expanded queue is unattended publishing. Source checks, authoring, validation and verified live release are still required for every queued item.
+The selector remains read-only. The separate assignment publisher handles authoring and release state. Source checks and verified live release remain required; authoring happens in Codex without an API key.
 
 A separate queued tool assignment, `is-165`, covers the Ramadan countdown/current-day extension. The existing timetable remains recorded as live; new feature work is not silently treated as already implemented.

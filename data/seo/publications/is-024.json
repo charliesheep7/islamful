@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "id": "is-024",
+  "action": "new_article",
+  "target_path": "/blog/does-bleeding-break-wudu",
+  "source_file": "data/blog/en/does-bleeding-break-wudu.mdx",
+  "assignment_sha256": "aec93d0b8e02e014c34750e27daf9ddb4dfe8bf7f7f646b061878c43891f7ddd",
+  "baseline_sha256": null,
+  "content_sha256": "5daf955f74b8d99d466bce7af1eec1f4880c0062d7e157693025e95664db1dbd",
+  "marker": "4b4a0bf273a7d74d2c54fb9c",
+  "sources": [
+    {
+      "url": "https://daruliftabirmingham.co.uk/what-is-meant-by-flowing-blood-2/",
+      "final_url": "https://daruliftabirmingham.co.uk/what-is-meant-by-flowing-blood-2/",
+      "checked_at": "2026-10-13T12:24:02.354Z",
+      "content_sha256": "d11d47c95053dc1890abc717a36471aeb0b37cbe5e163b223667cbc624a6ba50",
+      "title": "Darul Ifta Birmingham: What is meant by flowing blood",
+      "supports": "The Hanafi rule distinguishes flowing blood or pus, including discharge absorbed before it can flow, from non-flowing traces.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://dar-alifta.org/ar/Fatwa/Details/18044/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%85%D9%86-%D8%A7%D9%84%D8%AF%D9%85-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC-%D9%85%D9%86-%D8%A7%D9%84%D8%A3%D9%86%D9%81",
+      "final_url": "https://dar-alifta.org/ar/Fatwa/Details/18044/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%85%D9%86-%D8%A7%D9%84%D8%AF%D9%85-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC-%D9%85%D9%86-%D8%A7%D9%84%D8%A3%D9%86%D9%81",
+      "checked_at": "2026-10-13T12:25:19.665Z",
+      "content_sha256": "7ce09d74b53904670d2f321a31ca202cde91909c95502c82a8f10bdd9895292d",
+      "title": "Dar al-Ifta: Ruling on blood from the nose",
+      "supports": "The source attributes non-nullification of nosebleeds to Malikis and Shafi‘is and distinguishes small amounts in the Hanbali position.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://dar-alifta.org/en/fatwa/details/7854/bleeding-and-ablution",
+      "final_url": "https://dar-alifta.org/en/fatwa/details/7854/bleeding-and-ablution",
+      "checked_at": "2026-10-13T12:25:19.051Z",
+      "content_sha256": "aa9df73f78ade549a59158cebf18f7e49eeb7e4f156802f48b6e08d8c6b7ec23",
+      "title": "Dar al-Ifta: Bleeding and ablution",
+      "supports": "Dar al-Ifta adopts non-nullification for wounds and nosebleeds and recommends renewal because of disagreement.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/during-wudu-if-a-persons-gums-start-bleeding-do-they-have-to-wait-till-the-bleeding-stops/",
+      "final_url": "https://daruliftabirmingham.co.uk/during-wudu-if-a-persons-gums-start-bleeding-do-they-have-to-wait-till-the-bleeding-stops/",
+      "checked_at": "2026-10-13T12:25:42.570Z",
+      "content_sha256": "932520407b38016948909adabfe9cdcff1966fde016c32dfaa34d0cfabceeb86",
+      "title": "Darul Ifta Birmingham: Bleeding gums during wudu",
+      "supports": "The answer distinguishes blood-dominant saliva from saliva-dominant mixtures in the ruling it presents.",
+      "capture_method": "direct_https_page"
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "b6f0b68849511ff8f6e75a3d9fe234d57fbb9f2f429b8da435123fc6940f946b",
+    "issues": [],
+    "notes": "Reviewed all four named source pages. Hanafi flow/pus and gum rules remain attributed; Hanbali threshold is not quantified without support. Menstrual and continuous bleeding are outside this brief. Medical treatment instructions and invented hadith are absent. Questions from the combined research brief are covered on one canonical page. No app CTA for Islamful.",
+    "claim_checks": [
+      {
+        "claim": "The Hanafi rule distinguishes flowing blood or pus, including discharge absorbed before it can flow, from non-flowing traces.",
+        "source_url": "https://daruliftabirmingham.co.uk/what-is-meant-by-flowing-blood-2/",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The source attributes non-nullification of nosebleeds to Malikis and Shafi‘is and distinguishes small amounts in the Hanbali position.",
+        "source_url": "https://dar-alifta.org/ar/Fatwa/Details/18044/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%85%D9%86-%D8%A7%D9%84%D8%AF%D9%85-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC-%D9%85%D9%86-%D8%A7%D9%84%D8%A3%D9%86%D9%81",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "Dar al-Ifta adopts non-nullification for wounds and nosebleeds and recommends renewal because of disagreement.",
+        "source_url": "https://dar-alifta.org/en/fatwa/details/7854/bleeding-and-ablution",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The answer distinguishes blood-dominant saliva from saliva-dominant mixtures in the ruling it presents.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/during-wudu-if-a-persons-gums-start-bleeding-do-they-have-to-wait-till-the-bleeding-stops/",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-13T12:29:51.894Z",
+  "state": "awaiting_release"
+}

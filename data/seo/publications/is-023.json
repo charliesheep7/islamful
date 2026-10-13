@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "id": "is-023",
+  "action": "update_article",
+  "target_path": "/blog/how-to-perform-wudu",
+  "source_file": "data/blog/en/how-to-perform-wudu.mdx",
+  "assignment_sha256": "8277df458673eb0200dfb21cea6578c4d17876fe574dec9d47078dce5108a799",
+  "baseline_sha256": "7b440627d993787793049c133f0378db75fc2a51a2433cd44ac7eb9dc2e7a892",
+  "content_sha256": "dae2d29aa77a5638397439b789360ae9caf8df723e75d66c9a7e7357309fc2f0",
+  "marker": "82cec0e09750462b5aebf658",
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "final_url": "https://quran.com/al-maidah/6",
+      "checked_at": "2026-10-13T12:24:03.074Z",
+      "content_sha256": "28cd604bafbba73e5c33c8a77903d76b32c69bd912159738ad6b085024ae07c9",
+      "title": "Quran 5:6",
+      "supports": "The verse names the washed and wiped parts and distinguishes major purification.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+      "final_url": "https://dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+      "checked_at": "2026-10-13T12:25:19.273Z",
+      "content_sha256": "7263450eacff7a9202e16753c0ef5742353b0c5d313eaa3808c24cda05ae0e0b",
+      "title": "Dar al-Ifta: How to perform wudhu",
+      "supports": "The practical guide describes intention in the heart, the sequence, ears and coverage of fingers and toes.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:159",
+      "title": "Sahih al-Bukhari 159",
+      "supports": "The report describes washing the hands, face, forearms and feet three times, mouth and nose cleaning and head wiping.",
+      "checked_at": "2026-10-13T12:24:39.501Z",
+      "content_sha256": "d44ce3f620519266ba0d97d8b82eb68e24decbe4f72a8857286fbe47ee61161c",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:185",
+      "title": "Sahih al-Bukhari 185",
+      "supports": "The reported head wiping goes from the front to the back and returns to the starting point.",
+      "checked_at": "2026-10-13T12:24:41.574Z",
+      "content_sha256": "1068f6a6a1578f62e206ab6b7c6785f6d582e0bb64e91f1c0763017b1978fe67",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://dar-alifta.org/ar/fatwa/details/19105/%D8%A7%D9%84%D9%80%D9%85%D8%B6%D9%85%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%85%D8%B9-%D8%B9%D8%AF%D9%85-%D9%88%D8%B5%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%A7%D8%A1-%D8%AA%D8%AD%D8%AA-%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86-%D8%A7%D9%84%D9%85%D8%B2%D8%B1%D9%88%D8%B9%D8%A9",
+      "final_url": "https://dar-alifta.org/ar/fatwa/details/19105/%D8%A7%D9%84%D9%80%D9%85%D8%B6%D9%85%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%85%D8%B9-%D8%B9%D8%AF%D9%85-%D9%88%D8%B5%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%A7%D8%A1-%D8%AA%D8%AD%D8%AA-%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86-%D8%A7%D9%84%D9%85%D8%B2%D8%B1%D9%88%D8%B9%D8%A9",
+      "checked_at": "2026-10-13T12:25:20.599Z",
+      "content_sha256": "63da641272066e93cf80b25037e14846b6e5daf5bd35b00edaed9e37154a5285",
+      "title": "Dar al-Ifta: Mouth rinsing and implanted teeth",
+      "supports": "The discussion names the majority Sunnah classification for mouth rinsing in wudu and the relied-upon Hanbali obligation.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://dar-alifta.org/ar/fatwa/details/19281/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D8%AA%D9%84%D9%81%D9%8A%D9%82-%D8%A8%D9%8A%D9%86-%D9%85%D8%B0%D9%87%D8%A8%D9%8A%D9%86-%D9%81%D9%8A-%D8%A8%D8%B9%D8%B6-%D9%85%D8%B3%D8%A7%D8%A6%D9%84-%D8%A7%D9%84%D8%B7%D9%87%D8%A7%D8%B1%D8%A9",
+      "final_url": "https://dar-alifta.org/ar/fatwa/details/19281/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D8%AA%D9%84%D9%81%D9%8A%D9%82-%D8%A8%D9%8A%D9%86-%D9%85%D8%B0%D9%87%D8%A8%D9%8A%D9%86-%D9%81%D9%8A-%D8%A8%D8%B9%D8%B6-%D9%85%D8%B3%D8%A7%D8%A6%D9%84-%D8%A7%D9%84%D8%B7%D9%87%D8%A7%D8%B1%D8%A9",
+      "checked_at": "2026-10-13T12:25:20.374Z",
+      "content_sha256": "6ee7c23c4b69b6bcc2e740cc28aa14acdce8ce98305bc09e227b1fcaee0ff7eb",
+      "title": "Dar al-Ifta: Differences between schools in purification",
+      "supports": "The discussion distinguishes Maliki rubbing of washed limbs from the Shafi‘i classification.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://dar-alifta.org/en/fatwa/details/7840/should-i-mention-god%E2%80%99s-name-when-i-start-ablution-in-the-bathroom",
+      "final_url": "https://dar-alifta.org/en/fatwa/details/7840/should-i-mention-god%E2%80%99s-name-when-i-start-ablution-in-the-bathroom",
+      "checked_at": "2026-10-13T12:24:04.436Z",
+      "content_sha256": "71895e755ecd7068164f60de75e64cab38b9c6a037fad3be4807e0b8a66fd6f8",
+      "title": "Dar al-Ifta: Mentioning God’s name in the bathroom",
+      "supports": "The cited institutional answer does not make spoken phrases a validity condition when ablution requirements and intention are fulfilled.",
+      "capture_method": "direct_https_page"
+    },
+    {
+      "url": "https://sunnah.com/muslim:234a",
+      "title": "Sahih Muslim 234a",
+      "supports": "The hadith records the testimony of faith after completing ablution.",
+      "checked_at": "2026-10-13T12:24:43.795Z",
+      "content_sha256": "de1a9dab8ff2cd050c3e9a16f84d816306ea94879356393f2af9b20e0e308cc5",
+      "capture_method": "web_tool_page_text"
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "6e31820e7876ce6163215d4dc4f39449d639857b9c62b2aed2d2938b4e1afe07",
+    "issues": [],
+    "notes": "Compared the exact source passages and removed the previous four-obligations-only universal claim, incorrect Bukhari 164 fingernails attribution, unsupported speed claim and blanket nullifier list. Retains existing title/date/authors/images. Distinguishes the named Hanbali mouth-rinsing view and Maliki rubbing example without inventing a complete school chart. Includes the new bleeding answer only after its file exists.",
+    "claim_checks": [
+      {
+        "claim": "The verse names the washed and wiped parts and distinguishes major purification.",
+        "source_url": "https://quran.com/5/6",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The practical guide describes intention in the heart, the sequence, ears and coverage of fingers and toes.",
+        "source_url": "https://dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The report describes washing the hands, face, forearms and feet three times, mouth and nose cleaning and head wiping.",
+        "source_url": "https://sunnah.com/bukhari:159",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The reported head wiping goes from the front to the back and returns to the starting point.",
+        "source_url": "https://sunnah.com/bukhari:185",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The discussion names the majority Sunnah classification for mouth rinsing in wudu and the relied-upon Hanbali obligation.",
+        "source_url": "https://dar-alifta.org/ar/fatwa/details/19105/%D8%A7%D9%84%D9%80%D9%85%D8%B6%D9%85%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D9%88%D8%B6%D9%88%D8%A1-%D9%85%D8%B9-%D8%B9%D8%AF%D9%85-%D9%88%D8%B5%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%A7%D8%A1-%D8%AA%D8%AD%D8%AA-%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86-%D8%A7%D9%84%D9%85%D8%B2%D8%B1%D9%88%D8%B9%D8%A9",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The discussion distinguishes Maliki rubbing of washed limbs from the Shafi‘i classification.",
+        "source_url": "https://dar-alifta.org/ar/fatwa/details/19281/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D8%AA%D9%84%D9%81%D9%8A%D9%82-%D8%A8%D9%8A%D9%86-%D9%85%D8%B0%D9%87%D8%A8%D9%8A%D9%86-%D9%81%D9%8A-%D8%A8%D8%B9%D8%B6-%D9%85%D8%B3%D8%A7%D8%A6%D9%84-%D8%A7%D9%84%D8%B7%D9%87%D8%A7%D8%B1%D8%A9",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The cited institutional answer does not make spoken phrases a validity condition when ablution requirements and intention are fulfilled.",
+        "source_url": "https://dar-alifta.org/en/fatwa/details/7840/should-i-mention-god%E2%80%99s-name-when-i-start-ablution-in-the-bathroom",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      },
+      {
+        "claim": "The hadith records the testimony of faith after completing ablution.",
+        "source_url": "https://sunnah.com/muslim:234a",
+        "supported": true,
+        "explanation": "Checked the relevant passage of the primary page; the article retains its scope and exceptions."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-13T12:30:36.429Z",
+  "state": "awaiting_release"
+}

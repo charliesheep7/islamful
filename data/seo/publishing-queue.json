@@ -28,7 +28,7 @@
       "target_path": "/blog/how-to-perform-wudu",
       "source_file": "data/blog/en/how-to-perform-wudu.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Keep URL/title/date. Source-review obligations/order and school differences; link specific bleeding and sleep answers without universalizing disputed rules.",
       "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
       "conversion_or_tool_path": "/blog/how-to-perform-wudu",
@@ -109,7 +109,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed.",
       "research_additions": [
@@ -145,7 +145,12 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "dae2d29aa77a5638397439b789360ae9caf8df723e75d66c9a7e7357309fc2f0",
+        "marker": "82cec0e09750462b5aebf658",
+        "audit_file": "data/seo/publications/is-023.json"
+      }
     },
     {
       "id": "is-024",
@@ -161,7 +166,7 @@
       "target_path": "/blog/does-bleeding-break-wudu",
       "source_file": "data/blog/en/does-bleeding-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Give the answer by named school and type/extent of bleeding. Cite primary scholarly sources and distinguish medical first aid from the ritual question. Link main wudu guide.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/blog/does-bleeding-break-wudu",
@@ -256,7 +261,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
       "research_additions": [
@@ -300,7 +305,12 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "5daf955f74b8d99d466bce7af1eec1f4880c0062d7e157693025e95664db1dbd",
+        "marker": "4b4a0bf273a7d74d2c54fb9c",
+        "audit_file": "data/seo/publications/is-024.json"
+      }
     },
     {
       "id": "is-025",
@@ -5871,7 +5881,7 @@
         {
           "path": "/blog/how-to-perform-ghusl",
           "title": "How to Perform Ghusl: Step-by-Step Guide",
-          "match_score": 1.0
+          "match_score": 1
         }
       ],
       "observations": [
@@ -6429,7 +6439,7 @@
         {
           "path": "/blog/how-to-pray-janazah",
           "title": "How to Pray Janazah: Step-by-Step Funeral Prayer",
-          "match_score": 1.0
+          "match_score": 1
         }
       ],
       "observations": [
