@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Muslim Baby Names — 265+ Islamic Names with Meanings',
   description:
     'Browse 265+ Islamic baby names with Arabic script, meanings, and origins. Filter by gender (boy/girl), category (Quranic, Prophet, Companion), and origin (Arabic, Persian, Urdu).',
-  alternates: buildLanguageAlternates('/muslim-names'),
+  alternates: buildLanguageAlternates('/muslim-names', { includeArabic: false }),
 }
 
 export default function MuslimNamesPage() {
