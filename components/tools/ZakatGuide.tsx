@@ -135,6 +135,12 @@ export default function ZakatGuide({ lang }: { lang: 'en' | 'ar' }) {
         </p>
       </div>
       <p className="flex flex-wrap gap-5 text-sm">
+        <Link
+          className="underline"
+          href={ar ? '/ar/zakat-calculator/gold' : '/zakat-calculator/gold'}
+        >
+          {ar ? 'حاسبة الذهب بمختلف العيارات' : 'Gold calculator for mixed purities'}
+        </Link>
         <a className="underline" href={ar ? '/ar/islamic-calendar' : '/islamic-calendar'}>
           {ar ? 'التقويم الهجري' : 'Hijri calendar'}
         </a>

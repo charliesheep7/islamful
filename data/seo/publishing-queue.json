@@ -2099,7 +2099,7 @@
       "target_path": "/zakat-calculator/gold",
       "source_file": "app/zakat-calculator/gold/page.tsx",
       "action": "new_tool",
-      "status": "queued",
+      "status": "awaiting_tool_release",
       "brief": "Build a genuinely distinct gold-weight/purity/price experience with documented school assumptions, dated rates/manual fallback and comparison to the main calculator. Do not publish a generic keyword-swapped blog.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/zakat-calculator/gold",
@@ -2146,7 +2146,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "editorial_primary_sources_checked_2026-10-13",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
       "research_additions": [
@@ -2176,7 +2176,42 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "tool_publication": {
+        "version": "gold-v1",
+        "source_review": "docs/gold-zakat-sources.md",
+        "reviewed_at": "2026-10-13T13:14:42.493856+00:00",
+        "files": [
+          {
+            "path": "app/zakat-calculator/gold/page.tsx",
+            "sha256": "badf96e9c45c57b0feb1998b793161288522d85f8805406a731161134b2cf763"
+          },
+          {
+            "path": "components/tools/GoldZakatCalculator.tsx",
+            "sha256": "ee16b7631e281ee454b1cf3b9867365b3ca94cf87b948e00ef72519319758811"
+          },
+          {
+            "path": "components/tools/GoldZakatPage.tsx",
+            "sha256": "b15a811a41e76a8433b1e41d9f0c544e8b172ee47ad931633e61c1edb6d2a081"
+          },
+          {
+            "path": "data/gold-zakat.ts",
+            "sha256": "1aa7bc53dba9b79d8860b6933e4af3aff1dc48ced7762379853443d486210786"
+          },
+          {
+            "path": "data/zakat.ts",
+            "sha256": "f9ac8b27ddcf14c6aeb4ac76bf48310c1ae4e57d3ef3e233394dbee6641cebe1"
+          },
+          {
+            "path": "public/static/images/gold-zakat-hero.webp",
+            "sha256": "6653e37dd8c2ae271a89dd37e4dbe3b220168ac3a7bdc46816875b76e0d95ea9"
+          },
+          {
+            "path": "docs/gold-zakat-sources.md",
+            "sha256": "dc047eacf64c4b434893531a4d6bd7f761e7158675ad314b958928b3ea4c2823"
+          }
+        ]
+      }
     },
     {
       "id": "is-034",
@@ -2277,7 +2312,7 @@
       "target_path": "/ar/zakat-calculator/gold",
       "source_file": "app/[lang]/zakat-calculator/gold/page.tsx",
       "action": "new_tool",
-      "status": "queued",
+      "status": "awaiting_tool_release",
       "brief": "Native SA3600/KD14; pair with actual English gold calculator when implemented, use Arabic inputs/output and independently verified rules. No article-only substitute.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/ar/zakat-calculator/gold",
@@ -2295,9 +2330,44 @@
           "source": "SEMrush Chrome Bulk Analysis"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "editorial_primary_sources_checked_2026-10-13",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
-      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
+      "tool_publication": {
+        "version": "gold-v1",
+        "source_review": "docs/gold-zakat-sources.md",
+        "reviewed_at": "2026-10-13T13:14:42.494299+00:00",
+        "files": [
+          {
+            "path": "app/[lang]/zakat-calculator/gold/page.tsx",
+            "sha256": "75360cab71502bffc67b1d2603e3aa7d51cd3b02f77601383dc97d74ca32459c"
+          },
+          {
+            "path": "components/tools/GoldZakatCalculator.tsx",
+            "sha256": "ee16b7631e281ee454b1cf3b9867365b3ca94cf87b948e00ef72519319758811"
+          },
+          {
+            "path": "components/tools/GoldZakatPage.tsx",
+            "sha256": "b15a811a41e76a8433b1e41d9f0c544e8b172ee47ad931633e61c1edb6d2a081"
+          },
+          {
+            "path": "data/gold-zakat.ts",
+            "sha256": "1aa7bc53dba9b79d8860b6933e4af3aff1dc48ced7762379853443d486210786"
+          },
+          {
+            "path": "data/zakat.ts",
+            "sha256": "f9ac8b27ddcf14c6aeb4ac76bf48310c1ae4e57d3ef3e233394dbee6641cebe1"
+          },
+          {
+            "path": "public/static/images/gold-zakat-hero.webp",
+            "sha256": "6653e37dd8c2ae271a89dd37e4dbe3b220168ac3a7bdc46816875b76e0d95ea9"
+          },
+          {
+            "path": "docs/gold-zakat-sources.md",
+            "sha256": "dc047eacf64c4b434893531a4d6bd7f761e7158675ad314b958928b3ea4c2823"
+          }
+        ]
+      }
     },
     {
       "id": "is-165",

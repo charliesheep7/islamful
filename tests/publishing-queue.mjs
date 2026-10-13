@@ -164,3 +164,35 @@ test('one captured observation cannot silently feed two page assignments', () =>
   })
   assert.match(check(d).join(' '), /duplicate captured research/)
 })
+
+test('reviewed tools remain pending, skip article selection and reject changed files', () => {
+  const x = {
+    ...item(),
+    source_file: 'app/gold/page.tsx',
+    target_path: '/gold',
+    action: 'new_tool',
+    status: 'awaiting_tool_release',
+  }
+  fs.mkdirSync(path.join(root, 'app/gold'), { recursive: true })
+  fs.mkdirSync(path.join(root, 'docs'), { recursive: true })
+  fs.writeFileSync(path.join(root, x.source_file), 'reviewed tool')
+  fs.writeFileSync(path.join(root, 'docs/gold-sources.md'), 'checked sources')
+  assert.match(check(doc([x])).join(' '), /Invalid pending tool/)
+  x.tool_publication = {
+    version: 'gold-v1',
+    source_review: 'docs/gold-sources.md',
+    files: [
+      {
+        path: x.source_file,
+        sha256: crypto.createHash('sha256').update('reviewed tool').digest('hex'),
+      },
+    ],
+  }
+  assert.deepEqual(check(doc([x])), [])
+  assert.deepEqual(selectAssignments(doc([x])), [])
+  assert.deepEqual(selectAssignments(doc([x]), { action: 'new_article', status: 'all' }), [])
+  fs.writeFileSync(path.join(root, x.source_file), 'unreviewed change')
+  assert.match(check(doc([x])).join(' '), /changed after review/)
+  x.tool_publication.files[0].path = '../outside'
+  assert.match(check(doc([x])).join(' '), /Invalid pending tool/)
+})
