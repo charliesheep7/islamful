@@ -54,3 +54,6 @@ prd-seogen.md
 
 # Google Indexing API service account key
 google-indexing-key.json
+
+# Staged publisher drafts and full source extracts
+/.publishing-runs/

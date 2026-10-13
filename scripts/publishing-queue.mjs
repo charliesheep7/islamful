@@ -15,6 +15,7 @@ const ACTIONS = new Set([
 ])
 const STATUSES = new Set([
   'queued',
+  'awaiting_release',
   'live_reviewed',
   'needs_data',
   'needs_keyword_refresh',
@@ -157,8 +158,23 @@ export function validateQueue(doc, root, { verifyResearch = true } = {}) {
       }
       const exists = fs.existsSync(resolved)
       if (EXISTING.has(item.action) && !exists) fail('Existing target file is missing')
-      if (NEW.has(item.action) && exists)
+      if (NEW.has(item.action) && exists && item.status !== 'awaiting_release')
         fail('New destination already exists: reconcile as an update before writing')
+      if (item.status === 'awaiting_release') {
+        if (
+          !['new_article', 'update_article'].includes(item.action) ||
+          !exists ||
+          !/^[a-f0-9]{64}$/.test(item.publication?.content_sha256 || '') ||
+          !/^[a-f0-9]{24}$/.test(item.publication?.marker || '') ||
+          !/^(de|is)-[0-9]+$/.test(item.id || '')
+        )
+          fail('Invalid pending publication')
+        else if (
+          crypto.createHash('sha256').update(fs.readFileSync(resolved)).digest('hex') !==
+          item.publication.content_sha256
+        )
+          fail('Pending publication changed after review')
+      }
       if (['new_article', 'update_article'].includes(item.action)) {
         const prefix = item.locale === 'ar' ? '/ar/blog/' : '/blog/'
         if (!item.target_path.startsWith(prefix) || item.target_path.includes('#'))

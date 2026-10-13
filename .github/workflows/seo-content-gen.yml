@@ -2,46 +2,107 @@ name: SEO Content Generation
 
 on:
   schedule:
-    # Run at 00:00 and 12:00 UTC every day
     - cron: '0 0,12 * * *'
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Number of queued article assignments to attempt
+        default: '10'
+        type: string
+
+concurrency:
+  group: canonical-seo-publisher
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  deployments: read
 
 jobs:
-  generate-content:
+  publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
+    timeout-minutes: 120
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: 'seo-blog-generator/package-lock.json'
-
-      - name: Install dependencies
-        working-directory: ./seo-blog-generator
-        run: npm ci
-
-
-
-      - name: Run content generation
-        working-directory: ./seo-blog-generator
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Validate publisher
+        run: node --test tests/publishing-queue.mjs tests/article-publisher.mjs
+      - name: Reconcile any earlier unverified release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if node -e "const q=require('./data/seo/publishing-queue.json');process.exit(q.items.some(x=>x.status==='awaiting_release')?0:1)"; then
+            node scripts/article-publisher.mjs --verify "$(git rev-parse HEAD)"
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
+            git add data/seo/publishing-queue.json
+          if [ -d data/seo/publications ]; then git add data/seo/publications/; fi
+            git commit -m 'chore: verify previous SEO publication'
+            git push origin HEAD:main
+          fi
+      - name: Research, draft and review queued articles
+        id: generate
+        continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GOOGLE_GENAI_API_KEY: ${{ secrets.GOOGLE_GENAI_API_KEY }}
-        run: node run-batch.js
-
-      - name: Commit and push changes
+          SEO_MODEL: ${{ vars.SEO_MODEL }}
+          BATCH_LIMIT: ${{ inputs.limit || vars.SEO_BATCH_SIZE || '10' }}
+        run: node scripts/article-publisher.mjs --generate --limit "$BATCH_LIMIT"
+      - name: Retain failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publisher-failures-${{ github.run_id }}
+          path: .publishing-runs/*/failure.json
+          include-hidden-files: true
+          if-no-files-found: ignore
+      - name: Validate complete site before publication
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/blog/ seo-blog-generator/state.json public/images/blog/
-          git commit -m "chore: auto-generate seo content [skip ci]" || echo "No changes to commit"
-          git push
+          node scripts/publishing-queue.mjs --validate
+          npm run build
+      - name: Commit reviewed content and per-assignment outcomes
+        id: commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/blog/ data/seo/publishing-queue.json
+          if [ -d data/seo/publications ]; then git add data/seo/publications/; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'content: publish reviewed queue assignments'
+            git push origin HEAD:main
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Verify production deployment and exact live article version
+        if: steps.commit.outputs.published == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_SHA: ${{ steps.commit.outputs.commit }}
+        run: |
+          verified=false
+          for attempt in $(seq 1 20); do
+            if node scripts/article-publisher.mjs --verify "$RELEASE_SHA"; then
+              verified=true
+              break
+            fi
+            sleep 30
+          done
+          if [ "$verified" != true ]; then exit 1; fi
+          git add data/seo/publishing-queue.json
+          if [ -d data/seo/publications ]; then git add data/seo/publications/; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: record verified live SEO assignments'
+            git push origin HEAD:main
+          fi
+      - name: Report failed source or generation checks
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo 'One or more assignments failed. Successful articles are separately verified; failed assignments are not marked published.'
+          exit 1
