@@ -2,7 +2,12 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { MapPin, Loader2, Compass, Navigation, Smartphone } from 'lucide-react'
-import { calculateQiblaBearing, distanceToKaaba, bearingToCompass } from '@/data/qibla'
+import {
+  calculateQiblaBearing,
+  distanceToKaaba,
+  bearingToCompass,
+  validCoordinates,
+} from '@/data/qibla'
 
 interface QiblaFinderProps {
   lang?: string
@@ -18,8 +23,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   const [locationSource, setLocationSource] = useState<'ip' | 'device' | 'manual' | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const manualLocationRef = useRef(false)
-  const geocodeRequestRef = useRef(0)
+  const locationRequestRef = useRef(0)
+  const locationAbortRef = useRef<AbortController | null>(null)
+  const [locationAccuracy, setLocationAccuracy] = useState<number | null>(null)
+  const headingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Manual input state
   const [manualLat, setManualLat] = useState('')
@@ -48,172 +55,138 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     NW: 'شمال غرب',
   }
 
-  // Reverse geocode to get city name
-  const reverseGeocode = useCallback(async (lat: number, lng: number) => {
-    const requestId = ++geocodeRequestRef.current
-    try {
-      const res = await fetch(
-        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
-      )
-      const data = await res.json()
-      if (requestId !== geocodeRequestRef.current) return
-      const city = data.city || data.locality || ''
-      const country = data.countryName || ''
-      if (city && country) {
-        setLocationName(`${city}, ${country}`)
-      } else if (country) {
-        setLocationName(country)
-      }
-    } catch {
-      // Silently fail — location name is optional
-    }
+  // Every source shares one request generation so an older lookup cannot win.
+  const beginLocation = useCallback(() => {
+    locationAbortRef.current?.abort()
+    const controller = new AbortController()
+    locationAbortRef.current = controller
+    const requestId = ++locationRequestRef.current
+    setError(null)
+    setLatitude(null)
+    setLongitude(null)
+    setLocationName(null)
+    setLocationSource(null)
+    setLocationAccuracy(null)
+    return { requestId, controller }
   }, [])
 
-  // Detect location via IP (fast, no permission needed)
-  const fetchByIP = useCallback(async () => {
-    const controller = new AbortController()
-    const timeout = window.setTimeout(() => controller.abort(), 4000)
+  const reverseGeocode = useCallback(
+    async (lat: number, lng: number, requestId: number, signal: AbortSignal) => {
+      try {
+        const res = await fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=${isRTL ? 'ar' : 'en'}`,
+          { signal }
+        )
+        if (!res.ok) return
+        const data = await res.json()
+        if (requestId !== locationRequestRef.current || signal.aborted) return
+        const parts = [data.city || data.locality, data.countryName].filter(
+          (value) => typeof value === 'string' && value
+        )
+        setLocationName(parts.join(', ') || null)
+      } catch {
+        // Coordinates remain usable if the optional place-name service fails.
+      }
+    },
+    [isRTL]
+  )
+
+  async function fetchByIP() {
+    const { requestId, controller } = beginLocation()
+    setLoading(true)
+    const timeout = window.setTimeout(() => controller.abort(), 8000)
     try {
       const res = await fetch('https://ipapi.co/json/', { signal: controller.signal })
+      if (!res.ok) throw new Error('Location service unavailable')
       const geo = await res.json()
       const lat = Number(geo.latitude)
       const lng = Number(geo.longitude)
       if (
-        geo.latitude !== null &&
-        geo.latitude !== undefined &&
-        geo.latitude !== '' &&
-        geo.longitude !== null &&
-        geo.longitude !== undefined &&
-        geo.longitude !== '' &&
-        Number.isFinite(lat) &&
-        Number.isFinite(lng) &&
-        Math.abs(lat) <= 90 &&
-        Math.abs(lng) <= 180
-      ) {
-        setLatitude(lat)
-        setLongitude(lng)
-        setLocationSource('ip')
-        const city = geo.city || ''
-        const country = geo.country_name || ''
-        if (city && country) {
-          setLocationName(`${city}, ${country}`)
-        } else if (country) {
-          setLocationName(country)
-        }
-        return true
-      }
+        geo.latitude == null ||
+        geo.longitude == null ||
+        String(geo.latitude).trim() === '' ||
+        String(geo.longitude).trim() === '' ||
+        !validCoordinates(lat, lng)
+      )
+        throw new Error('Invalid coordinates')
+      if (requestId !== locationRequestRef.current) return
+      setLatitude(lat)
+      setLongitude(lng)
+      setLocationSource('ip')
+      setLocationName(
+        [geo.city, geo.country_name]
+          .filter((value) => typeof value === 'string' && value)
+          .join(', ') || null
+      )
     } catch {
-      // Silently fail — will fall back to browser geolocation
+      if (requestId === locationRequestRef.current)
+        setError(
+          isRTL
+            ? 'تعذر اقتراح الموقع. استخدم موقع الجهاز أو أدخل الإحداثيات.'
+            : 'Could not suggest a location. Use device location or enter coordinates.'
+        )
     } finally {
       window.clearTimeout(timeout)
+      if (requestId === locationRequestRef.current) setLoading(false)
     }
-    return false
-  }, [])
+  }
 
-  // Detect location using browser geolocation API (more accurate)
   const detectLocation = useCallback(() => {
+    const { requestId, controller } = beginLocation()
+    setLoading(false)
     if (!navigator.geolocation) {
       setError(
         isRTL
-          ? 'المتصفح لا يدعم تحديد الموقع الجغرافي.'
-          : 'Geolocation is not supported by your browser.'
+          ? 'المتصفح لا يدعم تحديد الموقع. أدخل الإحداثيات.'
+          : 'Geolocation is unavailable. Enter coordinates instead.'
       )
       return
     }
-
     setLoading(true)
-    setError(null)
-    manualLocationRef.current = false
-
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const lat = position.coords.latitude
-        const lng = position.coords.longitude
+        if (requestId !== locationRequestRef.current) return
+        const { latitude: lat, longitude: lng, accuracy } = position.coords
+        setLoading(false)
+        if (!validCoordinates(lat, lng)) {
+          setError(
+            isRTL
+              ? 'لم يصل موقع صالح. أدخل الإحداثيات.'
+              : 'No valid location received. Enter coordinates instead.'
+          )
+          return
+        }
         setLatitude(lat)
         setLongitude(lng)
         setLocationSource('device')
-        setLocationName(null)
-        setLoading(false)
-        reverseGeocode(lat, lng)
+        setLocationAccuracy(Number.isFinite(accuracy) && accuracy >= 0 ? accuracy : null)
+        reverseGeocode(lat, lng, requestId, controller.signal)
       },
       (err) => {
+        if (requestId !== locationRequestRef.current) return
         setLoading(false)
-        switch (err.code) {
-          case err.PERMISSION_DENIED:
-            setError(
-              isRTL
-                ? 'تم رفض إذن الموقع. يرجى تفعيله في إعدادات المتصفح أو إدخال الإحداثيات يدوياً.'
-                : 'Location permission denied. Please enable it in browser settings or enter coordinates manually.'
-            )
-            break
-          case err.POSITION_UNAVAILABLE:
-            setError(
-              isRTL
-                ? 'معلومات الموقع غير متوفرة. يرجى إدخال الإحداثيات يدوياً.'
-                : 'Location information unavailable. Please enter coordinates manually.'
-            )
-            break
-          default:
-            setError(
-              isRTL
-                ? 'تعذر تحديد الموقع. يرجى إدخال الإحداثيات يدوياً.'
-                : 'Could not determine your location. Please enter coordinates manually.'
-            )
-        }
-      },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
-    )
-  }, [isRTL, reverseGeocode])
-
-  // Auto-detect on mount: IP first (instant), then browser geolocation (more accurate)
-  useEffect(() => {
-    let mounted = true
-    async function init() {
-      setLoading(true)
-      const ipSuccess = await fetchByIP()
-      if (!mounted) return
-      setLoading(false)
-      // If IP worked, still try browser geolocation for better accuracy
-      // If IP failed, fall back to browser geolocation
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            if (!mounted || manualLocationRef.current) return
-            const lat = position.coords.latitude
-            const lng = position.coords.longitude
-            setLatitude(lat)
-            setLongitude(lng)
-            setLocationSource('device')
-            setLocationName(null)
-            reverseGeocode(lat, lng)
-          },
-          () => {
-            // If browser geolocation fails and IP also failed, show manual input
-            if (!mounted || manualLocationRef.current) return
-            if (!ipSuccess) {
-              setError(
-                isRTL
-                  ? 'تعذر تحديد الموقع. يرجى إدخال الإحداثيات يدوياً.'
-                  : 'Could not determine your location. Please enter coordinates manually.'
-              )
-            }
-          },
-          { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
-        )
-      } else if (!ipSuccess) {
         setError(
-          isRTL
-            ? 'تعذر تحديد الموقع. يرجى إدخال الإحداثيات يدوياً.'
-            : 'Could not determine your location. Please enter coordinates manually.'
+          err.code === 1
+            ? isRTL
+              ? 'تم رفض إذن الموقع. يمكنك إدخال الإحداثيات أو إعادة المحاولة بعد تغيير الإذن.'
+              : 'Location permission denied. Enter coordinates or retry after changing permission.'
+            : isRTL
+              ? 'تعذر تحديد الموقع. أعد المحاولة أو أدخل الإحداثيات.'
+              : 'Could not determine your location. Retry or enter coordinates.'
         )
-      }
-    }
-    init()
-    return () => {
-      mounted = false
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    )
+  }, [beginLocation, isRTL, reverseGeocode])
+
+  useEffect(
+    () => () => {
+      locationRequestRef.current++
+      locationAbortRef.current?.abort()
+      if (headingTimeoutRef.current) clearTimeout(headingTimeoutRef.current)
+    },
+    []
+  )
 
   // Only absolute orientation can be used as a north-referenced compass.
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
@@ -227,7 +200,36 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
       heading = (360 - event.alpha) % 360
     }
 
-    if (heading === null) return
+    if (heading === null || heading < 0 || heading >= 360) return
+    const accuracy = (event as DeviceOrientationEvent & { webkitCompassAccuracy?: number })
+      .webkitCompassAccuracy
+    if (
+      typeof accuracy === 'number' &&
+      (!Number.isFinite(accuracy) || accuracy < 0 || accuracy > 30)
+    ) {
+      setDeviceHeading(null)
+      smoothedHeadingRef.current = null
+      return
+    }
+    // The simple alpha heading assumes a flat phone in portrait orientation.
+    const screenAngle =
+      window.screen.orientation?.angle ??
+      (window as Window & { orientation?: number }).orientation ??
+      0
+    if (
+      screenAngle !== 0 ||
+      (typeof event.beta === 'number' && Math.abs(event.beta) > 20) ||
+      (typeof event.gamma === 'number' && Math.abs(event.gamma) > 20)
+    ) {
+      setDeviceHeading(null)
+      smoothedHeadingRef.current = null
+      return
+    }
+    if (headingTimeoutRef.current) clearTimeout(headingTimeoutRef.current)
+    headingTimeoutRef.current = setTimeout(() => {
+      setDeviceHeading(null)
+      smoothedHeadingRef.current = null
+    }, 5000)
 
     // Low-pass filter for smooth heading
     if (smoothedHeadingRef.current === null) {
@@ -272,9 +274,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   }, [addOrientationListener, handleOrientation])
 
   async function requestCompassPermission() {
+    setError(null)
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const permission = await (DeviceOrientationEvent as any).requestPermission()
+      const permission = await (DeviceOrientationEvent as any).requestPermission(true)
       if (permission === 'granted') {
         setCompassPermissionNeeded(false)
         addOrientationListener()
@@ -289,10 +292,12 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   // Handle manual coordinate input
   function handleManualSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const lat = parseFloat(manualLat)
-    const lng = parseFloat(manualLng)
+    const lat = Number(manualLat)
+    const lng = Number(manualLng)
 
-    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+    const { requestId, controller } = beginLocation()
+    setLoading(false)
+    if (!manualLat.trim() || !manualLng.trim() || !validCoordinates(lat, lng)) {
       setError(
         isRTL
           ? 'يرجى إدخال إحداثيات صحيحة (خط العرض: -90 إلى 90، خط الطول: -180 إلى 180).'
@@ -302,12 +307,11 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     }
 
     setError(null)
-    manualLocationRef.current = true
     setLatitude(lat)
     setLongitude(lng)
     setLocationSource('manual')
     setLocationName(null)
-    reverseGeocode(lat, lng)
+    reverseGeocode(lat, lng, requestId, controller.signal)
   }
 
   const isCompassActive = deviceHeading !== null && !compassPermissionNeeded
@@ -319,7 +323,27 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     : { N: 'N', E: 'E', S: 'S', W: 'W' }
 
   return (
-    <div className="w-full" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="w-full" data-testid="qibla-tool" dir={isRTL ? 'rtl' : 'ltr'}>
+      <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
+        {isRTL
+          ? 'اختر موقع الجهاز أو أدخل الإحداثيات. طلب الموقع يبدأ عند الضغط فقط؛ وقد ترسل الإحداثيات لخدمة تسمية المكان.'
+          : 'Use device location or enter coordinates. Location lookup starts only when you choose it; coordinates may be sent to a place-name service.'}
+      </p>
+      <div className="mb-6 flex flex-wrap gap-3">
+        <button type="button" onClick={detectLocation} className="rounded-xl border px-4 py-3">
+          {isRTL ? 'استخدم موقع الجهاز' : 'Use device location'}
+        </button>
+        <button type="button" onClick={fetchByIP} className="rounded-xl border px-4 py-3">
+          {isRTL ? 'اقتراح موقع تقريبي عبر الإنترنت' : 'Suggest approximate internet location'}
+        </button>
+      </div>
+      {latitude !== null && bearing === null && !loading && (
+        <p role="status" className="mb-4 rounded-xl border p-4">
+          {isRTL
+            ? 'لا يمكن إعطاء زاوية مفيدة من هذه الإحداثيات، مثل موقع الكعبة نفسه أو النقطة المقابلة لها أو القطبين. تحقق من الموقع واستعن بتوجيه محلي موثوق.'
+            : 'A useful bearing is undefined at these coordinates, such as the Kaaba itself, its antipode or a pole. Check the location and use trusted local guidance.'}
+        </p>
+      )}
       {/* Loading state */}
       {loading && (
         <div className="flex flex-col items-center justify-center py-16">
@@ -332,7 +356,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
 
       {/* Error state */}
       {error && !loading && (
-        <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800/40 dark:bg-red-900/20 dark:text-red-400">
+        <div
+          role="alert"
+          className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800/40 dark:bg-red-900/20 dark:text-red-400"
+        >
           {error}
         </div>
       )}
@@ -360,13 +387,9 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               <button
                 type="button"
                 onClick={() => {
-                  manualLocationRef.current = true
-                  setLatitude(null)
-                  setLongitude(null)
-                  setLocationName(null)
-                  geocodeRequestRef.current++
-                  setLocationSource(null)
-                  setError(null)
+                  beginLocation()
+                  setLoading(false)
+                  document.getElementById('manual-lat')?.focus()
                 }}
                 className={`mt-2 font-semibold underline underline-offset-2 ${isRTL ? 'font-arabic' : ''}`}
               >
@@ -388,7 +411,13 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
 
           {/* SVG Compass */}
           <div className="relative mb-8">
-            <svg width="280" height="280" viewBox="0 0 280 280" className="drop-shadow-sm">
+            <svg
+              aria-hidden="true"
+              width="280"
+              height="280"
+              viewBox="0 0 280 280"
+              className="drop-shadow-sm"
+            >
               {/* Outer circle */}
               <circle
                 cx="140"
@@ -486,7 +515,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                     fontSize="9"
                     fontWeight="bold"
                   >
-                    Ka
+                    {isRTL ? 'ك' : 'Ka'}
                   </text>
                 </g>
               </g>
@@ -510,11 +539,32 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 </span>
               </div>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
-                {bearing.toFixed(1)}&deg;{' '}
+                <bdi>{bearing.toFixed(1)}&deg;</bdi>{' '}
                 {isRTL && compassDirection ? arabicDirections[compassDirection] : compassDirection}
               </p>
             </div>
 
+            <p role="status" className="text-sm text-gray-600 dark:text-gray-300">
+              {isRTL
+                ? 'الزاوية باتجاه عقارب الساعة من الشمال الحقيقي. الرسم ثابت والشمال للأعلى ما لم تصل قراءة بوصلة صالحة. أمسك الهاتف مسطحًا بوضع رأسي بعيدًا عن المعادن والمغناطيس.'
+                : 'Bearing is clockwise from true north. The diagram is north-up until a valid compass reading arrives. Hold the phone flat in portrait orientation, away from metal and magnets.'}
+            </p>
+            {isCompassActive && (
+              <p role="status" className="text-sm text-gray-600 dark:text-gray-300">
+                {isRTL
+                  ? 'قراءة بوصلة الجهاز متاحة، لكنها قد تستخدم الشمال المغناطيسي وتتأثر بالمعايرة. تحقق ببوصلة مضبوطة للشمال الحقيقي أو بتوجيه موثوق.'
+                  : 'Device heading available. It may use magnetic north and depend on calibration. Cross-check with a true-north-adjusted compass or trusted guidance.'}
+              </p>
+            )}
+            {locationAccuracy !== null && (
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {isRTL
+                  ? 'دقة الموقع التي يقدرها الجهاز: نحو '
+                  : 'Device-reported location accuracy: about '}
+                {Math.round(locationAccuracy).toLocaleString(isRTL ? 'ar' : 'en')}{' '}
+                {isRTL ? 'متر' : 'm'}
+              </p>
+            )}
             {/* Distance */}
             <div className="rounded-2xl border border-gray-200 bg-white p-6 text-center dark:border-gray-800 dark:bg-gray-900">
               <div className="flex items-center justify-center gap-2">
@@ -526,10 +576,28 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 </span>
               </div>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
-                {Math.round(distance!).toLocaleString()} {isRTL ? 'كم' : 'km'}
+                {Math.round(distance!).toLocaleString(isRTL ? 'ar' : 'en')} {isRTL ? 'كم' : 'km'}
               </p>
             </div>
 
+            <p className="text-center text-sm text-gray-600 dark:text-gray-300">
+              {isRTL ? 'الإحداثيات المستخدمة: ' : 'Coordinates used: '}
+              <bdi>
+                {latitude!.toFixed(5)}, {longitude!.toFixed(5)}
+              </bdi>
+              {' · '}
+              {locationSource === 'manual'
+                ? isRTL
+                  ? 'إدخال يدوي'
+                  : 'Manual entry'
+                : locationSource === 'device'
+                  ? isRTL
+                    ? 'موقع الجهاز'
+                    : 'Device location'
+                  : isRTL
+                    ? 'موقع الإنترنت التقريبي'
+                    : 'Approximate internet location'}
+            </p>
             {/* Location name */}
             {locationName && (
               <div className="rounded-2xl border border-gray-200 bg-white p-4 text-center dark:border-gray-800 dark:bg-gray-900">
@@ -552,8 +620,8 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                   className={`text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
                   {isRTL
-                    ? 'البوصلة الحية غير متوفرة هنا. استخدم الزاوية مع بوصلة موثوقة.'
-                    : 'Live compass is unavailable here. Use the bearing with a reliable compass.'}
+                    ? 'لا توجد قراءة بوصلة حديثة وصالحة. الرسم ثابت والشمال للأعلى.'
+                    : 'No recent valid compass heading. The diagram is fixed with north at the top.'}
                 </p>
               </div>
             )}
@@ -572,15 +640,15 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         </div>
       )}
 
-      {/* Manual input fallback — shown when no location and not loading */}
-      {latitude === null && !loading && (
+      {/* Manual entry remains available during and after every location lookup. */}
+      {
         <div className="mt-4">
           <p
             className={`mb-4 text-center text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
           >
             {isRTL ? 'أو أدخل الإحداثيات يدوياً' : 'Or enter coordinates manually'}
           </p>
-          <form onSubmit={handleManualSubmit} className="mx-auto max-w-sm space-y-3">
+          <form noValidate onSubmit={handleManualSubmit} className="mx-auto max-w-sm space-y-3">
             <div>
               <label
                 htmlFor="manual-lat"
@@ -591,6 +659,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               <input
                 id="manual-lat"
                 type="number"
+                dir="ltr"
                 step="any"
                 min="-90"
                 max="90"
@@ -610,6 +679,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               <input
                 id="manual-lng"
                 type="number"
+                dir="ltr"
                 step="any"
                 min="-180"
                 max="180"
@@ -640,7 +710,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
             </button>
           </div>
         </div>
-      )}
+      }
     </div>
   )
 }

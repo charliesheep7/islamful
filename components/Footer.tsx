@@ -30,7 +30,7 @@ const translations = {
   },
 }
 
-export default function Footer() {
+export default function Footer({ year }: { year: number }) {
   const { currentLang } = useLocale()
   const t = translations[currentLang as 'en' | 'ar'] || translations.en
   const liveTools = tools.filter((t) => t.status === 'live')
@@ -116,7 +116,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-800">
           <p className="text-center text-sm text-gray-400 dark:text-gray-500">
-            &copy; {new Date().getFullYear()} {siteMetadata.headerTitle}. {t.rights}
+            &copy; {year} {siteMetadata.headerTitle}. {t.rights}
           </p>
         </div>
       </div>

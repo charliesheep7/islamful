@@ -8,9 +8,11 @@ import cities, { getCityBySlug, getRelatedCities } from '@/data/cities'
 import { fetchPrayerTimes } from '@/utils/prayer-api'
 import { buildLanguageAlternates } from 'app/seo'
 import siteMetadata from '@/data/siteMetadata'
-import { PRAYER_METHODS } from '@/components/tools/PrayerTimes'
-import type { PrayerTimesData } from '@/components/tools/PrayerTimes'
+import { PRAYER_METHODS } from '@/data/prayer-methods'
+import type { PrayerSchedule } from '@/utils/prayer-schedule'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
+
+export const revalidate = 3600
 
 interface Props {
   params: Promise<{ city: string }>
@@ -56,11 +58,12 @@ export default async function CityPrayerTimesPage({ params }: Props) {
 
   const siteUrl = siteMetadata.siteUrl
 
-  const prayerData: PrayerTimesData | null = await fetchPrayerTimes(
+  const prayerData: PrayerSchedule | null = await fetchPrayerTimes(
     city.lat,
     city.lng,
     city.method,
-    `${city.name}, ${city.country}`
+    `${city.name}, ${city.country}`,
+    city.timezone
   )
 
   const relatedCities = getRelatedCities(city.slug)
@@ -117,11 +120,18 @@ export default async function CityPrayerTimesPage({ params }: Props) {
 
       {/* The main widget — interactive, with countdown */}
       <PrayerTimesWidget
+        latitude={city.lat}
+        longitude={city.lng}
+        timezone={city.timezone}
         prayerData={prayerData}
         cityName={city.name}
         cityCountry={city.country}
         cityMethod={String(city.method)}
       />
+
+      <Link className="mt-6 inline-block underline" href={`/ramadan-calendar/${city.slug}`}>
+        Ramadan calendar and fasting times in {city.name}
+      </Link>
 
       {/* Related cities */}
       <section className="mt-14">

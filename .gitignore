@@ -21,6 +21,8 @@ public/sitemap.xml
 # production
 /build
 *.xml
+!data/quran/source/tanzil-metadata.xml
+!data/quran/source/tanzil-uthmani.xml
 
 # rss feed
 /public/feed.xml

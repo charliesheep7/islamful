@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import ZakatCalculator from '@/components/tools/ZakatCalculator'
+import ZakatGuide from '@/components/tools/ZakatGuide'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
@@ -7,7 +8,7 @@ import { buildLanguageAlternates } from 'app/seo'
 export const metadata: Metadata = {
   title: 'Zakat Calculator — Calculate Your Zakat Obligation',
   description:
-    'Calculate your zakat accurately based on cash, gold, silver, investments, and debts. Supports gold and silver nisab thresholds.',
+    'Estimate Zakat on savings, gold, silver and eligible investments. Choose your nisab, prices and lunar-year status, with a transparent calculation and downloadable summary.',
   alternates: buildLanguageAlternates('/zakat-calculator'),
 }
 
@@ -33,11 +34,13 @@ export default function ZakatCalculatorPage() {
           Zakat Calculator
         </h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-          Calculate your zakat obligation accurately. Enter your assets below.
+          Estimate your Zakat on savings, gold and other eligible wealth. Choose your nisab and see
+          the full calculation.
         </p>
       </div>
 
-      <ZakatCalculator lang="en" />
+      <ZakatCalculator lang="en" initialDate={new Date().toISOString().slice(0, 10)} />
+      <ZakatGuide lang="en" />
     </div>
   )
 }

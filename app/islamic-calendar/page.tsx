@@ -1,8 +1,12 @@
+import { calendarSnapshot, DEFAULT_CALENDAR } from '@/data/islamic-calendar'
 import { Metadata } from 'next'
 import IslamicCalendar from '@/components/tools/IslamicCalendar'
+import CalendarGuide from '@/components/tools/CalendarGuide'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Islamic Calendar — Hijri to Gregorian Date Converter',
@@ -12,6 +16,8 @@ export const metadata: Metadata = {
 }
 
 export default function IslamicCalendarPage() {
+  const initialNow = new Date().toISOString()
+  const initialSnapshot = calendarSnapshot(initialNow.slice(0, 10), DEFAULT_CALENDAR)
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <Breadcrumbs items={[{ name: 'Islamic Calendar', href: '/islamic-calendar' }]} />
@@ -37,7 +43,8 @@ export default function IslamicCalendarPage() {
         </p>
       </div>
 
-      <IslamicCalendar lang="en" />
+      <IslamicCalendar lang="en" initialNow={initialNow} initialSnapshot={initialSnapshot} />
+      <CalendarGuide lang="en" />
     </div>
   )
 }

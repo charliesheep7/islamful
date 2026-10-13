@@ -1,8 +1,7 @@
-import Hero from '@/components/landing/Hero'
-import FeaturedTool from '@/components/landing/FeaturedTool'
+import TodayDashboard from '@/components/landing/TodayDashboard'
+import { todayDate } from '@/utils/today'
 import ToolsGrid from '@/components/landing/ToolsGrid'
 import GamesGrid from '@/components/landing/GamesGrid'
-import CTA from '@/components/landing/CTA'
 import FAQ from '@/components/landing/FAQ'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import type { Dictionary } from '@/types/dictionary'
@@ -12,7 +11,7 @@ export const metadata = {
   ...genPageMetadata({
     title: 'Islamful — Every Tool a Muslim Needs',
     description:
-      'Smart Islamic tools powered by AI — prayer times, halal checker, Quran, dua, dhikr, and more. Everything a Muslim needs, all in one place.',
+      'Daily Muslim tools in one place: prayer times, Quran reading and audio, morning and evening adhkar, Qibla, Islamic calendar and zakat calculator. Free on the web.',
     alternates: buildLanguageAlternates('/'),
   }),
   title: {
@@ -25,12 +24,20 @@ export default function Page() {
 
   return (
     <div className="flex flex-col">
-      <Hero lang="en" dict={dict} />
-      <FeaturedTool lang="en" dict={dict} />
+      <TodayDashboard
+        lang="en"
+        initialDate={todayDate(
+          new Date().toISOString(),
+          { method: 'islamic-umalqura', adjustment: 0, timeZone: 'UTC' },
+          'en'
+        )}
+      />
       <ToolsGrid lang="en" dict={dict} />
       <GamesGrid />
-      <CTA lang="en" dict={dict} />
       <FAQ lang="en" dict={dict} />
     </div>
   )
 }
+
+// Keep the no-JavaScript UTC reference date fresh; the dashboard uses the live client date.
+export const revalidate = 300

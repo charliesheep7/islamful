@@ -2,6 +2,10 @@
 export const KAABA_LAT = 21.4225
 export const KAABA_LNG = 39.8262
 
+export function validCoordinates(lat: number, lng: number): boolean {
+  return Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180
+}
+
 /** Convert degrees to radians */
 function toRad(deg: number): number {
   return (deg * Math.PI) / 180
@@ -19,7 +23,8 @@ function toDeg(rad: number): number {
  *
  * Returns bearing in degrees normalized to 0-360.
  */
-export function calculateQiblaBearing(lat: number, lng: number): number {
+export function calculateQiblaBearing(lat: number, lng: number): number | null {
+  if (!validCoordinates(lat, lng) || Math.abs(lat) === 90) return null
   const phi1 = toRad(lat)
   const phi2 = toRad(KAABA_LAT)
   const deltaLambda = toRad(KAABA_LNG - lng)
@@ -28,6 +33,8 @@ export function calculateQiblaBearing(lat: number, lng: number): number {
   const x =
     Math.cos(phi1) * Math.sin(phi2) - Math.sin(phi1) * Math.cos(phi2) * Math.cos(deltaLambda)
 
+  // Coincident and antipodal points have no unique initial direction.
+  if (Math.hypot(x, y) < 1e-10) return null
   const bearing = toDeg(Math.atan2(y, x))
 
   // Normalize to 0-360
@@ -39,6 +46,7 @@ export function calculateQiblaBearing(lat: number, lng: number): number {
  * Returns the distance in kilometers.
  */
 export function distanceToKaaba(lat: number, lng: number): number {
+  if (!validCoordinates(lat, lng)) return NaN
   const R = 6371 // Earth's radius in km
 
   const phi1 = toRad(lat)
@@ -50,7 +58,8 @@ export function distanceToKaaba(lat: number, lng: number): number {
     Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
     Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2)
 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  const clamped = Math.min(1, Math.max(0, a))
+  const c = 2 * Math.atan2(Math.sqrt(clamped), Math.sqrt(1 - clamped))
 
   return R * c
 }

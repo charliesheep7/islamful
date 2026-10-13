@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import QiblaFinder from '@/components/tools/QiblaFinder'
+import QiblaGuide from '@/components/tools/QiblaGuide'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
@@ -59,138 +60,7 @@ export default function QiblaFinderPage() {
 
       <QiblaFinder lang="en" />
 
-      {/* FAQPage JSON-LD */}
-      <JsonLd
-        data={{
-          '@type': 'FAQPage',
-          mainEntity: [
-            {
-              '@type': 'Question',
-              name: 'What is the Qibla?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'The Qibla is the direction that Muslims face during prayer (salah). It points toward the Kaaba in Masjid al-Haram in Makkah, Saudi Arabia.',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'How is the Qibla direction calculated?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'The Qibla direction is calculated using the great circle bearing formula from spherical trigonometry. It finds the shortest path on Earth between your location and the Kaaba (21.4225°N, 39.8262°E).',
-              },
-            },
-            {
-              '@type': 'Question',
-              name: 'Do I need a physical compass?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'On mobile devices with a built-in compass, this tool provides a live compass that points toward the Qibla. On desktop, it shows the bearing angle so you can use a physical compass or simply know the direction.',
-              },
-            },
-          ],
-        }}
-      />
-
-      {/* SEO content section */}
-      <section className="mt-16 space-y-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">What Is the Qibla?</h2>
-        <div className="prose prose-gray dark:prose-invert max-w-none">
-          <p>
-            The Qibla (Arabic: قِبْلَة) is the direction that Muslims around the world face when
-            performing their daily prayers (salah). It points toward the Kaaba, the sacred cubic
-            structure located at the center of Masjid al-Haram in Makkah, Saudi Arabia. Facing the
-            Qibla is a fundamental requirement for the validity of prayer in Islam, and it serves as
-            a powerful symbol of the unity of the Muslim ummah — no matter where they are on Earth,
-            all Muslims turn toward the same point in worship.
-          </p>
-
-          <h3>The History of the Qibla</h3>
-          <p>
-            In the early years of Islam, Muslims initially prayed facing Jerusalem (Bayt al-Maqdis),
-            which was the Qibla for approximately 16 to 17 months after the Prophet Muhammad (peace
-            be upon him) migrated to Madinah. The Prophet (peace be upon him) longed to face the
-            Kaaba, the house built by Prophet Ibrahim (Abraham) and his son Ismail (peace be upon
-            them both). Allah then revealed the command to change the Qibla direction in Surah
-            Al-Baqarah:
-          </p>
-          <blockquote>
-            &ldquo;We have certainly seen the turning of your face toward the heaven, and We will
-            surely turn you to a qiblah with which you will be pleased. So turn your face toward
-            al-Masjid al-Haram. And wherever you are, turn your faces toward it.&rdquo; — Quran
-            2:144
-          </blockquote>
-          <p>
-            This change of Qibla from Jerusalem to Makkah was a defining moment in Islamic history.
-            It established the Kaaba as the spiritual center for Muslims and distinguished the
-            Muslim identity. The event is commemorated to this day, and the mosque in Madinah where
-            the revelation occurred is known as Masjid al-Qiblatain (the Mosque of the Two Qiblas).
-          </p>
-
-          <h3>How Is the Qibla Direction Calculated?</h3>
-          <p>
-            The Qibla direction is calculated using the great circle bearing formula from spherical
-            trigonometry. Unlike a straight line on a flat map, the great circle method finds the
-            shortest path across the curved surface of the Earth between your location and the Kaaba
-            at coordinates 21.4225&deg;N, 39.8262&deg;E. The formula uses the latitudes and
-            longitudes of both points to determine the initial bearing you should face.
-          </p>
-          <p>
-            This is the most accurate method for determining the Qibla, especially for locations far
-            from Makkah. For example, Muslims in North America typically face northeast (not east or
-            southeast as a flat map might suggest), because the great circle route to Makkah arcs
-            northward across the Atlantic. Similarly, Muslims in Japan face west-northwest, and
-            Muslims in Australia face northwest.
-          </p>
-
-          <h3>Tips for Finding the Qibla Without a Compass</h3>
-          <p>
-            There are several traditional and practical methods for determining the Qibla direction:
-          </p>
-          <ul>
-            <li>
-              <strong>The Sun:</strong> In many locations, you can use the position of the sun at
-              specific times to determine the approximate Qibla. Twice a year (around May 28 and
-              July 16), the sun is directly above the Kaaba at solar noon, meaning your shadow will
-              point exactly away from the Qibla at that moment.
-            </li>
-            <li>
-              <strong>Stars:</strong> The North Star (Polaris) indicates north, from which you can
-              estimate the Qibla based on your geographic location.
-            </li>
-            <li>
-              <strong>Mosque orientation:</strong> If you are near a mosque, the mihrab (prayer
-              niche) always faces the Qibla direction.
-            </li>
-            <li>
-              <strong>Ask locals:</strong> In Muslim-majority areas, local residents will know the
-              general Qibla direction.
-            </li>
-            <li>
-              <strong>This tool:</strong> Use our Qibla Finder on your mobile phone for a live
-              compass that rotates in real time, or on desktop to see the exact bearing angle.
-            </li>
-          </ul>
-
-          <h3>Why Accurate Qibla Direction Matters</h3>
-          <p>
-            While scholars agree that a reasonable effort to face the Qibla is sufficient —
-            especially when the exact direction is difficult to determine — knowing the bearing
-            helps you face the Kaaba. This tool calculates the bearing from your coordinates using
-            the great circle method. Actual accuracy still depends on your location estimate and
-            your phone's compass calibration. If the tool shows an approximate internet location,
-            use your device location or enter coordinates before relying on the direction.
-          </p>
-          <p>
-            For Muslims living in regions where the Qibla direction is not commonly known or where
-            it might be counterintuitive (such as the Americas, East Asia, or the Pacific), having a
-            reliable digital tool is invaluable. Our Qibla Finder requires no app installation. The
-            bearing is calculated in your browser after finding your location; external services may
-            be used to suggest a location and city name. A live compass appears on devices that
-            provide reliable heading data.
-          </p>
-        </div>
-      </section>
+      <QiblaGuide lang="en" />
 
       <CrossToolLinks currentTool="qibla-finder" />
     </div>

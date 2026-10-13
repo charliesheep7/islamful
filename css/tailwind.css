@@ -319,3 +319,9 @@ input:-webkit-autofill:focus {
     padding-inline-end: 1rem;
   }
 }
+
+.quran-text {
+  font-family: var(--font-quran), var(--font-noto-sans-arabic), serif;
+  font-weight: 400;
+  letter-spacing: normal;
+}

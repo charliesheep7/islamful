@@ -42,24 +42,28 @@
     "contactSupport": "Contact Us",
     "items": [
       {
-        "question": "What is Islamful?",
-        "answer": "Islamful is an all-in-one Islamic tools platform that provides prayer times, a halal/haram checker, Quran reader, dua collection, dhikr counter, and more — all free to use on the web. Think of it as your complete Islamic companion for daily worship and Islamic living."
+        "question": "What can I do with Islamful each day?",
+        "answer": "Check your prayer timetable, read or listen to the Quran, return to a saved verse, follow morning and evening adhkar, find the Qibla and check the Islamic date. Zakat and other tools are also available when you need them."
       },
       {
-        "question": "How accurate are the prayer times?",
-        "answer": "Our prayer times are powered by the Aladhan API, which supports multiple calculation methods including ISNA, MWL, Egyptian, and Umm Al-Qura. You can choose the method used by your local mosque or Islamic authority for the most accurate times in your area."
+        "question": "Do I need an account or an app?",
+        "answer": "No. These tools are free to use in your browser without an account. Bookmark the homepage to return to your daily tools."
       },
       {
-        "question": "How does the Haram Checker work?",
-        "answer": "The Haram Checker lets you search for food items, ingredients, or products to find out whether they are halal, haram, or doubtful (mashbooh) according to Islamic guidelines. Each result includes an explanation and references to help you make informed decisions."
+        "question": "Where are my city and reading progress saved?",
+        "answer": "Your selected homepage city, Quran place and adhkar counts are stored locally in this browser when storage is available. They are shared between the English and Arabic versions on the same site, but do not sync between devices. Clearing browser data removes them."
       },
       {
-        "question": "Is Islamful free to use?",
-        "answer": "Yes. All core tools on Islamful are completely free. We believe every Muslim should have easy access to essential Islamic tools without barriers. We sustain the platform through ethical advertising and optional premium features."
+        "question": "How should I choose prayer times?",
+        "answer": "Choose your city and the calculation method approved by your local mosque. Times are calculated prayer start times, not congregation times. Fajr and Isha can differ between methods, especially at high latitudes. Check the displayed date when an update fails."
       },
       {
-        "question": "What tools are coming next?",
-        "answer": "We are actively building a Quran reader with translations and tafsir, a comprehensive dua collection, a dhikr counter, the 99 Names of Allah with audio, an Islamic (Hijri) calendar, and a zakat calculator. Follow us for updates as we launch each tool."
+        "question": "Why can the Islamic date differ locally?",
+        "answer": "The calendar uses your selected calculation method and day adjustment. Local moon-sighting decisions can differ. On this homepage the time zone follows your selected prayer city, then your saved calendar setting, then your device. The date after Maghrib is shown separately."
+      },
+      {
+        "question": "What do the adhkar progress counts mean?",
+        "answer": "They count cards you explicitly marked complete for the device’s local day. Morning and evening progress are separate. Counts do not confirm that a prayer was performed or that worship was accepted."
       }
     ]
   }

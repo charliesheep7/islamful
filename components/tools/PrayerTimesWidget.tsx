@@ -1,47 +1,33 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { MapPin, RefreshCw } from 'lucide-react'
-import { to12h, parsePrayerResponse, PRAYER_METHODS } from './PrayerTimes'
-import type { PrayerTimesData, PrayerTime } from './PrayerTimes'
+import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
+import {
+  fetchPrayerSchedule,
+  localDateISO,
+  upcomingPrayer,
+  type PrayerSchedule,
+} from '@/utils/prayer-schedule'
 
 interface Props {
-  prayerData: PrayerTimesData | null
+  prayerData: PrayerSchedule | null
   cityName: string
   cityCountry: string
   cityMethod: string
+  latitude?: number
+  longitude?: number
+  timezone: string
+  lang?: 'en' | 'ar'
+  onMethodChange?: (method: string) => void
+  showFasting?: boolean
 }
 
-function parseTime(timeStr: string): Date {
-  const [h, m] = timeStr.split(':').map(Number)
-  const d = new Date()
-  d.setHours(h, m, 0, 0)
-  return d
-}
-
-function getUpcomingIndex(prayers: PrayerTime[]): number {
-  const now = new Date()
-  const salahs = [0, 2, 3, 4, 5] // skip Sunrise
-  for (const i of salahs) {
-    if (parseTime(prayers[i].time) > now) return i
-  }
-  return 0
-}
-
-function formatCountdown(ms: number): string {
-  if (ms <= 0) return '00:00:00'
-  const totalSec = Math.floor(ms / 1000)
-  const h = Math.floor(totalSec / 3600)
-  const m = Math.floor((totalSec % 3600) / 60)
-  const s = totalSec % 60
-  return [h, m, s].map((v) => String(v).padStart(2, '0')).join(':')
-}
-
-function todayDate(): string {
-  const d = new Date()
-  const dd = String(d.getDate()).padStart(2, '0')
-  const mm = String(d.getMonth() + 1).padStart(2, '0')
-  return `${dd}-${mm}-${d.getFullYear()}`
+function countdown(milliseconds: number) {
+  const seconds = Math.max(0, Math.floor(milliseconds / 1000))
+  return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
+    .map((value) => String(value).padStart(2, '0'))
+    .join(':')
 }
 
 export default function PrayerTimesWidget({
@@ -49,161 +35,201 @@ export default function PrayerTimesWidget({
   cityName,
   cityCountry,
   cityMethod,
+  latitude,
+  longitude,
+  timezone,
+  lang = 'en',
+  onMethodChange,
+  showFasting = false,
 }: Props) {
-  const [data, setData] = useState<PrayerTimesData | null>(prayerData)
-  const [countdown, setCountdown] = useState('')
-  const [upcomingIdx, setUpcomingIdx] = useState<number | null>(null)
-  const [method, setMethod] = useState(cityMethod)
-  const [showMethodPicker, setShowMethodPicker] = useState(false)
-  const [reloading, setReloading] = useState(false)
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const ar = lang === 'ar'
+  const [data, setData] = useState(prayerData)
+  const [now, setNow] = useState<number | null>(null)
+  const [requestedMethod, setRequestedMethod] = useState(cityMethod)
+  const [retry, setRetry] = useState(0)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const day = now === null ? null : localDateISO(timezone, new Date(now))
 
-  // Countdown tick
+  useEffect(() => setRequestedMethod(cityMethod), [cityMethod])
+
   useEffect(() => {
-    if (!data) return
-    const update = () => {
-      const idx = getUpcomingIndex(data.prayers)
-      setUpcomingIdx(idx)
-      const next = parseTime(data.prayers[idx].time)
-      const now = new Date()
-      let diff = next.getTime() - now.getTime()
-      if (diff < 0) diff += 24 * 60 * 60 * 1000
-      setCountdown(formatCountdown(diff))
-    }
-    update()
-    timerRef.current = setInterval(update, 1000)
+    const tick = () => setNow(Date.now())
+    tick()
+    const timer = setInterval(tick, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    if (!day) return
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 15000)
+    let active = true
+    setLoading(true)
+    setError(false)
+    fetchPrayerSchedule(
+      {
+        ...(latitude !== undefined && longitude !== undefined
+          ? { lat: latitude, lng: longitude }
+          : { city: cityName, country: cityCountry }),
+        timezone,
+        name: `${cityName}, ${cityCountry}`,
+      },
+      requestedMethod,
+      new Date(),
+      { signal: controller.signal }
+    )
+      .then((result) => {
+        if (active) setData(result)
+      })
+      .catch(() => {
+        if (active) setError(true)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+        clearTimeout(timeout)
+      })
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
+      active = false
+      controller.abort()
+      clearTimeout(timeout)
     }
-  }, [data])
+  }, [day, requestedMethod, retry, latitude, longitude, timezone, cityName, cityCountry])
 
-  // Refetch when method changes
-  const refetch = async (newMethod: string) => {
-    setReloading(true)
-    try {
-      const res = await fetch(
-        `https://api.aladhan.com/v1/timingsByCity/${todayDate()}?city=${encodeURIComponent(cityName)}&country=${encodeURIComponent(cityCountry)}&method=${newMethod}`,
-        { redirect: 'follow' }
-      )
-      const json = await res.json()
-      if (json.code === 200) {
-        setData(parsePrayerResponse(json.data, `${cityName}, ${cityCountry}`))
-      }
-    } catch {
-      /* keep existing data */
-    }
-    setReloading(false)
-  }
-
-  const handleMethodChange = (newMethod: string) => {
-    setMethod(newMethod)
-    setShowMethodPicker(false)
-    refetch(newMethod)
-  }
-
-  if (!data || upcomingIdx === null) return null
-
-  const nextPrayer = data.prayers[upcomingIdx]
+  const stale = !!data && day !== null && data.dateISO !== day
+  const next = data && now !== null ? upcomingPrayer(data, now) : null
+  const methods = ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS
 
   return (
-    <div>
-      {/* Next prayer banner */}
-      <div className="mb-5 flex items-center justify-between rounded-2xl bg-[var(--color-primary-700)] px-5 py-4 text-white">
-        <div>
-          <p className="text-xs font-medium tracking-widest text-green-200 uppercase">
-            Next Prayer
+    <div aria-busy={loading}>
+      {(error || !data || stale) && (
+        <div role="status" className="mb-4 rounded-xl border border-amber-300 p-4 text-sm">
+          <p>
+            {loading
+              ? ar
+                ? 'جارٍ تحديث المواقيت…'
+                : 'Updating prayer times…'
+              : ar
+                ? 'تعذر تحديث المواقيت. راجع التاريخ المعروض أو جدول المسجد المحلي.'
+                : 'Could not update prayer times. Check the displayed date or your local mosque timetable.'}
           </p>
-          <p className="mt-0.5 text-xl font-bold">{nextPrayer.name}</p>
-          <p className="font-arabic text-sm text-green-200">{nextPrayer.nameAr}</p>
-        </div>
-        <div className="text-right">
-          <p className="font-mono text-3xl font-bold tracking-tight tabular-nums">{countdown}</p>
-          <p className="mt-0.5 text-sm text-green-200">{to12h(nextPrayer.time)}</p>
-        </div>
-      </div>
-
-      {/* Prayer cards */}
-      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-6">
-        {data.prayers.map((prayer, i) => {
-          const isNext = i === upcomingIdx
-          const isDim = i < upcomingIdx || i === 1 // past or sunrise
-
-          return (
-            <div
-              key={prayer.name}
-              className={`flex flex-col items-center rounded-2xl px-2 py-5 text-center ${
-                isNext
-                  ? 'bg-[var(--color-primary-100)] ring-2 ring-[var(--color-primary-400)] dark:bg-[var(--color-primary-900)]/40'
-                  : isDim
-                    ? 'bg-[var(--color-cream-200)] dark:bg-gray-900/40'
-                    : 'bg-[var(--color-cream-50)] dark:bg-gray-800/50'
-              }`}
-            >
-              <p
-                className={`text-sm font-bold ${
-                  isNext
-                    ? 'text-[var(--color-primary-700)] dark:text-[var(--color-primary-300)]'
-                    : isDim
-                      ? 'text-[var(--color-cream-500)]'
-                      : 'text-gray-900 dark:text-white'
-                }`}
-              >
-                {prayer.name}
-              </p>
-              <p
-                className={`font-arabic text-xs ${isDim && !isNext ? 'text-[var(--color-cream-500)]' : 'text-[var(--color-cream-600)]'}`}
-              >
-                {prayer.nameAr}
-              </p>
-              <p
-                className={`mt-3 font-mono text-base font-bold ${
-                  isNext
-                    ? 'text-[var(--color-primary-700)] dark:text-[var(--color-primary-300)]'
-                    : isDim
-                      ? 'text-[var(--color-cream-500)]'
-                      : 'text-gray-900 dark:text-white'
-                }`}
-              >
-                {to12h(prayer.time)}
-              </p>
-            </div>
-          )
-        })}
-      </div>
-
-      {/* Method picker */}
-      <div className="mt-4 flex items-center justify-between">
-        <div className="flex items-center gap-1.5 text-xs text-[var(--color-cream-600)] dark:text-gray-400">
-          <MapPin className="h-3.5 w-3.5" />
-          {cityName}, {cityCountry}
-        </div>
-        <button
-          onClick={() => setShowMethodPicker(!showMethodPicker)}
-          disabled={reloading}
-          className="flex items-center gap-1.5 text-xs text-[var(--color-cream-600)] transition hover:text-gray-700 disabled:opacity-50 dark:text-gray-400"
-        >
-          {reloading && <RefreshCw className="h-3 w-3 animate-spin" />}
-          {PRAYER_METHODS[method] || 'Calculation method'}
-        </button>
-      </div>
-
-      {showMethodPicker && (
-        <div className="mt-2 rounded-xl border border-[var(--color-cream-300)] bg-white p-1 shadow-md dark:border-gray-700 dark:bg-gray-900">
-          {Object.entries(PRAYER_METHODS).map(([key, label]) => (
-            <button
-              key={key}
-              onClick={() => handleMethodChange(key)}
-              className={`w-full rounded-lg px-3 py-2 text-left text-sm transition hover:bg-[var(--color-cream-100)] dark:hover:bg-gray-800 ${
-                method === key
-                  ? 'font-semibold text-[var(--color-primary-600)] dark:text-[var(--color-primary-400)]'
-                  : 'text-gray-700 dark:text-gray-300'
-              }`}
-            >
-              {label}
+          {!loading && (
+            <button onClick={() => setRetry((n) => n + 1)} className="mt-2 underline">
+              {ar ? 'حاول مجددًا' : 'Try again'}
             </button>
-          ))}
+          )}
         </div>
       )}
+      {data && (
+        <>
+          <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">
+            {data.dateISO} · {timezone} · {ar ? 'بتنسيق 24 ساعة' : '24-hour local time'}
+          </p>
+          {next && now !== null && (
+            <div className="mb-5 flex items-center justify-between rounded-2xl bg-[var(--color-primary-700)] px-5 py-4 text-white">
+              <div>
+                <p className="text-xs text-green-200">{ar ? 'الصلاة القادمة' : 'Next Prayer'}</p>
+                <p className="mt-1 text-xl font-bold">{ar ? next.nameAr : next.name}</p>
+                {localDateISO(timezone, new Date(next.at!)) !== data.dateISO && (
+                  <p className="text-sm">{ar ? 'غدًا' : 'Tomorrow'}</p>
+                )}
+              </div>
+              <div className="text-end">
+                <p className="font-mono text-3xl font-bold tabular-nums" dir="ltr">
+                  {countdown(next.at! - now)}
+                </p>
+                <p className="mt-1 text-sm" dir="ltr">
+                  {next.time}
+                </p>
+              </div>
+            </div>
+          )}
+          <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-6">
+            {data.prayers.map((prayer) => {
+              const isNext = next?.at === prayer.at && prayer.at !== null
+              return (
+                <div
+                  key={prayer.name}
+                  className={`rounded-2xl px-2 py-5 text-center ${isNext ? 'bg-[var(--color-primary-100)] ring-2 ring-[var(--color-primary-400)] dark:bg-gray-800' : 'bg-[var(--color-cream-50)] dark:bg-gray-900'}`}
+                >
+                  <p className="text-sm font-bold">{ar ? prayer.nameAr : prayer.name}</p>
+                  {!ar && (
+                    <p className="font-arabic text-xs text-gray-600 dark:text-gray-300">
+                      {prayer.nameAr}
+                    </p>
+                  )}
+                  <p className="mt-3 font-mono text-base font-bold" dir="ltr">
+                    {prayer.time}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
+          <p className="mt-3 text-xs text-gray-600 dark:text-gray-300">
+            {ar ? 'طريقة الحساب المعروضة: ' : 'Displayed calculation method: '}
+            {methods[data.method] || data.method}
+          </p>
+          {showFasting && !stale && (
+            <div
+              className="mt-4 rounded-xl border border-gray-200 p-4 dark:border-gray-700"
+              data-testid="fasting-times"
+            >
+              <h3 className="font-semibold">
+                {ar ? 'إن كنت صائمًا اليوم' : 'If you are fasting today'}
+              </h3>
+              <p className="mt-1 text-sm">
+                {ar ? 'الفجر: ' : 'Fajr: '}
+                {data.prayers.find((p) => p.name === 'Fajr')?.time || '—'}
+                {' · '}
+                {ar ? 'المغرب: ' : 'Maghrib: '}
+                {data.prayers.find((p) => p.name === 'Maghrib')?.time || '—'}
+              </p>
+              <p className="mt-1 text-xs">
+                {ar
+                  ? 'من الجدول المعروض؛ اتبع التوقيت المعتمد محليًا للصيام.'
+                  : 'From the displayed timetable; follow your locally approved fasting times.'}
+              </p>
+            </div>
+          )}
+          {(!data.tomorrow.length || data.prayers.some((prayer) => prayer.at === null)) && (
+            <p className="mt-2 text-sm" role="status">
+              {ar
+                ? 'بعض المواقيت غير متاحة. تحقق من الجدول المحلي؛ لا نقدر المواقيت المفقودة.'
+                : 'Some times are unavailable. Check a local timetable; missing times are not estimated here.'}
+            </p>
+          )}
+        </>
+      )}
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+        <p className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-300">
+          <MapPin className="h-3.5 w-3.5" />
+          {cityName}, {cityCountry}
+        </p>
+        <label className="text-sm">
+          <span className="mb-1 block">{ar ? 'طريقة الحساب' : 'Calculation method'}</span>
+          <select
+            aria-label={ar ? 'طريقة الحساب' : 'Calculation method'}
+            value={requestedMethod}
+            onChange={(event) => {
+              setRequestedMethod(event.target.value)
+              onMethodChange?.(event.target.value)
+            }}
+            className="max-w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 dark:bg-gray-900 dark:text-white"
+          >
+            {Object.entries(methods).map(([key, label]) => (
+              <option key={key} value={key}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+        {loading && <RefreshCw className="h-4 w-4 animate-spin" aria-hidden="true" />}
+      </div>
+      <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
+        {ar
+          ? 'هذه أوقات محسوبة لبداية الصلاة، وليست أوقات الإقامة. قد تختلف طرق حساب الفجر والعشاء، خاصة في خطوط العرض العليا؛ اتبع إرشادات مسجدك المحلي.'
+          : 'Calculated prayer start times, not mosque congregation times. Fajr and Isha methods can differ, especially at high latitudes; follow your local mosque’s guidance.'}
+      </p>
     </div>
   )
 }

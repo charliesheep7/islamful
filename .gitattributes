@@ -200,3 +200,6 @@ Procfile          text
 
 # Ignore files (like .npmignore or .gitignore)
 *.*ignore         text
+
+# Preserve publisher source bytes, including original mixed line endings.
+data/quran/source/* -text

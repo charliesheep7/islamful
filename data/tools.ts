@@ -29,6 +29,42 @@ export interface Tool {
 
 const tools: Tool[] = [
   {
+    slug: 'fasting-times',
+    name: 'Suhoor & Iftar Times',
+    nameAr: 'مواقيت السحور والإفطار',
+    description:
+      'Find Fajr and Maghrib for a city or enter your local timetable, with today’s countdown.',
+    descriptionAr: 'اعرف الفجر والمغرب لمدينة أو أدخل جدولك المحلي مع العد التنازلي لليوم.',
+    icon: Clock,
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+    status: 'live',
+  },
+  {
+    slug: 'ramadan-calendar',
+    name: 'Ramadan Calendar',
+    nameAr: 'تقويم رمضان',
+    description:
+      'Plan and download a city fasting timetable using calculated or locally entered Ramadan dates.',
+    descriptionAr: 'خطط لجدول الصيام في مدينتك ونزّله بتواريخ رمضان المحسوبة أو المدخلة محليًا.',
+    icon: Calendar,
+    iconBg: 'bg-indigo-100 dark:bg-indigo-900/30',
+    iconColor: 'text-indigo-600 dark:text-indigo-400',
+    status: 'live',
+  },
+  {
+    slug: 'last-third-of-night',
+    name: 'Tonight Planner',
+    nameAr: 'مواقيت ليلتك',
+    description:
+      'Find the last third of the night, Islamic midnight and Fajr for your city or local timetable.',
+    descriptionAr: 'احسب الثلث الأخير ومنتصف الليل والفجر حسب مدينتك أو جدولك المحلي.',
+    icon: Clock,
+    iconBg: 'bg-indigo-100 dark:bg-indigo-900/30',
+    iconColor: 'text-indigo-600 dark:text-indigo-400',
+    status: 'live',
+  },
+  {
     slug: 'answers',
     name: 'Quran Answers',
     nameAr: 'إجابات القرآن',
@@ -50,6 +86,18 @@ const tools: Tool[] = [
     descriptionAr:
       'مواقيت صلاة دقيقة لأي موقع حول العالم. لا تفوّت الفجر أو الظهر أو العصر أو المغرب أو العشاء.',
     icon: Clock,
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+    status: 'live',
+  },
+  {
+    slug: 'quran',
+    name: 'Quran Reader',
+    nameAr: 'القرآن الكريم',
+    description:
+      'Read all 114 surahs with Arabic text, English translation, recitation, repeat controls and saved reading places.',
+    descriptionAr: 'اقرأ السور الـ114 مع التلاوة والتكرار والعلامات المرجعية وحفظ موضع قراءتك.',
+    icon: BookOpen,
     iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
     iconColor: 'text-emerald-600 dark:text-emerald-400',
     status: 'live',
@@ -80,13 +128,26 @@ const tools: Tool[] = [
     status: 'live',
   },
   {
+    slug: 'adhkar',
+    name: 'Daily Adhkar',
+    nameAr: 'الأذكار اليومية',
+    description:
+      'Morning, evening and after-prayer remembrance with sourced Arabic texts, meanings and saved counters.',
+    descriptionAr:
+      'أذكار الصباح والمساء وبعد الصلاة مع النصوص والمصادر والمعاني والعدادات المحفوظة.',
+    icon: Repeat,
+    iconBg: 'bg-teal-100 dark:bg-teal-900/30',
+    iconColor: 'text-teal-600 dark:text-teal-400',
+    status: 'live',
+  },
+  {
     slug: 'dhikr',
     name: 'Dhikr Counter',
     nameAr: 'عداد الأذكار',
     description:
-      'Digital tasbeeh counter for your daily dhikr. Track SubhanAllah, Alhamdulillah, Allahu Akbar, and custom dhikr.',
+      'Digital tasbeeh counter for your daily dhikr. Track SubhanAllah, Alhamdulillah, Allahu Akbar, and the final tahlil.',
     descriptionAr:
-      'عداد تسبيح رقمي لأذكارك اليومية. تتبّع سبحان الله والحمد لله والله أكبر وأذكار مخصصة.',
+      'عداد تسبيح رقمي لأذكارك اليومية. تتبّع سبحان الله والحمد لله والله أكبر والتهليل تمام المائة.',
     icon: Repeat,
     iconBg: 'bg-teal-100 dark:bg-teal-900/30',
     iconColor: 'text-teal-600 dark:text-teal-400',

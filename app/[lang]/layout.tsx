@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation'
 import { getDictionary } from './dictionaries'
 import { DictionaryProvider } from './DictionaryProvider'
 
-export const dynamic = 'force-static'
+// The root layout reads the locale from middleware headers. force-static
+// empties headers(), causing Arabic responses to declare English/LTR.
+// Keep request rendering while retaining the locale allowlist below.
 /**
  * Only the locales in generateStaticParams exist. Without this, any single
  * path segment — /pricing, /llms.txt, a typo — matched [lang] and rendered the
