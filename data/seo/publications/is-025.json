@@ -62,5 +62,11 @@
     ]
   },
   "prepared_at": "2026-10-13T14:01:06.213Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-13T14:07:45.794Z",
+    "commit": "b5e28e2805f6cad3ccd02e7420d0097a831b6808",
+    "deployment_id": 7040680037,
+    "url": "https://www.islamful.com/blog/does-sleeping-break-wudu"
+  }
 }

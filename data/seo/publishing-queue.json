@@ -333,10 +333,10 @@
       "proposed_title": "Does Sleeping Break Wudu? Drowsiness, Posture and Awareness",
       "target_path": "/blog/does-sleeping-break-wudu",
       "source_file": "data/blog/en/does-sleeping-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Explain named-school differences, level of awareness and circumstances. No generic all-sleep rule; link wudu pillar.",
-      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/does-sleeping-break-wudu",
       "existing_overlap_candidates": [
         {
@@ -428,6 +428,12 @@
         "content_sha256": "f6ca8bc7ac7ea3999030197df60d67ad20dbf959b68099244e281801fcf00af1",
         "marker": "36cb8079a04c6477cff746b9",
         "audit_file": "data/seo/publications/is-025.json"
+      },
+      "release": {
+        "date": "2026-10-13T14:07:45.794Z",
+        "commit": "b5e28e2805f6cad3ccd02e7420d0097a831b6808",
+        "deployment_id": 7040680037,
+        "url": "https://www.islamful.com/blog/does-sleeping-break-wudu"
       }
     },
     {
