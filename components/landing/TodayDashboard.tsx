@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight, BookOpen, Compass, Moon, Sun, CalendarDays, Calculator } from 'lucide-react'
 import cities from '@/data/cities'
 import { chapters, quranPath } from '@/data/quran'
@@ -139,7 +140,7 @@ export default function TodayDashboard({
   return (
     <section aria-labelledby="today-heading" className="pb-10 sm:pb-16" dir={ar ? 'rtl' : 'ltr'}>
       <div className="mx-auto max-w-5xl space-y-6 px-4 sm:px-6">
-        <header className="border-b border-emerald-950/10 py-16 text-center sm:py-24 dark:border-white/10">
+        <header className="border-b border-emerald-950/10 pt-10 pb-8 text-center sm:pt-14 sm:pb-10 dark:border-white/10">
           <h1
             id="today-heading"
             className={`mx-auto max-w-4xl text-[2.75rem] leading-[1.12] font-normal tracking-[-0.035em] text-emerald-950 sm:text-7xl lg:text-[5.5rem] dark:text-stone-100 ${ar ? 'font-arabic leading-[1.5] tracking-normal' : ''}`}
@@ -160,6 +161,19 @@ export default function TodayDashboard({
               strokeWidth={1.5}
             />
           </Link>
+          <Image
+            src="/static/images/islamful-home-hero-v1.webp"
+            alt={
+              ar
+                ? 'مصحف على حامل خشبي ومسبحة وبوصلة وسجادة صلاة في فناء مشمس'
+                : 'A Quran on a wooden stand, prayer beads, a compass and a prayer rug in a sunlit courtyard'
+            }
+            width={1600}
+            height={667}
+            sizes="(max-width: 1024px) 100vw, 976px"
+            priority
+            className="mt-10 h-auto w-full rounded-3xl sm:mt-12"
+          />
         </header>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
