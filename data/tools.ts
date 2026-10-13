@@ -67,6 +67,18 @@ const tools: Tool[] = [
     status: 'live',
   },
   {
+    slug: 'quran',
+    name: 'Quran Reader',
+    nameAr: 'القرآن الكريم',
+    description:
+      'Read all 114 surahs with Arabic text, English translation, recitation, repeat controls and saved reading places.',
+    descriptionAr: 'اقرأ السور الـ114 مع التلاوة والتكرار والعلامات المرجعية وحفظ موضع قراءتك.',
+    icon: BookOpen,
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+    status: 'live',
+  },
+  {
     slug: 'haram-check',
     name: 'Is This Haram?',
     nameAr: 'هل هذا حرام؟',

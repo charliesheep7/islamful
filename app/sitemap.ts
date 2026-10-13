@@ -4,6 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import tools from '@/data/tools'
 import games from '@/data/games'
 import cities from '@/data/cities'
+import { chapters, quranPath } from '@/data/quran'
 
 // Force static generation at build time so ContentLayer data (allBlogs) is available
 export const dynamic = 'force-static'
@@ -13,39 +14,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const today = new Date().toISOString().split('T')[0]
 
   // Static pages
-  const enRoutes = ['', 'blog', 'games', 'mission', 'quran', 'support', 'privacy', 'terms'].map(
-    (route) => ({
-      url: `${siteUrl}/${route}`,
-      changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
-        | 'weekly'
-        | 'monthly',
-      priority:
-        route === ''
-          ? 1.0
-          : route === 'blog'
-            ? 0.8
-            : route === 'mission' || route === 'quran'
-              ? 0.7
-              : 0.3,
-    })
-  )
+  const enRoutes = ['', 'blog', 'games', 'mission', 'support', 'privacy', 'terms'].map((route) => ({
+    url: `${siteUrl}/${route}`,
+    changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
+      | 'weekly'
+      | 'monthly',
+    priority: route === '' ? 1.0 : route === 'blog' ? 0.8 : route === 'mission' ? 0.7 : 0.3,
+  }))
 
-  const arRoutes = ['', 'blog', 'games', 'mission', 'quran', 'support', 'privacy', 'terms'].map(
-    (route) => ({
-      url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
-      changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
-        | 'weekly'
-        | 'monthly',
-      priority:
-        route === ''
-          ? 0.9
-          : route === 'blog'
-            ? 0.7
-            : route === 'mission' || route === 'quran'
-              ? 0.6
-              : 0.2,
-    })
-  )
+  const arRoutes = ['', 'blog', 'games', 'mission', 'support', 'privacy', 'terms'].map((route) => ({
+    url: `${siteUrl}/ar${route === '' ? '' : `/${route}`}`,
+    changeFrequency: (route === '' || route === 'blog' ? 'weekly' : 'monthly') as
+      | 'weekly'
+      | 'monthly',
+    priority: route === '' ? 0.9 : route === 'blog' ? 0.7 : route === 'mission' ? 0.6 : 0.2,
+  }))
 
   // Tool pages
   const liveTools = tools.filter((tool) => tool.status === 'live')
@@ -104,7 +87,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }))
 
+  const quranPages = ['en', 'ar'].flatMap((lang) =>
+    chapters.map((chapter) => ({
+      url: `${siteUrl}${quranPath(chapter, lang)}`,
+      lastModified: '2026-10-13',
+      changeFrequency: 'yearly' as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${siteUrl}${quranPath(chapter, 'en')}`,
+          ar: `${siteUrl}${quranPath(chapter, 'ar')}`,
+        },
+      },
+    }))
+  )
+
   return [
+    ...quranPages,
     ...enRoutes,
     ...arRoutes,
     ...enTools,

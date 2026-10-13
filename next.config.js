@@ -11,7 +11,7 @@ const ContentSecurityPolicy = `
   script-src 'self'${isDev ? " 'unsafe-eval'" : ''} 'unsafe-inline' giscus.app analytics.umami.is cloud.umami.is;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
-  media-src *.s3.amazonaws.com;
+  media-src *.s3.amazonaws.com https://cdn.islamic.network;
   connect-src 'self' https://*.supabase.co https://api.aladhan.com https://api.bigdatacloud.net https://ipapi.co https://analytics.umami.is https://cloud.umami.is;
   font-src 'self';
   frame-src giscus.app youtube.com www.youtube.com youtube-nocookie.com www.youtube-nocookie.com
