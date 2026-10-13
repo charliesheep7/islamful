@@ -2192,7 +2192,7 @@
           },
           {
             "path": "components/tools/GoldZakatPage.tsx",
-            "sha256": "b15a811a41e76a8433b1e41d9f0c544e8b172ee47ad931633e61c1edb6d2a081"
+            "sha256": "c7fa919044c8ba9cdf25d0b85bc78df6b03f41826fc37b1a03b004d4eb5e7a57"
           },
           {
             "path": "data/gold-zakat.ts",
@@ -2209,6 +2209,10 @@
           {
             "path": "docs/gold-zakat-sources.md",
             "sha256": "dc047eacf64c4b434893531a4d6bd7f761e7158675ad314b958928b3ea4c2823"
+          },
+          {
+            "path": "components/seo/Breadcrumbs.tsx",
+            "sha256": "d2506f8614323ba8f2d330c8d4734cf79f372743107dd35eefed79df627091b9"
           }
         ]
       }
@@ -2348,7 +2352,7 @@
           },
           {
             "path": "components/tools/GoldZakatPage.tsx",
-            "sha256": "b15a811a41e76a8433b1e41d9f0c544e8b172ee47ad931633e61c1edb6d2a081"
+            "sha256": "c7fa919044c8ba9cdf25d0b85bc78df6b03f41826fc37b1a03b004d4eb5e7a57"
           },
           {
             "path": "data/gold-zakat.ts",
@@ -2365,6 +2369,10 @@
           {
             "path": "docs/gold-zakat-sources.md",
             "sha256": "dc047eacf64c4b434893531a4d6bd7f761e7158675ad314b958928b3ea4c2823"
+          },
+          {
+            "path": "components/seo/Breadcrumbs.tsx",
+            "sha256": "d2506f8614323ba8f2d330c8d4734cf79f372743107dd35eefed79df627091b9"
           }
         ]
       }

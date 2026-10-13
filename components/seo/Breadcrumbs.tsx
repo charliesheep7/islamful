@@ -9,10 +9,12 @@ interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[]
+  lang?: 'en' | 'ar'
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
-  const allItems = [{ name: 'Home', href: '/' }, ...items]
+export default function Breadcrumbs({ items, lang = 'en' }: BreadcrumbsProps) {
+  const ar = lang === 'ar'
+  const allItems = [{ name: ar ? 'الرئيسية' : 'Home', href: ar ? '/ar' : '/' }, ...items]
 
   const schemaData = {
     '@type': 'BreadcrumbList',
@@ -27,7 +29,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <>
       <JsonLd data={schemaData} />
-      <nav aria-label="Breadcrumb" className="mb-6">
+      <nav aria-label={ar ? 'مسار التنقل' : 'Breadcrumb'} className="mb-6">
         <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           {allItems.map((item, index) => (
             <li key={item.href} className="flex items-center gap-2">

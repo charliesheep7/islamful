@@ -87,6 +87,13 @@ assert.equal(await result.count(), 0)
 await page.goto(base + '/ar/zakat-calculator/gold')
 assert.equal(await page.locator('html').getAttribute('lang'), 'ar')
 assert.equal(await page.locator('html').getAttribute('dir'), 'rtl')
+assert.equal(
+  await page
+    .getByRole('navigation', { name: 'مسار التنقل', exact: true })
+    .getByRole('link', { name: 'الرئيسية', exact: true })
+    .getAttribute('href'),
+  '/ar'
+)
 await tool.getByLabel('سعر غرام الذهب عيار ٢٤ (SAR)', { exact: true }).fill('١٠٠')
 await tool.getByLabel('الوزن بالغرام', { exact: true }).fill('۱۲۰')
 await tool.getByLabel('العيار', { exact: true }).selectOption('18')
