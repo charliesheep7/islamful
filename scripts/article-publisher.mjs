@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 import { execFileSync } from 'node:child_process'
 import matter from 'gray-matter'
+import { imageSize } from 'image-size'
 import { format } from 'prettier'
 import { remark } from 'remark'
 import { validateQueue, selectAssignments } from './publishing-queue.mjs'
@@ -97,6 +98,32 @@ export function internalExists(root, value, item) {
     fs.existsSync(path.join(root, 'app', route, f))
   )
 }
+function checkHero(hero, root) {
+  assert(
+    /^\/static\/images\/[a-z0-9/_-]+\.(webp|png|jpg|jpeg)$/.test(hero?.src || '') &&
+      typeof hero.alt === 'string' &&
+      hero.alt.length >= 8 &&
+      hero.alt.length <= 200 &&
+      !/[{}<>\\\r\n]/.test(hero.alt) &&
+      !hero.alt.includes('[') &&
+      !hero.alt.includes(']') &&
+      /^[a-f0-9]{64}$/.test(hero.sha256 || ''),
+    'Hero requires a local raster path, plain descriptive alt text and reviewed SHA-256'
+  )
+  const publicRoot = fs.realpathSync(path.join(root, 'public'))
+  const file = fs.realpathSync(path.join(publicRoot, hero.src))
+  assert(file.startsWith(publicRoot + path.sep), 'Hero must remain inside public assets')
+  const bytes = fs.readFileSync(file)
+  assert(bytes.length <= 5_000_000 && hash(bytes) === hero.sha256, 'Hero changed after review')
+  const dimensions = imageSize(bytes)
+  assert(
+    ['webp', 'png', 'jpg'].includes(dimensions.type) &&
+      dimensions.width >= 600 &&
+      dimensions.height >= 300,
+    'Hero must be a readable raster image at least 600 by 300'
+  )
+}
+
 export function validateBundle(bundle, context, root = ROOT) {
   const { assignment: item, site } = context
   assert(
@@ -106,6 +133,10 @@ export function validateBundle(bundle, context, root = ROOT) {
     'Stale or mismatched assignment/baseline'
   )
   const { article, review, sources } = bundle
+  if (article?.hero) {
+    assert(item.action === 'new_article', 'Updates must preserve their existing hero metadata')
+    checkHero(article.hero, root)
+  }
   assert(
     article && typeof article.body === 'string' && article.body.trim().length > 500,
     'Missing substantive article'
@@ -234,14 +265,14 @@ export async function renderArticle(
         tags: article.tags,
         authors: ['editorial'],
         draft: false,
-        images: [],
+        images: article.hero ? [article.hero.src] : [],
         layout: 'PostLayout',
         faqs: article.faqs,
       }
-  const hero = old?.images?.[0]
+  const hero = old?.images?.[0] || (!old && article.hero?.src)
   let body = article.body.trim()
   if (hero)
-    body = `![${String(meta.title).replaceAll('[', '').replaceAll(']', '')}](${hero})\n\n${body}`
+    body = `![${!old && article.hero ? article.hero.alt : String(meta.title).replaceAll('[', '').replaceAll(']', '')}](${hero})\n\n${body}`
   if (context.site === 'deenback')
     body += `\n\n<AppDownloadCTA lang="${context.assignment.locale}" placement="final" title="${context.assignment.locale === 'ar' ? 'ابدأ خطوة عملية اليوم' : 'Take one practical step today'}" blurb="${context.assignment.locale === 'ar' ? 'اختر هدفًا واستعن بدعم التعامل مع الرغبات وتابع تقدمك مع DeenBack.' : 'Choose a habit goal, use urge support, and follow your progress with DeenBack.'}" />`
   const marker = hash(matter.stringify(body, meta)).slice(0, 24)
@@ -268,6 +299,7 @@ export async function applyBundle(bundle, root = ROOT) {
   validateBundle(bundle, context, root)
   const queueHash = hash(fs.readFileSync(path.join(root, QUEUE)))
   const { content, marker } = await renderArticle(context, bundle.article)
+  if (bundle.article.hero) checkHero(bundle.article.hero, root)
   assert(
     hash(fs.readFileSync(path.join(root, QUEUE))) === queueHash,
     'Queue changed during authoring'
@@ -285,6 +317,7 @@ export async function applyBundle(bundle, root = ROOT) {
     baseline_sha256: context.baseline_sha256,
     content_sha256: hash(content),
     marker,
+    ...(bundle.article.hero ? { hero: bundle.article.hero } : {}),
     sources: bundle.sources,
     review: bundle.review,
     prepared_at: new Date().toISOString(),
@@ -305,6 +338,7 @@ export async function applyBundle(bundle, root = ROOT) {
       content_sha256: audit.content_sha256,
       marker,
       audit_file: `${AUDITS}/${item.id}.json`,
+      ...(audit.hero ? { hero: audit.hero } : {}),
     }
     item.source_review_status = bundle.review.method
     write(auditFile, audit)
@@ -391,6 +425,26 @@ export async function verifyRelease(
   assert(deployment, 'No successful Production deployment for this exact commit')
   const verified = []
   for (const item of pending) {
+    const hero = item.publication.hero
+    if (hero) {
+      checkHero(hero, root)
+      const deployedHero = execFileSync('git', ['show', `${sha}:public${hero.src}`], { cwd: root })
+      assert(
+        hash(deployedHero) === hero.sha256,
+        `${item.id}: deployed hero differs from reviewed image`
+      )
+      const heroResponse = await fetcher(
+        `https://www.${doc.site === 'deenback' ? 'deenback.com' : 'islamful.com'}${hero.src}`,
+        {
+          signal: AbortSignal.timeout(30000),
+          headers: { 'Cache-Control': 'no-cache' },
+        }
+      )
+      assert(
+        heroResponse.ok && hash(Buffer.from(await heroResponse.arrayBuffer())) === hero.sha256,
+        `${item.id}: reviewed hero is not yet live`
+      )
+    }
     const deployedBytes = execFileSync('git', ['show', `${sha}:${item.source_file}`], { cwd: root })
     assert(
       hash(deployedBytes) === item.publication.content_sha256,
@@ -420,6 +474,7 @@ export async function verifyRelease(
     'Queue changed during live verification'
   )
   for (const { item } of verified) {
+    if (item.publication.hero) checkHero(item.publication.hero, root)
     assert(
       hash(fs.readFileSync(path.join(root, item.source_file))) === item.publication.content_sha256,
       'Article changed during live verification'

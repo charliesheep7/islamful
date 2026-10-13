@@ -47,6 +47,8 @@ Updates preserve their existing metadata except summary, FAQs and lastmod. New a
 
 Run the full production build before publishing. An applied article remains `awaiting_release` until verification confirms a successful exact-commit Production deployment, matching article bytes and the live version marker. Concurrent edits stop verification instead of being overwritten. Failed releases stay pending. Tools remain separate implementation assignments. DeenBack uses truthful direct stores; quiz enrolment is an explicit reviewed entry in `data/recovery.ts`.
 
+New-article bundles may include `article.hero: { src, alt, sha256 }`. Use an inspected, project-owned raster image under `/static/images/`, descriptive plain alt text and its exact SHA-256. The publisher validates the local image, includes it in the article and image metadata, and records it in the audit. Release verification requires matching local, committed and public image bytes. Existing-article updates preserve their original image metadata. This is image support for reviewed bundles, not an automatic image generator or unattended article writer.
+
 ## Expanded SEMrush assignments (October 13)
 
 119 article assignments are queued after merging the researched candidates into specific new or existing destinations. Additional tools, completed work and research-only items retain their own states. The larger queue is not a production-capacity ceiling or a claim that these articles have been written.

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "is-035",
+  "action": "new_article",
+  "target_path": "/blog/does-vaping-break-your-fast",
+  "source_file": "data/blog/en/does-vaping-break-your-fast.mdx",
+  "assignment_sha256": "b95e183169dc51e06dbe75f9b08befac3438bb60a8f1d5ca8fdf72f826736389",
+  "baseline_sha256": null,
+  "content_sha256": "53800716d6b1cc4d17e744e53472d3aa086379fcd083a89c9e2c39c561a4467b",
+  "marker": "38ce96b7ffbfad25487c21ac",
+  "hero": {
+    "src": "/static/images/blog/does-vaping-break-your-fast.webp",
+    "alt": "Dates and a glass of water on a quiet table in warm evening light",
+    "sha256": "9fd639c917bc72149d7cdb21bbba0811d91a9ee7cd62c4a4ee71b1b867a336fb"
+  },
+  "sources": [
+    {
+      "url": "https://dar-alifta.org/ar/fatwa/details/20270/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D8%AA%D8%AF%D8%AE%D9%8A%D9%86-%D9%81%D9%8A-%D9%86%D9%87%D8%A7%D8%B1-%D8%B1%D9%85%D8%B6%D8%A7%D9%86-%D9%84%D9%84%D8%B5%D8%A7%D8%A6%D9%85",
+      "title": "Dar al-Ifta: Smoking during the Ramadan fast",
+      "supports": "The answer expressly includes electronic cigarettes among forms of smoking that invalidate fasting. It quotes a Hanafi distinction for unavoidable smoke and discusses conditional expiation in cited juristic passages.",
+      "checked_at": "2026-10-13T14:46:58.319Z",
+      "content_sha256": "e713a4c99035ce4c9d2b33249eef3d97e42601cfb36ac94f395a080ee5033345",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7368/the-ruling-for-smoking-while-fasting",
+      "title": "Dar al-Ifta: The ruling for smoking while fasting",
+      "supports": "The answer states that smoking invalidates fasting and the person must make up the fast.",
+      "checked_at": "2026-10-13T14:46:58.319Z",
+      "content_sha256": "1cebaa8dd13059389f5eb2213b6457714bb260f5cefcb13fbe7caabfe1202151",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.nhs.uk/better-health/quit-smoking/ready-to-quit-smoking/quit-with-nicotine-replacement-therapies-nrt/",
+      "title": "NHS: Quit smoking with nicotine replacement therapies",
+      "supports": "Nicotine replacement therapy helps with cravings and withdrawal when quitting smoking; patches deliver nicotine through skin. A GP, pharmacist or stop-smoking service can help select treatment. No patient-specific dose is prescribed here.",
+      "checked_at": "2026-10-13T14:46:58.319Z",
+      "content_sha256": "bb8ccf1dcfc32da3066ea23b7ff1464f7a4ad0fb22c1198bf8c086dbb07632f1",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/ar/Fatwa/Details/21761/%D8%AD%D9%83%D9%85-%D8%A7%D8%B3%D8%AA%D8%B9%D9%85%D8%A7%D9%84-%D9%84%D8%A7%D8%B5%D9%82%D8%A9-%D9%86%D9%8A%D9%83%D9%88%D8%AA%D9%8A%D9%86-%D8%A3%D8%AB%D9%86%D8%A7%D8%A1-%D8%A7%D9%84%D8%B5%D9%88%D9%85",
+      "title": "Dar al-Ifta: Nicotine patches during fasting",
+      "supports": "The answer permits a smoker to use a skin nicotine patch for cessation while fasting, expressly retaining specialist physician prescription as its condition. This is distinct from inhaling a vape or using oral products.",
+      "checked_at": "2026-10-13T14:42:45.281558+00:00",
+      "content_sha256": "92b49483e07f5490fc496c1899d589ac437b0df56b71d9dca052d03e38a5e01d",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "5f28ed88744140d2ab373b38e316eaad53d5d4895285e418b44527e7b455a31d",
+    "issues": [],
+    "notes": "Checked the actual Dar al-Ifta Arabic ruling, its English make-up-fast answer, the nicotine-patch ruling and current NHS cessation guidance. Electronic cigarettes are explicitly named in the Arabic source, not inferred solely from tobacco. Nicotine-free paragraph states the absence of an exception rather than inventing a separate fatwa; unavoidable exposure is attributed to the quoted Hanafi passage. Make-up conclusion is explicitly a synthesis of two answers. No blanket kaffarah prescription, no medical dose, and patch physician condition retained. Islamic fasting intent is distinguished from diet/medical fasting. Generated hero visually inspected; exact hash is part of reviewed article bundle. Three sections, no redundant FAQ or fictional app CTA.",
+    "claim_checks": [
+      {
+        "claim": "The answer expressly includes electronic cigarettes among forms of smoking that invalidate fasting. It quotes a Hanafi distinction for unavoidable smoke and discusses conditional expiation in cited juristic passages.",
+        "source_url": "https://dar-alifta.org/ar/fatwa/details/20270/%D8%AD%D9%83%D9%85-%D8%A7%D9%84%D8%AA%D8%AF%D8%AE%D9%8A%D9%86-%D9%81%D9%8A-%D9%86%D9%87%D8%A7%D8%B1-%D8%B1%D9%85%D8%B6%D8%A7%D9%86-%D9%84%D9%84%D8%B5%D8%A7%D8%A6%D9%85",
+        "supported": true,
+        "explanation": "Read the relevant primary passage in the saved capture. The article preserves scope, attribution and conditions rather than turning it into a universal personal ruling."
+      },
+      {
+        "claim": "The answer states that smoking invalidates fasting and the person must make up the fast.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7368/the-ruling-for-smoking-while-fasting",
+        "supported": true,
+        "explanation": "Read the relevant primary passage in the saved capture. The article preserves scope, attribution and conditions rather than turning it into a universal personal ruling."
+      },
+      {
+        "claim": "Nicotine replacement therapy helps with cravings and withdrawal when quitting smoking; patches deliver nicotine through skin. A GP, pharmacist or stop-smoking service can help select treatment. No patient-specific dose is prescribed here.",
+        "source_url": "https://www.nhs.uk/better-health/quit-smoking/ready-to-quit-smoking/quit-with-nicotine-replacement-therapies-nrt/",
+        "supported": true,
+        "explanation": "Read the relevant primary passage in the saved capture. The article preserves scope, attribution and conditions rather than turning it into a universal personal ruling."
+      },
+      {
+        "claim": "The answer permits a smoker to use a skin nicotine patch for cessation while fasting, expressly retaining specialist physician prescription as its condition. This is distinct from inhaling a vape or using oral products.",
+        "source_url": "https://www.dar-alifta.org/ar/Fatwa/Details/21761/%D8%AD%D9%83%D9%85-%D8%A7%D8%B3%D8%AA%D8%B9%D9%85%D8%A7%D9%84-%D9%84%D8%A7%D8%B5%D9%82%D8%A9-%D9%86%D9%8A%D9%83%D9%88%D8%AA%D9%8A%D9%86-%D8%A3%D8%AB%D9%86%D8%A7%D8%A1-%D8%A7%D9%84%D8%B5%D9%88%D9%85",
+        "supported": true,
+        "explanation": "Read the relevant primary passage in the saved capture. The article preserves scope, attribution and conditions rather than turning it into a universal personal ruling."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-13T14:46:58.383Z",
+  "state": "awaiting_release"
+}

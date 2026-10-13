@@ -146,6 +146,88 @@ test('late destination creation or edits cannot be overwritten', async () => {
     assert.equal(fs.readFileSync(file, 'utf8'), 'Concurrent editor content')
   }
 })
+function addHero(f) {
+  const bytes = fs.readFileSync(
+    new URL('../public/static/images/gold-zakat-hero.webp', import.meta.url)
+  )
+  const src = '/static/images/test-hero.webp'
+  fs.mkdirSync(path.join(f.root, 'public/static/images'), { recursive: true })
+  fs.writeFileSync(path.join(f.root, 'public', src), bytes)
+  f.bundle.article.hero = { src, alt: 'A gold object on a warm stone surface', sha256: hash(bytes) }
+  f.bundle.review.article_sha256 = hash(JSON.stringify(f.bundle.article))
+  return bytes
+}
+test('reviewed hero appears in article and metadata; unsafe, stale and update heroes fail', async () => {
+  const f = fixture()
+  addHero(f)
+  assert.equal(validateBundle(f.bundle, f.context, f.root), true)
+  const rendered = await renderArticle(f.context, f.bundle.article)
+  assert.deepEqual(matter(rendered.content).data.images, [f.bundle.article.hero.src])
+  assert.ok(
+    rendered.content.includes(`![${f.bundle.article.hero.alt}](${f.bundle.article.hero.src})`)
+  )
+  for (const change of [
+    { src: '/static/images/../private.webp' },
+    { src: 'https://example.com/hero.webp' },
+    { src: '/static/images/hero.svg' },
+    { alt: 'Image](https://example.com)' },
+    { sha256: hash('unreviewed replacement') },
+  ]) {
+    const invalid = structuredClone(f.bundle)
+    Object.assign(invalid.article.hero, change)
+    invalid.review.article_sha256 = hash(JSON.stringify(invalid.article))
+    assert.throws(() => validateBundle(invalid, f.context, f.root))
+  }
+  const update = fixture('update_article')
+  addHero(update)
+  assert.throws(() => validateBundle(update.bundle, update.context, update.root), /preserve/)
+})
+test('hero release needs reviewed local, committed and public image bytes', async () => {
+  const f = fixture(),
+    bytes = addHero(f)
+  await applyBundle(f.bundle, f.root)
+  const git = (args) => execFileSync('git', args, { cwd: f.root, encoding: 'utf8' }).trim()
+  git(['init', '-q'])
+  git(['add', '.'])
+  git(['-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'fixture'])
+  const sha = git(['rev-parse', 'HEAD']),
+    marker = loadQueue(f.root).items[0].publication.marker
+  const githubRead = async (route) =>
+    route.endsWith('/statuses')
+      ? [{ state: 'success' }]
+      : [{ id: 1, sha, environment: 'Production' }]
+  await assert.rejects(
+    verifyRelease(f.root, sha, { githubRead, fetcher: async () => new Response('stale image') }),
+    /hero is not yet live/
+  )
+  assert.equal(loadQueue(f.root).items[0].status, 'awaiting_release')
+  const heroFile = path.join(f.root, 'public', f.bundle.article.hero.src)
+  fs.writeFileSync(heroFile, 'changed locally')
+  await assert.rejects(verifyRelease(f.root, sha, { githubRead }), /Hero changed/)
+  git(['add', 'public'])
+  git(['-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'wrong image'])
+  const wrongSha = git(['rev-parse', 'HEAD'])
+  fs.writeFileSync(heroFile, bytes)
+  await assert.rejects(
+    verifyRelease(f.root, wrongSha, {
+      githubRead: async (route) =>
+        route.endsWith('/statuses')
+          ? [{ state: 'success' }]
+          : [{ id: 2, sha: wrongSha, environment: 'Production' }],
+    }),
+    /deployed hero differs/
+  )
+  assert.deepEqual(
+    await verifyRelease(f.root, sha, {
+      githubRead,
+      fetcher: async (url) =>
+        new Response(
+          url.endsWith('.webp') ? bytes : `<span data-publication-id="${marker}"></span>`
+        ),
+    }),
+    ['is-999']
+  )
+})
 test('applied new article is pending, cannot run twice, and post-review mutations are detected', async () => {
   const f = fixture()
   await applyBundle(f.bundle, f.root)
