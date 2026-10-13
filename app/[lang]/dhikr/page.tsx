@@ -1,3 +1,4 @@
+import { AdhkarNav } from '@/components/adhkar/AdhkarPages'
 import { Metadata } from 'next'
 import DhikrCounter from '@/components/tools/DhikrCounter'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
@@ -39,7 +40,25 @@ export default function DhikrPageAr() {
           اضغط لعد أذكارك اليومية بعد كل صلاة.
         </p>
       </div>
+      <AdhkarNav lang="ar" />
       <DhikrCounter lang="ar" />
+      <section className="mt-12 space-y-4 leading-relaxed">
+        <h2 className="text-xl font-semibold">صيغتان مأثورتان بعد الصلاة</h2>
+        <p>
+          ورد التسبيح ثلاثًا وثلاثين والتحميد ثلاثًا وثلاثين والتكبير أربعًا وثلاثين في{' '}
+          <a className="underline" href="https://sunnah.com/muslim:596a">
+            صحيح مسلم ٥٩٦ أ
+          </a>
+          ، وورد ثلاث وثلاثون من كل منها مع التهليل تمام المائة في{' '}
+          <a className="underline" href="https://sunnah.com/muslim:597a">
+            صحيح مسلم ٥٩٧ أ
+          </a>
+          . اختر إحدى الصيغتين؛ لكل منهما عدادات مستقلة، ولا يفترض العداد أي صلاة أديتها.
+        </p>
+        <noscript>
+          <p>فعّل جافاسكربت لاستخدام العداد. تبقى النصوص والمصادر متاحة للقراءة.</p>
+        </noscript>
+      </section>
     </div>
   )
 }

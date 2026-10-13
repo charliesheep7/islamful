@@ -5,6 +5,7 @@ import tools from '@/data/tools'
 import games from '@/data/games'
 import cities from '@/data/cities'
 import { chapters, quranPath } from '@/data/quran'
+import { routines } from '@/data/adhkar'
 
 // Force static generation at build time so ContentLayer data (allBlogs) is available
 export const dynamic = 'force-static'
@@ -102,7 +103,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   )
 
+  const adhkarPages = ['en', 'ar'].flatMap((lang) =>
+    routines.map((r) => ({
+      url: `${siteUrl}${lang === 'ar' ? '/ar' : ''}/adhkar/${r.id}`,
+      lastModified: '2026-10-13',
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+      alternates: {
+        languages: { en: `${siteUrl}/adhkar/${r.id}`, ar: `${siteUrl}/ar/adhkar/${r.id}` },
+      },
+    }))
+  )
+
   return [
+    ...adhkarPages,
     ...quranPages,
     ...enRoutes,
     ...arRoutes,

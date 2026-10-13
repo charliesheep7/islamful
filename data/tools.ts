@@ -104,13 +104,26 @@ const tools: Tool[] = [
     status: 'live',
   },
   {
+    slug: 'adhkar',
+    name: 'Daily Adhkar',
+    nameAr: 'الأذكار اليومية',
+    description:
+      'Morning, evening and after-prayer remembrance with sourced Arabic texts, meanings and saved counters.',
+    descriptionAr:
+      'أذكار الصباح والمساء وبعد الصلاة مع النصوص والمصادر والمعاني والعدادات المحفوظة.',
+    icon: Repeat,
+    iconBg: 'bg-teal-100 dark:bg-teal-900/30',
+    iconColor: 'text-teal-600 dark:text-teal-400',
+    status: 'live',
+  },
+  {
     slug: 'dhikr',
     name: 'Dhikr Counter',
     nameAr: 'عداد الأذكار',
     description:
-      'Digital tasbeeh counter for your daily dhikr. Track SubhanAllah, Alhamdulillah, Allahu Akbar, and custom dhikr.',
+      'Digital tasbeeh counter for your daily dhikr. Track SubhanAllah, Alhamdulillah, Allahu Akbar, and the final tahlil.',
     descriptionAr:
-      'عداد تسبيح رقمي لأذكارك اليومية. تتبّع سبحان الله والحمد لله والله أكبر وأذكار مخصصة.',
+      'عداد تسبيح رقمي لأذكارك اليومية. تتبّع سبحان الله والحمد لله والله أكبر والتهليل تمام المائة.',
     icon: Repeat,
     iconBg: 'bg-teal-100 dark:bg-teal-900/30',
     iconColor: 'text-teal-600 dark:text-teal-400',

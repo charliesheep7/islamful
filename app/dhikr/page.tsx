@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { AdhkarNav } from '@/components/adhkar/AdhkarPages'
 import { Metadata } from 'next'
 import DhikrCounter from '@/components/tools/DhikrCounter'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
@@ -37,24 +39,26 @@ export default function DhikrPage() {
         </p>
       </div>
 
+      <AdhkarNav lang="en" />
       <DhikrCounter lang="en" />
 
-      <section className="mt-16">
-        <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h2>What Is Dhikr?</h2>
-          <p>
-            Dhikr (remembrance of Allah) is one of the most beloved acts of worship in Islam. The
-            Prophet Muhammad (peace be upon him) taught us to say SubhanAllah 33 times,
-            Alhamdulillah 33 times, and Allahu Akbar 34 times after every obligatory prayer.
-          </p>
-          <h3>Benefits of Regular Dhikr</h3>
-          <p>
-            The Quran says: &ldquo;Verily, in the remembrance of Allah do hearts find rest&rdquo;
-            (13:28). Regular dhikr brings peace of mind, increases faith, and earns immense reward.
-            The Prophet (peace be upon him) said that these words are &ldquo;dearer to me than
-            everything the sun has risen upon.&rdquo;
-          </p>
-        </div>
+      <section className="prose dark:prose-invert mt-12 max-w-none">
+        <h2>Two narrated ways to count after prayer</h2>
+        <p>
+          Sahih Muslim records both 33 tasbih, 33 tahmid and 34 takbir (
+          <a href="https://sunnah.com/muslim:596a">596a</a>), and 33 of each followed by the tahlil
+          that completes one hundred (<a href="https://sunnah.com/muslim:597a">597a</a>). Choose
+          either option above. The counter saves each option separately and never assumes which
+          prayer you have performed.
+        </p>
+        <p>
+          For Arabic texts, meanings and other remembrance after salah, open the{' '}
+          <Link href="/adhkar/after-prayer">after-prayer routine</Link>. Morning and evening
+          collections have their own sources and counts.
+        </p>
+        <noscript>
+          <p>Enable JavaScript to use the counter. The phrases and sources remain readable.</p>
+        </noscript>
       </section>
     </div>
   )
