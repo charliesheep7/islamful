@@ -177,6 +177,17 @@ const tools: Tool[] = [
     status: 'live',
   },
   {
+    slug: 'zakat-calculator/gold',
+    name: 'Gold Zakat Calculator',
+    nameAr: 'حاسبة زكاة الذهب',
+    description: 'Calculate mixed-karat gold with your price, jewellery rule and nisab basis.',
+    descriptionAr: 'احسب الذهب بمختلف العيارات حسب السعر وحكم الحلي والنصاب الذي تختاره.',
+    icon: Calculator,
+    iconBg: 'bg-amber-100 dark:bg-amber-900/30',
+    iconColor: 'text-amber-700 dark:text-amber-300',
+    status: 'live',
+  },
+  {
     slug: 'zakat-calculator',
     name: 'Zakat Calculator',
     nameAr: 'حاسبة الزكاة',

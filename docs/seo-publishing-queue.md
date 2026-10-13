@@ -60,3 +60,7 @@ Queries with the same task share one destination. Existing prayer guides own the
 The selector remains read-only. The separate assignment publisher handles authoring and release state. Source checks and verified live release remain required; authoring happens in Codex without an API key.
 
 A separate queued tool assignment, `is-165`, covers the Ramadan countdown/current-day extension. The existing timetable remains recorded as live; new feature work is not silently treated as already implemented.
+
+## Reviewed tool releases
+
+Implemented tools use `awaiting_tool_release`, separate from article publication. Each records its version marker, reviewed implementation files with SHA-256 hashes, and source-review document. Queue validation refuses changed or missing files. The article publisher does not process these rows. Verify the exact successful Production commit, both localized routes, actual calculation behavior, canonicals and sitemap before recording `live_reviewed`. Preserve the original observations.

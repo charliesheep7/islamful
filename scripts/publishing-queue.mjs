@@ -16,6 +16,7 @@ const ACTIONS = new Set([
 const STATUSES = new Set([
   'queued',
   'awaiting_release',
+  'awaiting_tool_release',
   'live_reviewed',
   'needs_data',
   'needs_keyword_refresh',
@@ -158,8 +159,49 @@ export function validateQueue(doc, root, { verifyResearch = true } = {}) {
       }
       const exists = fs.existsSync(resolved)
       if (EXISTING.has(item.action) && !exists) fail('Existing target file is missing')
-      if (NEW.has(item.action) && exists && item.status !== 'awaiting_release')
+      if (
+        NEW.has(item.action) &&
+        exists &&
+        !['awaiting_release', 'awaiting_tool_release'].includes(item.status)
+      )
         fail('New destination already exists: reconcile as an update before writing')
+      if (item.status === 'awaiting_tool_release') {
+        const publication = item.tool_publication
+        if (
+          !['new_tool', 'improve_tool'].includes(item.action) ||
+          !exists ||
+          !/^[a-z0-9-]{3,64}$/.test(publication?.version || '') ||
+          !Array.isArray(publication?.files) ||
+          !publication.files.length ||
+          !publication.files.some((file) => file.path === item.source_file) ||
+          !/^docs\/[a-z0-9-]+\.md$/.test(publication?.source_review || '') ||
+          !fs.existsSync(path.join(root, publication?.source_review || 'missing'))
+        )
+          fail('Invalid pending tool publication')
+        else {
+          const recorded = new Set()
+          for (const file of publication.files) {
+            const target = path.resolve(root, file.path || '')
+            if (
+              !target.startsWith(path.resolve(root) + path.sep) ||
+              !/^(app|components|data|public|docs)\//.test(file.path || '') ||
+              recorded.has(file.path) ||
+              !/^[a-f0-9]{64}$/.test(file.sha256 || '') ||
+              !fs.existsSync(target) ||
+              !fs.statSync(target).isFile()
+            ) {
+              fail('Invalid reviewed tool file')
+              continue
+            }
+            recorded.add(file.path)
+            if (
+              crypto.createHash('sha256').update(fs.readFileSync(target)).digest('hex') !==
+              file.sha256
+            )
+              fail('Pending tool changed after review')
+          }
+        }
+      }
       if (item.status === 'awaiting_release') {
         if (
           !['new_article', 'update_article'].includes(item.action) ||
