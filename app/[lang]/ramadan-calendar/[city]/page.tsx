@@ -12,3 +12,6 @@ export default async function Page({ params }: Props) {
   if (!city) notFound()
   return <FastingPage lang="ar" ramadan city={city} />
 }
+
+// Refresh the dated server snapshot; the browser follows the city clock live.
+export const revalidate = 3600

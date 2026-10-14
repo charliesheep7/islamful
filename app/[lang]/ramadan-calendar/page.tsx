@@ -9,3 +9,6 @@ export const metadata = genPageMetadata({
 export default function Page() {
   return <FastingPage lang="ar" ramadan={true} />
 }
+
+// Refresh the dated server snapshot; the browser follows the city clock live.
+export const revalidate = 3600

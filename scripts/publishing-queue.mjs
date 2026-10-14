@@ -184,7 +184,7 @@ export function validateQueue(doc, root, { verifyResearch = true } = {}) {
             const target = path.resolve(root, file.path || '')
             if (
               !target.startsWith(path.resolve(root) + path.sep) ||
-              !/^(app|components|data|public|docs)\//.test(file.path || '') ||
+              !/^(app|components|data|public|docs|utils)\//.test(file.path || '') ||
               recorded.has(file.path) ||
               !/^[a-f0-9]{64}$/.test(file.sha256 || '') ||
               !fs.existsSync(target) ||

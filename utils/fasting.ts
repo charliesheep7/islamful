@@ -40,6 +40,16 @@ export function nextRamadanYear(today: string) {
   const h = gregorianToHijri(today)
   return h.year + (h.month > 9 ? 1 : 0)
 }
+export function ramadanProgress(dates: string[], today: string) {
+  if (![29, 30].includes(dates.length)) throw new Error('Invalid Ramadan length')
+  const expected = dateRange(dates[0], dates.length)
+  if (dates.some((date, i) => date !== expected[i])) throw new Error('Invalid Ramadan dates')
+  const offset = (parseGregorian(today) - parseGregorian(dates[0])) / DAY_MS
+  const common = { start: dates[0], end: dates.at(-1)!, total: dates.length, today }
+  if (offset < 0) return { ...common, kind: 'before' as const, daysUntil: -offset }
+  if (offset < dates.length) return { ...common, kind: 'during' as const, day: offset + 1 }
+  return { ...common, kind: 'after' as const }
+}
 const timePattern = /^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:00(?:Z|[+-]\d{2}:\d{2})$/
 function validTime(raw: unknown, date: string, zone: string) {
   if (typeof raw !== 'string' || !timePattern.test(raw) || raw.slice(0, 10) !== date) return null
