@@ -674,7 +674,7 @@
       "target_path": "/blog/how-to-pray-salah-for-beginners",
       "source_file": "data/blog/en/how-to-pray-salah-for-beginners.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Review sequence, conditions and school differences; explain what a beginner can do next, link prayer times and existing prayer-specific guides.",
       "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
       "conversion_or_tool_path": "/blog/how-to-pray-salah-for-beginners",
@@ -793,7 +793,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed.",
       "research_additions": [
@@ -823,7 +823,12 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "9ac3f59cbe107c181e9eaaeb273b16292bae374bb76bf4683cc5a87718ec6995",
+        "marker": "9a37e2db4f4dbd94b79da061",
+        "audit_file": "data/seo/publications/is-027.json"
+      }
     },
     {
       "id": "is-056",

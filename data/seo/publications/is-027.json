@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "id": "is-027",
+  "action": "update_article",
+  "target_path": "/blog/how-to-pray-salah-for-beginners",
+  "source_file": "data/blog/en/how-to-pray-salah-for-beginners.mdx",
+  "assignment_sha256": "80c2aa30400123cfee1c376633a3e8398673c6db91dc1aa5d49201c7761da8fb",
+  "baseline_sha256": "dcdcc3e313843367a9e5dec9d137ce2ea1d697a68e093c3a677a137f3ba949d1",
+  "content_sha256": "9ac3f59cbe107c181e9eaaeb273b16292bae374bb76bf4683cc5a87718ec6995",
+  "marker": "9a37e2db4f4dbd94b79da061",
+  "sources": [
+    {
+      "url": "https://www.dar-alifta.org/en/article/details/250/how-to-perform-prayer-salah",
+      "title": "Dar al-Ifta: How to perform Prayer (Salah)",
+      "supports": "Daily schedule, intention, movement sequence, threefold bowing/prostration phrases, between-prostration wording, two-rakah ending and extension to three/four units. A Sunni teaching outline, not identical legal classifications in every school.",
+      "checked_at": "2026-10-14T03:52:30.905Z",
+      "content_sha256": "06611d42b287047da15122202bcbae3fa9d4ca24763df12611e04d730a1bc8f8",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/8030/i-am-a-new-muslim-and-unable-to-recite-fatiha-chapter-during-prayers-what-should",
+      "title": "Dar al-Ifta 8030: New Muslim unable to recite Fatiha",
+      "supports": "Temporary dhikr and shorter seated recitation for genuine inability while learning; not a reason to abandon learning Arabic or delay prayer.",
+      "checked_at": "2026-10-14T03:52:30.906Z",
+      "content_sha256": "147ddcc2d0a6e37a0c208ff4dab8d472b27c586379a703d7484290a9be6280a1",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/reciting-behind-the-imam/",
+      "title": "Darul Ifta Birmingham: Reciting behind the imam",
+      "supports": "Hanafi position: the follower does not recite Quran behind the imam. This does not mean omitting all other prayer phrases.",
+      "checked_at": "2026-10-14T03:52:30.906Z",
+      "content_sha256": "ec7baa5c83b804ab159e375636e75148ad9950b74cefc8c4b97e8459c77e70c3",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:757",
+      "title": "Sahih al-Bukhari 757",
+      "supports": "Unhurried bowing, upright standing, prostration and sitting; no claim rushing always has one universal remedy.",
+      "checked_at": "2026-10-14T03:48:56.865Z",
+      "content_sha256": "ced81e7cf7fdc97e6f7b72ab9373aeee31a538ee5c152f1536bb51679b023467",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:831",
+      "title": "Sahih al-Bukhari 831",
+      "supports": "Complete tashahhud includes peace on righteous servants and both testimonies of faith, omitted in the old article.",
+      "checked_at": "2026-10-14T03:48:59.672Z",
+      "content_sha256": "030b84b93c89ca399fd2940fe3e398dc47b11963b96b12de245cce086203c5df",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:3370",
+      "title": "Sahih al-Bukhari 3370",
+      "supports": "Arabic blessings name Muhammad and his family, Ibrahim and his family, in both halves, with hamidun majid in each. One narrated wording; independently phrased English meaning.",
+      "checked_at": "2026-10-14T03:49:01.873Z",
+      "content_sha256": "3d5a20d9cbe84d2f97d422f8542f8b1588a0d532747f774765a14d731be20f6c",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://sunnah.com/muslim:772",
+      "title": "Sahih Muslim 772",
+      "supports": "Bowing and prostration praises and rising phrases match the Arabic. Threefold repetition is attributed separately to Dar al-Ifta, not this narration.",
+      "checked_at": "2026-10-14T03:49:04.550Z",
+      "content_sha256": "01d87780ebe4a64de64e9eca4c9134374dfce1f7115ad273a03c637c8bfd74fd",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:776",
+      "title": "Sahih al-Bukhari 776",
+      "supports": "Al-Fatiha and another surah in the first two, Al-Fatiha alone in the last two of Dhuhr; broader teaching sequence supported by institutional guide.",
+      "checked_at": "2026-10-14T03:49:06.556Z",
+      "content_sha256": "ff7525db8be1ebeab6cdca195a5e33212d73fb17b6e212dddb2710c9cadae7f8",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1117",
+      "title": "Sahih al-Bukhari 1117",
+      "supports": "Standing adapted to sitting, then lying on side when unable; no specific chair/prostration prescription inferred.",
+      "checked_at": "2026-10-14T03:49:09.420Z",
+      "content_sha256": "f9a114280f40f4cc50190cd8be4ab6e5e2afb230e9196623e8afb06ca9c36758",
+      "capture_method": "web_tool_page_text"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6: Purification before prayer",
+      "supports": "Purification includes ablution and full purification for janabah; no universal one-minute washing claim.",
+      "checked_at": "2026-10-14T03:51:10.153Z",
+      "content_sha256": "4982c5aad5e5d693a0dd34a8416087a7a67fbcb8023b553577db7c04bcf2ab63",
+      "capture_method": "web_tool_page_text"
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "06de4a237ea0ec459699acc15c5f9c53fb6c5dc3c2ced4786df09410dc27165d",
+    "issues": [],
+    "notes": "Read institutional sources and Arabic/English hadith passages. Corrected incomplete tashahhud and missing salawat, scoped instructions to Sunni prayer alone, distinguished Hanafi congregational recitation. Removed blanket phone-reading permission, fixed memorization deadlines, oversimplified madhhab chart and universal mistake remedy. Three headings, no repeated FAQs. Original title/date/author/tags/image path preserved; placeholder art replaced under user authorization. AI-assisted editorial source checking, not independent scholarly review.",
+    "claim_checks": [
+      {
+        "claim": "Daily schedule, intention, movement sequence, threefold bowing/prostration phrases, between-prostration wording, two-rakah ending and extension to three/four units. A Sunni teaching outline, not identical legal classifications in every school.",
+        "source_url": "https://www.dar-alifta.org/en/article/details/250/how-to-perform-prayer-salah",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Temporary dhikr and shorter seated recitation for genuine inability while learning; not a reason to abandon learning Arabic or delay prayer.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/8030/i-am-a-new-muslim-and-unable-to-recite-fatiha-chapter-during-prayers-what-should",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Hanafi position: the follower does not recite Quran behind the imam. This does not mean omitting all other prayer phrases.",
+        "source_url": "https://daruliftabirmingham.co.uk/reciting-behind-the-imam/",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Unhurried bowing, upright standing, prostration and sitting; no claim rushing always has one universal remedy.",
+        "source_url": "https://sunnah.com/bukhari:757",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Complete tashahhud includes peace on righteous servants and both testimonies of faith, omitted in the old article.",
+        "source_url": "https://sunnah.com/bukhari:831",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Arabic blessings name Muhammad and his family, Ibrahim and his family, in both halves, with hamidun majid in each. One narrated wording; independently phrased English meaning.",
+        "source_url": "https://sunnah.com/bukhari:3370",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Bowing and prostration praises and rising phrases match the Arabic. Threefold repetition is attributed separately to Dar al-Ifta, not this narration.",
+        "source_url": "https://sunnah.com/muslim:772",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Al-Fatiha and another surah in the first two, Al-Fatiha alone in the last two of Dhuhr; broader teaching sequence supported by institutional guide.",
+        "source_url": "https://sunnah.com/bukhari:776",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Standing adapted to sitting, then lying on side when unable; no specific chair/prostration prescription inferred.",
+        "source_url": "https://sunnah.com/bukhari:1117",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      },
+      {
+        "claim": "Purification includes ablution and full purification for janabah; no universal one-minute washing claim.",
+        "source_url": "https://quran.com/5/6",
+        "supported": true,
+        "explanation": "Compared claim and scope against the saved full relevant source passage; English meanings independently phrased from Arabic."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-14T03:52:30.976Z",
+  "state": "awaiting_release"
+}
