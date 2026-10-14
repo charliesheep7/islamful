@@ -160,5 +160,11 @@
     ]
   },
   "prepared_at": "2026-10-14T03:52:30.976Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-14T03:56:30.449Z",
+    "commit": "0b97b96b7e2fffd41d545e379c8bfa869473cabb",
+    "deployment_id": 7056425842,
+    "url": "https://www.islamful.com/blog/how-to-pray-salah-for-beginners"
+  }
 }

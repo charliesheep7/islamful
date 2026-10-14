@@ -673,10 +673,10 @@
       "proposed_title": "How to Pray Salah for Beginners",
       "target_path": "/blog/how-to-pray-salah-for-beginners",
       "source_file": "data/blog/en/how-to-pray-salah-for-beginners.mdx",
-      "action": "update_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Review sequence, conditions and school differences; explain what a beginner can do next, link prayer times and existing prayer-specific guides.",
-      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/how-to-pray-salah-for-beginners",
       "existing_overlap_candidates": [
         {
@@ -828,6 +828,12 @@
         "content_sha256": "9ac3f59cbe107c181e9eaaeb273b16292bae374bb76bf4683cc5a87718ec6995",
         "marker": "9a37e2db4f4dbd94b79da061",
         "audit_file": "data/seo/publications/is-027.json"
+      },
+      "release": {
+        "date": "2026-10-14T03:56:30.449Z",
+        "commit": "0b97b96b7e2fffd41d545e379c8bfa869473cabb",
+        "deployment_id": 7056425842,
+        "url": "https://www.islamful.com/blog/how-to-pray-salah-for-beginners"
       }
     },
     {
