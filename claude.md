@@ -1,3 +1,7 @@
+# Publishing entry point
+
+Read `.claude/skills/islamful-blog-writer/SKILL.md` and `docs/seo-publishing-queue.md` before SEO work. Use the canonical researched JSON queue, not legacy keyword or written CSVs.
+
 # Islamful — CLAUDE.md
 
 ## Project Overview
