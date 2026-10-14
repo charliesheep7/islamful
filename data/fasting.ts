@@ -1,11 +1,11 @@
 export const fastingCopy = {
   en: {
     dailyTitle: 'Suhoor & Iftar Times',
-    ramadanTitle: 'Ramadan Calendar & Fasting Timetable',
+    ramadanTitle: 'Ramadan Calendar & Countdown',
     dailyDescription:
       'Find Fajr and Maghrib for your city and date, or enter a trusted local timetable. See the fasting interval and a countdown for today.',
     ramadanDescription:
-      'Plan a Ramadan timetable for your city. Compare calculated dates with your local announcement, choose the prayer method and download your schedule.',
+      'See how many days remain until the first fast, or today’s fasting day in your city. Adjust local Ramadan dates and download your timetable.',
     faqs: [
       {
         question: 'When does suhoor end and iftar begin?',
@@ -25,7 +25,7 @@ export const fastingCopy = {
       {
         question: 'Does the countdown know whether I am fasting?',
         answer:
-          'No. It only compares the displayed times with the clock in the selected timezone. It does not record an intention, a completed fast or eligibility to fast. No countdown is shown for a different date or missing times.',
+          'No. The Ramadan day indicator follows your selected dates and city timezone. The Fajr/Maghrib countdown compares today’s available prayer times with the clock. Neither records an intention, a completed fast or eligibility to fast.',
       },
       {
         question: 'Can I save or print the timetable?',
@@ -36,11 +36,11 @@ export const fastingCopy = {
   },
   ar: {
     dailyTitle: 'مواقيت السحور والإفطار',
-    ramadanTitle: 'تقويم رمضان وجدول الصيام',
+    ramadanTitle: 'تقويم رمضان والعد التنازلي',
     dailyDescription:
       'اعرف الفجر والمغرب لمدينتك والتاريخ الذي تختاره، أو أدخل جدولًا محليًا موثوقًا. اعرض المدة والعد التنازلي لليوم.',
     ramadanDescription:
-      'خطّط لجدول رمضان في مدينتك. قارن التواريخ المحسوبة بالإعلان المحلي، واختر طريقة حساب الصلاة ونزّل الجدول.',
+      'اعرف الأيام المتبقية حتى أول صيام أو رقم يوم الصيام في مدينتك. عدّل تواريخ رمضان المحلية ونزّل جدولك.',
     faqs: [
       {
         question: 'متى ينتهي السحور ويبدأ الإفطار؟',
@@ -60,7 +60,7 @@ export const fastingCopy = {
       {
         question: 'هل يعرف العدّاد إن كنت صائمًا؟',
         answer:
-          'لا. يقارن المواقيت المعروضة بالساعة في المنطقة الزمنية المختارة فقط. ولا يسجل النية أو إتمام الصوم أو أهلية الصيام. لا يظهر عد تنازلي لتاريخ آخر أو لمواقيت غير متاحة.',
+          'لا. يتبع مؤشر يوم رمضان التواريخ المختارة والمنطقة الزمنية للمدينة. يقارن عدّاد الفجر والمغرب مواقيت اليوم المتاحة بالساعة. ولا يسجل أي منهما النية أو إتمام الصوم أو أهلية الصيام.',
       },
       {
         question: 'هل أستطيع حفظ الجدول أو طباعته؟',

@@ -189,6 +189,16 @@ test('reviewed tools remain pending, skip article selection and reject changed f
     ],
   }
   assert.deepEqual(check(doc([x])), [])
+  fs.mkdirSync(path.join(root, 'utils'), { recursive: true })
+  fs.writeFileSync(path.join(root, 'utils/dates.ts'), 'reviewed calculation')
+  x.tool_publication.files.push({
+    path: 'utils/dates.ts',
+    sha256: crypto.createHash('sha256').update('reviewed calculation').digest('hex'),
+  })
+  assert.deepEqual(check(doc([x])), [])
+  fs.writeFileSync(path.join(root, 'utils/dates.ts'), 'changed calculation')
+  assert.match(check(doc([x])).join(' '), /changed after review/)
+  fs.writeFileSync(path.join(root, 'utils/dates.ts'), 'reviewed calculation')
   assert.deepEqual(selectAssignments(doc([x])), [])
   assert.deepEqual(selectAssignments(doc([x]), { action: 'new_article', status: 'all' }), [])
   fs.writeFileSync(path.join(root, x.source_file), 'unreviewed change')

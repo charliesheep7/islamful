@@ -28,6 +28,35 @@ function day(date, offset = '+00:00', extra = {}) {
   }
 }
 const payload = (...days) => ({ code: 200, data: days })
+test('Ramadan date progress handles before, first, middle, last and after, for 29/30 days', () => {
+  for (const length of [29, 30]) {
+    const dates = f.dateRange('2027-02-08', length)
+    assert.equal(f.ramadanProgress(dates, '2027-02-07').daysUntil, 1)
+    assert.equal(f.ramadanProgress(dates, '2027-02-08').day, 1)
+    assert.equal(f.ramadanProgress(dates, '2027-02-22').day, 15)
+    assert.equal(f.ramadanProgress(dates, dates.at(-1)).day, length)
+    assert.equal(f.ramadanProgress(dates, f.dateRange(dates.at(-1), 2)[1]).kind, 'after')
+  }
+  assert.equal(f.ramadanProgress(f.dateRange('2027-02-09', 30), '2027-02-08').kind, 'before')
+  assert.equal(f.ramadanProgress(f.dateRange('2027-02-08', 30), '2027-03-09').day, 30)
+  assert.equal(f.ramadanProgress(f.dateRange('2027-02-08', 29), '2027-03-09').kind, 'after')
+})
+test('Ramadan progress uses calendar dates, not 24-hour durations across DST', () => {
+  const dates = f.dateRange('2027-03-28', 29)
+  assert.equal(f.ramadanProgress(dates, '2027-03-27').daysUntil, 1)
+  assert.equal(f.ramadanProgress(dates, '2027-03-29').day, 2)
+  for (const invalid of [
+    [],
+    dates.slice(1),
+    [...dates].reverse(),
+    dates.map((d, i) => (i === 1 ? dates[0] : d)),
+  ])
+    assert.throws(() => f.ramadanProgress(invalid, '2027-03-28'))
+  assert.throws(() => f.ramadanProgress(dates, '2027-02-30'))
+  const corrected = f.ramadanDates(1448, { method: 'islamic-umalqura', adjustment: 1 })
+  assert.equal(f.ramadanProgress(corrected, corrected[0]).day, 1)
+  assert.equal(f.ramadanProgress(f.ramadanDates(1449), '2027-02-08').kind, 'before')
+})
 test('Ramadan month is contiguous, bounded, and switches to next year only after Ramadan', () => {
   for (const year of [1447, 1448, 1449]) {
     const dates = f.ramadanDates(year)
