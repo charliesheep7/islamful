@@ -2,6 +2,8 @@
 
 import Link from '@/components/Link'
 import { BookOpen, ArrowRight, Sparkles } from 'lucide-react'
+import { answersCopy } from '@/data/locales/answers'
+import { isLocale, localizedPath } from '@/utils/locale'
 import type { Dictionary } from '@/types/dictionary'
 
 interface FeaturedToolProps {
@@ -10,12 +12,14 @@ interface FeaturedToolProps {
 }
 
 export default function FeaturedTool({ lang = 'en' }: FeaturedToolProps) {
-  const isRTL = lang === 'ar'
+  const locale = isLocale(lang) ? lang : 'en'
+  const c = answersCopy[locale]
+  const isRTL = locale === 'ar'
 
   return (
     <section className="py-8 sm:py-12">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <Link href="/answers" className="group block no-underline">
+        <Link href={localizedPath('/answers', locale)} className="group block no-underline">
           <div className="relative overflow-hidden rounded-2xl border border-[var(--color-primary-200)]/50 bg-gradient-to-br from-[var(--color-primary-50)] via-white to-[var(--color-primary-50)] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:p-8 dark:border-[var(--color-primary-900)]/50 dark:from-[var(--color-primary-950)]/20 dark:via-gray-900 dark:to-[var(--color-primary-950)]/20">
             {/* Decorative glow */}
             <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[var(--color-primary-200)]/20 blur-3xl dark:bg-[var(--color-primary-500)]/10" />
@@ -32,20 +36,18 @@ export default function FeaturedTool({ lang = 'en' }: FeaturedToolProps) {
                 <div className="mb-1 flex items-center gap-2">
                   <span className="flex items-center gap-1 rounded-full bg-[var(--color-primary-100)] px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-[var(--color-primary-700)] uppercase dark:bg-[var(--color-primary-900)]/50 dark:text-[var(--color-primary-300)]">
                     <Sparkles className="h-3 w-3" />
-                    {isRTL ? 'جديد' : 'New'}
+                    {{ en: 'New', ar: 'جديد', fr: 'Nouveau', de: 'Neu' }[locale]}
                   </span>
                 </div>
                 <h3
                   className={`text-xl font-bold text-gray-900 sm:text-2xl dark:text-white ${isRTL ? 'font-arabic' : ''}`}
                 >
-                  {isRTL ? 'إجابات القرآن' : 'Quran Answers'}
+                  {c.title}
                 </h3>
                 <p
                   className={`mt-1 text-sm text-gray-600 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
-                  {isRTL
-                    ? 'اسأل ما في قلبك. القرآن سيتحدث.'
-                    : 'Ask what is in your heart. The Quran will speak.'}
+                  {c.intro}
                 </p>
               </div>
 

@@ -1,3 +1,4 @@
+import { getBlogCopy } from '@/data/locales/blog'
 import { ReactNode } from 'react'
 import Image from '@/components/Image'
 import Bleed from 'pliny/ui/Bleed'
@@ -24,12 +25,13 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
   const { path, slug, title, images, summary } = content
   const displayImage = images && images.length > 0 ? images[0] : '/static/images/og-image.png'
 
+  const copy = getBlogCopy(content.lang)
   return (
     <SectionContainer>
       <ScrollTopAndComment />
       <Breadcrumbs
         items={[
-          { name: 'Blog', href: '/blog' },
+          { name: copy.blog, href: '/blog' },
           { name: title, href: `/${path}` },
         ]}
       />
@@ -56,6 +58,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
           <div className="prose dark:prose-invert max-w-none py-4">
             <Share title={title} slug={slug} summary={summary} />
             {children}
+            <Share title={title} slug={slug} summary={summary} />
           </div>
           {siteMetadata.comments && (
             <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">
@@ -69,7 +72,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
                   <Link
                     href={`/${prev.path}`}
                     className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                    aria-label={`Previous post: ${prev.title}`}
+                    aria-label={`${copy.prevArticle}: ${prev.title}`}
                   >
                     &larr; {prev.title}
                   </Link>
@@ -80,7 +83,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
                   <Link
                     href={`/${next.path}`}
                     className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                    aria-label={`Next post: ${next.title}`}
+                    aria-label={`${copy.nextArticle}: ${next.title}`}
                   >
                     {next.title} &rarr;
                   </Link>

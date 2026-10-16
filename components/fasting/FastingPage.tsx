@@ -1,3 +1,7 @@
+import type { Locale } from '@/utils/locale'
+import { cityLabel, countryLabel } from '@/utils/city-label'
+import { fastingTranslations } from '@/data/locales/fasting'
+import { FRENCH_PRAYER_METHODS, GERMAN_PRAYER_METHODS } from '@/data/prayer-methods'
 import Link from 'next/link'
 import FastingPlanner from './FastingPlanner'
 import cities, { getRelatedCities, type City } from '@/data/cities'
@@ -18,13 +22,13 @@ export default async function FastingPage({
   ramadan,
   city,
 }: {
-  lang: 'en' | 'ar'
+  lang: Locale
   ramadan: boolean
   city?: City
 }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
-  const prefix = ar ? '/ar' : '',
+    t = (en: string, arabic: string) => (ar ? arabic : fastingTranslations[lang]?.[en] || en)
+  const prefix = lang === 'en' ? '' : `/${lang}`,
     copy = fastingCopy[lang]
   const today = localDateISO(city?.timezone || 'UTC')
   const year = nextRamadanYear(today)
@@ -41,7 +45,11 @@ export default async function FastingPage({
     }
   }
   const title = city
-    ? t(`Ramadan Calendar in ${city.name}`, `تقويم رمضان في ${city.nameAr}`)
+    ? lang === 'fr'
+      ? `Calendrier du Ramadan à ${cityLabel(city, lang)}`
+      : lang === 'de'
+        ? `Ramadan-Kalender für ${cityLabel(city, lang)}`
+        : t(`Ramadan Calendar in ${city.name}`, `تقويم رمضان في ${city.nameAr}`)
     : ramadan
       ? copy.ramadanTitle
       : copy.dailyTitle
@@ -60,9 +68,17 @@ export default async function FastingPage({
         </p>
         {city && (
           <p className="text-sm">
-            {t(`${city.name}, ${city.country}`, `${city.nameAr}، ${city.countryAr}`)} ·{' '}
-            <bdi>{city.timezone}</bdi> · {t('Default prayer method: ', 'طريقة الصلاة الافتراضية: ')}
-            {(ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS)[String(city.method)]}
+            {`${cityLabel(city, lang)}, ${countryLabel(city, lang)}`} · <bdi>{city.timezone}</bdi> ·{' '}
+            {t('Default prayer method: ', 'طريقة الصلاة الافتراضية: ')}
+            {
+              (lang === 'fr'
+                ? FRENCH_PRAYER_METHODS
+                : lang === 'de'
+                  ? GERMAN_PRAYER_METHODS
+                  : ar
+                    ? ARABIC_PRAYER_METHODS
+                    : PRAYER_METHODS)[String(city.method)]
+            }
           </p>
         )}
         <div className="flex flex-wrap gap-4 text-sm print:hidden">
@@ -151,16 +167,15 @@ export default async function FastingPage({
       />
       <section className="print:hidden">
         <h2 className="mb-4 text-2xl font-bold">
-          {t(
-            city ? 'Ramadan in nearby cities' : 'Ramadan calendars by city',
-            city ? 'رمضان في مدن أخرى' : 'تقويم رمضان حسب المدينة'
-          )}
+          {city
+            ? t('Ramadan in nearby cities', 'رمضان في مدن أخرى')
+            : t('Ramadan calendars by city', 'تقويم رمضان حسب المدينة')}
         </h2>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {related.map((c) => (
             <li key={c.slug}>
               <Link className="underline" href={`${prefix}/ramadan-calendar/${c.slug}`}>
-                {ar ? c.nameAr : c.name}
+                {cityLabel(c, lang)}
               </Link>
             </li>
           ))}

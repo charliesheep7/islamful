@@ -2,7 +2,10 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { chromium } from 'playwright'
 
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({
+  headless: true,
+  channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
+})
 const base = process.env.TEST_BASE_URL || 'http://localhost:3098'
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
@@ -203,7 +206,7 @@ assert.equal(
 await rendered.goto(base + '/ar/qibla-finder')
 assert.equal(await rendered.locator('html').getAttribute('lang'), 'ar')
 assert.equal(await rendered.locator('html').getAttribute('dir'), 'rtl')
-for (const path of ['/fr', '/pricing', '/ar/not-a-real-tool']) {
+for (const path of ['/pricing', '/ar/not-a-real-tool']) {
   const response = await rendered.goto(base + path)
   assert.equal(response.status(), 404, path)
 }

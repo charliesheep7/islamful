@@ -7,13 +7,13 @@ import games from '@/data/games'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 import IslamicWordle from '@/components/games/IslamicWordle'
-import QuranVerseQuiz from '@/components/games/QuranVerseQuiz'
+import QuranVerseQuiz from '@/components/games/QuranVerseQuizPage'
 import WuduSteps from '@/components/games/WuduSteps'
 import SalahSequence from '@/components/games/SalahSequence'
 import ProphetStoriesQuiz from '@/components/games/ProphetStoriesQuiz'
 import PillarBuilder from '@/components/games/PillarBuilder'
 import HadithOrNot from '@/components/games/HadithOrNot'
-import AyahScramble from '@/components/games/AyahScramble'
+import AyahScramble from '@/components/games/AyahScramblePage'
 
 const GAME_COMPONENTS: Record<string, React.ComponentType> = {
   'islamic-wordle': IslamicWordle,

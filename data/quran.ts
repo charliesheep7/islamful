@@ -7,6 +7,7 @@ export type Verse = {
   global: number
   arabic: string
   translation: string
+  footnotes?: string
   juz: number
   page: number
 }
@@ -16,7 +17,7 @@ export const RECITERS = [
 ] as const
 export type Reciter = (typeof RECITERS)[number]['id']
 export const quranPath = (chapter: Chapter, lang: string = 'en', ayah?: number) =>
-  `${lang === 'ar' ? '/ar' : ''}/quran/${chapter.slug}${ayah ? `#ayah-${ayah}` : ''}`
+  `${['ar', 'fr', 'de'].includes(lang) ? `/${lang}` : ''}/quran/${chapter.slug}${ayah ? `#ayah-${ayah}` : ''}`
 export const normalizeDigits = (s: string) =>
   s
     .replace(/[٠-٩]/g, (c) => String(c.charCodeAt(0) - 1632))

@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <div className="prose dark:prose-invert max-w-none py-8">
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Last updated: [Jan 29, 2026]</strong>
+          <strong>Last updated: October 14, 2026</strong>
         </p>
         <p>
           Islamful ("we," "us," or "our") is committed to protecting your privacy. This Privacy
@@ -34,7 +34,24 @@ export default function PrivacyPage() {
           <li>Email address for account creation and authentication</li>
           <li>Display name</li>
         </ul>
-        <p>We do not collect profile photos or images uploaded by users.</p>
+        <h3>Email updates and sharing</h3>
+        <p>
+          If you opt in to feature updates, we store your email address, selected language, signup
+          page and consent date in Supabase. This does not create an authenticated account. Future
+          update emails will include an unsubscribe link. Sharing analytics record the page,
+          language, selected channel and action, without your email, account ID or calculator
+          inputs. We respect your browser’s Do Not Track setting for share analytics. A temporary
+          hashed network identifier is used to limit abusive requests; raw IP addresses are not
+          stored in these tables.
+        </p>
+        <h3>Website accounts</h3>
+        <p>
+          Website sign-in is handled by Supabase. Email/password sign-in is currently disabled. If
+          you choose Google, Supabase receives your email and basic Google profile information,
+          which may include your name and profile picture. Authentication cookies keep you signed
+          in. Signing out on this browser clears its session. Public tools and articles do not
+          require an account.
+        </p>
 
         <h3>2. Conversation Data</h3>
         <ul>
@@ -56,7 +73,11 @@ export default function PrivacyPage() {
             functionality)
           </li>
         </ul>
-        <p>We do not collect precise location, behavioral analytics, or advertising identifiers.</p>
+        <p>
+          The website records the limited sharing events described above and may use aggregate
+          page-usage analytics when configured. Location tools request browser permission and use
+          coordinates to provide the selected tool; location is not included in sharing events.
+        </p>
 
         <h2>How We Use Your Information</h2>
         <p>We use your information to:</p>
@@ -72,9 +93,10 @@ export default function PrivacyPage() {
 
         <h2>AI Processing</h2>
         <p>
-          User input may be processed by trusted AI service providers such as OpenAI solely for
-          real-time responses. According to their policies, your data is not used for model
-          training.
+          Questions submitted to the website’s topic checker are sent through Supabase to APIMart
+          for an AI-generated response. Avoid including personal or sensitive information. Other app
+          AI features may use OpenAI. These providers process submitted text under their own terms
+          and privacy policies.
         </p>
 
         <h2>Data Retention</h2>

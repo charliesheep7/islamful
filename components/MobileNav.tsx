@@ -4,6 +4,7 @@ import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/re
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { Fragment, useState, useEffect, useRef } from 'react'
 import Link from './Link'
+import { navigation } from '@/data/locales/navigation'
 import headerNavLinks from '@/data/headerNavLinks'
 import { useLocale } from './hooks/useLocale'
 
@@ -13,23 +14,8 @@ const MobileNav = () => {
   const { currentLang } = useLocale()
 
   // Simple translation function
-  const getNavText = (key: string) => {
-    const translations: Record<string, Record<string, string>> = {
-      en: {
-        home: 'Home',
-        blog: 'Blog',
-        'prayer times': 'Prayer Times',
-        'haram check': 'Haram Check',
-      },
-      ar: {
-        home: 'الرئيسية',
-        blog: 'المدونة',
-        'prayer times': 'مواقيت الصلاة',
-        'haram check': 'هل هذا حرام؟',
-      },
-    }
-    return translations[currentLang]?.[key] || key
-  }
+  const labels = navigation[currentLang]
+  const getNavText = (key: string) => labels[key as keyof typeof labels] || key
 
   const onToggleNav = () => {
     setNavShow((status) => {
@@ -49,7 +35,7 @@ const MobileNav = () => {
 
   return (
     <>
-      <button aria-label="Toggle Menu" onClick={onToggleNav} className="sm:hidden">
+      <button aria-label={labels.menu} onClick={onToggleNav} className="sm:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -107,7 +93,7 @@ const MobileNav = () => {
 
               <button
                 className="hover:text-accent-600 dark:hover:text-accent-400 fixed top-7 right-4 z-80 h-16 w-16 p-4 text-gray-900 dark:text-gray-100"
-                aria-label="Toggle Menu"
+                aria-label={labels.menu}
                 onClick={onToggleNav}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

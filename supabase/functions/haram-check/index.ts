@@ -1,33 +1,21 @@
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 
-// Rate limiting: 10 requests/min per IP + 100 requests/day global
-const PER_IP_LIMIT = 10
-const PER_IP_WINDOW_MS = 60_000
-const DAILY_LIMIT = 100
-const ipCounts = new Map<string, { count: number; resetAt: number }>()
-let dailyCount = 0
-let dailyResetAt = Date.now() + 86_400_000
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now()
-
-  // Global daily cap
-  if (now > dailyResetAt) {
-    dailyCount = 0
-    dailyResetAt = now + 86_400_000
-  }
-  if (dailyCount >= DAILY_LIMIT) return false
-  dailyCount++
-
-  // Per-IP per-minute limit
-  const entry = ipCounts.get(ip)
-  if (!entry || now > entry.resetAt) {
-    ipCounts.set(ip, { count: 1, resetAt: now + PER_IP_WINDOW_MS })
-    return true
-  }
-  if (entry.count >= PER_IP_LIMIT) return false
-  entry.count++
-  return true
+import { createClient } from 'npm:@supabase/supabase-js@2'
+import { createHmac } from 'node:crypto'
+async function checkRateLimit(ip: string): Promise<boolean> {
+  const secret = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  const db = createClient(Deno.env.get('SUPABASE_URL')!, secret)
+  const bucket = createHmac('sha256', secret)
+    .update(`${new Date().toISOString().slice(0, 10)}:${ip}`)
+    .digest('hex')
+  const local = await db.rpc('allow_ai_request', { p_bucket: bucket, p_limit: 10, p_seconds: 60 })
+  if (local.error || !local.data) return false
+  const global = await db.rpc('allow_ai_request', {
+    p_bucket: 'global',
+    p_limit: 100,
+    p_seconds: 86400,
+  })
+  return !global.error && global.data === true
 }
 
 const ALLOWED_ORIGINS = ['https://islamful.com', 'https://www.islamful.com']
@@ -87,14 +75,24 @@ Deno.serve(async (req) => {
     return new Response('ok', { headers: corsHeaders })
   }
 
-  // Rate limit by IP
-  const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
-  if (!checkRateLimit(clientIP)) {
-    return jsonResponse({ error: 'Too many requests. Please try again later.' }, 429, req)
-  }
+  if (req.method !== 'POST') return jsonResponse({ error: 'Method not allowed' }, 405, req)
+  if (!ALLOWED_ORIGINS.includes(req.headers.get('origin') || ''))
+    return jsonResponse({ error: 'Origin not allowed' }, 403, req)
+  if (!req.headers.get('content-type')?.startsWith('application/json'))
+    return jsonResponse({ error: 'JSON required' }, 415, req)
 
   try {
-    const { query, lang = 'en' } = await req.json()
+    const raw = await req.text()
+    if (raw.length > 2048) return jsonResponse({ error: 'Request too large' }, 413, req)
+    let input
+    try {
+      input = JSON.parse(raw)
+    } catch {
+      return jsonResponse({ error: 'Invalid JSON' }, 400, req)
+    }
+    if (!input || typeof input !== 'object')
+      return jsonResponse({ error: 'Invalid request' }, 400, req)
+    const { query, lang = 'en' } = input
 
     if (!query || typeof query !== 'string' || query.trim().length === 0) {
       return jsonResponse({ error: 'Query is required' }, 400, req)
@@ -104,13 +102,21 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: 'Query too long (max 200 characters)' }, 400, req)
     }
 
-    const apiKey = Deno.env.get('GEMINI_API_KEY')
+    // Rate limit by IP
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+    if (!(await checkRateLimit(clientIP))) {
+      return jsonResponse({ error: 'Too many requests. Please try again later.' }, 429, req)
+    }
+
+    const apiKey = Deno.env.get('APIMART_API_KEY')
     if (!apiKey) {
       return jsonResponse({ error: 'Service unavailable' }, 503, req)
     }
 
-    const isArabic = lang === 'ar'
-    const responseLang = isArabic ? 'Arabic' : 'English'
+    const responseLang =
+      ({ en: 'English', ar: 'Arabic', fr: 'French', de: 'German' } as Record<string, string>)[
+        lang
+      ] || 'English'
 
     const systemPrompt = `You provide general information about Islamic perspectives. You are not a scholar and do not issue fatwas. Do not present a generated answer as a verified religious ruling.
 
@@ -124,58 +130,30 @@ The JSON must have these exact keys:
 
 Use "depends" when a question has missing context, a product needs ingredient or certification checks, or schools differ. Pay attention to negation and qualifiers such as "pork-free" or "without alcohol"; do not classify a whole question from a single keyword. If the query is unrelated to Islamic rulings, use "not_applicable" as the ruling.`
 
-    const res = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-goog-api-key': apiKey,
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: 'user',
-              parts: [
-                {
-                  text: `Give general information about this halal-or-haram question in ${responseLang}: ${JSON.stringify(query.trim())}`,
-                },
-              ],
-            },
-          ],
-          systemInstruction: {
-            parts: [{ text: systemPrompt }],
+    const res = await fetch('https://api.apimart.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
+      signal: AbortSignal.timeout(45000),
+      body: JSON.stringify({
+        model: 'gpt-4.1-mini',
+        temperature: 0.2,
+        max_tokens: 800,
+        stream: false,
+        response_format: { type: 'json_object' },
+        messages: [
+          { role: 'system', content: systemPrompt },
+          {
+            role: 'user',
+            content: `Explain this question in ${responseLang}: ${JSON.stringify(query.trim())}`,
           },
-          generationConfig: {
-            temperature: 0.2,
-            maxOutputTokens: 512,
-            responseMimeType: 'application/json',
-            thinkingConfig: { thinkingBudget: 0 },
-          },
-        }),
-      }
-    )
-
-    if (!res.ok) {
-      const errText = await res.text()
-      console.error('Gemini API error:', res.status, errText)
-      return jsonResponse({ error: 'AI service error' }, 502, req)
-    }
-
-    const geminiData = await res.json()
-
-    // Find the text part (skip thinking parts)
-    const parts = geminiData?.candidates?.[0]?.content?.parts || []
-    let text = ''
-    for (const part of parts) {
-      if (part.text && !part.thought) {
-        text = part.text
-        break
-      }
-    }
-
+        ],
+      }),
+    })
+    if (!res.ok) return jsonResponse({ error: 'AI service error' }, 502, req)
+    const responseData = await res.json()
+    const text = responseData?.choices?.[0]?.message?.content || ''
     if (!text) {
-      console.error('No text in response:', JSON.stringify(geminiData).slice(0, 500))
+      console.error('Empty AI response')
       return jsonResponse({ error: 'No response from AI' }, 502, req)
     }
 

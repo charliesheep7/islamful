@@ -1,3 +1,5 @@
+import { localAuthorRole } from '@/data/locales/blog'
+import { getBlogCopy } from '@/data/locales/blog'
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
@@ -36,6 +38,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
   const { filePath, path, slug, date, title, tags, faqs, summary, lang } = content
   const basePath = path.split('/')[0]
   const isArabic = lang === 'ar'
+  const copy = getBlogCopy(lang)
   const purityHero = [
     'how-to-perform-wudu',
     'does-bleeding-break-wudu',
@@ -47,7 +50,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
       <ScrollTopAndComment />
       <Breadcrumbs
         items={[
-          { name: isArabic ? 'المدونة' : 'Blog', href: isArabic ? '/ar/blog' : '/blog' },
+          { name: copy.blog, href: isArabic ? '/ar/blog' : '/blog' },
           { name: title, href: isArabic ? `/ar/${path}` : `/${path}` },
         ]}
       />
@@ -57,13 +60,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
                 <div>
-                  <dt className="sr-only">{isArabic ? 'نُشر في' : 'Published on'}</dt>
+                  <dt className="sr-only">{copy.published}</dt>
                   <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
                     <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(
-                        isArabic ? 'ar-SA' : siteMetadata.locale,
-                        postDateTemplate
-                      )}
+                      {new Date(date).toLocaleDateString(lang || 'en', postDateTemplate)}
                     </time>
                   </dd>
                 </div>
@@ -78,14 +78,14 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 width={1536}
                 height={1024}
                 priority
-                alt="Sunlit wash basin with clear running water"
+                alt={copy.hero}
                 className="mt-8 aspect-[5/2] w-full rounded-2xl object-cover"
               />
             )}
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
             <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
-              <dt className="sr-only">{isArabic ? 'المؤلفون' : 'Authors'}</dt>
+              <dt className="sr-only">{copy.authors}</dt>
               <dd>
                 <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0 sm:rtl:space-x-reverse">
                   {authorDetails.map((author) => (
@@ -103,13 +103,15 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                         />
                       )}
                       <dl className="text-sm leading-5 font-medium">
-                        <dt className="sr-only">{isArabic ? 'الاسم' : 'Name'}</dt>
+                        <dt className="sr-only">{copy.name}</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                         {(author.occupation || author.company) && (
                           <>
-                            <dt className="sr-only">{isArabic ? 'الدور' : 'Role'}</dt>
+                            <dt className="sr-only">{copy.role}</dt>
                             <dd className="text-gray-500 dark:text-gray-400">
-                              {[author.occupation, author.company].filter(Boolean).join(' • ')}
+                              {[localAuthorRole(author.occupation, content.lang), author.company]
+                                .filter(Boolean)
+                                .join(' • ')}
                             </dd>
                           </>
                         )}
@@ -125,11 +127,12 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               >
                 <Share title={title} slug={slug} summary={summary} />
                 {children}
-                {faqs && <FAQ faqs={faqs} />}
+                <Share title={title} slug={slug} summary={summary} />
+                {faqs && <FAQ faqs={faqs} lang={content.lang} />}
               </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
-                  {isArabic ? 'ناقش على X' : 'Discuss on X'}
+                  {copy.discuss}
                 </Link>
               </div>
               {siteMetadata.comments && (
@@ -152,7 +155,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                         firstArticle.path && (
                           <div>
                             <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                              {isArabic ? 'المقال التالي' : 'Previous Article'}
+                              {isArabic ? copy.nextArticle : copy.prevArticle}
                             </h2>
                             <div className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400">
                               <Link href={`/${firstArticle.path}`}>{firstArticle.title}</Link>
@@ -168,7 +171,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                         secondArticle.path && (
                           <div>
                             <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                              {isArabic ? 'المقال السابق' : 'Next Article'}
+                              {isArabic ? copy.prevArticle : copy.nextArticle}
                             </h2>
                             <div className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400">
                               <Link href={`/${secondArticle.path}`}>{secondArticle.title}</Link>
@@ -184,9 +187,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <Link
                   href={`/${basePath}`}
                   className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                  aria-label={isArabic ? 'العودة إلى المدونة' : 'Back to the blog'}
+                  aria-label={copy.back}
                 >
-                  {isArabic ? 'العودة إلى المدونة →' : '← Back to the blog'}
+                  {copy.back}
                 </Link>
               </div>
             </footer>

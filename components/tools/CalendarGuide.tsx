@@ -1,3 +1,4 @@
+import CalendarGuideTranslated from './CalendarGuideTranslated'
 import JsonLd from '@/components/seo/JsonLd'
 
 export const calendarQuestions = {
@@ -55,7 +56,8 @@ export const calendarQuestions = {
   ],
 }
 
-export default function CalendarGuide({ lang }: { lang: 'en' | 'ar' }) {
+export default function CalendarGuide({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
+  if (lang === 'fr' || lang === 'de') return <CalendarGuideTranslated lang={lang} />
   const ar = lang === 'ar'
   const questions = calendarQuestions[lang]
   return (

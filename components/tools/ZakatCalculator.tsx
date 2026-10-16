@@ -1,5 +1,6 @@
 'use client'
 
+import { zakatTranslations } from '@/data/locales/zakat'
 import { useEffect, useId, useRef, useState } from 'react'
 import {
   calculateZakat,
@@ -21,7 +22,8 @@ export default function ZakatCalculator({
   initialDate: string
 }) {
   const ar = lang === 'ar'
-  const t = (en: string, arabic: string) => (ar ? arabic : en)
+  const t = (en: string, arabic: string) =>
+    ar ? arabic : lang === 'fr' || lang === 'de' ? zakatTranslations[lang][en] || en : en
   const id = useId()
   const [draft, setDraft] = useState(() => emptyZakatDraft(initialDate))
   const [pendingCurrency, setPendingCurrency] = useState('USD')
@@ -56,7 +58,7 @@ export default function ZakatCalculator({
     metalMode: t('How to enter gold and silver', 'طريقة إدخال الذهب والفضة'),
   }
   const inputClass =
-    'mt-2 w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-white'
+    'mt-2 w-full min-w-0 max-w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-base text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-white'
   const panelClass =
     'space-y-5 rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 dark:border-gray-800 dark:bg-gray-900'
   const update = <K extends keyof ZakatDraft>(key: K, value: ZakatDraft[K]) => {
@@ -66,14 +68,17 @@ export default function ZakatCalculator({
     setNotice('')
   }
   const money = (value: number) =>
-    new Intl.NumberFormat(ar ? 'ar-SA' : 'en-US', {
-      style: 'currency',
-      currency: draft.currency,
-      currencyDisplay: 'code',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-      numberingSystem: ar ? 'arab' : 'latn',
-    }).format(value)
+    new Intl.NumberFormat(
+      ar ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : 'en-US',
+      {
+        style: 'currency',
+        currency: draft.currency,
+        currencyDisplay: 'code',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+        numberingSystem: ar ? 'arab' : 'latn',
+      }
+    ).format(value)
   const field = (key: keyof ZakatDraft, unit = draft.currency, places = 2) => (
     <div>
       <label htmlFor={`${id}-${key}`} className="block text-sm font-medium">
@@ -92,12 +97,23 @@ export default function ZakatCalculator({
         aria-invalid={error?.field === key}
         aria-describedby={error?.field === key ? `${id}-error` : undefined}
         maxLength={21}
-        onChange={(e) => update(key, e.target.value as never)}
+        onChange={(e) =>
+          update(
+            key,
+            (lang === 'fr' || lang === 'de'
+              ? e.target.value.replace(',', '.')
+              : e.target.value) as never
+          )
+        }
         className={inputClass}
       />
       {places !== 2 && (
         <p className="mt-1 text-xs text-gray-500">
-          {t(`Up to ${places} decimal places.`, `حتى ${places} منازل عشرية.`)}
+          {lang === 'fr'
+            ? `Jusqu’à ${places} décimales.`
+            : lang === 'de'
+              ? `Bis zu ${places} Nachkommastellen.`
+              : t(`Up to ${places} decimal places.`, `حتى ${places} منازل عشرية.`)}
         </p>
       )}
     </div>
@@ -204,12 +220,7 @@ export default function ZakatCalculator({
   }
 
   return (
-    <div
-      data-testid="zakat-calculator"
-      lang={ar ? 'ar' : 'en'}
-      dir={ar ? 'rtl' : 'ltr'}
-      className="space-y-6"
-    >
+    <div data-testid="zakat-calculator" lang={lang} dir={ar ? 'rtl' : 'ltr'} className="space-y-6">
       <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
         {t(
           'Use values on your Zakat date in one currency. Enter a nisab from a trusted local source, or calculate it from your chosen metal price. Prices are not fetched automatically. Amounts are calculated in this page and are not saved or sent by this calculator.',

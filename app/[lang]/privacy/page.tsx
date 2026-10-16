@@ -2,20 +2,43 @@ import Link from 'next/link'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
 
-export const metadata = genPageMetadata({
-  title: 'سياسة الخصوصية',
-  description:
-    'افهم البيانات الشخصية التي يجمعها إسلامفُل، وكيف يتم استخدامها، والضمانات التي تحميها.',
-  alternates: buildLanguageAlternates('/privacy', { currentLanguage: 'ar' }),
-})
+import { notFound } from 'next/navigation'
+import { privacyPages } from '@/data/locales/privacy'
+import PrivacyPageTranslated from '@/components/PrivacyPageTranslated'
 
-export default function PrivacyPageAr() {
+export function generateStaticParams() {
+  return ['ar', 'fr', 'de'].map((lang) => ({ lang }))
+}
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'ar' && lang !== 'fr' && lang !== 'de') notFound()
+  const c =
+    lang === 'ar'
+      ? {
+          title: 'سياسة الخصوصية',
+          description:
+            'افهم البيانات الشخصية التي يجمعها إسلامفُل، وكيف يتم استخدامها، والضمانات التي تحميها.',
+        }
+      : privacyPages[lang]
+  return genPageMetadata({
+    title: c.title,
+    description: c.description,
+    alternates: buildLanguageAlternates('/privacy', { currentLanguage: lang }),
+  })
+}
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'ar' && lang !== 'fr' && lang !== 'de') notFound()
+  return lang === 'ar' ? <PrivacyPageAr /> : <PrivacyPageTranslated lang={lang} />
+}
+
+function PrivacyPageAr() {
   return (
     <SectionContainer>
       <div className="prose dark:prose-invert max-w-none py-8" dir="rtl">
         <h1>سياسة الخصوصية</h1>
         <p>
-          <strong>آخر تحديث: [25 أكتوبر 2025]</strong>
+          <strong>آخر تحديث: 14 أكتوبر 2026</strong>
         </p>
         <p>
           إسلامفُل ("نحن" أو "لنا" أو "خاصتنا") ملتزم بحماية خصوصيتك. توضح سياسة الخصوصية هذه كيفية
@@ -34,7 +57,21 @@ export default function PrivacyPageAr() {
           <li>عنوان البريد الإلكتروني لإنشاء الحساب والمصادقة</li>
           <li>اسم العرض</li>
         </ul>
-        <p>نحن لا نجمع صور الملف الشخصي أو الصور التي يحملها المستخدمون.</p>
+        <h3>تحديثات البريد والمشاركة</h3>
+        <p>
+          عند الموافقة على تحديثات الميزات، نحفظ بريدك ولغتك وصفحة الاشتراك وتاريخ موافقتك في
+          Supabase. لا ينشئ ذلك حسابًا مسجلًا للدخول. ستحتوي رسائل التحديث على رابط لإلغاء الاشتراك.
+          تسجل إحصاءات المشاركة الصفحة واللغة والقناة والإجراء، دون بريدك أو معرّف حسابك أو بيانات
+          الحاسبات. نحترم إعداد عدم التتبع في متصفحك. نستخدم معرّف شبكة مؤقتًا ومشفّرًا بالتجزئة
+          للحد من الطلبات المسيئة، ولا نحفظ عنوان IP الأصلي في هذه الجداول.
+        </p>
+        <h3>حسابات الموقع</h3>
+        <p>
+          تتولى Supabase تسجيل الدخول إلى الموقع. تسجيل الدخول بالبريد وكلمة المرور معطّل حاليًا.
+          عند اختيار Google، تتلقى Supabase بريدك ومعلومات ملفك الأساسية، وقد تشمل اسمك وصورتك.
+          تُستخدم ملفات تعريف الارتباط للمصادقة لإبقائك مسجل الدخول. يؤدي تسجيل الخروج من هذا
+          المتصفح إلى مسح جلسته. لا تتطلب الأدوات والمقالات العامة حسابًا.
+        </p>
 
         <h3>2. بيانات المحادثة</h3>
         <ul>
@@ -50,7 +87,10 @@ export default function PrivacyPageAr() {
             الأساسية)
           </li>
         </ul>
-        <p>نحن لا نجمع الموقع الدقيق أو تحليلات السلوك أو معرفات الإعلانات.</p>
+        <p>
+          يسجّل الموقع أحداث المشاركة المحدودة الموضحة أعلاه، وقد يستخدم إحصاءات مجمّعة للزيارات عند
+          تهيئتها. تطلب أدوات الموقع إذن المتصفح، ولا تُدرج الإحداثيات في أحداث المشاركة.
+        </p>
 
         <h2>كيف نستخدم معلوماتك</h2>
         <p>نستخدم معلوماتك من أجل:</p>
@@ -64,9 +104,10 @@ export default function PrivacyPageAr() {
 
         <h2>معالجة الذكاء الاصطناعي</h2>
         <p>
-          قد تتم معالجة إدخالات المستخدم من قبل مزودي خدمات الذكاء الاصطناعي الموثوق بهم مثل OpenAI
-          فقط للحصول على استجابات في الوقت الفعلي. وفقًا لسياساتهم، لا يتم استخدام بياناتك لتدريب
-          النماذج.
+          تُرسل الأسئلة المقدمة إلى أداة الاستفسارات في الموقع عبر Supabase إلى APIMart لإنشاء إجابة
+          بالذكاء الاصطناعي. تجنب إدخال معلومات شخصية أو حساسة. قد تستخدم ميزات الذكاء الاصطناعي
+          الأخرى في التطبيق OpenAI. يعالج هؤلاء المزودون النصوص المقدمة وفق شروطهم وسياسات الخصوصية
+          الخاصة بهم.
         </p>
 
         <h2>الاحتفاظ بالبيانات</h2>

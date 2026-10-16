@@ -54,7 +54,7 @@ export function todayCalendar(raw: string | null, deviceZone: string): TodayCale
     return fallback
   }
 }
-export function todayDate(now: string, calendar: TodayCalendar, lang: 'en' | 'ar') {
+export function todayDate(now: string, calendar: TodayCalendar, lang: 'en' | 'ar' | 'fr' | 'de') {
   const iso = dateInTimeZone(now, calendar.timeZone)
   return {
     iso,

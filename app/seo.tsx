@@ -1,3 +1,4 @@
+import { hasTranslatedContent } from '@/data/locales/routes'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 
@@ -23,7 +24,7 @@ interface LanguageAlternatesOptions {
   englishPath?: string
   arabicPath?: string
   canonical?: string
-  currentLanguage?: 'en' | 'ar'
+  currentLanguage?: 'en' | 'ar' | 'fr' | 'de'
 }
 
 export function buildLanguageAlternates(
@@ -45,7 +46,9 @@ export function buildLanguageAlternates(
     ? normalizePath(canonical)
     : currentLanguage === 'ar'
       ? normalizedArabic
-      : normalizedEnglish
+      : currentLanguage === 'fr' || currentLanguage === 'de'
+        ? `/${currentLanguage}${normalizedEnglish === '/' ? '' : normalizedEnglish}`
+        : normalizedEnglish
 
   // CRITICAL FIX: Use absolute URLs for canonical and hreflang
   // Relative URLs cause "Duplicate canonical" errors in Google Search Console
@@ -56,6 +59,11 @@ export function buildLanguageAlternates(
   const absoluteCanonical = `${baseUrl}${normalizedCanonical}`
 
   const languages: Record<string, string> = {}
+  if (hasTranslatedContent(normalizedEnglish)) {
+    const suffix = normalizedEnglish === '/' ? '' : normalizedEnglish
+    languages.fr = `${baseUrl}/fr${suffix}`
+    languages.de = `${baseUrl}/de${suffix}`
+  }
 
   // Only add x-default for English pages (default locale)
   // Arabic pages should not have x-default to avoid canonical conflicts

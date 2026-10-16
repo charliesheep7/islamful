@@ -1,9 +1,12 @@
 'use client'
 
+import { dashboardTranslations } from '@/data/locales/dashboard'
+import type { Locale } from '@/utils/locale'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowUpRight, BookOpen, Compass, Moon, Sun, CalendarDays, Calculator } from 'lucide-react'
+import { cityLabel, countryLabel } from '@/utils/city-label'
 import cities from '@/data/cities'
 import { chapters, quranPath } from '@/data/quran'
 import { routineEntries } from '@/data/adhkar'
@@ -36,11 +39,17 @@ export default function TodayDashboard({
   lang,
   initialDate,
 }: {
-  lang: 'en' | 'ar'
+  lang: Locale
   initialDate: TodayDate
 }) {
+  const t = (en: string, arabic: string) =>
+    lang === 'ar'
+      ? arabic
+      : lang === 'fr' || lang === 'de'
+        ? dashboardTranslations[lang][en] || en
+        : en
   const ar = lang === 'ar',
-    prefix = ar ? '/ar' : ''
+    prefix = lang === 'en' ? '' : `/${lang}`
   const [choice, setChoice] = useState<TodayChoice | null>(null)
   const [calendar, setCalendar] = useState<TodayCalendar>({
     method: 'islamic-umalqura',
@@ -145,16 +154,16 @@ export default function TodayDashboard({
             id="today-heading"
             className={`mx-auto max-w-4xl text-[2.75rem] leading-[1.12] font-normal tracking-[-0.035em] text-emerald-950 sm:text-7xl lg:text-[5.5rem] dark:text-stone-100 ${ar ? 'font-arabic leading-[1.5] tracking-normal' : ''}`}
           >
-            <span className="block">{ar ? 'كل أدوات المسلم،' : 'Every tool'}</span>{' '}
+            <span className="block">{t('Every tool', 'كل أدوات المسلم،')}</span>{' '}
             <span className={`block text-emerald-800 dark:text-emerald-300 ${ar ? '' : 'italic'}`}>
-              {ar ? 'في مكان واحد.' : 'a Muslim needs.'}
+              {t('a Muslim needs.', 'في مكان واحد.')}
             </span>
           </h1>
           <Link
             href="#tools"
             className="mt-8 inline-flex items-center gap-3 rounded-full bg-emerald-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700 sm:mt-10 dark:bg-emerald-200 dark:text-emerald-950 dark:hover:bg-emerald-100"
           >
-            {ar ? 'اكتشف الأدوات' : 'Explore tools'}
+            {t('Explore tools', 'اكتشف الأدوات')}
             <ArrowUpRight
               aria-hidden="true"
               className="h-4 w-4 rtl:-scale-x-100"
@@ -163,11 +172,10 @@ export default function TodayDashboard({
           </Link>
           <Image
             src="/static/images/islamful-home-hero-v1.webp"
-            alt={
-              ar
-                ? 'مصحف على حامل خشبي ومسبحة وبوصلة وسجادة صلاة في فناء مشمس'
-                : 'A Quran on a wooden stand, prayer beads, a compass and a prayer rug in a sunlit courtyard'
-            }
+            alt={t(
+              'A Quran on a wooden stand, prayer beads, a compass and a prayer rug in a sunlit courtyard',
+              'مصحف على حامل خشبي ومسبحة وبوصلة وسجادة صلاة في فناء مشمس'
+            )}
             width={1600}
             height={667}
             sizes="(max-width: 1024px) 100vw, 976px"
@@ -180,31 +188,32 @@ export default function TodayDashboard({
           <div className={`${panel} lg:col-span-2`}>
             <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h2 className="text-2xl font-bold">{ar ? 'صلاتك اليوم' : 'Your prayers today'}</h2>
+                <h2 className="text-2xl font-bold">{t('Your prayers today', 'صلاتك اليوم')}</h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                  {ar
-                    ? 'اختر مدينتك وطريقة الحساب المعتمدة محليًا.'
-                    : 'Choose your city and your locally approved calculation method.'}
+                  {t(
+                    'Choose your city and your locally approved calculation method.',
+                    'اختر مدينتك وطريقة الحساب المعتمدة محليًا.'
+                  )}
                 </p>
               </div>
               <Link className="text-sm underline" href={`${prefix}/prayer-times`}>
-                {ar ? 'كل مواقيت الصلاة' : 'All prayer times'}
+                {t('All prayer times', 'كل مواقيت الصلاة')}
               </Link>
             </div>
             <div className="mb-5 flex flex-wrap items-end gap-3">
               <label className="min-w-0 flex-1">
-                <span className="mb-1 block text-sm">{ar ? 'ابحث في المدن' : 'Filter cities'}</span>
+                <span className="mb-1 block text-sm">{t('Filter cities', 'ابحث في المدن')}</span>
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder={ar ? 'مدينة أو دولة' : 'City or country'}
+                  placeholder={t('City or country', 'مدينة أو دولة')}
                   className="w-full rounded-xl border border-gray-300 bg-transparent p-3"
                 />
               </label>
               <label className="min-w-0 flex-1">
-                <span className="mb-1 block text-sm">{ar ? 'مدينة الصلاة' : 'Prayer city'}</span>
+                <span className="mb-1 block text-sm">{t('Prayer city', 'مدينة الصلاة')}</span>
                 <select
-                  aria-label={ar ? 'مدينة الصلاة' : 'Prayer city'}
+                  aria-label={t('Prayer city', 'مدينة الصلاة')}
                   value={city?.slug || ''}
                   onChange={(e) => {
                     const c = cities.find((c) => c.slug === e.target.value)
@@ -212,36 +221,37 @@ export default function TodayDashboard({
                   }}
                   className="w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900 dark:bg-gray-900 dark:text-white"
                 >
-                  <option value="">{ar ? 'اختر مدينة' : 'Choose a city'}</option>
+                  <option value="">{t('Choose a city', 'اختر مدينة')}</option>
                   {city && !matches.includes(city) && (
-                    <option value={city.slug}>{ar ? city.nameAr : city.name}</option>
+                    <option value={city.slug}>{cityLabel(city, lang)}</option>
                   )}
                   {matches.map((c) => (
                     <option key={c.slug} value={c.slug}>
-                      {ar ? `${c.nameAr}، ${c.countryAr}` : `${c.name}, ${c.country}`}
+                      {`${cityLabel(c, lang)}, ${countryLabel(c, lang)}`}
                     </option>
                   ))}
                 </select>
               </label>
               {city && (
                 <button onClick={() => save(null)} className="py-3 text-sm underline">
-                  {ar ? 'نسيان المدينة' : 'Forget city'}
+                  {t('Forget city', 'نسيان المدينة')}
                 </button>
               )}
             </div>
             {!matches.length && (
               <p className="mb-3 text-sm">
-                {ar
-                  ? 'لا توجد مدينة مطابقة هنا. استخدم البحث الكامل في مواقيت الصلاة.'
-                  : 'No matching city here. Use the full prayer times search.'}
+                {t(
+                  'No matching city here. Use the full prayer times search.',
+                  'لا توجد مدينة مطابقة هنا. استخدم البحث الكامل في مواقيت الصلاة.'
+                )}
               </p>
             )}
             {city && choice ? (
               <PrayerTimesWidget
                 key={city.slug}
                 prayerData={null}
-                cityName={ar ? city.nameAr : city.name}
-                cityCountry={ar ? city.countryAr : city.country}
+                cityName={cityLabel(city, lang)}
+                cityCountry={countryLabel(city, lang)}
                 cityMethod={choice.method}
                 latitude={city.lat}
                 longitude={city.lng}
@@ -252,36 +262,38 @@ export default function TodayDashboard({
               />
             ) : (
               <p className="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-950 dark:bg-emerald-950 dark:text-emerald-100">
-                {ar
-                  ? 'اختر مدينة لعرض مواقيت اليوم والصلاة القادمة. لا نحدد موقعك تلقائيًا.'
-                  : 'Choose a city for today’s timetable and next prayer. Your location is not detected automatically.'}
+                {t(
+                  'Choose a city for today’s timetable and next prayer. Your location is not detected automatically.',
+                  'اختر مدينة لعرض مواقيت اليوم والصلاة القادمة. لا نحدد موقعك تلقائيًا.'
+                )}
               </p>
             )}
             <noscript>
               <p className="mt-3">
-                {ar
-                  ? 'فعّل JavaScript لتخصيص هذه الصفحة، أو افتح جدول مدينتك من صفحة مواقيت الصلاة.'
-                  : 'Enable JavaScript to personalize this page, or open your city timetable from Prayer Times.'}
+                {t(
+                  'Enable JavaScript to personalize this page, or open your city timetable from Prayer Times.',
+                  'فعّل JavaScript لتخصيص هذه الصفحة، أو افتح جدول مدينتك من صفحة مواقيت الصلاة.'
+                )}
               </p>
             </noscript>
             {!storageAvailable && (
               <p role="status" className="mt-3 text-sm">
-                {ar
-                  ? 'التخزين المحلي غير متاح. يمكنك استخدام الصفحة، لكن قد لا تُحفظ اختياراتك.'
-                  : 'Local storage is unavailable. You can use this page, but choices may not be saved.'}
+                {t(
+                  'Local storage is unavailable. You can use this page, but choices may not be saved.',
+                  'التخزين المحلي غير متاح. يمكنك استخدام الصفحة، لكن قد لا تُحفظ اختياراتك.'
+                )}
               </p>
             )}
           </div>
 
           <div className={panel}>
             <BookOpen className="mb-3 h-6 w-6 text-emerald-700" aria-hidden="true" />
-            <h2 className="text-2xl font-bold">
-              {ar ? 'وقت مع القرآن' : 'A moment with the Quran'}
-            </h2>
+            <h2 className="text-2xl font-bold">{t('A moment with the Quran', 'وقت مع القرآن')}</h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-              {ar
-                ? 'اقرأ واستمع واحفظ موضعك للعودة إليه.'
-                : 'Read, listen and save your place for next time.'}
+              {t(
+                'Read, listen and save your place for next time.',
+                'اقرأ واستمع واحفظ موضعك للعودة إليه.'
+              )}
             </p>
             <Link
               className={`${action} mt-5`}
@@ -291,10 +303,12 @@ export default function TodayDashboard({
               {chapter && place
                 ? ar
                   ? `تابع ${chapter.nameAr} · الآية ${place.ayah}`
-                  : `Resume ${chapter.name} · verse ${place.ayah}`
-                : ar
-                  ? 'افتح القرآن'
-                  : 'Open the Quran'}
+                  : lang === 'fr'
+                    ? `Reprendre ${chapter.name} · verset ${place.ayah}`
+                    : lang === 'de'
+                      ? `${chapter.name} fortsetzen · Vers ${place.ayah}`
+                      : `Resume ${chapter.name} · verse ${place.ayah}`
+                : t('Open the Quran', 'افتح القرآن')}
             </Link>
             <div className="mt-4 flex flex-wrap gap-2">
               {[1, 18, 36, 67].map((n) => (
@@ -304,14 +318,15 @@ export default function TodayDashboard({
               ))}
             </div>
             <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-              {ar
-                ? 'يظهر هنا الموضع الذي تحفظه في القارئ على هذا المتصفح.'
-                : 'The place you explicitly save in the reader appears here on this browser.'}
+              {t(
+                'The place you explicitly save in the reader appears here on this browser.',
+                'يظهر هنا الموضع الذي تحفظه في القارئ على هذا المتصفح.'
+              )}
             </p>
           </div>
           <div className={panel}>
             <Sun className="mb-3 h-6 w-6 text-amber-600" aria-hidden="true" />
-            <h2 className="text-2xl font-bold">{ar ? 'أذكارك اليومية' : 'Your daily adhkar'}</h2>
+            <h2 className="text-2xl font-bold">{t('Your daily adhkar', 'أذكارك اليومية')}</h2>
             <div className="mt-4 space-y-3">
               {routines.map((id) => (
                 <Link
@@ -321,26 +336,18 @@ export default function TodayDashboard({
                 >
                   <span className="font-semibold">
                     {id === 'morning'
-                      ? ar
-                        ? 'أذكار الصباح'
-                        : 'Morning adhkar'
-                      : ar
-                        ? 'أذكار المساء'
-                        : 'Evening adhkar'}
+                      ? t('Morning adhkar', 'أذكار الصباح')
+                      : t('Evening adhkar', 'أذكار المساء')}
                   </span>
                   <span className="text-sm" data-testid={`progress-${id}`}>
                     {progress[id] === null ? (
-                      ar ? (
-                        'افتح'
-                      ) : (
-                        'Open'
-                      )
+                      t('Open', 'افتح')
                     ) : (
                       <>
                         <bdi dir="ltr">
                           {progress[id]} / {targets[id].length}
                         </bdi>{' '}
-                        {ar ? 'بطاقة' : 'cards'}
+                        {t('cards', 'بطاقة')}
                       </>
                     )}
                   </span>
@@ -351,90 +358,92 @@ export default function TodayDashboard({
               className="mt-4 inline-block text-sm underline"
               href={`${prefix}/adhkar/after-prayer`}
             >
-              {ar ? 'أذكار بعد الصلاة' : 'Adhkar after prayer'} →
+              {t('Adhkar after prayer', 'أذكار بعد الصلاة')} →
             </Link>
             <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-              {ar
-                ? 'البطاقات التي سجلتها مكتملة، لليوم المحلي على جهازك. لا يُستنتج أداء الصلاة من هذه الأعداد.'
-                : 'Cards you marked complete, for this device’s local day. These counts do not record prayer completion.'}
+              {t(
+                'Cards you marked complete, for this device’s local day. These counts do not record prayer completion.',
+                'البطاقات التي سجلتها مكتملة، لليوم المحلي على جهازك. لا يُستنتج أداء الصلاة من هذه الأعداد.'
+              )}
             </p>
           </div>
           <div className={panel} data-testid="today-calendar">
             <CalendarDays className="mb-3 h-6 w-6 text-emerald-700" aria-hidden="true" />
-            <h2 className="text-2xl font-bold">{ar ? 'التاريخ الإسلامي' : 'The Islamic date'}</h2>
+            <h2 className="text-2xl font-bold">{t('The Islamic date', 'التاريخ الإسلامي')}</h2>
             {date ? (
               <>
                 <p className="mt-4 text-xl font-semibold">{date.hijri}</p>
                 <p className="mt-1 text-sm">{date.gregorian}</p>
                 <p className="mt-3 text-sm">
-                  {ar ? 'بعد المغرب: ' : 'After Maghrib: '}
+                  {t('After Maghrib: ', 'بعد المغرب: ')}
                   {date.tonight}
                 </p>
               </>
             ) : (
               <p role="status" className="mt-4">
-                {ar
-                  ? 'تعذر حساب التاريخ بهذه الإعدادات في متصفحك.'
-                  : 'This browser could not calculate the date with these settings.'}
+                {t(
+                  'This browser could not calculate the date with these settings.',
+                  'تعذر حساب التاريخ بهذه الإعدادات في متصفحك.'
+                )}
               </p>
             )}
             <p className="mt-3 text-xs break-words text-gray-500 dark:text-gray-400">
-              {!now ? (ar ? 'تاريخ مرجعي · UTC' : 'Reference date · UTC') : zone} ·{' '}
+              {!now ? t('Reference date · UTC', 'تاريخ مرجعي · UTC') : zone} ·{' '}
               {calendar.method === 'islamic-civil'
-                ? ar
-                  ? 'التقويم الهجري الحسابي'
-                  : 'Tabular Hijri'
-                : ar
-                  ? 'أم القرى'
-                  : 'Umm al-Qura'}
+                ? t('Tabular Hijri', 'التقويم الهجري الحسابي')
+                : t('Umm al-Qura', 'أم القرى')}
               {calendar.adjustment !== 0
-                ? ` · ${ar ? 'التعديل' : 'Adjustment'} ${calendar.adjustment > 0 ? '+' : ''}${calendar.adjustment}`
+                ? ` · ${t('Adjustment', 'التعديل')} ${calendar.adjustment > 0 ? '+' : ''}${calendar.adjustment}`
                 : ''}
             </p>
             <p className="mt-3 text-sm text-gray-600 dark:text-gray-300">
-              {ar
-                ? 'تاريخ محسوب؛ قد تختلف رؤية الهلال محليًا. تتبع المنطقة الزمنية مدينة الصلاة المختارة، أو إعداد التقويم إن لم تختر مدينة.'
-                : 'A calculated date; local moon sighting can differ. The time zone follows your chosen prayer city, or your calendar setting when no city is selected.'}
+              {t(
+                'A calculated date; local moon sighting can differ. The time zone follows your chosen prayer city, or your calendar setting when no city is selected.',
+                'تاريخ محسوب؛ قد تختلف رؤية الهلال محليًا. تتبع المنطقة الزمنية مدينة الصلاة المختارة، أو إعداد التقويم إن لم تختر مدينة.'
+              )}
             </p>
             <Link
               className="mt-4 inline-block text-sm underline"
               href={`${prefix}/islamic-calendar`}
             >
-              {ar ? 'افتح التقويم والإعدادات' : 'Open calendar & settings'} →
+              {t('Open calendar & settings', 'افتح التقويم والإعدادات')} →
             </Link>
           </div>
           <div className={panel}>
-            <h2 className="text-2xl font-bold">{ar ? 'في متناول يدك' : 'Keep these close'}</h2>
+            <h2 className="text-2xl font-bold">{t('Keep these close', 'في متناول يدك')}</h2>
             <div className="mt-4 space-y-3">
               {[
                 {
                   href: 'qibla-finder',
-                  title: ar ? 'اتجاه القبلة' : 'Find the Qibla',
-                  desc: ar
-                    ? 'حدد الاتجاه من موقع تختاره.'
-                    : 'Get a direction from a location you choose.',
+                  title: t('Find the Qibla', 'اتجاه القبلة'),
+                  desc: t(
+                    'Get a direction from a location you choose.',
+                    'حدد الاتجاه من موقع تختاره.'
+                  ),
                   Icon: Compass,
                 },
                 {
                   href: 'last-third-of-night',
-                  title: ar ? 'خطط لليلتك' : 'Plan your night',
-                  desc: ar
-                    ? 'الثلث الأخير ومنتصف الليل والفجر.'
-                    : 'Last third of the night, midnight and Fajr.',
+                  title: t('Plan your night', 'خطط لليلتك'),
+                  desc: t(
+                    'Last third of the night, midnight and Fajr.',
+                    'الثلث الأخير ومنتصف الليل والفجر.'
+                  ),
                   Icon: Moon,
                 },
                 {
                   href: 'fasting-times',
-                  title: ar ? 'السحور والإفطار' : 'Suhoor and iftar',
-                  desc: ar
-                    ? 'مواقيت الصيام وتقويم رمضان لمدينتك.'
-                    : 'Fasting times and a Ramadan calendar for your city.',
+                  title: t('Suhoor and iftar', 'السحور والإفطار'),
+                  desc: t(
+                    'Fasting times and a Ramadan calendar for your city.',
+                    'مواقيت الصيام وتقويم رمضان لمدينتك.'
+                  ),
                   Icon: Moon,
                 },
                 {
                   href: 'zakat-calculator',
-                  title: ar ? 'احسب زكاتك' : 'Calculate your zakat',
-                  desc: ar ? 'النصاب والمال والذهب والفضة.' : 'Nisab, money, gold and silver.',
+                  title: t('Calculate your zakat', 'احسب زكاتك'),
+                  desc: t('Nisab, money, gold and silver.', 'النصاب والمال والذهب والفضة.'),
                   Icon: Calculator,
                 },
               ].map(({ href, title, desc, Icon }) => (
@@ -454,11 +463,12 @@ export default function TodayDashboard({
           </div>
         </div>
         <p className="text-center text-sm text-gray-600 dark:text-gray-300">
-          {ar
-            ? 'احفظ هذه الصفحة في مفضلة متصفحك للعودة إليها كل يوم. بيانات تقدمك محفوظة على هذا المتصفح فقط.'
-            : 'Bookmark this page in your browser to return each day. Saved progress stays on this browser.'}{' '}
+          {t(
+            'Bookmark this page in your browser to return each day. Saved progress stays on this browser.',
+            'احفظ هذه الصفحة في مفضلة متصفحك للعودة إليها كل يوم. بيانات تقدمك محفوظة على هذا المتصفح فقط.'
+          )}{' '}
           <a className="underline" href="#tools">
-            {ar ? 'استكشف كل الأدوات' : 'Explore all tools'} ↓
+            {t('Explore all tools', 'استكشف كل الأدوات')} ↓
           </a>
         </p>
       </div>

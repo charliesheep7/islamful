@@ -1,24 +1,11 @@
 'use client'
-
-import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-
+import { useLocale } from './hooks/useLocale'
 export default function RTLHandler() {
-  const pathname = usePathname()
-
+  const { currentLang } = useLocale()
   useEffect(() => {
-    // Check if current path is Arabic
-    const isArabic = pathname.startsWith('/ar/') || pathname === '/ar'
-
-    // Update HTML attributes
-    if (isArabic) {
-      document.documentElement.setAttribute('lang', 'ar')
-      document.documentElement.setAttribute('dir', 'rtl')
-    } else {
-      document.documentElement.setAttribute('lang', 'en')
-      document.documentElement.setAttribute('dir', 'ltr')
-    }
-  }, [pathname])
-
+    document.documentElement.lang = currentLang
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr'
+  }, [currentLang])
   return null
 }

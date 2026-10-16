@@ -1,3 +1,4 @@
+import DhikrPageTranslated from '@/components/tools/DhikrPageTranslated'
 import { AdhkarNav } from '@/components/adhkar/AdhkarPages'
 import { Metadata } from 'next'
 import DhikrCounter from '@/components/tools/DhikrCounter'
@@ -6,17 +7,46 @@ import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
 
 export function generateStaticParams() {
-  return [{ lang: 'ar' }]
+  return [{ lang: 'ar' }, { lang: 'fr' }, { lang: 'de' }]
 }
 
-export const metadata: Metadata = {
+const arabicMetadata: Metadata = {
   title: 'عداد الأذكار — تسبيح رقمي يومي',
   description:
     'عداد تسبيح رقمي مجاني لأذكارك اليومية. تتبّع سبحان الله والحمد لله والله أكبر بعد كل صلاة.',
   alternates: buildLanguageAlternates('/dhikr', { currentLanguage: 'ar' }),
 }
 
-export default function DhikrPageAr() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  if (lang !== 'fr' && lang !== 'de') return arabicMetadata
+  const title =
+    lang === 'fr' ? 'Compteur de dhikr — Tasbih quotidien' : 'Dhikr-Zähler — täglicher Tasbih'
+  const description =
+    lang === 'fr'
+      ? 'Comptez vos évocations après la prière avec deux séquences rapportées et des compteurs enregistrés dans votre navigateur.'
+      : 'Zähle deine Gedenkformeln nach dem Gebet mit zwei überlieferten Reihenfolgen und im Browser gespeicherten Zählern.'
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.islamful.com/${lang}/dhikr`,
+      languages: {
+        en: 'https://www.islamful.com/dhikr',
+        ar: 'https://www.islamful.com/ar/dhikr',
+        fr: 'https://www.islamful.com/fr/dhikr',
+        de: 'https://www.islamful.com/de/dhikr',
+      },
+    },
+  }
+}
+export default async function DhikrPageAr({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang === 'fr' || lang === 'de') return <DhikrPageTranslated lang={lang} />
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8" dir="rtl">
       <Breadcrumbs items={[{ name: 'عداد الأذكار', href: '/ar/dhikr' }]} />

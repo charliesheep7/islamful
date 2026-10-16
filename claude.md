@@ -128,8 +128,8 @@ dictionaries/           # i18n translations (en.json, ar.json)
 ### Edge Function
 
 ```bash
-supabase functions deploy haram-check --project-ref fkifiwgbroehluxksfte
-supabase secrets set GEMINI_API_KEY=your_key --project-ref fkifiwgbroehluxksfte
+supabase functions deploy haram-check --project-ref xyccxfjiiilxfsafglbw
+supabase secrets set GEMINI_API_KEY=your_key --project-ref xyccxfjiiilxfsafglbw
 ```
 
 ## Key Notes

@@ -29,6 +29,8 @@ export interface InheritanceResult {
   shares: HeirShare[]
   hasAwl: boolean
   hasRadd: boolean
+  unallocatedEstate: number
+  bequestLimited: boolean
 }
 
 // --- Fraction arithmetic helpers ---
@@ -99,10 +101,24 @@ export function calculateInheritance(
   bequests: number,
   heirs: HeirInput
 ): InheritanceResult {
-  // Step 1: Calculate distributable estate
-  const maxBequests = estateValue / 3
+  if (
+    !['male', 'female'].includes(deceasedGender) ||
+    ![estateValue, debts, bequests].every((n) => Number.isFinite(n) && n >= 0 && n <= 1e12) ||
+    ![heirs.sons, heirs.daughters, heirs.fullBrothers, heirs.fullSisters].every(
+      (n) => Number.isInteger(n) && n >= 0 && n <= 100
+    )
+  ) {
+    throw new RangeError('Invalid inheritance inputs')
+  }
+  estateValue = Math.round(estateValue * 100) / 100
+  debts = Math.round(debts * 100) / 100
+  bequests = Math.round(bequests * 100) / 100
+  // Bequests are capped after funeral expenses and debts, rounded down to cents.
+  const maxBequests =
+    Math.floor(Math.max(0, Math.round(estateValue * 100) - Math.round(debts * 100)) / 3) / 100
   const actualBequests = Math.min(bequests, maxBequests)
-  const distributableEstate = Math.max(0, estateValue - debts - actualBequests)
+  const distributableEstate =
+    Math.max(0, Math.round((estateValue - debts - actualBequests) * 100)) / 100
 
   const hasChildren = heirs.sons > 0 || heirs.daughters > 0
   const hasSons = heirs.sons > 0
@@ -175,7 +191,13 @@ export function calculateInheritance(
         heir: 'Mother',
         heirAr: 'الأم',
         count: 1,
-        fraction: { num: 1, den: 3 },
+        // Umariyyatayn: one third of the residue after the spouse, when both parents inherit.
+        fraction:
+          heirs.spouse && heirs.father
+            ? deceasedGender === 'male'
+              ? { num: 1, den: 4 }
+              : { num: 1, den: 6 }
+            : { num: 1, den: 3 },
         isResidual: false,
         quranicRef: 'Quran 4:11',
         quranicRefAr: 'النساء: ١١',
@@ -243,6 +265,8 @@ export function calculateInheritance(
 
   let remainder: Fraction = subtractFractions({ num: 1, den: 1 }, totalFixed)
 
+  if (remainder.num < 0) remainder = { num: 0, den: 1 }
+
   if (hasSons) {
     // Sons and daughters together in 2:1 ratio get remainder
     const maleShares = heirs.sons * 2
@@ -281,19 +305,27 @@ export function calculateInheritance(
       })
     }
     remainder = { num: 0, den: 1 }
-  } else if (!hasChildren && heirs.father) {
-    // Father gets remainder when no children
-    shares.push({
-      heir: 'Father',
-      heirAr: 'الأب',
-      count: 1,
-      fraction: remainder,
-      isResidual: true,
-      quranicRef: 'Quran 4:11',
-      quranicRefAr: 'النساء: ١١',
-    })
+  } else if (heirs.father) {
+    // With daughters, the father takes his fixed sixth plus any positive residue.
+    const father = shares.find((s) => s.heir === 'Father')
+    if (father) {
+      if (remainder.num > 0) {
+        father.fraction = addFractions(father.fraction, remainder)
+        father.isResidual = true
+      }
+    } else {
+      shares.push({
+        heir: 'Father',
+        heirAr: 'الأب',
+        count: 1,
+        fraction: remainder,
+        isResidual: true,
+        quranicRef: 'Quran 4:11',
+        quranicRefAr: 'النساء: ١١',
+      })
+    }
     remainder = { num: 0, den: 1 }
-  } else if (!hasChildren && !heirs.father && heirs.fullBrothers > 0) {
+  } else if (!hasSons && !heirs.father && heirs.fullBrothers > 0) {
     // Full brothers (and sisters with them in 2:1 ratio) get remainder
     const maleShares = heirs.fullBrothers * 2
     const femaleShares = heirs.fullSisters
@@ -334,6 +366,17 @@ export function calculateInheritance(
       })
     }
 
+    remainder = { num: 0, den: 1 }
+  } else if (heirs.daughters > 0 && heirs.fullSisters > 0 && !heirs.father) {
+    shares.push({
+      heir: heirs.fullSisters === 1 ? 'Full Sister' : 'Full Sisters',
+      heirAr: heirs.fullSisters === 1 ? 'الأخت الشقيقة' : 'الأخوات الشقيقات',
+      count: heirs.fullSisters,
+      fraction: remainder,
+      isResidual: true,
+      quranicRef: 'Sahih al-Bukhari 6736',
+      quranicRefAr: 'صحيح البخاري ٦٧٣٦',
+    })
     remainder = { num: 0, den: 1 }
   }
 
@@ -378,7 +421,6 @@ export function calculateInheritance(
     totalAllocated.num > 0 &&
     shares.length > 0
   ) {
-    hasRadd = true
     const unallocated = subtractFractions({ num: 1, den: 1 }, totalAllocated)
 
     // Non-spouse fixed heirs get the redistribution
@@ -386,6 +428,7 @@ export function calculateInheritance(
     const nonSpouseShares = shares.filter((_, i) => i !== spouseIndex)
 
     if (nonSpouseShares.length > 0) {
+      hasRadd = true
       // Calculate total of non-spouse shares
       let nonSpouseTotal: Fraction = { num: 0, den: 1 }
       for (const s of nonSpouseShares) {
@@ -407,17 +450,31 @@ export function calculateInheritance(
         }
         shares[i].fraction = simplify(addFractions(shares[i].fraction, additional))
       }
-    } else if (spouseIndex !== -1) {
-      // Only spouse exists — give remainder to spouse (edge case)
-      shares[spouseIndex].fraction = { num: 1, den: 1 }
     }
   }
 
   // Step 6: Convert to amounts and percentages
-  const result: HeirShare[] = shares.map((s) => {
+  const cents = Math.round(distributableEstate * 100)
+  const rawAmounts = shares.map((s) => cents * fractionToDecimal(s.fraction))
+  const amounts = rawAmounts.map(Math.floor)
+  const allocatedFraction = shares.reduce((sum, s) => addFractions(sum, s.fraction), {
+    num: 0,
+    den: 1,
+  })
+  const target = Math.round(cents * fractionToDecimal(allocatedFraction))
+  const order = rawAmounts
+    .map((n, i) => ({ i, fraction: n - amounts[i] }))
+    .sort((a, b) => b.fraction - a.fraction || a.i - b.i)
+  let remainingCents = target - amounts.reduce((sum, n) => sum + n, 0)
+  for (const { i } of order) {
+    if (remainingCents <= 0) break
+    amounts[i]++
+    remainingCents--
+  }
+  const result: HeirShare[] = shares.map((s, i) => {
     const decimal = fractionToDecimal(s.fraction)
     const percent = Math.round(decimal * 10000) / 100
-    const amount = Math.round(distributableEstate * decimal * 100) / 100
+    const amount = amounts[i] / 100
 
     return {
       heir: s.heir,
@@ -425,7 +482,7 @@ export function calculateInheritance(
       count: s.count,
       shareFraction:
         s.isResidual && !hasAwl
-          ? `Residual (${fractionToString(s.fraction)})`
+          ? `${s.heir === 'Father' && heirs.daughters > 0 ? 'Fixed + residual' : 'Residual'} (${fractionToString(s.fraction)})`
           : fractionToString(s.fraction),
       sharePercent: percent,
       amount,
@@ -442,5 +499,7 @@ export function calculateInheritance(
     shares: result,
     hasAwl,
     hasRadd,
+    unallocatedEstate: (cents - target) / 100,
+    bequestLimited: actualBequests < bequests,
   }
 }

@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict'
 import { chromium } from 'playwright'
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({
+  headless: true,
+  channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
+})
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
   timezoneId: 'America/Los_Angeles',
@@ -46,7 +49,7 @@ await page.route('https://api.aladhan.com/**', async (route) => {
   })
 })
 try {
-  await page.goto('http://localhost:3098/last-third-of-night')
+  await page.goto((process.env.TEST_ORIGIN || 'http://localhost:3098') + '/last-third-of-night')
   await page.getByLabel('Input method', { exact: true }).selectOption('manual')
   await page.getByLabel('Time zone', { exact: true }).fill('Europe/London')
   await page.getByLabel('Night beginning on', { exact: true }).fill('2026-10-24')
@@ -88,7 +91,7 @@ try {
   await page.getByRole('alert').filter({ hasText: 'We could not calculate' }).waitFor()
   assert.equal(await result.count(), 0, 'failed fresh request does not leave a stale result')
   fail = false
-  await page.goto('http://localhost:3098/ar/last-third-of-night')
+  await page.goto((process.env.TEST_ORIGIN || 'http://localhost:3098') + '/ar/last-third-of-night')
   await page.getByLabel('الليلة التي تبدأ في', { exact: true }).fill('2026-10-24')
   await page.getByRole('button', { name: 'احسب مواقيت ليلتي', exact: true }).click()
   await page.getByRole('region', { name: 'نتائج ليلتك' }).waitFor()

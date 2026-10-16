@@ -1,0 +1,136 @@
+export const quranUi: Record<'fr' | 'de', Record<string, string>> = {
+  fr: {
+    'This browser cannot load saved reading data. You can still read every surah.':
+      'Ce navigateur ne peut pas charger vos données de lecture. Toutes les sourates restent accessibles.',
+    'Continue from your saved place': 'Reprendre à votre position enregistrée',
+    Verse: 'Verset',
+    'Your bookmarks': 'Vos favoris',
+    'Clear saved place, bookmarks and preferences':
+      'Effacer la position, les favoris et les préférences',
+    'Quick access': 'Accès rapide',
+    'Find a surah or verse reference': 'Rechercher une sourate ou une référence de verset',
+    'Al-Mulk, الكهف, 67 or 2:255': 'Al-Mulk, الكهف, 67 ou 2:255',
+    surahs: 'sourates',
+    verses: 'versets',
+    'Go to verse': 'Aller au verset',
+    'No matching surah. Try its Arabic/English name or a reference such as 2:255.':
+      'Aucune sourate correspondante. Essayez son nom arabe ou translittéré, son sens en français ou une référence comme 2:255.',
+    'Start a juz': 'Commencer un juz',
+    Juz: 'Juz',
+    'Choose a valid range within this surah; the end must be at or after the start.':
+      'Choisissez un intervalle valide dans cette sourate ; la fin doit être égale ou postérieure au début.',
+    'You have 100 bookmarks. Remove one before adding another.':
+      'Vous avez 100 favoris. Supprimez-en un avant d’en ajouter un autre.',
+    'Bookmark removed.': 'Favori supprimé.',
+    'Verse bookmarked.': 'Verset ajouté aux favoris.',
+    'Reading and listening controls': 'Commandes de lecture et d’écoute',
+    'English translation': 'Traduction française',
+    'Arabic text size': 'Taille du texte arabe',
+    Medium: 'Moyenne',
+    Large: 'Grande',
+    'Extra large': 'Très grande',
+    Go: 'Aller',
+    Reciter: 'Récitateur',
+    'Repeat each verse': 'Répéter chaque verset',
+    'Enter a valid starting verse.': 'Saisissez un verset de début valide.',
+    'From verse': 'Du verset',
+    'To verse': 'Au verset',
+    'Play selected range': 'Écouter la sélection',
+    'Memorization practice': 'Exercice de mémorisation',
+    'Hide verse text until I reveal it': 'Masquer le texte jusqu’à ce que je le révèle',
+    'Use a short range and repeat count for practice. This tool does not listen to you or assess recitation accuracy.':
+      'Utilisez un court passage et des répétitions pour vous exercer. Cet outil ne vous écoute pas et n’évalue pas l’exactitude de votre récitation.',
+    'Text is available after this page loads. Audio needs an internet connection and is streamed from Al Quran Cloud when you press play.':
+      'Le texte est disponible après le chargement de cette page. L’audio nécessite une connexion Internet et provient d’Al Quran Cloud lorsque vous lancez la lecture.',
+    'This browser cannot save changes. Your current reading settings work for this open page, but saved data may be unavailable or unchanged.':
+      'Ce navigateur ne peut pas enregistrer les modifications. Les réglages fonctionnent sur cette page ouverte, mais les données enregistrées peuvent rester indisponibles ou inchangées.',
+    'Saved place:': 'Position enregistrée :',
+    'Bookmarks in this surah:': 'Favoris dans cette sourate :',
+    'Find words in this surah': 'Rechercher des mots dans cette sourate',
+    'matching verses. Clear the search to read the full surah.':
+      'versets correspondants. Effacez la recherche pour lire toute la sourate.',
+    'Link to verse': 'Lien vers le verset',
+    'Madinah page': 'Page du mushaf de Médine',
+    'Reveal verse': 'Révéler le verset',
+    'Listen to verse': 'Écouter le verset',
+    Listen: 'Écouter',
+    'Save place at verse': 'Enregistrer la position au verset',
+    'Place saved': 'Position enregistrée',
+    'Save my place': 'Enregistrer ma position',
+    'Bookmark verse': 'Ajouter le verset aux favoris',
+    Bookmarked: 'Dans les favoris',
+    Bookmark: 'Favori',
+    'No matching verses. Clear your search to return to the surah.':
+      'Aucun verset correspondant. Effacez la recherche pour revenir à la sourate.',
+    'Saved places, bookmarks and preferences stay in this browser. Saving a place is your choice; playing audio does not mark a verse as read.':
+      'Les positions, favoris et préférences restent dans ce navigateur. Vous choisissez quand enregistrer votre position ; l’écoute ne marque pas un verset comme lu.',
+    'Reading data cleared for this page.': 'Données de lecture effacées pour cette page.',
+  },
+  de: {
+    'This browser cannot load saved reading data. You can still read every surah.':
+      'Dieser Browser kann gespeicherte Lesedaten nicht laden. Du kannst weiterhin jede Sure lesen.',
+    'Continue from your saved place': 'An deiner gespeicherten Stelle weiterlesen',
+    Verse: 'Vers',
+    'Your bookmarks': 'Deine Lesezeichen',
+    'Clear saved place, bookmarks and preferences':
+      'Gespeicherte Stelle, Lesezeichen und Einstellungen löschen',
+    'Quick access': 'Schnellzugriff',
+    'Find a surah or verse reference': 'Sure oder Versangabe suchen',
+    'Al-Mulk, الكهف, 67 or 2:255': 'Al-Mulk, الكهف, 67 oder 2:255',
+    surahs: 'Suren',
+    verses: 'Verse',
+    'Go to verse': 'Zum Vers gehen',
+    'No matching surah. Try its Arabic/English name or a reference such as 2:255.':
+      'Keine passende Sure. Versuche den arabischen oder umgeschriebenen Namen, seine deutsche Bedeutung oder eine Angabe wie 2:255.',
+    'Start a juz': 'Einen Dschuz beginnen',
+    Juz: 'Dschuz',
+    'Choose a valid range within this surah; the end must be at or after the start.':
+      'Wähle einen gültigen Bereich innerhalb dieser Sure; das Ende muss beim Start oder danach liegen.',
+    'You have 100 bookmarks. Remove one before adding another.':
+      'Du hast 100 Lesezeichen. Entferne eines, bevor du ein weiteres hinzufügst.',
+    'Bookmark removed.': 'Lesezeichen entfernt.',
+    'Verse bookmarked.': 'Vers als Lesezeichen gespeichert.',
+    'Reading and listening controls': 'Lese- und Wiedergabeeinstellungen',
+    'English translation': 'Deutsche Übersetzung',
+    'Arabic text size': 'Arabische Schriftgröße',
+    Medium: 'Mittel',
+    Large: 'Groß',
+    'Extra large': 'Sehr groß',
+    Go: 'Los',
+    Reciter: 'Rezitator',
+    'Repeat each verse': 'Jeden Vers wiederholen',
+    'Enter a valid starting verse.': 'Gib einen gültigen Startvers ein.',
+    'From verse': 'Von Vers',
+    'To verse': 'Bis Vers',
+    'Play selected range': 'Gewählten Bereich abspielen',
+    'Memorization practice': 'Auswendiglernen üben',
+    'Hide verse text until I reveal it': 'Verstext bis zum Aufdecken verbergen',
+    'Use a short range and repeat count for practice. This tool does not listen to you or assess recitation accuracy.':
+      'Nutze einen kurzen Bereich und Wiederholungen zum Üben. Dieses Werkzeug hört dir nicht zu und bewertet nicht die Genauigkeit deiner Rezitation.',
+    'Text is available after this page loads. Audio needs an internet connection and is streamed from Al Quran Cloud when you press play.':
+      'Der Text ist nach dem Laden dieser Seite verfügbar. Audio benötigt eine Internetverbindung und wird beim Start der Wiedergabe von Al Quran Cloud gestreamt.',
+    'This browser cannot save changes. Your current reading settings work for this open page, but saved data may be unavailable or unchanged.':
+      'Dieser Browser kann Änderungen nicht speichern. Deine Leseeinstellungen funktionieren auf dieser geöffneten Seite; gespeicherte Daten sind möglicherweise nicht verfügbar oder bleiben unverändert.',
+    'Saved place:': 'Gespeicherte Stelle:',
+    'Bookmarks in this surah:': 'Lesezeichen in dieser Sure:',
+    'Find words in this surah': 'Wörter in dieser Sure suchen',
+    'matching verses. Clear the search to read the full surah.':
+      'passende Verse. Leere die Suche, um die ganze Sure zu lesen.',
+    'Link to verse': 'Link zu Vers',
+    'Madinah page': 'Seite im Medina-Mushaf',
+    'Reveal verse': 'Vers aufdecken',
+    'Listen to verse': 'Vers anhören',
+    Listen: 'Anhören',
+    'Save place at verse': 'Stelle bei Vers speichern',
+    'Place saved': 'Stelle gespeichert',
+    'Save my place': 'Meine Stelle speichern',
+    'Bookmark verse': 'Lesezeichen für Vers setzen',
+    Bookmarked: 'Gespeichert',
+    Bookmark: 'Lesezeichen',
+    'No matching verses. Clear your search to return to the surah.':
+      'Keine passenden Verse. Leere die Suche, um zur Sure zurückzukehren.',
+    'Saved places, bookmarks and preferences stay in this browser. Saving a place is your choice; playing audio does not mark a verse as read.':
+      'Gespeicherte Stellen, Lesezeichen und Einstellungen bleiben in diesem Browser. Du entscheidest, wann du eine Stelle speicherst; Audio markiert keinen Vers als gelesen.',
+    'Reading data cleared for this page.': 'Lesedaten für diese Seite gelöscht.',
+  },
+}

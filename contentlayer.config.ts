@@ -51,14 +51,14 @@ const computedFields: ComputedFields = {
       // blog/en/my-post.mdx → my-post
       // blog/ar/my-post.mdx → my-post
       // authors/mathias-yussif.mdx → mathias-yussif
-      return doc._raw.flattenedPath.replace(/^(blog\/(en|ar)\/|authors\/)/, '')
+      return doc._raw.flattenedPath.replace(/^(blog\/(en|ar|fr|de)\/|authors\/)/, '')
     },
   },
   path: {
     type: 'string',
     resolve: (doc) => {
       // Remove language folder from path for URL generation
-      return doc._raw.flattenedPath.replace(/^blog\/(en|ar)\//, 'blog/')
+      return doc._raw.flattenedPath.replace(/^blog\/(en|ar|fr|de)\//, 'blog/')
     },
   },
   filePath: {
@@ -74,7 +74,7 @@ const computedFields: ComputedFields = {
 async function createTagCount(allBlogs) {
   const tagCount: Record<string, number> = {}
   allBlogs.forEach((file) => {
-    if (file.tags && (!isProduction || file.draft !== true)) {
+    if (file.tags && (file.lang === 'en' || !file.lang) && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag)
         if (formattedTag in tagCount) {
@@ -126,7 +126,7 @@ export const Blog = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => {
         // Detect language from folder path: blog/en/... or blog/ar/...
-        const match = doc._raw.sourceFilePath.match(/blog\/(en|ar)\//)
+        const match = doc._raw.sourceFilePath.match(/blog\/(en|ar|fr|de)\//)
         return match ? match[1] : 'en'
       },
     },
@@ -140,7 +140,8 @@ export const Blog = defineDocumentType(() => ({
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
         image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
-        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath.replace(/^blog\/en\//, 'blog/').replace(/^blog\/(ar|fr|de)\//, '$1/blog/')}`,
+        inLanguage: doc._raw.sourceFilePath.match(/blog\/(en|ar|fr|de)\//)?.[1] || 'en',
       }),
     },
   },

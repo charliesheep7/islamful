@@ -1,3 +1,7 @@
+import {
+  PrayerCityTranslated,
+  translatedPrayerMetadata,
+} from '@/components/tools/PrayerPagesTranslated'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from '@/components/Link'
@@ -19,13 +23,14 @@ interface Props {
 }
 
 export function generateStaticParams() {
-  return cities.map((city) => ({ lang: 'ar', city: city.slug }))
+  return ['ar', 'fr', 'de'].flatMap((lang) => cities.map((city) => ({ lang, city: city.slug })))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { city: slug } = await params
+  const { city: slug, lang } = await params
   const city = getCityBySlug(slug)
   if (!city) return {}
+  if (lang === 'fr' || lang === 'de') return translatedPrayerMetadata(lang, city)
 
   const title = `مواقيت الصلاة في ${city.nameAr} اليوم`
   const description = `أوقات الصلاة اليوم في ${city.nameAr}، ${city.countryAr}. الفجر والظهر والعصر والمغرب والعشاء مع عداد تنازلي للصلاة القادمة.`
@@ -54,9 +59,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CityPrayerTimesPageAr({ params }: Props) {
-  const { city: slug } = await params
+  const { city: slug, lang } = await params
   const city = getCityBySlug(slug)
   if (!city) notFound()
+  if (lang === 'fr' || lang === 'de') return <PrayerCityTranslated lang={lang} city={city} />
 
   const siteUrl = siteMetadata.siteUrl
 

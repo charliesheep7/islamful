@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "blog": "Blog",
+    "prayerTimes": "Gebetszeiten",
+    "haramCheck": "Halal-Prüfung"
+  },
+  "footer": {
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
+  "home": {
+    "latest": "Neueste Artikel",
+    "noPosts": "Keine Artikel gefunden.",
+    "readMore": "Weiterlesen →",
+    "allPosts": "Alle Artikel →",
+    "publishedOn": "Veröffentlicht am"
+  },
+  "hero": {
+    "badge": "Islamische Tools an einem Ort",
+    "tagline": "Alles, was ein Muslim braucht.",
+    "tagline2": "an einem Ort",
+    "subtitle": "Gebetszeiten, Halal-Prüfung, Koran, Bittgebete, Dhikr und mehr – kostenlose Tools für deine tägliche Glaubenspraxis.",
+    "exploreCta": "Tools entdecken"
+  },
+  "tools": {
+    "heading": "Islamische Tools griffbereit",
+    "subtitle": "Kostenlose, präzise und einfach bedienbare Tools für deinen Alltag",
+    "explore": "Tool öffnen",
+    "comingSoon": "Bald verfügbar"
+  },
+  "cta": {
+    "heading": "Entdecke Islamful noch heute",
+    "subtitle": "Kostenlose islamische Tools für deine tägliche Glaubenspraxis. Keine Anmeldung erforderlich.",
+    "exploreCta": "Alle Tools entdecken"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "heading": "Häufig gestellte Fragen",
+    "subtitle": "Alles Wissenswerte über Islamful",
+    "stillHaveQuestions": "Noch Fragen?",
+    "contactSupport": "Kontakt aufnehmen",
+    "items": [
+      {
+        "question": "Was kann ich täglich mit Islamful tun?",
+        "answer": "Prüfe deine Gebetszeiten, lies oder höre den Koran, kehre zu einem gespeicherten Vers zurück, folge den Adhkar am Morgen und Abend, finde die Qibla und prüfe das islamische Datum. Zakat-Rechner und weitere Tools stehen bei Bedarf ebenfalls bereit."
+      },
+      {
+        "question": "Brauche ich ein Konto oder eine App?",
+        "answer": "Nein. Diese Tools sind kostenlos im Browser ohne Konto nutzbar. Speichere die Startseite als Lesezeichen, um deine täglichen Tools schnell wiederzufinden."
+      },
+      {
+        "question": "Wo werden meine Stadt und mein Lesefortschritt gespeichert?",
+        "answer": "Deine ausgewählte Stadt, die Leseposition im Koran und deine Adhkar-Zähler werden lokal in diesem Browser gespeichert, sofern der Speicher verfügbar ist. Sie werden zwischen den Sprachversionen derselben Website geteilt, aber nicht zwischen Geräten synchronisiert. Beim Löschen der Browserdaten gehen sie verloren."
+      },
+      {
+        "question": "Wie wähle ich meine Gebetszeiten?",
+        "answer": "Wähle deine Stadt und die von deiner Moschee empfohlene Berechnungsmethode. Die Zeiten zeigen den berechneten Gebetsbeginn, nicht die Zeit des Gemeinschaftsgebets. Fajr und Ischa können je nach Methode abweichen, besonders in hohen Breitengraden. Prüfe bei einer fehlgeschlagenen Aktualisierung das angezeigte Datum."
+      },
+      {
+        "question": "Warum kann das islamische Datum vor Ort abweichen?",
+        "answer": "Der Kalender verwendet deine gewählte Berechnungsmethode und Tageskorrektur. Örtliche Entscheidungen zur Mondsichtung können davon abweichen. Auf der Startseite richtet sich die Zeitzone zuerst nach deiner Gebetsstadt, dann nach deiner gespeicherten Kalendereinstellung und zuletzt nach deinem Gerät. Das Datum nach Maghrib wird separat angezeigt."
+      },
+      {
+        "question": "Was bedeuten die Fortschrittszähler bei den Adhkar?",
+        "answer": "Sie zählen die Karten, die du für das lokale Datum deines Geräts ausdrücklich als abgeschlossen markiert hast. Morgen- und Abendfortschritt sind getrennt. Die Zähler bestätigen weder, dass ein Gebet verrichtet wurde, noch dass eine gottesdienstliche Handlung angenommen wurde."
+      }
+    ]
+  }
+}

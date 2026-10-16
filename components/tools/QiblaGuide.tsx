@@ -1,6 +1,9 @@
+import { qiblaGuideTranslations } from '@/data/locales/qibla'
+import type { Locale } from '@/utils/locale'
 import JsonLd from '@/components/seo/JsonLd'
 
 const questions = {
+  ...qiblaGuideTranslations,
   en: [
     [
       'What is the Qibla?',
@@ -55,7 +58,7 @@ const questions = {
   ],
 }
 
-export default function QiblaGuide({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
+export default function QiblaGuide({ lang = 'en' }: { lang?: Locale }) {
   const ar = lang === 'ar'
   const faqs = questions[lang]
   return (
@@ -63,7 +66,11 @@ export default function QiblaGuide({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
       <h2 className="text-2xl font-bold">
         {ar
           ? 'استخدام محدد القبلة وفهم النتيجة'
-          : 'Using the Qibla finder and understanding your result'}
+          : lang === 'fr'
+            ? 'Utiliser l’outil et comprendre le résultat'
+            : lang === 'de'
+              ? 'Das Tool verwenden und das Ergebnis verstehen'
+              : 'Using the Qibla finder and understanding your result'}
       </h2>
       {faqs.map(([question, answer]) => (
         <div key={question}>
@@ -72,17 +79,31 @@ export default function QiblaGuide({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
         </div>
       ))}
       <p className="text-sm">
-        {ar ? 'المراجع: ' : 'References: '}
+        {{ en: 'References: ', ar: 'المراجع: ', fr: 'Références : ', de: 'Quellen: ' }[lang]}
         <a className="underline" href="https://quran.com/2/144">
-          {ar ? 'القرآن 2:144' : 'Quran 2:144'}
+          {{ en: 'Quran 2:144', ar: 'القرآن 2:144', fr: 'Coran 2:144', de: 'Koran 2:144' }[lang]}
         </a>
         {' · '}
         <a className="underline" href="https://www.ncei.noaa.gov/products/magnetic-declination">
-          {ar ? 'NOAA: الشمال الحقيقي والمغناطيسي' : 'NOAA: true and magnetic north'}
+          {
+            {
+              en: 'NOAA: true and magnetic north',
+              ar: 'NOAA: الشمال الحقيقي والمغناطيسي',
+              fr: 'NOAA : nord géographique et magnétique',
+              de: 'NOAA: geografisch und magnetisch Nord',
+            }[lang]
+          }
         </a>
         {' · '}
         <a className="underline" href="https://www.w3.org/TR/orientation-event/">
-          {ar ? 'W3C: اتجاه الجهاز' : 'W3C: device orientation'}
+          {
+            {
+              en: 'W3C: device orientation',
+              ar: 'W3C: اتجاه الجهاز',
+              fr: 'W3C : orientation de l’appareil',
+              de: 'W3C: Geräteausrichtung',
+            }[lang]
+          }
         </a>
       </p>
       <JsonLd

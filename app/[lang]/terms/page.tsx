@@ -2,20 +2,43 @@ import Link from 'next/link'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
 
-export const metadata = genPageMetadata({
-  title: 'شروط الخدمة',
-  description:
-    'اقرأ القواعد وإرشادات الاستخدام المقبول والشروط القانونية التي تحكم استخدامك لتطبيق إسلامفُل.',
-  alternates: buildLanguageAlternates('/terms', { currentLanguage: 'ar' }),
-})
+import { notFound } from 'next/navigation'
+import { termsPages } from '@/data/locales/terms'
+import TermsPageTranslated from '@/components/TermsPageTranslated'
 
-export default function TermsPageAr() {
+export function generateStaticParams() {
+  return ['ar', 'fr', 'de'].map((lang) => ({ lang }))
+}
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'ar' && lang !== 'fr' && lang !== 'de') notFound()
+  const c =
+    lang === 'ar'
+      ? {
+          title: 'شروط الخدمة',
+          description:
+            'اقرأ القواعد وإرشادات الاستخدام المقبول والشروط القانونية التي تحكم استخدامك لتطبيق إسلامفُل.',
+        }
+      : termsPages[lang]
+  return genPageMetadata({
+    title: c.title,
+    description: c.description,
+    alternates: buildLanguageAlternates('/terms', { currentLanguage: lang }),
+  })
+}
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang !== 'ar' && lang !== 'fr' && lang !== 'de') notFound()
+  return lang === 'ar' ? <TermsPageAr /> : <TermsPageTranslated lang={lang} />
+}
+
+function TermsPageAr() {
   return (
     <SectionContainer>
       <div className="prose dark:prose-invert max-w-none py-8" dir="rtl">
         <h1>شروط الخدمة</h1>
         <p>
-          <strong>آخر تحديث: [25 أكتوبر 2025]</strong>
+          <strong>آخر تحديث: 29 يناير 2026</strong>
         </p>
         <p>
           مرحبًا بك في إسلامفُل. يرجى قراءة شروط الخدمة هذه ("الشروط") بعناية. من خلال الوصول إلى أو

@@ -1,4 +1,5 @@
 'use client'
+import { quranUi } from '@/data/locales/quran-ui'
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import {
@@ -23,10 +24,10 @@ export default function QuranReader({
   chapter: Chapter
   verses: Verse[]
   bismillah: string | null
-  lang: 'en' | 'ar'
+  lang: 'en' | 'ar' | 'fr' | 'de'
 }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
+    t = (en: string, arabic: string) => (ar ? arabic : lang === 'en' ? en : quranUi[lang][en] || en)
   const { data, save, clear, ready, available } = useReaderData(lang)
   const [query, setQuery] = useState(''),
     [jump, setJump] = useState(''),
@@ -50,7 +51,7 @@ export default function QuranReader({
       ? verses.filter((v) => searchKey(`${v.arabic} ${v.translation} ${v.number}`).includes(key))
       : verses
   const inputClass =
-    'mt-2 w-full rounded-xl border border-gray-300 bg-white px-3 py-2.5 text-base dark:border-gray-700 dark:bg-gray-900'
+    'mt-2 w-full min-w-0 max-w-full rounded-xl border border-gray-300 bg-white px-3 py-2.5 text-base dark:border-gray-700 dark:bg-gray-900'
   const stop = () => {
     setRequest(null)
     setActive(null)
@@ -108,7 +109,13 @@ export default function QuranReader({
   }
   const savePlace = (ayah: number) => {
     save({ ...data, place: { surah: chapter.number, ayah } })
-    setMessage(t(`Saved your place at verse ${ayah}.`, `حُفظ موضعك عند الآية ${n(ayah)}.`))
+    setMessage(
+      lang === 'fr'
+        ? `Position enregistrée au verset ${ayah}.`
+        : lang === 'de'
+          ? `Deine Stelle bei Vers ${ayah} wurde gespeichert.`
+          : t(`Saved your place at verse ${ayah}.`, `حُفظ موضعك عند الآية ${n(ayah)}.`)
+    )
   }
   return (
     <div data-testid="quran-reader" className="space-y-8 pb-36">
@@ -146,10 +153,14 @@ export default function QuranReader({
             if (target) go(target)
             else
               setMessage(
-                t(
-                  `Enter a verse from 1 to ${chapter.count}.`,
-                  `أدخل رقم آية من ١ إلى ${n(chapter.count)}.`
-                )
+                lang === 'fr'
+                  ? `Saisissez un verset de 1 à ${chapter.count}.`
+                  : lang === 'de'
+                    ? `Gib einen Vers von 1 bis ${chapter.count} ein.`
+                    : t(
+                        `Enter a verse from 1 to ${chapter.count}.`,
+                        `أدخل رقم آية من ١ إلى ${n(chapter.count)}.`
+                      )
               )
           }}
           className="flex flex-wrap items-end gap-3"
@@ -408,11 +419,21 @@ export default function QuranReader({
                   {data.showTranslation && (
                     <p
                       data-testid="translation-verse"
-                      lang="en"
+                      lang={lang === 'ar' ? 'en' : lang}
                       dir="ltr"
                       className="text-left text-base leading-relaxed text-gray-700 dark:text-gray-300"
                     >
                       {v.translation}
+                    </p>
+                  )}
+                  {data.showTranslation && v.footnotes && (
+                    <p
+                      data-testid="translation-footnotes"
+                      lang={lang}
+                      dir="ltr"
+                      className="text-sm whitespace-pre-line text-gray-600 dark:text-gray-300"
+                    >
+                      {v.footnotes}
                     </p>
                   )}
                 </>

@@ -1,73 +1,11 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { salahGame, salahArabic } from '@/data/locales/salah-game'
+import { useLocale } from '@/components/hooks/useLocale'
 
-interface Position {
-  id: number
-  name: string
-  arabic: string
-  description: string
-}
+import { useState, useCallback, useRef, useEffect } from 'react'
 
-const CORRECT_ORDER: Position[] = [
-  {
-    id: 1,
-    name: 'Standing (Qiyam)',
-    arabic: 'قيام',
-    description:
-      'Stand upright facing the Qibla. Raise hands and say "Allahu Akbar" (Takbiratul Ihram).',
-  },
-  {
-    id: 2,
-    name: 'Recitation (Qiraat)',
-    arabic: 'قراءة',
-    description: 'Recite Surah Al-Fatiha followed by another surah or verses from the Quran.',
-  },
-  {
-    id: 3,
-    name: 'Bowing (Ruku)',
-    arabic: 'ركوع',
-    description: 'Bow down with hands on knees, back straight, saying "Subhana Rabbiyal Adheem."',
-  },
-  {
-    id: 4,
-    name: 'Rising from Ruku',
-    arabic: 'اعتدال',
-    description: 'Rise from bowing, saying "Sami Allahu liman hamidah, Rabbana lakal hamd."',
-  },
-  {
-    id: 5,
-    name: 'First Prostration (Sujud)',
-    arabic: 'سجود',
-    description:
-      'Prostrate with forehead, nose, palms, knees, and toes touching the ground. Say "Subhana Rabbiyal A\'la."',
-  },
-  {
-    id: 6,
-    name: 'Sitting between Sujud',
-    arabic: 'جلسة',
-    description: 'Sit briefly between the two prostrations, saying "Rabbi ighfir li."',
-  },
-  {
-    id: 7,
-    name: 'Second Prostration',
-    arabic: 'سجود',
-    description: 'Perform a second prostration the same as the first.',
-  },
-  {
-    id: 8,
-    name: 'Final Sitting (Tashahhud)',
-    arabic: 'تشهد',
-    description: 'Sit and recite At-Tahiyyat, Durood (salutations upon the Prophet), and dua.',
-  },
-  {
-    id: 9,
-    name: 'Tasleem (Salaam)',
-    arabic: 'تسليم',
-    description:
-      'Turn head right then left saying "Assalamu alaikum wa rahmatullah" to end the prayer.',
-  },
-]
+const CORRECT_ORDER = Array.from({ length: 9 }, (_, index) => index + 1)
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr]
@@ -79,7 +17,10 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export default function SalahSequence() {
-  const [positions, setPositions] = useState<Position[]>(() => shuffleArray(CORRECT_ORDER))
+  const { currentLang } = useLocale()
+  const c = salahGame[currentLang]
+  const [positions, setPositions] = useState(CORRECT_ORDER)
+  useEffect(() => setPositions(shuffleArray(CORRECT_ORDER)), [])
   const [checked, setChecked] = useState(false)
   const [completed, setCompleted] = useState(false)
 
@@ -120,7 +61,7 @@ export default function SalahSequence() {
 
   const checkOrder = () => {
     setChecked(true)
-    const isCorrect = positions.every((pos, i) => pos.id === CORRECT_ORDER[i].id)
+    const isCorrect = positions.every((pos, i) => pos === CORRECT_ORDER[i])
     if (isCorrect) setCompleted(true)
   }
 
@@ -132,18 +73,17 @@ export default function SalahSequence() {
 
   return (
     <div className="mx-auto max-w-lg">
-      <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        Arrange the positions of salah in the correct sequence. Drag and drop or use arrows.
-      </p>
+      <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">{c.instruction}</p>
 
       <div className="space-y-2">
         {positions.map((pos, index) => {
-          const isCorrect = checked && pos.id === CORRECT_ORDER[index].id
-          const isWrong = checked && pos.id !== CORRECT_ORDER[index].id
+          const isCorrect = checked && pos === CORRECT_ORDER[index]
+          const isWrong = checked && pos !== CORRECT_ORDER[index]
 
           return (
             <div
-              key={pos.id}
+              key={pos}
+              data-step-id={pos}
               draggable={!completed}
               onDragStart={() => handleDragStart(index)}
               onDragOver={(e) => handleDragOver(e, index)}
@@ -162,15 +102,19 @@ export default function SalahSequence() {
                 {index + 1}
               </span>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <p className="font-medium text-gray-900 dark:text-white">{pos.name}</p>
-                  <span className="font-arabic text-sm text-gray-400 dark:text-gray-500">
-                    {pos.arabic}
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="font-medium text-gray-900 dark:text-white">{c.steps[pos - 1][0]}</p>
+                  <span
+                    lang="ar"
+                    dir="rtl"
+                    className="font-arabic text-sm text-gray-400 dark:text-gray-500"
+                  >
+                    {salahArabic[pos - 1]}
                   </span>
                 </div>
                 {(checked || completed) && (
                   <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                    {pos.description}
+                    {c.steps[pos - 1][1]}
                   </p>
                 )}
               </div>
@@ -178,6 +122,7 @@ export default function SalahSequence() {
                 <div className="flex shrink-0 flex-col gap-0.5">
                   <button
                     onClick={() => moveItem(index, 'up')}
+                    aria-label={`${c.up}: ${c.steps[pos - 1][0]}`}
                     disabled={index === 0}
                     className="rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-gray-100 disabled:opacity-30 dark:hover:bg-gray-700"
                   >
@@ -185,6 +130,7 @@ export default function SalahSequence() {
                   </button>
                   <button
                     onClick={() => moveItem(index, 'down')}
+                    aria-label={`${c.down}: ${c.steps[pos - 1][0]}`}
                     disabled={index === positions.length - 1}
                     className="rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-gray-100 disabled:opacity-30 dark:hover:bg-gray-700"
                   >
@@ -204,25 +150,23 @@ export default function SalahSequence() {
               onClick={checkOrder}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition"
             >
-              Check Sequence
+              {c.check}
             </button>
             <button
               onClick={reset}
               className="rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
             >
-              Shuffle
+              {c.shuffle}
             </button>
           </>
         ) : (
           <div className="text-center">
-            <p className="mb-4 text-lg font-bold text-violet-600">
-              Mashallah! You know the sequence of salah!
-            </p>
+            <p className="mb-4 text-lg font-bold text-violet-600">{c.success}</p>
             <button
               onClick={reset}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition"
             >
-              Play Again
+              {c.again}
             </button>
           </div>
         )}

@@ -1,5 +1,8 @@
 'use client'
+import { useLocale } from './hooks/useLocale'
 
+import { localeFromPath, localizedPath, type Locale } from '@/utils/locale'
+import { navigation } from '@/data/locales/navigation'
 import clsx from 'clsx'
 import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
 import Link from 'next/link'
@@ -9,21 +12,27 @@ import { usePathname } from 'next/navigation'
 const locales = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
 ] as const
 
 export default function LocaleSwitcher() {
   const pathname = usePathname() || '/'
 
   // Detect current language
-  const currentLang = pathname.startsWith('/ar') ? 'ar' : 'en'
+  const { currentLang } = useLocale()
   const currentLocale = locales.find((l) => l.code === currentLang) || locales[0]
 
   // Get path for each locale
-  const getLocalePath = (code: string) => {
-    if (code === 'en') {
-      return pathname.replace(/^\/ar/, '') || '/'
+  const getLocalePath = (code: Locale) => {
+    if (pathname.startsWith('/updates/')) {
+      // Preference links carry a private token; do not copy it into language navigation.
+      return `${pathname}?lang=${code}`
     }
-    return `/${code}${pathname.replace(/^\/ar/, '')}`
+    return localizedPath(
+      pathname.startsWith('/tags/') || /^\/(ar|fr|de)\/tags\//.test(pathname) ? '/blog' : pathname,
+      code
+    )
   }
 
   return (
@@ -31,7 +40,7 @@ export default function LocaleSwitcher() {
       <div className="flex items-center justify-center">
         <MenuButton
           className="flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
-          aria-label="Select language"
+          aria-label={navigation[currentLang].language}
         >
           <span className="text-lg">{currentLocale.flag}</span>
           <span className="hidden sm:inline">{currentLocale.label}</span>

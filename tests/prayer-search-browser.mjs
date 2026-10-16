@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict'
 import { chromium } from 'playwright'
-const browser = await chromium.launch({ headless: true })
+const origin = process.env.TEST_ORIGIN || 'http://localhost:3098'
+const browser = await chromium.launch({
+  headless: true,
+  ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}),
+})
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
   timezoneId: 'America/Los_Angeles',
@@ -67,7 +71,7 @@ await page.route('https://api.aladhan.com/**', async (route) => {
   })
 })
 try {
-  await page.goto('http://localhost:3098/prayer-times')
+  await page.goto(origin + '/prayer-times')
   assert.equal(calls.length, 0, 'no unsolicited location lookup')
   await page.getByLabel('City', { exact: true }).fill('London')
   await page.getByLabel('Country', { exact: true }).fill('United Kingdom')
@@ -91,7 +95,7 @@ try {
   assert.ok(calls.some((url) => url.searchParams.get('latitude') === '35.68'))
   await page.getByText('2026-10-13 · Asia/Tokyo', { exact: false }).waitFor()
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
-  await page.goto('http://localhost:3098/ar/prayer-times')
+  await page.goto(origin + '/ar/prayer-times')
   await page.getByLabel('المدينة', { exact: true }).fill('لندن')
   await page.getByLabel('البلد', { exact: true }).fill('المملكة المتحدة')
   await page.getByRole('button', { name: 'عرض المواقيت', exact: true }).click()

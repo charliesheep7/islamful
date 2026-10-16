@@ -1,5 +1,6 @@
 'use client'
 
+import { useLocale } from './hooks/useLocale'
 import clsx from 'clsx'
 import {
   Menu,
@@ -56,6 +57,13 @@ const Monitor = () => (
 const Blank = () => <svg className="h-6 w-6" />
 
 const ThemeSwitch = () => {
+  const { currentLang } = useLocale()
+  const text = {
+    en: ['Theme switcher', 'Light', 'Dark', 'System'],
+    ar: ['تغيير المظهر', 'فاتح', 'داكن', 'النظام'],
+    fr: ['Changer le thème', 'Clair', 'Sombre', 'Système'],
+    de: ['Darstellung ändern', 'Hell', 'Dunkel', 'System'],
+  }[currentLang]
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme, resolvedTheme } = useTheme()
 
@@ -66,7 +74,7 @@ const ThemeSwitch = () => {
     <div className="flex items-center">
       <Menu as="div" className="relative inline-block text-left">
         <div className="hover:text-accent-600 dark:hover:text-accent-400 flex items-center justify-center">
-          <MenuButton aria-label="Theme switcher">
+          <MenuButton aria-label={text[0]}>
             {mounted ? resolvedTheme === 'dark' ? <Moon /> : <Sun /> : <Blank />}
           </MenuButton>
         </div>
@@ -99,7 +107,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Sun />
                         </div>
-                        Light
+                        {text[1]}
                       </button>
                     )}
                   </MenuItem>
@@ -115,7 +123,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Moon />
                         </div>
-                        Dark
+                        {text[2]}
                       </button>
                     )}
                   </MenuItem>
@@ -131,7 +139,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Monitor />
                         </div>
-                        System
+                        {text[3]}
                       </button>
                     )}
                   </MenuItem>

@@ -26,7 +26,10 @@ import {
   type HijriDate,
 } from '@/data/islamic-calendar'
 
+import { calendarTranslations } from '@/data/locales/calendar'
+
 const copy = {
+  ...calendarTranslations,
   en: {
     today: 'Today and tonight',
     daytime: 'Hijri date for this daytime',
@@ -164,7 +167,7 @@ export default function IslamicCalendar({
   initialNow,
   initialSnapshot,
 }: {
-  lang?: 'en' | 'ar'
+  lang?: 'en' | 'ar' | 'fr' | 'de'
   initialNow: string
   initialSnapshot: ReturnType<typeof calendarSnapshot>
 }) {

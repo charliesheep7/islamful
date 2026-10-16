@@ -188,32 +188,61 @@ export function fastingClock(value: number | null, timezone: string) {
         hourCycle: 'h23',
       }).format(value)
 }
-export function fastingCsv(table: FastingTable, label: string, basis: string, lang: 'en' | 'ar') {
+export function fastingCsv(
+  table: FastingTable,
+  label: string,
+  basis: string,
+  lang: 'en' | 'ar' | 'fr' | 'de'
+) {
   const field = (s: string) => `"${s.replace(/"/g, '""')}"`
   const headings =
-    lang === 'ar'
+    lang === 'fr'
       ? [
-          'التاريخ',
-          'الفجر',
-          'المغرب',
-          'المنطقة الزمنية',
-          'المدينة',
-          'طريقة الحساب',
-          'أساس التواريخ',
-          'الحالة',
-          'وقت إعداد الجدول',
-        ]
-      : [
           'Date',
           'Fajr',
           'Maghrib',
-          'Time zone',
-          'City',
-          'Calculation method',
-          'Date basis',
-          'Status',
-          'Prepared at',
+          'Fuseau horaire',
+          'Ville',
+          'Méthode de calcul',
+          'Base des dates',
+          'État',
+          'Préparé le',
         ]
+      : lang === 'de'
+        ? [
+            'Datum',
+            'Fajr',
+            'Maghrib',
+            'Zeitzone',
+            'Stadt',
+            'Berechnungsmethode',
+            'Datumsgrundlage',
+            'Status',
+            'Erstellt am',
+          ]
+        : lang === 'ar'
+          ? [
+              'التاريخ',
+              'الفجر',
+              'المغرب',
+              'المنطقة الزمنية',
+              'المدينة',
+              'طريقة الحساب',
+              'أساس التواريخ',
+              'الحالة',
+              'وقت إعداد الجدول',
+            ]
+          : [
+              'Date',
+              'Fajr',
+              'Maghrib',
+              'Time zone',
+              'City',
+              'Calculation method',
+              'Date basis',
+              'Status',
+              'Prepared at',
+            ]
   return (
     '\uFEFF' +
     [
@@ -227,12 +256,20 @@ export function fastingCsv(table: FastingTable, label: string, basis: string, la
         table.method,
         basis,
         row.fajr === null || row.maghrib === null
-          ? lang === 'ar'
-            ? 'غير مكتمل'
-            : 'Incomplete'
-          : lang === 'ar'
-            ? 'راجع الجدول المحلي'
-            : 'Check local timetable',
+          ? lang === 'fr'
+            ? 'Incomplet'
+            : lang === 'de'
+              ? 'Unvollständig'
+              : lang === 'ar'
+                ? 'غير مكتمل'
+                : 'Incomplete'
+          : lang === 'fr'
+            ? 'Vérifiez les horaires locaux'
+            : lang === 'de'
+              ? 'Örtlichen Gebetskalender prüfen'
+              : lang === 'ar'
+                ? 'راجع الجدول المحلي'
+                : 'Check local timetable',
         table.preparedAt,
       ]),
     ]

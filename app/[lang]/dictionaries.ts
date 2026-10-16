@@ -3,8 +3,10 @@ import type { Dictionary } from '@/types/dictionary'
 
 const dictionaries = {
   en: () => import('../../dictionaries/en.json').then((module) => module.default as Dictionary),
+  fr: () => import('../../dictionaries/fr.json').then((module) => module.default as Dictionary),
+  de: () => import('../../dictionaries/de.json').then((module) => module.default as Dictionary),
   ar: () => import('../../dictionaries/ar.json').then((module) => module.default as Dictionary),
 }
 
-export const getDictionary = async (locale: 'en' | 'ar'): Promise<Dictionary> =>
+export const getDictionary = async (locale: 'en' | 'ar' | 'fr' | 'de'): Promise<Dictionary> =>
   dictionaries[locale]?.() ?? dictionaries.en()

@@ -335,7 +335,8 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 
 [functions.haram-check]
 enabled = true
-verify_jwt = true
+# Public tool with strict input/origin validation and abuse limits. No user session required.
+verify_jwt = false
 import_map = "./functions/haram-check/deno.json"
 # Uncomment to specify a custom file path to the entrypoint.
 # Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
@@ -343,3 +344,9 @@ entrypoint = "./functions/haram-check/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/haram-check/*.html" ]
+
+[functions.engagement]
+verify_jwt = false
+
+[functions.unsubscribe]
+verify_jwt = false

@@ -69,9 +69,8 @@ const tools: Tool[] = [
     name: 'Quran Answers',
     nameAr: 'إجابات القرآن',
     description:
-      'Ask any question and receive a beautiful Quran verse as your answer. Generate and share stunning verse cards.',
-    descriptionAr:
-      'اسأل أي سؤال واحصل على آية جميلة من القرآن الكريم كإجابة. أنشئ وشارك بطاقات آيات رائعة.',
+      'Pause with a Quran verse, read its meaning and share a reminder with someone you love.',
+    descriptionAr: 'تأمل آية من القرآن الكريم واقرأها في سياقها وشارك تذكرة مع من تحب.',
     icon: BookOpen,
     iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
     iconColor: 'text-emerald-600 dark:text-emerald-400',

@@ -1,50 +1,11 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { pillarGame, pillarArabic } from '@/data/locales/pillar-game'
+import { useLocale } from '@/components/hooks/useLocale'
 
-interface Pillar {
-  id: number
-  name: string
-  arabic: string
-  description: string
-}
+import { useState, useEffect } from 'react'
 
-const PILLARS: Pillar[] = [
-  {
-    id: 1,
-    name: 'Shahada',
-    arabic: 'الشهادة',
-    description:
-      'Declaration of faith: "There is no god but Allah, and Muhammad is the Messenger of Allah."',
-  },
-  {
-    id: 2,
-    name: 'Salah',
-    arabic: 'الصلاة',
-    description: 'Performing the five daily prayers at their prescribed times facing the Qibla.',
-  },
-  {
-    id: 3,
-    name: 'Zakat',
-    arabic: 'الزكاة',
-    description:
-      'Giving 2.5% of qualifying wealth annually to those in need as obligatory charity.',
-  },
-  {
-    id: 4,
-    name: 'Sawm',
-    arabic: 'الصوم',
-    description:
-      'Fasting during the month of Ramadan from dawn to sunset, abstaining from food, drink, and other needs.',
-  },
-  {
-    id: 5,
-    name: 'Hajj',
-    arabic: 'الحج',
-    description:
-      'Pilgrimage to Makkah at least once in a lifetime for those who are physically and financially able.',
-  },
-]
+const PILLARS = [1, 2, 3, 4, 5]
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr]
@@ -56,7 +17,10 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export default function PillarBuilder() {
-  const shuffledDescriptions = useMemo(() => shuffleArray(PILLARS), [])
+  const { currentLang } = useLocale()
+  const c = pillarGame[currentLang]
+  const [shuffledDescriptions, setShuffledDescriptions] = useState(PILLARS)
+  useEffect(() => setShuffledDescriptions(shuffleArray(PILLARS)), [])
   const [matches, setMatches] = useState<Record<number, number | null>>({})
   const [selectedPillar, setSelectedPillar] = useState<number | null>(null)
   const [checked, setChecked] = useState(false)
@@ -82,7 +46,7 @@ export default function PillarBuilder() {
 
   const checkAnswers = () => {
     setChecked(true)
-    const allCorrect = PILLARS.every((p) => matches[p.id] === p.id)
+    const allCorrect = PILLARS.every((p) => matches[p] === p)
     if (allCorrect) setCompleted(true)
   }
 
@@ -97,28 +61,29 @@ export default function PillarBuilder() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        Click a pillar, then click its matching description. Match all 5 pillars of Islam correctly.
-      </p>
+      <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">{c.instruction}</p>
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Pillars column */}
         <div>
           <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-400 uppercase dark:text-gray-500">
-            Pillars
+            {c.pillars}
           </h3>
           <div className="space-y-2">
             {PILLARS.map((pillar) => {
-              const isSelected = selectedPillar === pillar.id
-              const isMatched = matches[pillar.id] !== undefined && matches[pillar.id] !== null
-              const isCorrect = checked && matches[pillar.id] === pillar.id
-              const isWrong = checked && matches[pillar.id] !== pillar.id && isMatched
+              const isSelected = selectedPillar === pillar
+              const isMatched = matches[pillar] !== undefined && matches[pillar] !== null
+              const isCorrect = checked && matches[pillar] === pillar
+              const isWrong = checked && matches[pillar] !== pillar && isMatched
 
               return (
                 <button
-                  key={pillar.id}
-                  onClick={() => handlePillarClick(pillar.id)}
-                  className={`w-full rounded-xl border-2 px-4 py-3 text-left transition-all ${
+                  key={pillar}
+                  data-pillar-id={pillar}
+                  aria-pressed={isSelected}
+                  disabled={checked || completed}
+                  onClick={() => handlePillarClick(pillar)}
+                  className={`w-full rounded-xl border-2 px-4 py-3 text-start transition-all ${
                     completed
                       ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20'
                       : isCorrect
@@ -134,9 +99,11 @@ export default function PillarBuilder() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-gray-900 dark:text-white">
-                      {pillar.name}
+                      {c.items[pillar - 1][0]}
                     </span>
-                    <span className="font-arabic text-sm text-gray-400">{pillar.arabic}</span>
+                    <span lang="ar" dir="rtl" className="font-arabic text-sm text-gray-400">
+                      {pillarArabic[pillar - 1]}
+                    </span>
                   </div>
                 </button>
               )
@@ -147,21 +114,22 @@ export default function PillarBuilder() {
         {/* Descriptions column */}
         <div>
           <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-400 uppercase dark:text-gray-500">
-            Descriptions
+            {c.descriptions}
           </h3>
           <div className="space-y-2">
             {shuffledDescriptions.map((desc) => {
-              const isUsed = matchedDescriptions.has(desc.id)
+              const isUsed = matchedDescriptions.has(desc)
               const isCorrectMatch =
                 checked &&
-                Object.entries(matches).some(([k, v]) => v === desc.id && Number(k) === desc.id)
+                Object.entries(matches).some(([k, v]) => v === desc && Number(k) === desc)
 
               return (
                 <button
-                  key={desc.id}
-                  onClick={() => handleDescriptionClick(desc.id)}
-                  disabled={isUsed && selectedPillar === null}
-                  className={`w-full rounded-xl border-2 px-4 py-3 text-left text-sm transition-all ${
+                  key={desc}
+                  data-description-id={desc}
+                  onClick={() => handleDescriptionClick(desc)}
+                  disabled={checked || completed || (isUsed && selectedPillar === null)}
+                  className={`w-full rounded-xl border-2 px-4 py-3 text-start text-sm transition-all ${
                     completed
                       ? 'border-teal-400 bg-teal-50 dark:border-teal-600 dark:bg-teal-900/20'
                       : isCorrectMatch
@@ -175,7 +143,7 @@ export default function PillarBuilder() {
                               : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800'
                   }`}
                 >
-                  {desc.description}
+                  {c.items[desc - 1][1]}
                 </button>
               )
             })}
@@ -191,25 +159,23 @@ export default function PillarBuilder() {
               disabled={Object.keys(matches).filter((k) => matches[Number(k)] !== null).length < 5}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition disabled:opacity-40"
             >
-              Check Matches
+              {c.check}
             </button>
             <button
               onClick={reset}
               className="rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
             >
-              Reset
+              {c.reset}
             </button>
           </>
         ) : (
           <div className="text-center">
-            <p className="mb-4 text-lg font-bold text-teal-600">
-              Mashallah! You know the 5 pillars of Islam!
-            </p>
+            <p className="mb-4 text-lg font-bold text-teal-600">{c.success}</p>
             <button
               onClick={reset}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition"
             >
-              Play Again
+              {c.again}
             </button>
           </div>
         )}

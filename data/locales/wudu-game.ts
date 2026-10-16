@@ -1,0 +1,118 @@
+export const wuduGame = {
+  en: {
+    instruction: 'Drag and drop (or use arrows) to arrange the steps of wudu in the correct order.',
+    check: 'Check Order',
+    shuffle: 'Shuffle',
+    again: 'Play Again',
+    success: 'Mashallah! You know the steps of wudu!',
+    up: 'Move up',
+    down: 'Move down',
+    steps: [
+      [
+        'Intention (Niyyah)',
+        'Make the intention in your heart to perform wudu for the sake of Allah.',
+      ],
+      ['Say Bismillah', 'Begin by saying "Bismillah" (In the name of Allah).'],
+      ['Wash Hands', 'Wash both hands up to the wrists three times.'],
+      ['Rinse Mouth', 'Take water into the mouth and rinse it three times.'],
+      ['Sniff Water into Nose', 'Sniff water into the nostrils and blow it out three times.'],
+      ['Wash Face', 'Wash the entire face three times, from hairline to chin.'],
+      ['Wash Arms', 'Wash the right arm then left arm up to the elbows three times each.'],
+      ['Wipe Head', 'Wipe over the head with wet hands from front to back and back to front.'],
+      ['Wipe Ears', 'Wipe the inside and outside of both ears with wet fingers.'],
+      ['Wash Feet', 'Wash the right foot then left foot up to the ankles three times each.'],
+    ],
+  },
+  ar: {
+    instruction: 'اسحب الخطوات وأفلتها، أو استخدم الأسهم، لترتيب خطوات الوضوء ترتيبًا صحيحًا.',
+    check: 'تحقق من الترتيب',
+    shuffle: 'اخلط الخطوات',
+    again: 'العب مجددًا',
+    success: 'ما شاء الله! أنت تعرف خطوات الوضوء!',
+    up: 'انقل للأعلى',
+    down: 'انقل للأسفل',
+    steps: [
+      ['النية', 'انوِ بقلبك الوضوء ابتغاء وجه الله.'],
+      ['التسمية', 'ابدأ بقول «بسم الله».'],
+      ['غسل اليدين', 'اغسل اليدين إلى الرسغين ثلاث مرات.'],
+      ['المضمضة', 'أدخل الماء إلى الفم وتمضمض ثلاث مرات.'],
+      ['الاستنشاق والاستنثار', 'استنشق الماء في الأنف ثم أخرجه ثلاث مرات.'],
+      ['غسل الوجه', 'اغسل الوجه كاملًا من منابت الشعر إلى الذقن ثلاث مرات.'],
+      ['غسل الذراعين', 'اغسل الذراع اليمنى ثم اليسرى إلى المرفقين، كلًّا منهما ثلاث مرات.'],
+      ['مسح الرأس', 'امسح الرأس بيدين مبللتين من الأمام إلى الخلف ثم من الخلف إلى الأمام.'],
+      ['مسح الأذنين', 'امسح باطن الأذنين وظاهرهما بأصابع مبللة.'],
+      ['غسل القدمين', 'اغسل القدم اليمنى ثم اليسرى إلى الكعبين، كلًّا منهما ثلاث مرات.'],
+    ],
+  },
+  fr: {
+    instruction:
+      'Glissez les étapes, ou utilisez les flèches, pour remettre les ablutions dans le bon ordre.',
+    check: 'Vérifier l’ordre',
+    shuffle: 'Mélanger',
+    again: 'Rejouer',
+    success: 'Macha Allah ! Vous connaissez les étapes des ablutions !',
+    up: 'Monter',
+    down: 'Descendre',
+    steps: [
+      [
+        'L’intention (niyya)',
+        'Formulez dans votre cœur l’intention de faire les ablutions pour Allah.',
+      ],
+      ['Dire Bismillah', 'Commencez en disant « Bismillah » (Au nom d’Allah).'],
+      ['Laver les mains', 'Lavez les deux mains jusqu’aux poignets trois fois.'],
+      ['Rincer la bouche', 'Prenez de l’eau dans la bouche et rincez-la trois fois.'],
+      ['Rincer le nez', 'Aspirez de l’eau par les narines, puis expulsez-la, trois fois.'],
+      [
+        'Laver le visage',
+        'Lavez tout le visage, de la naissance des cheveux au menton, trois fois.',
+      ],
+      ['Laver les bras', 'Lavez le bras droit puis le gauche jusqu’aux coudes, trois fois chacun.'],
+      [
+        'Passer les mains sur la tête',
+        'Passez les mains mouillées sur la tête de l’avant vers l’arrière, puis de l’arrière vers l’avant.',
+      ],
+      [
+        'Essuyer les oreilles',
+        'Essuyez l’intérieur et l’extérieur des deux oreilles avec les doigts mouillés.',
+      ],
+      [
+        'Laver les pieds',
+        'Lavez le pied droit puis le gauche jusqu’aux chevilles, trois fois chacun.',
+      ],
+    ],
+  },
+  de: {
+    instruction:
+      'Ziehe die Schritte an die richtige Stelle oder verwende die Pfeile, um die Gebetswaschung richtig zu ordnen.',
+    check: 'Reihenfolge prüfen',
+    shuffle: 'Mischen',
+    again: 'Erneut spielen',
+    success: 'Maschallah! Du kennst die Schritte der Gebetswaschung!',
+    up: 'Nach oben',
+    down: 'Nach unten',
+    steps: [
+      ['Absicht (Niyya)', 'Fasse im Herzen die Absicht, die Gebetswaschung für Allah vorzunehmen.'],
+      ['Bismillah sagen', 'Beginne mit „Bismillah“ (Im Namen Allahs).'],
+      ['Hände waschen', 'Wasche beide Hände dreimal bis zu den Handgelenken.'],
+      ['Mund ausspülen', 'Nimm Wasser in den Mund und spüle ihn dreimal aus.'],
+      [
+        'Nase spülen',
+        'Ziehe Wasser in die Nasenlöcher und stoße es wieder aus, insgesamt dreimal.',
+      ],
+      ['Gesicht waschen', 'Wasche das ganze Gesicht dreimal vom Haaransatz bis zum Kinn.'],
+      [
+        'Arme waschen',
+        'Wasche zuerst den rechten, dann den linken Arm jeweils dreimal bis zu den Ellenbogen.',
+      ],
+      [
+        'Kopf bestreichen',
+        'Streiche mit nassen Händen über den Kopf von vorne nach hinten und wieder zurück.',
+      ],
+      ['Ohren auswischen', 'Wische beide Ohren innen und außen mit nassen Fingern ab.'],
+      [
+        'Füße waschen',
+        'Wasche zuerst den rechten, dann den linken Fuß jeweils dreimal bis zu den Knöcheln.',
+      ],
+    ],
+  },
+} as const

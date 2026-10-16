@@ -1,0 +1,118 @@
+import type { Locale } from '@/utils/locale'
+export const blogCopy = {
+  en: {
+    blog: 'Blog',
+    all: 'All Posts',
+    description: 'Guides to prayer, faith and everyday Muslim life from Islamful.',
+    previous: 'Previous',
+    next: 'Next',
+    of: 'of',
+    search: 'Search articles',
+    none: 'No posts found.',
+    published: 'Published on',
+    authors: 'Authors',
+    name: 'Name',
+    role: 'Role',
+    discuss: 'Discuss on X',
+    prevArticle: 'Previous Article',
+    nextArticle: 'Next Article',
+    back: 'Back to the blog',
+    faq: 'Frequently asked questions',
+    page: 'Page',
+    tag: 'Articles tagged',
+    hero: 'Sunlit wash basin with clear running water',
+  },
+  ar: {
+    blog: 'المدونة',
+    all: 'جميع المقالات',
+    description: 'أدلة الصلاة والإيمان والحياة اليومية للمسلم من إسلامفل.',
+    previous: 'السابق',
+    next: 'التالي',
+    of: 'من',
+    search: 'ابحث في المقالات',
+    none: 'لم يتم العثور على مقالات.',
+    published: 'نُشر في',
+    authors: 'المؤلفون',
+    name: 'الاسم',
+    role: 'الدور',
+    discuss: 'ناقش على X',
+    prevArticle: 'المقال السابق',
+    nextArticle: 'المقال التالي',
+    back: 'العودة إلى المدونة',
+    faq: 'الأسئلة الشائعة',
+    page: 'الصفحة',
+    tag: 'مقالات حول',
+    hero: 'حوض غسل مضاء بالشمس بمياه جارية صافية',
+  },
+  fr: {
+    blog: 'Blog',
+    all: 'Tous les articles',
+    description:
+      'Des guides sur la prière, la foi et la vie quotidienne des musulmans, par Islamful.',
+    previous: 'Précédent',
+    next: 'Suivant',
+    of: 'sur',
+    search: 'Rechercher des articles',
+    none: 'Aucun article trouvé.',
+    published: 'Publié le',
+    authors: 'Auteurs',
+    name: 'Nom',
+    role: 'Fonction',
+    discuss: 'Discuter sur X',
+    prevArticle: 'Article précédent',
+    nextArticle: 'Article suivant',
+    back: 'Retour au blog',
+    faq: 'Questions fréquentes',
+    page: 'Page',
+    tag: 'Articles sur',
+    hero: 'Un lavabo ensoleillé où coule une eau limpide',
+  },
+  de: {
+    blog: 'Blog',
+    all: 'Alle Artikel',
+    description: 'Ratgeber zu Gebet, Glauben und muslimischem Alltag von Islamful.',
+    previous: 'Zurück',
+    next: 'Weiter',
+    of: 'von',
+    search: 'Artikel suchen',
+    none: 'Keine Artikel gefunden.',
+    published: 'Veröffentlicht am',
+    authors: 'Autoren',
+    name: 'Name',
+    role: 'Tätigkeit',
+    discuss: 'Auf X diskutieren',
+    prevArticle: 'Vorheriger Artikel',
+    nextArticle: 'Nächster Artikel',
+    back: 'Zurück zum Blog',
+    faq: 'Häufige Fragen',
+    page: 'Seite',
+    tag: 'Artikel zum Thema',
+    hero: 'Sonnenbeschienenes Waschbecken mit klarem fließendem Wasser',
+  },
+}
+export function getBlogCopy(lang: string = 'en') {
+  return blogCopy[lang as Locale] || blogCopy.en
+}
+
+export function localAuthorRole(role: string | undefined, lang: string) {
+  const roles: Record<string, Record<string, string>> = {
+    ar: {
+      'Educational content': 'محتوى تعليمي',
+      'Founder & Islamic Content Researcher': 'مؤسس وباحث في المحتوى الإسلامي',
+      'Senior Marketing Manager, Islamic education': 'مدير تسويق أول، التعليم الإسلامي',
+    },
+    fr: {
+      'Educational content': 'Contenu éducatif',
+      'Founder & Islamic Content Researcher': 'Fondateur et chercheur en contenu islamique',
+      'Senior Marketing Manager, Islamic education':
+        'Responsable marketing senior, éducation islamique',
+    },
+    de: {
+      'Educational content': 'Bildungsinhalte',
+      'Founder & Islamic Content Researcher': 'Gründer und Rechercheur für islamische Inhalte',
+      'Senior Marketing Manager, Islamic education':
+        'Leitender Marketingmanager, islamische Bildung',
+    },
+  }
+  return role ? roles[lang]?.[role] || role : ''
+}
