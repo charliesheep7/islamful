@@ -1,4 +1,8 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { mortgagePages } from '@/data/locales/mortgage-page'
+import MortgagePageTranslated from '@/components/tools/MortgagePageTranslated'
+import { genPageMetadata } from 'app/seo'
 import IslamicMortgageCalculator from '@/components/tools/IslamicMortgageCalculator'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
@@ -6,10 +10,10 @@ import { buildLanguageAlternates } from 'app/seo'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export function generateStaticParams() {
-  return [{ lang: 'ar' }]
+  return ['ar', 'fr', 'de'].map((lang) => ({ lang }))
 }
 
-export const metadata: Metadata = {
+const arabicMetadata: Metadata = {
   title: 'حاسبة التمويل الإسلامي — مقارنة التمويل الحلال | إسلامفُل',
   description:
     'قارن بين المرابحة والإجارة والمشاركة المتناقصة والرهن العقاري التقليدي. حاسبة تمويل إسلامي مجانية مع مقارنة التكلفة جنباً إلى جنب.',
@@ -32,7 +36,24 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function IslamicMortgagePageAr() {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang === 'ar') return arabicMetadata
+  if (lang !== 'fr' && lang !== 'de') notFound()
+  return genPageMetadata({
+    title: mortgagePages[lang].title,
+    description: mortgagePages[lang].description,
+    alternates: buildLanguageAlternates('/islamic-mortgage', { currentLanguage: lang }),
+  })
+}
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang === 'ar') return <IslamicMortgagePageAr />
+  if (lang !== 'fr' && lang !== 'de') notFound()
+  return <MortgagePageTranslated lang={lang} />
+}
+
+function IslamicMortgagePageAr() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8" dir="rtl">
       <Breadcrumbs

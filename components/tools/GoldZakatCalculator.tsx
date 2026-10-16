@@ -1,5 +1,7 @@
 'use client'
 
+import { goldTranslations } from '@/data/locales/gold'
+import { localizedPath, type Locale } from '@/utils/locale'
 import { useEffect, useId, useRef, useState } from 'react'
 import Link from 'next/link'
 import {
@@ -15,11 +17,12 @@ export default function GoldZakatCalculator({
   lang,
   initialDate,
 }: {
-  lang: 'en' | 'ar'
+  lang: Locale
   initialDate: string
 }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en),
+    t = (en: string, arabic: string) =>
+      ar ? arabic : lang === 'fr' || lang === 'de' ? goldTranslations[lang][en] || en : en,
     id = useId()
   const [draft, setDraft] = useState(() => emptyGoldDraft(initialDate, ar ? 'SAR' : 'USD'))
   const [pendingCurrency, setPendingCurrency] = useState(ar ? 'SAR' : 'USD')
@@ -35,23 +38,31 @@ export default function GoldZakatCalculator({
   useEffect(() => {
     if (result) resultRef.current?.focus()
   }, [result])
+  const decimalInput = (value: string) =>
+    lang === 'fr' || lang === 'de' ? value.replace(',', '.') : value
   const change = (patch: Partial<GoldDraft>) => {
     setDraft((d) => ({ ...d, ...patch }))
     setResult(null)
     setError('')
   }
   const input =
-    'mt-2 w-full rounded-xl border border-stone-300 bg-white px-3 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-gray-900 dark:text-white'
+    'mt-2 w-full min-w-0 max-w-full rounded-xl border border-stone-300 bg-white px-3 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-gray-900 dark:text-white'
   const money = (value: number) =>
-    new Intl.NumberFormat(ar ? 'ar-SA' : 'en-US', {
-      style: 'currency',
-      currency: draft.currency,
-      currencyDisplay: 'code',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(value)
+    new Intl.NumberFormat(
+      ar ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : 'en-US',
+      {
+        style: 'currency',
+        currency: draft.currency,
+        currencyDisplay: 'code',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }
+    ).format(value)
   const number = (value: number) =>
-    new Intl.NumberFormat(ar ? 'ar-SA' : 'en-US', { maximumFractionDigits: 6 }).format(value)
+    new Intl.NumberFormat(
+      ar ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : 'en-US',
+      { maximumFractionDigits: 6 }
+    ).format(value)
   const label = (field: string, text: string) => (
     <label htmlFor={`${id}-${field}`} className="block text-sm font-medium">
       {text}
@@ -176,7 +187,7 @@ export default function GoldZakatCalculator({
                       onChange={(e) =>
                         change({
                           lots: draft.lots.map((v, i) =>
-                            i === index ? { ...v, weight: e.target.value } : v
+                            i === index ? { ...v, weight: decimalInput(e.target.value) } : v
                           ),
                         })
                       }
@@ -303,10 +314,14 @@ export default function GoldZakatCalculator({
             <div>
               {label(
                 'price',
-                t(
-                  `24K gold price per gram (${draft.currency})`,
-                  `سعر غرام الذهب عيار ٢٤ (${draft.currency})`
-                )
+                lang === 'fr'
+                  ? `Prix du gramme d’or 24 carats (${draft.currency})`
+                  : lang === 'de'
+                    ? `Preis je Gramm 24-Karat-Gold (${draft.currency})`
+                    : t(
+                        `24K gold price per gram (${draft.currency})`,
+                        `سعر غرام الذهب عيار ٢٤ (${draft.currency})`
+                      )
               )}
               <input
                 {...fieldProps('price')}
@@ -317,7 +332,7 @@ export default function GoldZakatCalculator({
                 maxLength={16}
                 value={draft.price}
                 placeholder="0"
-                onChange={(e) => change({ price: e.target.value })}
+                onChange={(e) => change({ price: decimalInput(e.target.value) })}
                 className={input}
               />
               <p className="mt-2 text-xs text-stone-600 dark:text-stone-300">
@@ -350,7 +365,11 @@ export default function GoldZakatCalculator({
               <div>
                 {label(
                   'customNisab',
-                  t(`Local nisab (${draft.currency})`, `النصاب المحلي (${draft.currency})`)
+                  lang === 'fr'
+                    ? `Nisab local (${draft.currency})`
+                    : lang === 'de'
+                      ? `Lokaler Nisab (${draft.currency})`
+                      : t(`Local nisab (${draft.currency})`, `النصاب المحلي (${draft.currency})`)
                 )}
                 <input
                   {...fieldProps('customNisab')}
@@ -358,7 +377,7 @@ export default function GoldZakatCalculator({
                   inputMode="decimal"
                   dir="ltr"
                   value={draft.customNisab}
-                  onChange={(e) => change({ customNisab: e.target.value })}
+                  onChange={(e) => change({ customNisab: decimalInput(e.target.value) })}
                   className={input}
                 />
               </div>
@@ -490,7 +509,7 @@ export default function GoldZakatCalculator({
             >
               {t('Download summary', 'تنزيل الملخص')}
             </button>
-            <Link className="py-2 underline" href={`${ar ? '/ar' : ''}/zakat-calculator`}>
+            <Link className="py-2 underline" href={localizedPath('/zakat-calculator', lang)}>
               {t('Include savings and other wealth →', 'احسب المدخرات والأموال الأخرى ←')}
             </Link>
           </div>

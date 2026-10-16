@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict'
 import { chromium } from 'playwright'
-const browser = await chromium.launch({ headless: true })
+const origin = process.env.TEST_ORIGIN || 'http://localhost:3098'
+const browser = await chromium.launch({
+  headless: true,
+  ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}),
+})
 const context = await browser.newContext({ viewport: { width: 390, height: 844 } })
 const page = await context.newPage()
 const errors = [],
@@ -41,7 +45,7 @@ async function manual(lat, lng, ar = false) {
   await page.getByLabel(ar ? 'خط الطول' : 'Longitude', { exact: true }).fill(lng)
   await page.getByRole('button', { name: ar ? 'حدد القبلة' : 'Find Qibla', exact: true }).click()
 }
-await page.goto('http://localhost:3098/qibla-finder')
+await page.goto(origin + '/qibla-finder')
 await page.getByLabel('Latitude', { exact: true }).waitFor()
 assert.equal(await page.evaluate(() => window.geoCalls.length), 0)
 assert.deepEqual(requests, [])
@@ -111,7 +115,7 @@ assert.doesNotMatch(await tool.innerText(), /0\.0°/)
 await manual('', '')
 await tool.getByRole('alert').waitFor()
 assert.match(await tool.getByRole('alert').innerText(), /valid coordinates/)
-await page.goto('http://localhost:3098/ar/qibla-finder')
+await page.goto(origin + '/ar/qibla-finder')
 await manual('51.5074', '-0.1278', true)
 assert.equal(await tool.getAttribute('dir'), 'rtl')
 assert.match(await tool.innerText(), /119\.0°/)

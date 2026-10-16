@@ -1,4 +1,6 @@
 'use client'
+import { localizedDhikr } from '@/data/locales/adhkar'
+import { adhkarUi, adhkarDynamic } from '@/data/locales/adhkar-ui'
 import Link from 'next/link'
 import { useMemo, useRef, useState } from 'react'
 import { routineEntries, type RoutineId, type TasbihVariant } from '@/data/adhkar'
@@ -13,11 +15,12 @@ export default function AdhkarRoutine({
   surahs,
 }: {
   routine: RoutineId
-  lang: 'en' | 'ar'
+  lang: 'en' | 'ar' | 'fr' | 'de'
   surahs: ShortSurahs
 }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
+    t = (en: string, arabic: string) =>
+      ar ? arabic : lang === 'en' ? en : adhkarUi[lang][en] || en
   const [prayer, setPrayer] = useState('unassigned'),
     [variant, setVariant] = useState<TasbihVariant>('33-tahlil')
   const session = `${routine}.${routine === 'after-prayer' ? `${prayer}.${variant}` : 'daily'}`
@@ -31,7 +34,7 @@ export default function AdhkarRoutine({
               aria-label={t('Prayer session', 'جلسة الصلاة')}
               value={prayer}
               onChange={(e) => setPrayer(e.target.value)}
-              className="mt-2 w-full rounded-xl border bg-white p-3 dark:bg-gray-900"
+              className="mt-2 w-full max-w-full min-w-0 rounded-xl border bg-white p-3 dark:bg-gray-900"
             >
               {[
                 ['unassigned', 'Unassigned session', 'جلسة غير محددة'],
@@ -53,7 +56,7 @@ export default function AdhkarRoutine({
               aria-label={t('Tasbih sequence', 'صيغة التسبيح')}
               value={variant}
               onChange={(e) => setVariant(e.target.value as TasbihVariant)}
-              className="mt-2 w-full rounded-xl border bg-white p-3 dark:bg-gray-900"
+              className="mt-2 w-full max-w-full min-w-0 rounded-xl border bg-white p-3 dark:bg-gray-900"
             >
               <option value="33-tahlil">
                 {t('33 / 33 / 33 + tahlil', '٣٣ / ٣٣ / ٣٣ + التهليل')}
@@ -83,12 +86,16 @@ function RoutineSession({
   session: string
   routine: RoutineId
   variant: TasbihVariant
-  lang: 'en' | 'ar'
+  lang: 'en' | 'ar' | 'fr' | 'de'
   surahs: ShortSurahs
 }) {
-  const entries = routineEntries(routine, variant),
+  const entries = routineEntries(routine, variant).map((e) =>
+      lang === 'fr' || lang === 'de' ? localizedDhikr(e, routine, lang) : e
+    ),
+    dynamic = lang === 'fr' || lang === 'de' ? adhkarDynamic[lang] : null,
     ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
+    t = (en: string, arabic: string) =>
+      ar ? arabic : lang === 'en' ? en : adhkarUi[lang][en] || en
   const n = (v: number) =>
     new Intl.NumberFormat(ar ? 'ar' : 'en', {
       numberingSystem: ar ? 'arab' : 'latn',
@@ -278,11 +285,19 @@ function RoutineSession({
                     </p>
                     {meaning && (
                       <p
-                        lang="en"
+                        lang={lang === 'ar' ? 'en' : lang}
                         dir="ltr"
                         className="mt-2 text-left leading-relaxed text-gray-600 dark:text-gray-300"
                       >
-                        {v.translation}
+                        <span data-testid="quran-adhkar-meaning">{v.translation}</span>
+                        {v.footnotes && (
+                          <span
+                            data-testid="translation-footnotes"
+                            className="mt-2 block text-sm whitespace-pre-line"
+                          >
+                            {v.footnotes}
+                          </span>
+                        )}
                       </p>
                     )}
                   </div>
@@ -301,11 +316,11 @@ function RoutineSession({
                 </p>
                 {meaning && (
                   <p
-                    lang="en"
+                    lang={lang === 'ar' ? 'en' : lang}
                     dir="ltr"
                     className="leading-relaxed text-gray-600 dark:text-gray-300"
                   >
-                    {e.meaning}
+                    <span data-testid="adhkar-meaning">{e.meaning}</span>
                   </p>
                 )}
               </>
@@ -313,10 +328,12 @@ function RoutineSession({
             <div className="space-y-2 text-sm text-gray-500">
               <p>
                 {e.countedInSource
-                  ? t(
-                      `${e.target} recitations in the cited narration.`,
-                      `${n(e.target)} مرات في الرواية المشار إليها.`
-                    )
+                  ? dynamic
+                    ? dynamic.sourceCount(e.target)
+                    : t(
+                        `${e.target} recitations in the cited narration.`,
+                        `${n(e.target)} مرات في الرواية المشار إليها.`
+                      )
                   : t(
                       'Read once in this checklist. The source does not prescribe a repeated count here.',
                       'اقرأ مرة في هذه القائمة. لا يحدد المصدر هنا عددًا للتكرار.'
@@ -333,14 +350,34 @@ function RoutineSession({
                 <a className="underline" href={e.href}>
                   {ar ? e.sourceAr : e.source}
                 </a>
-                {e.grade && <> · {ar ? e.gradeAr : e.grade}</>}
+                {e.grade && (
+                  <>
+                    {' '}
+                    ·{' '}
+                    {ar
+                      ? e.gradeAr
+                      : lang === 'fr'
+                        ? e.grade.replace(
+                            'Sahih — Darussalam; at-Tirmidhi calls it hasan',
+                            'Sahih — Darussalam ; qualifié de hasan par at-Tirmidhi'
+                          )
+                        : lang === 'de'
+                          ? e.grade.replace(
+                              'Sahih — Darussalam; at-Tirmidhi calls it hasan',
+                              'Sahih — Darussalam; at-Tirmidhi bewertet ihn als hasan'
+                            )
+                          : e.grade}
+                  </>
+                )}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <button
                 disabled={!ready || done}
                 onClick={() => update(e.id, 'increment')}
-                aria-label={t(`Count ${e.title}`, `عدّ ${e.titleAr}`)}
+                aria-label={
+                  dynamic ? dynamic.count(e.title) : t(`Count ${e.title}`, `عدّ ${e.titleAr}`)
+                }
                 className="min-h-12 rounded-xl bg-emerald-800 px-5 py-3 font-medium text-white disabled:opacity-50"
               >
                 {done
@@ -353,7 +390,9 @@ function RoutineSession({
               <button
                 disabled={!ready || count === 0}
                 onClick={() => update(e.id, 'undo')}
-                aria-label={t(`Undo ${e.title}`, `تراجع عن ${e.titleAr}`)}
+                aria-label={
+                  dynamic ? dynamic.undo(e.title) : t(`Undo ${e.title}`, `تراجع عن ${e.titleAr}`)
+                }
                 className="rounded-xl border px-4 py-3 disabled:opacity-40"
               >
                 {t('Undo one', 'تراجع مرة')}
@@ -362,13 +401,19 @@ function RoutineSession({
                 <button
                   disabled={!ready || done}
                   onClick={() => update(e.id, 'complete')}
-                  aria-label={t(
-                    `Mark all ${e.target} for ${e.title}`,
-                    `تحديد اكتمال ${n(e.target)} لـ ${e.titleAr}`
-                  )}
+                  aria-label={
+                    dynamic
+                      ? dynamic.mark(e.target, e.title)
+                      : t(
+                          `Mark all ${e.target} for ${e.title}`,
+                          `تحديد اكتمال ${n(e.target)} لـ ${e.titleAr}`
+                        )
+                  }
                   className="rounded-xl border px-4 py-3 text-sm disabled:opacity-40"
                 >
-                  {t(`I already recited all ${e.target}`, `قرأت العدد كاملًا: ${n(e.target)}`)}
+                  {dynamic
+                    ? dynamic.recited(e.target)
+                    : t(`I already recited all ${e.target}`, `قرأت العدد كاملًا: ${n(e.target)}`)}
                 </button>
               )}
               {e.surah && (

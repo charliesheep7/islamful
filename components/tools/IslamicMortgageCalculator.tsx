@@ -1,6 +1,9 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { mortgageUi } from '@/data/locales/mortgage-ui'
+import { parseMortgageInputs, diminishingSchedule } from '@/utils/mortgage'
+import { mortgageHelp } from '@/data/locales/mortgage-ui'
 import { RotateCcw } from 'lucide-react'
 
 const CURRENCIES = [
@@ -20,6 +23,7 @@ interface IslamicMortgageCalculatorProps {
 
 export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortgageCalculatorProps) {
   const isRTL = lang === 'ar'
+  const t = (text: string) => mortgageUi[lang]?.[text] || text
 
   const [activeTab, setActiveTab] = useState<'murabaha' | 'ijara' | 'musharaka' | 'compare'>(
     'murabaha'
@@ -34,77 +38,63 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
   const cur = CURRENCIES.find((c) => c.code === currency) || CURRENCIES[0]
 
   const formatAmount = (val: number) =>
-    `${cur.symbol}${val.toLocaleString(isRTL ? 'ar-SA' : 'en-US', { maximumFractionDigits: 0 })}`
+    `${cur.symbol}${val.toLocaleString(lang === 'ar' ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : 'en-US', { maximumFractionDigits: 0 })}`
 
-  const principal = (parseFloat(propertyValue) || 0) - (parseFloat(downPayment) || 0)
-  const months = (parseInt(termYears) || 25) * 12
-  const rate = (parseFloat(profitRate) || 4.5) / 100
-  const convRate = (parseFloat(conventionalRate) || 6.0) / 100
+  const parsed = parseMortgageInputs(
+    propertyValue,
+    downPayment,
+    termYears,
+    profitRate,
+    conventionalRate
+  )
+  const { principal, months, rate, convRate, valid, comparisonValid, property } = parsed
+  const help = mortgageHelp[lang] || mortgageHelp.en
+  const locale =
+    lang === 'ar' ? 'ar-SA' : lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : 'en-US'
+  const percent = (value: number) =>
+    new Intl.NumberFormat(locale, {
+      style: 'percent',
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    }).format(value)
 
   const murabaha = useMemo(() => {
-    if (principal <= 0) return null
+    if (!valid) return null
     const totalPrice = principal * (1 + rate * (months / 12))
     const monthlyPayment = totalPrice / months
     const totalProfit = totalPrice - principal
     return { monthlyPayment, totalPrice, totalProfit, principal }
-  }, [principal, months, rate])
+  }, [principal, months, rate, valid])
 
   const ijara = useMemo(() => {
-    if (principal <= 0) return null
+    if (!valid) return null
     const monthlyRent = (principal * rate) / 12
     const monthlyPurchase = principal / months
     const monthlyTotal = monthlyRent + monthlyPurchase
     const totalCost = monthlyTotal * months
     const totalRent = monthlyRent * months
     return { monthlyRent, monthlyPurchase, monthlyTotal, totalCost, totalRent }
-  }, [principal, months, rate])
+  }, [principal, months, rate, valid])
 
   const musharaka = useMemo(() => {
-    if (principal <= 0) return null
-    let bankEquity = principal
-    let totalRent = 0
-    const schedule: {
-      year: number
-      rent: number
-      equity: number
-      bankShare: number
-      buyerEquity: number
-    }[] = []
-    const fixedMonthly = principal / months + (principal * rate) / 12
-
-    for (let m = 1; m <= months; m++) {
-      const rentPortion = (bankEquity * rate) / 12
-      const equityPortion = Math.min(fixedMonthly - rentPortion, bankEquity)
-      bankEquity = Math.max(0, bankEquity - equityPortion)
-      totalRent += rentPortion
-      if (m % 12 === 0 || m === 1) {
-        schedule.push({
-          year: Math.ceil(m / 12),
-          rent: rentPortion,
-          equity: equityPortion,
-          bankShare: bankEquity,
-          buyerEquity: principal - bankEquity,
-        })
-      }
-    }
-    const totalCost = principal + totalRent
-    return { fixedMonthly, totalCost, totalRent, schedule }
-  }, [principal, months, rate])
+    if (!valid) return null
+    return diminishingSchedule(principal, months, rate)
+  }, [principal, months, rate, valid])
 
   const conventional = useMemo(() => {
-    if (principal <= 0) return null
+    if (!valid || !comparisonValid) return null
     const r = convRate / 12
     if (r === 0) {
       const M = principal / months
       return { monthlyPayment: M, totalCost: principal, totalInterest: 0 }
     }
-    const M = (principal * (r * Math.pow(1 + r, months))) / (Math.pow(1 + r, months) - 1)
+    const M = (principal * r) / -Math.expm1(-months * Math.log1p(r))
     const totalCost = M * months
     const totalInterest = totalCost - principal
     return { monthlyPayment: M, totalCost, totalInterest }
-  }, [principal, months, convRate])
+  }, [principal, months, convRate, valid, comparisonValid])
 
-  const hasInput = parseFloat(propertyValue) > 0
+  const hasInput = propertyValue !== ''
 
   const handleReset = () => {
     setPropertyValue('')
@@ -140,7 +130,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
         nameAr: '\u0627\u0644\u0645\u0631\u0627\u0628\u062d\u0629',
         totalCost: murabaha.totalPrice,
         isConventional: false,
-        note: `Fixed markup: ${formatAmount(murabaha.totalProfit)}`,
+        note: `${t('Fixed markup')}: ${formatAmount(murabaha.totalProfit)}`,
         noteAr: `\u0631\u0628\u062d \u062b\u0627\u0628\u062a: ${formatAmount(murabaha.totalProfit)}`,
       },
       {
@@ -148,7 +138,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
         nameAr: '\u0627\u0644\u0625\u062c\u0627\u0631\u0629',
         totalCost: ijara.totalCost,
         isConventional: false,
-        note: `Total rent: ${formatAmount(ijara.totalRent)}`,
+        note: `${t('Total rent')}: ${formatAmount(ijara.totalRent)}`,
         noteAr: `\u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u0625\u064a\u062c\u0627\u0631: ${formatAmount(ijara.totalRent)}`,
       },
       {
@@ -156,7 +146,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
         nameAr: '\u0627\u0644\u0645\u0634\u0627\u0631\u0643\u0629',
         totalCost: musharaka.totalCost,
         isConventional: false,
-        note: `Decreasing rent: ${formatAmount(musharaka.totalRent)}`,
+        note: `${t('Decreasing rent')}: ${formatAmount(musharaka.totalRent)}`,
         noteAr: `\u0625\u064a\u062c\u0627\u0631 \u0645\u062a\u0646\u0627\u0642\u0635: ${formatAmount(musharaka.totalRent)}`,
       },
       {
@@ -164,12 +154,12 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
         nameAr: '\u0627\u0644\u062a\u0642\u0644\u064a\u062f\u064a',
         totalCost: conventional.totalCost,
         isConventional: true,
-        note: `Interest paid: ${formatAmount(conventional.totalInterest)}`,
+        note: `${t('Interest paid')}: ${formatAmount(conventional.totalInterest)}`,
         noteAr: `\u0641\u0648\u0627\u0626\u062f \u0645\u062f\u0641\u0648\u0639\u0629: ${formatAmount(conventional.totalInterest)}`,
       },
     ]
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [murabaha, ijara, musharaka, conventional, currency, isRTL])
+  }, [murabaha, ijara, musharaka, conventional, currency, isRTL, lang])
 
   return (
     <div className="w-full" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -185,17 +175,18 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                 : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
             } ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL ? tab.nameAr : tab.name}
+            {isRTL ? tab.nameAr : t(tab.name)}
           </button>
         ))}
       </div>
 
       {/* Currency selector */}
       <div className="mb-8 flex items-center justify-center gap-2">
-        <label className="text-xs text-gray-500">
-          {isRTL ? '\u0627\u0644\u0639\u0645\u0644\u0629' : 'Currency'}
+        <label htmlFor="mortgage-currency" className="text-xs text-gray-500">
+          {isRTL ? '\u0627\u0644\u0639\u0645\u0644\u0629' : t('Currency')}
         </label>
         <select
+          id="mortgage-currency"
           value={currency}
           onChange={(e) => setCurrency(e.target.value)}
           className="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm outline-none dark:border-gray-800 dark:bg-gray-900"
@@ -216,49 +207,69 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
           >
             {isRTL
               ? '\u062a\u0641\u0627\u0635\u064a\u0644 \u0627\u0644\u0639\u0642\u0627\u0631'
-              : 'Property Details'}
+              : t('Property Details')}
           </h3>
           <p className={`mb-4 text-xs text-gray-400 ${isRTL ? 'font-arabic' : ''}`}>
             {isRTL
               ? '\u0623\u062f\u062e\u0644 \u0642\u064a\u0645\u0629 \u0627\u0644\u0639\u0642\u0627\u0631 \u0648\u0634\u0631\u0648\u0637 \u0627\u0644\u062a\u0645\u0648\u064a\u0644'
-              : 'Enter property value and financing terms'}
+              : t('Enter property value and financing terms')}
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}>
+              <label
+                htmlFor="mortgage-property"
+                className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
+              >
                 {isRTL
                   ? '\u0642\u064a\u0645\u0629 \u0627\u0644\u0639\u0642\u0627\u0631'
-                  : 'Property Value'}
+                  : t('Property Value')}
               </label>
               <input
+                id="mortgage-property"
+                min="0.01"
+                max="1000000000000"
+                step="any"
                 type="number"
                 value={propertyValue}
                 onChange={(e) => setPropertyValue(e.target.value)}
-                placeholder={isRTL ? '\u0645\u062b\u0627\u0644: 500000' : 'e.g. 500000'}
+                placeholder={isRTL ? '\u0645\u062b\u0627\u0644: 500000' : t('e.g. 500000')}
                 className={inputClass}
               />
             </div>
             <div>
-              <label className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}>
+              <label
+                htmlFor="mortgage-down"
+                className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
+              >
                 {isRTL
                   ? '\u0627\u0644\u062f\u0641\u0639\u0629 \u0627\u0644\u0645\u0642\u062f\u0645\u0629'
-                  : 'Down Payment'}
+                  : t('Down Payment')}
               </label>
               <input
+                id="mortgage-down"
+                min="0"
+                step="any"
                 type="number"
                 value={downPayment}
                 onChange={(e) => setDownPayment(e.target.value)}
-                placeholder={isRTL ? '\u0645\u062b\u0627\u0644: 100000' : 'e.g. 100000'}
+                placeholder={isRTL ? '\u0645\u062b\u0627\u0644: 100000' : t('e.g. 100000')}
                 className={inputClass}
               />
             </div>
             <div>
-              <label className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}>
+              <label
+                htmlFor="mortgage-term"
+                className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
+              >
                 {isRTL
                   ? '\u0645\u062f\u0629 \u0627\u0644\u062a\u0645\u0648\u064a\u0644 (\u0633\u0646\u0648\u0627\u062a)'
-                  : 'Term (years)'}
+                  : t('Term (years)')}
               </label>
               <input
+                id="mortgage-term"
+                min="1"
+                max="50"
+                step="1"
                 type="number"
                 value={termYears}
                 onChange={(e) => setTermYears(e.target.value)}
@@ -267,12 +278,18 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
               />
             </div>
             <div>
-              <label className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}>
+              <label
+                htmlFor="mortgage-profit"
+                className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
+              >
                 {isRTL
                   ? '\u0645\u0639\u062f\u0644 \u0627\u0644\u0631\u0628\u062d (%)'
-                  : 'Profit/Markup Rate (%)'}
+                  : t('Profit/Markup Rate (%)')}
               </label>
               <input
+                id="mortgage-profit"
+                min="0"
+                max="100"
                 type="number"
                 step="0.1"
                 value={profitRate}
@@ -284,13 +301,17 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
             {activeTab === 'compare' && (
               <div className="sm:col-span-2">
                 <label
+                  htmlFor="mortgage-conventional"
                   className={`mb-1.5 block text-xs text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
                 >
                   {isRTL
                     ? '\u0633\u0639\u0631 \u0627\u0644\u0641\u0627\u0626\u062f\u0629 \u0627\u0644\u062a\u0642\u0644\u064a\u062f\u064a (%)'
-                    : 'Conventional Interest Rate (%)'}
+                    : t('Conventional Interest Rate (%)')}
                 </label>
                 <input
+                  id="mortgage-conventional"
+                  min="0"
+                  max="100"
                   type="number"
                   step="0.1"
                   value={conventionalRate}
@@ -305,7 +326,12 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
       </div>
 
       {/* Results */}
-      {hasInput && principal > 0 && (
+      {hasInput && (!valid || (activeTab === 'compare' && !comparisonValid)) && (
+        <p role="status" className="mt-4 text-sm text-red-600 dark:text-red-400">
+          {help.validation}
+        </p>
+      )}
+      {valid && (activeTab !== 'compare' || comparisonValid) && (
         <div className="mt-6">
           {/* Murabaha Results */}
           {activeTab === 'murabaha' && murabaha && (
@@ -316,7 +342,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0627\u0644\u0645\u0628\u0644\u063a \u0627\u0644\u0623\u0635\u0644\u064a'
-                        : 'Principal'}
+                        : t('Principal')}
                     </span>
                     <span>{formatAmount(murabaha.principal)}</span>
                   </div>
@@ -324,7 +350,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u0631\u0628\u062d'
-                        : 'Total Profit (markup)'}
+                        : t('Total Profit (markup)')}
                     </span>
                     <span>{formatAmount(murabaha.totalProfit)}</span>
                   </div>
@@ -332,7 +358,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0627\u0644\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a\u0629'
-                        : 'Total Cost'}
+                        : t('Total Cost')}
                     </span>
                     <span>{formatAmount(murabaha.totalPrice)}</span>
                   </div>
@@ -341,7 +367,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="font-medium">
                       {isRTL
                         ? '\u0627\u0644\u0642\u0633\u0637 \u0627\u0644\u0634\u0647\u0631\u064a'
-                        : 'Monthly Payment'}
+                        : t('Monthly Payment')}
                     </span>
                     <span className="text-2xl font-bold">
                       {formatAmount(murabaha.monthlyPayment)}
@@ -354,7 +380,9 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
               >
                 {isRTL
                   ? '\u064a\u0634\u062a\u0631\u064a \u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0639\u0642\u0627\u0631 \u0648\u064a\u0628\u064a\u0639\u0647 \u0644\u0643 \u0628\u0633\u0639\u0631 \u0645\u062a\u0641\u0642 \u0639\u0644\u064a\u0647 \u064a\u062a\u0636\u0645\u0646 \u0647\u0627\u0645\u0634 \u0631\u0628\u062d. \u0627\u0644\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a\u0629 \u062b\u0627\u0628\u062a\u0629 \u0645\u0646 \u0627\u0644\u064a\u0648\u0645 \u0627\u0644\u0623\u0648\u0644 \u2014 \u0644\u0627 \u0641\u0648\u0627\u0626\u062f \u0645\u0631\u0643\u0628\u0629.'
-                  : 'The bank purchases the property and sells it to you at an agreed markup. Your total cost is fixed from day one \u2014 no compounding.'}
+                  : t(
+                      'The bank purchases the property and sells it to you at an agreed markup. Your total cost is fixed from day one \u2014 no compounding.'
+                    )}
               </p>
             </div>
           )}
@@ -368,7 +396,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0627\u0644\u0625\u064a\u062c\u0627\u0631 \u0627\u0644\u0634\u0647\u0631\u064a'
-                        : 'Monthly Rent'}
+                        : t('Monthly Rent')}
                     </span>
                     <span>{formatAmount(ijara.monthlyRent)}</span>
                   </div>
@@ -376,7 +404,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0642\u0633\u0637 \u0627\u0644\u0634\u0631\u0627\u0621 \u0627\u0644\u0634\u0647\u0631\u064a'
-                        : 'Monthly Purchase Contribution'}
+                        : t('Monthly Purchase Contribution')}
                     </span>
                     <span>{formatAmount(ijara.monthlyPurchase)}</span>
                   </div>
@@ -384,7 +412,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u0625\u064a\u062c\u0627\u0631 \u0627\u0644\u0645\u062f\u0641\u0648\u0639'
-                        : 'Total Rent Paid'}
+                        : t('Total Rent Paid')}
                     </span>
                     <span>{formatAmount(ijara.totalRent)}</span>
                   </div>
@@ -392,7 +420,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0627\u0644\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a\u0629'
-                        : 'Total Cost'}
+                        : t('Total Cost')}
                     </span>
                     <span>{formatAmount(ijara.totalCost)}</span>
                   </div>
@@ -401,7 +429,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="font-medium">
                       {isRTL
                         ? '\u0627\u0644\u062f\u0641\u0639\u0629 \u0627\u0644\u0634\u0647\u0631\u064a\u0629 \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a\u0629'
-                        : 'Total Monthly'}
+                        : t('Total Monthly')}
                     </span>
                     <span className="text-2xl font-bold">{formatAmount(ijara.monthlyTotal)}</span>
                   </div>
@@ -412,7 +440,9 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
               >
                 {isRTL
                   ? '\u064a\u0634\u062a\u0631\u064a \u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u0639\u0642\u0627\u0631 \u0648\u064a\u0624\u062c\u0631\u0647 \u0644\u0643. \u062a\u062f\u0641\u0639 \u0625\u064a\u062c\u0627\u0631\u0627\u064b + \u0623\u0642\u0633\u0627\u0637 \u0634\u0631\u0627\u0621. \u0641\u064a \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0645\u062f\u0629\u060c \u062a\u0645\u0644\u0643 \u0627\u0644\u0639\u0642\u0627\u0631.'
-                  : 'The bank buys the property and leases it to you. You pay rent + purchase installments. At the end of the term, you own the property.'}
+                  : t(
+                      'The bank buys the property and leases it to you. You pay rent + purchase installments. At the end of the term, you own the property.'
+                    )}
               </p>
             </div>
           )}
@@ -426,7 +456,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0627\u0644\u062f\u0641\u0639\u0629 \u0627\u0644\u0634\u0647\u0631\u064a\u0629 \u0627\u0644\u0623\u0648\u0644\u0649'
-                        : 'Initial Monthly Payment'}
+                        : t('Initial Monthly Payment')}
                     </span>
                     <span>{formatAmount(musharaka.fixedMonthly)}</span>
                   </div>
@@ -434,7 +464,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="text-white/50">
                       {isRTL
                         ? '\u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u0625\u064a\u062c\u0627\u0631 \u0627\u0644\u0645\u062f\u0641\u0648\u0639'
-                        : 'Total Rent Paid'}
+                        : t('Total Rent Paid')}
                     </span>
                     <span>{formatAmount(musharaka.totalRent)}</span>
                   </div>
@@ -443,59 +473,65 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                     <span className="font-medium">
                       {isRTL
                         ? '\u0627\u0644\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a\u0629'
-                        : 'Total Cost'}
+                        : t('Total Cost')}
                     </span>
                     <span className="text-2xl font-bold">{formatAmount(musharaka.totalCost)}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Yearly Schedule Table */}
+              {/* Year-end and final repayment snapshots */}
+              <p className="text-sm text-gray-500">{help.schedule}</p>
               <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-800">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
                       <th
+                        scope="col"
                         className={`px-4 py-3 text-xs font-medium text-gray-500 ${isRTL ? 'font-arabic text-right' : 'text-left'}`}
                       >
-                        {isRTL ? '\u0627\u0644\u0633\u0646\u0629' : 'Year'}
+                        {help.month}
                       </th>
                       <th
+                        scope="col"
                         className={`px-4 py-3 text-xs font-medium text-gray-500 ${isRTL ? 'font-arabic text-right' : 'text-left'}`}
                       >
                         {isRTL
                           ? '\u0627\u0644\u0625\u064a\u062c\u0627\u0631 \u0627\u0644\u0634\u0647\u0631\u064a'
-                          : 'Monthly Rent'}
+                          : t('Monthly Rent')}
                       </th>
                       <th
+                        scope="col"
                         className={`px-4 py-3 text-xs font-medium text-gray-500 ${isRTL ? 'font-arabic text-right' : 'text-left'}`}
                       >
                         {isRTL
                           ? '\u0627\u0644\u062d\u0635\u0629 \u0627\u0644\u0634\u0647\u0631\u064a\u0629'
-                          : 'Monthly Equity'}
+                          : t('Monthly Equity')}
                       </th>
                       <th
+                        scope="col"
                         className={`px-4 py-3 text-xs font-medium text-gray-500 ${isRTL ? 'font-arabic text-right' : 'text-left'}`}
                       >
                         {isRTL
                           ? '\u062d\u0635\u0629 \u0627\u0644\u0628\u0646\u0643'
-                          : 'Bank Share %'}
+                          : t('Bank Share %')}
                       </th>
                       <th
+                        scope="col"
                         className={`px-4 py-3 text-xs font-medium text-gray-500 ${isRTL ? 'font-arabic text-right' : 'text-left'}`}
                       >
-                        {isRTL ? '\u062d\u0635\u062a\u0643' : 'Your Equity %'}
+                        {isRTL ? '\u062d\u0635\u062a\u0643' : t('Your Equity %')}
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {musharaka.schedule.map((row) => (
                       <tr
-                        key={row.year}
+                        key={row.month}
                         className="border-b border-gray-100 dark:border-gray-800/50"
                       >
                         <td className="px-4 py-2.5 font-mono text-xs text-gray-900 dark:text-white">
-                          {row.year}
+                          {row.month.toLocaleString(locale)}
                         </td>
                         <td className="px-4 py-2.5 font-mono text-xs text-gray-600 dark:text-gray-400">
                           {formatAmount(row.rent)}
@@ -504,10 +540,10 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                           {formatAmount(row.equity)}
                         </td>
                         <td className="px-4 py-2.5 font-mono text-xs text-gray-600 dark:text-gray-400">
-                          {principal > 0 ? ((row.bankShare / principal) * 100).toFixed(1) : '0'}%
+                          {percent(row.bankShare / property)}
                         </td>
                         <td className="px-4 py-2.5 font-mono text-xs text-[var(--color-primary-500)]">
-                          {principal > 0 ? ((row.buyerEquity / principal) * 100).toFixed(1) : '0'}%
+                          {percent(1 - row.bankShare / property)}
                         </td>
                       </tr>
                     ))}
@@ -520,7 +556,9 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
               >
                 {isRTL
                   ? '\u0623\u0646\u062a \u0648\u0627\u0644\u0628\u0646\u0643 \u062a\u0645\u0644\u0643\u0627\u0646 \u0627\u0644\u0639\u0642\u0627\u0631 \u0645\u0639\u0627\u064b. \u062a\u062f\u0641\u0639 \u0625\u064a\u062c\u0627\u0631\u0627\u064b \u0639\u0644\u0649 \u062d\u0635\u0629 \u0627\u0644\u0628\u0646\u0643 \u0648\u062a\u0634\u062a\u0631\u064a \u062d\u0635\u062a\u0647 \u062a\u062f\u0631\u064a\u062c\u064a\u0627\u064b. \u0643\u0644\u0645\u0627 \u0632\u0627\u062f\u062a \u062d\u0635\u062a\u0643\u060c \u0627\u0646\u062e\u0641\u0636 \u0627\u0644\u0625\u064a\u062c\u0627\u0631.'
-                  : 'You and the bank co-own the property. You pay rent on the bank\u2019s share and gradually buy their equity. As your share grows, rent decreases.'}
+                  : t(
+                      'You and the bank co-own the property. You pay rent on the bank\u2019s share and gradually buy their equity. As your share grows, rent decreases.'
+                    )}
               </p>
             </div>
           )}
@@ -534,7 +572,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                 >
                   {isRTL
                     ? '\u0645\u0642\u0627\u0631\u0646\u0629 \u0627\u0644\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a\u0629'
-                    : 'Total Cost Comparison'}
+                    : t('Total Cost Comparison')}
                 </h3>
                 <div className="space-y-5">
                   {(() => {
@@ -545,7 +583,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                         <div key={method.name} className="space-y-1">
                           <div className="flex justify-between text-sm">
                             <span className={isRTL ? 'font-arabic' : ''}>
-                              {isRTL ? method.nameAr : method.name}
+                              {isRTL ? method.nameAr : t(method.name)}
                             </span>
                             <span className="font-mono text-xs">
                               {formatAmount(method.totalCost)}
@@ -573,7 +611,7 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                   <h3 className={`mb-4 text-sm font-semibold ${isRTL ? 'font-arabic' : ''}`}>
                     {isRTL
                       ? '\u0627\u0644\u062a\u0648\u0641\u064a\u0631 \u0645\u0642\u0627\u0631\u0646\u0629 \u0628\u0627\u0644\u062a\u0645\u0648\u064a\u0644 \u0627\u0644\u062a\u0642\u0644\u064a\u062f\u064a'
-                      : 'Savings vs Conventional Mortgage'}
+                      : t('Savings vs Conventional Mortgage')}
                   </h3>
                   <div className="space-y-2">
                     {compareMethods
@@ -586,12 +624,12 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
                             className="flex items-center justify-between text-sm"
                           >
                             <span className={`text-white/50 ${isRTL ? 'font-arabic' : ''}`}>
-                              {isRTL ? method.nameAr : method.name}
+                              {isRTL ? method.nameAr : t(method.name)}
                             </span>
                             <span className={savings >= 0 ? 'text-green-400' : 'text-red-400'}>
                               {savings >= 0
-                                ? `${isRTL ? '\u062a\u0648\u0641\u064a\u0631' : 'Save'} ${formatAmount(savings)}`
-                                : `${isRTL ? '\u0623\u0643\u062b\u0631 \u0628\u0640' : 'More by'} ${formatAmount(Math.abs(savings))}`}
+                                ? `${isRTL ? '\u062a\u0648\u0641\u064a\u0631' : t('Save')} ${formatAmount(savings)}`
+                                : `${isRTL ? '\u0623\u0643\u062b\u0631 \u0628\u0640' : t('More by')} ${formatAmount(Math.abs(savings))}`}
                             </span>
                           </div>
                         )
@@ -612,13 +650,15 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
             className="flex items-center gap-1.5 text-sm text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
           >
             <RotateCcw className="h-3.5 w-3.5" />
-            {isRTL ? '\u0645\u0633\u062d \u0627\u0644\u0643\u0644' : 'Clear all'}
+            {isRTL ? '\u0645\u0633\u062d \u0627\u0644\u0643\u0644' : t('Clear all')}
           </button>
         )}
         <p className={`text-center text-xs text-gray-400 ${isRTL ? 'font-arabic' : ''}`}>
           {isRTL
             ? '\u0647\u0630\u0647 \u0627\u0644\u062d\u0627\u0633\u0628\u0629 \u0644\u0623\u063a\u0631\u0627\u0636 \u062a\u0639\u0644\u064a\u0645\u064a\u0629 \u0641\u0642\u0637. \u0627\u0633\u062a\u0634\u0631 \u0645\u0624\u0633\u0633\u0627\u062a \u0627\u0644\u062a\u0645\u0648\u064a\u0644 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0634\u0631\u0648\u0637 \u0627\u0644\u062a\u0645\u0648\u064a\u0644 \u0627\u0644\u0641\u0639\u0644\u064a\u0629.'
-            : 'This calculator is for educational purposes only. Consult Islamic finance institutions for actual financing terms.'}
+            : t(
+                'This calculator is for educational purposes only. Consult Islamic finance institutions for actual financing terms.'
+              )}
         </p>
       </div>
 
@@ -629,12 +669,14 @@ export default function IslamicMortgageCalculator({ lang = 'en' }: IslamicMortga
         >
           {isRTL
             ? '\u0644\u0645\u0627\u0630\u0627 \u064a\u062d\u0631\u0645 \u0627\u0644\u0631\u0628\u0627 \u0641\u064a \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u061f'
-            : 'Why Is Riba (Interest) Prohibited in Islam?'}
+            : t('Why Is Riba (Interest) Prohibited in Islam?')}
         </h3>
         <p className={`text-sm text-gray-600 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}>
           {isRTL
             ? '\u0642\u0627\u0644 \u0627\u0644\u0644\u0647 \u062a\u0639\u0627\u0644\u0649: \u00ab\u0627\u0644\u0651\u064e\u0630\u0650\u064a\u0646\u064e \u064a\u064e\u0623\u0652\u0643\u064f\u0644\u064f\u0648\u0646\u064e \u0627\u0644\u0631\u0651\u0650\u0628\u064e\u0627 \u0644\u064e\u0627 \u064a\u064e\u0642\u064f\u0648\u0645\u064f\u0648\u0646\u064e \u0625\u0650\u0644\u0651\u064e\u0627 \u0643\u064e\u0645\u064e\u0627 \u064a\u064e\u0642\u064f\u0648\u0645\u064f \u0627\u0644\u0651\u064e\u0630\u0650\u064a \u064a\u064e\u062a\u064e\u062e\u064e\u0628\u0651\u064e\u0637\u064f\u0647\u064f \u0627\u0644\u0634\u0651\u064e\u064a\u0652\u0637\u064e\u0627\u0646\u064f \u0645\u0650\u0646\u064e \u0627\u0644\u0652\u0645\u064e\u0633\u0651\u0650\u00bb (\u0627\u0644\u0628\u0642\u0631\u0629: 275). \u0627\u0644\u0631\u0628\u0627 \u0645\u062d\u0631\u0645 \u0644\u0623\u0646\u0647 \u064a\u0624\u062f\u064a \u0625\u0644\u0649 \u0627\u0644\u0638\u0644\u0645 \u0648\u0627\u0644\u0627\u0633\u062a\u063a\u0644\u0627\u0644 \u0627\u0644\u0645\u0627\u0644\u064a.'
-            : '\u201cThose who consume interest cannot stand except as one stands who is being beaten by Satan into insanity.\u201d (Quran 2:275). Interest is prohibited because it leads to injustice and financial exploitation.'}
+            : t(
+                '\u201cThose who consume interest cannot stand except as one stands who is being beaten by Satan into insanity.\u201d (Quran 2:275). Interest is prohibited because it leads to injustice and financial exploitation.'
+              )}
         </p>
       </div>
     </div>

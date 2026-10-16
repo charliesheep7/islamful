@@ -1,5 +1,7 @@
+import QuranSourcesTranslated from './QuranSourcesTranslated'
 import corpus from '@/data/quran/corpus.json'
-export default function QuranSources({ lang }: { lang: 'en' | 'ar' }) {
+export default function QuranSources({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
+  if (lang === 'fr' || lang === 'de') return <QuranSourcesTranslated lang={lang} />
   const ar = lang === 'ar'
   return (
     <section

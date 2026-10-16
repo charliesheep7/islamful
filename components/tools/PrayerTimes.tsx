@@ -1,10 +1,17 @@
 'use client'
 
+import { prayerTranslations } from '@/data/locales/prayer'
+import { isLocale } from '@/utils/locale'
 import { useEffect, useRef, useState } from 'react'
 import { Loader2, MapPin } from 'lucide-react'
 import PrayerTimesWidget from './PrayerTimesWidget'
 import { fetchPrayerSchedule, type PrayerSchedule } from '@/utils/prayer-schedule'
-import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
+import {
+  PRAYER_METHODS,
+  ARABIC_PRAYER_METHODS,
+  FRENCH_PRAYER_METHODS,
+  GERMAN_PRAYER_METHODS,
+} from '@/data/prayer-methods'
 
 interface SearchResult {
   schedule: PrayerSchedule
@@ -33,6 +40,15 @@ function locationMetadata(data: { latitude?: unknown; longitude?: unknown; timez
 
 export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
   const ar = lang === 'ar'
+  const t = (en: string, arabic: string) =>
+    ar ? arabic : lang === 'fr' || lang === 'de' ? prayerTranslations[lang][en] || en : en
+  const methods = ar
+    ? ARABIC_PRAYER_METHODS
+    : lang === 'fr'
+      ? FRENCH_PRAYER_METHODS
+      : lang === 'de'
+        ? GERMAN_PRAYER_METHODS
+        : PRAYER_METHODS
   const [city, setCity] = useState('')
   const [country, setCountry] = useState('')
   const [method, setMethod] = useState('3')
@@ -120,10 +136,10 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
       >
         <div className="grid gap-3 sm:grid-cols-2">
           <label>
-            {ar ? 'المدينة' : 'City'}
+            {t('City', 'المدينة')}
             <input
               required
-              aria-label={ar ? 'المدينة' : 'City'}
+              aria-label={t('City', 'المدينة')}
               value={city}
               onChange={(event) => {
                 invalidate()
@@ -134,10 +150,10 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
             />
           </label>
           <label>
-            {ar ? 'البلد' : 'Country'}
+            {t('Country', 'البلد')}
             <input
               required
-              aria-label={ar ? 'البلد' : 'Country'}
+              aria-label={t('Country', 'البلد')}
               value={country}
               onChange={(event) => {
                 invalidate()
@@ -149,9 +165,9 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
           </label>
         </div>
         <label className="block">
-          {ar ? 'طريقة الحساب للبحث' : 'Search calculation method'}
+          {t('Search calculation method', 'طريقة الحساب للبحث')}
           <select
-            aria-label={ar ? 'طريقة الحساب للبحث' : 'Search calculation method'}
+            aria-label={t('Search calculation method', 'طريقة الحساب للبحث')}
             className={inputClass}
             value={method}
             onChange={(event) => {
@@ -159,7 +175,7 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
               setMethod(event.target.value)
             }}
           >
-            {Object.entries(ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS).map(([key, label]) => (
+            {Object.entries(methods).map(([key, label]) => (
               <option key={key} value={key}>
                 {label}
               </option>
@@ -171,7 +187,7 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
             disabled={loading || !city.trim() || !country.trim()}
             className="rounded-xl bg-green-800 px-5 py-3 font-semibold text-white disabled:opacity-40"
           >
-            {ar ? 'عرض المواقيت' : 'Show prayer times'}
+            {t('Show prayer times', 'عرض المواقيت')}
           </button>
           <button
             type="button"
@@ -180,25 +196,26 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
             className="flex items-center gap-2 text-sm text-green-800 dark:text-green-300"
           >
             <MapPin className="h-4 w-4" />
-            {ar ? 'استخدم موقعي التقريبي' : 'Use approximate location'}
+            {t('Use approximate location', 'استخدم موقعي التقريبي')}
           </button>
         </div>
       </form>
       {loading && (
         <p role="status" className="flex items-center gap-2">
           <Loader2 className="h-4 w-4 animate-spin" />
-          {ar ? 'جارٍ تحميل المواقيت…' : 'Loading prayer times…'}
+          {t('Loading prayer times…', 'جارٍ تحميل المواقيت…')}
         </p>
       )}
       {error && (
         <p role="alert" className="rounded-xl border border-red-300 p-4 text-sm">
-          {ar
-            ? 'تعذر تحميل المواقيت. تحقق من المدينة والبلد أو حاول مجددًا. يمكنك استخدام روابط المدن أدناه.'
-            : 'Could not load prayer times. Check the city and country or try again. You can also use the city links below.'}
+          {t(
+            'Could not load prayer times. Check the city and country or try again. You can also use the city links below.',
+            'تعذر تحميل المواقيت. تحقق من المدينة والبلد أو حاول مجددًا. يمكنك استخدام روابط المدن أدناه.'
+          )}
         </p>
       )}
       {result && (
-        <section aria-label={ar ? 'نتائج مواقيت الصلاة' : 'Prayer time results'}>
+        <section aria-label={t('Prayer time results', 'نتائج مواقيت الصلاة')}>
           <h2 className="mb-4 text-xl font-semibold">
             {result.city}, {result.country}
           </h2>
@@ -211,15 +228,16 @@ export default function PrayerTimes({ lang = 'en' }: { lang?: string }) {
             latitude={result.latitude}
             longitude={result.longitude}
             timezone={result.timezone}
-            lang={ar ? 'ar' : 'en'}
+            lang={isLocale(lang) ? lang : 'en'}
           />
         </section>
       )}
       {!result && !loading && !error && (
         <p className="rounded-xl border border-dashed border-gray-300 p-6 text-center text-gray-600 dark:text-gray-300">
-          {ar
-            ? 'أدخل المدينة والبلد لعرض المواقيت المحلية.'
-            : 'Enter a city and country to see its local timetable.'}
+          {t(
+            'Enter a city and country to see its local timetable.',
+            'أدخل المدينة والبلد لعرض المواقيت المحلية.'
+          )}
         </p>
       )}
     </div>

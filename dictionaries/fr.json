@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "blog": "Blog",
+    "prayerTimes": "Horaires de prière",
+    "haramCheck": "Vérification halal"
+  },
+  "footer": {
+    "privacy": "Confidentialité",
+    "terms": "Conditions"
+  },
+  "home": {
+    "latest": "Derniers articles",
+    "noPosts": "Aucun article trouvé.",
+    "readMore": "Lire la suite →",
+    "allPosts": "Tous les articles →",
+    "publishedOn": "Publié le"
+  },
+  "hero": {
+    "badge": "Outils islamiques réunis",
+    "tagline": "Tout ce dont un musulman a besoin.",
+    "tagline2": "au même endroit",
+    "subtitle": "Horaires de prière, vérification halal, Coran, invocations, dhikr et plus : des outils gratuits pour votre pratique quotidienne.",
+    "exploreCta": "Découvrir les outils"
+  },
+  "tools": {
+    "heading": "Vos outils islamiques à portée de main",
+    "subtitle": "Des outils gratuits, précis et simples à utiliser au quotidien",
+    "explore": "Ouvrir l’outil",
+    "comingSoon": "Bientôt disponible"
+  },
+  "cta": {
+    "heading": "Découvrez Islamful dès aujourd’hui",
+    "subtitle": "Des outils islamiques gratuits pour votre pratique quotidienne, sans inscription.",
+    "exploreCta": "Voir tous les outils"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "heading": "Questions fréquentes",
+    "subtitle": "Tout savoir sur Islamful",
+    "stillHaveQuestions": "Vous avez d’autres questions ?",
+    "contactSupport": "Nous contacter",
+    "items": [
+      {
+        "question": "Que puis-je faire chaque jour avec Islamful ?",
+        "answer": "Consultez vos horaires de prière, lisez ou écoutez le Coran, retrouvez un verset enregistré, suivez les adhkar du matin et du soir, trouvez la Qibla et consultez la date hégirienne. Le calcul de la zakat et d’autres outils sont également disponibles."
+      },
+      {
+        "question": "Ai-je besoin d’un compte ou d’une application ?",
+        "answer": "Non. Ces outils sont gratuits et utilisables dans votre navigateur sans compte. Ajoutez la page d’accueil à vos favoris pour retrouver vos outils quotidiens."
+      },
+      {
+        "question": "Où sont enregistrées ma ville et ma progression de lecture ?",
+        "answer": "Votre ville, votre position de lecture dans le Coran et vos compteurs d’adhkar sont enregistrés localement dans ce navigateur lorsque le stockage est disponible. Ils sont partagés entre les langues du même site, mais pas entre les appareils. Effacer les données du navigateur les supprime."
+      },
+      {
+        "question": "Comment choisir mes horaires de prière ?",
+        "answer": "Choisissez votre ville et la méthode de calcul approuvée par votre mosquée. Les horaires indiquent le début calculé de chaque prière, pas l’heure de la prière en groupe. Le Fajr et l’Isha peuvent varier selon la méthode, surtout aux hautes latitudes. Si une mise à jour échoue, vérifiez la date affichée."
+      },
+      {
+        "question": "Pourquoi la date hégirienne peut-elle différer localement ?",
+        "answer": "Le calendrier utilise la méthode de calcul et le décalage de jours choisis. Les décisions locales d’observation lunaire peuvent différer. Sur la page d’accueil, le fuseau horaire suit d’abord la ville de prière choisie, puis le réglage enregistré du calendrier, puis celui de votre appareil. La date après le Maghrib est affichée séparément."
+      },
+      {
+        "question": "Que signifient les compteurs de progression des adhkar ?",
+        "answer": "Ils comptent les cartes que vous avez explicitement marquées comme terminées pour la date locale de votre appareil. Les progressions du matin et du soir sont distinctes. Ces compteurs ne prouvent ni qu’une prière a été accomplie ni qu’une adoration a été acceptée."
+      }
+    ]
+  }
+}

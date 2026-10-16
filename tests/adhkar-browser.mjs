@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
 import { chromium } from 'playwright'
 const base = process.env.TEST_BASE_URL || 'http://localhost:3098',
-  browser = await chromium.launch({ headless: true })
+  browser = await chromium.launch({
+    headless: true,
+    channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
+  })
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
   timezoneId: 'America/Los_Angeles',
@@ -233,7 +236,7 @@ assert.deepEqual(rtlErrors, [])
 await rtl.close()
 const plain = await browser.newContext({ javaScriptEnabled: false }),
   pp = await plain.newPage()
-for (const prefix of ['', '/ar'])
+for (const prefix of ['', '/ar', '/fr', '/de'])
   for (const id of ['morning', 'evening', 'after-prayer']) {
     const path = `${prefix}/adhkar/${id}`,
       response = await pp.goto(base + path)
@@ -244,9 +247,14 @@ for (const prefix of ['', '/ar'])
       'https://www.islamful.com' + path
     )
     assert.equal(await pp.getByTestId('quran-adhkar-verse').count(), 15)
-    assert.equal(await pp.locator('html').getAttribute('lang'), prefix ? 'ar' : 'en')
+    assert.equal(await pp.locator('html').getAttribute('lang'), prefix ? prefix.slice(1) : 'en')
   }
-for (const path of ['/adhkar/not-a-routine', '/ar/adhkar/not-a-routine', '/fr/adhkar'])
+for (const path of [
+  '/adhkar/not-a-routine',
+  '/ar/adhkar/not-a-routine',
+  '/fr/adhkar/not-a-routine',
+  '/de/adhkar/not-a-routine',
+])
   assert.equal((await pp.goto(base + path)).status(), 404)
 await plain.close()
 await browser.close()

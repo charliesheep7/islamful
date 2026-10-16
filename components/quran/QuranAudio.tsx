@@ -1,4 +1,5 @@
 'use client'
+import { quranAudioCopy } from '@/data/locales/quran-audio'
 import { useEffect, useRef, useState } from 'react'
 import { audioSource, nextAudioStep, RECITERS, type Reciter, type Verse } from '@/data/quran'
 export type AudioRequest = {
@@ -20,12 +21,13 @@ export default function QuranAudio({
 }: {
   request: AudioRequest | null
   verses: Verse[]
-  lang: 'en' | 'ar'
+  lang: 'en' | 'ar' | 'fr' | 'de'
   onActive: (n: number | null) => void
   onReadVerse: (n: number) => void
 }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
+    t = (en: string, arabic: string) =>
+      ar ? arabic : lang === 'en' ? en : quranAudioCopy[lang][en] || en
   const [track, setTrack] = useState<Track | null>(null)
   const [status, setStatus] = useState<'loading' | 'playing' | 'paused' | 'ended' | 'error'>(
     'paused'

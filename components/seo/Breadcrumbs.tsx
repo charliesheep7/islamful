@@ -1,3 +1,4 @@
+import { localeFromPath, localizedPath, type Locale } from '@/utils/locale'
 import Link from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
 import JsonLd from './JsonLd'
@@ -9,12 +10,18 @@ interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[]
-  lang?: 'en' | 'ar'
+  lang?: Locale
 }
 
-export default function Breadcrumbs({ items, lang = 'en' }: BreadcrumbsProps) {
-  const ar = lang === 'ar'
-  const allItems = [{ name: ar ? 'الرئيسية' : 'Home', href: ar ? '/ar' : '/' }, ...items]
+export default function Breadcrumbs({ items, lang }: BreadcrumbsProps) {
+  const locale = lang || localeFromPath(items[0]?.href || '/')
+  const labels = {
+    en: ['Home', 'Breadcrumb'],
+    ar: ['الرئيسية', 'مسار التنقل'],
+    fr: ['Accueil', 'Fil d’Ariane'],
+    de: ['Startseite', 'Brotkrümelnavigation'],
+  }[locale]
+  const allItems = [{ name: labels[0], href: localizedPath('/', locale) }, ...items]
 
   const schemaData = {
     '@type': 'BreadcrumbList',
@@ -29,8 +36,8 @@ export default function Breadcrumbs({ items, lang = 'en' }: BreadcrumbsProps) {
   return (
     <>
       <JsonLd data={schemaData} />
-      <nav aria-label={ar ? 'مسار التنقل' : 'Breadcrumb'} className="mb-6">
-        <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+      <nav aria-label={labels[1]} className="mb-6">
+        <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           {allItems.map((item, index) => (
             <li key={item.href} className="flex items-center gap-2">
               {index > 0 && <span aria-hidden="true">/</span>}

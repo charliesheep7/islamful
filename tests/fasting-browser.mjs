@@ -2,8 +2,11 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import { chromium } from 'playwright'
 const origin = process.env.TEST_ORIGIN || 'http://localhost:3098'
-const report = '../../reports/search-strategy-execution-2026-10-13/'
-const browser = await chromium.launch({ headless: true })
+const report = process.env.TEST_REPORT_DIR || '../../reports/search-strategy-execution-2026-10-13/'
+const browser = await chromium.launch({
+  headless: true,
+  ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}),
+})
 const ctx = await browser.newContext({
   viewport: { width: 390, height: 844 },
   timezoneId: 'America/Los_Angeles',

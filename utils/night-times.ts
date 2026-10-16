@@ -49,12 +49,32 @@ export function manualNight(date: string, maghrib: string, fajr: string, timezon
   )
 }
 
-export function nightCalendar(start: number, end: number, now = Date.now()): string {
+export function nightCalendar(
+  start: number,
+  end: number,
+  now = Date.now(),
+  lang: 'en' | 'ar' | 'fr' | 'de' = 'en'
+): string {
   const stamp = (epoch: number) =>
     new Date(epoch)
       .toISOString()
       .replace(/[-:]/g, '')
       .replace(/\.\d{3}Z$/, 'Z')
+  const copy = {
+    en: [
+      'Last third of the night',
+      'Calculated from Maghrib to the following Fajr. Confirm your local timetable.',
+    ],
+    ar: ['الثلث الأخير من الليل', 'محسوب من المغرب إلى فجر اليوم التالي. تحقّق من جدولك المحلي.'],
+    fr: [
+      'Dernier tiers de la nuit',
+      'Calculé de Maghrib au Fajr suivant. Vérifiez vos horaires locaux.',
+    ],
+    de: [
+      'Letztes Drittel der Nacht',
+      'Berechnet von Maghrib bis zum folgenden Fajr. Prüfe deinen örtlichen Zeitplan.',
+    ],
+  }[lang]
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -65,10 +85,25 @@ export function nightCalendar(start: number, end: number, now = Date.now()): str
     `DTSTAMP:${stamp(now)}`,
     `DTSTART:${stamp(start)}`,
     `DTEND:${stamp(end)}`,
-    'SUMMARY:Last third of the night',
-    'DESCRIPTION:Calculated from Maghrib to the following Fajr. Confirm your local timetable.',
+    `SUMMARY:${copy[0]}`,
+    `DESCRIPTION:${copy[1]}`,
     'END:VEVENT',
     'END:VCALENDAR',
     '',
-  ].join('\r\n')
+  ]
+    .map((line) => {
+      let folded = '',
+        length = 0
+      for (const character of line) {
+        const bytes = new TextEncoder().encode(character).length
+        if (length + bytes > 75) {
+          folded += '\r\n '
+          length = 1
+        }
+        folded += character
+        length += bytes
+      }
+      return folded
+    })
+    .join('\r\n')
 }

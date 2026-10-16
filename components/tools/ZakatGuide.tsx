@@ -1,3 +1,5 @@
+import { zakatGuideCopy } from '@/data/locales/zakat-guide'
+import { localizedPath, type Locale } from '@/utils/locale'
 import Link from 'next/link'
 import JsonLd from '@/components/seo/JsonLd'
 
@@ -39,6 +41,8 @@ const sources = [
   ],
 ]
 export const zakatQuestions = {
+  fr: zakatGuideCopy.fr.faqs,
+  de: zakatGuideCopy.de.faqs,
   en: [
     [
       'Which nisab should I select?',
@@ -92,8 +96,9 @@ export const zakatQuestions = {
     ],
   ],
 }
-export default function ZakatGuide({ lang }: { lang: 'en' | 'ar' }) {
+export default function ZakatGuide({ lang }: { lang: Locale }) {
   const ar = lang === 'ar'
+  const copy = lang === 'fr' || lang === 'de' ? zakatGuideCopy[lang] : null
   const faqs = zakatQuestions[lang]
   return (
     <section
@@ -102,12 +107,14 @@ export default function ZakatGuide({ lang }: { lang: 'en' | 'ar' }) {
       className="mt-12 space-y-7 border-t border-gray-200 pt-9 dark:border-gray-800"
     >
       <h2 className="text-2xl font-bold">
-        {ar ? 'استخدام حاسبة الزكاة' : 'Using the Zakat calculator'}
+        {copy ? copy.heading : ar ? 'استخدام حاسبة الزكاة' : 'Using the Zakat calculator'}
       </h2>
       <p className="leading-relaxed">
-        {ar
-          ? 'اختر تاريخ التقييم والنصاب، ثم أدخل أموالك وخصوماتك المؤهلة بعملة واحدة. مثال حسابي فقط: إذا كان صافي المال 10,000 والنصاب المختار 5,000 واكتمل الحول، يكون التقدير 250، لا 125. المثال لا يمثل أسعارًا حالية.'
-          : 'Choose a valuation date and nisab, then enter eligible assets and deductions in one currency. Arithmetic example only: with net wealth of 10,000, a selected nisab of 5,000 and a completed lunar year, the estimate is 250, not 125. These are not current market prices.'}
+        {copy
+          ? copy.introduction
+          : ar
+            ? 'اختر تاريخ التقييم والنصاب، ثم أدخل أموالك وخصوماتك المؤهلة بعملة واحدة. مثال حسابي فقط: إذا كان صافي المال 10,000 والنصاب المختار 5,000 واكتمل الحول، يكون التقدير 250، لا 125. المثال لا يمثل أسعارًا حالية.'
+            : 'Choose a valuation date and nisab, then enter eligible assets and deductions in one currency. Arithmetic example only: with net wealth of 10,000, a selected nisab of 5,000 and a completed lunar year, the estimate is 250, not 125. These are not current market prices.'}
       </p>
       <div className="space-y-6">
         {faqs.map(([question, answer]) => (
@@ -118,33 +125,38 @@ export default function ZakatGuide({ lang }: { lang: 'en' | 'ar' }) {
         ))}
       </div>
       <div className="space-y-3">
-        <h3 className="font-semibold">{ar ? 'المصادر والأسس' : 'Sources and calculation bases'}</h3>
+        <h3 className="font-semibold">
+          {copy ? copy.sources : ar ? 'المصادر والأسس' : 'Sources and calculation bases'}
+        </h3>
         <ul className="list-inside list-disc space-y-2 text-sm">
-          {sources.map(([href, en, arabic]) => (
+          {sources.map(([href, en, arabic], index) => (
             <li key={href}>
               <a href={href} className="underline underline-offset-4">
-                {ar ? arabic : en}
+                {copy ? copy.sourceLabels[index] : ar ? arabic : en}
               </a>
             </li>
           ))}
         </ul>
         <p className="text-sm text-gray-500">
-          {ar
-            ? 'راجعنا المصادر في 13 أكتوبر 2026. لا يعني ذلك اعتماد هذه الأداة من الجهات المذكورة أو مراجعة عالم مستقل لها. للميراث والأموال المعقدة وأهلية المكلّف اسأل مختصًا بالزكاة.'
-            : 'Sources checked 13 October 2026. This does not imply endorsement by the named organizations or an independent scholarly review of this tool. Ask a Zakat specialist about complex assets and personal eligibility.'}
+          {copy
+            ? copy.reviewed
+            : ar
+              ? 'راجعنا المصادر في 13 أكتوبر 2026. لا يعني ذلك اعتماد هذه الأداة من الجهات المذكورة أو مراجعة عالم مستقل لها. للميراث والأموال المعقدة وأهلية المكلّف اسأل مختصًا بالزكاة.'
+              : 'Sources checked 13 October 2026. This does not imply endorsement by the named organizations or an independent scholarly review of this tool. Ask a Zakat specialist about complex assets and personal eligibility.'}
         </p>
       </div>
       <p className="flex flex-wrap gap-5 text-sm">
-        <Link
-          className="underline"
-          href={ar ? '/ar/zakat-calculator/gold' : '/zakat-calculator/gold'}
-        >
-          {ar ? 'حاسبة الذهب بمختلف العيارات' : 'Gold calculator for mixed purities'}
+        <Link className="underline" href={localizedPath('/zakat-calculator/gold', lang)}>
+          {copy
+            ? copy.gold
+            : ar
+              ? 'حاسبة الذهب بمختلف العيارات'
+              : 'Gold calculator for mixed purities'}
         </Link>
-        <a className="underline" href={ar ? '/ar/islamic-calendar' : '/islamic-calendar'}>
-          {ar ? 'التقويم الهجري' : 'Hijri calendar'}
+        <a className="underline" href={localizedPath('/islamic-calendar', lang)}>
+          {copy ? copy.calendar : ar ? 'التقويم الهجري' : 'Hijri calendar'}
         </a>
-        {!ar && (
+        {lang === 'en' && (
           <Link className="underline" href="/blog/how-to-calculate-zakat">
             Step-by-step Zakat guide
           </Link>

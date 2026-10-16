@@ -1,3 +1,5 @@
+import { goldPageCopy } from '@/data/locales/gold-page'
+import type { Locale } from '@/utils/locale'
 import Image from 'next/image'
 import Link from 'next/link'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
@@ -5,6 +7,8 @@ import JsonLd from '@/components/seo/JsonLd'
 import GoldZakatCalculator from './GoldZakatCalculator'
 
 export const goldFaqs = {
+  fr: goldPageCopy.fr.faqs,
+  de: goldPageCopy.de.faqs,
   en: [
     [
       'How does the calculation work?',
@@ -64,9 +68,10 @@ export const goldSources = [
     'مؤسسة الزكاة الوطنية: الحول القمري',
   ],
 ]
-export default function GoldZakatPage({ lang }: { lang: 'en' | 'ar' }) {
+export default function GoldZakatPage({ lang }: { lang: Locale }) {
   const ar = lang === 'ar',
-    prefix = ar ? '/ar' : '',
+    prefix = lang === 'en' ? '' : `/${lang}`,
+    copy = lang === 'fr' || lang === 'de' ? goldPageCopy[lang] : null,
     faqs = goldFaqs[lang]
   return (
     <article
@@ -78,19 +83,27 @@ export default function GoldZakatPage({ lang }: { lang: 'en' | 'ar' }) {
       <Breadcrumbs
         lang={lang}
         items={[
-          { name: ar ? 'حاسبة الزكاة' : 'Zakat Calculator', href: `${prefix}/zakat-calculator` },
-          { name: ar ? 'زكاة الذهب' : 'Gold Zakat', href: `${prefix}/zakat-calculator/gold` },
+          {
+            name: copy ? copy.zakat : ar ? 'حاسبة الزكاة' : 'Zakat Calculator',
+            href: `${prefix}/zakat-calculator`,
+          },
+          {
+            name: copy ? copy.gold : ar ? 'زكاة الذهب' : 'Gold Zakat',
+            href: `${prefix}/zakat-calculator/gold`,
+          },
         ]}
       />
       <header className="my-8 grid items-center gap-6 sm:grid-cols-[1.1fr_1fr]">
         <div>
           <h1 className="text-3xl leading-tight font-bold sm:text-4xl">
-            {ar ? 'حاسبة زكاة الذهب' : 'Gold Zakat Calculator'}
+            {copy ? copy.title : ar ? 'حاسبة زكاة الذهب' : 'Gold Zakat Calculator'}
           </h1>
           <p className="mt-4 leading-relaxed text-stone-600 dark:text-stone-300">
-            {ar
-              ? 'أضف أوزان ذهبك وعياراته، واختر النصاب، واحصل على تقدير واضح يمكنك تنزيله.'
-              : 'Add your gold weights and purities, choose your nisab, and get a clear estimate you can download.'}
+            {copy
+              ? copy.description
+              : ar
+                ? 'أضف أوزان ذهبك وعياراته، واختر النصاب، واحصل على تقدير واضح يمكنك تنزيله.'
+                : 'Add your gold weights and purities, choose your nisab, and get a clear estimate you can download.'}
           </p>
         </div>
         <Image
@@ -98,17 +111,27 @@ export default function GoldZakatPage({ lang }: { lang: 'en' | 'ar' }) {
           width={1536}
           height={1024}
           priority
-          alt={ar ? 'أساور وقطعة ذهب على صينية حجرية' : 'Gold bangles and an ingot on a stone tray'}
+          alt={
+            copy
+              ? copy.alt
+              : ar
+                ? 'أساور وقطعة ذهب على صينية حجرية'
+                : 'Gold bangles and an ingot on a stone tray'
+          }
           className="aspect-[2/1] w-full rounded-2xl object-cover sm:aspect-[3/2]"
         />
       </header>
       <GoldZakatCalculator lang={lang} initialDate={new Date().toISOString().slice(0, 10)} />
       <section className="mt-10 border-t border-stone-200 pt-8 dark:border-stone-700">
-        <h2 className="text-xl font-semibold">{ar ? 'مثال سريع' : 'A quick example'}</h2>
+        <h2 className="text-xl font-semibold">
+          {copy ? copy.exampleTitle : ar ? 'مثال سريع' : 'A quick example'}
+        </h2>
         <p className="mt-3 leading-relaxed">
-          {ar
-            ? 'مثال حسابي، وليس سعرًا حاليًا: ١٢٠ غرامًا من عيار ١٨ تعادل ٩٠ غرامًا من الذهب الخالص. عند سعر افتراضي قدره ١٠٠ للغرام، تكون القيمة ٩٬٠٠٠. إذا اخترت أساس ٨٥ غرامًا واكتمل الحول وانطبقت الشروط، يكون التقدير ٢٢٥.'
-            : 'An arithmetic example, not a current price: 120 g of 18K gold equals 90 g of pure gold. At a hypothetical price of 100 per gram, its value is 9,000. With the 85 g basis, a completed lunar year and applicable conditions, the estimate is 225.'}
+          {copy
+            ? copy.example
+            : ar
+              ? 'مثال حسابي، وليس سعرًا حاليًا: ١٢٠ غرامًا من عيار ١٨ تعادل ٩٠ غرامًا من الذهب الخالص. عند سعر افتراضي قدره ١٠٠ للغرام، تكون القيمة ٩٬٠٠٠. إذا اخترت أساس ٨٥ غرامًا واكتمل الحول وانطبقت الشروط، يكون التقدير ٢٢٥.'
+              : 'An arithmetic example, not a current price: 120 g of 18K gold equals 90 g of pure gold. At a hypothetical price of 100 per gram, its value is 9,000. With the 85 g basis, a completed lunar year and applicable conditions, the estimate is 225.'}
         </p>
         <div className="mt-6 divide-y divide-stone-200 dark:divide-stone-700">
           {faqs.map(([q, a]) => (
@@ -120,40 +143,48 @@ export default function GoldZakatPage({ lang }: { lang: 'en' | 'ar' }) {
         </div>
         <details className="mt-5 text-sm">
           <summary className="cursor-pointer font-semibold">
-            {ar ? 'المصادر وطريقة الاستخدام' : 'Sources and method'}
+            {copy ? copy.sources : ar ? 'المصادر وطريقة الاستخدام' : 'Sources and method'}
           </summary>
           <ul className="mt-3 list-inside list-disc space-y-3">
-            {goldSources.map(([href, en, arabic]) => (
+            {goldSources.map(([href, en, arabic], index) => (
               <li key={href}>
                 <a href={href} className="underline">
-                  {ar ? arabic : en}
+                  {copy ? copy.sourceLabels[index] : ar ? arabic : en}
                 </a>
               </li>
             ))}
           </ul>
           <p className="mt-4 leading-relaxed">
-            {ar
-              ? 'المصادر مراجعة في ١٣ أكتوبر ٢٠٢٦. هذه مراجعة تحريرية وليست اعتمادًا من الجهات المذكورة. استخدم السعر في تاريخ زكاتك واستبعد وزن الأحجار؛ لا يقدّر هذا النموذج قيمة المصنعية أو الحلي المطلية. عند اختلاف أسس التقييم، أدخل نصابًا محليًا أو راجع مختصًا.'
-              : 'Sources checked 13 October 2026. This is an editorial source check, not endorsement by these organizations. Use a price for your Zakat date and exclude stone weight. This model does not value workmanship or gold-plated jewellery. If your valuation basis differs, use a local nisab or consult an adviser.'}
+            {copy
+              ? copy.reviewed
+              : ar
+                ? 'المصادر مراجعة في ١٣ أكتوبر ٢٠٢٦. هذه مراجعة تحريرية وليست اعتمادًا من الجهات المذكورة. استخدم السعر في تاريخ زكاتك واستبعد وزن الأحجار؛ لا يقدّر هذا النموذج قيمة المصنعية أو الحلي المطلية. عند اختلاف أسس التقييم، أدخل نصابًا محليًا أو راجع مختصًا.'
+                : 'Sources checked 13 October 2026. This is an editorial source check, not endorsement by these organizations. Use a price for your Zakat date and exclude stone weight. This model does not value workmanship or gold-plated jewellery. If your valuation basis differs, use a local nisab or consult an adviser.'}
           </p>
         </details>
         <nav
           className="mt-7 flex flex-wrap gap-5 text-sm underline"
-          aria-label={ar ? 'روابط ذات صلة' : 'Related tools'}
+          aria-label={copy ? copy.related : ar ? 'روابط ذات صلة' : 'Related tools'}
         >
           <Link href={`${prefix}/zakat-calculator`}>
-            {ar ? 'حاسبة الزكاة الشاملة' : 'Full Zakat calculator'}
+            {copy ? copy.full : ar ? 'حاسبة الزكاة الشاملة' : 'Full Zakat calculator'}
           </Link>
           <Link href={`${prefix}/islamic-calendar`}>
-            {ar ? 'التقويم الهجري' : 'Hijri calendar'}
+            {copy ? copy.calendar : ar ? 'التقويم الهجري' : 'Hijri calendar'}
           </Link>
-          {!ar && <Link href="/blog/how-to-calculate-zakat">Zakat calculation guide</Link>}
+          {lang === 'en' && (
+            <Link href="/blog/how-to-calculate-zakat">Zakat calculation guide</Link>
+          )}
         </nav>
       </section>
       <JsonLd
         data={{
           '@type': 'WebApplication',
-          name: ar ? 'حاسبة زكاة الذهب — إسلامفُل' : 'Islamful Gold Zakat Calculator',
+          name: copy
+            ? copy.title
+            : ar
+              ? 'حاسبة زكاة الذهب — إسلامفُل'
+              : 'Islamful Gold Zakat Calculator',
           url: `https://www.islamful.com${prefix}/zakat-calculator/gold`,
           inLanguage: lang,
           applicationCategory: 'FinanceApplication',

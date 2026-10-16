@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import siteMetadata from '@/data/siteMetadata'
+import { navigation } from '@/data/locales/navigation'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
 import MobileNav from './MobileNav'
+import AuthButton from './auth/AuthButton'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import LocaleSwitcher from './LocaleSwitcher'
@@ -23,21 +25,8 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const getNavText = (key: string) => {
-    const translations: Record<string, Record<string, string>> = {
-      en: {
-        home: 'Home',
-        blog: 'Blog',
-        mission: 'Mission',
-      },
-      ar: {
-        home: 'الرئيسية',
-        blog: 'المدونة',
-        mission: 'رسالتنا',
-      },
-    }
-    return translations[currentLang]?.[key] || key
-  }
+  const labels = navigation[currentLang]
+  const getNavText = (key: string) => labels[key as keyof typeof labels] || key
 
   const headerClass = clsx(
     'sticky top-0 z-50 w-full border-b border-transparent transition-all duration-500 ease-out',
@@ -56,7 +45,7 @@ const Header = () => {
             </span>
           </div>
         </Link>
-        <div className="flex items-center space-x-3 leading-5 sm:space-x-5">
+        <div className="flex items-center gap-1 leading-5 sm:gap-4">
           <div className="no-scrollbar hidden items-center gap-x-1 sm:flex">
             {headerNavLinks
               .filter((link) => link.href !== '/')
@@ -70,6 +59,7 @@ const Header = () => {
                 </Link>
               ))}
           </div>
+          <AuthButton />
           <LocaleSwitcher />
           <SearchButton />
           <ThemeSwitch />

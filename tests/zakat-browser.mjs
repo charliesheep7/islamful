@@ -2,7 +2,10 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { chromium } from 'playwright'
 const base = process.env.TEST_BASE_URL || 'http://localhost:3098'
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({
+  headless: true,
+  channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
+})
 const context = await browser.newContext({ viewport: { width: 390, height: 844 } })
 const page = await context.newPage()
 const errors = [],

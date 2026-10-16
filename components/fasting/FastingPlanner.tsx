@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import cities from '@/data/cities'
 import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
@@ -9,6 +9,7 @@ import { localDateISO } from '@/utils/prayer-schedule'
 import {
   dateRange,
   ramadanDates,
+  ramadanProgress,
   fetchFastingTable,
   manualFasting,
   fastingPhase,
@@ -68,6 +69,29 @@ export default function FastingPlanner({
     generation = useRef(0)
   const city = cities.find((c) => c.slug === citySlug),
     methods = ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS
+  const ramadanSelection = useMemo(() => {
+    if (!ramadan) return null
+    try {
+      if (basis === 'local') {
+        if (!['29', '30'].includes(length)) return null
+        return { dates: dateRange(start, Number(length)), year: null }
+      }
+      const selectedYear = parseHijriInput({ year, month: '9', day: '1' }).year
+      return {
+        dates: ramadanDates(selectedYear, { method: calendarMethod, adjustment }),
+        year: selectedYear,
+      }
+    } catch {
+      return null
+    }
+  }, [ramadan, basis, start, length, year, calendarMethod, adjustment])
+  const previewZone = city?.timezone || 'UTC'
+  const previewToday = now === null ? initialToday : localDateISO(previewZone, new Date(now))
+  const progress = ramadanSelection ? ramadanProgress(ramadanSelection.dates, previewToday) : null
+  const ramadanBasis =
+    basis === 'local'
+      ? t('Your entered dates — confirm locally', 'تواريخ أدخلتها — تحقّق منها محليًا')
+      : `${t('Estimated Ramadan', 'رمضان تقديري')} ${ramadanSelection?.year ?? ''} · ${calendarMethod === 'islamic-civil' ? t('Tabular Hijri', 'هجري حسابي') : t('Umm al-Qura', 'أم القرى')} · ${t('adjustment', 'التعديل')} ${adjustment}`
   useEffect(() => {
     if (!initialCity) {
       try {
@@ -125,18 +149,15 @@ export default function FastingPlanner({
         description = t('Selected date', 'التاريخ المختار'),
         result: FastingTable
       if (ramadan) {
-        if (basis === 'calculated') {
-          const y = parseHijriInput({ year, month: '9', day: '1' }).year
-          dates = ramadanDates(y, { method: calendarMethod, adjustment })
-          description = `${t('Estimated Ramadan', 'رمضان تقديري')} ${y} · ${calendarMethod === 'islamic-civil' ? t('Tabular Hijri', 'هجري حسابي') : t('Umm al-Qura', 'أم القرى')} · ${t('adjustment', 'التعديل')} ${adjustment}`
-        } else {
-          if (!['29', '30'].includes(length)) throw new Error('Invalid month')
-          dates = dateRange(start, Number(length))
-          description = t(
-            'Locally entered Ramadan dates — confirm the final day',
-            'تواريخ رمضان المدخلة محليًا — تحقّق من اليوم الأخير'
-          )
-        }
+        if (!ramadanSelection) throw new Error('Invalid Ramadan dates')
+        dates = ramadanSelection.dates
+        description =
+          basis === 'local'
+            ? t(
+                'Locally entered Ramadan dates — confirm the final day',
+                'تواريخ رمضان المدخلة محليًا — تحقّق من اليوم الأخير'
+              )
+            : ramadanBasis
       }
       if (mode === 'manual' && !ramadan) {
         const row = manualFasting(date, fajr, maghrib, zone)
@@ -199,6 +220,74 @@ export default function FastingPlanner({
   }
   return (
     <div className="space-y-6">
+      {ramadan && (
+        <section
+          data-testid="ramadan-progress"
+          data-state={progress?.kind || 'invalid'}
+          data-version="ramadan-progress-v1"
+          className="rounded-2xl bg-emerald-950 p-6 text-white sm:p-8"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {progress ? (
+            <>
+              <p className="text-sm text-emerald-100">{ramadanBasis}</p>
+              <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
+                {progress.kind === 'before'
+                  ? t(
+                      `${progress.daysUntil} ${progress.daysUntil === 1 ? 'day' : 'days'} until the first fast`,
+                      `الأيام حتى أول يوم صيام: ${progress.daysUntil.toLocaleString('ar', { numberingSystem: 'arab' })}`
+                    )
+                  : progress.kind === 'during'
+                    ? t(
+                        `Fasting day ${progress.day} of ${progress.total}`,
+                        `يوم الصيام ${progress.day.toLocaleString('ar', { numberingSystem: 'arab' })} من ${progress.total.toLocaleString('ar', { numberingSystem: 'arab' })}`
+                      )
+                    : t('The selected Ramadan dates have passed', 'انتهت تواريخ رمضان المختارة')}
+              </h2>
+              <p className="mt-3 text-sm text-emerald-100">
+                {city
+                  ? ar
+                    ? city.nameAr
+                    : city.name
+                  : t('Choose your city below', 'اختر مدينتك أدناه')}{' '}
+                · <bdi>{previewZone}</bdi> · {t('As of', 'بتاريخ')} <bdi>{progress.today}</bdi>
+              </p>
+              <dl className="mt-6 grid gap-4 border-t border-white/20 pt-5 sm:grid-cols-2">
+                <div>
+                  <dt className="text-sm text-emerald-100">
+                    {t('First fasting day', 'أول يوم صيام')}
+                  </dt>
+                  <dd className="mt-1 font-semibold">
+                    <bdi>{progress.start}</bdi>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-emerald-100">
+                    {t('Planned final fasting day', 'آخر يوم صيام حسب الخطة')}
+                  </dt>
+                  <dd className="mt-1 font-semibold">
+                    <bdi>{progress.end}</bdi>
+                  </dd>
+                </div>
+              </dl>
+              <p className="mt-5 text-sm text-emerald-100">
+                {t(
+                  'Day numbers follow the fasting dates in your selected city. Confirm the first and final days locally.',
+                  'تتبع أرقام الأيام تواريخ الصيام في مدينتك المختارة. تحقّق من أول يوم وآخر يوم محليًا.'
+                )}
+              </p>
+            </>
+          ) : (
+            <p>
+              {t(
+                'Enter a valid year or local start date below to see the countdown.',
+                'أدخل سنة صحيحة أو تاريخ بداية محليًا صحيحًا أدناه لعرض العد التنازلي.'
+              )}
+            </p>
+          )}
+        </section>
+      )}
       <form
         onSubmit={calculate}
         className="space-y-5 rounded-2xl border border-gray-200 p-5 sm:p-7 dark:border-gray-700 print:hidden"

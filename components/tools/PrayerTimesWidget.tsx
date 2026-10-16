@@ -1,8 +1,15 @@
 'use client'
 
+import { dashboardTranslations } from '@/data/locales/dashboard'
+import type { Locale } from '@/utils/locale'
 import { useEffect, useState } from 'react'
 import { MapPin, RefreshCw } from 'lucide-react'
-import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
+import {
+  PRAYER_METHODS,
+  ARABIC_PRAYER_METHODS,
+  FRENCH_PRAYER_METHODS,
+  GERMAN_PRAYER_METHODS,
+} from '@/data/prayer-methods'
 import {
   fetchPrayerSchedule,
   localDateISO,
@@ -18,7 +25,7 @@ interface Props {
   latitude?: number
   longitude?: number
   timezone: string
-  lang?: 'en' | 'ar'
+  lang?: Locale
   onMethodChange?: (method: string) => void
   showFasting?: boolean
 }
@@ -42,6 +49,12 @@ export default function PrayerTimesWidget({
   onMethodChange,
   showFasting = false,
 }: Props) {
+  const t = (en: string, arabic: string) =>
+    lang === 'ar'
+      ? arabic
+      : lang === 'fr' || lang === 'de'
+        ? dashboardTranslations[lang][en] || en
+        : en
   const ar = lang === 'ar'
   const [data, setData] = useState(prayerData)
   const [now, setNow] = useState<number | null>(null)
@@ -98,7 +111,25 @@ export default function PrayerTimesWidget({
 
   const stale = !!data && day !== null && data.dateISO !== day
   const next = data && now !== null ? upcomingPrayer(data, now) : null
-  const methods = ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS
+  const methods = ar
+    ? ARABIC_PRAYER_METHODS
+    : lang === 'fr'
+      ? FRENCH_PRAYER_METHODS
+      : lang === 'de'
+        ? GERMAN_PRAYER_METHODS
+        : PRAYER_METHODS
+  const prayerLabel = (prayer: { name: string; nameAr: string }) =>
+    ar
+      ? prayer.nameAr
+      : prayer.name === 'Sunrise'
+        ? lang === 'fr'
+          ? 'Lever du soleil'
+          : lang === 'de'
+            ? 'Sonnenaufgang'
+            : prayer.name
+        : prayer.name === 'Isha' && lang === 'de'
+          ? 'Ischa'
+          : prayer.name
 
   return (
     <div aria-busy={loading}>
@@ -106,16 +137,15 @@ export default function PrayerTimesWidget({
         <div role="status" className="mb-4 rounded-xl border border-amber-300 p-4 text-sm">
           <p>
             {loading
-              ? ar
-                ? 'جارٍ تحديث المواقيت…'
-                : 'Updating prayer times…'
-              : ar
-                ? 'تعذر تحديث المواقيت. راجع التاريخ المعروض أو جدول المسجد المحلي.'
-                : 'Could not update prayer times. Check the displayed date or your local mosque timetable.'}
+              ? t('Updating prayer times…', 'جارٍ تحديث المواقيت…')
+              : t(
+                  'Could not update prayer times. Check the displayed date or your local mosque timetable.',
+                  'تعذر تحديث المواقيت. راجع التاريخ المعروض أو جدول المسجد المحلي.'
+                )}
           </p>
           {!loading && (
             <button onClick={() => setRetry((n) => n + 1)} className="mt-2 underline">
-              {ar ? 'حاول مجددًا' : 'Try again'}
+              {t('Try again', 'حاول مجددًا')}
             </button>
           )}
         </div>
@@ -123,15 +153,15 @@ export default function PrayerTimesWidget({
       {data && (
         <>
           <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">
-            {data.dateISO} · {timezone} · {ar ? 'بتنسيق 24 ساعة' : '24-hour local time'}
+            {data.dateISO} · {timezone} · {t('24-hour local time', 'بتنسيق 24 ساعة')}
           </p>
           {next && now !== null && (
             <div className="mb-5 flex items-center justify-between rounded-2xl bg-[var(--color-primary-700)] px-5 py-4 text-white">
               <div>
-                <p className="text-xs text-green-200">{ar ? 'الصلاة القادمة' : 'Next Prayer'}</p>
-                <p className="mt-1 text-xl font-bold">{ar ? next.nameAr : next.name}</p>
+                <p className="text-xs text-green-200">{t('Next Prayer', 'الصلاة القادمة')}</p>
+                <p className="mt-1 text-xl font-bold">{prayerLabel(next)}</p>
                 {localDateISO(timezone, new Date(next.at!)) !== data.dateISO && (
-                  <p className="text-sm">{ar ? 'غدًا' : 'Tomorrow'}</p>
+                  <p className="text-sm">{t('Tomorrow', 'غدًا')}</p>
                 )}
               </div>
               <div className="text-end">
@@ -152,7 +182,7 @@ export default function PrayerTimesWidget({
                   key={prayer.name}
                   className={`rounded-2xl px-2 py-5 text-center ${isNext ? 'bg-[var(--color-primary-100)] ring-2 ring-[var(--color-primary-400)] dark:bg-gray-800' : 'bg-[var(--color-cream-50)] dark:bg-gray-900'}`}
                 >
-                  <p className="text-sm font-bold">{ar ? prayer.nameAr : prayer.name}</p>
+                  <p className="text-sm font-bold">{prayerLabel(prayer)}</p>
                   {!ar && (
                     <p className="font-arabic text-xs text-gray-600 dark:text-gray-300">
                       {prayer.nameAr}
@@ -166,7 +196,7 @@ export default function PrayerTimesWidget({
             })}
           </div>
           <p className="mt-3 text-xs text-gray-600 dark:text-gray-300">
-            {ar ? 'طريقة الحساب المعروضة: ' : 'Displayed calculation method: '}
+            {t('Displayed calculation method: ', 'طريقة الحساب المعروضة: ')}
             {methods[data.method] || data.method}
           </p>
           {showFasting && !stale && (
@@ -175,27 +205,29 @@ export default function PrayerTimesWidget({
               data-testid="fasting-times"
             >
               <h3 className="font-semibold">
-                {ar ? 'إن كنت صائمًا اليوم' : 'If you are fasting today'}
+                {t('If you are fasting today', 'إن كنت صائمًا اليوم')}
               </h3>
               <p className="mt-1 text-sm">
-                {ar ? 'الفجر: ' : 'Fajr: '}
+                {t('Fajr: ', 'الفجر: ')}
                 {data.prayers.find((p) => p.name === 'Fajr')?.time || '—'}
                 {' · '}
-                {ar ? 'المغرب: ' : 'Maghrib: '}
+                {t('Maghrib: ', 'المغرب: ')}
                 {data.prayers.find((p) => p.name === 'Maghrib')?.time || '—'}
               </p>
               <p className="mt-1 text-xs">
-                {ar
-                  ? 'من الجدول المعروض؛ اتبع التوقيت المعتمد محليًا للصيام.'
-                  : 'From the displayed timetable; follow your locally approved fasting times.'}
+                {t(
+                  'From the displayed timetable; follow your locally approved fasting times.',
+                  'من الجدول المعروض؛ اتبع التوقيت المعتمد محليًا للصيام.'
+                )}
               </p>
             </div>
           )}
           {(!data.tomorrow.length || data.prayers.some((prayer) => prayer.at === null)) && (
             <p className="mt-2 text-sm" role="status">
-              {ar
-                ? 'بعض المواقيت غير متاحة. تحقق من الجدول المحلي؛ لا نقدر المواقيت المفقودة.'
-                : 'Some times are unavailable. Check a local timetable; missing times are not estimated here.'}
+              {t(
+                'Some times are unavailable. Check a local timetable; missing times are not estimated here.',
+                'بعض المواقيت غير متاحة. تحقق من الجدول المحلي؛ لا نقدر المواقيت المفقودة.'
+              )}
             </p>
           )}
         </>
@@ -205,16 +237,16 @@ export default function PrayerTimesWidget({
           <MapPin className="h-3.5 w-3.5" />
           {cityName}, {cityCountry}
         </p>
-        <label className="text-sm">
-          <span className="mb-1 block">{ar ? 'طريقة الحساب' : 'Calculation method'}</span>
+        <label className="max-w-full min-w-0 text-sm">
+          <span className="mb-1 block">{t('Calculation method', 'طريقة الحساب')}</span>
           <select
-            aria-label={ar ? 'طريقة الحساب' : 'Calculation method'}
+            aria-label={t('Calculation method', 'طريقة الحساب')}
             value={requestedMethod}
             onChange={(event) => {
               setRequestedMethod(event.target.value)
               onMethodChange?.(event.target.value)
             }}
-            className="max-w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 dark:bg-gray-900 dark:text-white"
+            className="w-full max-w-full min-w-0 rounded-lg border border-gray-300 bg-white p-2 text-gray-900 dark:bg-gray-900 dark:text-white"
           >
             {Object.entries(methods).map(([key, label]) => (
               <option key={key} value={key}>
@@ -226,9 +258,10 @@ export default function PrayerTimesWidget({
         {loading && <RefreshCw className="h-4 w-4 animate-spin" aria-hidden="true" />}
       </div>
       <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
-        {ar
-          ? 'هذه أوقات محسوبة لبداية الصلاة، وليست أوقات الإقامة. قد تختلف طرق حساب الفجر والعشاء، خاصة في خطوط العرض العليا؛ اتبع إرشادات مسجدك المحلي.'
-          : 'Calculated prayer start times, not mosque congregation times. Fajr and Isha methods can differ, especially at high latitudes; follow your local mosque’s guidance.'}
+        {t(
+          'Calculated prayer start times, not mosque congregation times. Fajr and Isha methods can differ, especially at high latitudes; follow your local mosque’s guidance.',
+          'هذه أوقات محسوبة لبداية الصلاة، وليست أوقات الإقامة. قد تختلف طرق حساب الفجر والعشاء، خاصة في خطوط العرض العليا؛ اتبع إرشادات مسجدك المحلي.'
+        )}
       </p>
     </div>
   )

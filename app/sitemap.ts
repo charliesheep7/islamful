@@ -1,3 +1,4 @@
+import { translatedContentPaths } from '@/data/locales/routes'
 import { MetadataRoute } from 'next'
 import { allBlogs } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
@@ -88,7 +89,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }))
 
-  const quranPages = ['en', 'ar'].flatMap((lang) =>
+  const translatedPages = ['fr', 'de'].flatMap((lang) =>
+    translatedContentPaths
+      .filter((path) => !path.startsWith('/adhkar/'))
+      .map((path) => ({
+        url: `${siteUrl}/${lang}${path === '/' ? '' : path}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      }))
+  )
+  const translatedCities = ['fr', 'de'].flatMap((lang) =>
+    cities.map((city) => ({
+      url: `${siteUrl}/${lang}/prayer-times/${city.slug}`,
+      lastModified: today,
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    }))
+  )
+
+  const quranPages = ['en', 'ar', 'fr', 'de'].flatMap((lang) =>
     chapters.map((chapter) => ({
       url: `${siteUrl}${quranPath(chapter, lang)}`,
       lastModified: '2026-10-13',
@@ -98,19 +117,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         languages: {
           en: `${siteUrl}${quranPath(chapter, 'en')}`,
           ar: `${siteUrl}${quranPath(chapter, 'ar')}`,
+          fr: `${siteUrl}${quranPath(chapter, 'fr')}`,
+          de: `${siteUrl}${quranPath(chapter, 'de')}`,
         },
       },
     }))
   )
 
-  const adhkarPages = ['en', 'ar'].flatMap((lang) =>
+  const adhkarPages = ['en', 'ar', 'fr', 'de'].flatMap((lang) =>
     routines.map((r) => ({
-      url: `${siteUrl}${lang === 'ar' ? '/ar' : ''}/adhkar/${r.id}`,
+      url: `${siteUrl}${lang === 'en' ? '' : `/${lang}`}/adhkar/${r.id}`,
       lastModified: '2026-10-13',
       changeFrequency: 'monthly' as const,
       priority: 0.8,
       alternates: {
-        languages: { en: `${siteUrl}/adhkar/${r.id}`, ar: `${siteUrl}/ar/adhkar/${r.id}` },
+        languages: {
+          en: `${siteUrl}/adhkar/${r.id}`,
+          ar: `${siteUrl}/ar/adhkar/${r.id}`,
+          fr: `${siteUrl}/fr/adhkar/${r.id}`,
+          de: `${siteUrl}/de/adhkar/${r.id}`,
+        },
       },
     }))
   )
@@ -130,6 +156,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   )
 
   return [
+    ...translatedPages,
+    ...translatedCities,
     ...ramadanCities,
     ...adhkarPages,
     ...quranPages,

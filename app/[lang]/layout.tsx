@@ -17,18 +17,18 @@ export const dynamicParams = false
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: 'ar' }>
+  params: Promise<{ lang: 'ar' | 'fr' | 'de' }>
 }): Promise<Metadata> {
   const { lang } = await params
   return {
     openGraph: {
-      locale: 'ar',
+      locale: lang,
     },
   }
 }
 
 export function generateStaticParams() {
-  return [{ lang: 'ar' }]
+  return [{ lang: 'ar' }, { lang: 'fr' }, { lang: 'de' }]
 }
 
 export default async function LangLayout({
@@ -39,7 +39,7 @@ export default async function LangLayout({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params
-  if (lang !== 'ar') notFound()
+  if (lang !== 'ar' && lang !== 'fr' && lang !== 'de') notFound()
   const dict = await getDictionary(lang)
   return <DictionaryProvider dictionary={dict}>{children}</DictionaryProvider>
 }

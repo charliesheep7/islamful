@@ -1,5 +1,6 @@
 'use client'
 
+import { qiblaTranslations } from '@/data/locales/qibla'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { MapPin, Loader2, Compass, Navigation, Smartphone } from 'lucide-react'
 import {
@@ -15,6 +16,15 @@ interface QiblaFinderProps {
 
 export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   const isRTL = lang === 'ar'
+  const t = useCallback(
+    (en: string, arabic: string) =>
+      lang === 'ar'
+        ? arabic
+        : lang === 'fr' || lang === 'de'
+          ? qiblaTranslations[lang][en] || en
+          : en,
+    [lang]
+  )
 
   // Location state
   const [latitude, setLatitude] = useState<number | null>(null)
@@ -74,7 +84,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     async (lat: number, lng: number, requestId: number, signal: AbortSignal) => {
       try {
         const res = await fetch(
-          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=${isRTL ? 'ar' : 'en'}`,
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=${['ar', 'fr', 'de'].includes(lang) ? lang : 'en'}`,
           { signal }
         )
         if (!res.ok) return
@@ -88,7 +98,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         // Coordinates remain usable if the optional place-name service fails.
       }
     },
-    [isRTL]
+    [lang]
   )
 
   async function fetchByIP() {
@@ -121,9 +131,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     } catch {
       if (requestId === locationRequestRef.current)
         setError(
-          isRTL
-            ? 'تعذر اقتراح الموقع. استخدم موقع الجهاز أو أدخل الإحداثيات.'
-            : 'Could not suggest a location. Use device location or enter coordinates.'
+          t(
+            'Could not suggest a location. Use device location or enter coordinates.',
+            'تعذر اقتراح الموقع. استخدم موقع الجهاز أو أدخل الإحداثيات.'
+          )
         )
     } finally {
       window.clearTimeout(timeout)
@@ -136,9 +147,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     setLoading(false)
     if (!navigator.geolocation) {
       setError(
-        isRTL
-          ? 'المتصفح لا يدعم تحديد الموقع. أدخل الإحداثيات.'
-          : 'Geolocation is unavailable. Enter coordinates instead.'
+        t(
+          'Geolocation is unavailable. Enter coordinates instead.',
+          'المتصفح لا يدعم تحديد الموقع. أدخل الإحداثيات.'
+        )
       )
       return
     }
@@ -150,9 +162,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         setLoading(false)
         if (!validCoordinates(lat, lng)) {
           setError(
-            isRTL
-              ? 'لم يصل موقع صالح. أدخل الإحداثيات.'
-              : 'No valid location received. Enter coordinates instead.'
+            t(
+              'No valid location received. Enter coordinates instead.',
+              'لم يصل موقع صالح. أدخل الإحداثيات.'
+            )
           )
           return
         }
@@ -167,17 +180,19 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         setLoading(false)
         setError(
           err.code === 1
-            ? isRTL
-              ? 'تم رفض إذن الموقع. يمكنك إدخال الإحداثيات أو إعادة المحاولة بعد تغيير الإذن.'
-              : 'Location permission denied. Enter coordinates or retry after changing permission.'
-            : isRTL
-              ? 'تعذر تحديد الموقع. أعد المحاولة أو أدخل الإحداثيات.'
-              : 'Could not determine your location. Retry or enter coordinates.'
+            ? t(
+                'Location permission denied. Enter coordinates or retry after changing permission.',
+                'تم رفض إذن الموقع. يمكنك إدخال الإحداثيات أو إعادة المحاولة بعد تغيير الإذن.'
+              )
+            : t(
+                'Could not determine your location. Retry or enter coordinates.',
+                'تعذر تحديد الموقع. أعد المحاولة أو أدخل الإحداثيات.'
+              )
         )
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
     )
-  }, [beginLocation, isRTL, reverseGeocode])
+  }, [beginLocation, t, reverseGeocode])
 
   useEffect(
     () => () => {
@@ -282,10 +297,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         setCompassPermissionNeeded(false)
         addOrientationListener()
       } else {
-        setError(isRTL ? 'تم رفض إذن البوصلة.' : 'Compass permission denied.')
+        setError(t('Compass permission denied.', 'تم رفض إذن البوصلة.'))
       }
     } catch {
-      setError(isRTL ? 'تعذر تفعيل البوصلة.' : 'Could not enable compass.')
+      setError(t('Could not enable compass.', 'تعذر تفعيل البوصلة.'))
     }
   }
 
@@ -299,9 +314,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
     setLoading(false)
     if (!manualLat.trim() || !manualLng.trim() || !validCoordinates(lat, lng)) {
       setError(
-        isRTL
-          ? 'يرجى إدخال إحداثيات صحيحة (خط العرض: -90 إلى 90، خط الطول: -180 إلى 180).'
-          : 'Please enter valid coordinates (latitude: -90 to 90, longitude: -180 to 180).'
+        t(
+          'Please enter valid coordinates (latitude: -90 to 90, longitude: -180 to 180).',
+          'يرجى إدخال إحداثيات صحيحة (خط العرض: -90 إلى 90، خط الطول: -180 إلى 180).'
+        )
       )
       return
     }
@@ -320,28 +336,30 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
   // Cardinal labels
   const cardinalLabels = isRTL
     ? { N: 'ش', E: 'شر', S: 'ج', W: 'غ' }
-    : { N: 'N', E: 'E', S: 'S', W: 'W' }
+    : { N: 'N', E: lang === 'de' ? 'O' : 'E', S: 'S', W: lang === 'fr' ? 'O' : 'W' }
 
   return (
     <div className="w-full" data-testid="qibla-tool" dir={isRTL ? 'rtl' : 'ltr'}>
       <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
-        {isRTL
-          ? 'اختر موقع الجهاز أو أدخل الإحداثيات. طلب الموقع يبدأ عند الضغط فقط؛ وقد ترسل الإحداثيات لخدمة تسمية المكان.'
-          : 'Use device location or enter coordinates. Location lookup starts only when you choose it; coordinates may be sent to a place-name service.'}
+        {t(
+          'Use device location or enter coordinates. Location lookup starts only when you choose it; coordinates may be sent to a place-name service.',
+          'اختر موقع الجهاز أو أدخل الإحداثيات. طلب الموقع يبدأ عند الضغط فقط؛ وقد ترسل الإحداثيات لخدمة تسمية المكان.'
+        )}
       </p>
       <div className="mb-6 flex flex-wrap gap-3">
         <button type="button" onClick={detectLocation} className="rounded-xl border px-4 py-3">
-          {isRTL ? 'استخدم موقع الجهاز' : 'Use device location'}
+          {t('Use device location', 'استخدم موقع الجهاز')}
         </button>
         <button type="button" onClick={fetchByIP} className="rounded-xl border px-4 py-3">
-          {isRTL ? 'اقتراح موقع تقريبي عبر الإنترنت' : 'Suggest approximate internet location'}
+          {t('Suggest approximate internet location', 'اقتراح موقع تقريبي عبر الإنترنت')}
         </button>
       </div>
       {latitude !== null && bearing === null && !loading && (
         <p role="status" className="mb-4 rounded-xl border p-4">
-          {isRTL
-            ? 'لا يمكن إعطاء زاوية مفيدة من هذه الإحداثيات، مثل موقع الكعبة نفسه أو النقطة المقابلة لها أو القطبين. تحقق من الموقع واستعن بتوجيه محلي موثوق.'
-            : 'A useful bearing is undefined at these coordinates, such as the Kaaba itself, its antipode or a pole. Check the location and use trusted local guidance.'}
+          {t(
+            'A useful bearing is undefined at these coordinates, such as the Kaaba itself, its antipode or a pole. Check the location and use trusted local guidance.',
+            'لا يمكن إعطاء زاوية مفيدة من هذه الإحداثيات، مثل موقع الكعبة نفسه أو النقطة المقابلة لها أو القطبين. تحقق من الموقع واستعن بتوجيه محلي موثوق.'
+          )}
         </p>
       )}
       {/* Loading state */}
@@ -349,7 +367,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
         <div className="flex flex-col items-center justify-center py-16">
           <Loader2 className="mb-3 h-8 w-8 animate-spin text-[var(--color-primary-500)]" />
           <p className={`text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}>
-            {isRTL ? 'جارٍ تحديد موقعك...' : 'Detecting your location...'}
+            {t('Detecting your location...', 'جارٍ تحديد موقعك...')}
           </p>
         </div>
       )}
@@ -373,16 +391,17 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               className="mb-6 w-full max-w-sm rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-100"
             >
               <p className={isRTL ? 'font-arabic' : ''}>
-                {isRTL
-                  ? 'موقعك تقريبي اعتماداً على عنوان الإنترنت، وقد يختلف عن مكانك الفعلي. استخدم موقع الجهاز للحصول على اتجاه أدق.'
-                  : 'This is an approximate location based on your internet address. Use your device location for a more reliable direction.'}
+                {t(
+                  'This is an approximate location based on your internet address. Use your device location for a more reliable direction.',
+                  'موقعك تقريبي اعتماداً على عنوان الإنترنت، وقد يختلف عن مكانك الفعلي. استخدم موقع الجهاز للحصول على اتجاه أدق.'
+                )}
               </p>
               <button
                 type="button"
                 onClick={detectLocation}
                 className={`me-4 mt-2 font-semibold underline underline-offset-2 ${isRTL ? 'font-arabic' : ''}`}
               >
-                {isRTL ? 'استخدم موقع الجهاز' : 'Use device location'}
+                {t('Use device location', 'استخدم موقع الجهاز')}
               </button>
               <button
                 type="button"
@@ -393,7 +412,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 }}
                 className={`mt-2 font-semibold underline underline-offset-2 ${isRTL ? 'font-arabic' : ''}`}
               >
-                {isRTL ? 'أدخل الإحداثيات بدلاً من ذلك' : 'Enter coordinates instead'}
+                {t('Enter coordinates instead', 'أدخل الإحداثيات بدلاً من ذلك')}
               </button>
             </div>
           )}
@@ -405,7 +424,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               className="mb-6 flex items-center gap-2 rounded-xl bg-[var(--color-primary-500)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-600)]"
             >
               <Compass className="h-4 w-4" />
-              {isRTL ? 'تفعيل البوصلة' : 'Enable Compass'}
+              {t('Enable Compass', 'تفعيل البوصلة')}
             </button>
           )}
 
@@ -515,7 +534,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                     fontSize="9"
                     fontWeight="bold"
                   >
-                    {isRTL ? 'ك' : 'Ka'}
+                    {t('Ka', 'ك')}
                   </text>
                 </g>
               </g>
@@ -535,34 +554,62 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 <span
                   className={`text-sm font-medium text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
-                  {isRTL ? 'اتجاه القبلة' : 'Qibla Bearing'}
+                  {t('Qibla Bearing', 'اتجاه القبلة')}
                 </span>
               </div>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
                 <bdi>{bearing.toFixed(1)}&deg;</bdi>{' '}
-                {isRTL && compassDirection ? arabicDirections[compassDirection] : compassDirection}
+                {compassDirection
+                  ? isRTL
+                    ? arabicDirections[compassDirection]
+                    : lang === 'fr'
+                      ? {
+                          N: 'nord',
+                          NE: 'nord-est',
+                          E: 'est',
+                          SE: 'sud-est',
+                          S: 'sud',
+                          SW: 'sud-ouest',
+                          W: 'ouest',
+                          NW: 'nord-ouest',
+                        }[compassDirection]
+                      : lang === 'de'
+                        ? {
+                            N: 'Nord',
+                            NE: 'Nordost',
+                            E: 'Ost',
+                            SE: 'Südost',
+                            S: 'Süd',
+                            SW: 'Südwest',
+                            W: 'West',
+                            NW: 'Nordwest',
+                          }[compassDirection]
+                        : compassDirection
+                  : null}
               </p>
             </div>
 
             <p role="status" className="text-sm text-gray-600 dark:text-gray-300">
-              {isRTL
-                ? 'الزاوية باتجاه عقارب الساعة من الشمال الحقيقي. الرسم ثابت والشمال للأعلى ما لم تصل قراءة بوصلة صالحة. أمسك الهاتف مسطحًا بوضع رأسي بعيدًا عن المعادن والمغناطيس.'
-                : 'Bearing is clockwise from true north. The diagram is north-up until a valid compass reading arrives. Hold the phone flat in portrait orientation, away from metal and magnets.'}
+              {t(
+                'Bearing is clockwise from true north. The diagram is north-up until a valid compass reading arrives. Hold the phone flat in portrait orientation, away from metal and magnets.',
+                'الزاوية باتجاه عقارب الساعة من الشمال الحقيقي. الرسم ثابت والشمال للأعلى ما لم تصل قراءة بوصلة صالحة. أمسك الهاتف مسطحًا بوضع رأسي بعيدًا عن المعادن والمغناطيس.'
+              )}
             </p>
             {isCompassActive && (
               <p role="status" className="text-sm text-gray-600 dark:text-gray-300">
-                {isRTL
-                  ? 'قراءة بوصلة الجهاز متاحة، لكنها قد تستخدم الشمال المغناطيسي وتتأثر بالمعايرة. تحقق ببوصلة مضبوطة للشمال الحقيقي أو بتوجيه موثوق.'
-                  : 'Device heading available. It may use magnetic north and depend on calibration. Cross-check with a true-north-adjusted compass or trusted guidance.'}
+                {t(
+                  'Device heading available. It may use magnetic north and depend on calibration. Cross-check with a true-north-adjusted compass or trusted guidance.',
+                  'قراءة بوصلة الجهاز متاحة، لكنها قد تستخدم الشمال المغناطيسي وتتأثر بالمعايرة. تحقق ببوصلة مضبوطة للشمال الحقيقي أو بتوجيه موثوق.'
+                )}
               </p>
             )}
             {locationAccuracy !== null && (
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                {isRTL
-                  ? 'دقة الموقع التي يقدرها الجهاز: نحو '
-                  : 'Device-reported location accuracy: about '}
-                {Math.round(locationAccuracy).toLocaleString(isRTL ? 'ar' : 'en')}{' '}
-                {isRTL ? 'متر' : 'm'}
+                {t(
+                  'Device-reported location accuracy: about ',
+                  'دقة الموقع التي يقدرها الجهاز: نحو '
+                )}
+                {Math.round(locationAccuracy).toLocaleString(lang)} {t('m', 'متر')}
               </p>
             )}
             {/* Distance */}
@@ -572,31 +619,25 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 <span
                   className={`text-sm font-medium text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
-                  {isRTL ? 'المسافة إلى مكة' : 'Distance to Makkah'}
+                  {t('Distance to Makkah', 'المسافة إلى مكة')}
                 </span>
               </div>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
-                {Math.round(distance!).toLocaleString(isRTL ? 'ar' : 'en')} {isRTL ? 'كم' : 'km'}
+                {Math.round(distance!).toLocaleString(isRTL ? 'ar' : 'en')} {t('km', 'كم')}
               </p>
             </div>
 
             <p className="text-center text-sm text-gray-600 dark:text-gray-300">
-              {isRTL ? 'الإحداثيات المستخدمة: ' : 'Coordinates used: '}
+              {t('Coordinates used: ', 'الإحداثيات المستخدمة: ')}
               <bdi>
                 {latitude!.toFixed(5)}, {longitude!.toFixed(5)}
               </bdi>
               {' · '}
               {locationSource === 'manual'
-                ? isRTL
-                  ? 'إدخال يدوي'
-                  : 'Manual entry'
+                ? t('Manual entry', 'إدخال يدوي')
                 : locationSource === 'device'
-                  ? isRTL
-                    ? 'موقع الجهاز'
-                    : 'Device location'
-                  : isRTL
-                    ? 'موقع الإنترنت التقريبي'
-                    : 'Approximate internet location'}
+                  ? t('Device location', 'موقع الجهاز')
+                  : t('Approximate internet location', 'موقع الإنترنت التقريبي')}
             </p>
             {/* Location name */}
             {locationName && (
@@ -604,7 +645,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 <p
                   className={`text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
-                  {isRTL ? 'موقعك' : 'Your Location'}
+                  {t('Your Location', 'موقعك')}
                 </p>
                 <p className="mt-1 text-base font-semibold text-gray-900 dark:text-white">
                   {locationName}
@@ -619,9 +660,10 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 <p
                   className={`text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
                 >
-                  {isRTL
-                    ? 'لا توجد قراءة بوصلة حديثة وصالحة. الرسم ثابت والشمال للأعلى.'
-                    : 'No recent valid compass heading. The diagram is fixed with north at the top.'}
+                  {t(
+                    'No recent valid compass heading. The diagram is fixed with north at the top.',
+                    'لا توجد قراءة بوصلة حديثة وصالحة. الرسم ثابت والشمال للأعلى.'
+                  )}
                 </p>
               </div>
             )}
@@ -634,7 +676,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800"
             >
               <MapPin className="h-4 w-4" />
-              {isRTL ? 'تحديد الموقع مرة أخرى' : 'Detect Location'}
+              {t('Detect Location', 'تحديد الموقع مرة أخرى')}
             </button>
           </div>
         </div>
@@ -646,7 +688,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
           <p
             className={`mb-4 text-center text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL ? 'أو أدخل الإحداثيات يدوياً' : 'Or enter coordinates manually'}
+            {t('Or enter coordinates manually', 'أو أدخل الإحداثيات يدوياً')}
           </p>
           <form noValidate onSubmit={handleManualSubmit} className="mx-auto max-w-sm space-y-3">
             <div>
@@ -654,7 +696,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 htmlFor="manual-lat"
                 className={`mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
               >
-                {isRTL ? 'خط العرض' : 'Latitude'}
+                {t('Latitude', 'خط العرض')}
               </label>
               <input
                 id="manual-lat"
@@ -665,7 +707,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 max="90"
                 value={manualLat}
                 onChange={(e) => setManualLat(e.target.value)}
-                placeholder={isRTL ? 'مثال: 21.4225' : 'e.g. 21.4225'}
+                placeholder={t('e.g. 21.4225', 'مثال: 21.4225')}
                 className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors outline-none focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
               />
             </div>
@@ -674,7 +716,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 htmlFor="manual-lng"
                 className={`mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
               >
-                {isRTL ? 'خط الطول' : 'Longitude'}
+                {t('Longitude', 'خط الطول')}
               </label>
               <input
                 id="manual-lng"
@@ -685,7 +727,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
                 max="180"
                 value={manualLng}
                 onChange={(e) => setManualLng(e.target.value)}
-                placeholder={isRTL ? 'مثال: 39.8262' : 'e.g. 39.8262'}
+                placeholder={t('e.g. 39.8262', 'مثال: 39.8262')}
                 className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors outline-none focus:border-gray-400 dark:border-gray-800 dark:bg-gray-900 dark:focus:border-gray-600"
               />
             </div>
@@ -693,7 +735,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               type="submit"
               className="w-full rounded-xl bg-[var(--color-primary-500)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-600)]"
             >
-              {isRTL ? 'حدد القبلة' : 'Find Qibla'}
+              {t('Find Qibla', 'حدد القبلة')}
             </button>
           </form>
 
@@ -706,7 +748,7 @@ export default function QiblaFinder({ lang = 'en' }: QiblaFinderProps) {
               className="inline-flex items-center gap-2 text-sm text-[var(--color-primary-500)] transition-colors hover:text-[var(--color-primary-600)]"
             >
               <MapPin className="h-4 w-4" />
-              {isRTL ? 'تحديد الموقع تلقائياً' : 'Detect My Location'}
+              {t('Detect My Location', 'تحديد الموقع تلقائياً')}
             </button>
           </div>
         </div>

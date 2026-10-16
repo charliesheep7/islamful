@@ -1,8 +1,12 @@
+'use client'
+import { useLocale } from './hooks/useLocale'
 import { AlgoliaButton } from 'pliny/search/AlgoliaButton'
 import { KBarButton } from 'pliny/search/KBarButton'
 import siteMetadata from '@/data/siteMetadata'
 
 const SearchButton = () => {
+  const { currentLang } = useLocale()
+  const label = { en: 'Search', ar: 'بحث', fr: 'Rechercher', de: 'Suchen' }[currentLang]
   if (
     siteMetadata.search &&
     (siteMetadata.search.provider === 'algolia' || siteMetadata.search.provider === 'kbar')
@@ -11,7 +15,7 @@ const SearchButton = () => {
       siteMetadata.search.provider === 'algolia' ? AlgoliaButton : KBarButton
 
     return (
-      <SearchButtonWrapper aria-label="Search">
+      <SearchButtonWrapper aria-label={label}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

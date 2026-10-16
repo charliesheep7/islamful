@@ -1,11 +1,13 @@
 'use client'
+import { dhikrTranslations } from '@/data/locales/dhikr'
 import { useState } from 'react'
 import { tasbihEntries, type TasbihVariant } from '@/data/adhkar'
 import { useAdhkarProgress } from '@/components/adhkar/useAdhkarProgress'
 import { summary } from '@/utils/adhkar-progress'
 export default function DhikrCounter({ lang = 'en' }: { lang?: string }) {
   const ar = lang === 'ar',
-    t = (en: string, a: string) => (ar ? a : en)
+    t = (en: string, a: string) =>
+      ar ? a : lang === 'fr' || lang === 'de' ? dhikrTranslations[lang][en] || en : en
   const [variant, setVariant] = useState<TasbihVariant>('34')
   return (
     <div className="space-y-6" dir={ar ? 'rtl' : 'ltr'}>
@@ -27,9 +29,10 @@ export default function DhikrCounter({ lang = 'en' }: { lang?: string }) {
 }
 function CounterSession({ lang, variant }: { lang: string; variant: TasbihVariant }) {
   const ar = lang === 'ar',
-    t = (en: string, a: string) => (ar ? a : en),
+    t = (en: string, a: string) =>
+      ar ? a : lang === 'fr' || lang === 'de' ? dhikrTranslations[lang][en] || en : en,
     n = (v: number) =>
-      new Intl.NumberFormat(ar ? 'ar' : 'en', { numberingSystem: ar ? 'arab' : 'latn' }).format(v)
+      new Intl.NumberFormat(lang, { numberingSystem: ar ? 'arab' : 'latn' }).format(v)
   const targets = tasbihEntries(variant),
     [index, setIndex] = useState(0),
     [resetting, setResetting] = useState(false)
@@ -50,14 +53,18 @@ function CounterSession({ lang, variant }: { lang: string; variant: TasbihVarian
             onClick={() => setIndex(i)}
             className={`rounded-full border px-4 py-2 ${i === index ? 'bg-emerald-800 text-white' : ''}`}
           >
-            {ar ? e.titleAr : e.title} {state.counts[e.id] === e.target ? '✓' : ''}
+            {t(e.title, e.titleAr)} {state.counts[e.id] === e.target ? '✓' : ''}
           </button>
         ))}
       </div>
       <p lang="ar" dir="rtl" className="mx-auto max-w-2xl text-3xl leading-loose">
         {entry.arabic}
       </p>
-      {!ar && <p className="text-gray-600 dark:text-gray-300">{entry.meaning}</p>}
+      {!ar && (
+        <p className="text-gray-600 dark:text-gray-300">
+          {t(entry.meaning || '', entry.meaning || '')}
+        </p>
+      )}
       <button
         disabled={!ready || count === entry.target}
         onClick={() => update(entry.id, 'increment')}

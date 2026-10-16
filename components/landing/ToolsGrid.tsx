@@ -1,6 +1,7 @@
 'use client'
 
 import Link from '@/components/Link'
+import { translatedTool } from '@/data/locales/tools'
 import tools from '@/data/tools'
 import type { Dictionary } from '@/types/dictionary'
 
@@ -30,8 +31,7 @@ export default function ToolsGrid({ lang = 'en', dict }: ToolsGridProps) {
             .filter((tool) => tool.status === 'live')
             .map((tool) => {
               const Icon = tool.icon
-              const name = isRTL ? tool.nameAr : tool.name
-              const description = isRTL ? tool.descriptionAr : tool.description
+              const { name, description } = translatedTool(tool, lang)
               // Take first sentence of description
               const shortDesc = description.split('.')[0] + '.'
 

@@ -1,61 +1,11 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { wuduGame } from '@/data/locales/wudu-game'
+import { useLocale } from '@/components/hooks/useLocale'
 
-interface Step {
-  id: number
-  name: string
-  description: string
-}
+import { useState, useCallback, useRef, useEffect } from 'react'
 
-const CORRECT_ORDER: Step[] = [
-  {
-    id: 1,
-    name: 'Intention (Niyyah)',
-    description: 'Make the intention in your heart to perform wudu for the sake of Allah.',
-  },
-  {
-    id: 2,
-    name: 'Say Bismillah',
-    description: 'Begin by saying "Bismillah" (In the name of Allah).',
-  },
-  { id: 3, name: 'Wash Hands', description: 'Wash both hands up to the wrists three times.' },
-  {
-    id: 4,
-    name: 'Rinse Mouth',
-    description: 'Take water into the mouth and rinse it three times.',
-  },
-  {
-    id: 5,
-    name: 'Sniff Water into Nose',
-    description: 'Sniff water into the nostrils and blow it out three times.',
-  },
-  {
-    id: 6,
-    name: 'Wash Face',
-    description: 'Wash the entire face three times, from hairline to chin.',
-  },
-  {
-    id: 7,
-    name: 'Wash Arms',
-    description: 'Wash the right arm then left arm up to the elbows three times each.',
-  },
-  {
-    id: 8,
-    name: 'Wipe Head',
-    description: 'Wipe over the head with wet hands from front to back and back to front.',
-  },
-  {
-    id: 9,
-    name: 'Wipe Ears',
-    description: 'Wipe the inside and outside of both ears with wet fingers.',
-  },
-  {
-    id: 10,
-    name: 'Wash Feet',
-    description: 'Wash the right foot then left foot up to the ankles three times each.',
-  },
-]
+const CORRECT_ORDER = Array.from({ length: 10 }, (_, index) => index + 1)
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr]
@@ -67,7 +17,10 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export default function WuduSteps() {
-  const [steps, setSteps] = useState<Step[]>(() => shuffleArray(CORRECT_ORDER))
+  const { currentLang } = useLocale()
+  const c = wuduGame[currentLang]
+  const [steps, setSteps] = useState(CORRECT_ORDER)
+  useEffect(() => setSteps(shuffleArray(CORRECT_ORDER)), [])
   const [checked, setChecked] = useState(false)
   const [completed, setCompleted] = useState(false)
 
@@ -108,7 +61,7 @@ export default function WuduSteps() {
 
   const checkOrder = () => {
     setChecked(true)
-    const isCorrect = steps.every((step, i) => step.id === CORRECT_ORDER[i].id)
+    const isCorrect = steps.every((step, i) => step === CORRECT_ORDER[i])
     if (isCorrect) setCompleted(true)
   }
 
@@ -120,18 +73,17 @@ export default function WuduSteps() {
 
   return (
     <div className="mx-auto max-w-lg">
-      <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        Drag and drop (or use arrows) to arrange the steps of wudu in the correct order.
-      </p>
+      <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">{c.instruction}</p>
 
       <div className="space-y-2">
         {steps.map((step, index) => {
-          const isCorrect = checked && step.id === CORRECT_ORDER[index].id
-          const isWrong = checked && step.id !== CORRECT_ORDER[index].id
+          const isCorrect = checked && step === CORRECT_ORDER[index]
+          const isWrong = checked && step !== CORRECT_ORDER[index]
 
           return (
             <div
-              key={step.id}
+              key={step}
+              data-step-id={step}
               draggable={!completed}
               onDragStart={() => handleDragStart(index)}
               onDragOver={(e) => handleDragOver(e, index)}
@@ -150,10 +102,10 @@ export default function WuduSteps() {
                 {index + 1}
               </span>
               <div className="min-w-0 flex-1">
-                <p className="font-medium text-gray-900 dark:text-white">{step.name}</p>
+                <p className="font-medium text-gray-900 dark:text-white">{c.steps[step - 1][0]}</p>
                 {(checked || completed) && (
                   <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                    {step.description}
+                    {c.steps[step - 1][1]}
                   </p>
                 )}
               </div>
@@ -161,6 +113,7 @@ export default function WuduSteps() {
                 <div className="flex shrink-0 flex-col gap-0.5">
                   <button
                     onClick={() => moveItem(index, 'up')}
+                    aria-label={`${c.up}: ${c.steps[step - 1][0]}`}
                     disabled={index === 0}
                     className="rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-gray-100 disabled:opacity-30 dark:hover:bg-gray-700"
                   >
@@ -168,6 +121,7 @@ export default function WuduSteps() {
                   </button>
                   <button
                     onClick={() => moveItem(index, 'down')}
+                    aria-label={`${c.down}: ${c.steps[step - 1][0]}`}
                     disabled={index === steps.length - 1}
                     className="rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-gray-100 disabled:opacity-30 dark:hover:bg-gray-700"
                   >
@@ -187,25 +141,23 @@ export default function WuduSteps() {
               onClick={checkOrder}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition"
             >
-              Check Order
+              {c.check}
             </button>
             <button
               onClick={reset}
               className="rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
             >
-              Shuffle
+              {c.shuffle}
             </button>
           </>
         ) : (
           <div className="text-center">
-            <p className="mb-4 text-lg font-bold text-emerald-600">
-              Mashallah! You know the steps of wudu!
-            </p>
+            <p className="mb-4 text-lg font-bold text-emerald-600">{c.success}</p>
             <button
               onClick={reset}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition"
             >
-              Play Again
+              {c.again}
             </button>
           </div>
         )}

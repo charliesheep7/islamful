@@ -1,3 +1,8 @@
+import {
+  AdhkarHomeTranslated,
+  AdhkarPageTranslated,
+  translatedAdhkarMetadata,
+} from './AdhkarPagesTranslated'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Noto_Naskh_Arabic } from 'next/font/google'
@@ -13,7 +18,8 @@ const naskh = Noto_Naskh_Arabic({
   display: 'swap',
   variable: '--font-quran',
 })
-export function adhkarMetadata(lang: 'en' | 'ar', id?: string) {
+export function adhkarMetadata(lang: 'en' | 'ar' | 'fr' | 'de', id?: string) {
+  if (lang === 'fr' || lang === 'de') return translatedAdhkarMetadata(lang, id)
   const r = routines.find((r) => r.id === id),
     ar = lang === 'ar'
   if (id && !r) notFound()
@@ -37,7 +43,13 @@ export function adhkarMetadata(lang: 'en' | 'ar', id?: string) {
     }),
   }
 }
-export function AdhkarNav({ lang, current }: { lang: 'en' | 'ar'; current?: RoutineId }) {
+export function AdhkarNav({
+  lang,
+  current,
+}: {
+  lang: 'en' | 'ar' | 'fr' | 'de'
+  current?: RoutineId
+}) {
   const ar = lang === 'ar',
     prefix = ar ? '/ar' : ''
   return (
@@ -64,7 +76,8 @@ export function AdhkarNav({ lang, current }: { lang: 'en' | 'ar'; current?: Rout
     </nav>
   )
 }
-export function AdhkarHome({ lang }: { lang: 'en' | 'ar' }) {
+export function AdhkarHome({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
+  if (lang === 'fr' || lang === 'de') return <AdhkarHomeTranslated lang={lang} />
   const ar = lang === 'ar',
     prefix = ar ? '/ar' : ''
   return (
@@ -140,7 +153,9 @@ export function AdhkarHome({ lang }: { lang: 'en' | 'ar' }) {
     </div>
   )
 }
-export function AdhkarPage({ lang, id }: { lang: 'en' | 'ar'; id: string }) {
+export function AdhkarPage({ lang, id }: { lang: 'en' | 'ar' | 'fr' | 'de'; id: string }) {
+  if (lang === 'fr' || lang === 'de')
+    return <AdhkarPageTranslated lang={lang} id={id} fontClass={naskh.variable} />
   const routine = routines.find((r) => r.id === id)
   if (!routine) notFound()
   const ar = lang === 'ar',

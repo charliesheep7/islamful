@@ -125,6 +125,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               >
                 <Share title={title} slug={slug} summary={summary} />
                 {children}
+                <Share title={title} slug={slug} summary={summary} />
                 {faqs && <FAQ faqs={faqs} />}
               </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">

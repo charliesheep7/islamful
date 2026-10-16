@@ -1,3 +1,4 @@
+import QuranPagesTranslated, { translatedQuranMetadata } from './QuranPagesTranslated'
 import Link from 'next/link'
 import { Noto_Naskh_Arabic } from 'next/font/google'
 import { notFound } from 'next/navigation'
@@ -14,7 +15,8 @@ const naskh = Noto_Naskh_Arabic({
   display: 'swap',
   variable: '--font-quran',
 })
-export function quranMetadata(lang: 'en' | 'ar', slug?: string) {
+export function quranMetadata(lang: 'en' | 'ar' | 'fr' | 'de', slug?: string) {
+  if (lang === 'fr' || lang === 'de') return translatedQuranMetadata(lang, slug)
   const c = slug ? chapters.find((c) => c.slug === slug) : null
   const ar = lang === 'ar'
   const title = c
@@ -39,7 +41,7 @@ export function quranMetadata(lang: 'en' | 'ar', slug?: string) {
     }),
   }
 }
-function Nav({ lang, slug }: { lang: 'en' | 'ar'; slug?: string }) {
+function Nav({ lang, slug }: { lang: 'en' | 'ar' | 'fr' | 'de'; slug?: string }) {
   const ar = lang === 'ar',
     c = chapters.find((c) => c.slug === slug),
     prefix = ar ? '/ar' : ''
@@ -62,7 +64,9 @@ function Nav({ lang, slug }: { lang: 'en' | 'ar'; slug?: string }) {
     </nav>
   )
 }
-export function QuranHome({ lang }: { lang: 'en' | 'ar' }) {
+export function QuranHome({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
+  if (lang === 'fr' || lang === 'de')
+    return <QuranPagesTranslated lang={lang} fontClass={naskh.variable} />
   const ar = lang === 'ar'
   return (
     <div
@@ -104,7 +108,9 @@ export function QuranHome({ lang }: { lang: 'en' | 'ar' }) {
     </div>
   )
 }
-export function QuranSurah({ lang, slug }: { lang: 'en' | 'ar'; slug: string }) {
+export function QuranSurah({ lang, slug }: { lang: 'en' | 'ar' | 'fr' | 'de'; slug: string }) {
+  if (lang === 'fr' || lang === 'de')
+    return <QuranPagesTranslated lang={lang} slug={slug} fontClass={naskh.variable} />
   const c = chapters.find((c) => c.slug === slug)
   if (!c) notFound()
   const content = corpus.chapters[c.number - 1],

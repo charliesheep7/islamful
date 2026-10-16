@@ -53,6 +53,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8">
                 <Share title={title} slug={slug} summary={summary} />
                 {children}
+                <Share title={title} slug={slug} summary={summary} />
               </div>
             </div>
             {siteMetadata.comments && (

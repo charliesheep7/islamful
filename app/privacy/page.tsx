@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <div className="prose dark:prose-invert max-w-none py-8">
         <h1>Privacy Policy</h1>
         <p>
-          <strong>Last updated: [Jan 29, 2026]</strong>
+          <strong>Last updated: October 14, 2026</strong>
         </p>
         <p>
           Islamful ("we," "us," or "our") is committed to protecting your privacy. This Privacy
@@ -34,7 +34,24 @@ export default function PrivacyPage() {
           <li>Email address for account creation and authentication</li>
           <li>Display name</li>
         </ul>
-        <p>We do not collect profile photos or images uploaded by users.</p>
+        <h3>Email updates and sharing</h3>
+        <p>
+          If you opt in to feature updates, we store your email address, selected language, signup
+          page and consent date in Supabase. This does not create an authenticated account. Future
+          update emails will include an unsubscribe link. Sharing analytics record the page,
+          language, selected channel and action, without your email, account ID or calculator
+          inputs. We respect your browser’s Do Not Track setting for share analytics. A temporary
+          hashed network identifier is used to limit abusive requests; raw IP addresses are not
+          stored in these tables.
+        </p>
+        <h3>Website accounts</h3>
+        <p>
+          Website sign-in is handled by Supabase. Email sign-in uses your email address and
+          password. If you choose Google, Supabase receives your email and basic Google profile
+          information, which may include your name and profile picture. Authentication cookies keep
+          you signed in. Signing out on this browser clears its session. Public tools and articles
+          do not require an account.
+        </p>
 
         <h3>2. Conversation Data</h3>
         <ul>

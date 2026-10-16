@@ -1,25 +1,32 @@
 'use client'
+import { quranUi } from '@/data/locales/quran-ui'
 import { useMemo, useState } from 'react'
+import { chapterMeanings } from '@/data/locales/quran-chapters'
 import Link from 'next/link'
 import { chapters, juzStarts, quranPath, reference, searchKey } from '@/data/quran'
 import { useReaderData } from './useReaderData'
 
-export default function QuranIndex({ lang }: { lang: 'en' | 'ar' }) {
+export default function QuranIndex({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
+    t = (en: string, arabic: string) => (ar ? arabic : lang === 'en' ? en : quranUi[lang][en] || en)
   const [query, setQuery] = useState('')
   const { data, clear, available, ready } = useReaderData(lang)
   const ref = reference(query)
   const filtered = useMemo(() => {
-    const key = searchKey(query.replace(/\b(surah|surat|sura)\b|سورة|سوره/gi, ''))
+    const key = searchKey(query.replace(/\b(surah|surat|sura|sourate|sure)\b|سورة|سوره/gi, ''))
     if (!key) return chapters
     if (reference(query)) return [reference(query)!.chapter]
     return chapters.filter((c) =>
-      [c.name, c.nameAr, c.slug, c.meaning, String(c.number)].some((s) =>
-        searchKey(s).includes(key)
-      )
+      [
+        c.name,
+        c.nameAr,
+        c.slug,
+        c.meaning,
+        lang === 'fr' || lang === 'de' ? chapterMeanings[lang][c.number - 1] : '',
+        String(c.number),
+      ].some((s) => searchKey(s).includes(key))
     )
-  }, [query])
+  }, [query, lang])
   const number = (n: number) =>
     new Intl.NumberFormat(ar ? 'ar' : 'en', {
       numberingSystem: ar ? 'arab' : 'latn',
@@ -115,7 +122,9 @@ export default function QuranIndex({ lang }: { lang: 'en' | 'ar' }) {
               <span className="text-sm text-gray-500">{number(c.number)}</span>
               <span className="min-w-0 flex-1">
                 <span className="block font-semibold">{ar ? c.nameAr : c.name}</span>
-                <span className="mt-1 block text-sm text-gray-500">{ar ? c.name : c.meaning}</span>
+                <span className="mt-1 block text-sm text-gray-500">
+                  {ar ? c.name : lang === 'en' ? c.meaning : chapterMeanings[lang][c.number - 1]}
+                </span>
                 <span className="mt-2 block text-xs text-gray-500">
                   {number(c.count)} {t('verses', 'آية')}
                   {ref?.chapter.number === c.number &&

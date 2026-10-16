@@ -1,8 +1,15 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { nightTranslations } from '@/data/locales/night'
+import { cityLabel, countryLabel } from '@/utils/city-label'
 import cities from '@/data/cities'
-import { PRAYER_METHODS, ARABIC_PRAYER_METHODS } from '@/data/prayer-methods'
+import {
+  PRAYER_METHODS,
+  ARABIC_PRAYER_METHODS,
+  FRENCH_PRAYER_METHODS,
+  GERMAN_PRAYER_METHODS,
+} from '@/data/prayer-methods'
 import { fetchPrayerSchedule, localDateISO, type PrayerSchedule } from '@/utils/prayer-schedule'
 import { manualNight, nightCalendar, nightTimes, zonedTime } from '@/utils/night-times'
 
@@ -13,11 +20,20 @@ type Result = ReturnType<typeof nightTimes> & {
   schedule?: PrayerSchedule
 }
 const field =
-  'mt-1 block w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-white'
+  'mt-1 block w-full min-w-0 max-w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-white'
 
-export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
+export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' | 'fr' | 'de' }) {
   const ar = lang === 'ar'
-  const t = (en: string, arabic: string) => (ar ? arabic : en)
+  const t = (en: string, arabic: string) =>
+    ar ? arabic : lang === 'en' ? en : nightTranslations[lang][en] || en
+  const methods =
+    lang === 'fr'
+      ? FRENCH_PRAYER_METHODS
+      : lang === 'de'
+        ? GERMAN_PRAYER_METHODS
+        : ar
+          ? ARABIC_PRAYER_METHODS
+          : PRAYER_METHODS
   const [citySlug, setCitySlug] = useState('london')
   const city = cities.find((item) => item.slug === citySlug) || cities[0]
   const [method, setMethod] = useState('15')
@@ -92,7 +108,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
           ...nightTimes(start, end),
           timezone: city.timezone,
           date,
-          label: `${ar ? city.nameAr : city.name} · ${(ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS)[method]}`,
+          label: `${cityLabel(city, lang)} · ${methods[method]}`,
           schedule,
         }
         try {
@@ -115,7 +131,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
   function download() {
     if (!result) return
     const url = URL.createObjectURL(
-      new Blob([nightCalendar(result.lastThird, result.fajr)], {
+      new Blob([nightCalendar(result.lastThird, result.fajr, Date.now(), lang)], {
         type: 'text/calendar;charset=utf-8',
       })
     )
@@ -127,7 +143,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
   }
   const format = (instant: number) =>
     result
-      ? new Intl.DateTimeFormat(ar ? 'ar' : 'en-GB', {
+      ? new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : lang, {
           timeZone: result.timezone,
           month: 'short',
           day: 'numeric',
@@ -191,7 +207,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
               >
                 {cities.map((item) => (
                   <option key={item.slug} value={item.slug}>
-                    {ar ? `${item.nameAr}، ${item.countryAr}` : `${item.name}, ${item.country}`}
+                    {`${cityLabel(item, lang)}, ${countryLabel(item, lang)}`}
                   </option>
                 ))}
               </select>
@@ -207,7 +223,7 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
                   setMethod(e.target.value)
                 }}
               >
-                {Object.entries(ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS).map(([key, label]) => (
+                {Object.entries(methods).map(([key, label]) => (
                   <option key={key} value={key}>
                     {label}
                   </option>
@@ -328,10 +344,14 @@ export default function NightPlanner({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
                   )
                 : now >= result.lastThird
                   ? t('The last third is now in progress.', 'نحن الآن في الثلث الأخير من الليل.')
-                  : t(
-                      `${Math.floor(remaining / 60)}h ${remaining % 60}m until the last third`,
-                      `${Math.floor(remaining / 60)} ساعة و${remaining % 60} دقيقة حتى الثلث الأخير`
-                    )}
+                  : lang === 'fr'
+                    ? `${Math.floor(remaining / 60)} h ${remaining % 60} min avant le dernier tiers`
+                    : lang === 'de'
+                      ? `${Math.floor(remaining / 60)} Std. ${remaining % 60} Min. bis zum letzten Drittel`
+                      : t(
+                          `${Math.floor(remaining / 60)}h ${remaining % 60}m until the last third`,
+                          `${Math.floor(remaining / 60)} ساعة و${remaining % 60} دقيقة حتى الثلث الأخير`
+                        )}
             </p>
           )}
           {nextPrayer && (

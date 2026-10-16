@@ -1,3 +1,7 @@
+import {
+  PrayerIndexTranslated,
+  translatedPrayerMetadata,
+} from '@/components/tools/PrayerPagesTranslated'
 import { Metadata } from 'next'
 import Link from '@/components/Link'
 import PrayerTimes from '@/components/tools/PrayerTimes'
@@ -8,17 +12,23 @@ import cities, { regions } from '@/data/cities'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export function generateStaticParams() {
-  return [{ lang: 'ar' }]
+  return [{ lang: 'ar' }, { lang: 'fr' }, { lang: 'de' }]
 }
 
-export const metadata: Metadata = {
+const arabicMetadata: Metadata = {
   title: 'مواقيت الصلاة — أوقات صلاة دقيقة لأي مدينة',
   description:
     'احصل على مواقيت صلاة دقيقة للفجر والظهر والعصر والمغرب والعشاء لأي مدينة حول العالم. يدعم طرق حساب متعددة.',
   alternates: buildLanguageAlternates('/prayer-times', { currentLanguage: 'ar' }),
 }
 
-export default async function PrayerTimesPageAr() {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  return lang === 'fr' || lang === 'de' ? translatedPrayerMetadata(lang) : arabicMetadata
+}
+export default async function PrayerTimesPageAr({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  if (lang === 'fr' || lang === 'de') return <PrayerIndexTranslated lang={lang} />
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8" dir="rtl">
       <Breadcrumbs items={[{ name: 'مواقيت الصلاة', href: '/ar/prayer-times' }]} />

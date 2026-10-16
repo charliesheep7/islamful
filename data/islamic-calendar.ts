@@ -6,6 +6,34 @@ export const MAX_DATE = '2100-12-31'
 export const DAY_MS = 86400000
 export const DEFAULT_CALENDAR: CalendarSettings = { method: 'islamic-umalqura', adjustment: 0 }
 export const HIJRI_MONTHS = {
+  fr: [
+    'Mouharram',
+    'Safar',
+    'Rabi al-awwal',
+    'Rabi ath-thani',
+    'Joumada al-oula',
+    'Joumada ath-thania',
+    'Rajab',
+    'Chaabane',
+    'Ramadan',
+    'Chawwal',
+    'Dhou al-qi`da',
+    'Dhou al-hijja',
+  ],
+  de: [
+    'Muharram',
+    'Safar',
+    'Rabi al-Awwal',
+    'Rabi ath-Thani',
+    'Dschumada al-Ula',
+    'Dschumada ath-Thani',
+    'Radschab',
+    'Schaaban',
+    'Ramadan',
+    'Schawwal',
+    'Dhu al-Qada',
+    'Dhu al-Hiddscha',
+  ],
   en: [
     'Muharram',
     'Safar',
@@ -194,7 +222,7 @@ export function dateInTimeZone(now: string, timeZone: string) {
   }
 }
 
-export function formatHijri(h: HijriDate, lang: 'en' | 'ar') {
+export function formatHijri(h: HijriDate, lang: 'en' | 'ar' | 'fr' | 'de') {
   const n = new Intl.NumberFormat(lang === 'ar' ? 'ar' : 'en', {
     useGrouping: false,
     numberingSystem: lang === 'ar' ? 'arab' : 'latn',
@@ -202,8 +230,8 @@ export function formatHijri(h: HijriDate, lang: 'en' | 'ar') {
   return `${n.format(h.day)} ${HIJRI_MONTHS[lang][h.month - 1]} ${n.format(h.year)} ${lang === 'ar' ? 'هـ' : 'AH'}`
 }
 
-export function formatGregorian(iso: string, lang: 'en' | 'ar') {
-  return new Intl.DateTimeFormat(lang === 'ar' ? 'ar' : 'en-GB', {
+export function formatGregorian(iso: string, lang: 'en' | 'ar' | 'fr' | 'de') {
+  return new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : lang, {
     calendar: 'gregory',
     numberingSystem: lang === 'ar' ? 'arab' : 'latn',
     timeZone: 'UTC',
@@ -214,22 +242,88 @@ export function formatGregorian(iso: string, lang: 'en' | 'ar') {
 }
 
 export const KEY_DATES = [
-  { id: 'new-year', month: 1, day: 1, en: 'Start of the Hijri year', ar: 'بداية السنة الهجرية' },
-  { id: 'ashura', month: 1, day: 10, en: 'Ashura', ar: 'عاشوراء' },
-  { id: 'ramadan', month: 9, day: 1, en: 'Start of Ramadan', ar: 'بداية رمضان' },
+  {
+    id: 'new-year',
+    fr: 'Début de l’année hégirienne',
+    de: 'Beginn des Hidschri-Jahres',
+    month: 1,
+    day: 1,
+    en: 'Start of the Hijri year',
+    ar: 'بداية السنة الهجرية',
+  },
+  { id: 'ashura', fr: 'Achoura', de: 'Aschura', month: 1, day: 10, en: 'Ashura', ar: 'عاشوراء' },
+  {
+    id: 'ramadan',
+    fr: 'Début du Ramadan',
+    de: 'Beginn des Ramadan',
+    month: 9,
+    day: 1,
+    en: 'Start of Ramadan',
+    ar: 'بداية رمضان',
+  },
   {
     id: 'last-ten',
+    fr: 'Les dix dernières nuits du Ramadan commencent la veille au soir',
+    de: 'Die letzten zehn Nächte des Ramadan beginnen am Vorabend',
     month: 9,
     day: 21,
     en: 'Last ten nights of Ramadan begin the previous evening',
     ar: 'تبدأ ليالي العشر الأواخر من رمضان من المساء السابق',
   },
-  { id: 'eid-fitr', month: 10, day: 1, en: 'Eid al-Fitr', ar: 'عيد الفطر' },
-  { id: 'arafah', month: 12, day: 9, en: 'Day of Arafah', ar: 'يوم عرفة' },
-  { id: 'eid-adha', month: 12, day: 10, en: 'Eid al-Adha', ar: 'عيد الأضحى' },
-  { id: 'tashriq-1', month: 12, day: 11, en: 'First day of Tashriq', ar: 'أول أيام التشريق' },
-  { id: 'tashriq-2', month: 12, day: 12, en: 'Second day of Tashriq', ar: 'ثاني أيام التشريق' },
-  { id: 'tashriq-3', month: 12, day: 13, en: 'Third day of Tashriq', ar: 'ثالث أيام التشريق' },
+  {
+    id: 'eid-fitr',
+    fr: 'Aïd al-Fitr',
+    de: 'Eid al-Fitr',
+    month: 10,
+    day: 1,
+    en: 'Eid al-Fitr',
+    ar: 'عيد الفطر',
+  },
+  {
+    id: 'arafah',
+    fr: 'Jour d’Arafat',
+    de: 'Tag von Arafah',
+    month: 12,
+    day: 9,
+    en: 'Day of Arafah',
+    ar: 'يوم عرفة',
+  },
+  {
+    id: 'eid-adha',
+    fr: 'Aïd al-Adha',
+    de: 'Eid al-Adha',
+    month: 12,
+    day: 10,
+    en: 'Eid al-Adha',
+    ar: 'عيد الأضحى',
+  },
+  {
+    id: 'tashriq-1',
+    fr: 'Premier jour de Tachriq',
+    de: 'Erster Tag von Taschriq',
+    month: 12,
+    day: 11,
+    en: 'First day of Tashriq',
+    ar: 'أول أيام التشريق',
+  },
+  {
+    id: 'tashriq-2',
+    fr: 'Deuxième jour de Tachriq',
+    de: 'Zweiter Tag von Taschriq',
+    month: 12,
+    day: 12,
+    en: 'Second day of Tashriq',
+    ar: 'ثاني أيام التشريق',
+  },
+  {
+    id: 'tashriq-3',
+    fr: 'Troisième jour de Tachriq',
+    de: 'Dritter Tag von Taschriq',
+    month: 12,
+    day: 13,
+    en: 'Third day of Tashriq',
+    ar: 'ثالث أيام التشريق',
+  },
 ]
 
 export function upcomingKeyDates(today: string, settings: CalendarSettings) {
@@ -291,7 +385,7 @@ const escapeIcs = (text: string) =>
 export function calendarDownload(
   events: ReturnType<typeof upcomingKeyDates>,
   settings: CalendarSettings,
-  lang: 'en' | 'ar',
+  lang: 'en' | 'ar' | 'fr' | 'de',
   now: string
 ) {
   const stamp = new Date(now)
@@ -300,16 +394,28 @@ export function calendarDownload(
     .replace(/\.\d{3}Z$/, 'Z')
   const methodName =
     settings.method === 'islamic-umalqura'
-      ? lang === 'ar'
-        ? 'أم القرى المحسوب'
-        : 'calculated Umm al-Qura'
-      : lang === 'ar'
-        ? 'التقويم الهجري المدني الجدولي'
-        : 'tabular Islamic civil'
+      ? lang === 'fr'
+        ? 'Umm al-Qura calculé'
+        : lang === 'de'
+          ? 'berechnetem Umm al-Qura'
+          : lang === 'ar'
+            ? 'أم القرى المحسوب'
+            : 'calculated Umm al-Qura'
+      : lang === 'fr'
+        ? 'calendrier islamique civil tabulaire'
+        : lang === 'de'
+          ? 'tabellarischem islamischem Zivilkalender'
+          : lang === 'ar'
+            ? 'التقويم الهجري المدني الجدولي'
+            : 'tabular Islamic civil'
   const description =
-    lang === 'ar'
-      ? `تاريخ محسوب وفق ${methodName} مع تعديل ${settings.adjustment} يوم. يبدأ الليل الشرعي من غروب الشمس السابق. تحقّق من إعلان الجهة المحلية الموثوقة.`
-      : `Calculated with ${methodName}, adjustment ${settings.adjustment} day(s). The religious night starts at the preceding local sunset. Confirm local announcements.`
+    lang === 'fr'
+      ? `Calcul selon ${methodName}, ajustement de ${settings.adjustment} jour(s). La nuit islamique commence au coucher du soleil local précédent. Consultez les annonces locales.`
+      : lang === 'de'
+        ? `Berechnet nach ${methodName}, Anpassung ${settings.adjustment} Tag(e). Die islamische Nacht beginnt beim vorherigen örtlichen Sonnenuntergang. Prüfe örtliche Bekanntgaben.`
+        : lang === 'ar'
+          ? `تاريخ محسوب وفق ${methodName} مع تعديل ${settings.adjustment} يوم. يبدأ الليل الشرعي من غروب الشمس السابق. تحقّق من إعلان الجهة المحلية الموثوقة.`
+          : `Calculated with ${methodName}, adjustment ${settings.adjustment} day(s). The religious night starts at the preceding local sunset. Confirm local announcements.`
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',

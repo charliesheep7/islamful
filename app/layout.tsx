@@ -1,9 +1,13 @@
+import { isLocale } from '@/utils/locale'
+import { navigation } from '@/data/locales/navigation'
+import ShareArrival from '@/components/ShareArrival'
 import 'css/tailwind.css'
 
 import { Noto_Sans, Noto_Sans_Arabic, Spectral } from 'next/font/google'
-import { Analytics, AnalyticsConfig } from 'pliny/analytics'
+import SiteAnalytics from '@/components/SiteAnalytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
+import ToolShare from '@/components/ToolShare'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
@@ -80,12 +84,13 @@ export async function generateStaticParams() {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const basePath = process.env.BASE_PATH || ''
   const headersList = await headers()
-  const locale = headersList.get('x-locale') || 'en'
+  const requestedLocale = headersList.get('x-locale') || 'en'
+  const locale = isLocale(requestedLocale) ? requestedLocale : 'en'
   const isArabic = locale === 'ar'
 
   return (
     <html
-      lang={isArabic ? 'ar' : 'en'}
+      lang={locale}
       dir={isArabic ? 'rtl' : 'ltr'}
       className={`${noto_sans.variable} ${noto_sans_arabic.variable} ${spectral.variable} scroll-smooth`}
       suppressHydrationWarning
@@ -96,7 +101,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             __html: `
               (function() {
                 const path = window.location.pathname;
-                const isArabic = path.startsWith('/ar/') || path === '/ar';
+                const segment = path.split('/')[1];
+                const locale = ['ar','fr','de'].includes(segment) ? segment : 'en';
+                document.documentElement.setAttribute('lang', locale);
+                const isArabic = locale === 'ar';
                 if (isArabic) {
                   document.documentElement.setAttribute('lang', 'ar');
                   document.documentElement.setAttribute('dir', 'rtl');
@@ -114,7 +122,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
         <link rel="dns-prefetch" href="https://api.aladhan.com" />
-        <link rel="dns-prefetch" href="https://fkifiwgbroehluxksfte.supabase.co" />
+        {process.env.NEXT_PUBLIC_SUPABASE_URL && (
+          <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_SUPABASE_URL} />
+        )}
         <link rel="dns-prefetch" href="https://api.bigdatacloud.net" />
         <script
           type="application/ld+json"
@@ -200,14 +210,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-[var(--color-accent-500)] focus:px-4 focus:py-2 focus:text-white"
         >
-          Skip to main content
+          {navigation[locale].skip}
         </a>
         <RTLHandler />
         <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+          <ShareArrival />
+          <SiteAnalytics />
           <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
             <Header />
             <main id="main-content" className="min-h-[60vh]">
+              <ToolShare />
               {children}
             </main>
             <Footer year={new Date().getUTCFullYear()} />

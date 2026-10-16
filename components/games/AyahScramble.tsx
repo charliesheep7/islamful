@@ -1,130 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-
-interface Verse {
-  words: string[]
-  surah: string
-  reference: string
-}
-
-const VERSES: Verse[] = [
-  {
-    words: [
-      'In',
-      'the',
-      'name',
-      'of',
-      'Allah',
-      'the',
-      'Most',
-      'Gracious',
-      'the',
-      'Most',
-      'Merciful',
-    ],
-    surah: 'Al-Fatiha',
-    reference: '1:1',
-  },
-  {
-    words: ['Indeed', 'with', 'hardship', 'will', 'be', 'ease'],
-    surah: 'Ash-Sharh',
-    reference: '94:6',
-  },
-  {
-    words: ['Say', 'He', 'is', 'Allah', 'who', 'is', 'One'],
-    surah: 'Al-Ikhlas',
-    reference: '112:1',
-  },
-  {
-    words: [
-      'And',
-      'We',
-      'have',
-      'certainly',
-      'created',
-      'man',
-      'and',
-      'We',
-      'know',
-      'what',
-      'his',
-      'soul',
-      'whispers',
-      'to',
-      'him',
-    ],
-    surah: 'Qaf',
-    reference: '50:16',
-  },
-  {
-    words: ['Allah', 'does', 'not', 'burden', 'a', 'soul', 'beyond', 'that', 'it', 'can', 'bear'],
-    surah: 'Al-Baqarah',
-    reference: '2:286',
-  },
-  {
-    words: ['So', 'verily', 'with', 'the', 'hardship', 'there', 'is', 'relief'],
-    surah: 'Ash-Sharh',
-    reference: '94:5',
-  },
-  {
-    words: [
-      'And',
-      'your',
-      'Lord',
-      'says',
-      'Call',
-      'upon',
-      'Me',
-      'I',
-      'will',
-      'respond',
-      'to',
-      'you',
-    ],
-    surah: 'Ghafir',
-    reference: '40:60',
-  },
-  {
-    words: ['Indeed', 'Allah', 'is', 'with', 'the', 'patient'],
-    surah: 'Al-Baqarah',
-    reference: '2:153',
-  },
-  {
-    words: ['Read', 'in', 'the', 'Name', 'of', 'your', 'Lord', 'Who', 'created'],
-    surah: 'Al-Alaq',
-    reference: '96:1',
-  },
-  {
-    words: ['By', 'time', 'indeed', 'mankind', 'is', 'in', 'loss'],
-    surah: 'Al-Asr',
-    reference: '103:1-2',
-  },
-  {
-    words: [
-      'And',
-      'whoever',
-      'puts',
-      'their',
-      'trust',
-      'in',
-      'Allah',
-      'then',
-      'He',
-      'is',
-      'sufficient',
-      'for',
-      'them',
-    ],
-    surah: 'At-Talaq',
-    reference: '65:3',
-  },
-  {
-    words: ['So', 'which', 'of', 'the', 'favors', 'of', 'your', 'Lord', 'would', 'you', 'deny'],
-    surah: 'Ar-Rahman',
-    reference: '55:13',
-  },
-]
+import { useState, useEffect } from 'react'
+import { scrambleCopy, type ScrambleVerse } from '@/data/locales/scramble-game'
+import type { Locale } from '@/utils/locale'
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr]
@@ -135,14 +13,22 @@ function shuffleArray<T>(arr: T[]): T[] {
   return shuffled
 }
 
-export default function AyahScramble() {
-  const [allVerses, setAllVerses] = useState(() => shuffleArray(VERSES).slice(0, 8))
+export default function AyahScramble({ bank, lang }: { bank: ScrambleVerse[]; lang: Locale }) {
+  const c = scrambleCopy[lang]
+  const [ids, setIds] = useState(() => bank.map((_, i) => i).slice(0, 8))
+  const allVerses = ids.map((id) => bank[id])
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
   const [placed, setPlaced] = useState<string[]>([])
-  const [available, setAvailable] = useState<string[]>(() => shuffleArray([...allVerses[0].words]))
+  const [available, setAvailable] = useState<string[]>(() => [...bank[0].words])
   const [checked, setChecked] = useState(false)
   const [finished, setFinished] = useState(false)
+
+  useEffect(() => {
+    const nextIds = shuffleArray(bank.map((_, i) => i)).slice(0, 8)
+    setIds(nextIds)
+    setAvailable(shuffleArray([...bank[nextIds[0]].words]))
+  }, [bank])
 
   const verse = allVerses[current]
   const isCorrect = placed.join(' ') === verse.words.join(' ')
@@ -164,6 +50,7 @@ export default function AyahScramble() {
   }
 
   const checkAnswer = () => {
+    if (checked || available.length > 0) return
     setChecked(true)
     if (isCorrect) setScore((s) => s + 1)
   }
@@ -187,8 +74,9 @@ export default function AyahScramble() {
   }
 
   const restart = () => {
-    const newVerses = shuffleArray(VERSES).slice(0, 8)
-    setAllVerses(newVerses)
+    const nextIds = shuffleArray(bank.map((_, i) => i)).slice(0, 8)
+    const newVerses = nextIds.map((id) => bank[id])
+    setIds(nextIds)
     setCurrent(0)
     setScore(0)
     setPlaced([])
@@ -201,24 +89,24 @@ export default function AyahScramble() {
     return (
       <div className="mx-auto max-w-lg text-center">
         <div className="rounded-2xl border border-white/30 bg-white/50 p-8 backdrop-blur-lg dark:border-white/10 dark:bg-white/[0.06]">
-          <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">Game Complete!</h3>
+          <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">{c.complete}</h3>
           <p className="text-primary-500 mb-1 text-4xl font-bold">
             {score}/{allVerses.length}
           </p>
           <p className="mb-6 text-gray-600 dark:text-gray-300">
             {score === allVerses.length
-              ? 'Mashallah! You know these verses perfectly!'
+              ? c.perfect
               : score >= 6
-                ? 'Excellent Quran knowledge!'
+                ? c.great
                 : score >= 3
-                  ? 'Good effort! Keep reading the Quran daily.'
-                  : 'Keep practicing! The Quran is best learned through repetition.'}
+                  ? c.good
+                  : c.learn}
           </p>
           <button
             onClick={restart}
             className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition"
           >
-            Play Again
+            {c.again}
           </button>
         </div>
       </div>
@@ -226,14 +114,14 @@ export default function AyahScramble() {
   }
 
   return (
-    <div className="mx-auto max-w-lg">
+    <div className="mx-auto max-w-lg" data-verse-id={ids[current]}>
       {/* Progress */}
       <div className="mb-6 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
         <span>
-          Verse {current + 1} of {allVerses.length}
+          {c.verse} {current + 1} {c.of} {allVerses.length}
         </span>
         <span>
-          Score: {score}/{current + (checked ? 1 : 0)}
+          {c.score}: {score}/{current + (checked ? 1 : 0)}
         </span>
       </div>
 
@@ -245,21 +133,23 @@ export default function AyahScramble() {
       </div>
 
       <p className="mb-4 text-center text-sm text-gray-500 dark:text-gray-400">
-        Arrange the words to form the correct verse from <strong>{verse.surah}</strong> (
-        {verse.reference})
+        {c.instruction.replace('{surah}', verse.surah).replace('{reference}', verse.reference)}
       </p>
 
       {/* Placed words area */}
-      <div className="mb-4 min-h-[80px] rounded-2xl border-2 border-dashed border-gray-300 p-4 dark:border-gray-600">
+      <div
+        data-testid="placed-words"
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
+        className="mb-4 min-h-[80px] rounded-2xl border-2 border-dashed border-gray-300 p-4 dark:border-gray-600"
+      >
         {placed.length === 0 ? (
-          <p className="text-center text-sm text-gray-400 dark:text-gray-500">
-            Click words below to build the verse...
-          </p>
+          <p className="text-center text-sm text-gray-400 dark:text-gray-500">{c.empty}</p>
         ) : (
           <div className="flex flex-wrap gap-2">
             {placed.map((word, i) => (
               <button
                 key={`placed-${i}`}
+                disabled={checked}
                 onClick={() => handlePlacedClick(word, i)}
                 className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition ${
                   checked
@@ -277,7 +167,11 @@ export default function AyahScramble() {
       </div>
 
       {/* Available words */}
-      <div className="mb-6 flex flex-wrap justify-center gap-2">
+      <div
+        data-testid="available-words"
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
+        className="mb-6 flex flex-wrap justify-center gap-2"
+      >
         {available.map((word, i) => (
           <button
             key={`avail-${i}`}
@@ -293,13 +187,30 @@ export default function AyahScramble() {
       {/* Correct answer on wrong */}
       {checked && !isCorrect && (
         <div className="mb-4 rounded-xl bg-amber-50 p-4 dark:bg-amber-900/20">
-          <p className="mb-1 text-xs font-medium text-amber-600 dark:text-amber-400">
-            Correct verse:
-          </p>
-          <p className="text-sm text-amber-800 italic dark:text-amber-200">
-            &ldquo;{verse.words.join(' ')}&rdquo;
-          </p>
+          <p className="mb-1 text-xs font-medium text-amber-600 dark:text-amber-400">{c.correct}</p>
+          {verse.texts.map((text, i) => (
+            <p
+              key={i}
+              data-testid="original-verse"
+              lang={lang}
+              dir={lang === 'ar' ? 'rtl' : 'ltr'}
+              className="text-sm text-amber-800 dark:text-amber-200"
+            >
+              {text}
+            </p>
+          ))}
         </div>
+      )}
+
+      {verse.footnotes.length > 0 && (
+        <details className="mb-4 text-sm">
+          <summary>{c.notes}</summary>
+          {verse.footnotes.map((note, i) => (
+            <p key={i} data-testid="scramble-footnotes" className="whitespace-pre-line">
+              {note}
+            </p>
+          ))}
+        </details>
       )}
 
       {/* Actions */}
@@ -311,13 +222,13 @@ export default function AyahScramble() {
               disabled={available.length > 0}
               className="bg-primary-500 hover:bg-primary-600 rounded-xl px-6 py-3 font-semibold text-white transition disabled:opacity-40"
             >
-              Check
+              {c.check}
             </button>
             <button
               onClick={clearPlaced}
               className="rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
             >
-              Clear
+              {c.clear}
             </button>
           </>
         ) : (
@@ -325,7 +236,7 @@ export default function AyahScramble() {
             onClick={nextVerse}
             className="bg-primary-500 hover:bg-primary-600 w-full rounded-xl py-3 font-semibold text-white transition"
           >
-            {current + 1 >= allVerses.length ? 'See Results' : 'Next Verse'}
+            {current + 1 >= allVerses.length ? c.results : c.next}
           </button>
         )}
       </div>

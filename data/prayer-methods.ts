@@ -27,3 +27,32 @@ export const ARABIC_PRAYER_METHODS: Record<string, string> = {
   '13': 'رئاسة الشؤون الدينية التركية',
   '15': 'لجنة رؤية الهلال العالمية',
 }
+
+export const FRENCH_PRAYER_METHODS: Record<string, string> = {
+  '1': 'Université des sciences islamiques de Karachi',
+  '2': 'ISNA (Amérique du Nord)',
+  '3': 'Ligue islamique mondiale',
+  '4': 'Oumm al-Qoura (Arabie saoudite)',
+  '5': 'Autorité générale égyptienne',
+  '8': 'Région du Golfe',
+  '9': 'Koweït',
+  '10': 'Qatar',
+  '11': 'MUIS (Singapour)',
+  '20': 'Ministère des Affaires religieuses (Indonésie)',
+  '13': 'Turquie (Diyanet)',
+  '15': 'Comité mondial d’observation lunaire',
+}
+export const GERMAN_PRAYER_METHODS: Record<string, string> = {
+  '1': 'Universität für Islamische Wissenschaften, Karatschi',
+  '2': 'ISNA (Nordamerika)',
+  '3': 'Islamische Weltliga',
+  '4': 'Umm al-Qura (Saudi-Arabien)',
+  '5': 'Ägyptische Generalbehörde',
+  '8': 'Golfregion',
+  '9': 'Kuwait',
+  '10': 'Katar',
+  '11': 'MUIS (Singapur)',
+  '20': 'Ministerium für religiöse Angelegenheiten (Indonesien)',
+  '13': 'Türkei (Diyanet)',
+  '15': 'Weltweites Mondsichtungskomitee',
+}

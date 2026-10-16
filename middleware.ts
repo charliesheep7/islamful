@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import Negotiator from 'negotiator'
+import { refreshAuth } from '@/utils/supabase/middleware'
 
-// Islamful supports English (default) and Arabic
-const locales = ['en', 'ar'] as const
+// English is the default; all supported locales use explicit route prefixes.
+const locales = ['en', 'ar', 'fr', 'de'] as const
 const defaultLocale = 'en' as const
 
 function getLocale(request: NextRequest): string {
@@ -21,8 +22,14 @@ function getLocale(request: NextRequest): string {
   return defaultLocale
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  if (pathname.startsWith('/auth/') || pathname.startsWith('/updates/')) {
+    const response = NextResponse.next()
+    response.headers.set('Referrer-Policy', 'no-referrer')
+    response.headers.set('Cache-Control', 'no-store')
+    return response
+  }
   const requestHeaders = new Headers(request.headers)
 
   // Check if there is any supported locale in the pathname
@@ -55,11 +62,7 @@ export function middleware(request: NextRequest) {
   // Pass locale information down to the app via custom request headers
   requestHeaders.set('x-locale', currentLocale)
   requestHeaders.set('x-pathname', pathname)
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  })
+  const response = await refreshAuth(request, requestHeaders)
   response.headers.set('x-locale', currentLocale)
   response.headers.set('x-pathname', pathname)
 

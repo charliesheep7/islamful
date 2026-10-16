@@ -1,8 +1,10 @@
+import NightPlannerPageTranslated from './NightPlannerPageTranslated'
 import Link from 'next/link'
 import NightPlanner from './NightPlanner'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
-export default function NightPlannerPage({ lang = 'en' }: { lang?: 'en' | 'ar' }) {
+export default function NightPlannerPage({ lang = 'en' }: { lang?: 'en' | 'ar' | 'fr' | 'de' }) {
+  if (lang === 'fr' || lang === 'de') return <NightPlannerPageTranslated lang={lang} />
   const ar = lang === 'ar'
   return (
     <div className="mx-auto max-w-3xl space-y-10 px-4 py-12" dir={ar ? 'rtl' : 'ltr'}>
