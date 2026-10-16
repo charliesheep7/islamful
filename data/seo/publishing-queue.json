@@ -673,10 +673,10 @@
       "proposed_title": "How to Pray Salah for Beginners",
       "target_path": "/blog/how-to-pray-salah-for-beginners",
       "source_file": "data/blog/en/how-to-pray-salah-for-beginners.mdx",
-      "action": "update_article",
-      "status": "queued",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Review sequence, conditions and school differences; explain what a beginner can do next, link prayer times and existing prayer-specific guides.",
-      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/how-to-pray-salah-for-beginners",
       "existing_overlap_candidates": [
         {
@@ -793,7 +793,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed.",
       "research_additions": [
@@ -823,7 +823,18 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "9ac3f59cbe107c181e9eaaeb273b16292bae374bb76bf4683cc5a87718ec6995",
+        "marker": "9a37e2db4f4dbd94b79da061",
+        "audit_file": "data/seo/publications/is-027.json"
+      },
+      "release": {
+        "date": "2026-10-14T03:56:30.449Z",
+        "commit": "0b97b96b7e2fffd41d545e379c8bfa869473cabb",
+        "deployment_id": 7056425842,
+        "url": "https://www.islamful.com/blog/how-to-pray-salah-for-beginners"
+      }
     },
     {
       "id": "is-056",
@@ -2444,8 +2455,8 @@
       "proposed_title": "Ramadan countdown and current-day view",
       "target_path": "/ramadan-calendar",
       "source_file": "app/ramadan-calendar/page.tsx",
-      "action": "improve_tool",
-      "status": "queued",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Extend the existing Ramadan timetable with days until the selected Ramadan start and the current Ramadan day in the selected city timezone. Preserve calculated-versus-locally-announced date labels, 29/30-day choice, manual correction and future-year selection. Verify Morocco, UAE and Saudi coverage without claiming universal confirmed moon-sighting dates. Keep country questions on the shared utility until separate useful sourced country pages are justified.",
       "next_step": "Implement and test this distinct extension of the already-live timetable, including timezone boundary, before/during/after Ramadan and local-date override cases; then deploy and verify live.",
       "conversion_or_tool_path": "/ramadan-calendar",
@@ -2536,7 +2547,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "editorial_primary_sources_checked_2026-10-13",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
       "research_additions": [
@@ -2598,7 +2609,53 @@
           ]
         }
       ],
-      "admission_batch": "semrush-scale-2026-10-13"
+      "admission_batch": "semrush-scale-2026-10-13",
+      "tool_publication": {
+        "version": "ramadan-progress-v1",
+        "source_review": "docs/ramadan-countdown-sources.md",
+        "reviewed_at": "2026-10-14T03:12:15.343Z",
+        "files": [
+          {
+            "path": "app/ramadan-calendar/page.tsx",
+            "sha256": "a693c5ca1b47f2ed681580e024ebfd1ccde85dee040a094ed9e55195adf4b4e8"
+          },
+          {
+            "path": "app/ramadan-calendar/[city]/page.tsx",
+            "sha256": "9f21b022341fd3c3485c0c0bc901bb2deeb15823c330212781e900afcc615b76"
+          },
+          {
+            "path": "app/[lang]/ramadan-calendar/page.tsx",
+            "sha256": "83779da4d486cfd4f14c2e43c9eaa1fce8c8c60aeba134341f5eeb7c6406ba3e"
+          },
+          {
+            "path": "app/[lang]/ramadan-calendar/[city]/page.tsx",
+            "sha256": "3661c8dc60c01bdd59e3bd403a91bfa26e9f29ec9fb4c9ff6e0181629be1845c"
+          },
+          {
+            "path": "components/fasting/FastingPlanner.tsx",
+            "sha256": "f51e20dfaf0e49e60c56586e7245b42b30675e9767c5513fd539f20392696dd1"
+          },
+          {
+            "path": "data/fasting.ts",
+            "sha256": "58ef27babeb0c9b496c457a127c76a3b66150b24540606976adf3341907f0fe7"
+          },
+          {
+            "path": "utils/fasting.ts",
+            "sha256": "b2164fb73ee0b6fee2a338bc8d262eb1eb4873cafb77ed762e5cc29cfa625177"
+          },
+          {
+            "path": "docs/ramadan-countdown-sources.md",
+            "sha256": "48a38966fd25293ac84ad2145dc59d385974692846b09de07dcadb21e2d3c796"
+          }
+        ]
+      },
+      "completion": {
+        "date": "2026-10-14T03:15:46.335Z",
+        "commit": "c28a10d410ae65af5a978a5fc42ebc2bb6a8b4e1",
+        "deployment_id": 7055890207,
+        "url": "https://www.islamful.com/ramadan-calendar",
+        "verification": "Exact deployed hashes of eight reviewed files; English/Arabic public countdown behavior, city-local midnight/DST, manual dates, API failure, canonicals and sitemap verified"
+      }
     },
     {
       "id": "is-039",

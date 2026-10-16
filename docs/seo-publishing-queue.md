@@ -31,7 +31,7 @@ The selector is read-only. It validates sources and destinations and emits a com
 
 ## Assignment publisher
 
-Codex researches and writes from the canonical queue. No OpenAI API key is needed. The legacy batch entry point now prepares assignments only; it does not generate or publish articles. The scheduled workflow verifies already reviewed releases and is a clean no-op when no release is pending. It does not author content unattended.
+Claude researches and writes from the canonical queue. No OpenAI API key is needed. The legacy batch entry point now prepares assignments only; it does not generate or publish articles. The scheduled workflow verifies already reviewed releases and is a clean no-op when no release is pending. It does not author content unattended.
 
 ```sh
 node scripts/article-publisher.mjs --prepare --limit 10
@@ -41,11 +41,11 @@ node scripts/article-publisher.mjs --verify FULL_PRODUCTION_COMMIT_SHA
 node --test tests/publishing-queue.mjs tests/article-publisher.mjs
 ```
 
-Prepare captures the full assignment, addenda and existing-file hash. Codex checks primary sources, authors the article and supplies an `agent_source_review` bundle with exact article hash, scoped source evidence and supported claim checks. Apply validates evidence, links and hashes before writing. Failed checks stop publication without marking an assignment complete. Correct the bundle and retry; never invent evidence.
+Prepare captures the full assignment, addenda and existing-file hash. The author checks primary sources, authors the article and supplies an `agent_source_review` bundle with exact article hash, scoped source evidence and supported claim checks. Apply validates evidence, links and hashes before writing. Failed checks stop publication without marking an assignment complete. Correct the bundle and retry; never invent evidence.
 
 Updates preserve their existing metadata except summary, FAQs and lastmod. New articles use an explicit AI-assisted editorial byline. Full extracts and draft bundles stay in ignored `.publishing-runs`; committed audits contain source identities, hashes and review findings. This is not independent scholar or clinician review.
 
-Run the full production build before publishing. An applied article remains `awaiting_release` until verification confirms a successful exact-commit Production deployment, matching article bytes and the live version marker. Concurrent edits stop verification instead of being overwritten. Failed releases stay pending. Tools remain separate implementation assignments. DeenBack uses truthful direct stores; quiz enrolment is an explicit reviewed entry in `data/recovery.ts`.
+Run the full production build before publishing. An applied article remains `awaiting_release` until verification confirms a successful exact-commit Production deployment, matching article bytes and the live version marker. Concurrent edits stop verification instead of being overwritten. Failed releases stay pending. Tools remain separate implementation assignments. Islamful articles link to real site tools; the site has no app-download CTA.
 
 New-article bundles may include `article.hero: { src, alt, sha256 }`. Use an inspected, project-owned raster image under `/static/images/`, descriptive plain alt text and its exact SHA-256. The publisher validates the local image, includes it in the article and image metadata, and records it in the audit. Release verification requires matching local, committed and public image bytes. Existing-article updates preserve their original image metadata. This is image support for reviewed bundles, not an automatic image generator or unattended article writer.
 
@@ -59,10 +59,16 @@ Schema version 2 retains the original CSV and adds `semrush-scale-evidence-2026-
 
 Queries with the same task share one destination. Existing prayer guides own their rak‘ah variants; adjacent wudu cases are consolidated where one answer serves them; broad ruling references are lower priority than DeenBack recovery content. An old-year search observation is never relabelled as current-year demand. Mixed fasting queries require intent checks before drafting.
 
-The selector remains read-only. The separate assignment publisher handles authoring and release state. Source checks and verified live release remain required; authoring happens in Codex without an API key.
+The selector remains read-only. The separate assignment publisher handles authoring and release state. Source checks and verified live release remain required; authoring happens in Claude without an API key.
 
 A separate queued tool assignment, `is-165`, covers the Ramadan countdown/current-day extension. The existing timetable remains recorded as live; new feature work is not silently treated as already implemented.
 
 ## Reviewed tool releases
 
 Implemented tools use `awaiting_tool_release`, separate from article publication. Each records its version marker, reviewed implementation files with SHA-256 hashes, and source-review document. Queue validation refuses changed or missing files. The article publisher does not process these rows. Verify the exact successful Production commit, both localized routes, actual calculation behavior, canonicals and sitemap before recording `live_reviewed`. Preserve the original observations.
+
+## Claude Desktop routine — October 15
+
+The enabled `daily-islamful-blogs` task reads the repository skill and this researched queue, with two English article assignments per day (new or update), at 10:00 and a 14:00 catch-up in Asia/Shanghai. The catch-up fills only the shortfall. The existing local lifecycle guard retains owner validation, one-writer lock, quotas, deadlines and exact article receipts. Its Islamful-specific adapter accepts publisher audits and queue records, counts updates toward the daily quota, and revalidates the exact context/bundle/rendered bytes. The old keyword/written CSVs are not used.
+
+The GitHub scheduled release verifier finalizes live status; Claude writes and pushes reviewed content. Keep a pending release pending until the exact successful production deployment is verified. The Arabic queue and tool work remain separate; no French/German demand is invented from English queries.

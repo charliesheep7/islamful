@@ -1,3 +1,4 @@
+import { checkCanonicalArticle } from '../scripts/claude-publishing-gate.mjs'
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
@@ -320,4 +321,27 @@ test('concurrent queue edits during live verification cannot be overwritten', as
   )
   assert.equal(loadQueue(f.root).items[0].brief, 'A concurrent editorial correction')
   assert.equal(loadQueue(f.root).items[0].status, 'awaiting_release')
+})
+
+test('Desktop canonical gate accepts reviewed new and update articles and rejects tampered bytes or review', async () => {
+  for (const action of ['new_article', 'update_article']) {
+    const f = fixture(action)
+    const run = path.join(f.root, '.publishing-runs', f.item.id)
+    fs.mkdirSync(run, { recursive: true })
+    fs.writeFileSync(path.join(run, 'context.json'), JSON.stringify(f.context))
+    fs.writeFileSync(path.join(run, 'bundle.json'), JSON.stringify(f.bundle))
+    await applyBundle(f.bundle, f.root)
+    assert.equal(
+      (await checkCanonicalArticle(f.root, f.item.source_file)).status,
+      'reviewed_gate_pass'
+    )
+    const file = path.join(f.root, f.item.source_file),
+      original = fs.readFileSync(file)
+    fs.appendFileSync(file, '\nUnreviewed edit')
+    await assert.rejects(checkCanonicalArticle(f.root, f.item.source_file))
+    fs.writeFileSync(file, original)
+    f.bundle.review.passed = false
+    fs.writeFileSync(path.join(run, 'bundle.json'), JSON.stringify(f.bundle))
+    await assert.rejects(checkCanonicalArticle(f.root, f.item.source_file))
+  }
 })
