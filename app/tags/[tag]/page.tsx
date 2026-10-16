@@ -64,12 +64,5 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  return (
-    <ListLayout
-      posts={posts}
-      initialDisplayPosts={initialDisplayPosts}
-      pagination={pagination}
-      title={tag}
-    />
-  )
+  return <ListLayout posts={posts} initialDisplayPosts={posts} title={tag} />
 }

@@ -46,11 +46,11 @@ export default function PrivacyPage() {
         </p>
         <h3>Website accounts</h3>
         <p>
-          Website sign-in is handled by Supabase. Email sign-in uses your email address and
-          password. If you choose Google, Supabase receives your email and basic Google profile
-          information, which may include your name and profile picture. Authentication cookies keep
-          you signed in. Signing out on this browser clears its session. Public tools and articles
-          do not require an account.
+          Website sign-in is handled by Supabase. Email/password sign-in is currently disabled. If
+          you choose Google, Supabase receives your email and basic Google profile information,
+          which may include your name and profile picture. Authentication cookies keep you signed
+          in. Signing out on this browser clears its session. Public tools and articles do not
+          require an account.
         </p>
 
         <h3>2. Conversation Data</h3>
@@ -73,7 +73,11 @@ export default function PrivacyPage() {
             functionality)
           </li>
         </ul>
-        <p>We do not collect precise location, behavioral analytics, or advertising identifiers.</p>
+        <p>
+          The website records the limited sharing events described above and may use aggregate
+          page-usage analytics when configured. Location tools request browser permission and use
+          coordinates to provide the selected tool; location is not included in sharing events.
+        </p>
 
         <h2>How We Use Your Information</h2>
         <p>We use your information to:</p>

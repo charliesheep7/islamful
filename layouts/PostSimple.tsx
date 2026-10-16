@@ -1,3 +1,4 @@
+import { getBlogCopy } from '@/data/locales/blog'
 import { ReactNode } from 'react'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
@@ -22,12 +23,13 @@ interface LayoutProps {
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
   const { path, slug, date, title, summary } = content
 
+  const copy = getBlogCopy(content.lang)
   return (
     <SectionContainer>
       <ScrollTopAndComment />
       <Breadcrumbs
         items={[
-          { name: 'Blog', href: '/blog' },
+          { name: copy.blog, href: '/blog' },
           { name: title, href: `/${path}` },
         ]}
       />
@@ -37,9 +39,9 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
             <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">
               <dl>
                 <div>
-                  <dt className="sr-only">Published on</dt>
+                  <dt className="sr-only">{copy.published}</dt>
                   <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                    <time dateTime={date}>{formatDate(date, content.lang || 'en')}</time>
                   </dd>
                 </div>
               </dl>

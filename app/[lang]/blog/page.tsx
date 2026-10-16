@@ -2,38 +2,27 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import ListLayout from '@/layouts/ListLayout'
-
-const POSTS_PER_PAGE = 5
-
-export function generateStaticParams() {
-  return [{ lang: 'ar' }]
-}
-
-export const metadata = genPageMetadata({
-  title: 'المدونة',
-  description: 'إرشادات، تأملات، وتحديثات من فريق دين باك لدعم عباداتك اليومية.',
-  alternates: buildLanguageAlternates('/blog', { currentLanguage: 'ar' }),
-})
-
-export default async function LocaleBlogPage({ params }: { params: Promise<{ lang: 'ar' }> }) {
+import { getBlogCopy } from '@/data/locales/blog'
+import type { Locale } from '@/utils/locale'
+type Props = { params: Promise<{ lang: Locale }> }
+export async function generateMetadata({ params }: Props) {
   const { lang } = await params
-  // Filter posts by the specified language
-  const filteredBlogs = allBlogs.filter((post) => post.lang === lang)
-  const posts = allCoreContent(sortPosts(filteredBlogs))
-  const pageNumber = 1
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
-  const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE * pageNumber)
-  const pagination = {
-    currentPage: pageNumber,
-    totalPages: totalPages,
-  }
-
+  const c = getBlogCopy(lang)
+  return genPageMetadata({
+    title: c.blog,
+    description: c.description,
+    alternates: buildLanguageAlternates('/blog', { currentLanguage: lang }),
+  })
+}
+export default async function Page({ params }: Props) {
+  const { lang } = await params
+  const posts = allCoreContent(sortPosts(allBlogs.filter((p) => !p.draft && p.lang === lang)))
   return (
     <ListLayout
       posts={posts}
-      initialDisplayPosts={initialDisplayPosts}
-      pagination={pagination}
-      title="All Posts"
+      initialDisplayPosts={posts.slice(0, 5)}
+      pagination={{ currentPage: 1, totalPages: Math.ceil(posts.length / 5) }}
+      title={getBlogCopy(lang).all}
     />
   )
 }

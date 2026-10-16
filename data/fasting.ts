@@ -1,4 +1,6 @@
+import { translatedFastingCopy } from './locales/fasting'
 export const fastingCopy = {
+  ...translatedFastingCopy,
   en: {
     dailyTitle: 'Suhoor & Iftar Times',
     ramadanTitle: 'Ramadan Calendar & Countdown',

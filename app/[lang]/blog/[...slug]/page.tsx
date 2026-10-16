@@ -69,7 +69,7 @@ const buildJsonLdAuthors = (authorDetails: ReturnType<typeof resolveAuthorDetail
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug: string[]; lang: 'ar' }>
+  params: Promise<{ slug: string[]; lang: 'ar' | 'fr' | 'de' }>
 }): Promise<Metadata | undefined> {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
@@ -101,7 +101,7 @@ export async function generateMetadata(props: {
   )
 
   const alternates = hasEnglishVersion
-    ? buildLanguageAlternates(`/blog/${post.slug}`, { currentLanguage: 'ar' })
+    ? buildLanguageAlternates(`/blog/${post.slug}`, { currentLanguage: lang })
     : undefined
 
   return {
@@ -128,16 +128,14 @@ export async function generateMetadata(props: {
   }
 }
 
-export const generateStaticParams = async () => {
-  // Generate params for Arabic posts only
-  const arabicBlogs = allBlogs.filter((p) => p.lang === 'ar')
-  return arabicBlogs.map((p) => ({
-    lang: 'ar' as const,
-    slug: p.slug.split('/').map((name) => decodeURI(name)),
-  }))
-}
+export const generateStaticParams = async () =>
+  allBlogs
+    .filter((p) => !p.draft && ['ar', 'fr', 'de'].includes(p.lang))
+    .map((p) => ({ lang: p.lang, slug: p.slug.split('/') }))
 
-export default async function Page(props: { params: Promise<{ slug: string[]; lang: 'ar' }> }) {
+export default async function Page(props: {
+  params: Promise<{ slug: string[]; lang: 'ar' | 'fr' | 'de' }>
+}) {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
   const { lang } = params

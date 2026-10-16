@@ -1,4 +1,9 @@
 'use client'
+import type { Locale } from '@/utils/locale'
+import { cityLabel, countryLabel } from '@/utils/city-label'
+import { fastingTranslations } from '@/data/locales/fasting'
+import { FRENCH_PRAYER_METHODS, GERMAN_PRAYER_METHODS } from '@/data/prayer-methods'
+
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import cities from '@/data/cities'
@@ -29,7 +34,7 @@ export default function FastingPlanner({
   initialDates,
   initialTable,
 }: {
-  lang: 'en' | 'ar'
+  lang: Locale
   ramadan: boolean
   initialCity?: string
   initialToday: string
@@ -38,7 +43,7 @@ export default function FastingPlanner({
   initialTable: FastingTable | null
 }) {
   const ar = lang === 'ar',
-    t = (en: string, arabic: string) => (ar ? arabic : en)
+    t = (en: string, arabic: string) => (ar ? arabic : fastingTranslations[lang]?.[en] || en)
   const initial = cities.find((c) => c.slug === initialCity)
   const [citySlug, setCity] = useState(initialCity),
     [method, setMethod] = useState(String(initial?.method || 15)),
@@ -59,7 +64,7 @@ export default function FastingPlanner({
         ? `${t('Estimated Ramadan', 'رمضان تقديري')} ${initialYear} · ${t('Umm al-Qura · adjustment 0', 'أم القرى · التعديل 0')}`
         : t('Selected date', 'التاريخ المختار')
     ),
-    [displayLabel, setDisplayLabel] = useState(initial ? (ar ? initial.nameAr : initial.name) : '')
+    [displayLabel, setDisplayLabel] = useState(initial ? cityLabel(initial, lang) : '')
   const [busy, setBusy] = useState(false),
     [error, setError] = useState(false),
     [storage, setStorage] = useState(true),
@@ -68,7 +73,14 @@ export default function FastingPlanner({
   const request = useRef<AbortController | null>(null),
     generation = useRef(0)
   const city = cities.find((c) => c.slug === citySlug),
-    methods = ar ? ARABIC_PRAYER_METHODS : PRAYER_METHODS
+    methods =
+      lang === 'fr'
+        ? FRENCH_PRAYER_METHODS
+        : lang === 'de'
+          ? GERMAN_PRAYER_METHODS
+          : ar
+            ? ARABIC_PRAYER_METHODS
+            : PRAYER_METHODS
   const ramadanSelection = useMemo(() => {
     if (!ramadan) return null
     try {
@@ -174,7 +186,7 @@ export default function FastingPlanner({
       } else {
         if (!city) throw new Error('Choose city')
         result = await fetchFastingTable(city, method, dates, { signal: controller.signal })
-        label = ar ? city.nameAr : city.name
+        label = cityLabel(city, lang)
       }
       if (version !== generation.current || controller.signal.aborted) return
       setTable(result)
@@ -234,24 +246,28 @@ export default function FastingPlanner({
               <p className="text-sm text-emerald-100">{ramadanBasis}</p>
               <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
                 {progress.kind === 'before'
-                  ? t(
-                      `${progress.daysUntil} ${progress.daysUntil === 1 ? 'day' : 'days'} until the first fast`,
-                      `الأيام حتى أول يوم صيام: ${progress.daysUntil.toLocaleString('ar', { numberingSystem: 'arab' })}`
-                    )
+                  ? lang === 'fr'
+                    ? `${progress.daysUntil} jour(s) avant le premier jeûne`
+                    : lang === 'de'
+                      ? `${progress.daysUntil} Tag(e) bis zum ersten Fastentag`
+                      : t(
+                          `${progress.daysUntil} ${progress.daysUntil === 1 ? 'day' : 'days'} until the first fast`,
+                          `الأيام حتى أول يوم صيام: ${progress.daysUntil.toLocaleString('ar', { numberingSystem: 'arab' })}`
+                        )
                   : progress.kind === 'during'
-                    ? t(
-                        `Fasting day ${progress.day} of ${progress.total}`,
-                        `يوم الصيام ${progress.day.toLocaleString('ar', { numberingSystem: 'arab' })} من ${progress.total.toLocaleString('ar', { numberingSystem: 'arab' })}`
-                      )
+                    ? lang === 'fr'
+                      ? `Jour de jeûne ${progress.day} sur ${progress.total}`
+                      : lang === 'de'
+                        ? `Fastentag ${progress.day} von ${progress.total}`
+                        : t(
+                            `Fasting day ${progress.day} of ${progress.total}`,
+                            `يوم الصيام ${progress.day.toLocaleString('ar', { numberingSystem: 'arab' })} من ${progress.total.toLocaleString('ar', { numberingSystem: 'arab' })}`
+                          )
                     : t('The selected Ramadan dates have passed', 'انتهت تواريخ رمضان المختارة')}
               </h2>
               <p className="mt-3 text-sm text-emerald-100">
-                {city
-                  ? ar
-                    ? city.nameAr
-                    : city.name
-                  : t('Choose your city below', 'اختر مدينتك أدناه')}{' '}
-                · <bdi>{previewZone}</bdi> · {t('As of', 'بتاريخ')} <bdi>{progress.today}</bdi>
+                {city ? cityLabel(city, lang) : t('Choose your city below', 'اختر مدينتك أدناه')} ·{' '}
+                <bdi>{previewZone}</bdi> · {t('As of', 'بتاريخ')} <bdi>{progress.today}</bdi>
               </p>
               <dl className="mt-6 grid gap-4 border-t border-white/20 pt-5 sm:grid-cols-2">
                 <div>
@@ -324,7 +340,7 @@ export default function FastingPlanner({
                 <option value="">{t('Choose a city', 'اختر مدينة')}</option>
                 {cities.map((c) => (
                   <option key={c.slug} value={c.slug}>
-                    {ar ? `${c.nameAr}، ${c.countryAr}` : `${c.name}, ${c.country}`}
+                    {`${cityLabel(c, lang)}, ${countryLabel(c, lang)}`}
                   </option>
                 ))}
               </select>
@@ -732,7 +748,7 @@ export default function FastingPlanner({
           'A timetable does not determine whether you should fast. Follow qualified guidance for your circumstances and the locally observed days.',
           'الجدول لا يحدد وجوب الصيام عليك أو ملاءمته لحالتك. اتبع التوجيه المؤهل لحالتك والأيام المعتمدة محليًا.'
         )}{' '}
-        <Link className="underline" href={`${ar ? '/ar' : ''}/prayer-times`}>
+        <Link className="underline" href={`${lang === 'en' ? '' : `/${lang}`}/prayer-times`}>
           {t('Full prayer times', 'مواقيت الصلاة كاملة')}
         </Link>
       </p>

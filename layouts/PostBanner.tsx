@@ -1,3 +1,4 @@
+import { getBlogCopy } from '@/data/locales/blog'
 import { ReactNode } from 'react'
 import Image from '@/components/Image'
 import Bleed from 'pliny/ui/Bleed'
@@ -24,12 +25,13 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
   const { path, slug, title, images, summary } = content
   const displayImage = images && images.length > 0 ? images[0] : '/static/images/og-image.png'
 
+  const copy = getBlogCopy(content.lang)
   return (
     <SectionContainer>
       <ScrollTopAndComment />
       <Breadcrumbs
         items={[
-          { name: 'Blog', href: '/blog' },
+          { name: copy.blog, href: '/blog' },
           { name: title, href: `/${path}` },
         ]}
       />

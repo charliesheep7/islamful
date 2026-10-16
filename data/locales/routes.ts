@@ -1,5 +1,9 @@
 export const translatedContentPaths = [
   '/',
+  '/blog',
+  '/haram-check',
+  '/fasting-times',
+  '/ramadan-calendar',
   '/dhikr',
   '/dua',
   '/hijri-birthday',
@@ -37,4 +41,6 @@ export const translatedContentPaths = [
 export const hasTranslatedContent = (path: string) =>
   translatedContentPaths.includes(path) ||
   path.startsWith('/prayer-times/') ||
-  path.startsWith('/quran/')
+  path.startsWith('/quran/') ||
+  path.startsWith('/blog/') ||
+  path.startsWith('/ramadan-calendar/')

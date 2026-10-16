@@ -22,7 +22,7 @@ export const privacyPages = {
       ['h3', 'Comptes du site'],
       [
         'p',
-        'Supabase gère la connexion au site. La connexion par e-mail utilise votre adresse e-mail et votre mot de passe. Si vous choisissez Google, Supabase reçoit votre e-mail et les informations de base de votre profil Google, qui peuvent inclure votre nom et votre photo. Des cookies d’authentification maintiennent votre connexion. Vous déconnecter dans ce navigateur efface sa session. Les outils et articles publics ne nécessitent pas de compte.',
+        'Supabase gère la connexion au site. La connexion par e-mail et mot de passe est actuellement désactivée. Si vous choisissez Google, Supabase reçoit votre e-mail et les informations de base de votre profil Google, qui peuvent inclure votre nom et votre photo. Des cookies d’authentification maintiennent votre connexion. Vous déconnecter dans ce navigateur efface sa session. Les outils et articles publics ne nécessitent pas de compte.',
       ],
       ['h3', '2. Données de conversation'],
       ['li', 'Messages que vous envoyez à l’assistant IA'],
@@ -41,7 +41,7 @@ export const privacyPages = {
       ],
       [
         'p',
-        'Nous ne recueillons pas de localisation précise, de données d’analyse comportementale ni d’identifiants publicitaires.',
+        'Le site enregistre les événements de partage limités décrits ci-dessus et peut utiliser des statistiques agrégées de consultation lorsqu’elles sont configurées. Les outils de localisation demandent l’autorisation du navigateur ; les coordonnées ne figurent pas dans les événements de partage.',
       ],
       ['h2', 'Utilisation de vos informations'],
       ['p', 'Nous utilisons vos informations pour :'],
@@ -130,7 +130,7 @@ export const privacyPages = {
       ['h3', 'Website-Konten'],
       [
         'p',
-        'Supabase übernimmt die Anmeldung auf der Website. Bei der E-Mail-Anmeldung werden Ihre E-Mail-Adresse und Ihr Passwort verwendet. Wenn Sie Google wählen, erhält Supabase Ihre E-Mail-Adresse und grundlegende Google-Profilinformationen, darunter möglicherweise Ihren Namen und Ihr Profilbild. Authentifizierungs-Cookies halten Sie angemeldet. Durch die Abmeldung in diesem Browser wird dessen Sitzung gelöscht. Öffentliche Tools und Artikel erfordern kein Konto.',
+        'Supabase übernimmt die Anmeldung auf der Website. Die Anmeldung per E-Mail und Passwort ist derzeit deaktiviert. Wenn Sie Google wählen, erhält Supabase Ihre E-Mail-Adresse und grundlegende Google-Profilinformationen, darunter möglicherweise Ihren Namen und Ihr Profilbild. Authentifizierungs-Cookies halten Sie angemeldet. Durch die Abmeldung in diesem Browser wird dessen Sitzung gelöscht. Öffentliche Tools und Artikel erfordern kein Konto.',
       ],
       ['h3', '2. Gesprächsdaten'],
       ['li', 'Nachrichten, die Sie an den KI-Assistenten senden'],
@@ -147,7 +147,10 @@ export const privacyPages = {
         'li',
         'Gerätemodell, Betriebssystemversion und zugehörige technische Informationen für Sicherheit und grundlegende Funktionen',
       ],
-      ['p', 'Wir erheben keine genauen Standortdaten, Verhaltensanalysen oder Werbekennungen.'],
+      [
+        'p',
+        'Die Website erfasst die oben beschriebenen begrenzten Freigabeereignisse und kann konfigurierte, zusammengefasste Nutzungsstatistiken verwenden. Standortwerkzeuge fragen nach der Browserfreigabe; Koordinaten sind nicht in Freigabeereignissen enthalten.',
+      ],
       ['h2', 'Wie wir Ihre Informationen verwenden'],
       ['p', 'Wir verwenden Ihre Informationen, um:'],
       ['li', 'Die Dienste bereitzustellen, zu verbessern und zu personalisieren'],

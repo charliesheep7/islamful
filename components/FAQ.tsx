@@ -1,19 +1,21 @@
+import { getBlogCopy } from '@/data/locales/blog'
 interface FAQItem {
   question: string
   answer: string
 }
 
 interface FAQProps {
+  lang?: string
   faqs: FAQItem[]
 }
 
-export default function FAQ({ faqs }: FAQProps) {
+export default function FAQ({ faqs, lang = 'en' }: FAQProps) {
   if (!faqs || faqs.length === 0) return null
 
   return (
     <section className="mt-12 mb-8">
       <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">
-        Frequently Asked Questions
+        {getBlogCopy(lang).faq}
       </h2>
       <div className="space-y-6">
         {faqs.map((faq, index) => (

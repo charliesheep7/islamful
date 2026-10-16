@@ -1,4 +1,118 @@
 export const mortgagePages = {
+  en: {
+    title: 'Islamic Real Estate Financing Calculator',
+    description:
+      'Compare estimates of murabaha, ijara, and diminishing musharaka with a conventional loan.',
+    intro:
+      'Explore various real estate financing structures and compare their costs under the same assumptions.',
+    guide: 'Understanding Islamic Real Estate Financing',
+    sections: [
+      [
+        'Riba and Islamic Finance',
+        'Riba is prohibited in the Qur’an, notably in 2:275–279. Islamic finance offers structures based on sale, lease, or partnership in an asset rather than interest-bearing loans. Compliance depends on the actual contract and its implementation; the product name alone is not sufficient.',
+      ],
+      [
+        'Murabaha: Sale with Margin',
+        'The bank purchases the property and then resells it at an agreed price that includes its margin. The sale price and installments are fixed in the contract. In this calculator, the margin is simply calculated on the financed principal, at the entered annual rate, over the entire chosen duration.',
+      ],
+      [
+        'Ijara: Lease with Acquisition',
+        'The bank holds the property and leases it to the client; a separate mechanism provides for acquisition. Here, the simulation adds a constant rent calculated on the initial principal and a constant monthly contribution toward purchase. Actual contracts may provide for rent revisions.',
+      ],
+      [
+        'Diminishing Musharaka: Shared Ownership',
+        'The client and the bank hold shares of the property. The client gradually buys out the bank’s shares and pays rent on the remaining shares. Here, the starting monthly payment remains constant, while its division between rent and acquisition evolves with the bank’s remaining share.',
+      ],
+      [
+        'Comparing Proposals',
+        'Compare total cost, down payment, monthly installments, fees, rent revision conditions, and early repayment terms. Check ownership responsibilities and contract compliance assessment. No structure is automatically the cheapest for all profiles.',
+      ],
+      [
+        'Assumptions and Calculation Limits',
+        'The results are simplified illustrations. The principal corresponds to the property value minus the down payment. Fees, taxes, insurance, rate changes, and institution-specific conditions are not included. The conventional loan uses a fixed monthly payment formula. Displayed figures are rounded; an actual offer may differ.',
+      ],
+      [
+        'Availability and Support',
+        'Products and protections vary by country and institution. Request a detailed proposal and contract explanations from a qualified professional. The UK resources below present general structures; they do not determine the rules applicable in your country.',
+      ],
+    ],
+    faq: 'Frequently Asked Questions',
+    questions: [
+      [
+        'Does murabaha involve compound interest?',
+        'This calculator’s model applies a simple margin on the initial principal. The actual sale price and payment schedule must be verified in the contract.',
+      ],
+      [
+        'Why does the rent decrease in musharaka?',
+        'In this simulation, the monthly rent is calculated on the bank’s remaining share. It therefore decreases as this share is bought out.',
+      ],
+      [
+        'Does the calculator confirm the religious compliance of a product?',
+        'No. It illustrates calculations and does not certify any institution or contract. Have the actual terms reviewed by a qualified person.',
+      ],
+      [
+        'How to use the comparison?',
+        'Enter the same property value, down payment, and duration, then review the calculated costs for each model. The conventional rate is a separate parameter. The results do not constitute a financing recommendation.',
+      ],
+    ],
+    sources: 'Sources and Further Reading',
+  },
+  ar: {
+    title: 'حاسبة التمويل العقاري الإسلامي',
+    description: 'قارن تقديرات المرابحة والإجارة والمشاركة التناقصية مع قرض تقليدي.',
+    intro: 'استكشف عدة هياكل للتمويل العقاري وقارن تكاليفها وفقًا لنفس الفرضيات.',
+    guide: 'فهم التمويل العقاري الإسلامي',
+    sections: [
+      [
+        'الربا والتمويل الإسلامي',
+        'الربا محرم في القرآن، لا سيما في ٢:٢٧٥–٢٧٩. يقدم التمويل الإسلامي هياكل قائمة على البيع أو الإيجار أو المشاركة في الأصل بدلاً من القرض بفائدة. الالتزام بالشريعة يعتمد على العقد الفعلي وتنفيذه؛ فاسم المنتج وحده لا يكفي.',
+      ],
+      [
+        'المرابحة: البيع بالربح المحدد',
+        'تشتري البنك العقار ثم تعيده للبيع بسعر متفق عليه يشمل هامش ربحها. يتم تحديد سعر البيع والأقساط في العقد. في هذه الحاسبة، يُحسب الهامش ببساطة على رأس المال الممول، بمعدل سنوي مدخل، طوال المدة المختارة.',
+      ],
+      [
+        'الإجارة: الإيجار مع التملك',
+        'تمتلك البنك العقار وتؤجره للعميل؛ ويوجد آلية منفصلة للتملك. هنا، تجمع المحاكاة إيجارًا ثابتًا محسوبًا على رأس المال الأصلي ومساهمة شهرية ثابتة للشراء. قد تنص العقود الفعلية على مراجعات للإيجار.',
+      ],
+      [
+        'المشاركة التناقصية: الملكية المشتركة',
+        'يمتلك العميل والبنك حصصًا في العقار. يشتري العميل تدريجيًا حصص البنك ويدفع إيجارًا على الحصص المتبقية. هنا، تبقى الدفعة الشهرية ثابتة، بينما يتغير توزيعها بين الإيجار والشراء حسب الحصة المتبقية للبنك.',
+      ],
+      [
+        'مقارنة العروض',
+        'قارن التكلفة الإجمالية، الدفعة المقدمة، الأقساط، الرسوم، شروط مراجعة الإيجار، وآليات السداد المبكر. تحقق من المسؤوليات المتعلقة بالملكية وتقييم التزام العقد. لا توجد هيكلية أرخص تلقائيًا لجميع الحالات.',
+      ],
+      [
+        'الافتراضات وحدود الحساب',
+        'النتائج تمثيلات مبسطة. رأس المال يعادل قيمة العقار مطروحًا منها الدفعة المقدمة. لا تشمل الحسابات الرسوم والضرائب والتأمينات وتغيرات الأسعار وشروط المؤسسات الخاصة. القرض التقليدي يستخدم صيغة قسط ثابت. الأرقام المعروضة تقريبية؛ قد تختلف العروض الحقيقية.',
+      ],
+      [
+        'التوفر والمرافقة',
+        'تختلف المنتجات والحمايات حسب البلد والمؤسسة. اطلب عرضًا مفصلًا وشرحًا للعقد من مختص مؤهل. الموارد البريطانية أدناه تعرض هياكل عامة؛ ولا تحدد القواعد المعمول بها في بلدك.',
+      ],
+    ],
+    faq: 'الأسئلة المتكررة',
+    questions: [
+      [
+        'هل تحتوي المرابحة على فوائد مركبة؟',
+        'نموذج هذه الحاسبة يطبق هامش ربح بسيط على رأس المال الأصلي. يجب التحقق من سعر البيع الفعلي وجدول الدفعات في العقد.',
+      ],
+      [
+        'لماذا ينخفض الإيجار في المشاركة؟',
+        'في هذه المحاكاة، يُحسب الإيجار الشهري على الحصة المتبقية للبنك. لذا ينخفض مع شراء هذه الحصة.',
+      ],
+      [
+        'هل تؤكد الحاسبة الالتزام الديني للمنتج؟',
+        'لا. هي توضح الحسابات ولا تصادق على أي مؤسسة أو عقد. يجب مراجعة الشروط الفعلية من قبل شخص مؤهل.',
+      ],
+      [
+        'كيف أستخدم المقارنة؟',
+        'أدخل نفس قيمة العقار، ونفس الدفعة المقدمة، ونفس المدة، ثم راجع التكاليف المحسوبة لكل نموذج. المعدل التقليدي هو معلمة منفصلة. النتائج ليست توصية تمويلية.',
+      ],
+    ],
+    sources: 'المصادر والقراءات',
+  },
   fr: {
     title: 'Calculateur de financement immobilier islamique',
     description:

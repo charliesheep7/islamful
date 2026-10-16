@@ -30,7 +30,7 @@ export async function generateMetadata(props: {
   return genPageMetadata({
     title: pageNumber <= 1 ? 'Blog' : `Blog - Page ${pageNumber}`,
     description,
-    alternates: buildLanguageAlternates(path, { includeArabic: false }),
+    alternates: buildLanguageAlternates(path),
   })
 }
 

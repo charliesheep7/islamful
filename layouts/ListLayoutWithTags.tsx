@@ -1,4 +1,6 @@
 'use client'
+import { getBlogCopy } from '@/data/locales/blog'
+import { localeFromPath } from '@/utils/locale'
 
 import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
@@ -24,6 +26,8 @@ interface ListLayoutProps {
 
 function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname()
+  const locale = localeFromPath(pathname)
+  const copy = getBlogCopy(locale)
   const segments = pathname.split('/')
   const lastSegment = segments[segments.length - 1]
   const basePath = pathname
@@ -38,7 +42,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
       <nav className="flex justify-between">
         {!prevPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
+            {copy.previous}
           </button>
         )}
         {prevPage && (
@@ -46,20 +50,20 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
           >
-            Previous
+            {copy.previous}
           </Link>
         )}
         <span>
-          {currentPage} of {totalPages}
+          {currentPage} {copy.of} {totalPages}
         </span>
         {!nextPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
+            {copy.next}
           </button>
         )}
         {nextPage && (
           <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            Next
+            {copy.next}
           </Link>
         )}
       </nav>
@@ -74,6 +78,8 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
+  const locale = localeFromPath(pathname)
+  const copy = getBlogCopy(locale)
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
@@ -92,13 +98,13 @@ export default function ListLayoutWithTags({
           <div className="hidden h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:flex dark:bg-gray-900/70 dark:shadow-gray-800/40">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
-                <h3 className="text-accent-600 font-bold uppercase">All Posts</h3>
+                <h3 className="text-accent-600 font-bold uppercase">{copy.all}</h3>
               ) : (
                 <Link
                   href={`/blog`}
                   className="hover:text-accent-600 dark:hover:text-accent-600 font-bold text-gray-700 uppercase dark:text-gray-300"
                 >
-                  All Posts
+                  {copy.all}
                 </Link>
               )}
               <ul>
@@ -146,10 +152,10 @@ export default function ListLayoutWithTags({
                           )}
                           <div className="flex-1 space-y-3">
                             <dl>
-                              <dt className="sr-only">Published on</dt>
+                              <dt className="sr-only">{copy.published}</dt>
                               <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
                                 <time dateTime={date} suppressHydrationWarning>
-                                  {formatDate(date, siteMetadata.locale)}
+                                  {formatDate(date, locale)}
                                 </time>
                               </dd>
                             </dl>

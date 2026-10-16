@@ -12,9 +12,9 @@ export const hadithQuestions = {
       text: 'Seek knowledge even if you have to go as far as China.',
       isReal: false,
       explanation:
-        'This is a commonly cited saying but is classified as fabricated (mawdu) by hadith scholars including Ibn al-Jawzi and Al-Albani. However, the importance of seeking knowledge is confirmed by many authentic hadiths.',
-      sourceUrl: '',
-      source: '',
+        'This quiz follows al-Albani’s classification as fabricated, cited by IslamQA 13637. Assessments of this report differ; this is not a claim of unanimous grading. The importance of learning is established independently.',
+      sourceUrl: 'https://islamqa.info/en/answers/13637',
+      source: 'IslamQA 13637',
     },
     {
       text: 'None of you truly believes until he loves for his brother what he loves for himself.',
@@ -52,17 +52,17 @@ export const hadithQuestions = {
       text: 'Work for your worldly life as if you will live forever, and work for your afterlife as if you will die tomorrow.',
       isReal: false,
       explanation:
-        'This is commonly attributed to the Prophet (PBUH) but has no authentic chain of narration. It is sometimes attributed to Ali ibn Abi Talib or other scholars, but even those attributions are not verified.',
-      sourceUrl: '',
-      source: '',
+        'Hadith Answers reports a weak chain through Abdullah ibn Amr in al-Bayhaqi. This quiz counts sahih and hasan reports as accepted, so a weak chain is not counted as accepted here. Weak does not mean fabricated.',
+      sourceUrl: 'https://hadithanswers.com/how-much-of-effort-for-this-life-and-the-next/',
+      source: 'Hadith Answers',
     },
     {
       text: 'The ink of the scholar is holier than the blood of the martyr.',
       isReal: false,
       explanation:
-        'This is a fabricated hadith with no authentic chain of narration. Al-Khatib al-Baghdadi and others have classified it as having no basis. However, Islam highly values both knowledge and sacrifice.',
-      sourceUrl: '',
-      source: '',
+        'This quiz follows the fabricated classification cited from al-Khatib al-Baghdadi and al-Dhahabi in IslamQA 11920. The answer examines several chains. This judgment concerns this comparison, not the value of knowledge itself.',
+      sourceUrl: 'https://islamqa.info/en/answers/11920',
+      source: 'IslamQA 11920',
     },
     {
       text: 'Whoever follows a path in pursuit of knowledge, Allah will make easy for him a path to Paradise.',
@@ -116,9 +116,9 @@ export const hadithQuestions = {
       text: "Love of one's homeland is part of faith.",
       isReal: false,
       explanation:
-        'This is a fabricated hadith with no authentic chain. Scholars including As-Saghani and Ibn Taymiyyah have classified it as baseless. Patriotism is discussed in other authentic contexts in Islam.',
-      sourceUrl: '',
-      source: '',
+        'The cited Qibla answer reports that authors including al-Saghani, al-Qari and al-Ajluni classified this wording as fabricated. The quiz follows that assessment of attribution to the Prophet; it does not judge affection for one’s home.',
+      sourceUrl: 'https://islamqa.org/hanafi/qibla-hanafi/34615/',
+      source: 'Qibla / IslamQA',
     },
   ],
   ar: [
@@ -132,10 +132,10 @@ export const hadithQuestions = {
     {
       text: 'اطلبوا العلم ولو في الصين.',
       explanation:
-        'قول شائع تُنسب روايته إلى النبي، وقد حكم عليه علماء، منهم ابن الجوزي والألباني، بالوضع. أما فضل طلب العلم فثابت بأحاديث صحيحة كثيرة.',
+        'يتبع هذا الاختبار حكم الألباني بالوضع كما تنقله إجابة إسلام سؤال وجواب 13637. تختلف التقييمات لهذه الرواية، ولا ندّعي الإجماع على درجتها. وفضل طلب العلم ثابت بأدلة أخرى.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.info/en/answers/13637',
+      source: 'IslamQA 13637',
     },
     {
       text: 'لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه.',
@@ -171,18 +171,18 @@ export const hadithQuestions = {
     {
       text: 'اعمل لدنياك كأنك تعيش أبدًا، واعمل لآخرتك كأنك تموت غدًا.',
       explanation:
-        'يُنسب هذا القول إلى النبي، لكن لا يثبت بسند صحيح. ويُنسب أحيانًا إلى علي بن أبي طالب أو غيره، وهذه النسب غير متحققة هنا أيضًا.',
+        'يذكر موقع Hadith Answers أن البيهقي رواه عن عبد الله بن عمرو بسند ضعيف. يعدّ الاختبار الصحيح والحسن مقبولين، فلا يعدّ السند الضعيف مقبولًا هنا. والضعيف لا يعني الموضوع.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://hadithanswers.com/how-much-of-effort-for-this-life-and-the-next/',
+      source: 'Hadith Answers',
     },
     {
       text: 'مداد العلماء أفضل من دماء الشهداء.',
       explanation:
-        'صُنّف هذا القول على أنه موضوع ولا يثبت بسند صحيح. ولا ينتقص ذلك من مكانة العلم والتضحية في الإسلام.',
+        'يتبع الاختبار الحكم بالوضع المنقول عن الخطيب البغدادي والذهبي في إجابة إسلام سؤال وجواب 11920، التي تناقش عدة أسانيد. يخص الحكم هذه المقارنة لا فضل العلم ذاته.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.info/en/answers/11920',
+      source: 'IslamQA 11920',
     },
     {
       text: 'من سلك طريقًا يلتمس فيه علمًا سهّل الله له به طريقًا إلى الجنة.',
@@ -231,10 +231,10 @@ export const hadithQuestions = {
     {
       text: 'حب الوطن من الإيمان.',
       explanation:
-        'لا يثبت هذا القول حديثًا عن النبي بسند صحيح. وقد حكم علماء، منهم الصغاني وابن تيمية، بأنه لا أصل له. ولا يعني ذلك نفي بحث محبة الوطن في سياقات إسلامية أخرى.',
+        'تنقل إجابة قبلة المذكورة أن علماء منهم الصغاني والقاري والعجلوني عدّوا هذه الصيغة موضوعة. يتبع الاختبار هذا التقييم لنسبتها إلى النبي، ولا يحكم على محبة الإنسان لوطنه.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.org/hanafi/qibla-hanafi/34615/',
+      source: 'Qibla / IslamQA',
     },
   ],
   fr: [
@@ -249,10 +249,10 @@ export const hadithQuestions = {
     {
       text: 'Cherchez le savoir, même s’il faut aller jusqu’en Chine.',
       explanation:
-        'Cette formule est souvent citée, mais des spécialistes, dont Ibn al-Jawzi et Al-Albani, l’ont classée comme fabriquée. L’importance de rechercher le savoir est toutefois confirmée par de nombreux hadiths authentiques.',
+        'Ce quiz suit le classement comme fabriqué d’al-Albani, cité dans IslamQA 13637. Les appréciations divergent ; il ne s’agit pas d’un consensus. Le mérite de l’apprentissage est établi par d’autres textes.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.info/en/answers/13637',
+      source: 'IslamQA 13637',
     },
     {
       text: 'Aucun de vous ne croit véritablement tant qu’il n’aime pas pour son frère ce qu’il aime pour lui-même.',
@@ -289,18 +289,18 @@ export const hadithQuestions = {
     {
       text: 'Travaille pour ce monde comme si tu devais vivre éternellement, et pour l’au-delà comme si tu devais mourir demain.',
       explanation:
-        'Cette formule est souvent attribuée au Prophète, mais ne possède pas de chaîne authentique. Elle est parfois attribuée à Ali ibn Abi Talib ou à d’autres savants ; ces attributions ne sont pas non plus vérifiées ici.',
+        'Hadith Answers mentionne une chaîne faible, rapportée par al-Bayhaqi d’après Abdullah ibn Amr. Ce quiz accepte les récits sahih et hasan ; une chaîne faible n’est donc pas acceptée ici. Faible ne signifie pas fabriqué.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://hadithanswers.com/how-much-of-effort-for-this-life-and-the-next/',
+      source: 'Hadith Answers',
     },
     {
       text: 'L’encre du savant est plus sacrée que le sang du martyr.',
       explanation:
-        'Cette formule est classée comme fabriquée et ne possède pas de chaîne authentique. Cela ne diminue pas la valeur du savoir et du sacrifice en islam.',
+        'Ce quiz suit le classement comme fabriqué cité d’al-Khatib al-Baghdadi et d’al-Dhahabi dans IslamQA 11920, qui examine plusieurs chaînes. Ce jugement concerne cette comparaison, pas la valeur du savoir.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.info/en/answers/11920',
+      source: 'IslamQA 11920',
     },
     {
       text: 'À celui qui emprunte un chemin pour rechercher le savoir, Allah facilite un chemin vers le Paradis.',
@@ -353,10 +353,10 @@ export const hadithQuestions = {
     {
       text: 'L’amour de la patrie fait partie de la foi.',
       explanation:
-        'Cette formule n’est pas établie comme hadith prophétique par une chaîne authentique. Des savants, dont As-Saghani et Ibn Taymiyyah, l’ont jugée sans fondement. Cela n’exclut pas d’aborder l’amour de la patrie dans d’autres contextes islamiques.',
+        'La réponse de Qibla citée rapporte que des auteurs dont al-Saghani, al-Qari et al-Ajluni ont classé cette formule comme fabriquée. Le quiz suit cette appréciation de son attribution au Prophète, sans juger l’attachement à son pays.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.org/hanafi/qibla-hanafi/34615/',
+      source: 'Qibla / IslamQA',
     },
   ],
   de: [
@@ -371,10 +371,10 @@ export const hadithQuestions = {
     {
       text: 'Sucht Wissen, selbst wenn ihr dafür bis nach China gehen müsst.',
       explanation:
-        'Dieser häufig zitierte Ausspruch wurde von Hadithgelehrten wie Ibn al-Dschauzi und Al-Albani als erfunden eingestuft. Die Bedeutung des Wissenserwerbs wird jedoch durch viele authentische Hadithe bestätigt.',
+        'Dieses Quiz folgt al-Albanis Einstufung als erfunden, zitiert in IslamQA 13637. Die Bewertungen unterscheiden sich; ein Konsens wird nicht behauptet. Der Wert des Lernens ist unabhängig davon belegt.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.info/en/answers/13637',
+      source: 'IslamQA 13637',
     },
     {
       text: 'Keiner von euch glaubt wahrhaftig, bis er für seinen Bruder liebt, was er für sich selbst liebt.',
@@ -411,18 +411,18 @@ export const hadithQuestions = {
     {
       text: 'Arbeite für diese Welt, als würdest du ewig leben, und für das Jenseits, als würdest du morgen sterben.',
       explanation:
-        'Dieser Ausspruch wird oft dem Propheten zugeschrieben, besitzt aber keine authentische Überlieferungskette. Er wird auch Ali ibn Abi Talib oder anderen Gelehrten zugeschrieben; diese Zuschreibungen sind hier ebenfalls nicht belegt.',
+        'Hadith Answers nennt eine schwache Überlieferungskette über Abdullah ibn Amr bei al-Bayhaqi. Dieses Quiz zählt sahih und hasan als anerkannt; eine schwache Kette wird hier nicht anerkannt. Schwach bedeutet nicht erfunden.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://hadithanswers.com/how-much-of-effort-for-this-life-and-the-next/',
+      source: 'Hadith Answers',
     },
     {
       text: 'Die Tinte des Gelehrten ist heiliger als das Blut des Märtyrers.',
       explanation:
-        'Dieser Ausspruch wird als erfunden eingestuft und besitzt keine authentische Überlieferungskette. Das schmälert nicht den Wert von Wissen und Opferbereitschaft im Islam.',
+        'Dieses Quiz folgt der Einstufung als erfunden, die IslamQA 11920 von al-Khatib al-Baghdadi und al-Dhahabi anführt. Die Antwort untersucht mehrere Ketten. Bewertet wird dieser Vergleich, nicht der Wert des Wissens.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.info/en/answers/11920',
+      source: 'IslamQA 11920',
     },
     {
       text: 'Wer einen Weg auf der Suche nach Wissen beschreitet, dem erleichtert Allah einen Weg ins Paradies.',
@@ -475,13 +475,13 @@ export const hadithQuestions = {
     {
       text: 'Die Liebe zur Heimat gehört zum Glauben.',
       explanation:
-        'Dieser Ausspruch ist nicht durch eine authentische Kette als prophetischer Hadith belegt. Gelehrte wie As-Saghani und Ibn Taymiyyah bezeichneten ihn als unbegründet. Das schließt eine Erörterung der Heimatliebe in anderen islamischen Zusammenhängen nicht aus.',
+        'Die zitierte Qibla-Antwort berichtet, dass unter anderem al-Saghani, al-Qari und al-Ajluni diesen Wortlaut als erfunden einstuften. Das Quiz folgt dieser Bewertung der Zuschreibung an den Propheten, ohne Heimatverbundenheit zu beurteilen.',
       isReal: false,
-      sourceUrl: '',
-      source: '',
+      sourceUrl: 'https://islamqa.org/hanafi/qibla-hanafi/34615/',
+      source: 'Qibla / IslamQA',
     },
   ],
-} as const
+}
 export const hadithGame = {
   en: {
     complete: 'Game Complete!',
@@ -563,4 +563,4 @@ export const hadithGame = {
     source: 'Quelle',
     note: 'Die Aussagen sind Übersetzungen oder Zusammenfassungen. Sahih und hasan gelten hier als anerkannt; Wortlaut und gelehrte Einstufungen sind wichtig. Lies nach jeder Antwort die Erklärung.',
   },
-} as const
+}

@@ -1,5 +1,7 @@
 'use client'
 
+import baseDatabase from '@/data/haram-database.json'
+import { haramTranslations, haramEntries } from '@/data/locales/haram'
 import { useState } from 'react'
 import { Search, CheckCircle, XCircle, AlertTriangle, Info, Loader2, Sparkles } from 'lucide-react'
 import { findLocalEntry } from './haram-search'
@@ -15,288 +17,7 @@ interface HaramEntry {
 }
 
 // Prewritten summaries. The full set has not received a comprehensive scholarly source audit.
-const database: HaramEntry[] = [
-  {
-    name: 'gelatin',
-    ruling: 'depends',
-    explanation:
-      'Pork-derived gelatin is haram. Gelatin from halal-slaughtered animals or fish is halal.',
-  },
-  {
-    name: 'alcohol',
-    ruling: 'haram',
-    explanation: 'Consuming alcohol (khamr) is haram — wine, beer, spirits, any intoxicant.',
-    source: 'Quran 5:90',
-  },
-  {
-    name: 'pork',
-    ruling: 'haram',
-    explanation: 'Pork and all pork-derived products are clearly prohibited.',
-    source: 'Quran 2:173',
-  },
-  {
-    name: 'chicken',
-    ruling: 'depends',
-    explanation: 'Halal if slaughtered according to Islamic guidelines (zabiha).',
-  },
-  {
-    name: 'beef',
-    ruling: 'depends',
-    explanation: 'Halal when slaughtered according to Islamic guidelines (zabiha).',
-  },
-  {
-    name: 'fish',
-    ruling: 'halal',
-    explanation: 'Fish and seafood are generally halal. Fish with scales are unanimously halal.',
-    source: 'Quran 5:96',
-  },
-  {
-    name: 'shrimp',
-    ruling: 'halal',
-    explanation:
-      "Halal by the majority of scholars (Shafi'i, Maliki, Hanbali). Some Hanafi scholars differ.",
-  },
-  {
-    name: 'vanilla extract',
-    ruling: 'depends',
-    explanation:
-      'Contains alcohol as a solvent. Most scholars permit it when alcohol evaporates in cooking.',
-  },
-  {
-    name: 'vinegar',
-    ruling: 'halal',
-    explanation:
-      'The Prophet (peace be upon him) praised vinegar. Transformation to acetic acid makes it permissible.',
-  },
-  {
-    name: 'soy sauce',
-    ruling: 'depends',
-    explanation:
-      'Naturally brewed soy sauce may contain trace alcohol. Most scholars consider it halal.',
-  },
-  {
-    name: 'whey',
-    ruling: 'depends',
-    explanation:
-      'Halal itself, but questionable if it contains animal-derived rennet from non-halal sources.',
-  },
-  {
-    name: 'rennet',
-    ruling: 'depends',
-    explanation:
-      'Halal from halal-slaughtered animals. Pork-derived is haram. Microbial/vegetable rennet is halal.',
-  },
-  {
-    name: 'e120',
-    ruling: 'haram',
-    explanation: 'E120 (carmine/cochineal) is from crushed insects. Haram by most scholars.',
-  },
-  {
-    name: 'carmine',
-    ruling: 'haram',
-    explanation:
-      'Derived from crushed cochineal insects. Found in red-colored foods and cosmetics.',
-  },
-  {
-    name: 'glycerin',
-    ruling: 'depends',
-    explanation: 'Plant-based is halal. Pork-derived is haram. Check the source.',
-  },
-  {
-    name: 'l-cysteine',
-    ruling: 'depends',
-    explanation: 'Can be from human hair (haram), duck feathers, or synthetic (halal).',
-  },
-  {
-    name: 'mushroom',
-    ruling: 'halal',
-    explanation: 'Halal. Mushrooms are a fungus, not an animal product.',
-  },
-  {
-    name: 'chocolate',
-    ruling: 'depends',
-    explanation:
-      'Plain chocolate is halal. Check for alcohol, non-halal gelatin, or animal emulsifiers.',
-  },
-  {
-    name: 'coffee',
-    ruling: 'halal',
-    explanation: 'Halal by scholarly consensus. Not an intoxicant.',
-  },
-  {
-    name: 'music',
-    ruling: 'depends',
-    explanation:
-      'Debated among scholars. Some prohibit instruments except the daff. Nasheeds are generally permissible.',
-  },
-  {
-    name: 'cryptocurrency',
-    ruling: 'depends',
-    explanation:
-      'Varied opinions. Some permit it as a digital asset, others cite speculation (gharar) concerns.',
-  },
-  {
-    name: 'insurance',
-    ruling: 'depends',
-    explanation:
-      'Conventional insurance involves gharar and riba. Takaful (Islamic insurance) is the halal alternative.',
-  },
-  {
-    name: 'mortgages',
-    ruling: 'depends',
-    explanation:
-      'Conventional mortgages involve riba (interest). Islamic mortgages (Murabaha, Ijara) are halal alternatives.',
-  },
-  // --- Activities & Lifestyle ---
-  {
-    name: 'dating',
-    ruling: 'haram',
-    explanation:
-      'Casual dating involving khalwa (seclusion) with the opposite gender is prohibited. Islam encourages marriage through halal courtship with family involvement.',
-  },
-  {
-    name: 'gambling',
-    ruling: 'haram',
-    explanation:
-      'All forms of gambling (maysir) are explicitly prohibited in the Quran, including lotteries, betting, and casino games.',
-    source: 'Quran 5:90-91',
-  },
-  {
-    name: 'smoking',
-    ruling: 'haram',
-    explanation: "Egypt's Dar Al-Ifta prohibits smoking because of its documented harm to health.",
-    source: "Egypt's Dar Al-Ifta, fatwa 3699",
-    sourceUrl: 'https://www.dar-alifta.org/en/fatwa/details/4530/smoking',
-  },
-  {
-    name: 'vaping',
-    ruling: 'haram',
-    explanation:
-      'Scholars apply the same ruling as smoking — it contains nicotine, is addictive, and causes bodily harm.',
-  },
-  {
-    name: 'tattoo',
-    ruling: 'haram',
-    explanation:
-      "The Prophet (peace be upon him) cursed the one who does tattoos and the one who has them done. Permanent tattoos alter Allah's creation.",
-    source: 'Sahih al-Bukhari 5937',
-  },
-  {
-    name: 'interest',
-    ruling: 'haram',
-    explanation:
-      'Riba (interest/usury) is strictly forbidden. Both paying and receiving interest are prohibited in Islam.',
-    source: 'Quran 2:275-279',
-  },
-  {
-    name: 'dog',
-    ruling: 'depends',
-    explanation:
-      'Keeping dogs as pets is discouraged by most scholars, as angels do not enter a house with a dog. However, dogs for guarding, herding, hunting, or service purposes are permitted.',
-    source: 'Sahih al-Bukhari 3225, Sahih Muslim 1574',
-  },
-  {
-    name: 'cat',
-    ruling: 'halal',
-    explanation:
-      'Keeping cats is permissible if their needs are met. The companion Abu Hurayrah was nicknamed for caring for a kitten.',
-    source: 'SeekersGuidance: Can We Keep Cats as Indoor Pets?',
-    sourceUrl: 'https://seekersguidance.org/answers/hanafi-fiqh/can-we-keep-cats-as-indoor-pets/',
-  },
-  {
-    name: 'astrology',
-    ruling: 'haram',
-    explanation:
-      'Following astrology or horoscopes as a way to predict the future is prohibited in the cited scholarly answer. This is different from astronomy.',
-    source: 'SeekersGuidance: Is It Permissible to Believe In Astrology and Horoscopes?',
-    sourceUrl:
-      'https://seekersguidance.org/answers/general-counsel/is-it-permissible-to-believe-in-astrology-and-horoscopes/',
-  },
-  {
-    name: 'horoscope',
-    ruling: 'haram',
-    explanation:
-      'Following horoscope predictions is prohibited in the cited scholarly answer. Sahih Muslim 2230 warns about consulting a diviner, but does not mention horoscopes by name.',
-    source: 'SeekersGuidance: Is It Permissible to Believe In Astrology and Horoscopes?',
-    sourceUrl:
-      'https://seekersguidance.org/answers/general-counsel/is-it-permissible-to-believe-in-astrology-and-horoscopes/',
-  },
-  {
-    name: 'yoga',
-    ruling: 'depends',
-    explanation:
-      'Physical yoga exercises for fitness are generally permissible. However, spiritual yoga involving meditation, chanting, or Hindu religious elements is prohibited.',
-  },
-  {
-    name: 'christmas',
-    ruling: 'haram',
-    explanation:
-      'Celebrating Christmas as a religious festival is not permissible as it involves imitating non-Muslim religious practices. Being kind to non-Muslim neighbors during their holidays is encouraged.',
-  },
-  {
-    name: 'halloween',
-    ruling: 'haram',
-    explanation:
-      'Halloween has pagan origins and involves imitating non-Islamic traditions. Muslims are advised to avoid participating in its rituals and celebrations.',
-  },
-  {
-    name: 'birthday',
-    ruling: 'depends',
-    explanation:
-      'Scholars differ. Some consider birthday celebrations as imitation of non-Muslim customs. Others permit simple gatherings without extravagance or un-Islamic practices.',
-  },
-  {
-    name: 'shaving beard',
-    ruling: 'depends',
-    explanation:
-      'The majority of scholars consider shaving the beard makruh (disliked) or haram, as the Prophet (peace be upon him) commanded letting the beard grow. Some scholars allow trimming.',
-    source: 'Sahih al-Bukhari 5893, Sahih Muslim 259',
-  },
-  {
-    name: 'stocks',
-    ruling: 'depends',
-    explanation:
-      "Investing in stocks is permissible if the company's business is halal and does not involve interest, alcohol, gambling, or other haram activities. Sharia-compliant screening is recommended.",
-  },
-  {
-    name: 'trading',
-    ruling: 'depends',
-    explanation:
-      'Halal trading involves buying and selling real assets. Day trading with excessive speculation (gharar) or margin trading with interest is prohibited.',
-  },
-  {
-    name: 'video games',
-    ruling: 'depends',
-    explanation:
-      'Permissible in moderation if the content does not include gambling, explicit material, or shirk. Should not distract from prayers or obligations.',
-  },
-  {
-    name: 'movies',
-    ruling: 'depends',
-    explanation:
-      'Watching movies is permissible if the content is clean and does not contain explicit scenes, promote haram, or distract from Islamic duties.',
-  },
-  {
-    name: 'silk',
-    ruling: 'depends',
-    explanation:
-      'Wearing pure silk is haram for men but halal for women. The Prophet (peace be upon him) prohibited silk and gold for men of his ummah.',
-    source: 'Sahih al-Bukhari 5426, Sunan Abu Dawud',
-  },
-  {
-    name: 'gold',
-    ruling: 'depends',
-    explanation:
-      'Wearing gold jewelry is haram for men but halal for women. Owning gold as an investment or asset is permissible for both.',
-    source: 'Sahih Muslim 2078',
-  },
-  {
-    name: 'nail polish',
-    ruling: 'depends',
-    explanation:
-      'Ordinary nail polish may block water during wudu. Products marketed as breathable still need product-specific verification; ask a qualified scholar if you are unsure about your practice.',
-  },
-]
+const database = baseDatabase as HaramEntry[]
 
 function searchDatabase(query: string): HaramEntry | null {
   return findLocalEntry(query, database)
@@ -377,6 +98,7 @@ export default function HaramChecker({
   standalone = false,
 }: HaramCheckerProps) {
   const isRTL = lang === 'ar'
+  const t = (en: string, ar: string) => haramTranslations[lang]?.[en] || (isRTL ? ar : en)
   const [query, setQuery] = useState(defaultQuery)
   const [result, setResult] = useState<HaramEntry | null>(null)
   const [loading, setLoading] = useState(false)
@@ -390,9 +112,16 @@ export default function HaramChecker({
     setIsAiResult(false)
 
     // 1. Try static database first (instant)
-    const localResult = searchDatabase(searchQuery)
+    const localizedEntries = haramEntries[lang] || []
+    const match = findLocalEntry(searchQuery, localizedEntries)
+    const localResult = match ? { ...database[match.index], ...match } : searchDatabase(searchQuery)
+    const localizedResult =
+      localResult &&
+      localizedEntries.find(
+        (entry) => entry.index === database.findIndex((item) => item.name === localResult.name)
+      )
     if (localResult) {
-      setResult(localResult)
+      setResult(localizedResult ? { ...localResult, ...localizedResult } : localResult)
       return
     }
 
@@ -429,11 +158,10 @@ export default function HaramChecker({
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={
-                isRTL
-                  ? 'اكتب أي شيء... طعام، نشاط، أسلوب حياة...'
-                  : 'Type anything... food, activity, lifestyle...'
-              }
+              placeholder={t(
+                'Type anything... food, activity, lifestyle...',
+                'اكتب أي شيء... طعام، نشاط، أسلوب حياة...'
+              )}
               className={`w-full rounded-lg border border-gray-300 py-2.5 ps-10 pe-3 text-sm text-gray-900 focus:border-[var(--color-accent-500)] focus:ring-[var(--color-accent-500)] dark:border-gray-600 dark:bg-gray-800 dark:text-white ${isRTL ? 'font-arabic' : ''}`}
             />
           </div>
@@ -442,7 +170,7 @@ export default function HaramChecker({
             disabled={loading || !query.trim()}
             className="rounded-lg bg-[var(--color-accent-500)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[var(--color-accent-600)] disabled:opacity-50"
           >
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : isRTL ? 'تحقق' : 'Check'}
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : t('Check', 'تحقق')}
           </button>
         </div>
       </form>
@@ -450,22 +178,21 @@ export default function HaramChecker({
       {/* Suggestion chips */}
       {!searched && (
         <div className={`-mt-3 mb-6 flex flex-wrap gap-2 ${isRTL ? 'font-arabic' : ''}`}>
-          {(isRTL
-            ? ['موسيقى', 'كلاب', 'وشم', 'تدخين', 'أسهم', 'مواعدة', 'يوغا', 'ذهب']
-            : ['Music', 'Dogs', 'Tattoos', 'Smoking', 'Stocks', 'Dating', 'Yoga', 'Gold']
-          ).map((chip) => (
-            <button
-              key={chip}
-              type="button"
-              onClick={() => {
-                setQuery(chip)
-                doSearch(chip)
-              }}
-              className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 transition-colors hover:border-[var(--color-accent-500)] hover:text-[var(--color-accent-500)] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-[var(--color-accent-400)] dark:hover:text-[var(--color-accent-400)]"
-            >
-              {chip}
-            </button>
-          ))}
+          {['Music', 'Dogs', 'Tattoos', 'Smoking', 'Stocks', 'Dating', 'Yoga', 'Gold']
+            .map((chip) => t(chip, chip))
+            .map((chip) => (
+              <button
+                key={chip}
+                type="button"
+                onClick={() => {
+                  setQuery(chip)
+                  doSearch(chip)
+                }}
+                className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 transition-colors hover:border-[var(--color-accent-500)] hover:text-[var(--color-accent-500)] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-[var(--color-accent-400)] dark:hover:text-[var(--color-accent-400)]"
+              >
+                {chip}
+              </button>
+            ))}
         </div>
       )}
 
@@ -476,9 +203,10 @@ export default function HaramChecker({
           <span
             className={`text-sm text-gray-600 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL
-              ? 'جارٍ إعداد معلومات عامة بالذكاء الاصطناعي...'
-              : 'Preparing AI-generated information...'}
+            {t(
+              'Preparing AI-generated information...',
+              'جارٍ إعداد معلومات عامة بالذكاء الاصطناعي...'
+            )}
           </span>
         </div>
       )}
@@ -487,9 +215,7 @@ export default function HaramChecker({
       {searched && !loading && !result && (
         <div className="rounded-lg bg-gray-50 p-4 text-center dark:bg-gray-800/50">
           <p className={`text-sm text-gray-600 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}>
-            {isRTL
-              ? `لم نجد نتائج لـ "${query}". جرّب مصطلحاً مختلفاً.`
-              : `No results for "${query}". Try a different term.`}
+            {t('No results. Try a different term.', 'لم نجد نتائج. جرّب مصطلحًا مختلفًا.')}
           </p>
         </div>
       )}
@@ -500,20 +226,18 @@ export default function HaramChecker({
           <div className="mb-2 flex items-center gap-2">
             <Icon className={`h-5 w-5 ${config.color}`} />
             <span className={`text-sm font-bold ${config.color}`}>
-              {isRTL ? config.labelAr : config.label}
+              {t(config.label, config.labelAr)}
             </span>
             <span className="text-sm font-semibold text-gray-900 capitalize dark:text-white">
               &middot; {result.name}
             </span>
             <span className="ms-auto flex items-center gap-1 rounded-full bg-white/60 px-2 py-0.5 text-xs text-gray-500 dark:bg-gray-800/60 dark:text-gray-400">
               {isAiResult && <Sparkles className="h-3 w-3" />}
-              {isAiResult ? 'AI' : isRTL ? 'ملخص مكتوب مسبقاً' : 'Prewritten'}
+              {isAiResult ? t('AI', 'ذكاء اصطناعي') : t('Prewritten', 'ملخص مكتوب مسبقاً')}
             </span>
           </div>
           <p className="mb-2 text-xs text-gray-600 dark:text-gray-400">
-            {isRTL
-              ? 'معلومات عامة، وليست فتوى معتمدة.'
-              : 'General information, not a verified fatwa.'}
+            {t('General information, not a verified fatwa.', 'معلومات عامة، وليست فتوى معتمدة.')}
           </p>
           <p
             className={`text-sm leading-relaxed text-gray-700 dark:text-gray-300 ${isRTL ? 'font-arabic' : ''}`}
@@ -522,7 +246,7 @@ export default function HaramChecker({
           </p>
           {result.source && (
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              {isRTL ? 'مرجع للتحقق' : 'Reference to verify'}:{' '}
+              {t('Reference to verify', 'مرجع للتحقق')}:{' '}
               {result.sourceUrl ? (
                 <a
                   href={result.sourceUrl}
@@ -545,9 +269,10 @@ export default function HaramChecker({
         <p
           className={`mt-6 text-xs text-gray-400 dark:text-gray-500 ${isRTL ? 'font-arabic' : ''}`}
         >
-          {isRTL
-            ? 'الملخصات المكتوبة مسبقاً وإجابات الذكاء الاصطناعي لم تخضع جميعها لمراجعة علمية مستقلة، وقد تكون ناقصة أو خاطئة. تحقق من المراجع بنفسك، واستشر عالماً موثوقاً عند الحاجة إلى فتوى.'
-            : 'Prewritten and AI-generated summaries have not all been independently reviewed and may be incomplete or wrong. Verify any reference yourself; consult a qualified scholar for a personal ruling.'}
+          {t(
+            'Prewritten and AI-generated summaries have not all been independently reviewed and may be incomplete or wrong. Verify any reference yourself; consult a qualified scholar for a personal ruling.',
+            'الملخصات المكتوبة مسبقاً وإجابات الذكاء الاصطناعي لم تخضع جميعها لمراجعة علمية مستقلة، وقد تكون ناقصة أو خاطئة. تحقق من المراجع بنفسك، واستشر عالماً موثوقاً عند الحاجة إلى فتوى.'
+          )}
         </p>
       )}
     </>
@@ -563,19 +288,20 @@ export default function HaramChecker({
         <div className="mb-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[var(--color-primary-500)]/10 px-3 py-1 text-xs font-semibold tracking-wide text-[var(--color-primary-500)] uppercase">
             <Search className="h-3.5 w-3.5" />
-            {isRTL ? 'أداة مجانية' : 'Free Tool'}
+            {t('Free Tool', 'أداة مجانية')}
           </span>
           <h3
             className={`mt-2 text-lg font-bold text-gray-900 dark:text-white ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL ? 'دليل موضوعات الحلال والحرام' : 'Halal and Haram Topic Guide'}
+            {t('Halal and Haram Topic Guide', 'دليل موضوعات الحلال والحرام')}
           </h3>
           <p
             className={`mt-1 text-sm text-gray-500 dark:text-gray-400 ${isRTL ? 'font-arabic' : ''}`}
           >
-            {isRTL
-              ? 'ابحث عن معلومات عامة حول الطعام والأنشطة والحياة اليومية'
-              : 'Explore general information about food, activities, and daily life'}
+            {t(
+              'Explore general information about food, activities, and daily life',
+              'ابحث عن معلومات عامة حول الطعام والأنشطة والحياة اليومية'
+            )}
           </p>
         </div>
         {inner}

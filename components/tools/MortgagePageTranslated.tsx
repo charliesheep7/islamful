@@ -3,10 +3,14 @@ import IslamicMortgageCalculator from './IslamicMortgageCalculator'
 import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 import JsonLd from '@/components/seo/JsonLd'
-export default function MortgagePageTranslated({ lang }: { lang: 'fr' | 'de' }) {
+export default function MortgagePageTranslated({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
   const c = mortgagePages[lang]
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8" lang={lang}>
+    <div
+      className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8"
+      lang={lang}
+      dir={lang === 'ar' ? 'rtl' : 'ltr'}
+    >
       <Breadcrumbs items={[{ name: c.title, href: `/${lang}/islamic-mortgage` }]} />
       <JsonLd
         data={{
@@ -53,7 +57,7 @@ export default function MortgagePageTranslated({ lang }: { lang: 'fr' | 'de' }) 
             </a>
           </li>
           <li>
-            <a href={`/${lang}/quran/al-baqarah#ayah-275`}>2:275–279</a>
+            <a href={`${lang === 'en' ? '' : `/${lang}`}/quran/al-baqarah#ayah-275`}>2:275–279</a>
           </li>
         </ul>
       </section>

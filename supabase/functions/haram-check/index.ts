@@ -110,7 +110,10 @@ Deno.serve(async (req) => {
     }
 
     const isArabic = lang === 'ar'
-    const responseLang = isArabic ? 'Arabic' : 'English'
+    const responseLang =
+      ({ en: 'English', ar: 'Arabic', fr: 'French', de: 'German' } as Record<string, string>)[
+        lang
+      ] || 'English'
 
     const systemPrompt = `You provide general information about Islamic perspectives. You are not a scholar and do not issue fatwas. Do not present a generated answer as a verified religious ruling.
 

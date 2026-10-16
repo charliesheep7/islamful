@@ -141,21 +141,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   )
 
-  const ramadanCities = ['en', 'ar'].flatMap((lang) =>
+  const ramadanCities = ['en', 'ar', 'fr', 'de'].flatMap((lang) =>
     cities.map((city) => ({
-      url: `${siteUrl}${lang === 'ar' ? '/ar' : ''}/ramadan-calendar/${city.slug}`,
+      url: `${siteUrl}${lang === 'en' ? '' : `/${lang}`}/ramadan-calendar/${city.slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
       alternates: {
         languages: {
           en: `${siteUrl}/ramadan-calendar/${city.slug}`,
           ar: `${siteUrl}/ar/ramadan-calendar/${city.slug}`,
+          fr: `${siteUrl}/fr/ramadan-calendar/${city.slug}`,
+          de: `${siteUrl}/de/ramadan-calendar/${city.slug}`,
         },
       },
     }))
   )
 
+  const translatedBlogs = allBlogs
+    .filter((p) => !p.draft && ['fr', 'de'].includes(p.lang))
+    .map((p) => ({
+      url: `${siteUrl}/${p.lang}/${p.path}`,
+      lastModified: p.lastmod || p.date,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
   return [
+    ...translatedBlogs,
     ...translatedPages,
     ...translatedCities,
     ...ramadanCities,
