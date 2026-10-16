@@ -1,5 +1,6 @@
 'use client'
 
+import { authConfig } from '@/utils/supabase/config'
 import baseDatabase from '@/data/haram-database.json'
 import { haramTranslations, haramEntries } from '@/data/locales/haram'
 import { useState } from 'react'
@@ -23,7 +24,8 @@ function searchDatabase(query: string): HaramEntry | null {
   return findLocalEntry(query, database)
 }
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseConfig = authConfig()
+const SUPABASE_URL = supabaseConfig?.url || ''
 
 async function askAI(query: string, lang: string): Promise<HaramEntry | null> {
   if (!SUPABASE_URL) return null
@@ -31,7 +33,7 @@ async function askAI(query: string, lang: string): Promise<HaramEntry | null> {
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/haram-check`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', apikey: supabaseConfig?.key || '' },
       body: JSON.stringify({ query: query.trim(), lang }),
     })
 
@@ -178,21 +180,21 @@ export default function HaramChecker({
       {/* Suggestion chips */}
       {!searched && (
         <div className={`-mt-3 mb-6 flex flex-wrap gap-2 ${isRTL ? 'font-arabic' : ''}`}>
-          {['Music', 'Dogs', 'Tattoos', 'Smoking', 'Stocks', 'Dating', 'Yoga', 'Gold']
-            .map((chip) => t(chip, chip))
-            .map((chip) => (
+          {['Music', 'Dogs', 'Tattoos', 'Smoking', 'Stocks', 'Dating', 'Yoga', 'Gold'].map(
+            (chip) => (
               <button
                 key={chip}
                 type="button"
                 onClick={() => {
-                  setQuery(chip)
+                  setQuery(t(chip, chip))
                   doSearch(chip)
                 }}
                 className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 transition-colors hover:border-[var(--color-accent-500)] hover:text-[var(--color-accent-500)] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-[var(--color-accent-400)] dark:hover:text-[var(--color-accent-400)]"
               >
-                {chip}
+                {t(chip, chip)}
               </button>
-            ))}
+            )
+          )}
         </div>
       )}
 

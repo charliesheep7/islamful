@@ -177,9 +177,7 @@ export const wordleHints = {
 export const wordleWords = [
   'TAQWA',
   'UMMAH',
-  'HADIJ',
   'SALAH',
-  'SAWAM',
   'ZAKAH',
   'HIJAB',
   'QURAN',
@@ -194,7 +192,6 @@ export const wordleWords = [
   'IMAAN',
   'JIHAD',
   'KAFIR',
-  'MASJD',
   'NIKAH',
   'QIBLA',
   'SADQA',

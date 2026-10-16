@@ -167,10 +167,9 @@ export default async function FastingPage({
       />
       <section className="print:hidden">
         <h2 className="mb-4 text-2xl font-bold">
-          {t(
-            city ? 'Ramadan in nearby cities' : 'Ramadan calendars by city',
-            city ? 'رمضان في مدن أخرى' : 'تقويم رمضان حسب المدينة'
-          )}
+          {city
+            ? t('Ramadan in nearby cities', 'رمضان في مدن أخرى')
+            : t('Ramadan calendars by city', 'تقويم رمضان حسب المدينة')}
         </h2>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {related.map((c) => (

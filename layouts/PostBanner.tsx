@@ -72,7 +72,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
                   <Link
                     href={`/${prev.path}`}
                     className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                    aria-label={`Previous post: ${prev.title}`}
+                    aria-label={`${copy.prevArticle}: ${prev.title}`}
                   >
                     &larr; {prev.title}
                   </Link>
@@ -83,7 +83,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
                   <Link
                     href={`/${next.path}`}
                     className="text-accent-600 hover:text-accent-700 dark:hover:text-accent-400"
-                    aria-label={`Next post: ${next.title}`}
+                    aria-label={`${copy.nextArticle}: ${next.title}`}
                   >
                     {next.title} &rarr;
                   </Link>

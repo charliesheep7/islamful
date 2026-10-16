@@ -4,7 +4,7 @@ import { localeFromPath } from '@/utils/locale'
 
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { formatDate } from 'pliny/utils/formatDate'
+import { formatBlogDate as formatDate } from '@/utils/blog-date'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
@@ -121,16 +121,16 @@ export default function ListLayout({
           </div>
         </div>
         <ul>
-          {!filteredBlogPosts.length && 'No posts found.'}
+          {!filteredBlogPosts.length && copy.none}
           {displayPosts.map((post) => {
             const { path, date, title, summary, images } = post
             return (
               <li key={path} className="py-8">
                 <article>
                   <Link href={`/${path}`}>
-                    <div className="flex gap-4 xl:gap-6">
+                    <div className="flex flex-col gap-4 sm:flex-row xl:gap-6">
                       {images && images.length > 0 && (
-                        <div className="relative h-32 w-48 flex-shrink-0 overflow-hidden rounded-lg xl:h-40 xl:w-60">
+                        <div className="relative h-44 w-full flex-shrink-0 overflow-hidden rounded-lg sm:h-32 sm:w-48 xl:h-40 xl:w-60">
                           <Image
                             src={images[0]}
                             alt={title}
@@ -140,7 +140,7 @@ export default function ListLayout({
                           />
                         </div>
                       )}
-                      <div className="flex-1 space-y-3">
+                      <div className="min-w-0 flex-1 space-y-3 break-words">
                         <dl>
                           <dt className="sr-only">{copy.published}</dt>
                           <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">

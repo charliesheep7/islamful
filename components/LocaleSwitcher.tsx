@@ -1,4 +1,5 @@
 'use client'
+import { useLocale } from './hooks/useLocale'
 
 import { localeFromPath, localizedPath, type Locale } from '@/utils/locale'
 import { navigation } from '@/data/locales/navigation'
@@ -19,11 +20,20 @@ export default function LocaleSwitcher() {
   const pathname = usePathname() || '/'
 
   // Detect current language
-  const currentLang = localeFromPath(pathname)
+  const { currentLang } = useLocale()
   const currentLocale = locales.find((l) => l.code === currentLang) || locales[0]
 
   // Get path for each locale
-  const getLocalePath = (code: Locale) => localizedPath(pathname, code)
+  const getLocalePath = (code: Locale) => {
+    if (pathname.startsWith('/updates/')) {
+      // Preference links carry a private token; do not copy it into language navigation.
+      return `${pathname}?lang=${code}`
+    }
+    return localizedPath(
+      pathname.startsWith('/tags/') || /^\/(ar|fr|de)\/tags\//.test(pathname) ? '/blog' : pathname,
+      code
+    )
+  }
 
   return (
     <Menu as="div" className="relative inline-block text-left">

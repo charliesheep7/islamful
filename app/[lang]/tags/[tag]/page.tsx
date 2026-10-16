@@ -17,7 +17,7 @@ export async function generateMetadata(props: {
   return genPageMetadata({
     title: tag,
     description: `${getBlogCopy(params.lang).tag} ${tag} — Islamful`,
-    alternates: buildLanguageAlternates(`/tags/${tag}`, { currentLanguage: params.lang }),
+    alternates: { canonical: `/${params.lang}/tags/${tag}`, languages: {} },
   })
 }
 

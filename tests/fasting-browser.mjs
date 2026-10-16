@@ -77,7 +77,7 @@ try {
   assert.equal(await result.count(), 0)
   await page.getByLabel('Maghrib (24-hour)').fill('05:00')
   await page.getByRole('button', { name: 'Show timetable', exact: true }).click()
-  await page.locator('form').getByRole('alert').waitFor()
+  await page.locator('form[aria-busy]').getByRole('alert').waitFor()
   assert.equal(await result.count(), 0)
   await page.getByLabel('Timetable source', { exact: true }).selectOption('city')
   await page.getByLabel('City', { exact: true }).selectOption('london')
@@ -93,7 +93,7 @@ try {
   await page.getByLabel('Prayer calculation method', { exact: true }).selectOption('2')
   assert.equal(await result.count(), 0)
   await page.getByRole('button', { name: 'Show timetable', exact: true }).click()
-  await page.locator('form').getByRole('alert').waitFor()
+  await page.locator('form[aria-busy]').getByRole('alert').waitFor()
   assert.equal(await result.count(), 0)
   fail = false
   // Late result from a previous method cannot overwrite the new city.
@@ -131,7 +131,7 @@ try {
   await page.getByRole('button', { name: 'Print timetable', exact: true }).click()
   assert.equal(await page.evaluate(() => window.__printed), true)
   await page.emulateMedia({ media: 'print' })
-  assert.equal(await page.locator('form').isVisible(), false)
+  assert.equal(await page.locator('form[aria-busy]').isVisible(), false)
   assert.equal(await result.isVisible(), true)
   await page.emulateMedia({ media: 'screen' })
   // Local dates and partial upstream outage keep dates explicit and missing times blank.
@@ -200,7 +200,8 @@ try {
     'https://www.islamful.com/ramadan-calendar/london'
   )
   assert.equal((await n.goto(`${origin}/ramadan-calendar/no-such-city`)).status(), 404)
-  assert.equal((await n.goto(`${origin}/fr/ramadan-calendar`)).status(), 404)
+  assert.equal((await n.goto(`${origin}/fr/ramadan-calendar`)).status(), 200)
+  assert.match(await n.locator('h1').innerText(), /Ramadan/)
   await nojs.close()
   assert.deepEqual(errors, [])
   console.log(

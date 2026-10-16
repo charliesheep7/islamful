@@ -1,5 +1,7 @@
 export const fastingTranslations: Record<string, Record<string, string>> = {
   fr: {
+    'Ramadan in nearby cities': 'Ramadan dans les villes voisines',
+    'Ramadan calendars by city': 'Calendriers du Ramadan par ville',
     'Default prayer method: ': 'Méthode de prière par défaut : ',
     'All prayer times': 'Tous les horaires de prière',
     'Plan your night prayer': 'Planifiez votre prière nocturne',
@@ -94,6 +96,8 @@ export const fastingTranslations: Record<string, Record<string, string>> = {
     'Full prayer times': 'Horaires complets des prières',
   },
   de: {
+    'Ramadan in nearby cities': 'Ramadan in nahegelegenen Städten',
+    'Ramadan calendars by city': 'Ramadan-Kalender nach Stadt',
     'Default prayer method: ': 'Standard-Gebetsmethode: ',
     'All prayer times': 'Alle Gebetszeiten',
     'Plan your night prayer': 'Plane dein Nachtgebet',

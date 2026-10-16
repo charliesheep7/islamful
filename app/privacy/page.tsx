@@ -93,9 +93,10 @@ export default function PrivacyPage() {
 
         <h2>AI Processing</h2>
         <p>
-          User input may be processed by trusted AI service providers such as OpenAI solely for
-          real-time responses. According to their policies, your data is not used for model
-          training.
+          Questions submitted to the website’s topic checker are sent through Supabase to APIMart
+          for an AI-generated response. Avoid including personal or sensitive information. Other app
+          AI features may use OpenAI. These providers process submitted text under their own terms
+          and privacy policies.
         </p>
 
         <h2>Data Retention</h2>

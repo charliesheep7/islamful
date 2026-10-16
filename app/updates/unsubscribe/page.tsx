@@ -1,10 +1,21 @@
+import { authConfig } from '@/utils/supabase/config'
 import { createClient } from '@supabase/supabase-js'
 import { redirect } from 'next/navigation'
 import { engagementLocales, type EngagementLocale } from '@/utils/engagement'
-export const metadata = {
-  title: 'Email preferences · Islamful',
-  referrer: 'no-referrer' as const,
-  robots: { index: false, follow: false },
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}) {
+  const params = await searchParams
+  const lang = engagementLocales.includes(params.lang as EngagementLocale)
+    ? (params.lang as EngagementLocale)
+    : 'en'
+  return {
+    title: `${copy[lang][0]} · Islamful`,
+    referrer: 'no-referrer' as const,
+    robots: { index: false, follow: false },
+  }
 }
 export const dynamic = 'force-dynamic'
 const copy = {
@@ -55,7 +66,33 @@ async function unsubscribe(form: FormData) {
   if (!validToken(token)) redirect(`/updates/unsubscribe?lang=${lang}`)
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL,
     secret = process.env.SUPABASE_SECRET_KEY
-  if (!url || !secret) redirect(`/updates/unsubscribe?lang=${lang}&error=1&token=${token}`)
+  if (!url || !secret) {
+    const config = authConfig()
+    let ok = false
+    if (config) {
+      try {
+        const response = await fetch(`${config.url}/functions/v1/unsubscribe`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: config.key,
+            Origin: 'https://www.islamful.com',
+          },
+          body: JSON.stringify({ token }),
+          signal: AbortSignal.timeout(15000),
+          cache: 'no-store',
+        })
+        ok = response.ok
+      } catch {
+        /* Keep the confirmation page available for retry. */
+      }
+    }
+    redirect(
+      ok
+        ? `/updates/unsubscribe?lang=${lang}&done=1`
+        : `/updates/unsubscribe?lang=${lang}&error=1&token=${token}`
+    )
+  }
   const db = createClient(url, secret, { auth: { persistSession: false, autoRefreshToken: false } })
   const { error } = await db.from('update_subscribers').delete().eq('unsubscribe_token', token)
   if (error) redirect(`/updates/unsubscribe?lang=${lang}&error=1&token=${token}`)

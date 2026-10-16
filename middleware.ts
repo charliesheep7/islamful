@@ -25,7 +25,11 @@ function getLocale(request: NextRequest): string {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   if (pathname.startsWith('/auth/') || pathname.startsWith('/updates/')) {
-    const response = NextResponse.next()
+    const headers = new Headers(request.headers)
+    const lang = request.nextUrl.searchParams.get('lang')
+    headers.set('x-locale', locales.includes(lang as (typeof locales)[number]) ? lang! : 'en')
+    headers.set('x-pathname', pathname)
+    const response = NextResponse.next({ request: { headers } })
     response.headers.set('Referrer-Policy', 'no-referrer')
     response.headers.set('Cache-Control', 'no-store')
     return response

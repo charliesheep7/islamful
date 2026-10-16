@@ -1,3 +1,4 @@
+import { authConfig } from '@/utils/supabase/config'
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { createHmac } from 'node:crypto'
@@ -48,7 +49,26 @@ export async function POST(request: NextRequest) {
     return reply(400)
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
   const secret = process.env.SUPABASE_SECRET_KEY
-  if (!url || !secret) return reply(503)
+  if (!url || !secret) {
+    const config = authConfig()
+    if (!config) return reply(503)
+    try {
+      const response = await fetch(`${config.url}/functions/v1/engagement`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: config.key,
+          Origin: request.nextUrl.origin,
+        },
+        body: raw,
+        signal: AbortSignal.timeout(15000),
+        cache: 'no-store',
+      })
+      return reply(response.status, response.ok)
+    } catch {
+      return reply(503)
+    }
+  }
   const db = createClient(url, secret, { auth: { persistSession: false, autoRefreshToken: false } })
   // Use only the hosting proxy's canonical header; never persist the raw address.
   const ip =

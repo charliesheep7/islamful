@@ -10,7 +10,7 @@ const { wordleWords, wordleHints, wordleCopy } = await import(
   'data:text/javascript;base64,' + Buffer.from(js).toString('base64')
 )
 for (const lang of ['en', 'ar', 'fr', 'de']) {
-  assert.equal(wordleHints[lang].length, 30)
+  assert.equal(wordleHints[lang].length, wordleWords.length)
   assert.ok(wordleHints[lang].every((h) => h.length > 0))
 }
 assert.ok(wordleWords.every((w) => /^[A-Z]{5}$/.test(w)))

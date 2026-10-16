@@ -46,7 +46,7 @@ await page.route('https://api.aladhan.com/**', async (route) => {
   })
 })
 try {
-  await page.goto('http://localhost:3098/prayer-times/london')
+  await page.goto((process.env.TEST_ORIGIN || 'http://localhost:3098') + '/prayer-times/london')
   await page.getByText('Tomorrow', { exact: true }).waitFor()
   await page.getByText('04:49', { exact: true }).first().waitFor()
   assert.ok(
@@ -74,7 +74,7 @@ try {
     calls.some((path) => path.endsWith('/26-10-2026')),
     'midnight fetches the next local day too'
   )
-  await page.goto('http://localhost:3098/ar/prayer-times/london')
+  await page.goto((process.env.TEST_ORIGIN || 'http://localhost:3098') + '/ar/prayer-times/london')
   await page.getByLabel('طريقة الحساب', { exact: true }).waitFor()
   await page.getByText('الصلاة القادمة', { exact: true }).waitFor()
   assert.deepEqual(errors, [])

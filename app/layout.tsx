@@ -1,3 +1,4 @@
+import PageLocaleProvider from '@/components/PageLocaleProvider'
 import { isLocale } from '@/utils/locale'
 import { navigation } from '@/data/locales/navigation'
 import ShareArrival from '@/components/ShareArrival'
@@ -102,7 +103,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               (function() {
                 const path = window.location.pathname;
                 const segment = path.split('/')[1];
-                const locale = ['ar','fr','de'].includes(segment) ? segment : 'en';
+                const queryLocale = (path.startsWith('/updates/') || path.startsWith('/auth/')) ? new URLSearchParams(window.location.search).get('lang') : null;
+                const locale = ['ar','fr','de'].includes(queryLocale) ? queryLocale : ['ar','fr','de'].includes(segment) ? segment : 'en';
                 document.documentElement.setAttribute('lang', locale);
                 const isArabic = locale === 'ar';
                 if (isArabic) {
@@ -212,19 +214,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           {navigation[locale].skip}
         </a>
-        <RTLHandler />
-        <ThemeProviders>
-          <ShareArrival />
-          <SiteAnalytics />
-          <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-            <Header />
-            <main id="main-content" className="min-h-[60vh]">
-              <ToolShare />
-              {children}
-            </main>
-            <Footer year={new Date().getUTCFullYear()} />
-          </SearchProvider>
-        </ThemeProviders>
+        <PageLocaleProvider locale={locale}>
+          <RTLHandler />
+          <ThemeProviders>
+            <ShareArrival />
+            <SiteAnalytics />
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <Header />
+              <main id="main-content" className="min-h-[60vh]">
+                <ToolShare />
+                {children}
+              </main>
+              <Footer year={new Date().getUTCFullYear()} />
+            </SearchProvider>
+          </ThemeProviders>
+        </PageLocaleProvider>
       </body>
     </html>
   )

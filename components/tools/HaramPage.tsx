@@ -112,8 +112,7 @@ export default function HaramCheckPage({ lang = 'en' }: { lang?: Locale }) {
         <div className="prose prose-gray dark:prose-invert max-w-none">
           <p>
             {t('In Islam,')}
-            <strong>{t('halal')}</strong> {t('(permissible) and')}
-            <strong>{t('haram')}</strong>{' '}
+            <strong>{t('halal')}</strong> {t('(permissible) and')} <strong>{t('haram')}</strong>{' '}
             {t(
               "(prohibited) are fundamental concepts that guide a Muslim's daily choices — from food and drink to financial transactions and lifestyle decisions."
             )}

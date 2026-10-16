@@ -1,13 +1,11 @@
 'use client'
-import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { localeFromPath } from '@/utils/locale'
+import { useLocale } from './hooks/useLocale'
 export default function RTLHandler() {
-  const pathname = usePathname() || '/'
+  const { currentLang } = useLocale()
   useEffect(() => {
-    const locale = localeFromPath(pathname)
-    document.documentElement.lang = locale
-    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr'
-  }, [pathname])
+    document.documentElement.lang = currentLang
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr'
+  }, [currentLang])
   return null
 }

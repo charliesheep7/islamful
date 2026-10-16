@@ -56,7 +56,7 @@ export const privacyPages = {
       ['h2', 'Traitement par l’IA'],
       [
         'p',
-        'Les informations saisies peuvent être traitées par des prestataires d’IA de confiance, comme OpenAI, uniquement pour produire des réponses en temps réel. Selon leurs politiques, vos données ne sont pas utilisées pour entraîner les modèles.',
+        'Les questions envoyées à l’outil thématique du site sont transmises via Supabase à APIMart pour générer une réponse par IA. Évitez les informations personnelles ou sensibles. D’autres fonctions d’IA de l’application peuvent utiliser OpenAI. Ces prestataires traitent les textes selon leurs propres conditions et politiques de confidentialité.',
       ],
       ['h2', 'Conservation des données'],
       ['li', 'Les données du compte sont conservées jusqu’à sa suppression'],
@@ -164,7 +164,7 @@ export const privacyPages = {
       ['h2', 'Verarbeitung durch KI'],
       [
         'p',
-        'Nutzereingaben können von vertrauenswürdigen KI-Dienstleistern wie OpenAI ausschließlich für Antworten in Echtzeit verarbeitet werden. Gemäß deren Richtlinien werden Ihre Daten nicht zum Modelltraining verwendet.',
+        'Fragen an den Themenprüfer der Website werden über Supabase an APIMart gesendet, um eine KI-Antwort zu erzeugen. Geben Sie keine persönlichen oder sensiblen Informationen ein. Andere KI-Funktionen der App können OpenAI nutzen. Diese Anbieter verarbeiten die Texte nach ihren eigenen Bedingungen und Datenschutzrichtlinien.',
       ],
       ['h2', 'Speicherdauer'],
       ['li', 'Kontodaten werden aufbewahrt, bis Sie Ihr Konto löschen'],

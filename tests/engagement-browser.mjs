@@ -48,7 +48,10 @@ try {
   )
   await page.goto(origin + '/ar/dua')
   await page.getByText('مشاركة هذه الصفحة', { exact: true }).click()
-  await page.getByText('أرسل فائدة إلى أحبائك', { exact: true }).waitFor()
+  await page
+    .getByRole('region', { name: 'مشاركة هذه الصفحة', exact: true })
+    .getByText('أرسل فائدة إلى أحبائك', { exact: true })
+    .waitFor()
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
   console.log(
     'Sharing attribution, action tracking, email consent, Arabic and mobile checks passed'

@@ -1,3 +1,4 @@
+import { localAuthorRole } from '@/data/locales/blog'
 import { getBlogCopy } from '@/data/locales/blog'
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
@@ -108,7 +109,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           <>
                             <dt className="sr-only">{copy.role}</dt>
                             <dd className="text-gray-500 dark:text-gray-400">
-                              {[author.occupation, author.company].filter(Boolean).join(' • ')}
+                              {[localAuthorRole(author.occupation, content.lang), author.company]
+                                .filter(Boolean)
+                                .join(' • ')}
                             </dd>
                           </>
                         )}

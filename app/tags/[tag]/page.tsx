@@ -15,13 +15,8 @@ export async function generateMetadata(props: {
   const tag = decodeURI(params.tag)
   return genPageMetadata({
     title: tag,
-    description: `${tag} tags - ${process.env.NEXT_PUBLIC_SITE_NAME}`,
-    alternates: {
-      languages: {
-        en: `/tags/${tag}`,
-        ar: `/ar/tags/${tag}`,
-      },
-    },
+    description: `Articles tagged ${tag} — Islamful`,
+    alternates: { canonical: `/tags/${tag}`, languages: {} },
   })
 }
 

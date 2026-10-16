@@ -93,3 +93,26 @@ export const blogCopy = {
 export function getBlogCopy(lang: string = 'en') {
   return blogCopy[lang as Locale] || blogCopy.en
 }
+
+export function localAuthorRole(role: string | undefined, lang: string) {
+  const roles: Record<string, Record<string, string>> = {
+    ar: {
+      'Educational content': 'محتوى تعليمي',
+      'Founder & Islamic Content Researcher': 'مؤسس وباحث في المحتوى الإسلامي',
+      'Senior Marketing Manager, Islamic education': 'مدير تسويق أول، التعليم الإسلامي',
+    },
+    fr: {
+      'Educational content': 'Contenu éducatif',
+      'Founder & Islamic Content Researcher': 'Fondateur et chercheur en contenu islamique',
+      'Senior Marketing Manager, Islamic education':
+        'Responsable marketing senior, éducation islamique',
+    },
+    de: {
+      'Educational content': 'Bildungsinhalte',
+      'Founder & Islamic Content Researcher': 'Gründer und Rechercheur für islamische Inhalte',
+      'Senior Marketing Manager, Islamic education':
+        'Leitender Marketingmanager, islamische Bildung',
+    },
+  }
+  return role ? roles[lang]?.[role] || role : ''
+}

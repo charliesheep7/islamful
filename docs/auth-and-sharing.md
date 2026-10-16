@@ -1,3 +1,15 @@
+## Multilingual release — 2026-10-16
+
+The complete implementation is in [PR #16](https://github.com/charliesheep7/islamful/pull/16); its deployment record is the source of truth for production verification. The dated progress notes below are historical.
+
+- All 143 English articles have complete Arabic, French and German counterparts (429 translations), with localized blog search, pagination, image descriptions, metadata, language switching and author-role labels. Original Arabic quotations, reference URLs, metadata and section counts are checked by `tests/blog-locales.test.mjs`.
+- Remaining fasting/Ramadan pages and halal-topic interfaces are translated. Mortgage guidance is shared across all four languages, malformed Wordle entries are removed together with their hints, and disputed hadith grading is attributed explicitly.
+- The dedicated Supabase project now hosts `haram-check`, `engagement` and `unsubscribe`. Public project coordinates are safe to include in `data/public-services.ts`; private keys remain in server/edge secrets. Full environment pairs can override this configuration for isolated fixtures. The retired project is not used.
+- `/api/engagement` preserves its same-origin and bounded-payload checks. When a hosting secret is unavailable, it forwards the validated request to the restricted Supabase handler. That handler repeats validation, uses its built-in private service credential and enforces database rate limits. Unsubscribe remains a token-authorized POST; GET never removes a contact. Public clients cannot list subscribers or events.
+- The topic checker uses APIMart only for uncatalogued questions; no account identity is sent. Its private provider credential is stored in Supabase. A durable database quota enforces 10 requests per minute per hashed network bucket and 100 AI requests globally per rolling day. Provider errors produce a retryable unavailable state. Privacy copy names the provider.
+- Node 22 production build and 21 unit suites pass. A complete local route/link scan checked 1,847 URLs, including all 1,568 sitemap entries and every blog pagination page. Browser suites cover the tools/games plus the final four-language article, pagination, language-switch, Google PKCE and fasting flows. Direct deployed-backend checks verify four-language AI responses, opt-in persistence, idempotency, cross-origin denial, private table access and unsubscribe; test records are removed.
+- Google provider initiation and localized callback/error handling are tested. An automated provider redirect check is not a claim that a real user's full consent/session flow has been completed. Email/password authentication stays disabled as requested.
+
 # Website accounts and page sharing
 
 Login routes: `/login`, `/ar/login`, `/fr/login`, `/de/login`. Public tools and articles do not require login.
