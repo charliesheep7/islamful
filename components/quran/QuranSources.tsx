@@ -23,14 +23,18 @@ export default function QuranSources({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de'
           {ar ? 'تحديثات النص' : 'Text updates'}
         </a>
       </p>
-      <p lang="en" dir="ltr">
-        Translation by Talal Itani,{' '}
+      <p lang={lang} dir={ar ? 'rtl' : 'ltr'}>
+        {ar ? 'الترجمة الإنجليزية لطلال عيتاني،' : 'Translation by Talal Itani,'}{' '}
         <a className="underline" href="https://clearquran.com">
           ClearQuran.com
         </a>
-        . God-wording edition supplied through Al Quran Cloud (en.itani).{' '}
+        {ar
+          ? '. النسخة التي تستخدم لفظ God، المتاحة عبر Al Quran Cloud (en.itani).'
+          : '. God-wording edition supplied through Al Quran Cloud (en.itani).'}{' '}
         <a className="underline" href="https://blog.clearquran.com/download">
-          CC BY-ND 4.0 and additional formatting permissions
+          {ar
+            ? 'ترخيص CC BY-ND 4.0 وأذونات إضافية للتنسيق'
+            : 'CC BY-ND 4.0 and additional formatting permissions'}
         </a>
         .
       </p>

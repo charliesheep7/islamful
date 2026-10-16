@@ -8,7 +8,7 @@ import { buildLanguageAlternates } from 'app/seo'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export function haramMetadata(lang: Locale) {
-  const t = (text: string) => haramTranslations[lang]?.[text] || text
+  const t = (text: string) => (haramTranslations[lang]?.[text] || text).replace(/&amp;/g, '&')
   return {
     title: t('Is This Haram? — Halal and Haram Topic Guide'),
     description: t(
@@ -19,10 +19,10 @@ export function haramMetadata(lang: Locale) {
 }
 
 export default function HaramCheckPage({ lang = 'en' }: { lang?: Locale }) {
-  const t = (text: string) => haramTranslations[lang]?.[text] || text
+  const t = (text: string) => (haramTranslations[lang]?.[text] || text).replace(/&amp;/g, '&')
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-      <Breadcrumbs items={[{ name: t('Haram Check'), href: '/haram-check' }]} />
+      <Breadcrumbs lang={lang} items={[{ name: t('Haram Check'), href: '/haram-check' }]} />
 
       <JsonLd
         data={{
@@ -111,8 +111,8 @@ export default function HaramCheckPage({ lang = 'en' }: { lang?: Locale }) {
         </h2>
         <div className="prose prose-gray dark:prose-invert max-w-none">
           <p>
-            {t('In Islam,')}
-            <strong>{t('halal')}</strong> {t('(permissible) and')} <strong>{t('haram')}</strong>{' '}
+            {t('In Islam,')} <strong>{t('halal')}</strong> {t('(permissible) and')}{' '}
+            <strong>{t('haram')}</strong>{' '}
             {t(
               "(prohibited) are fundamental concepts that guide a Muslim's daily choices — from food and drink to financial transactions and lifestyle decisions."
             )}
@@ -159,7 +159,7 @@ export default function HaramCheckPage({ lang = 'en' }: { lang?: Locale }) {
         </div>
       </section>
 
-      <CrossToolLinks currentTool="haram-check" />
+      <CrossToolLinks currentTool="haram-check" lang={lang} />
     </div>
   )
 }

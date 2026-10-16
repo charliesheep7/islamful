@@ -1,3 +1,5 @@
+'use client'
+import { useLocale } from '@/components/hooks/useLocale'
 import { localeFromPath, localizedPath, type Locale } from '@/utils/locale'
 import Link from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
@@ -14,14 +16,18 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items, lang }: BreadcrumbsProps) {
-  const locale = lang || localeFromPath(items[0]?.href || '/')
+  const { currentLang } = useLocale()
+  const locale = lang || currentLang
   const labels = {
     en: ['Home', 'Breadcrumb'],
     ar: ['الرئيسية', 'مسار التنقل'],
     fr: ['Accueil', 'Fil d’Ariane'],
     de: ['Startseite', 'Brotkrümelnavigation'],
   }[locale]
-  const allItems = [{ name: labels[0], href: localizedPath('/', locale) }, ...items]
+  const allItems = [
+    { name: labels[0], href: localizedPath('/', locale) },
+    ...items.map((item) => ({ ...item, href: localizedPath(item.href, locale) })),
+  ]
 
   const schemaData = {
     '@type': 'BreadcrumbList',

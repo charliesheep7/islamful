@@ -37,6 +37,14 @@ try {
       t = (x) => haramTranslations[lang]?.[x] || x,
       blog = blogCopy[lang]
     assert.equal((await p.goto(origin + prefix + '/haram-check')).status(), 200)
+    const labels = {
+      en: ['Home', 'More Islamic Tools'],
+      ar: ['الرئيسية', 'أدوات إسلامية أخرى'],
+      fr: ['Accueil', 'Autres outils islamiques'],
+      de: ['Startseite', 'Weitere islamische Tools'],
+    }[lang]
+    await p.getByRole('heading', { name: labels[1], exact: true }).waitFor()
+    await p.locator('main nav').getByRole('link', { name: labels[0], exact: true }).waitFor()
     await p.getByRole('button', { name: t('Music'), exact: true }).click()
     if (lang !== 'en') {
       const entry = haramEntries[lang].find((e) => e.index === 0)
@@ -48,6 +56,7 @@ try {
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
     assert.equal((await p.goto(origin + prefix + '/blog')).status(), 200)
     await p.getByRole('heading', { level: 1, name: blog.all, exact: true }).waitFor()
+    assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
     await p.getByRole('link', { name: blog.next, exact: true }).click()
     await p.waitForURL('**/blog/page/2')
     assert.ok(new URL(p.url()).pathname.startsWith(prefix + '/blog/'))
