@@ -1,3 +1,5 @@
+'use client'
+import { useLocale } from '@/components/hooks/useLocale'
 import { translatedTool } from '@/data/locales/tools'
 import { localizedPath, type Locale } from '@/utils/locale'
 import Link from '@/components/Link'
@@ -8,7 +10,9 @@ interface CrossToolLinksProps {
   lang?: Locale
 }
 
-export default function CrossToolLinks({ currentTool, lang = 'en' }: CrossToolLinksProps) {
+export default function CrossToolLinks({ currentTool, lang: requestedLang }: CrossToolLinksProps) {
+  const { currentLang } = useLocale()
+  const lang = requestedLang || currentLang
   const isAr = lang === 'ar'
   const otherTools = tools.filter((t) => t.slug !== currentTool && t.status === 'live').slice(0, 4)
 

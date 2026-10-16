@@ -1,5 +1,9 @@
 export const fastingTranslations: Record<string, Record<string, string>> = {
   fr: {
+    'Choose a city and show its timetable. Your location is not assumed.':
+      'Choisissez une ville et affichez ses horaires. Votre position n’est pas présumée.',
+    'City times are temporarily unavailable. Try showing the timetable again or use a trusted local schedule.':
+      'Les horaires de cette ville sont temporairement indisponibles. Réessayez ou consultez un calendrier local fiable.',
     'Ramadan in nearby cities': 'Ramadan dans les villes voisines',
     'Ramadan calendars by city': 'Calendriers du Ramadan par ville',
     'Default prayer method: ': 'Méthode de prière par défaut : ',
@@ -96,6 +100,10 @@ export const fastingTranslations: Record<string, Record<string, string>> = {
     'Full prayer times': 'Horaires complets des prières',
   },
   de: {
+    'Choose a city and show its timetable. Your location is not assumed.':
+      'Wähle eine Stadt und zeige ihren Zeitplan an. Dein Standort wird nicht vorausgesetzt.',
+    'City times are temporarily unavailable. Try showing the timetable again or use a trusted local schedule.':
+      'Die Zeiten für diese Stadt sind vorübergehend nicht verfügbar. Versuche es erneut oder nutze einen verlässlichen lokalen Zeitplan.',
     'Ramadan in nearby cities': 'Ramadan in nahegelegenen Städten',
     'Ramadan calendars by city': 'Ramadan-Kalender nach Stadt',
     'Default prayer method: ': 'Standard-Gebetsmethode: ',

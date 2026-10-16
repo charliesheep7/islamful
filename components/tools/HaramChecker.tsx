@@ -160,6 +160,10 @@ export default function HaramChecker({
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              aria-label={t(
+                'Type anything... food, activity, lifestyle...',
+                'اكتب أي شيء... طعام، نشاط، أسلوب حياة...'
+              )}
               placeholder={t(
                 'Type anything... food, activity, lifestyle...',
                 'اكتب أي شيء... طعام، نشاط، أسلوب حياة...'
