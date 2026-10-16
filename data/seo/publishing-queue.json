@@ -2282,10 +2282,10 @@
       "proposed_title": "How to Perform Umrah",
       "target_path": "/blog/how-to-perform-umrah-step-by-step",
       "source_file": "data/blog/en/how-to-perform-umrah-step-by-step.mdx",
-      "action": "update_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Source-check rites, common practical questions and differences; add usable checklist. Do not invent visa or entry guidance; link dated official rules if needed.",
-      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/how-to-perform-umrah-step-by-step",
       "existing_overlap_candidates": [
         {
@@ -2365,6 +2365,12 @@
         "content_sha256": "f25749f99ccfbd9d5fc46ec1f439e897513de2d91c4dad5211084717c5434df6",
         "marker": "3f70a130cf9143a5351d9dff",
         "audit_file": "data/seo/publications/is-034.json"
+      },
+      "release": {
+        "date": "2026-10-16T06:19:38.237Z",
+        "commit": "cc0a70282d5347a63fa252d8941a3e3e03000f16",
+        "deployment_id": 7112387380,
+        "url": "https://www.islamful.com/blog/how-to-perform-umrah-step-by-step"
       }
     },
     {

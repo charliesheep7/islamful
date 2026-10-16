@@ -132,5 +132,11 @@
     ]
   },
   "prepared_at": "2026-10-16T06:10:55.669Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-16T06:19:38.237Z",
+    "commit": "cc0a70282d5347a63fa252d8941a3e3e03000f16",
+    "deployment_id": 7112387380,
+    "url": "https://www.islamful.com/blog/how-to-perform-umrah-step-by-step"
+  }
 }
