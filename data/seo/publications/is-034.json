@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "id": "is-034",
+  "action": "update_article",
+  "target_path": "/blog/how-to-perform-umrah-step-by-step",
+  "source_file": "data/blog/en/how-to-perform-umrah-step-by-step.mdx",
+  "assignment_sha256": "4a6caaca904dd79505f25ff425adfc2991a821677ac796ce78db029e76779595",
+  "baseline_sha256": "09d91160404012d468fc4f97b956c6605b9d8f238536b9c06f87ce924caa2b85",
+  "content_sha256": "f25749f99ccfbd9d5fc46ec1f439e897513de2d91c4dad5211084717c5434df6",
+  "marker": "3f70a130cf9143a5351d9dff",
+  "sources": [
+    {
+      "url": "https://quran.com/2/196",
+      "title": "Quran 2:196 (Surah Al-Baqarah), Quran.com",
+      "supports": "The verse commands completing the Hajj and Umrah for Allah and mentions not shaving the head until the offering reaches its place, with compensation for those who must shave due to illness.",
+      "checked_at": "2026-10-16T06:08:43.237Z",
+      "content_sha256": "59c4560629c2fb37876aec952766bad2b24c2e58ba66bfa42a0e479654d4e959",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/2/158",
+      "title": "Quran 2:158 (Surah Al-Baqarah), Quran.com",
+      "supports": "States that Safa and Marwah are among the symbols of Allah and that whoever performs Hajj or Umrah should walk between the two hills.",
+      "checked_at": "2026-10-16T06:08:44.359Z",
+      "content_sha256": "8edbdcc42da0db56f084b76afcb7bc759f9dd54794c0464f70454dd03d578f40",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1773",
+      "title": "Sahih al-Bukhari 1773, Sunnah.com",
+      "supports": "Abu Huraira narrates that Umrah is an expiation for the sins committed between it and the previous one, and the reward of an accepted Hajj is Paradise.",
+      "checked_at": "2026-10-16T06:08:45.531Z",
+      "content_sha256": "47b6ceef52feaf85b2945dbd3c45f62edbe79d46452fd97e9e9d40911ab69c39",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1549",
+      "title": "Sahih al-Bukhari 1549, Sunnah.com",
+      "supports": "Abdullah ibn Umar narrates the wording of the Prophet's talbiyah: Labbaika Allahumma labbaik, labbaika la sharika laka labbaik, inna al-hamda wan-ni'mata laka wal-mulk, la sharika lak.",
+      "checked_at": "2026-10-16T06:08:44.615Z",
+      "content_sha256": "2eca0d4b472fb4a13be6c000f0a91e5593ca2410d2c397fce0fcce151e9d33fe",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1597",
+      "title": "Sahih al-Bukhari 1597, Sunnah.com",
+      "supports": "Umar kissed the Black Stone and said he knew it was a stone that could neither benefit nor harm, and would not have kissed it had he not seen the Prophet kiss it.",
+      "checked_at": "2026-10-16T06:08:44.768Z",
+      "content_sha256": "d0f0d26bd7a443d4db2ccd54503ab165fadabfef29c3b58f40322a112372bc1b",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1604",
+      "title": "Sahih al-Bukhari 1604, Sunnah.com",
+      "supports": "Abdullah ibn Umar reports that the Prophet did ramal in the first three rounds of tawaf and walked in the remaining four, in Hajj and Umrah.",
+      "checked_at": "2026-10-16T06:08:44.841Z",
+      "content_sha256": "a6d68436dc2dbe7fc618a6dde4409e52523c9a4cb8a183a806d26d5193e97806",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1727",
+      "title": "Sahih al-Bukhari 1727, Sunnah.com",
+      "supports": "The Prophet prayed for mercy on those who shaved their heads, and when asked about those who cut their hair short, included them at the third request.",
+      "checked_at": "2026-10-16T06:08:44.922Z",
+      "content_sha256": "4d18e1017f4ea813a29bccf73ecfa4c82ecac7ca8f6f10534bc757fd3dcc6211",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:1984",
+      "title": "Sunan Abi Dawud 1984, Sunnah.com",
+      "supports": "Ibn Abbas narrates that shaving is not required of women and that only shortening the hair is incumbent on them; graded sahih li ghairih by al-Albani on the page.",
+      "checked_at": "2026-10-16T06:08:45.226Z",
+      "content_sha256": "12bb490b8ca4796711d194356314dd81ed22d74f9b5655abe6353a64ad46047c",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "passed": true,
+    "method": "agent_source_review",
+    "article_sha256": "3c1cecc3d0b6a6d6614770514bc868718cb887725254850fe3fb9399258a9e3a",
+    "issues": [],
+    "notes": "Re-retrieved all eight primary references from quran.com and sunnah.com during this run through the publisher's own source reader and read the relevant text. Sahih al-Bukhari 1524 (mawaqit list) returned HTTP 403, so the specific miqat names were removed rather than cited from memory. Madhhab attributions on whether Umrah is obligatory were generalised because no school-level primary source was checked. Visa, permit and mahram entry rules are deliberately not stated; readers are told to check current official Saudi rules. Original title, date, author and hero preserved; links point only to existing Islamful tools and guides; no app CTA.",
+    "claim_checks": [
+      {
+        "claim": "Umrah is an expiation for the sins committed between it and the previous one.",
+        "source_url": "https://sunnah.com/bukhari:1773",
+        "supported": true,
+        "explanation": "The English text of Sahih al-Bukhari 1773 on the retrieved page states this wording, narrated by Abu Huraira."
+      },
+      {
+        "claim": "The talbiyah wording given in the article is the talbiyah of the Prophet narrated by Abdullah ibn Umar.",
+        "source_url": "https://sunnah.com/bukhari:1549",
+        "supported": true,
+        "explanation": "The retrieved hadith gives the Arabic and transliterated talbiyah matching the article's Arabic and transliteration."
+      },
+      {
+        "claim": "Umar's statement on kissing the Black Stone is quoted verbatim from the Sunnah.com English translation.",
+        "source_url": "https://sunnah.com/bukhari:1597",
+        "supported": true,
+        "explanation": "The quote in the article matches the retrieved English translation of Sahih al-Bukhari 1597 word for word."
+      },
+      {
+        "claim": "The Prophet did ramal in the first three circuits and walked in the remaining four, in Hajj and Umrah.",
+        "source_url": "https://sunnah.com/bukhari:1604",
+        "supported": true,
+        "explanation": "Sahih al-Bukhari 1604 states exactly this, narrated by Abdullah ibn Umar."
+      },
+      {
+        "claim": "Shaving is better for men, and trimming is also valid, based on the Prophet's repeated prayer for those who shaved.",
+        "source_url": "https://sunnah.com/bukhari:1727",
+        "supported": true,
+        "explanation": "The hadith shows the Prophet praying for those who shaved and including those who shortened their hair at the third request, which supports both validity and the preference for shaving."
+      },
+      {
+        "claim": "Women shorten their hair rather than shaving.",
+        "source_url": "https://sunnah.com/abudawud:1984",
+        "supported": true,
+        "explanation": "Sunan Abi Dawud 1984 states shaving is not a duty on women and only clipping is incumbent on them; the page shows al-Albani's grading."
+      },
+      {
+        "claim": "Safa and Marwah are symbols of Allah and pilgrims walk between them in Hajj or Umrah.",
+        "source_url": "https://quran.com/2/158",
+        "supported": true,
+        "explanation": "The quoted translation matches the retrieved Quran.com English text of 2:158."
+      },
+      {
+        "claim": "Allah commands completing the Hajj and the minor pilgrimage (Umrah) for Allah.",
+        "source_url": "https://quran.com/2/196",
+        "supported": true,
+        "explanation": "The retrieved Quran.com translation of 2:196 opens with this wording, which the article quotes."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-16T06:10:55.669Z",
+  "state": "awaiting_release"
+}
