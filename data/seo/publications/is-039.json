@@ -146,5 +146,11 @@
     ]
   },
   "prepared_at": "2026-10-18T03:24:17.148Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-18T06:11:35.054Z",
+    "commit": "a6e440c0fb44baf0e8284cae0e647a7e7932f8d4",
+    "deployment_id": 7150757798,
+    "url": "https://www.islamful.com/blog/how-to-memorize-the-quran"
+  }
 }
