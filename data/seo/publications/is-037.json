@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "id": "is-037",
+  "action": "new_article",
+  "target_path": "/blog/kaffarah",
+  "source_file": "data/blog/en/kaffarah.mdx",
+  "assignment_sha256": "3c67b72adc3ded3cf7daa55336529c2c78167ab56244a40b66db92928740ad15",
+  "baseline_sha256": null,
+  "content_sha256": "a8bf5aab5cc77b874596855d8840881fda723aacd8eee4fd5b3ef4ee6fd1d22e",
+  "marker": "088fd0ef66bf8e5bb0151cb8",
+  "hero": {
+    "src": "/static/images/blog/kaffarah.webp",
+    "alt": "Kaffarah Explained title text on a green background",
+    "sha256": "e218407be6482ae092be7b21157231f1ecafaaa8272fa00fab1799f5d3fe29d2"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/89",
+      "title": "Quran 5:89 (Surah Al-Ma'idah), Quran.com",
+      "supports": "Allah does not hold you to thoughtless oaths but to deliberate ones; the penalty for a broken oath is feeding ten poor people, clothing them or freeing a slave, and fasting three days for one who cannot afford these.",
+      "checked_at": "2026-10-17T06:08:44.266Z",
+      "content_sha256": "bc298ab263b16ceb44f5eeb34037aaa622799fea6cbb431e619214c8234d6386",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/58/3-4",
+      "title": "Quran 58:3-4 (Surah Al-Mujadila), Quran.com",
+      "supports": "Sets the expiation for zihar: free a slave before touching, otherwise fast two consecutive months, otherwise feed sixty needy people.",
+      "checked_at": "2026-10-17T06:08:45.241Z",
+      "content_sha256": "3a39a210985a4c2006d5e4df195e4e11ec23b8606ed3819b9f7be0a402bff35c",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/4/92",
+      "title": "Quran 4:92 (Surah An-Nisa), Quran.com",
+      "supports": "Gives the expiation for killing a believer by mistake: free a believing slave and pay blood-money, with two consecutive months of fasting for those unable.",
+      "checked_at": "2026-10-17T06:08:46.501Z",
+      "content_sha256": "38db822f8135100d2077d3398b241cc87777206a51ba705e3bd2f18fa5127103",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/2/184",
+      "title": "Quran 2:184 (Surah Al-Baqarah), Quran.com",
+      "supports": "Allows the ill or travelling to make up fasts later and states a compensation of feeding a needy person for those who can only fast with extreme difficulty.",
+      "checked_at": "2026-10-17T06:08:47.534Z",
+      "content_sha256": "3f651469ca2f5b1147fbea1aa77fb520c381e13b0dd899e4a01ad992841988d7",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/2/196",
+      "title": "Quran 2:196 (Surah Al-Baqarah), Quran.com",
+      "supports": "For a pilgrim who is ill or has a scalp ailment requiring shaving, compensation is by fasting, charity or a sacrificial offering.",
+      "checked_at": "2026-10-17T06:08:48.675Z",
+      "content_sha256": "7c5cd1f30aea220517f3464da13251843dad9a84b11fcda95ac1e314acabebe8",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:6622",
+      "title": "Sahih al-Bukhari 6622, Sunnah.com",
+      "supports": "The Prophet told Abdur-Rahman ibn Samura that if he swears an oath and finds something better, he should do the better thing and make expiation for his oath.",
+      "checked_at": "2026-10-17T06:08:50.222Z",
+      "content_sha256": "b0b077f16b8429113aebe4fe49797a92b8d85213754eb2f526779a8179f8edc2",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:1650a",
+      "title": "Sahih Muslim 1650a, Sunnah.com",
+      "supports": "Whoever swears an oath and finds something better should do it and expiate for the oath; narrated with the case of a man who swore not to eat and then ate.",
+      "checked_at": "2026-10-17T06:08:50.417Z",
+      "content_sha256": "67607cda097466c517e01eeba9586037fa2185be8b494d5daa452deb0750e644",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:1111a",
+      "title": "Sahih Muslim 1111a, Sunnah.com",
+      "supports": "A man who had intercourse with his wife in Ramadan was asked about freeing a slave, fasting two consecutive months and feeding sixty poor people, then was given dates to give to his family.",
+      "checked_at": "2026-10-17T06:08:49.664Z",
+      "content_sha256": "71c17a12f021b4bd061c23e98d7f700f0f619070b06bd55e7cc6705aebb24894",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read each retrieved page. The oath, zihar, mistaken killing, fidyah and pilgrimage verses and the Bukhari and Muslim reports match the paraphrases. No universal cash amount is claimed; scholarly differences are flagged without asserting school positions beyond the sources.",
+    "article_sha256": "d3b3ec8a90b5004837b0bda8a7fc4f0d2b56b6204bda6f543bfe881fedf40020",
+    "claim_checks": [
+      {
+        "claim": "Oath expiation: feed ten, clothe, free a slave, else fast three days",
+        "source_url": "https://quran.com/5/89",
+        "supported": true,
+        "explanation": "The 5:89 text lists those options and fasting three days for one who cannot afford them."
+      },
+      {
+        "claim": "Zihar sequence of freeing, fasting two months, feeding sixty",
+        "source_url": "https://quran.com/58/3-4",
+        "supported": true,
+        "explanation": "The 58:3-4 text sets this sequence for those who retract after zihar."
+      },
+      {
+        "claim": "Mistaken killing: free believing slave, blood-money, fast two months if unable",
+        "source_url": "https://quran.com/4/92",
+        "supported": true,
+        "explanation": "The 4:92 text states these obligations for unintentional killing."
+      },
+      {
+        "claim": "Fidyah is feeding a needy person for those who can only fast with extreme difficulty",
+        "source_url": "https://quran.com/2/184",
+        "supported": true,
+        "explanation": "The 2:184 text states this compensation."
+      },
+      {
+        "claim": "Pilgrim with ailment compensates by fasting, charity or sacrifice",
+        "source_url": "https://quran.com/2/196",
+        "supported": true,
+        "explanation": "The 2:196 text states these three options for scalp ailments requiring shaving."
+      },
+      {
+        "claim": "Do the better thing and expiate for the oath",
+        "source_url": "https://sunnah.com/bukhari:6622",
+        "supported": true,
+        "explanation": "The Bukhari 6622 Arabic and English text give this instruction to Abdur-Rahman ibn Samura."
+      },
+      {
+        "claim": "Whoever swears and sees better should do it and expiate",
+        "source_url": "https://sunnah.com/muslim:1650a",
+        "supported": true,
+        "explanation": "The Muslim 1650a text states this, in the context of a man who swore not to eat."
+      },
+      {
+        "claim": "Ramadan intercourse case: freeing, two months, sixty poor people, dates given",
+        "source_url": "https://sunnah.com/muslim:1111a",
+        "supported": true,
+        "explanation": "The Muslim 1111a text gives the Prophet questions in that order and the gift of dates to feed his family."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-18T03:24:54.916Z",
+  "state": "awaiting_release"
+}

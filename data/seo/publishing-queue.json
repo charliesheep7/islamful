@@ -2678,7 +2678,7 @@
       "target_path": "/blog/how-to-memorize-the-quran",
       "source_file": "data/blog/en/how-to-memorize-the-quran.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Source-check the existing guide, demonstrate reader repeat/hide/reveal/bookmarks and practical flexible routines; no guaranteed fixed-duration memorization.",
       "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
       "conversion_or_tool_path": "/blog/how-to-memorize-the-quran",
@@ -2723,9 +2723,14 @@
           "source": "SEMrush Chrome Bulk Analysis"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
-      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed.",
+      "publication": {
+        "content_sha256": "4ae4b85b5ae03ba30e618ae5eb48333f6fa910455fbecf29d92b70dc78aa3e82",
+        "marker": "6c395082e2ccdbc8fbcda7a9",
+        "audit_file": "data/seo/publications/is-039.json"
+      }
     },
     {
       "id": "is-037",
@@ -2737,7 +2742,7 @@
       "target_path": "/blog/kaffarah",
       "source_file": "data/blog/en/kaffarah.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "One Islamful guide owns both duplicated research-group rows. Distinguish oath, fasting and other expiations and school/context differences; no universal cash amount.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/blog/kaffarah",
@@ -2829,9 +2834,19 @@
           "source": "SEMrush Chrome Bulk Analysis"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
-      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims."
+      "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
+      "publication": {
+        "content_sha256": "a8bf5aab5cc77b874596855d8840881fda723aacd8eee4fd5b3ef4ee6fd1d22e",
+        "marker": "088fd0ef66bf8e5bb0151cb8",
+        "audit_file": "data/seo/publications/is-037.json",
+        "hero": {
+          "src": "/static/images/blog/kaffarah.webp",
+          "alt": "Kaffarah Explained title text on a green background",
+          "sha256": "e218407be6482ae092be7b21157231f1ecafaaa8272fa00fab1799f5d3fe29d2"
+        }
+      }
     },
     {
       "id": "is-016",

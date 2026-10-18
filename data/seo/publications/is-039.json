@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "id": "is-039",
+  "action": "update_article",
+  "target_path": "/blog/how-to-memorize-the-quran",
+  "source_file": "data/blog/en/how-to-memorize-the-quran.mdx",
+  "assignment_sha256": "7b6b9b1264c3f8878aa00f11740208821c647913113985ebf8cc44926d69994d",
+  "baseline_sha256": "2d16d77e49ae6ea8e08cb75887730e0cc4a9e9533d7e1975893ab9e383bc10a3",
+  "content_sha256": "4ae4b85b5ae03ba30e618ae5eb48333f6fa910455fbecf29d92b70dc78aa3e82",
+  "marker": "6c395082e2ccdbc8fbcda7a9",
+  "sources": [
+    {
+      "url": "https://quran.com/54/17",
+      "title": "Quran 54:17 (Surah Al-Qamar), Quran.com",
+      "supports": "States that Allah has made the Quran easy to remember, with the question of whether anyone will be mindful.",
+      "checked_at": "2026-10-17T06:08:37.481Z",
+      "content_sha256": "95b67cc6b4608e2ea5a159173e995d9b952bed7c6e5b9751b3ba4d22fbbd0b45",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/73/4",
+      "title": "Quran 73:4 (Surah Al-Muzzammil), Quran.com",
+      "supports": "Instructs the reader to recite the Quran properly in a measured way, supporting slow, careful recitation.",
+      "checked_at": "2026-10-17T06:08:39.984Z",
+      "content_sha256": "7603c65c3319107bcae15dd1d74c799dbd76d2db90756a0d1043daf4b8f02bc0",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://quran.com/20/114",
+      "title": "Quran 20:114 (Surah Ta-Ha), Quran.com",
+      "supports": "Tells the Prophet not to rush to recite before the revelation is properly conveyed and to pray My Lord, increase me in knowledge.",
+      "checked_at": "2026-10-17T06:08:38.731Z",
+      "content_sha256": "caccc24ee58ea6319afd1fab31c001597bc9532cd4eaa887cd99a5c5098ac031",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:5027",
+      "title": "Sahih al-Bukhari 5027, Sunnah.com",
+      "supports": "The Prophet said the best among you are those who learn the Quran and teach it.",
+      "checked_at": "2026-10-17T06:08:41.767Z",
+      "content_sha256": "03073fec2a2c5bedf8347fa1848d4c858d02817691610fffe6739f8d3fcfd9aa",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:5031",
+      "title": "Sahih al-Bukhari 5031, Sunnah.com",
+      "supports": "The one who knows the Quran by heart is like the owner of tied camels: if he keeps them tied he controls them, if he releases them they run away.",
+      "checked_at": "2026-10-17T06:08:41.565Z",
+      "content_sha256": "7d42ba15c92bbc52745c8c9efdcc48155be3e72d9c9f1af0449d7d09c7b49cf8",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:5032",
+      "title": "Sahih al-Bukhari 5032, Sunnah.com",
+      "supports": "The Prophet urged believers to keep reciting the Quran because it escapes from the hearts of men faster than camels from their ropes.",
+      "checked_at": "2026-10-17T06:08:41.010Z",
+      "content_sha256": "3adb60d9954016c25e99911d1c20136c072d2d72e262b780645ba98560f5528d",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:790a",
+      "title": "Sahih Muslim 790a, Sunnah.com",
+      "supports": "Says it is wrong to say I forgot such a verse, since one is made to forget it, and tells believers to keep refreshing their recitation of the Quran.",
+      "checked_at": "2026-10-17T06:09:00.280Z",
+      "content_sha256": "d1b8084ae092513b2c6db4ae4852c2fde2df9a05022d41d43ebfa13e855a99fb",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:798a",
+      "title": "Sahih Muslim 798a, Sunnah.com",
+      "supports": "The one who recites skillfully is with the noble angels, and the one who stumbles while finding it difficult has a double reward.",
+      "checked_at": "2026-10-17T06:08:42.006Z",
+      "content_sha256": "79c62cd1ee7cf10773c0bc1ef8320a299b4333f99c07a01395692bc74adfc404",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:1464",
+      "title": "Sunan Abi Dawud 1464, Sunnah.com",
+      "supports": "It will be said to the companion of the Quran to recite and rise, reciting as in the world, for his rank is at the last verse he recites; graded hasan sahih.",
+      "checked_at": "2026-10-17T06:08:59.715Z",
+      "content_sha256": "1002c2dd8370baa1db217479a935dff07e78d879538cbcdc1228c9eebcb97d43",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read each retrieved page text. Quran verses 54:17, 73:4 and 20:114 and hadith in Bukhari 5027, 5031, 5032 and Muslim 790a and 798a, plus Abu Dawud 1464 with its grade, match the paraphrases. No fixed completion time is claimed; Islamful reader features (repeat count, hide/reveal, bookmarks, no recitation checking) were confirmed in components/quran/QuranReader.tsx.",
+    "article_sha256": "a7fbfb9e729f5ce0d8458f382452a265b3e960ec60c197b4c6d5868586015488",
+    "claim_checks": [
+      {
+        "claim": "Allah made the Quran easy to remember",
+        "source_url": "https://quran.com/54/17",
+        "supported": true,
+        "explanation": "The page text of 54:17 states exactly that, followed by the question of whether anyone will be mindful."
+      },
+      {
+        "claim": "The Quran asks for measured recitation",
+        "source_url": "https://quran.com/73/4",
+        "supported": true,
+        "explanation": "The 73:4 text says to recite the Quran properly in a measured way."
+      },
+      {
+        "claim": "Do not rush and ask for increase in knowledge",
+        "source_url": "https://quran.com/20/114",
+        "supported": true,
+        "explanation": "The 20:114 text says do not rush to recite before it is properly conveyed and to pray My Lord, increase me in knowledge."
+      },
+      {
+        "claim": "Best are those who learn and teach the Quran",
+        "source_url": "https://sunnah.com/bukhari:5027",
+        "supported": true,
+        "explanation": "The Bukhari 5027 page quotes this saying of the Prophet."
+      },
+      {
+        "claim": "Quran owner compared to owner of tied camels",
+        "source_url": "https://sunnah.com/bukhari:5031",
+        "supported": true,
+        "explanation": "The Bukhari 5031 page contains the tied camels example about keeping or releasing them."
+      },
+      {
+        "claim": "Quran escapes faster than camels from ropes",
+        "source_url": "https://sunnah.com/bukhari:5032",
+        "supported": true,
+        "explanation": "The Bukhari 5032 Arabic text and Reference confirm the camels-and-ropes comparison."
+      },
+      {
+        "claim": "Saying I forgot a verse is criticised; keep refreshing recitation",
+        "source_url": "https://sunnah.com/muslim:790a",
+        "supported": true,
+        "explanation": "The Muslim 790a Arabic text criticises saying I forgot a verse and commands istidhkar of the Quran."
+      },
+      {
+        "claim": "Stumbling reciter has double reward",
+        "source_url": "https://sunnah.com/muslim:798a",
+        "supported": true,
+        "explanation": "The Muslim 798a Arabic text says the one who stumbles in it with difficulty has two rewards."
+      },
+      {
+        "claim": "Rank is at last verse recited, graded hasan sahih",
+        "source_url": "https://sunnah.com/abudawud:1464",
+        "supported": true,
+        "explanation": "The Abu Dawud 1464 page says the rank is at the last verse recited and shows the Hasan Sahih grade."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-18T03:24:17.148Z",
+  "state": "awaiting_release"
+}
