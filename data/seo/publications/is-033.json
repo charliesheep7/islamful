@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "id": "is-033",
+  "action": "update_article",
+  "target_path": "/blog/how-to-perform-hajj-step-by-step",
+  "source_file": "data/blog/en/how-to-perform-hajj-step-by-step.mdx",
+  "assignment_sha256": "2e6eb0f186199adca1cde8f50dd646bdc586bed5dab28dfec2f22d8aa9df4d2f",
+  "baseline_sha256": "b485a4cfc3a17b40b8bcd3eb832c9de16c1bff2e3b541ef7fadbbb770c21e033",
+  "content_sha256": "9c5810ae7d898e3f5fb4100db4c0685e19e6c22431ff1fe03eef2083a02161b7",
+  "marker": "a8e520ba7e01a7f701a03a69",
+  "sources": [
+    {
+      "url": "https://quran.com/3/97",
+      "title": "Surah Aal Imran 3:97 (Quran.com)",
+      "supports": "Pilgrimage to the House is a duty owed to Allah by those able to make the journey.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "b0d488149030c911bd306b8b7acb0ddda9c2f02272c345157fb63353342a7e3f"
+    },
+    {
+      "url": "https://quran.com/2/196",
+      "title": "Surah Al-Baqarah 2:196 (Quran.com)",
+      "supports": "Complete Hajj and Umrah for Allah; a sacrifice that is easy for the one who combines Umrah with Hajj.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "90039b0edb781c6668ff1b0cf2724d8bd45ab1a146d1001023688b612b8a3792"
+    },
+    {
+      "url": "https://quran.com/2/197",
+      "title": "Surah Al-Baqarah 2:197 (Quran.com)",
+      "supports": "Hajj in well-known months, with no obscenity, wickedness or quarrelling.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "40a0ab8247e2a95c5bb404754f3c83c6c15f9dd582ac297af8f2cbeb5bd31f38"
+    },
+    {
+      "url": "https://quran.com/22/27",
+      "title": "Surah Al-Hajj 22:27 (Quran.com)",
+      "supports": "The call to people to perform Hajj, who come on foot and by every distant road.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "a1ebaff029b648c296843de1eaf99fd93a8bcfe889e82af059b178dd19fe6cb2"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:889",
+      "title": "Jami at-Tirmidhi 889",
+      "supports": "Hajj is Arafah; whoever reaches Jam in the night before Fajr attended; the days of Mina are three, leaving after two or staying are both without sin. Hadith text verified against the open hadith-api dataset mirroring the Sunnah.com collection; Sunnah.com itself returned a Cloudflare 403 to automated retrieval.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "871cc72df1034d6d6e49c7f309dab464f97d9c4856e1449b5b6d495c194b70e6"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1521",
+      "title": "Sahih al-Bukhari 1521",
+      "supports": "Whoever performs Hajj for Allah without sexual relations or sin returns as if newly born. Hadith text verified against the open hadith-api dataset mirroring the Sunnah.com collection; Sunnah.com itself returned a Cloudflare 403 to automated retrieval.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "cedf4181f75932f2d5e698b95d4378c86f6e9fb0cbf800b180b13354c8204c5e"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1755",
+      "title": "Sahih al-Bukhari 1755",
+      "supports": "People were ordered to make Tawaf al-Wada their last act before leaving Makkah, except menstruating women. Hadith text verified against the open hadith-api dataset mirroring the Sunnah.com collection; Sunnah.com itself returned a Cloudflare 403 to automated retrieval.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "f2fdaaa40928b80d922f658f032ed1ef51c4d6a4d167de20088a3f8494b8a344"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1773",
+      "title": "Sahih al-Bukhari 1773",
+      "supports": "The reward of an accepted Hajj is nothing except Paradise. Hadith text verified against the open hadith-api dataset mirroring the Sunnah.com collection; Sunnah.com itself returned a Cloudflare 403 to automated retrieval.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "973d9dbc3d4e89c4999c6ee248c2986badee1dccec0f35d21af557413f4e7d01"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "All eight sources retrieved and read from saved files; quotes match. Sunnah.com blocked automated access, so hadith were verified via the open hadith-api dataset. Operational rules (permits, health) are deliberately not asserted beyond directing readers to official sources. Contested juristic details are flagged as scholar-dependent rather than stated as universal. Original metadata (title, date, author, hero) is preserved by the publisher.",
+    "article_sha256": "9fe219bbae7530087ae622a41be540b81d46ddf676c2f39530c5e94a213445ca",
+    "claim_checks": [
+      {
+        "claim": "Hajj is a duty for those able to make the journey",
+        "source_url": "https://quran.com/3/97",
+        "supported": true,
+        "explanation": "The 3:97 page contains the verse stating the duty on those who can make the journey."
+      },
+      {
+        "claim": "Hajj is Arafah; the days of Mina are three and leaving after two or staying are both without sin",
+        "source_url": "https://sunnah.com/tirmidhi:889",
+        "supported": true,
+        "explanation": "The retrieved narration contains both statements, and also the Muzdalifah night statement."
+      },
+      {
+        "claim": "No obscenity, wickedness or quarrelling in Hajj",
+        "source_url": "https://quran.com/2/197",
+        "supported": true,
+        "explanation": "The 2:197 page contains this instruction."
+      },
+      {
+        "claim": "The farewell Tawaf is the last act except for menstruating women",
+        "source_url": "https://sunnah.com/bukhari:1755",
+        "supported": true,
+        "explanation": "The retrieved narration from Ibn Abbas states exactly this."
+      },
+      {
+        "claim": "The reward of an accepted Hajj is Paradise",
+        "source_url": "https://sunnah.com/bukhari:1773",
+        "supported": true,
+        "explanation": "The retrieved narration quotes this."
+      },
+      {
+        "claim": "Hajj without sin returns one as if newly born",
+        "source_url": "https://sunnah.com/bukhari:1521",
+        "supported": true,
+        "explanation": "The retrieved narration states this."
+      },
+      {
+        "claim": "Complete Hajj and Umrah, and the sacrifice for combining them",
+        "source_url": "https://quran.com/2/196",
+        "supported": true,
+        "explanation": "The 2:196 page contains this instruction."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-19T02:11:22.665Z",
+  "state": "awaiting_release"
+}

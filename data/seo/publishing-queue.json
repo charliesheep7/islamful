@@ -2870,7 +2870,7 @@
       "target_path": "/blog/nisab",
       "source_file": "data/blog/en/nisab.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Explain bases, weight conventions, currency/date and evidence. Reuse main tool; never publish an undated universal currency amount.",
       "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
       "conversion_or_tool_path": "/blog/nisab",
@@ -2917,7 +2917,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
       "metadata_policy": "Use truthful language metadata and only existing equivalent-language links; no invented review/ratings claims.",
       "research_additions": [
@@ -2947,7 +2947,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "7340c1e87fc1d1e584814113c725e9538ac09f1e54646ee2483a20ac2bbeee27",
+        "marker": "f68eb0000ffe3ef436a65e36",
+        "audit_file": "data/seo/publications/is-016.json",
+        "hero": {
+          "src": "/static/images/blog/nisab.webp",
+          "alt": "Nisab: The Zakat Threshold, title card in serif type on a cream background",
+          "sha256": "71587802a03fbd11a9a52fafc37a7a73337e2b37838109445d4fc4c3e3b3c49b"
+        }
+      }
     },
     {
       "id": "is-030",
@@ -3206,7 +3216,7 @@
       "target_path": "/blog/how-to-perform-hajj-step-by-step",
       "source_file": "data/blog/en/how-to-perform-hajj-step-by-step.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Preserve existing URL; verify rite sequence and school differences, distinguish religious guide from changing permits/health/travel rules. Verify official current rules only when included.",
       "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
       "conversion_or_tool_path": "/blog/how-to-perform-hajj-step-by-step",
@@ -3246,9 +3256,14 @@
           "source": "SEMrush Chrome Bulk Analysis"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Do not overwrite a different URL, redirect legacy pages, invent missing metrics, or treat this planning row as published content.",
-      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed."
+      "metadata_policy": "Preserve URL, title, original publication date, authors and images; update lastmod, summary, body and FAQs as needed.",
+      "publication": {
+        "content_sha256": "9c5810ae7d898e3f5fb4100db4c0685e19e6c22431ff1fe03eef2083a02161b7",
+        "marker": "a8e520ba7e01a7f701a03a69",
+        "audit_file": "data/seo/publications/is-033.json"
+      }
     },
     {
       "id": "is-029",

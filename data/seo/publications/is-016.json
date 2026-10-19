@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "is-016",
+  "action": "new_article",
+  "target_path": "/blog/nisab",
+  "source_file": "data/blog/en/nisab.mdx",
+  "assignment_sha256": "fdd032f37405ff72a1fc95561355d76ff3fb54e1892e4783aaf4e5aae1dc774a",
+  "baseline_sha256": null,
+  "content_sha256": "7340c1e87fc1d1e584814113c725e9538ac09f1e54646ee2483a20ac2bbeee27",
+  "marker": "f68eb0000ffe3ef436a65e36",
+  "hero": {
+    "src": "/static/images/blog/nisab.webp",
+    "alt": "Nisab: The Zakat Threshold, title card in serif type on a cream background",
+    "sha256": "71587802a03fbd11a9a52fafc37a7a73337e2b37838109445d4fc4c3e3b3c49b"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/9/34",
+      "title": "Surah At-Tawbah 9:34 (Quran.com)",
+      "supports": "Confirms the Quranic warning against hoarding gold and silver without spending in the way of Allah, used for context only.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "afeb3d24bab17401d345176ab889d35994391e7251705ace7ba92e16fca403d5"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1447",
+      "title": "Sahih al-Bukhari 1447",
+      "supports": "Hadith: no zakat on less than five awaq of silver; the narration equates five awaq with 200 dirhams and gives 20 dinars for gold. Hadith text verified against the open hadith-api dataset mirroring the Sunnah.com collection; Sunnah.com itself returned a Cloudflare 403 to automated retrieval.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "3d2b0b71f9178cdc2cf87ecccac3f74c1455f04a34e745bd4b0f2a0f90d82a2e"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:1573",
+      "title": "Sunan Abu Dawud 1573",
+      "supports": "Hadith: 200 dirhams after a year, five dirhams payable; gold nothing until 20 dinars, half a dinar after a year. Hadith text verified against the open hadith-api dataset mirroring the Sunnah.com collection; Sunnah.com itself returned a Cloudflare 403 to automated retrieval.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "436f8b0ad01530e645e2c5af28f7da0d7f09c78d72e6297f26ccd2db651ee9c7"
+    },
+    {
+      "url": "https://www.zakat.org/everything-you-need-to-know-about-zakat",
+      "title": "Zakat.org: Everything you need to know about zakat",
+      "supports": "States the nisab as the value of 87.48 grams of gold or 612.36 grams of silver, held over a year.",
+      "checked_at": "2026-10-19T02:11:21.676Z",
+      "content_sha256": "e41e9b0a970519d3038085aca097d1656c75f0240f75ca5d1c248d8f63397376"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read all four sources from retrieved files. Sunnah.com was blocked by Cloudflare so hadith text was checked in the open hadith-api dataset instead; text matches. IslamQA is not an approved domain and Islamic Relief pages were blocked, so gram figures come from Zakat.org. No present-day currency amount is stated; the example is labelled illustrative.",
+    "article_sha256": "a21a59f48a6f865987c4e80836c700ff69053856299fad06685343fce4b8b3ce",
+    "claim_checks": [
+      {
+        "claim": "No zakat on less than five awaq of silver, equal to 200 dirhams, with 20 dinars for gold",
+        "source_url": "https://sunnah.com/bukhari:1447",
+        "supported": true,
+        "explanation": "The retrieved hadith states five awaq equal 200 dirhams and gives 20 dinars for gold."
+      },
+      {
+        "claim": "Five dirhams per 200 dirhams and half a dinar per 20 dinars after a year, which is 2.5 percent",
+        "source_url": "https://sunnah.com/abudawud:1573",
+        "supported": true,
+        "explanation": "The retrieved narration gives both amounts and the one year condition; five of 200 and half of 20 are each 2.5 percent."
+      },
+      {
+        "claim": "Zakat.org states nisab as 87.48 grams of gold or 612.36 grams of silver",
+        "source_url": "https://www.zakat.org/everything-you-need-to-know-about-zakat",
+        "supported": true,
+        "explanation": "The retrieved page states exactly these two gram weights."
+      },
+      {
+        "claim": "The Quran warns against hoarding gold and silver without spending in Allah's way",
+        "source_url": "https://quran.com/9/34",
+        "supported": true,
+        "explanation": "The retrieved page for 9:34 contains the verse about those who hoard gold and silver."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-19T02:11:22.552Z",
+  "state": "awaiting_release"
+}
