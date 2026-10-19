@@ -118,5 +118,11 @@
     ]
   },
   "prepared_at": "2026-10-19T02:11:22.665Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-19T02:22:00.550Z",
+    "commit": "0461766a48a208cc88f7e948fc8c30fede7dcd34",
+    "deployment_id": 7164142821,
+    "url": "https://www.islamful.com/blog/how-to-perform-hajj-step-by-step"
+  }
 }

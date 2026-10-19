@@ -2869,10 +2869,10 @@
       "proposed_title": "Nisab: Gold, Silver and the Zakat Threshold",
       "target_path": "/blog/nisab",
       "source_file": "data/blog/en/nisab.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Explain bases, weight conventions, currency/date and evidence. Reuse main tool; never publish an undated universal currency amount.",
-      "next_step": "Use this brief to implement the distinct reader task; verify sources, behavior, links and deployment before marking complete.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/nisab",
       "existing_overlap_candidates": [
         {
@@ -2957,6 +2957,12 @@
           "alt": "Nisab: The Zakat Threshold, title card in serif type on a cream background",
           "sha256": "71587802a03fbd11a9a52fafc37a7a73337e2b37838109445d4fc4c3e3b3c49b"
         }
+      },
+      "release": {
+        "date": "2026-10-19T02:22:00.322Z",
+        "commit": "0461766a48a208cc88f7e948fc8c30fede7dcd34",
+        "deployment_id": 7164142821,
+        "url": "https://www.islamful.com/blog/nisab"
       }
     },
     {
@@ -3215,10 +3221,10 @@
       "proposed_title": "How to Perform Hajj",
       "target_path": "/blog/how-to-perform-hajj-step-by-step",
       "source_file": "data/blog/en/how-to-perform-hajj-step-by-step.mdx",
-      "action": "update_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Preserve existing URL; verify rite sequence and school differences, distinguish religious guide from changing permits/health/travel rules. Verify official current rules only when included.",
-      "next_step": "Read primary sources, revise the specified file, validate content/links/build and publish through the existing reviewed Git/Vercel path.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/blog/how-to-perform-hajj-step-by-step",
       "existing_overlap_candidates": [
         {
@@ -3263,6 +3269,12 @@
         "content_sha256": "9c5810ae7d898e3f5fb4100db4c0685e19e6c22431ff1fe03eef2083a02161b7",
         "marker": "a8e520ba7e01a7f701a03a69",
         "audit_file": "data/seo/publications/is-033.json"
+      },
+      "release": {
+        "date": "2026-10-19T02:22:00.550Z",
+        "commit": "0461766a48a208cc88f7e948fc8c30fede7dcd34",
+        "deployment_id": 7164142821,
+        "url": "https://www.islamful.com/blog/how-to-perform-hajj-step-by-step"
       }
     },
     {
