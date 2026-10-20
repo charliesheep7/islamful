@@ -3760,10 +3760,10 @@
       "proposed_title": "What breaks Wudu?",
       "target_path": "/blog/what-breaks-wudu",
       "source_file": "data/blog/en/what-breaks-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer what breaks wudu; does burping break wudu; does sneezing break wudu; does crying break wudu; does sweat break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -3916,6 +3916,12 @@
           "alt": "Dark green illustration with the title What Breaks Wudu",
           "sha256": "c44f63a67bd628984f7d4be00d2a02d90a2bfa09d8c3df576fd25037f0d18d30"
         }
+      },
+      "release": {
+        "date": "2026-10-20T06:15:35.739Z",
+        "commit": "80862457e2ef6e11bdfff8dfe7d8f91da54615d4",
+        "deployment_id": 7192931803,
+        "url": "https://www.islamful.com/blog/what-breaks-wudu"
       }
     },
     {
@@ -3927,10 +3933,10 @@
       "proposed_title": "Does vaping break Wudu?",
       "target_path": "/blog/does-vaping-break-wudu",
       "source_file": "data/blog/en/does-vaping-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does vaping break wudu; does smoking break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4026,6 +4032,12 @@
           "alt": "Warm sand coloured illustration with the title Does Vaping Break Wudu",
           "sha256": "7e850c72a2d83215ab5014bbff45386f0dbf85318834274520dbe8b0b7f04753"
         }
+      },
+      "release": {
+        "date": "2026-10-20T06:15:36.204Z",
+        "commit": "80862457e2ef6e11bdfff8dfe7d8f91da54615d4",
+        "deployment_id": 7192931803,
+        "url": "https://www.islamful.com/blog/does-vaping-break-wudu"
       }
     },
     {

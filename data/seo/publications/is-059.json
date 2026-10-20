@@ -109,5 +109,11 @@
     ]
   },
   "prepared_at": "2026-10-20T06:11:09.006Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-20T06:15:36.204Z",
+    "commit": "80862457e2ef6e11bdfff8dfe7d8f91da54615d4",
+    "deployment_id": 7192931803,
+    "url": "https://www.islamful.com/blog/does-vaping-break-wudu"
+  }
 }

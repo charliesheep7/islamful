@@ -189,5 +189,11 @@
     ]
   },
   "prepared_at": "2026-10-20T06:10:12.610Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-20T06:15:35.739Z",
+    "commit": "80862457e2ef6e11bdfff8dfe7d8f91da54615d4",
+    "deployment_id": 7192931803,
+    "url": "https://www.islamful.com/blog/what-breaks-wudu"
+  }
 }
