@@ -3761,7 +3761,7 @@
       "target_path": "/blog/what-breaks-wudu",
       "source_file": "data/blog/en/what-breaks-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer what breaks wudu; does burping break wudu; does sneezing break wudu; does crying break wudu; does sweat break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -3852,7 +3852,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -3906,7 +3906,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "ab3a46a4f5983af9c9d225bfcbc0c68042d9c4fb370366b5cedb7a1e2de626cb",
+        "marker": "c6ed6ff8849945ac5cc92457",
+        "audit_file": "data/seo/publications/is-058.json",
+        "hero": {
+          "src": "/static/images/blog/what-breaks-wudu.webp",
+          "alt": "Dark green illustration with the title What Breaks Wudu",
+          "sha256": "c44f63a67bd628984f7d4be00d2a02d90a2bfa09d8c3df576fd25037f0d18d30"
+        }
+      }
     },
     {
       "id": "is-059",
@@ -3918,7 +3928,7 @@
       "target_path": "/blog/does-vaping-break-wudu",
       "source_file": "data/blog/en/does-vaping-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does vaping break wudu; does smoking break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -3973,7 +3983,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4006,7 +4016,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "c9aea9ee9b9b8fce380565069027d3e12807b97a0f1ce513b8281520951ae374",
+        "marker": "9dc7d29e928c92440c7b81cc",
+        "audit_file": "data/seo/publications/is-059.json",
+        "hero": {
+          "src": "/static/images/blog/does-vaping-break-wudu.webp",
+          "alt": "Warm sand coloured illustration with the title Does Vaping Break Wudu",
+          "sha256": "7e850c72a2d83215ab5014bbff45386f0dbf85318834274520dbe8b0b7f04753"
+        }
+      }
     },
     {
       "id": "is-060",

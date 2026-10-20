@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "id": "is-058",
+  "action": "new_article",
+  "target_path": "/blog/what-breaks-wudu",
+  "source_file": "data/blog/en/what-breaks-wudu.mdx",
+  "assignment_sha256": "8188536e50838482ea690a5984a1a33abe718e215765e12e77dfc0a6f2c19e89",
+  "baseline_sha256": null,
+  "content_sha256": "ab3a46a4f5983af9c9d225bfcbc0c68042d9c4fb370366b5cedb7a1e2de626cb",
+  "marker": "c6ed6ff8849945ac5cc92457",
+  "hero": {
+    "src": "/static/images/blog/what-breaks-wudu.webp",
+    "alt": "Dark green illustration with the title What Breaks Wudu",
+    "sha256": "c44f63a67bd628984f7d4be00d2a02d90a2bfa09d8c3df576fd25037f0d18d30"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Surah Al-Ma'idah), Quran.com",
+      "supports": "Commands wudu before prayer and names relieving oneself as a cause for renewed purification.",
+      "checked_at": "2026-10-20T06:08:07.680Z",
+      "content_sha256": "22d3f17ebbceaab17e7fdaab795027ca27502ae164b2d2fe719e03b80c0c2ffc",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:225",
+      "title": "Sahih Muslim 225, Sunnah.com",
+      "supports": "Prayer of one who has broken wudu is not accepted until he performs ablution.",
+      "checked_at": "2026-10-20T06:08:08.612Z",
+      "content_sha256": "3e3159f39ac16f834667b3b7d73e2630a7ee2c5be6af860fd2220f350470f809",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:176",
+      "title": "Sahih al-Bukhari 176, Sunnah.com",
+      "supports": "Abu Hurairah explains hadath as the passing of wind.",
+      "checked_at": "2026-10-20T06:08:11.106Z",
+      "content_sha256": "b820264206b5215beb839091ca393cd84c86abe73a565749e1c8fee9f3aedd1e",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:177",
+      "title": "Sahih al-Bukhari 177, Sunnah.com",
+      "supports": "One should not leave the prayer unless he hears a sound or smells something.",
+      "checked_at": "2026-10-20T06:08:10.534Z",
+      "content_sha256": "f7e401b3f6ac056ef7d9ff5e8d2fc6ec6918a01bbcf4fad0b4cbf5b1a270825b",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:178",
+      "title": "Sahih al-Bukhari 178, Sunnah.com",
+      "supports": "Ali asked about madhy and the Prophet said wudu is required for it.",
+      "checked_at": "2026-10-20T06:08:11.702Z",
+      "content_sha256": "dd18a259bd55904900e7670e9e326a0f9b40dee344a0ed1dea45fe64c6f3c01c",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:203",
+      "title": "Sunan Abi Dawud 203, Sunnah.com",
+      "supports": "Narration that whoever sleeps should perform wudu, graded hasan by Al-Albani.",
+      "checked_at": "2026-10-20T06:08:09.358Z",
+      "content_sha256": "484f16e459e4319b365c740a61901a57e362012155777832261c6a33165d9323",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:200",
+      "title": "Sunan Abi Dawud 200, Sunnah.com",
+      "supports": "Companions dozing while waiting for the night prayer then praying without wudu.",
+      "checked_at": "2026-10-20T06:08:12.297Z",
+      "content_sha256": "33bbac2345f25c929ca5793f85cf5c5b431723258ed3eeb7669d98113c0772c9",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:87",
+      "title": "Jami at-Tirmidhi 87, Sunnah.com",
+      "supports": "Narration that the Prophet vomited and then performed wudu.",
+      "checked_at": "2026-10-20T06:08:09.954Z",
+      "content_sha256": "6bab1d0eeddf21a8a1e6537e7d12d4a6e6bd7994495803d7b7236fa5ca1b6857",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7861/vomiting-and-ablution",
+      "title": "Vomiting and ablution, Egypt's Dar al-Ifta",
+      "supports": "States vomiting does not nullify ablution but is impurity requiring cleaning.",
+      "checked_at": "2026-10-20T06:09:02.415Z",
+      "content_sha256": "220929282433e610cf2cfe2615d6ebd152da6a9d76d946cfe2edcbf503943685",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/making-sounds-in-salah/",
+      "title": "Making Sounds in Salah, Darul Ifta Birmingham",
+      "supports": "Yawning, sneezing, coughing or belching does not invalidate salah if natural.",
+      "checked_at": "2026-10-20T06:09:03.448Z",
+      "content_sha256": "661da70f6da8c3ca12b784b046b2e072d8bf188ddf8203f1542449d9dcc51645",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/passing-wind/",
+      "title": "Passing Wind, Darul Ifta Birmingham",
+      "supports": "Anything exiting the front or back passage nullifies wudu; even a little gas once certain.",
+      "checked_at": "2026-10-20T06:09:04.420Z",
+      "content_sha256": "824337aed22f0ac4c5ed27420c2e36f66c5b6a5563b47d825b123eafc3b026d9",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/hanafi-proofs-for-blood-breaking-wudhu/",
+      "title": "Hanafi proofs for blood breaking wudhu, Darul Ifta Birmingham",
+      "supports": "Abu Hanifa: flowing blood breaks wudu; Shafi'i and Malik: wudu remains intact.",
+      "checked_at": "2026-10-20T06:09:05.823Z",
+      "content_sha256": "f7ab6e3098055efe7db021947e89b785ef95719ac811ca9446d4981039962143",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/gas-bubbles-breaking-wudu/",
+      "title": "Gas Bubbles Breaking Wudu, Darul Ifta Birmingham",
+      "supports": "Wudu does not break until you are sure gas has exited the body.",
+      "checked_at": "2026-10-20T06:09:06.895Z",
+      "content_sha256": "dc77f4990cbaeb0f6db67b1c0d6af4d70d73a1d336713e0f9a6834e92ae8553c",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read each retrieved page text this run: Quran 5:6, hadith Bukhari 176-178, Muslim 225, Abu Dawud 200 and 203, Tirmidhi 87, Dar al-Ifta vomiting fatwa and four Darul Ifta Birmingham fatwas. Burping, sneezing, crying and sweat are stated only as absent from the reviewed sources, with the Birmingham salah ruling flagged as about prayer, not wudu. Disputed points (vomiting, blood, sleep) are presented as differences, not a single ruling. No unverified quotation used.",
+    "article_sha256": "b3e08f7d0daa4df752d59eaacbada23574d255a61c7cec5ba8fd1c5f483779ef",
+    "claim_checks": [
+      {
+        "claim": "Wudu is commanded before prayer in 5:6",
+        "source_url": "https://quran.com/5/6",
+        "supported": true,
+        "explanation": "The verse text instructs washing face, hands, wiping heads and washing feet when rising to pray."
+      },
+      {
+        "claim": "Prayer is not accepted from one who broke wudu until he performs ablution",
+        "source_url": "https://sunnah.com/muslim:225",
+        "supported": true,
+        "explanation": "The narration says the prayer of one who has broken wudu is not accepted until he performs ablution."
+      },
+      {
+        "claim": "Abu Hurairah explained hadath as passing wind",
+        "source_url": "https://sunnah.com/bukhari:176",
+        "supported": true,
+        "explanation": "The text answers the question what is hadath with the passing of wind."
+      },
+      {
+        "claim": "Do not leave prayer unless you hear a sound or smell something",
+        "source_url": "https://sunnah.com/bukhari:177",
+        "supported": true,
+        "explanation": "The narration states exactly this."
+      },
+      {
+        "claim": "Madhy requires wudu",
+        "source_url": "https://sunnah.com/bukhari:178",
+        "supported": true,
+        "explanation": "Ali reports the Prophet said wudu is required for it."
+      },
+      {
+        "claim": "Sleep narration and dozing narration both exist",
+        "source_url": "https://sunnah.com/abudawud:203",
+        "supported": true,
+        "explanation": "203 says whoever sleeps should perform wudu; 200 reports dozing Companions praying without wudu."
+      },
+      {
+        "claim": "Egypt Dar al-Ifta says vomiting does not nullify ablution",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7861/vomiting-and-ablution",
+        "supported": true,
+        "explanation": "The fatwa answer states this and that it is impurity."
+      },
+      {
+        "claim": "Birmingham says blood differs between Hanafi and Shafi'i/Maliki",
+        "source_url": "https://daruliftabirmingham.co.uk/hanafi-proofs-for-blood-breaking-wudhu/",
+        "supported": true,
+        "explanation": "The answer states the Abu Hanifa and Shafi'i/Malik positions."
+      },
+      {
+        "claim": "Natural belching and sneezing do not invalidate salah",
+        "source_url": "https://daruliftabirmingham.co.uk/making-sounds-in-salah/",
+        "supported": true,
+        "explanation": "The answer states this for salah, not wudu."
+      },
+      {
+        "claim": "Wudu does not break until certain gas has exited",
+        "source_url": "https://daruliftabirmingham.co.uk/gas-bubbles-breaking-wudu/",
+        "supported": true,
+        "explanation": "The answer states this and cites Fatawa Hindiyyah."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-20T06:10:12.610Z",
+  "state": "awaiting_release"
+}

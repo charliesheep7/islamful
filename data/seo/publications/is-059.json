@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "id": "is-059",
+  "action": "new_article",
+  "target_path": "/blog/does-vaping-break-wudu",
+  "source_file": "data/blog/en/does-vaping-break-wudu.mdx",
+  "assignment_sha256": "80ae1c0c97c882ad8a579b0e0b0fe812065f3bc3e6c3c4aea16b955a6b12682f",
+  "baseline_sha256": null,
+  "content_sha256": "c9aea9ee9b9b8fce380565069027d3e12807b97a0f1ce513b8281520951ae374",
+  "marker": "9dc7d29e928c92440c7b81cc",
+  "hero": {
+    "src": "/static/images/blog/does-vaping-break-wudu.webp",
+    "alt": "Warm sand coloured illustration with the title Does Vaping Break Wudu",
+    "sha256": "7e850c72a2d83215ab5014bbff45386f0dbf85318834274520dbe8b0b7f04753"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/muslim:225",
+      "title": "Sahih Muslim 225, Sunnah.com",
+      "supports": "Prayer of one who has broken wudu is not accepted until he performs ablution.",
+      "checked_at": "2026-10-20T06:08:08.612Z",
+      "content_sha256": "3e3159f39ac16f834667b3b7d73e2630a7ee2c5be6af860fd2220f350470f809",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:176",
+      "title": "Sahih al-Bukhari 176, Sunnah.com",
+      "supports": "Abu Hurairah explains hadath as the passing of wind.",
+      "checked_at": "2026-10-20T06:08:11.106Z",
+      "content_sha256": "b820264206b5215beb839091ca393cd84c86abe73a565749e1c8fee9f3aedd1e",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/22372/does-smoking-invalidate-wu%E1%B8%8Du%CA%BE",
+      "title": "Does smoking invalidate ablution, Egypt's Dar al-Ifta",
+      "supports": "Smoking does not invalidate ablution; cleanse the mouth of the odour before prayer.",
+      "checked_at": "2026-10-20T06:10:33.491Z",
+      "content_sha256": "d9b9ad5ca1b608573879b32bf392df07bd445f591a5f34d089048100d5184acf",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/smoking-break-wudhu/",
+      "title": "Smoking break wudhu, Darul Ifta Birmingham",
+      "supports": "Smoking does not break wudu; preferable to clean the mouth before prayer or recitation.",
+      "checked_at": "2026-10-20T06:10:35.195Z",
+      "content_sha256": "fd3d7029a20dd91c2feb2a9692d370edf6b37b57cddb567b85dfda939f7ae61e",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/vaping-during-ihraam/",
+      "title": "Vaping During Ihraam, Darul Ifta Birmingham",
+      "supports": "Vaping is similar to smoking, deemed haram or at least makruh tahrimi; not an ihram prohibition.",
+      "checked_at": "2026-10-20T06:10:36.044Z",
+      "content_sha256": "a982a7ec038c95150037665e95a633332ee586b9fa92f39efab655562a095ab2",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.muis.gov.sg/resources/khutbah-and-religious-advice/fatwa/hukum-menggunakan-vape/",
+      "title": "Hukum menggunakan vape, MUIS",
+      "supports": "Fatwa Committee rules all vapes and Kpod haram based on harm and protection of life and mind.",
+      "checked_at": "2026-10-20T06:10:36.836Z",
+      "content_sha256": "c2e7d98c3b505e25994b7e02816c9413130bf788e97861bca5af19e788b67863",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read each retrieved page this run: Dar al-Ifta and Darul Ifta Birmingham smoking fatwas, Birmingham vaping fatwa (ihram context), MUIS Malay fatwa (summary paragraph read and translated), and hadith Muslim 225 and Bukhari 176. No source addresses vaping and wudu directly, so the article labels that as an inference from the smoking rulings. Ruling on permissibility is kept separate from wudu validity.",
+    "article_sha256": "16633740ad750923ee1fbe4f505a729746c1570062897f6e98bee79bf7069840",
+    "claim_checks": [
+      {
+        "claim": "Smoking does not invalidate ablution per Dar al-Ifta",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/22372/does-smoking-invalidate-wu%E1%B8%8Du%CA%BE",
+        "supported": true,
+        "explanation": "The answer states smoking does not invalidate wudu and recommends cleansing the mouth."
+      },
+      {
+        "claim": "Birmingham says smoking does not break wudu",
+        "source_url": "https://daruliftabirmingham.co.uk/home/smoking-break-wudhu/",
+        "supported": true,
+        "explanation": "The answer says smoking does not break wudhu and recommends cleaning the mouth."
+      },
+      {
+        "claim": "Vaping similar to smoking, haram or makruh tahrimi",
+        "source_url": "https://daruliftabirmingham.co.uk/vaping-during-ihraam/",
+        "supported": true,
+        "explanation": "The answer states this and that it is not an ihram prohibition."
+      },
+      {
+        "claim": "MUIS rules all vapes haram based on harm",
+        "source_url": "https://www.muis.gov.sg/resources/khutbah-and-religious-advice/fatwa/hukum-menggunakan-vape/",
+        "supported": true,
+        "explanation": "The summary says the committee rules all vape and Kpod use haram on harm and protection of life and mind."
+      },
+      {
+        "claim": "Prayer not accepted without wudu after breaking it",
+        "source_url": "https://sunnah.com/muslim:225",
+        "supported": true,
+        "explanation": "The narration states this."
+      },
+      {
+        "claim": "Hadath explained as passing wind",
+        "source_url": "https://sunnah.com/bukhari:176",
+        "supported": true,
+        "explanation": "The text gives that explanation."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-20T06:11:09.006Z",
+  "state": "awaiting_release"
+}
