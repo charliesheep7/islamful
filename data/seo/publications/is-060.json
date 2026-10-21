@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "id": "is-060",
+  "action": "new_article",
+  "target_path": "/blog/does-discharge-break-wudu",
+  "source_file": "data/blog/en/does-discharge-break-wudu.mdx",
+  "assignment_sha256": "c1f7f53260ba72b12b73a27443e1708594726261d2f2a9a4f3d7342f1c5dacbd",
+  "baseline_sha256": null,
+  "content_sha256": "a9a7d142ffcb020cd5c0bc50f050d9b4afec9da5d6939abc836b8dddfee7638d",
+  "marker": "2fb30358dc6b241d92c5b3b7",
+  "hero": {
+    "src": "/static/images/blog/does-discharge-break-wudu.webp",
+    "alt": "Dark green illustration with the title Does Discharge Break Wudu",
+    "sha256": "6eeeb583c61dd6ae5aac755e17708d2b81133b122a28c30ed3e10a8da8532c8b"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/muslim:303a",
+      "title": "Sahih Muslim 303a, Sunnah.com",
+      "supports": "Ali asked about madhi; the Prophet said to wash the private part and perform ablution.",
+      "checked_at": "2026-10-21T02:38:14.269Z",
+      "content_sha256": "7bab012fa017189f710e35a393523bd70563287b32577d97761eb2c1ad038049",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/mazur-with-regular-discharge/",
+      "title": "Mazur With Regular Discharge, Darul Ifta Birmingham (fatwa 05401)",
+      "supports": "Defines madhi, wadi and mani; madhi and wadi require wudu, mani requires ghusl; advice on waswas.",
+      "checked_at": "2026-10-21T02:38:11.775Z",
+      "content_sha256": "dd248b5c05dd7d7bb112870d1dadf7b63d182d464e853f44500ba692d1f63b80",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/discharging-of-madhi/",
+      "title": "Discharging of Madhi, Darul Ifta Birmingham (fatwa 02182)",
+      "supports": "Clear sticky discharge is madhi; it breaks wudu but does not require ghusl; soiled clothing is washed.",
+      "checked_at": "2026-10-21T02:38:09.674Z",
+      "content_sha256": "6de0f0b60bbcc5a99a2c42cdc143061ee6d716a002268d7098bbda888a60063f",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/does-vaginal-discharge-break-the-wudhu/",
+      "title": "Does Vaginal Discharge Break the Wudhu, Darul Ifta Birmingham (fatwa 04148)",
+      "supports": "Normal clear rutubat al-farj is pure and does not break wudu; pad guidance; continuous discharge makes one excused with wudu per fard prayer time.",
+      "checked_at": "2026-10-21T02:39:18.774Z",
+      "content_sha256": "34319453f9b5062194fedf16a0d38def010badf65fd01cb8614c0dc595784053",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/fr/fatwa/details/13044/les-secretions-vaginales-annulent-elles-les-ablutions",
+      "title": "Les secretions vaginales annulent-elles les ablutions, Dar al-Ifta al-Misriyyah (fatwa 13044)",
+      "supports": "Irregular vaginal secretions break wudu without requiring ghusl; constant secretions are treated like incontinence with wudu per prayer.",
+      "checked_at": "2026-10-21T02:39:21.474Z",
+      "content_sha256": "c9e27327d0fcfa88a24efe2631c056b2bf392f52594f848e212200729be51abf",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:228",
+      "title": "Sahih al-Bukhari 228, Sunnah.com",
+      "supports": "Woman with persistent non-menstrual bleeding told to keep praying and perform ablution for every prayer.",
+      "checked_at": "2026-10-21T02:37:29.873Z",
+      "content_sha256": "98f531203569a6574aadda631bc790c5aecad0d9c8d5fe1c17b1653262bc097f",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/does-discharge-break-the-wudhu/",
+      "title": "Does Discharge Break the Wudhu?, Darul Ifta Birmingham (fatwa 03313)",
+      "supports": "Being excused for habitual discharge does not extend to madhi, which still requires wudu.",
+      "checked_at": "2026-10-21T02:38:08.718Z",
+      "content_sha256": "9d4f97cebb7eb217005cd967d66ae88a43b1d21051933048057d9401da97add5",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/wudu-and-madhi/",
+      "title": "Wudu and madhi, Darul Ifta Birmingham (fatwa 02268)",
+      "supports": "Madhi requires washing and repeating wudu; advises tissue in the undergarment and seeing a doctor if it persists.",
+      "checked_at": "2026-10-21T02:38:10.635Z",
+      "content_sha256": "58e46b625782a2b4cc638e2c2e5baf9a29b8b5b69ecf7f0a5c70061467e70344",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.nhs.uk/conditions/vaginal-discharge/",
+      "title": "Vaginal discharge, NHS",
+      "supports": "Describes normal discharge and changes in colour, smell or texture that warrant medical advice.",
+      "checked_at": "2026-10-21T02:38:13.510Z",
+      "content_sha256": "8e95ae0d2b3a246d7dabf7018b915aed49bd3b34449c67ca2b2683af27aa8a46",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read each retrieved page text this run: Muslim 303a, Bukhari 228, Darul Ifta Birmingham fatwas 04148, 03313, 05401, 02182, 02268, Dar al-Ifta Egypt fatwa 13044 (French original, paraphrased not quoted) and NHS vaginal discharge page. Both sides of the vaginal discharge disagreement are attributed to named institutions; no universal fatwa given. Bukhari 178 returned 403 and was not used. Hero inspected: 1200x630 title card.",
+    "article_sha256": "099859a1616d5b31e4a43676666f14b35aea2fdbb313ca5502d27ca120b87489",
+    "claim_checks": [
+      {
+        "claim": "Madhi requires washing and ablution, not ghusl",
+        "source_url": "https://sunnah.com/muslim:303a",
+        "supported": true,
+        "explanation": "Hadith says he should wash his organ and perform ablution, with no bath mentioned."
+      },
+      {
+        "claim": "Madhi and wadi require wudu and mani requires ghusl",
+        "source_url": "https://daruliftabirmingham.co.uk/mazur-with-regular-discharge/",
+        "supported": true,
+        "explanation": "Fatwa 05401 lists the three fluids with exactly these rulings."
+      },
+      {
+        "claim": "Clear sticky discharge is madhi, breaks wudu, no ghusl",
+        "source_url": "https://daruliftabirmingham.co.uk/discharging-of-madhi/",
+        "supported": true,
+        "explanation": "Fatwa 02182 states this directly and says soiled portions are washed."
+      },
+      {
+        "claim": "Normal clear vaginal wetness is pure and does not break wudu per this fatwa",
+        "source_url": "https://daruliftabirmingham.co.uk/does-vaginal-discharge-break-the-wudhu/",
+        "supported": true,
+        "explanation": "Fatwa 04148 calls it rutubat al-farj, deems it pure and says wudu will not break, citing Raddul Muhtar."
+      },
+      {
+        "claim": "Excused person makes wudu for each fard prayer valid for that time",
+        "source_url": "https://daruliftabirmingham.co.uk/does-vaginal-discharge-break-the-wudhu/",
+        "supported": true,
+        "explanation": "Fatwa 04148 states a Ma'zoor makes wudu for every fardh salah, valid for the salah time."
+      },
+      {
+        "claim": "Egyptian Dar al-Ifta says irregular vaginal secretions break wudu without ghusl",
+        "source_url": "https://www.dar-alifta.org/fr/fatwa/details/13044/les-secretions-vaginales-annulent-elles-les-ablutions",
+        "supported": true,
+        "explanation": "The French fatwa states such secretions annul ablutions and do not require full washing."
+      },
+      {
+        "claim": "Constant secretions treated like incontinence; wet underwear need not be washed while excuse lasts",
+        "source_url": "https://www.dar-alifta.org/fr/fatwa/details/13044/les-secretions-vaginales-annulent-elles-les-ablutions",
+        "supported": true,
+        "explanation": "The fatwa states regular constant secretions take the ruling of urinary incontinence and the underwear need not be washed during the excuse."
+      },
+      {
+        "claim": "Prophet told woman with persistent bleeding to perform ablution for every prayer",
+        "source_url": "https://sunnah.com/bukhari:228",
+        "supported": true,
+        "explanation": "Bukhari 228 includes Hisham's father's addition: perform ablution for every prayer."
+      },
+      {
+        "claim": "Excuse for habitual discharge does not cover madhi",
+        "source_url": "https://daruliftabirmingham.co.uk/does-discharge-break-the-wudhu/",
+        "supported": true,
+        "explanation": "Fatwa 03313 says the same ruling does not apply to madhi and wudu is required."
+      },
+      {
+        "claim": "Advice to use tissue and consult a doctor if discharge persists",
+        "source_url": "https://daruliftabirmingham.co.uk/wudu-and-madhi/",
+        "supported": true,
+        "explanation": "Fatwa 02268 recommends a cloth or tissue and consulting a doctor."
+      },
+      {
+        "claim": "Normal discharge is clear or white; changes may signal infection",
+        "source_url": "https://www.nhs.uk/conditions/vaginal-discharge/",
+        "supported": true,
+        "explanation": "NHS page lists normal characteristics and advises help when colour, smell or texture changes."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-21T06:33:27.818Z",
+  "state": "awaiting_release"
+}

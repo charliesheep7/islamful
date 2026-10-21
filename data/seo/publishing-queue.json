@@ -4050,7 +4050,7 @@
       "target_path": "/blog/does-discharge-break-wudu",
       "source_file": "data/blog/en/does-discharge-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does discharge break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4081,7 +4081,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4111,7 +4111,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "a9a7d142ffcb020cd5c0bc50f050d9b4afec9da5d6939abc836b8dddfee7638d",
+        "marker": "2fb30358dc6b241d92c5b3b7",
+        "audit_file": "data/seo/publications/is-060.json",
+        "hero": {
+          "src": "/static/images/blog/does-discharge-break-wudu.webp",
+          "alt": "Dark green illustration with the title Does Discharge Break Wudu",
+          "sha256": "6eeeb583c61dd6ae5aac755e17708d2b81133b122a28c30ed3e10a8da8532c8b"
+        }
+      }
     },
     {
       "id": "is-061",
@@ -4123,7 +4133,7 @@
       "target_path": "/blog/does-swearing-break-wudu",
       "source_file": "data/blog/en/does-swearing-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does swearing break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4154,7 +4164,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4184,7 +4194,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "3ff0a953ee641e00ec3e1808dff81b852702e80d8843eadfe7a3d0af6ddab028",
+        "marker": "a12089c4c2dbf4ad758de80f",
+        "audit_file": "data/seo/publications/is-061.json",
+        "hero": {
+          "src": "/static/images/blog/does-swearing-break-wudu.webp",
+          "alt": "Green illustration with the title Does Swearing Break Wudu",
+          "sha256": "af37c917fc204b05c058267ed1eaf9d6216348d3d68b7f2ac8824add8cc3ac3e"
+        }
+      }
     },
     {
       "id": "is-062",

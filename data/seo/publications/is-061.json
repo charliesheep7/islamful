@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "is-061",
+  "action": "new_article",
+  "target_path": "/blog/does-swearing-break-wudu",
+  "source_file": "data/blog/en/does-swearing-break-wudu.mdx",
+  "assignment_sha256": "ca0aab82d42d1515cf047d873b31c6e6449438553bc039dad100ed0069a6ab42",
+  "baseline_sha256": null,
+  "content_sha256": "3ff0a953ee641e00ec3e1808dff81b852702e80d8843eadfe7a3d0af6ddab028",
+  "marker": "a12089c4c2dbf4ad758de80f",
+  "hero": {
+    "src": "/static/images/blog/does-swearing-break-wudu.webp",
+    "alt": "Green illustration with the title Does Swearing Break Wudu",
+    "sha256": "af37c917fc204b05c058267ed1eaf9d6216348d3d68b7f2ac8824add8cc3ac3e"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Surah Al-Ma'idah), Quran.com",
+      "supports": "Commands wudu before prayer; Ibn Kathir excerpt says it is obligatory when impure and recommended when pure.",
+      "checked_at": "2026-10-21T02:37:35.003Z",
+      "content_sha256": "7f137bc37245c246b0e23eb612d8370b1704bc34e8dcc3f84a36401c9e892565",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:225",
+      "title": "Sahih Muslim 225, Sunnah.com",
+      "supports": "Prayer of one who has broken wudu is not accepted until he performs ablution.",
+      "checked_at": "2026-10-21T02:39:24.065Z",
+      "content_sha256": "0984f9e75c2b7ab9fe4ab9146aa6933c05f642d8ceb9245d40ba0c8f67ce3f1f",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:176",
+      "title": "Sahih al-Bukhari 176, Sunnah.com",
+      "supports": "Abu Hurairah explains hadath as passing wind; chapter limits repeating wudu to what exits the two passages.",
+      "checked_at": "2026-10-21T02:39:22.838Z",
+      "content_sha256": "0d66cec5c65a08b527a3b0037622b469c7d4b639c6bd3bceedb4617ca4e40fcd",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/passing-wind/",
+      "title": "Passing Wind, Darul Ifta Birmingham",
+      "supports": "States that anything exiting the front and back passage nullifies wudu.",
+      "checked_at": "2026-10-21T02:39:25.201Z",
+      "content_sha256": "85093d1f8929f5fa9b5b8387981700f5c1c987e65c5488052f1b3ceb51289d45",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:1977",
+      "title": "Jami' at-Tirmidhi 1977, Sunnah.com",
+      "supports": "The believer does not insult honour, curse, or speak obscenely; graded hasan.",
+      "checked_at": "2026-10-21T02:37:33.510Z",
+      "content_sha256": "54946a588f7c8902946eccec49887d179e41a7f9d09f9b5e3a334e116e26e760",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:6018",
+      "title": "Sahih al-Bukhari 6018, Sunnah.com",
+      "supports": "Whoever believes in Allah and the Last Day should talk what is good or keep quiet.",
+      "checked_at": "2026-10-21T02:39:25.856Z",
+      "content_sha256": "1c1c0c59e1dfe83b3a86898ae7d17220b71285e8f54709decb62cc6588d1a2af",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:4860",
+      "title": "Sahih al-Bukhari 4860, Sunnah.com",
+      "supports": "Whoever swears by al-Lat and al-Uzza should say la ilaha illallah.",
+      "checked_at": "2026-10-21T02:37:32.646Z",
+      "content_sha256": "9fa92557796d3bd3c57c3c4a6905c3d85c281e8420bc39e90a39fc6950211904",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Read each retrieved page text this run: Quran 5:6 with Ibn Kathir excerpt, Muslim 225, Bukhari 176, 4860, 6018, Tirmidhi 1977 and Darul Ifta Birmingham passing-wind fatwa. No source lists speech among nullifiers; article says swearing does not break wudu based on the physical nullifier evidence and frames renewal as optional per the Ibn Kathir excerpt. Muslim 244 returned 403 and was not used. Hero inspected: 1200x630 title card.",
+    "article_sha256": "9dd047ae90f0adf6ebaa755f36bf00b7253f11b1a13b883b07ade6055ce3a754",
+    "claim_checks": [
+      {
+        "claim": "Allah commands wudu before prayer and mentions relieving oneself",
+        "source_url": "https://quran.com/5/6",
+        "supported": true,
+        "explanation": "Verse text commands washing before prayer and names relieving oneself."
+      },
+      {
+        "claim": "Wudu before prayer is obligatory when impure and recommended when pure",
+        "source_url": "https://quran.com/5/6",
+        "supported": true,
+        "explanation": "Ibn Kathir excerpt on the page states exactly this distinction."
+      },
+      {
+        "claim": "Prayer not accepted after breaking wudu until ablution",
+        "source_url": "https://sunnah.com/muslim:225",
+        "supported": true,
+        "explanation": "Muslim 225 translation states this."
+      },
+      {
+        "claim": "Hadath explained as passing wind; chapter about two passages",
+        "source_url": "https://sunnah.com/bukhari:176",
+        "supported": true,
+        "explanation": "Narration and chapter heading on the page match."
+      },
+      {
+        "claim": "What exits the front and back passages nullifies wudu",
+        "source_url": "https://daruliftabirmingham.co.uk/passing-wind/",
+        "supported": true,
+        "explanation": "Fatwa states anything exiting the front and back passage nullifies wudu."
+      },
+      {
+        "claim": "Believer does not curse or speak obscenely; hasan",
+        "source_url": "https://sunnah.com/tirmidhi:1977",
+        "supported": true,
+        "explanation": "Tirmidhi 1977 text and Darussalam hasan grade on page."
+      },
+      {
+        "claim": "Speak good or keep quiet",
+        "source_url": "https://sunnah.com/bukhari:6018",
+        "supported": true,
+        "explanation": "Bukhari 6018 contains this instruction."
+      },
+      {
+        "claim": "Oath by al-Lat and al-Uzza remedied by saying la ilaha illallah, no wudu mentioned",
+        "source_url": "https://sunnah.com/bukhari:4860",
+        "supported": true,
+        "explanation": "Bukhari 4860 prescribes saying la ilaha illallah and does not mention ablution."
+      }
+    ]
+  },
+  "prepared_at": "2026-10-21T06:33:28.057Z",
+  "state": "awaiting_release"
+}
