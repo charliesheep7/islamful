@@ -4049,10 +4049,10 @@
       "proposed_title": "Does discharge break Wudu?",
       "target_path": "/blog/does-discharge-break-wudu",
       "source_file": "data/blog/en/does-discharge-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does discharge break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4121,6 +4121,12 @@
           "alt": "Dark green illustration with the title Does Discharge Break Wudu",
           "sha256": "6eeeb583c61dd6ae5aac755e17708d2b81133b122a28c30ed3e10a8da8532c8b"
         }
+      },
+      "release": {
+        "date": "2026-10-21T06:38:34.187Z",
+        "commit": "279b08faaab05e43f02425117aa279b0f62bb74f",
+        "deployment_id": 7219504967,
+        "url": "https://www.islamful.com/blog/does-discharge-break-wudu"
       }
     },
     {
@@ -4132,10 +4138,10 @@
       "proposed_title": "Does swearing break Wudu?",
       "target_path": "/blog/does-swearing-break-wudu",
       "source_file": "data/blog/en/does-swearing-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does swearing break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4204,6 +4210,12 @@
           "alt": "Green illustration with the title Does Swearing Break Wudu",
           "sha256": "af37c917fc204b05c058267ed1eaf9d6216348d3d68b7f2ac8824add8cc3ac3e"
         }
+      },
+      "release": {
+        "date": "2026-10-21T06:38:34.560Z",
+        "commit": "279b08faaab05e43f02425117aa279b0f62bb74f",
+        "deployment_id": 7219504967,
+        "url": "https://www.islamful.com/blog/does-swearing-break-wudu"
       }
     },
     {

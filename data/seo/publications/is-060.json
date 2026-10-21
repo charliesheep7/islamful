@@ -163,5 +163,11 @@
     ]
   },
   "prepared_at": "2026-10-21T06:33:27.818Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-21T06:38:34.187Z",
+    "commit": "279b08faaab05e43f02425117aa279b0f62bb74f",
+    "deployment_id": 7219504967,
+    "url": "https://www.islamful.com/blog/does-discharge-break-wudu"
+  }
 }
