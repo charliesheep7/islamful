@@ -72,3 +72,7 @@ Implemented tools use `awaiting_tool_release`, separate from article publication
 The enabled `daily-islamful-blogs` task reads the repository skill and this researched queue, with two English article assignments per day (new or update), at 10:00 and a 14:00 catch-up in Asia/Shanghai. The catch-up fills only the shortfall. The existing local lifecycle guard retains owner validation, one-writer lock, quotas, deadlines and exact article receipts. Its Islamful-specific adapter accepts publisher audits and queue records, counts updates toward the daily quota, and revalidates the exact context/bundle/rendered bytes. The old keyword/written CSVs are not used.
 
 The GitHub scheduled release verifier finalizes live status; Claude writes and pushes reviewed content. Keep a pending release pending until the exact successful production deployment is verified. The Arabic queue and tool work remain separate; no French/German demand is invented from English queries.
+
+## Deployment handoff — October 24
+
+The existing release verifier also runs when a Production deployment succeeds. Claude should finish source review, validation, build and push, then retain `awaiting_release` and end its authoring session. It need not remain running to poll Vercel. The verifier still requires an exact production commit and matching public bytes/markers before recording `live_reviewed`. A failed or unavailable deployment stays pending. Manual workflow dispatch and the existing twice-daily verifier remain recovery paths.

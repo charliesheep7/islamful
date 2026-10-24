@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 0,12 * * *'
   workflow_dispatch:
+  deployment_status:
 
 concurrency:
   group: canonical-seo-publisher
@@ -15,6 +16,7 @@ permissions:
 
 jobs:
   verify:
+    if: github.event_name != 'deployment_status' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
