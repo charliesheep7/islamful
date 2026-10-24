@@ -4227,10 +4227,10 @@
       "proposed_title": "Does vomiting break Wudu?",
       "target_path": "/blog/does-vomiting-break-wudu",
       "source_file": "data/blog/en/does-vomiting-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does vomiting break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4299,6 +4299,12 @@
           "alt": "Green illustration with the title Does Vomiting Break Wudu",
           "sha256": "c9f1cfa8b28d4a3e972d485e5ecb22440d614502badc0b524218cf6f04e54a10"
         }
+      },
+      "release": {
+        "date": "2026-10-24T08:29:46.432Z",
+        "commit": "2f4029d9a9136dc8dfdd744fd5677b326eb3a31b",
+        "deployment_id": 7296214824,
+        "url": "https://www.islamful.com/blog/does-vomiting-break-wudu"
       }
     },
     {
@@ -4310,10 +4316,10 @@
       "proposed_title": "Can you read Quran without Wudu?",
       "target_path": "/blog/can-you-read-quran-without-wudu",
       "source_file": "data/blog/en/can-you-read-quran-without-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you read quran without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [
         {
@@ -4388,6 +4394,12 @@
           "alt": "Cream illustration with the title Can You Read Quran Without Wudu",
           "sha256": "8e60c56542f1c4a27a1fb06655515c291dc8437d8dca598d54faf24128976b45"
         }
+      },
+      "release": {
+        "date": "2026-10-24T08:29:46.747Z",
+        "commit": "2f4029d9a9136dc8dfdd744fd5677b326eb3a31b",
+        "deployment_id": 7296214824,
+        "url": "https://www.islamful.com/blog/can-you-read-quran-without-wudu"
       }
     },
     {

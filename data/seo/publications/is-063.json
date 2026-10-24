@@ -143,5 +143,11 @@
     ]
   },
   "prepared_at": "2026-10-23T06:11:03.120Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-24T08:29:46.747Z",
+    "commit": "2f4029d9a9136dc8dfdd744fd5677b326eb3a31b",
+    "deployment_id": 7296214824,
+    "url": "https://www.islamful.com/blog/can-you-read-quran-without-wudu"
+  }
 }
