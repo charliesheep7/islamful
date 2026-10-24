@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "id": "is-063",
+  "action": "new_article",
+  "target_path": "/blog/can-you-read-quran-without-wudu",
+  "source_file": "data/blog/en/can-you-read-quran-without-wudu.mdx",
+  "assignment_sha256": "ec884b7d1a9094643e81273eb6f6688c83fdca03c438d2b6e1360566b252dfa0",
+  "baseline_sha256": null,
+  "content_sha256": "c3825b49b0af888ed9b0ce541da26bad00a491364eea44642a0bd5b47756ace1",
+  "marker": "6b669892ace128a9ff1b738f",
+  "hero": {
+    "src": "/static/images/blog/can-you-read-quran-without-wudu.webp",
+    "alt": "Cream illustration with the title Can You Read Quran Without Wudu",
+    "sha256": "8e60c56542f1c4a27a1fb06655515c291dc8437d8dca598d54faf24128976b45"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/56/79",
+      "title": "Quran 56:79 (Surah Al-Waqi'ah), Quran.com",
+      "supports": "Verse text: touched by none except the purified; Clear Quran translation glosses the purified as angels.",
+      "checked_at": "2026-10-23T02:07:54.730Z",
+      "content_sha256": "9a236ef4df7ffa7eb02f931eebedf2211589d16e908e5fdfe7f6b2af4919a195",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:146",
+      "title": "Jami' at-Tirmidhi 146, Reciting the Quran in any state except janabah, Sunnah.com",
+      "supports": "Ali: the Prophet recited Quran in all conditions unless junub, graded hasan; Tirmidhi: recite without wudu, read mushaf only when pure, view of Thawri, Shafi'i, Ahmad, Ishaq.",
+      "checked_at": "2026-10-23T02:07:56.280Z",
+      "content_sha256": "6ffa36252c1ccda0f0b5cc1986c8cb76b2b7c58701c8eba0d3ca12ff5f820e0b",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/muslim:373",
+      "title": "Sahih Muslim 373, Remembering Allah at all times, Sunnah.com",
+      "supports": "Aishah: the Prophet used to remember Allah at all moments.",
+      "checked_at": "2026-10-23T02:07:55.592Z",
+      "content_sha256": "c4484b8178c4c18678bbc77ed52d957fa0a65671a9c0248b166acfd2ffec3f63",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7835/is-it-permissible-to-recite-the-quran-without-ablution",
+      "title": "Is it permissible to recite the Qur'an without ablution, fatwa 7835, Egypt's Dar al-Ifta",
+      "supports": "No objection to reciting or reading from a copy without ablution provided one does not touch it; cites 56:79 and the janabah exception.",
+      "checked_at": "2026-10-23T02:07:58.402Z",
+      "content_sha256": "0c009094f4a428f0391b727d8f12b09618a5c3d3d459a2ee69b145cd5128b07b",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/touching-the-quran-without-wudhu-when-covered-by-a-removable-cover/",
+      "title": "Touching The Quran Without Wudhu When Covered By A Removable Cover, Darul Ifta Birmingham",
+      "supports": "Removable dust jacket may be touched without wudu; glued or stitched cover is part of the mushaf and needs wudu.",
+      "checked_at": "2026-10-23T02:07:59.701Z",
+      "content_sha256": "9368d1288aec62f5eb10fa3014bcfadb4caae20ea8d8c1295b43c55bcb9493c8",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/touching-translation-of-the-quran-without-wudu/",
+      "title": "Touching Translation Of The Quran Without Wudu, Darul Ifta Birmingham",
+      "supports": "Hanafi jurists hold it is not permissible to touch a translation of the Quran without wudu.",
+      "checked_at": "2026-10-23T02:08:01.450Z",
+      "content_sha256": "989ce95af93d84b7f97c6eb5f7b457048032cd08950f48a2d65a4ebeb9241b77",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/will-it-be-permissible-to-touch-the-mobile-phone-screen-when-reading-the-quran-without-wudhu/",
+      "title": "Touching the mobile phone screen when reading the Quran without wudhu, Darul Ifta Birmingham",
+      "supports": "Screen text is pixels behind glass, so touching the screen of a Quran app is permissible without wudu; wudu still preferable.",
+      "checked_at": "2026-10-23T02:08:00.628Z",
+      "content_sha256": "f3265e21adadac3b9996a57bda673bf930adc3351ce0fc0e60615ec039fb99c9",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/is-reciting-quran-during-periods-permissible/",
+      "title": "Is Reciting Quran During Periods Permissible, Darul Ifta Birmingham",
+      "supports": "Hanafi: reciting for reward during menstruation not permissible; dua verses like the three Quls and Ayat al-Kursi allowed; some scholars exempt women memorising.",
+      "checked_at": "2026-10-23T02:08:44.456Z",
+      "content_sha256": "e46a6ee8089a78f901d15a002fcb1c61700a212e88b91d36bd5a5144ca7616ea",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read each retrieved page text in this run (captured 2026-10-23): Quran 56:79 with Clear Quran gloss, Tirmidhi 146, Muslim 373, Dar al-Ifta fatwa 7835, and Darul Ifta Birmingham fatwas on covers, translations, phone screens and menstruation. Article distinguishes reciting, touching, screens, janabah and menstruation, attributes Hanafi-specific rulings to Darul Ifta Birmingham, and notes other schools differ on menstruation without inventing their positions. Bukhari 183 and Abu Dawud 229 returned 403 and were not used. Hero inspected: 1200x630 cream title card.",
+    "article_sha256": "895da3be7c267808387dc940cd07fecd93af3234436aab9c4e8a2d520f805752",
+    "claim_checks": [
+      {
+        "claim": "The Prophet recited the Quran in all conditions except when junub, graded hasan",
+        "source_url": "https://sunnah.com/tirmidhi:146",
+        "explanation": "Tirmidhi 146 English text and grade Hasan (Darussalam) state this.",
+        "supported": true
+      },
+      {
+        "claim": "Thawri, Shafi'i, Ahmad and Ishaq held one may recite without wudu but read the mushaf only when pure",
+        "source_url": "https://sunnah.com/tirmidhi:146",
+        "explanation": "Tirmidhi's Arabic note: يقرأ الرجل القرآن على غير وضوء ولا يقرأ في المصحف إلا وهو طاهر, naming these scholars.",
+        "supported": true
+      },
+      {
+        "claim": "Reciting or reading from a copy without ablution is fine provided one does not touch it",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7835/is-it-permissible-to-recite-the-quran-without-ablution",
+        "explanation": "Dar al-Ifta fatwa 7835 answer states this and cites 56:79 and the janabah exception.",
+        "supported": true
+      },
+      {
+        "claim": "The Clear Quran on Quran.com glosses the purified in 56:79 as angels",
+        "source_url": "https://quran.com/56/79",
+        "explanation": "Retrieved translation reads \"touched by none except the purified angels\" with the bracketed gloss.",
+        "supported": true
+      },
+      {
+        "claim": "A removable dust jacket may be touched without wudu but a glued or stitched cover may not",
+        "source_url": "https://daruliftabirmingham.co.uk/touching-the-quran-without-wudhu-when-covered-by-a-removable-cover/",
+        "explanation": "Fatwa 09130 states both rulings with Ibn Abidin reference.",
+        "supported": true
+      },
+      {
+        "claim": "Touching a phone screen showing the Quran does not require wudu",
+        "source_url": "https://daruliftabirmingham.co.uk/will-it-be-permissible-to-touch-the-mobile-phone-screen-when-reading-the-quran-without-wudhu/",
+        "explanation": "Fatwa 05038 concludes Quran verses on a phone or tablet screen do not require wudu to be touched.",
+        "supported": true
+      },
+      {
+        "claim": "Hanafi jurists hold a Quran translation should not be touched without wudu",
+        "source_url": "https://daruliftabirmingham.co.uk/touching-translation-of-the-quran-without-wudu/",
+        "explanation": "Fatwa 05389 states the Hanafi jurists wrote it is not permissible.",
+        "supported": true
+      },
+      {
+        "claim": "Hanafi: no recitation for reward during menstruation; dua verses allowed; exception for memorisers by some scholars",
+        "source_url": "https://daruliftabirmingham.co.uk/is-reciting-quran-during-periods-permissible/",
+        "explanation": "Fatwa 06906 answer states each of these points.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet remembered Allah at all times",
+        "source_url": "https://sunnah.com/muslim:373",
+        "explanation": "Sahih Muslim 373 text from Aishah.",
+        "supported": true
+      }
+    ]
+  },
+  "prepared_at": "2026-10-23T06:11:03.120Z",
+  "state": "awaiting_release"
+}

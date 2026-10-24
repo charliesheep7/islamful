@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "id": "is-062",
+  "action": "new_article",
+  "target_path": "/blog/does-vomiting-break-wudu",
+  "source_file": "data/blog/en/does-vomiting-break-wudu.mdx",
+  "assignment_sha256": "7d5fdb07b1e9cca32f1a76dbda98e1cfbea1b684659941744643d35b5c01e2ff",
+  "baseline_sha256": null,
+  "content_sha256": "2de1ccc7cf2a53c1333ee9ead447edb61567ae83e43895f0827e392bc7163934",
+  "marker": "8bd77c1016e29ebeaa517868",
+  "hero": {
+    "src": "/static/images/blog/does-vomiting-break-wudu.webp",
+    "alt": "Green illustration with the title Does Vomiting Break Wudu",
+    "sha256": "c9f1cfa8b28d4a3e972d485e5ecb22440d614502badc0b524218cf6f04e54a10"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Surah Al-Ma'idah), Quran.com",
+      "supports": "Commands wudu before prayer and names relieving oneself; vomit is not mentioned in the verse.",
+      "checked_at": "2026-10-23T02:07:51.722Z",
+      "content_sha256": "9588c38fd7f3f1d974f3b80f3944a0fe2155f3ffb208cb1cfc085c7d09eff720",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:87",
+      "title": "Jami' at-Tirmidhi 87, Wudu for vomit and nosebleeds, Sunnah.com",
+      "supports": "Abu ad-Darda narration that the Prophet vomited and performed wudu, graded hasan; Tirmidhi lists Thawri, Ibn al-Mubarak, Ahmad and Ishaq for wudu and Malik and Shafi'i against.",
+      "checked_at": "2026-10-23T02:07:52.374Z",
+      "content_sha256": "637a27c48c7c86979e6384c18e7714f7ae69109e0e9058f4c7c49f11cad15920",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/would-i-have-to-repeat-my-wudhu-if-i-broke-my-nafl-salah-to-answer-a-mobile-call/",
+      "title": "Would I have to repeat my wudhu if I broke my Nafl Salah, Darul Ifta Birmingham",
+      "supports": "Hanafi list of eight nullifiers of wudu including vomiting in mouthful.",
+      "checked_at": "2026-10-23T02:08:38.933Z",
+      "content_sha256": "d9d7cbcd88c82069adbd38950e7b870448c5385588f5212ebcf2053727c93a54",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/dealing-with-waswasah-regarding-najasah-and-non-halal-meat-and-the-ruling-on-a-mouthful-of-vomit/",
+      "title": "Dealing With Waswasah Regarding Najasah And The Ruling On A Mouthful Of Vomit, Darul Ifta Birmingham",
+      "supports": "Defines a mouthful as what the mouth closes on only with difficulty or what prevents speech, measured by the person's own mouth, child or adult; mouthful is najis; certainty is not lifted by doubt.",
+      "checked_at": "2026-10-23T02:07:49.411Z",
+      "content_sha256": "82237edc93f76a5c6403678436851b9872d768609f02d4d743b36475dd1845be",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7861/vomiting-and-ablution",
+      "title": "Vomiting and ablution, fatwa 7861, Egypt's Dar al-Ifta",
+      "supports": "Vomiting does not nullify ablution but is impurity requiring rinsing the mouth and washing what was soiled before prayer.",
+      "checked_at": "2026-10-23T02:07:48.327Z",
+      "content_sha256": "227e2f4ae2bc2fe1651ac665aefe408d2e0eb863548da2da7d9ef03ff7ebbc2a",
+      "capture_method": "https_html"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/ruling-on-making-iqtida-of-an-imam-when-his-actions-differ-from-ones-own-madhhab/",
+      "title": "Ruling On Making Iqtida' Of An Imam When His Actions Differ From One's Own Madhhab, Darul Ifta Birmingham",
+      "supports": "Names wudu after vomiting among matters needing caution because they are obligations in some madhhabs and not others.",
+      "checked_at": "2026-10-23T02:08:39.997Z",
+      "content_sha256": "95b824c3af41c63776294b5a5e633018472f68c58ea8eb2c0139c2c798b14eeb",
+      "capture_method": "https_html"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read each retrieved page text in this run (captured 2026-10-23): Quran 5:6, Tirmidhi 87, Darul Ifta Birmingham nullifier list, mouthful definition and iqtida fatwas, and Dar al-Ifta fatwa 7861. Article presents the Hanafi mouthful view and the Maliki/Shafi'i view as recorded by Tirmidhi without declaring one universal; Hanbali position stated only as Tirmidhi names Ahmad. sunnah.com ibnmajah 1221 returned 403 and was not used; islamqa is not an approved domain and was not used. Hero inspected: 1200x630 green title card.",
+    "article_sha256": "1e1f46e3f1ceebba11a77794f7d26b7d3d3a5c9e236fefa979a019dad969a3e2",
+    "claim_checks": [
+      {
+        "claim": "The Prophet vomited and then performed wudu, confirmed by Thawban, graded hasan",
+        "source_url": "https://sunnah.com/tirmidhi:87",
+        "explanation": "Tirmidhi 87 English and Arabic text state he vomited and performed wudu; grade shown as Hasan (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Thawri, Ibn al-Mubarak, Ahmad and Ishaq held wudu after vomiting; Malik and Shafi'i did not",
+        "source_url": "https://sunnah.com/tirmidhi:87",
+        "explanation": "Tirmidhi's Arabic commentary under hadith 87 names these scholars for each position.",
+        "supported": true
+      },
+      {
+        "claim": "In the Hanafi school vomiting a mouthful nullifies wudu",
+        "source_url": "https://daruliftabirmingham.co.uk/would-i-have-to-repeat-my-wudhu-if-i-broke-my-nafl-salah-to-answer-a-mobile-call/",
+        "explanation": "Darul Ifta Birmingham lists \"Vomiting in mouthful\" as the third of eight nullifiers.",
+        "supported": true
+      },
+      {
+        "claim": "A mouthful is what the mouth closes on only with difficulty or prevents speech, judged by the person's own mouth",
+        "source_url": "https://daruliftabirmingham.co.uk/dealing-with-waswasah-regarding-najasah-and-non-halal-meat-and-the-ruling-on-a-mouthful-of-vomit/",
+        "explanation": "The fatwa defines the limit of a mouthful in these terms and applies it to adults and children alike.",
+        "supported": true
+      },
+      {
+        "claim": "Vomiting does not nullify ablution but vomit must be rinsed and washed off before prayer",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7861/vomiting-and-ablution",
+        "explanation": "Dar al-Ifta fatwa 7861 answer states exactly this.",
+        "supported": true
+      },
+      {
+        "claim": "Wudu after vomiting is a matter of caution because it is obligatory in some schools only",
+        "source_url": "https://daruliftabirmingham.co.uk/ruling-on-making-iqtida-of-an-imam-when-his-actions-differ-from-ones-own-madhhab/",
+        "explanation": "The iqtida fatwa lists performing wudu after vomiting among neglected matters where caution is needed across madhhabs.",
+        "supported": true
+      },
+      {
+        "claim": "The Quranic wudu verse mentions relieving oneself and does not mention vomit",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Retrieved verse text and translation of 5:6 list relieving oneself and intimacy, not vomit.",
+        "supported": true
+      }
+    ]
+  },
+  "prepared_at": "2026-10-23T06:11:02.957Z",
+  "state": "awaiting_release"
+}

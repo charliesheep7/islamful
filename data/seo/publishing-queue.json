@@ -4228,7 +4228,7 @@
       "target_path": "/blog/does-vomiting-break-wudu",
       "source_file": "data/blog/en/does-vomiting-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does vomiting break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4259,7 +4259,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4289,7 +4289,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "2de1ccc7cf2a53c1333ee9ead447edb61567ae83e43895f0827e392bc7163934",
+        "marker": "8bd77c1016e29ebeaa517868",
+        "audit_file": "data/seo/publications/is-062.json",
+        "hero": {
+          "src": "/static/images/blog/does-vomiting-break-wudu.webp",
+          "alt": "Green illustration with the title Does Vomiting Break Wudu",
+          "sha256": "c9f1cfa8b28d4a3e972d485e5ecb22440d614502badc0b524218cf6f04e54a10"
+        }
+      }
     },
     {
       "id": "is-063",
@@ -4301,7 +4311,7 @@
       "target_path": "/blog/can-you-read-quran-without-wudu",
       "source_file": "data/blog/en/can-you-read-quran-without-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you read quran without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4338,7 +4348,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4368,7 +4378,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "c3825b49b0af888ed9b0ce541da26bad00a491364eea44642a0bd5b47756ace1",
+        "marker": "6b669892ace128a9ff1b738f",
+        "audit_file": "data/seo/publications/is-063.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-read-quran-without-wudu.webp",
+          "alt": "Cream illustration with the title Can You Read Quran Without Wudu",
+          "sha256": "8e60c56542f1c4a27a1fb06655515c291dc8437d8dca598d54faf24128976b45"
+        }
+      }
     },
     {
       "id": "is-064",
