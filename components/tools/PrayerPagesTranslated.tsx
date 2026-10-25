@@ -1,3 +1,4 @@
+import CityPrayerGuide from '@/components/tools/CityPrayerGuide'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import PrayerTimes from './PrayerTimes'
@@ -158,6 +159,7 @@ export async function PrayerCityTranslated({ lang, city }: { lang: Language; cit
         cityCountry={country}
         cityMethod={String(city.method)}
       />
+      <CityPrayerGuide city={city} lang={lang} />
       <Link href={`/${lang}/ramadan-calendar/${city.slug}`} className="mt-6 inline-block underline">
         {t.ramadan(name)}
       </Link>

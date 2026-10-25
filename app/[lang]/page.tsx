@@ -51,8 +51,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return genPageMetadata({
     title:
       lang === 'fr'
-        ? 'Islamful — Votre compagnon musulman au quotidien'
-        : 'Islamful — Dein islamischer Begleiter im Alltag',
+        ? 'Votre compagnon musulman au quotidien'
+        : 'Dein islamischer Begleiter im Alltag',
     description:
       lang === 'fr'
         ? 'Horaires de prière, Coran, adhkar, Qibla, calendrier hégirien et zakat : des outils islamiques gratuits pour chaque jour.'

@@ -1,6 +1,7 @@
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
+import { genPageMetadata } from 'app/seo'
+import { blogArchiveAlternates } from '@/utils/blog-archive-alternates'
 import ListLayout from '@/layouts/ListLayout'
 import { getBlogCopy } from '@/data/locales/blog'
 import type { Locale } from '@/utils/locale'
@@ -12,9 +13,7 @@ export async function generateMetadata({ params }: Props) {
   return genPageMetadata({
     title: `${c.blog} — ${c.page} ${page}`,
     description: c.description,
-    alternates: buildLanguageAlternates(Number(page) === 1 ? '/blog' : `/blog/page/${page}`, {
-      currentLanguage: lang,
-    }),
+    alternates: blogArchiveAlternates(Number(page), lang),
   })
 }
 export default async function Page({ params }: Props) {

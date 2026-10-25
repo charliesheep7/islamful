@@ -1,6 +1,7 @@
 'use client'
 
 import Link from './Link'
+import NextLink from 'next/link'
 import { navigation } from '@/data/locales/navigation'
 import EmailUpdates from './EmailUpdates'
 import siteMetadata from '@/data/siteMetadata'
@@ -25,6 +26,24 @@ export default function Footer({ year }: { year: number }) {
               {siteMetadata.headerTitle}
             </span>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{t.tagline}</p>
+            <nav aria-label={t.language} className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+              {[
+                ['en', 'English'],
+                ['ar', 'العربية'],
+                ['fr', 'Français'],
+                ['de', 'Deutsch'],
+              ].map(([locale, label]) => (
+                <NextLink
+                  key={locale}
+                  href={locale === 'en' ? '/' : `/${locale}`}
+                  hrefLang={locale}
+                  lang={locale}
+                  className="hover:underline"
+                >
+                  {label}
+                </NextLink>
+              ))}
+            </nav>
           </div>
 
           {/* Tools */}

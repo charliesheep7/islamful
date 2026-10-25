@@ -43,7 +43,7 @@ export async function generateMetadata(props: {
   const c = gamePages[lang]
 
   return {
-    title: `${translated.name} — ${c.free} | Islamful`,
+    title: { absolute: `${translated.name} — ${c.free} | Islamful` },
     description: translated.description,
     alternates: buildLanguageAlternates(`/games/${slug}`, { currentLanguage: lang }),
     openGraph: {

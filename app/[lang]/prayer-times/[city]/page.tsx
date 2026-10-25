@@ -1,3 +1,4 @@
+import CityPrayerGuide from '@/components/tools/CityPrayerGuide'
 import {
   PrayerCityTranslated,
   translatedPrayerMetadata,
@@ -94,7 +95,7 @@ export default async function CityPrayerTimesPageAr({ params }: Props) {
           description: `أوقات الصلاة اليوم في ${city.nameAr}، ${city.countryAr}`,
           url: `${siteUrl}/ar/prayer-times/${city.slug}`,
           inLanguage: 'ar',
-          dateModified: new Date().toISOString().split('T')[0],
+          ...(prayerData ? { dateModified: prayerData.dateISO } : {}),
           isPartOf: {
             '@type': 'WebApplication',
             name: 'إسلامفُل - مواقيت الصلاة',
@@ -136,6 +137,7 @@ export default async function CityPrayerTimesPageAr({ params }: Props) {
         cityCountry={city.countryAr}
         cityMethod={String(city.method)}
       />
+      <CityPrayerGuide city={city} lang="ar" />
 
       <Link className="mt-6 inline-block underline" href={`/ar/ramadan-calendar/${city.slug}`}>
         تقويم رمضان والسحور والإفطار في {city.nameAr}

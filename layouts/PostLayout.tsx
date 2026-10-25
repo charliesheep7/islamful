@@ -1,3 +1,4 @@
+import RelatedReading from '@/components/seo/RelatedReading'
 import { localAuthorRole } from '@/data/locales/blog'
 import { getBlogCopy } from '@/data/locales/blog'
 import { ReactNode } from 'react'
@@ -14,6 +15,7 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs'
 
 import FAQ from '@/components/FAQ'
 import Share from '@/components/Share'
+import { isLocale, localizedPath } from '@/utils/locale'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -50,8 +52,8 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
       <ScrollTopAndComment />
       <Breadcrumbs
         items={[
-          { name: copy.blog, href: isArabic ? '/ar/blog' : '/blog' },
-          { name: title, href: isArabic ? `/ar/${path}` : `/${path}` },
+          { name: copy.blog, href: localizedPath('/blog', isLocale(lang) ? lang : 'en') },
+          { name: title, href: localizedPath(`/${path}`, isLocale(lang) ? lang : 'en') },
         ]}
       />
       <article>
@@ -129,6 +131,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 {children}
                 <Share title={title} slug={slug} summary={summary} />
                 {faqs && <FAQ faqs={faqs} lang={content.lang} />}
+                <RelatedReading path={`/blog/${slug}`} lang={lang} />
               </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">

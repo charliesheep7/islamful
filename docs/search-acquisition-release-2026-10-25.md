@@ -26,3 +26,26 @@ The review covers these specific changes, not every inherited statement in the s
 - Browser checks verified English article ordering and desktop navigation, and Arabic localized related links without horizontal overflow at the inspected desktop viewport.
 
 Private GSC exports, research metrics, the detailed plan and deployment receipts remain in the owner's local report directory; they are not part of this public repository.
+
+## Completion release: search intent, clusters and discovery
+
+The second release source-checks and rewrites the sushi and nose-piercing answers in English, Arabic, French and German. Sushi distinguishes fish from non-fish seafood (eel is fish), does not claim sushi rice always needs mirin, and provides an ingredient checklist. Nose-piercing guidance attributes the Hanafi permission, custom condition and differing Shafi‘i-context guidance rather than inventing agreement among four schools. It separates permission to pierce from displaying adornment. Original titles, dates, authors, images and routes remain unchanged; summaries, FAQs and actual revision dates are updated.
+
+Scoped agent source review, 2026-10-25:
+
+- [Jamiatul Ulama KZN, Eating sushi?](https://jamiat.org.za/eating-sushi/), Mufti Suhail Tarmahomed: fish sushi conditional on the other ingredients.
+- [Kikkoman, Sushi rice](https://www.kikkoman.com/en/cookbook/basic/rice/sushimeshi.html): a primary recipe with rice vinegar, sugar and salt, not a certification of other recipes.
+- [Darul Iftaa Chicago, Non-Fish Seafood](https://daruliftaa.us/fatwa/322/), Mufti Sawad Alam, checked by Mufti Abrar Mirza: fish classification explicitly includes eel. The article separately cites the previously checked [Hanafi shrimp answer](https://seekersguidance.org/answers/hanafi-fiqh/is-eat-permitted-to-eat-shrimp/), avoiding an artificial consensus.
+- [Faraz A. Khan, Are Nose Rings Allowed for Women?](https://seekersguidance.org/answers/hanafi-fiqh/are-nose-rings-allowed-for-women/): Hanafi permission for women and distinction for men.
+- [Faraz Rabbani, Ear & Nose Piercings for Women](https://seekersguidance.org/answers/hanafi-fiqh/ear-nose-piercings-for-women/): customary acceptance condition.
+- [Shazia Ahmad, Concealing a nose piercing](https://seekersguidance.org/answers/shafii-fiqh/if-i-get-my-nose-pierced-do-i-need-to-conceal-it-from-men/): differing guidance and a distinct question about display. No new scholar endorsement is claimed.
+
+The already source-reviewed anime answer now precedes its image in all languages. Arabic, French and German leaving-home dua text also precedes the decorative image. A server-rendered related-reading component connects existing, published articles within Wudu, night prayer, Quran, daily adhkar and food topics; missing translations are omitted instead of generating nonexistent destinations. Quran chapters and adhkar routines link back to relevant guides. The component remains on the server and does not ship the article corpus to clients.
+
+City prayer pages explain their actual configured time zone and default method, seasonal clock changes and the difference between calculated prayer starts and mosque iqamah schedules. No mosque endorsement or new calculation method is invented. English/Arabic WebPage modification dates depend on the returned schedule. Sitemap template revision dates now reflect this actual content release, not every future build clock.
+
+Translated game and Arabic Qibla title handling avoids repeated brand suffixes. French/German home titles and article breadcrumbs are corrected. Four visible language-home links in the footer are present without opening a JavaScript menu, creating a crawlable path into every language.
+
+Validation uses CLI, HTTP and the read-only GSC API. No computer use is performed for this completion release. Private full-crawl, link-graph, release and GSC receipts remain outside this public repository. An unavailable local Aladhan request exercises the existing empty-state behavior; an HTTP 200 alone does not establish that a timetable loaded. Live London HTML was independently checked to contain dated prayer data and clock values.
+
+The full rendered crawl includes sitemap URLs plus blog pagination. It identified English archive pages 30–31 advertising six nonexistent Arabic/French/German equivalents. Archive hreflang now counts published posts per language and includes only valid counterpart pages. English archive generation and pagination exclude drafts consistently. This does not redirect or delete articles.

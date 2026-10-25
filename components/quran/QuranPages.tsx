@@ -1,3 +1,4 @@
+import RelatedReading from '@/components/seo/RelatedReading'
 import QuranPagesTranslated, { translatedQuranMetadata } from './QuranPagesTranslated'
 import Link from 'next/link'
 import { Noto_Naskh_Arabic } from 'next/font/google'
@@ -87,6 +88,7 @@ export function QuranHome({ lang }: { lang: 'en' | 'ar' | 'fr' | 'de' }) {
       </header>
       <QuranIndex lang={lang} />
       <QuranSources lang={lang} />
+      <RelatedReading path="/quran" lang={lang} />
       <JsonLd
         data={{
           '@type': 'CollectionPage',
@@ -172,6 +174,7 @@ export function QuranSurah({ lang, slug }: { lang: 'en' | 'ar' | 'fr' | 'de'; sl
         )}
       </nav>
       <QuranSources lang={lang} />
+      <RelatedReading path={`/quran/${slug}`} lang={lang} />
       <JsonLd
         data={{
           '@type': 'WebPage',

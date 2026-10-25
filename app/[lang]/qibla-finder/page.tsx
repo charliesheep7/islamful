@@ -12,7 +12,7 @@ export function generateStaticParams() {
 }
 
 const arabicMetadata: Metadata = {
-  title: 'محدد القبلة — اتجاه القبلة والبوصلة | إسلامفُل',
+  title: { absolute: 'محدد القبلة — اتجاه القبلة والبوصلة | إسلامفُل' },
   description:
     'اعرف زاوية اتجاه القبلة من موقع الجهاز أو الإحداثيات التي تدخلها. نتيجة عنوان الإنترنت تقريبية، والبوصلة الحية متاحة على الأجهزة المدعومة.',
   alternates: buildLanguageAlternates('/qibla-finder', { currentLanguage: 'ar' }),
