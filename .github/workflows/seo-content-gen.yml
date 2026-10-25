@@ -30,12 +30,12 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Validate reviewed assignments
-        run: node --test tests/publishing-queue.mjs tests/article-publisher.mjs
+        run: node --test tests/publishing-queue.mjs tests/article-publisher.mjs tests/release-readiness.mjs
       - name: Verify pending production articles
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          node scripts/article-publisher.mjs --verify "$(git rev-parse HEAD)"
+          node scripts/verify-reviewed-release.mjs
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add data/seo/publishing-queue.json
