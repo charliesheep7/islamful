@@ -64,5 +64,11 @@
     "article_sha256": "bc097af8fff1c5a75f12d1b836b06ea41ae8f60dd280ec6d86369f63d50b935a"
   },
   "prepared_at": "2026-10-25T05:36:10.539Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-25T05:40:09.831Z",
+    "commit": "f1562f9cc746b71b8c7a6d1bfde6a16a0e03a0dc",
+    "deployment_id": 7309164207,
+    "url": "https://www.islamful.com/blog/does-eating-break-wudu"
+  }
 }
