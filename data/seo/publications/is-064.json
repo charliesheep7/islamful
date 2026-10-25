@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "is-064",
+  "action": "new_article",
+  "target_path": "/blog/does-eating-break-wudu",
+  "source_file": "data/blog/en/does-eating-break-wudu.mdx",
+  "assignment_sha256": "87cc0699921909ed41fbc5e2e4a2cba184319d8ba7043a95c4a0de3a93f57374",
+  "baseline_sha256": null,
+  "content_sha256": "ccc373032fb833abe8c4a61f3c43e771321ce4576ae34c90608e8ca37bf5ced1",
+  "marker": "1eb6b585a6990411722625f6",
+  "hero": {
+    "src": "/static/images/blog/does-eating-break-wudu.webp",
+    "alt": "Does Eating Break Wudu on a soft green background",
+    "sha256": "87226216c593bcc2723128eb782c35912a4efcf98694ffea3d396d5c9afbcc84"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/bukhari:207",
+      "title": "Sahih al-Bukhari 207",
+      "supports": "The Prophet ate cooked mutton and prayed without repeating ablution.",
+      "checked_at": "2026-10-25T02:37:54.661Z",
+      "content_sha256": "05681b58801b57065dddcbe455683ad76a596701e61cb336805b903b6cae1fa0"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:211",
+      "title": "Sahih al-Bukhari 211",
+      "supports": "After drinking milk the Prophet rinsed his mouth; this is distinct from repeating a full wudu.",
+      "checked_at": "2026-10-25T02:37:56.552Z",
+      "content_sha256": "09203814b882fea717733948b9504c1d758fd44c1019a63431f2a53fa1da3119"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:81",
+      "title": "Jami at-Tirmidhi 81",
+      "supports": "Camel meat is treated separately; the Arabic commentary attributes requiring wudu to Ahmad and Ishaq and notes a contrary view from Sufyan al-Thawri and scholars of Kufa.",
+      "checked_at": "2026-10-25T02:37:55.394Z",
+      "content_sha256": "4f56f52404c7eeb9fb70a143ad84250dd6090594be362d120fe71432374b16a7"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Owner-requested manual recovery by Codex after Claude Desktop stalled before writing. Read saved actual primary-source captures retrieved October 25; inspected existing hero. No invented quotations or universal consensus. Source positions are attributed; listening distinction explained from the Hanafi nullifier list, not from a music-permissibility fatwa. Routine author remains Claude.",
+    "claim_checks": [
+      {
+        "claim": "The Prophet ate cooked mutton and prayed without repeating ablution.",
+        "source_url": "https://sunnah.com/bukhari:207",
+        "supported": true,
+        "explanation": "The Prophet ate cooked mutton and prayed without repeating ablution."
+      },
+      {
+        "claim": "After drinking milk the Prophet rinsed his mouth; this is distinct from repeating a full wudu.",
+        "source_url": "https://sunnah.com/bukhari:211",
+        "supported": true,
+        "explanation": "After drinking milk the Prophet rinsed his mouth; this is distinct from repeating a full wudu."
+      },
+      {
+        "claim": "Camel meat is treated separately; the Arabic commentary attributes requiring wudu to Ahmad and Ishaq and notes a contrary view from Sufyan al-Thawri and scholars of Kufa.",
+        "source_url": "https://sunnah.com/tirmidhi:81",
+        "supported": true,
+        "explanation": "Camel meat is treated separately; the Arabic commentary attributes requiring wudu to Ahmad and Ishaq and notes a contrary view from Sufyan al-Thawri and scholars of Kufa."
+      }
+    ],
+    "article_sha256": "bc097af8fff1c5a75f12d1b836b06ea41ae8f60dd280ec6d86369f63d50b935a"
+  },
+  "prepared_at": "2026-10-25T05:36:10.539Z",
+  "state": "awaiting_release"
+}

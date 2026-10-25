@@ -345,3 +345,31 @@ test('Desktop canonical gate accepts reviewed new and update articles and reject
     await assert.rejects(checkCanonicalArticle(f.root, f.item.source_file))
   }
 })
+
+test('bounded draft helper writes only a validated explicitly reviewed bundle', async () => {
+  const { buildBundle } = await import('../scripts/build-reviewed-bundle.mjs')
+  const { root, context, bundle } = fixture()
+  try {
+    const dir = path.join(root, '.publishing-runs', bundle.id)
+    fs.mkdirSync(path.join(dir, 'src'), { recursive: true })
+    fs.writeFileSync(path.join(dir, 'context.json'), JSON.stringify(context))
+    const sources = bundle.sources.map((s, n) => {
+      fs.writeFileSync(
+        path.join(dir, `src/${n}.json`),
+        JSON.stringify({ ...s, text: 'Synthetic source text, never evidence. '.repeat(20) })
+      )
+      return { capture: `src/${n}.json`, title: s.title, supports: s.supports }
+    })
+    const spec = { id: bundle.id, article: bundle.article, sources, review: bundle.review }
+    assert.throws(
+      () => buildBundle({ ...spec, review: { ...spec.review, passed: false } }, root),
+      /review did not pass/
+    )
+    assert.ok(!fs.existsSync(path.join(dir, 'bundle.json')))
+    assert.equal(buildBundle(spec, root).status, 'validated_bundle')
+    assert.deepEqual(JSON.parse(fs.readFileSync(path.join(dir, 'bundle.json'))), bundle)
+    assert.throws(() => buildBundle(spec, root), /already exists/)
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true })
+  }
+})

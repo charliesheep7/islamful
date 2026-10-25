@@ -1,3 +1,4 @@
+import searchSnippets from '@/data/search-snippets.json'
 import 'css/prism.css'
 import 'katex/dist/katex.css'
 import 'remark-github-blockquote-alert/alert.css'
@@ -96,17 +97,21 @@ export async function generateMetadata(props: {
   // Check if this post has an Arabic version
   const hasArabicVersion = allBlogs.some((p) => p.slug === post.slug && p.lang === 'ar')
 
+  const snippet = (searchSnippets as Record<string, { title: string; description: string }>)[
+    `/blog/${post.slug}`
+  ]
+
   return {
-    title: post.title,
-    description: post.summary,
+    title: snippet?.title || post.title,
+    description: snippet?.description || post.summary,
     alternates: hasArabicVersion
       ? buildLanguageAlternates(`/blog/${post.slug}`)
       : {
           canonical: `${siteMetadata.siteUrl}/blog/${post.slug}`,
         },
     openGraph: {
-      title: post.title,
-      description: post.summary,
+      title: snippet?.title || post.title,
+      description: snippet?.description || post.summary,
       siteName: siteMetadata.title,
       type: 'article',
       publishedTime: publishedAt,
@@ -117,8 +122,8 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.summary,
+      title: snippet?.title || post.title,
+      description: snippet?.description || post.summary,
       images: imageList,
     },
   }

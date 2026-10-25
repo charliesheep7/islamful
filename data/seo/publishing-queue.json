@@ -4412,7 +4412,7 @@
       "target_path": "/blog/does-eating-break-wudu",
       "source_file": "data/blog/en/does-eating-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does eating break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4443,7 +4443,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4473,7 +4473,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "ccc373032fb833abe8c4a61f3c43e771321ce4576ae34c90608e8ca37bf5ced1",
+        "marker": "1eb6b585a6990411722625f6",
+        "audit_file": "data/seo/publications/is-064.json",
+        "hero": {
+          "src": "/static/images/blog/does-eating-break-wudu.webp",
+          "alt": "Does Eating Break Wudu on a soft green background",
+          "sha256": "87226216c593bcc2723128eb782c35912a4efcf98694ffea3d396d5c9afbcc84"
+        }
+      }
     },
     {
       "id": "is-065",
@@ -4485,7 +4495,7 @@
       "target_path": "/blog/does-listening-to-music-break-wudu",
       "source_file": "data/blog/en/does-listening-to-music-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does listening to music break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4516,7 +4526,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4546,7 +4556,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "b0950749a34a3c36d85d5f8e43b30ec197224902ea021d35e6aea91c4f1c4e0e",
+        "marker": "d0bd1e069a7d4995d4a9f00c",
+        "audit_file": "data/seo/publications/is-065.json",
+        "hero": {
+          "src": "/static/images/blog/does-listening-to-music-break-wudu.webp",
+          "alt": "Does Music Break Wudu on a soft green background",
+          "sha256": "ddcae8e6af3670b0b29cda28d3ec71b07cb5963e752dc1865606f93a4f8066c8"
+        }
+      }
     },
     {
       "id": "is-066",
