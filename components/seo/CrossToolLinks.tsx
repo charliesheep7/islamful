@@ -4,6 +4,7 @@ import { translatedTool } from '@/data/locales/tools'
 import { localizedPath, type Locale } from '@/utils/locale'
 import Link from '@/components/Link'
 import tools from '@/data/tools'
+import { relatedToolSlugs } from '@/utils/related-tools'
 
 interface CrossToolLinksProps {
   currentTool: string
@@ -14,7 +15,12 @@ export default function CrossToolLinks({ currentTool, lang: requestedLang }: Cro
   const { currentLang } = useLocale()
   const lang = requestedLang || currentLang
   const isAr = lang === 'ar'
-  const otherTools = tools.filter((t) => t.slug !== currentTool && t.status === 'live').slice(0, 4)
+  const slugs = [...new Set([...relatedToolSlugs(`/${currentTool}`), ...relatedToolSlugs('/')])]
+  const otherTools = slugs
+    .filter((slug) => slug !== currentTool && !currentTool.startsWith(`${slug}/`))
+    .map((slug) => tools.find((tool) => tool.slug === slug && tool.status === 'live'))
+    .filter((tool) => tool !== undefined)
+    .slice(0, 4)
 
   if (otherTools.length === 0) return null
 

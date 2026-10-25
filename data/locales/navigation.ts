@@ -1,6 +1,8 @@
 export const navigation = {
   en: {
     home: 'Home',
+    prayer: 'Prayer times',
+    quran: 'Quran',
     games: 'Games',
     mission: 'Mission',
     blog: 'Blog',
@@ -21,6 +23,8 @@ export const navigation = {
   },
   ar: {
     home: 'الرئيسية',
+    prayer: 'مواقيت الصلاة',
+    quran: 'القرآن',
     games: 'الألعاب',
     mission: 'رسالتنا',
     blog: 'المدونة',
@@ -41,6 +45,8 @@ export const navigation = {
   },
   fr: {
     home: 'Accueil',
+    prayer: 'Horaires de prière',
+    quran: 'Coran',
     games: 'Jeux',
     mission: 'Notre mission',
     blog: 'Blog',
@@ -61,6 +67,8 @@ export const navigation = {
   },
   de: {
     home: 'Startseite',
+    prayer: 'Gebetszeiten',
+    quran: 'Koran',
     games: 'Spiele',
     mission: 'Unsere Mission',
     blog: 'Blog',

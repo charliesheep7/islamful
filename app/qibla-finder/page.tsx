@@ -7,9 +7,9 @@ import { buildLanguageAlternates } from 'app/seo'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
 
 export const metadata: Metadata = {
-  title: 'Qibla Finder — Qibla Direction & Compass | Islamful',
+  title: { absolute: 'Qibla Finder — Online Qibla Compass | Islamful' },
   description:
-    'Find your Qibla bearing from device location or entered coordinates. IP-based results are approximate; a live compass works on supported devices.',
+    'Find the Qibla direction from your location or coordinates. Free online tool, no app download. Live compass on supported phones; IP location is approximate.',
   alternates: buildLanguageAlternates('/qibla-finder'),
   openGraph: {
     title: 'Qibla Finder — Qibla Direction & Compass | Islamful',

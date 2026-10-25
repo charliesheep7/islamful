@@ -37,13 +37,22 @@ export async function generateMetadata(props: {
   const game = games.find((g) => g.slug === slug)
   if (!game) return {}
 
+  const title =
+    slug === 'islamic-wordle'
+      ? 'Islamic Wordle — Daily Muslim Word Game | Islamful'
+      : `${game.name} — Free Islamic Game | Islamful`
+  const description =
+    slug === 'islamic-wordle'
+      ? 'Play Islamic Wordle free online. Guess the five-letter Islamic word in six tries, use the hint, and return for a new daily puzzle. No download needed.'
+      : game.description
+
   return {
-    title: `${game.name} — Free Islamic Game | Islamful`,
-    description: game.description,
+    title: { absolute: title },
+    description,
     alternates: buildLanguageAlternates(`/games/${slug}`),
     openGraph: {
-      title: `${game.name} — Free Islamic Game | Islamful`,
-      description: game.description,
+      title,
+      description,
       url: `https://www.islamful.com/games/${slug}`,
     },
   }

@@ -46,7 +46,10 @@ const Header = () => {
           </div>
         </Link>
         <div className="flex items-center gap-1 leading-5 sm:gap-4">
-          <div className="no-scrollbar hidden items-center gap-x-1 sm:flex">
+          <nav
+            aria-label={labels.content}
+            className="no-scrollbar hidden items-center gap-x-1 xl:flex"
+          >
             {headerNavLinks
               .filter((link) => link.href !== '/')
               .map((link) => (
@@ -58,7 +61,7 @@ const Header = () => {
                   {getNavText(link.title.toLowerCase())}
                 </Link>
               ))}
-          </div>
+          </nav>
           <AuthButton />
           <LocaleSwitcher />
           <SearchButton />

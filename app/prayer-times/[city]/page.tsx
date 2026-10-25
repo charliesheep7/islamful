@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `Accurate prayer times for ${city.name}, ${city.country}. Live Fajr, Dhuhr, Asr, Maghrib & Isha times with countdown. Updated daily.`
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: buildLanguageAlternates(`/prayer-times/${city.slug}`),
     openGraph: {
