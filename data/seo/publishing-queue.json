@@ -4411,10 +4411,10 @@
       "proposed_title": "Does eating break Wudu?",
       "target_path": "/blog/does-eating-break-wudu",
       "source_file": "data/blog/en/does-eating-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does eating break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4483,6 +4483,12 @@
           "alt": "Does Eating Break Wudu on a soft green background",
           "sha256": "87226216c593bcc2723128eb782c35912a4efcf98694ffea3d396d5c9afbcc84"
         }
+      },
+      "release": {
+        "date": "2026-10-25T05:40:09.831Z",
+        "commit": "f1562f9cc746b71b8c7a6d1bfde6a16a0e03a0dc",
+        "deployment_id": 7309164207,
+        "url": "https://www.islamful.com/blog/does-eating-break-wudu"
       }
     },
     {
@@ -4494,10 +4500,10 @@
       "proposed_title": "Does listening to music break Wudu?",
       "target_path": "/blog/does-listening-to-music-break-wudu",
       "source_file": "data/blog/en/does-listening-to-music-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does listening to music break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4566,6 +4572,12 @@
           "alt": "Does Music Break Wudu on a soft green background",
           "sha256": "ddcae8e6af3670b0b29cda28d3ec71b07cb5963e752dc1865606f93a4f8066c8"
         }
+      },
+      "release": {
+        "date": "2026-10-25T05:40:10.260Z",
+        "commit": "f1562f9cc746b71b8c7a6d1bfde6a16a0e03a0dc",
+        "deployment_id": 7309164207,
+        "url": "https://www.islamful.com/blog/does-listening-to-music-break-wudu"
       }
     },
     {
