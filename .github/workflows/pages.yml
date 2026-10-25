@@ -1,9 +1,9 @@
 # Inspired from https://github.com/actions/starter-workflows/blob/main/pages/nextjs.yml
 name: GitHub Pages
 
+# Production is served by Vercel. GitHub Pages is not configured (API returns404).
+# Retain this template for explicit use; do not fail every production content push.
 on:
-  push:
-    branches: main
   workflow_dispatch:
 
 permissions:
