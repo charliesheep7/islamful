@@ -14,6 +14,8 @@ const clusters = [
       'does-sleeping-break-wudu',
       'does-bleeding-break-wudu',
       'does-vomiting-break-wudu',
+      'does-eating-break-wudu',
+      'does-listening-to-music-break-wudu',
     ],
     tools: [],
   },
