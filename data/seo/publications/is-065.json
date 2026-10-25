@@ -64,5 +64,11 @@
     "article_sha256": "ced4eb933a20334d28576521eb0f7b85f41ccb7aed6c49ee0a49bb3201f51a9d"
   },
   "prepared_at": "2026-10-25T05:36:11.064Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-25T05:40:10.260Z",
+    "commit": "f1562f9cc746b71b8c7a6d1bfde6a16a0e03a0dc",
+    "deployment_id": 7309164207,
+    "url": "https://www.islamful.com/blog/does-listening-to-music-break-wudu"
+  }
 }

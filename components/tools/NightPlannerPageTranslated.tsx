@@ -1,3 +1,4 @@
+import RelatedReading from '@/components/seo/RelatedReading'
 import Link from 'next/link'
 import NightPlanner from './NightPlanner'
 import CrossToolLinks from '@/components/seo/CrossToolLinks'
@@ -34,6 +35,7 @@ export default function NightPlannerPageTranslated({ lang }: { lang: 'fr' | 'de'
         </ul>
         <Link href={`/${lang}/prayer-times`}>{c.prayer}</Link>
       </section>
+      <RelatedReading path="/last-third-of-night" lang={lang} />
       <CrossToolLinks currentTool="last-third-of-night" lang={lang} />
     </div>
   )

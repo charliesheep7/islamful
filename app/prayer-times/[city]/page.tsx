@@ -1,3 +1,4 @@
+import CityPrayerGuide from '@/components/tools/CityPrayerGuide'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from '@/components/Link'
@@ -86,7 +87,7 @@ export default async function CityPrayerTimesPage({ params }: Props) {
           description: `Accurate prayer times for ${city.name}, ${city.country}`,
           url: `${siteUrl}/prayer-times/${city.slug}`,
           inLanguage: 'en',
-          dateModified: new Date().toISOString().split('T')[0],
+          ...(prayerData ? { dateModified: prayerData.dateISO } : {}),
           isPartOf: {
             '@type': 'WebApplication',
             name: 'Islamful Prayer Times',
@@ -128,6 +129,7 @@ export default async function CityPrayerTimesPage({ params }: Props) {
         cityCountry={city.country}
         cityMethod={String(city.method)}
       />
+      <CityPrayerGuide city={city} lang="en" />
 
       <Link className="mt-6 inline-block underline" href={`/ramadan-calendar/${city.slug}`}>
         Ramadan calendar and fasting times in {city.name}

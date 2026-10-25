@@ -1,3 +1,4 @@
+import RelatedReading from '@/components/seo/RelatedReading'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { chapters, quranPath } from '@/data/quran'
@@ -148,6 +149,7 @@ export default function QuranPagesTranslated({
         </>
       )}
       <QuranSources lang={lang} />
+      <RelatedReading path={slug ? `/quran/${slug}` : '/quran'} lang={lang} />
     </div>
   )
 }

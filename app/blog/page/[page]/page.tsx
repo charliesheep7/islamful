@@ -3,12 +3,13 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
+import { genPageMetadata } from 'app/seo'
+import { blogArchiveAlternates } from '@/utils/blog-archive-alternates'
 
 const POSTS_PER_PAGE = 5
 
 export const generateStaticParams = async () => {
-  const filteredBlogs = allBlogs.filter((post) => post.lang === 'en' || !post.lang)
+  const filteredBlogs = allBlogs.filter((post) => !post.draft && (post.lang === 'en' || !post.lang))
   const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
 
@@ -21,7 +22,6 @@ export async function generateMetadata(props: {
   const params = await props.params
   const rawPage = Number(params.page)
   const pageNumber = Number.isFinite(rawPage) && rawPage > 1 ? rawPage : 1
-  const path = pageNumber <= 1 ? '/blog' : `/blog/page/${pageNumber}`
   const description =
     pageNumber <= 1
       ? 'Browse the latest Islamful blog posts covering faith, lifestyle, and product learnings.'
@@ -30,14 +30,14 @@ export async function generateMetadata(props: {
   return genPageMetadata({
     title: pageNumber <= 1 ? 'Blog' : `Blog - Page ${pageNumber}`,
     description,
-    alternates: buildLanguageAlternates(path),
+    alternates: blogArchiveAlternates(pageNumber, 'en'),
   })
 }
 
 export default async function Page(props: { params: Promise<{ page: string }> }) {
   const params = await props.params
   // Filter posts by language (default to English)
-  const filteredBlogs = allBlogs.filter((post) => post.lang === 'en' || !post.lang)
+  const filteredBlogs = allBlogs.filter((post) => !post.draft && (post.lang === 'en' || !post.lang))
   const posts = allCoreContent(sortPosts(filteredBlogs))
 
   const pageNumber = parseInt(params.page as string)

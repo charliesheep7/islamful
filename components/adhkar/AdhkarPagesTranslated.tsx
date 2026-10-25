@@ -1,3 +1,4 @@
+import RelatedReading from '@/components/seo/RelatedReading'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { routines } from '@/data/adhkar'
@@ -73,6 +74,7 @@ export function AdhkarHomeTranslated({ lang }: { lang: 'fr' | 'de' }) {
           },
         }}
       />
+      <RelatedReading path="/adhkar" lang={lang} />
     </div>
   )
 }
@@ -151,6 +153,7 @@ export function AdhkarPageTranslated({
         </p>
       </section>
       <QuranSources lang={lang} />
+      <RelatedReading path={`/adhkar/${id}`} lang={lang} />
       <JsonLd
         data={{
           '@type': 'WebPage',

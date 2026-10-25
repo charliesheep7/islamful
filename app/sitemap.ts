@@ -13,7 +13,6 @@ export const dynamic = 'force-static'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = siteMetadata.siteUrl
-  const today = new Date().toISOString().split('T')[0]
 
   // Static pages
   const enRoutes = ['', 'blog', 'games', 'mission', 'support', 'privacy', 'terms'].map((route) => ({
@@ -57,16 +56,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
+  // Last significant template/content revision; do not advance on unrelated builds.
+  const discoveryRevision = '2026-10-25'
+
   // City prayer pages
   const enCities = cities.map((city) => ({
     url: `${siteUrl}/prayer-times/${city.slug}`,
-    lastModified: today,
+    lastModified: discoveryRevision,
     changeFrequency: 'daily' as const,
     priority: 0.8,
   }))
   const arCities = cities.map((city) => ({
     url: `${siteUrl}/ar/prayer-times/${city.slug}`,
-    lastModified: today,
+    lastModified: discoveryRevision,
     changeFrequency: 'daily' as const,
     priority: 0.7,
   }))
@@ -101,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const translatedCities = ['fr', 'de'].flatMap((lang) =>
     cities.map((city) => ({
       url: `${siteUrl}/${lang}/prayer-times/${city.slug}`,
-      lastModified: today,
+      lastModified: discoveryRevision,
       changeFrequency: 'daily' as const,
       priority: 0.7,
     }))
@@ -110,7 +112,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const quranPages = ['en', 'ar', 'fr', 'de'].flatMap((lang) =>
     chapters.map((chapter) => ({
       url: `${siteUrl}${quranPath(chapter, lang)}`,
-      lastModified: '2026-10-13',
+      lastModified: discoveryRevision,
       changeFrequency: 'yearly' as const,
       priority: 0.8,
       alternates: {
@@ -127,7 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const adhkarPages = ['en', 'ar', 'fr', 'de'].flatMap((lang) =>
     routines.map((r) => ({
       url: `${siteUrl}${lang === 'en' ? '' : `/${lang}`}/adhkar/${r.id}`,
-      lastModified: '2026-10-13',
+      lastModified: discoveryRevision,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
       alternates: {
