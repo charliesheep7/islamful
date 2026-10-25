@@ -27,3 +27,17 @@ Run `node --test tests/publishing-queue.mjs tests/article-publisher.mjs`, the ca
 After commit, rerun the gate on committed bytes and record the guard receipt again, then use the guarded push. Report pushed content as pending until the exact production deployment and page marker match. The existing GitHub workflow verifies pending releases and commits the verified queue/audit state; leave metadata-only finalization to it in Desktop runs, since the Desktop quota hook expects an article change. Dispatch that existing workflow after deployment when available. If verification fails, keep awaiting_release and report the exact issue; never create replacement pages to hide a failed release. Check canonical, sitemap, live hero and useful tool links. IndexNow is separate and does not prove Google indexing.
 
 Report assignment IDs, new/update counts, URLs, exact commit, verified versus pending status and remaining eligible queue counts. Follow the actual daily target and deadline; there is no extra catch-up quota.
+
+## Bounded bundle writing (October 25)
+
+Use the checked-in `scripts/build-reviewed-bundle.mjs` for bundle assembly. Do not create a new helper script or use Desktop Write/Edit for private draft files outside the original checkout; the October 25 run stalled on that tool call before any article was saved. Author one JSON spec and pass it to the helper on stdin through the existing guarded Bash command with a quoted heredoc. The helper reads the prepared context and saved source captures, computes hashes, validates the explicit review and writes the bundle atomically. It never writes a review decision for you.
+
+Spec fields: `id`, `article` (normal publisher fields), `sources` entries with `capture` (e.g. `src/quran_com_5_6.json`), `title`, `supports`, and `review` with explicit `method`, `passed`, `issues`, `notes`, `claim_checks`. Each claim check needs `claim`, `source_url`, `explanation`, `supported`. Capture files must contain actual retrieved `text`, `url`, `checked_at`, `content_sha256`. Review them before using them. An existing bundle is never overwritten; inspect and reuse it, or preserve it under a distinct backup name before deliberate revision. Do not import executable draft specs.
+
+```sh
+python3 /Users/sihancheng/.claude/scheduled-tasks/publishing-runtime/guard.py exec --site islamful --run RUN --seconds 30 -- node scripts/build-reviewed-bundle.mjs <<'REVIEWED_SPEC'
+{ "id": "REPLACE_WITH_ACTUAL_ID_AND_COMPLETE_REVIEWED_SPEC" }
+REVIEWED_SPEC
+```
+
+The JSON above is a schema reminder, not a valid article or source evidence. Read `output_file` after each bounded command. Apply and gate the first completed article before beginning the second. Keep the existing daily quota, source checks and release verification.

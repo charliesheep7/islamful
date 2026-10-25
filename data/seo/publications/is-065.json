@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "is-065",
+  "action": "new_article",
+  "target_path": "/blog/does-listening-to-music-break-wudu",
+  "source_file": "data/blog/en/does-listening-to-music-break-wudu.mdx",
+  "assignment_sha256": "58b53ca77d510acc4aee1eebeab041e57c85b476db71ecc1016ea31dfc9dbe8e",
+  "baseline_sha256": null,
+  "content_sha256": "b0950749a34a3c36d85d5f8e43b30ec197224902ea021d35e6aea91c4f1c4e0e",
+  "marker": "d0bd1e069a7d4995d4a9f00c",
+  "hero": {
+    "src": "/static/images/blog/does-listening-to-music-break-wudu.webp",
+    "alt": "Does Music Break Wudu on a soft green background",
+    "sha256": "ddcae8e6af3670b0b29cda28d3ec71b07cb5963e752dc1865606f93a4f8066c8"
+  },
+  "sources": [
+    {
+      "url": "https://daruliftabirmingham.co.uk/would-i-have-to-repeat-my-wudhu-if-i-broke-my-nafl-salah-to-answer-a-mobile-call/",
+      "title": "Darul Ifta Birmingham: ablution and answering a phone",
+      "supports": "The Hanafi answer enumerates wudu nullifiers and explains that answering a call does not itself invalidate wudu. Hearing or listening is not included in that list.",
+      "checked_at": "2026-10-25T02:38:52.638Z",
+      "content_sha256": "7f9aabb5f24c21a93c530733ea1e25bf0cdf398de9d99a39b353c247f268e87d"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/22265/listening-to-music-and-songs",
+      "title": "Egypt’s Dar Al-Ifta: Listening to music and songs",
+      "supports": "The institution distinguishes permitted and prohibited music according to content and circumstances; this ruling does not establish wudu nullification.",
+      "checked_at": "2026-10-25T02:39:09.720Z",
+      "content_sha256": "a7404f669ceec4f1e0c13295fb458933d408d8f6eea411ea20500c82bbb8d474"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/going-to-the-gym-that-plays-music/",
+      "title": "Darul Ifta Birmingham: Going to the gym that plays music",
+      "supports": "This institution advises avoiding a gym playing music, illustrating a more restrictive position on listening, separate from ritual purity.",
+      "checked_at": "2026-10-25T02:39:12.763Z",
+      "content_sha256": "415f915833c3eacfb0a6d0412e84790ad691b1cbe1fea9db593002ad8cd8269e"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Owner-requested manual recovery by Codex after Claude Desktop stalled before writing. Read saved actual primary-source captures retrieved October 25; inspected existing hero. No invented quotations or universal consensus. Source positions are attributed; listening distinction explained from the Hanafi nullifier list, not from a music-permissibility fatwa. Routine author remains Claude.",
+    "claim_checks": [
+      {
+        "claim": "The Hanafi answer enumerates wudu nullifiers and explains that answering a call does not itself invalidate wudu. Hearing or listening is not included in that list.",
+        "source_url": "https://daruliftabirmingham.co.uk/would-i-have-to-repeat-my-wudhu-if-i-broke-my-nafl-salah-to-answer-a-mobile-call/",
+        "supported": true,
+        "explanation": "The Hanafi answer enumerates wudu nullifiers and explains that answering a call does not itself invalidate wudu. Hearing or listening is not included in that list."
+      },
+      {
+        "claim": "The institution distinguishes permitted and prohibited music according to content and circumstances; this ruling does not establish wudu nullification.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/22265/listening-to-music-and-songs",
+        "supported": true,
+        "explanation": "The institution distinguishes permitted and prohibited music according to content and circumstances; this ruling does not establish wudu nullification."
+      },
+      {
+        "claim": "This institution advises avoiding a gym playing music, illustrating a more restrictive position on listening, separate from ritual purity.",
+        "source_url": "https://daruliftabirmingham.co.uk/going-to-the-gym-that-plays-music/",
+        "supported": true,
+        "explanation": "This institution advises avoiding a gym playing music, illustrating a more restrictive position on listening, separate from ritual purity."
+      }
+    ],
+    "article_sha256": "ced4eb933a20334d28576521eb0f7b85f41ccb7aed6c49ee0a49bb3201f51a9d"
+  },
+  "prepared_at": "2026-10-25T05:36:11.064Z",
+  "state": "awaiting_release"
+}
