@@ -129,5 +129,11 @@
     "article_sha256": "5824525e9a5fcb36175ab338fb2471fc2d599d5e711d092bef737cb4f5c94749"
   },
   "prepared_at": "2026-10-26T02:11:23.870Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-26T06:29:33.990Z",
+    "commit": "4bcd0f5ba5552e21f892bdc4ba0a453c6bd6a7b0",
+    "deployment_id": 7322574800,
+    "url": "https://www.islamful.com/blog/dua-during-wudu"
+  }
 }

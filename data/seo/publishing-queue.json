@@ -115,7 +115,11 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-001", "is-scale-003", "is-scale-039"],
+          "candidate_ids": [
+            "is-scale-001",
+            "is-scale-003",
+            "is-scale-039"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-perform-wudu",
           "stage": "assigned_not_written"
@@ -123,7 +127,11 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["wudu steps", "fard in wudu", "do i have to say bismillah before wudu"],
+          "questions": [
+            "wudu steps",
+            "fard in wudu",
+            "do i have to say bismillah before wudu"
+          ],
           "outline": [
             "Answer the exact question: wudu steps",
             "Explain the applicable distinctions and exceptions for wudu steps",
@@ -273,7 +281,12 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-005", "is-scale-029", "is-scale-034", "is-scale-040"],
+          "candidate_ids": [
+            "is-scale-005",
+            "is-scale-029",
+            "is-scale-034",
+            "is-scale-040"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/does-bleeding-break-wudu",
           "stage": "assigned_not_written"
@@ -329,7 +342,9 @@
       "priority": 3,
       "locale": "en",
       "primary_keyword": "does sleeping break wudu",
-      "secondary_keywords": ["does sleep break wudu"],
+      "secondary_keywords": [
+        "does sleep break wudu"
+      ],
       "proposed_title": "Does Sleeping Break Wudu? Drowsiness, Posture and Awareness",
       "target_path": "/blog/does-sleeping-break-wudu",
       "source_file": "data/blog/en/does-sleeping-break-wudu.mdx",
@@ -399,7 +414,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-011"],
+          "candidate_ids": [
+            "is-scale-011"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/does-sleeping-break-wudu",
           "stage": "assigned_not_written"
@@ -407,7 +424,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does sleep break wudu"],
+          "questions": [
+            "does sleep break wudu"
+          ],
           "outline": [
             "Answer the exact question: does sleep break wudu",
             "Explain the applicable distinctions and exceptions for does sleep break wudu",
@@ -506,7 +525,9 @@
       "priority": 5,
       "locale": "en",
       "primary_keyword": "does vaping break your fast",
-      "secondary_keywords": ["does vaping break your fast in islam"],
+      "secondary_keywords": [
+        "does vaping break your fast in islam"
+      ],
       "proposed_title": "Does Vaping Break Your Fast?",
       "target_path": "/blog/does-vaping-break-your-fast",
       "source_file": "data/blog/en/does-vaping-break-your-fast.mdx",
@@ -621,7 +642,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-138"],
+          "candidate_ids": [
+            "is-scale-138"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/does-vaping-break-your-fast",
           "stage": "assigned_not_written"
@@ -629,7 +652,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does vaping break your fast in islam"],
+          "questions": [
+            "does vaping break your fast in islam"
+          ],
           "outline": [
             "Answer the exact question: does vaping break your fast in islam",
             "Explain the applicable distinctions and exceptions for does vaping break your fast in islam",
@@ -799,7 +824,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-054"],
+          "candidate_ids": [
+            "is-scale-054"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-salah-for-beginners",
           "stage": "assigned_not_written"
@@ -807,7 +834,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to pray salah"],
+          "questions": [
+            "how to pray salah"
+          ],
           "outline": [
             "Answer the exact question: how to pray salah",
             "Explain the applicable distinctions and exceptions for how to pray salah",
@@ -959,7 +988,10 @@
       "priority": 10,
       "locale": "en",
       "primary_keyword": "quran",
-      "secondary_keywords": ["quran online", "quran recitation"],
+      "secondary_keywords": [
+        "quran online",
+        "quran recitation"
+      ],
       "proposed_title": "Quran reader and recitation",
       "target_path": "/quran",
       "source_file": "app/quran/page.tsx",
@@ -1347,7 +1379,9 @@
       "priority": 10,
       "locale": "en",
       "primary_keyword": "tasbih counter",
-      "secondary_keywords": ["dhikr counter"],
+      "secondary_keywords": [
+        "dhikr counter"
+      ],
       "proposed_title": "Dhikr counter",
       "target_path": "/dhikr",
       "source_file": "app/dhikr/page.tsx",
@@ -1464,7 +1498,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-070"],
+          "candidate_ids": [
+            "is-scale-070"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/zakat-calculator",
           "stage": "assigned_not_written"
@@ -1472,7 +1508,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["zakat calculator"],
+          "questions": [
+            "zakat calculator"
+          ],
           "outline": [
             "Answer the exact question: zakat calculator",
             "Explain the applicable distinctions and exceptions for zakat calculator",
@@ -1495,7 +1533,10 @@
       "priority": 10,
       "locale": "en",
       "primary_keyword": "islamic date today",
-      "secondary_keywords": ["hijri calendar", "hijri to gregorian"],
+      "secondary_keywords": [
+        "hijri calendar",
+        "hijri to gregorian"
+      ],
       "proposed_title": "Islamic date and Hijri conversion",
       "target_path": "/islamic-calendar",
       "source_file": "app/islamic-calendar/page.tsx",
@@ -1627,7 +1668,10 @@
       "priority": 10,
       "locale": "en",
       "primary_keyword": "iftar time",
-      "secondary_keywords": ["sehri time", "fasting times"],
+      "secondary_keywords": [
+        "sehri time",
+        "fasting times"
+      ],
       "proposed_title": "Suhoor and iftar times",
       "target_path": "/fasting-times",
       "source_file": "app/fasting-times/page.tsx",
@@ -1714,7 +1758,10 @@
       "priority": 10,
       "locale": "en",
       "primary_keyword": "tahajjud time",
-      "secondary_keywords": ["tahajjud calculator", "last third of the night calculator"],
+      "secondary_keywords": [
+        "tahajjud calculator",
+        "last third of the night calculator"
+      ],
       "proposed_title": "Tonight planner",
       "target_path": "/last-third-of-night",
       "source_file": "app/last-third-of-night/page.tsx",
@@ -1961,7 +2008,9 @@
       "priority": 10,
       "locale": "ar",
       "primary_keyword": "التاريخ الهجري اليوم",
-      "secondary_keywords": ["تحويل التاريخ من هجري الى ميلادي"],
+      "secondary_keywords": [
+        "تحويل التاريخ من هجري الى ميلادي"
+      ],
       "proposed_title": "التاريخ الهجري والتحويل",
       "target_path": "/ar/islamic-calendar",
       "source_file": "app/[lang]/islamic-calendar/page.tsx",
@@ -2100,7 +2149,9 @@
       "priority": 10,
       "locale": "ar",
       "primary_keyword": "وقت صلاة التهجد",
-      "secondary_keywords": ["حساب الثلث الأخير من الليل"],
+      "secondary_keywords": [
+        "حساب الثلث الأخير من الليل"
+      ],
       "proposed_title": "مواقيت ليلتك",
       "target_path": "/ar/last-third-of-night",
       "source_file": "app/[lang]/last-third-of-night/page.tsx",
@@ -2201,7 +2252,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-071"],
+          "candidate_ids": [
+            "is-scale-071"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/zakat-calculator/gold",
           "stage": "assigned_not_written"
@@ -2209,7 +2262,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["gold zakat calculator"],
+          "questions": [
+            "gold zakat calculator"
+          ],
           "outline": [
             "Answer the exact question: gold zakat calculator",
             "Explain the applicable distinctions and exceptions for gold zakat calculator",
@@ -2278,7 +2333,9 @@
       "priority": 12,
       "locale": "en",
       "primary_keyword": "umrah guide",
-      "secondary_keywords": ["how to perform umrah"],
+      "secondary_keywords": [
+        "how to perform umrah"
+      ],
       "proposed_title": "How to Perform Umrah",
       "target_path": "/blog/how-to-perform-umrah-step-by-step",
       "source_file": "data/blog/en/how-to-perform-umrah-step-by-step.mdx",
@@ -2336,7 +2393,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-116"],
+          "candidate_ids": [
+            "is-scale-116"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-perform-umrah-step-by-step",
           "stage": "assigned_not_written"
@@ -2344,7 +2403,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to perform umrah"],
+          "questions": [
+            "how to perform umrah"
+          ],
           "outline": [
             "Answer the exact question: how to perform umrah",
             "Explain the applicable distinctions and exceptions for how to perform umrah",
@@ -2865,7 +2926,9 @@
       "priority": 16,
       "locale": "en",
       "primary_keyword": "nisab",
-      "secondary_keywords": ["nisab threshold"],
+      "secondary_keywords": [
+        "nisab threshold"
+      ],
       "proposed_title": "Nisab: Gold, Silver and the Zakat Threshold",
       "target_path": "/blog/nisab",
       "source_file": "data/blog/en/nisab.mdx",
@@ -2923,7 +2986,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-072"],
+          "candidate_ids": [
+            "is-scale-072"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/nisab",
           "stage": "assigned_not_written"
@@ -2931,7 +2996,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["nisab threshold"],
+          "questions": [
+            "nisab threshold"
+          ],
           "outline": [
             "Answer the exact question: nisab threshold",
             "Explain the applicable distinctions and exceptions for nisab threshold",
@@ -2970,7 +3037,9 @@
       "priority": 18,
       "locale": "en",
       "primary_keyword": "muslim boy names",
-      "secondary_keywords": ["muslim girl names"],
+      "secondary_keywords": [
+        "muslim girl names"
+      ],
       "proposed_title": "Muslim names: evidence and search",
       "target_path": "/muslim-names",
       "source_file": "app/muslim-names/page.tsx",
@@ -3529,7 +3598,9 @@
       "priority": 35,
       "locale": "en",
       "primary_keyword": "mosque near me",
-      "secondary_keywords": ["jummah time"],
+      "secondary_keywords": [
+        "jummah time"
+      ],
       "proposed_title": "Mosque and Jumuah directory",
       "target_path": null,
       "source_file": null,
@@ -3637,7 +3708,9 @@
       "priority": 35,
       "locale": "en",
       "primary_keyword": "qada prayer calculator",
-      "secondary_keywords": ["missed prayer calculator"],
+      "secondary_keywords": [
+        "missed prayer calculator"
+      ],
       "proposed_title": "Missed prayer planning",
       "target_path": null,
       "source_file": null,
@@ -3929,7 +4002,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "does vaping break wudu",
-      "secondary_keywords": ["does smoking break wudu"],
+      "secondary_keywords": [
+        "does smoking break wudu"
+      ],
       "proposed_title": "Does vaping break Wudu?",
       "target_path": "/blog/does-vaping-break-wudu",
       "source_file": "data/blog/en/does-vaping-break-wudu.mdx",
@@ -3995,7 +4070,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-004", "is-scale-014"],
+          "candidate_ids": [
+            "is-scale-004",
+            "is-scale-014"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-vaping-break-wudu",
           "stage": "assigned_not_written"
@@ -4003,7 +4081,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does vaping break wudu", "does smoking break wudu"],
+          "questions": [
+            "does vaping break wudu",
+            "does smoking break wudu"
+          ],
           "outline": [
             "Answer the exact question: does vaping break wudu",
             "Explain the applicable distinctions and exceptions for does vaping break wudu",
@@ -4087,7 +4168,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-007"],
+          "candidate_ids": [
+            "is-scale-007"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-discharge-break-wudu",
           "stage": "assigned_not_written"
@@ -4095,7 +4178,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does discharge break wudu"],
+          "questions": [
+            "does discharge break wudu"
+          ],
           "outline": [
             "Answer the exact question: does discharge break wudu",
             "Explain the applicable distinctions and exceptions for does discharge break wudu",
@@ -4176,7 +4261,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-008"],
+          "candidate_ids": [
+            "is-scale-008"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-swearing-break-wudu",
           "stage": "assigned_not_written"
@@ -4184,7 +4271,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does swearing break wudu"],
+          "questions": [
+            "does swearing break wudu"
+          ],
           "outline": [
             "Answer the exact question: does swearing break wudu",
             "Explain the applicable distinctions and exceptions for does swearing break wudu",
@@ -4265,7 +4354,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-009"],
+          "candidate_ids": [
+            "is-scale-009"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-vomiting-break-wudu",
           "stage": "assigned_not_written"
@@ -4273,7 +4364,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does vomiting break wudu"],
+          "questions": [
+            "does vomiting break wudu"
+          ],
           "outline": [
             "Answer the exact question: does vomiting break wudu",
             "Explain the applicable distinctions and exceptions for does vomiting break wudu",
@@ -4360,7 +4453,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-010"],
+          "candidate_ids": [
+            "is-scale-010"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-read-quran-without-wudu",
           "stage": "assigned_not_written"
@@ -4368,7 +4463,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you read quran without wudu"],
+          "questions": [
+            "can you read quran without wudu"
+          ],
           "outline": [
             "Answer the exact question: can you read quran without wudu",
             "Explain the applicable distinctions and exceptions for can you read quran without wudu",
@@ -4449,7 +4546,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-012"],
+          "candidate_ids": [
+            "is-scale-012"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-eating-break-wudu",
           "stage": "assigned_not_written"
@@ -4457,7 +4556,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does eating break wudu"],
+          "questions": [
+            "does eating break wudu"
+          ],
           "outline": [
             "Answer the exact question: does eating break wudu",
             "Explain the applicable distinctions and exceptions for does eating break wudu",
@@ -4538,7 +4639,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-013"],
+          "candidate_ids": [
+            "is-scale-013"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-listening-to-music-break-wudu",
           "stage": "assigned_not_written"
@@ -4546,7 +4649,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does listening to music break wudu"],
+          "questions": [
+            "does listening to music break wudu"
+          ],
           "outline": [
             "Answer the exact question: does listening to music break wudu",
             "Explain the applicable distinctions and exceptions for does listening to music break wudu",
@@ -4589,10 +4694,10 @@
       "proposed_title": "Dua during Wudu",
       "target_path": "/blog/dua-during-wudu",
       "source_file": "data/blog/en/dua-during-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer dua during wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [
         {
@@ -4621,7 +4726,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-015"],
+          "candidate_ids": [
+            "is-scale-015"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/dua-during-wudu",
           "stage": "assigned_not_written"
@@ -4629,7 +4736,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["dua during wudu"],
+          "questions": [
+            "dua during wudu"
+          ],
           "outline": [
             "Answer the exact question: dua during wudu",
             "Explain the applicable distinctions and exceptions for dua during wudu",
@@ -4655,6 +4764,12 @@
           "alt": "Soft cream and green illustration with the title Dua During Wudu",
           "sha256": "03953f24d3e25572133b6c4b37d672840420e079a52f6b99a4b5180eea4af80d"
         }
+      },
+      "release": {
+        "date": "2026-10-26T06:29:33.990Z",
+        "commit": "4bcd0f5ba5552e21f892bdc4ba0a453c6bd6a7b0",
+        "deployment_id": 7322574800,
+        "url": "https://www.islamful.com/blog/dua-during-wudu"
       }
     },
     {
@@ -4666,10 +4781,10 @@
       "proposed_title": "Does cutting nails break Wudu?",
       "target_path": "/blog/does-cutting-nails-break-wudu",
       "source_file": "data/blog/en/does-cutting-nails-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does cutting nails break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4692,7 +4807,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-016"],
+          "candidate_ids": [
+            "is-scale-016"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-cutting-nails-break-wudu",
           "stage": "assigned_not_written"
@@ -4700,7 +4817,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does cutting nails break wudu"],
+          "questions": [
+            "does cutting nails break wudu"
+          ],
           "outline": [
             "Answer the exact question: does cutting nails break wudu",
             "Explain the applicable distinctions and exceptions for does cutting nails break wudu",
@@ -4726,6 +4845,12 @@
           "alt": "Green illustration with the title Does Cutting Nails Break Wudu",
           "sha256": "d97794af954c2b7135e985e9924006b3b223d42b93d39b7b66cb23434be70c21"
         }
+      },
+      "release": {
+        "date": "2026-10-26T06:29:34.722Z",
+        "commit": "4bcd0f5ba5552e21f892bdc4ba0a453c6bd6a7b0",
+        "deployment_id": 7322574800,
+        "url": "https://www.islamful.com/blog/does-cutting-nails-break-wudu"
       }
     },
     {
@@ -4763,7 +4888,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-017"],
+          "candidate_ids": [
+            "is-scale-017"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-passing-wind-break-wudu",
           "stage": "assigned_not_written"
@@ -4771,7 +4898,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does passing wind break wudu"],
+          "questions": [
+            "does passing wind break wudu"
+          ],
           "outline": [
             "Answer the exact question: does passing wind break wudu",
             "Explain the applicable distinctions and exceptions for does passing wind break wudu",
@@ -4824,7 +4953,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-018"],
+          "candidate_ids": [
+            "is-scale-018"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-showering-count-as-wudu",
           "stage": "assigned_not_written"
@@ -4832,7 +4963,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does showering count as wudu"],
+          "questions": [
+            "does showering count as wudu"
+          ],
           "outline": [
             "Answer the exact question: does showering count as wudu",
             "Explain the applicable distinctions and exceptions for does showering count as wudu",
@@ -4885,7 +5018,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-019"],
+          "candidate_ids": [
+            "is-scale-019"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-perform-tayammum",
           "stage": "assigned_not_written"
@@ -4893,7 +5028,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to do wudu without water"],
+          "questions": [
+            "how to do wudu without water"
+          ],
           "outline": [
             "Answer the exact question: how to do wudu without water",
             "Explain the applicable distinctions and exceptions for how to do wudu without water",
@@ -4946,7 +5083,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-020"],
+          "candidate_ids": [
+            "is-scale-020"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-do-wudu-with-socks-on",
           "stage": "assigned_not_written"
@@ -4954,7 +5093,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you do wudu with socks on"],
+          "questions": [
+            "can you do wudu with socks on"
+          ],
           "outline": [
             "Answer the exact question: can you do wudu with socks on",
             "Explain the applicable distinctions and exceptions for can you do wudu with socks on",
@@ -5007,7 +5148,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-021"],
+          "candidate_ids": [
+            "is-scale-021"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-read-quran-on-phone-without-wudu",
           "stage": "assigned_not_written"
@@ -5015,7 +5158,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you read quran on phone without wudu"],
+          "questions": [
+            "can you read quran on phone without wudu"
+          ],
           "outline": [
             "Answer the exact question: can you read quran on phone without wudu",
             "Explain the applicable distinctions and exceptions for can you read quran on phone without wudu",
@@ -5068,7 +5213,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-022"],
+          "candidate_ids": [
+            "is-scale-022"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-kissing-break-wudu",
           "stage": "assigned_not_written"
@@ -5076,7 +5223,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does kissing break wudu"],
+          "questions": [
+            "does kissing break wudu"
+          ],
           "outline": [
             "Answer the exact question: does kissing break wudu",
             "Explain the applicable distinctions and exceptions for does kissing break wudu",
@@ -5129,7 +5278,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-023"],
+          "candidate_ids": [
+            "is-scale-023"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-laughing-break-wudu",
           "stage": "assigned_not_written"
@@ -5137,7 +5288,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does laughing break wudu"],
+          "questions": [
+            "does laughing break wudu"
+          ],
           "outline": [
             "Answer the exact question: does laughing break wudu",
             "Explain the applicable distinctions and exceptions for does laughing break wudu",
@@ -5190,7 +5343,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-024"],
+          "candidate_ids": [
+            "is-scale-024"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-touching-private-parts-break-wudu",
           "stage": "assigned_not_written"
@@ -5198,7 +5353,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does touching private parts break wudu"],
+          "questions": [
+            "does touching private parts break wudu"
+          ],
           "outline": [
             "Answer the exact question: does touching private parts break wudu",
             "Explain the applicable distinctions and exceptions for does touching private parts break wudu",
@@ -5251,7 +5408,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-025"],
+          "candidate_ids": [
+            "is-scale-025"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-do-wudu-with-makeup-on",
           "stage": "assigned_not_written"
@@ -5259,7 +5418,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you do wudu with makeup on"],
+          "questions": [
+            "can you do wudu with makeup on"
+          ],
           "outline": [
             "Answer the exact question: can you do wudu with makeup on",
             "Explain the applicable distinctions and exceptions for can you do wudu with makeup on",
@@ -5312,7 +5473,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-027"],
+          "candidate_ids": [
+            "is-scale-027"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-many-rakat-in-wudu",
           "stage": "assigned_not_written"
@@ -5320,7 +5483,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakat in wudu"],
+          "questions": [
+            "how many rakat in wudu"
+          ],
           "outline": [
             "Answer the exact question: how many rakat in wudu",
             "Explain the applicable distinctions and exceptions for how many rakat in wudu",
@@ -5373,7 +5538,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-031"],
+          "candidate_ids": [
+            "is-scale-031"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-do-wudu-over-shoes",
           "stage": "assigned_not_written"
@@ -5381,7 +5548,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you do wudu over shoes"],
+          "questions": [
+            "can you do wudu over shoes"
+          ],
           "outline": [
             "Answer the exact question: can you do wudu over shoes",
             "Explain the applicable distinctions and exceptions for can you do wudu over shoes",
@@ -5434,7 +5603,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-032"],
+          "candidate_ids": [
+            "is-scale-032"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-do-wudu-with-water-resistant-sunscreen",
           "stage": "assigned_not_written"
@@ -5442,7 +5613,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you do wudu with water resistant sunscreen"],
+          "questions": [
+            "can you do wudu with water resistant sunscreen"
+          ],
           "outline": [
             "Answer the exact question: can you do wudu with water resistant sunscreen",
             "Explain the applicable distinctions and exceptions for can you do wudu with water resistant sunscreen",
@@ -5495,7 +5668,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-033"],
+          "candidate_ids": [
+            "is-scale-033"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-precum-break-wudu",
           "stage": "assigned_not_written"
@@ -5503,7 +5678,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does precum break wudu"],
+          "questions": [
+            "does precum break wudu"
+          ],
           "outline": [
             "Answer the exact question: does precum break wudu",
             "Explain the applicable distinctions and exceptions for does precum break wudu",
@@ -5556,7 +5733,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-035"],
+          "candidate_ids": [
+            "is-scale-035"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/is-istinja-mandatory-for-wudu",
           "stage": "assigned_not_written"
@@ -5564,7 +5743,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["is istinja mandatory for wudu"],
+          "questions": [
+            "is istinja mandatory for wudu"
+          ],
           "outline": [
             "Answer the exact question: is istinja mandatory for wudu",
             "Explain the applicable distinctions and exceptions for is istinja mandatory for wudu",
@@ -5587,7 +5768,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "can i do dhikr without wudu",
-      "secondary_keywords": ["can you make dua without wudu"],
+      "secondary_keywords": [
+        "can you make dua without wudu"
+      ],
       "proposed_title": "Dhikr and dua without Wudu",
       "target_path": "/blog/dhikr-and-dua-without-wudu",
       "source_file": "data/blog/en/dhikr-and-dua-without-wudu.mdx",
@@ -5629,7 +5812,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-036", "is-scale-037"],
+          "candidate_ids": [
+            "is-scale-036",
+            "is-scale-037"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/dhikr-and-dua-without-wudu",
           "stage": "assigned_not_written"
@@ -5637,7 +5823,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can i do dhikr without wudu", "can you make dua without wudu"],
+          "questions": [
+            "can i do dhikr without wudu",
+            "can you make dua without wudu"
+          ],
           "outline": [
             "Answer the exact question: can i do dhikr without wudu",
             "Explain the applicable distinctions and exceptions for can i do dhikr without wudu",
@@ -5693,7 +5882,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-038"],
+          "candidate_ids": [
+            "is-scale-038"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-pray-with-nail-polish-after-wudu",
           "stage": "assigned_not_written"
@@ -5701,7 +5892,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you pray with nail polish after wudu"],
+          "questions": [
+            "can you pray with nail polish after wudu"
+          ],
           "outline": [
             "Answer the exact question: can you pray with nail polish after wudu",
             "Explain the applicable distinctions and exceptions for can you pray with nail polish after wudu",
@@ -5754,7 +5947,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-041"],
+          "candidate_ids": [
+            "is-scale-041"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-i-do-ruqyah-without-wudu",
           "stage": "assigned_not_written"
@@ -5762,7 +5957,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can i do ruqyah without wudu"],
+          "questions": [
+            "can i do ruqyah without wudu"
+          ],
           "outline": [
             "Answer the exact question: can i do ruqyah without wudu",
             "Explain the applicable distinctions and exceptions for can i do ruqyah without wudu",
@@ -5815,7 +6012,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-042"],
+          "candidate_ids": [
+            "is-scale-042"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-i-do-wudu-with-a-pimple-patch-on",
           "stage": "assigned_not_written"
@@ -5823,7 +6022,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can i do wudu with a pimple patch on"],
+          "questions": [
+            "can i do wudu with a pimple patch on"
+          ],
           "outline": [
             "Answer the exact question: can i do wudu with a pimple patch on",
             "Explain the applicable distinctions and exceptions for can i do wudu with a pimple patch on",
@@ -5876,7 +6077,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-043"],
+          "candidate_ids": [
+            "is-scale-043"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-have-to-do-wudu-after-eating-camel-meat",
           "stage": "assigned_not_written"
@@ -5884,7 +6087,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you have to do wudu after eating camel meat"],
+          "questions": [
+            "do you have to do wudu after eating camel meat"
+          ],
           "outline": [
             "Answer the exact question: do you have to do wudu after eating camel meat",
             "Explain the applicable distinctions and exceptions for do you have to do wudu after eating camel meat",
@@ -5907,7 +6112,11 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "how to do ghusl",
-      "secondary_keywords": ["fard of ghusl", "ghusl dua", "how to do ghusl without showering"],
+      "secondary_keywords": [
+        "fard of ghusl",
+        "ghusl dua",
+        "how to do ghusl without showering"
+      ],
       "proposed_title": "How to Perform Ghusl: Step-by-Step Guide",
       "target_path": "/blog/how-to-perform-ghusl",
       "source_file": "data/blog/en/how-to-perform-ghusl.mdx",
@@ -5979,7 +6188,12 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-044", "is-scale-046", "is-scale-049", "is-scale-052"],
+          "candidate_ids": [
+            "is-scale-044",
+            "is-scale-046",
+            "is-scale-049",
+            "is-scale-052"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-perform-ghusl",
           "stage": "assigned_not_written"
@@ -6054,7 +6268,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-045"],
+          "candidate_ids": [
+            "is-scale-045"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-to-do-ghusl-after-period",
           "stage": "assigned_not_written"
@@ -6062,7 +6278,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to do ghusl after period"],
+          "questions": [
+            "how to do ghusl after period"
+          ],
           "outline": [
             "Answer the exact question: how to do ghusl after period",
             "Explain the applicable distinctions and exceptions for how to do ghusl after period",
@@ -6115,7 +6333,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-047"],
+          "candidate_ids": [
+            "is-scale-047"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-have-to-make-ghusl-after-touching-yourself-female",
           "stage": "assigned_not_written"
@@ -6123,7 +6343,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you have to make ghusl after touching yourself female"],
+          "questions": [
+            "do you have to make ghusl after touching yourself female"
+          ],
           "outline": [
             "Answer the exact question: do you have to make ghusl after touching yourself female",
             "Explain the applicable distinctions and exceptions for do you have to make ghusl after touching yourself female",
@@ -6176,7 +6398,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-048"],
+          "candidate_ids": [
+            "is-scale-048"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-fast-without-ghusl",
           "stage": "assigned_not_written"
@@ -6184,7 +6408,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you fast without ghusl"],
+          "questions": [
+            "can you fast without ghusl"
+          ],
           "outline": [
             "Answer the exact question: can you fast without ghusl",
             "Explain the applicable distinctions and exceptions for can you fast without ghusl",
@@ -6249,7 +6475,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-050"],
+          "candidate_ids": [
+            "is-scale-050"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-ghusl-count-as-wudu",
           "stage": "assigned_not_written"
@@ -6257,7 +6485,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does ghusl count as wudu"],
+          "questions": [
+            "does ghusl count as wudu"
+          ],
           "outline": [
             "Answer the exact question: does ghusl count as wudu",
             "Explain the applicable distinctions and exceptions for does ghusl count as wudu",
@@ -6316,7 +6546,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-051"],
+          "candidate_ids": [
+            "is-scale-051"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/when-is-ghusl-required",
           "stage": "assigned_not_written"
@@ -6324,7 +6556,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["when to perform ghusl"],
+          "questions": [
+            "when to perform ghusl"
+          ],
           "outline": [
             "Answer the exact question: when to perform ghusl",
             "Explain the applicable distinctions and exceptions for when to perform ghusl",
@@ -6377,7 +6611,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-053"],
+          "candidate_ids": [
+            "is-scale-053"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-precum-require-ghusl",
           "stage": "assigned_not_written"
@@ -6385,7 +6621,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does precum require ghusl"],
+          "questions": [
+            "does precum require ghusl"
+          ],
           "outline": [
             "Answer the exact question: does precum require ghusl",
             "Explain the applicable distinctions and exceptions for does precum require ghusl",
@@ -6444,7 +6682,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-055"],
+          "candidate_ids": [
+            "is-scale-055"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-isha",
           "stage": "assigned_not_written"
@@ -6452,7 +6692,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakats in isha salah"],
+          "questions": [
+            "how many rakats in isha salah"
+          ],
           "outline": [
             "Answer the exact question: how many rakats in isha salah",
             "Explain the applicable distinctions and exceptions for how many rakats in isha salah",
@@ -6523,7 +6765,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-056"],
+          "candidate_ids": [
+            "is-scale-056"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-maghrib",
           "stage": "assigned_not_written"
@@ -6531,7 +6775,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakats in maghrib salah"],
+          "questions": [
+            "how many rakats in maghrib salah"
+          ],
           "outline": [
             "Answer the exact question: how many rakats in maghrib salah",
             "Explain the applicable distinctions and exceptions for how many rakats in maghrib salah",
@@ -6584,7 +6830,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-057"],
+          "candidate_ids": [
+            "is-scale-057"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-asr",
           "stage": "assigned_not_written"
@@ -6592,7 +6840,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakats in asr"],
+          "questions": [
+            "how many rakats in asr"
+          ],
           "outline": [
             "Answer the exact question: how many rakats in asr",
             "Explain the applicable distinctions and exceptions for how many rakats in asr",
@@ -6645,7 +6895,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-058"],
+          "candidate_ids": [
+            "is-scale-058"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-dhuhr",
           "stage": "assigned_not_written"
@@ -6653,7 +6905,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakats in zuhr"],
+          "questions": [
+            "how many rakats in zuhr"
+          ],
           "outline": [
             "Answer the exact question: how many rakats in zuhr",
             "Explain the applicable distinctions and exceptions for how many rakats in zuhr",
@@ -6706,7 +6960,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-059"],
+          "candidate_ids": [
+            "is-scale-059"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-fajr",
           "stage": "assigned_not_written"
@@ -6714,7 +6970,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakats in fajr"],
+          "questions": [
+            "how many rakats in fajr"
+          ],
           "outline": [
             "Answer the exact question: how many rakats in fajr",
             "Explain the applicable distinctions and exceptions for how many rakats in fajr",
@@ -6737,7 +6995,10 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "how to pray eid salah",
-      "secondary_keywords": ["is eid salah fard", "how many takbeer for eid salah"],
+      "secondary_keywords": [
+        "is eid salah fard",
+        "how many takbeer for eid salah"
+      ],
       "proposed_title": "How to Pray Eid Salah: Step-by-Step Guide",
       "target_path": "/blog/how-to-pray-eid-salah",
       "source_file": "data/blog/en/how-to-pray-eid-salah.mdx",
@@ -6797,7 +7058,11 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-060", "is-scale-064", "is-scale-065"],
+          "candidate_ids": [
+            "is-scale-060",
+            "is-scale-064",
+            "is-scale-065"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-eid-salah",
           "stage": "assigned_not_written"
@@ -6874,7 +7139,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-061"],
+          "candidate_ids": [
+            "is-scale-061"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-janazah",
           "stage": "assigned_not_written"
@@ -6882,7 +7149,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to pray janazah salah"],
+          "questions": [
+            "how to pray janazah salah"
+          ],
           "outline": [
             "Answer the exact question: how to pray janazah salah",
             "Explain the applicable distinctions and exceptions for how to pray janazah salah",
@@ -6941,7 +7210,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-062"],
+          "candidate_ids": [
+            "is-scale-062"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-pray-witr",
           "stage": "assigned_not_written"
@@ -6949,7 +7220,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to perform witr salah"],
+          "questions": [
+            "how to perform witr salah"
+          ],
           "outline": [
             "Answer the exact question: how to perform witr salah",
             "Explain the applicable distinctions and exceptions for how to perform witr salah",
@@ -7002,7 +7275,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-063"],
+          "candidate_ids": [
+            "is-scale-063"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-make-up-missed-prayers",
           "stage": "assigned_not_written"
@@ -7010,7 +7285,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to pray qaza salah"],
+          "questions": [
+            "how to pray qaza salah"
+          ],
           "outline": [
             "Answer the exact question: how to pray qaza salah",
             "Explain the applicable distinctions and exceptions for how to pray qaza salah",
@@ -7063,7 +7340,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-066"],
+          "candidate_ids": [
+            "is-scale-066"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-many-rakats-in-each-prayer",
           "stage": "assigned_not_written"
@@ -7071,7 +7350,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how many rakats in each prayer"],
+          "questions": [
+            "how many rakats in each prayer"
+          ],
           "outline": [
             "Answer the exact question: how many rakats in each prayer",
             "Explain the applicable distinctions and exceptions for how many rakats in each prayer",
@@ -7124,7 +7405,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-067"],
+          "candidate_ids": [
+            "is-scale-067"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/where-can-a-muslim-pray",
           "stage": "assigned_not_written"
@@ -7132,7 +7415,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["where can a muslim pray"],
+          "questions": [
+            "where can a muslim pray"
+          ],
           "outline": [
             "Answer the exact question: where can a muslim pray",
             "Explain the applicable distinctions and exceptions for where can a muslim pray",
@@ -7197,7 +7482,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-068"],
+          "candidate_ids": [
+            "is-scale-068"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/why-is-salah-important",
           "stage": "assigned_not_written"
@@ -7205,7 +7492,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["why is salah important"],
+          "questions": [
+            "why is salah important"
+          ],
           "outline": [
             "Answer the exact question: why is salah important",
             "Explain the applicable distinctions and exceptions for why is salah important",
@@ -7276,7 +7565,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-069"],
+          "candidate_ids": [
+            "is-scale-069"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/how-to-calculate-zakat",
           "stage": "assigned_not_written"
@@ -7284,7 +7575,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what is zakat"],
+          "questions": [
+            "what is zakat"
+          ],
           "outline": [
             "Answer the exact question: what is zakat",
             "Explain the applicable distinctions and exceptions for what is zakat",
@@ -7307,7 +7600,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "who is eligible for zakat",
-      "secondary_keywords": ["who is not eligible for zakat"],
+      "secondary_keywords": [
+        "who is not eligible for zakat"
+      ],
       "proposed_title": "Who is eligible for Zakat?",
       "target_path": "/blog/who-is-eligible-for-zakat",
       "source_file": "data/blog/en/who-is-eligible-for-zakat.mdx",
@@ -7361,7 +7656,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-073", "is-scale-074"],
+          "candidate_ids": [
+            "is-scale-073",
+            "is-scale-074"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/who-is-eligible-for-zakat",
           "stage": "assigned_not_written"
@@ -7369,7 +7667,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["who is eligible for zakat", "who is not eligible for zakat"],
+          "questions": [
+            "who is eligible for zakat",
+            "who is not eligible for zakat"
+          ],
           "outline": [
             "Answer the exact question: who is eligible for zakat",
             "Explain the applicable distinctions and exceptions for who is eligible for zakat",
@@ -7437,7 +7738,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-075"],
+          "candidate_ids": [
+            "is-scale-075"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-to-pay-zakat",
           "stage": "assigned_not_written"
@@ -7445,7 +7748,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to pay zakat"],
+          "questions": [
+            "how to pay zakat"
+          ],
           "outline": [
             "Answer the exact question: how to pay zakat",
             "Explain the applicable distinctions and exceptions for how to pay zakat",
@@ -7498,7 +7803,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-076"],
+          "candidate_ids": [
+            "is-scale-076"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/when-to-pay-zakat",
           "stage": "assigned_not_written"
@@ -7506,7 +7813,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["when to pay zakat"],
+          "questions": [
+            "when to pay zakat"
+          ],
           "outline": [
             "Answer the exact question: when to pay zakat",
             "Explain the applicable distinctions and exceptions for when to pay zakat",
@@ -7565,7 +7874,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-077"],
+          "candidate_ids": [
+            "is-scale-077"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-to-calculate-zakat-on-salary",
           "stage": "assigned_not_written"
@@ -7573,7 +7884,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to calculate zakat on salary"],
+          "questions": [
+            "how to calculate zakat on salary"
+          ],
           "outline": [
             "Answer the exact question: how to calculate zakat on salary",
             "Explain the applicable distinctions and exceptions for how to calculate zakat on salary",
@@ -7644,7 +7957,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-078"],
+          "candidate_ids": [
+            "is-scale-078"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/zakat-on-cash-and-savings",
           "stage": "assigned_not_written"
@@ -7652,7 +7967,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to calculate zakat on cash"],
+          "questions": [
+            "how to calculate zakat on cash"
+          ],
           "outline": [
             "Answer the exact question: how to calculate zakat on cash",
             "Explain the applicable distinctions and exceptions for how to calculate zakat on cash",
@@ -7675,7 +7992,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "what is zakat al fitr",
-      "secondary_keywords": ["how much is zakat al fitr"],
+      "secondary_keywords": [
+        "how much is zakat al fitr"
+      ],
       "proposed_title": "What is Zakat al fitr?",
       "target_path": "/blog/what-is-zakat-al-fitr",
       "source_file": "data/blog/en/what-is-zakat-al-fitr.mdx",
@@ -7729,7 +8048,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-079", "is-scale-080"],
+          "candidate_ids": [
+            "is-scale-079",
+            "is-scale-080"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-is-zakat-al-fitr",
           "stage": "assigned_not_written"
@@ -7737,7 +8059,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what is zakat al fitr", "how much is zakat al fitr"],
+          "questions": [
+            "what is zakat al fitr",
+            "how much is zakat al fitr"
+          ],
           "outline": [
             "Answer the exact question: what is zakat al fitr",
             "Explain the applicable distinctions and exceptions for what is zakat al fitr",
@@ -7763,7 +8088,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "can you give zakat to family",
-      "secondary_keywords": ["does giving money to parents count as zakat"],
+      "secondary_keywords": [
+        "does giving money to parents count as zakat"
+      ],
       "proposed_title": "Can you give Zakat to family?",
       "target_path": "/blog/can-you-give-zakat-to-family",
       "source_file": "data/blog/en/can-you-give-zakat-to-family.mdx",
@@ -7805,7 +8132,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-081", "is-scale-094"],
+          "candidate_ids": [
+            "is-scale-081",
+            "is-scale-094"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-give-zakat-to-family",
           "stage": "assigned_not_written"
@@ -7872,7 +8202,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-082"],
+          "candidate_ids": [
+            "is-scale-082"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-zakat-be-given-to-non-muslims",
           "stage": "assigned_not_written"
@@ -7880,7 +8212,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can zakat be given to non muslims"],
+          "questions": [
+            "can zakat be given to non muslims"
+          ],
           "outline": [
             "Answer the exact question: can zakat be given to non muslims",
             "Explain the applicable distinctions and exceptions for can zakat be given to non muslims",
@@ -7933,7 +8267,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-083"],
+          "candidate_ids": [
+            "is-scale-083"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-gold-you-wear",
           "stage": "assigned_not_written"
@@ -7941,7 +8277,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on gold you wear"],
+          "questions": [
+            "do you pay zakat on gold you wear"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on gold you wear",
             "Explain the applicable distinctions and exceptions for do you pay zakat on gold you wear",
@@ -7994,7 +8332,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-084"],
+          "candidate_ids": [
+            "is-scale-084"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-money-you-have-loaned",
           "stage": "assigned_not_written"
@@ -8002,7 +8342,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on money you have loaned"],
+          "questions": [
+            "do you pay zakat on money you have loaned"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on money you have loaned",
             "Explain the applicable distinctions and exceptions for do you pay zakat on money you have loaned",
@@ -8055,7 +8397,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-085"],
+          "candidate_ids": [
+            "is-scale-085"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-pension",
           "stage": "assigned_not_written"
@@ -8063,7 +8407,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on pension"],
+          "questions": [
+            "do you pay zakat on pension"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on pension",
             "Explain the applicable distinctions and exceptions for do you pay zakat on pension",
@@ -8116,7 +8462,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-086"],
+          "candidate_ids": [
+            "is-scale-086"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-i-pay-zakat-monthly",
           "stage": "assigned_not_written"
@@ -8124,7 +8472,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can i pay zakat monthly"],
+          "questions": [
+            "can i pay zakat monthly"
+          ],
           "outline": [
             "Answer the exact question: can i pay zakat monthly",
             "Explain the applicable distinctions and exceptions for can i pay zakat monthly",
@@ -8177,7 +8527,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-087"],
+          "candidate_ids": [
+            "is-scale-087"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/zakat-on-your-home-and-personal-assets",
           "stage": "assigned_not_written"
@@ -8185,7 +8537,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["which assets are exempt from zakat personal house residence"],
+          "questions": [
+            "which assets are exempt from zakat personal house residence"
+          ],
           "outline": [
             "Answer the exact question: which assets are exempt from zakat personal house residence",
             "Explain the applicable distinctions and exceptions for which assets are exempt from zakat personal house residence",
@@ -8238,7 +8592,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-088"],
+          "candidate_ids": [
+            "is-scale-088"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-give-zakat-to-mosque",
           "stage": "assigned_not_written"
@@ -8246,7 +8602,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you give zakat to mosque"],
+          "questions": [
+            "can you give zakat to mosque"
+          ],
           "outline": [
             "Answer the exact question: can you give zakat to mosque",
             "Explain the applicable distinctions and exceptions for can you give zakat to mosque",
@@ -8299,7 +8657,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-089"],
+          "candidate_ids": [
+            "is-scale-089"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-i-pay-zakat-if-i-have-a-mortgage",
           "stage": "assigned_not_written"
@@ -8307,7 +8667,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do i pay zakat if i have a mortgage"],
+          "questions": [
+            "do i pay zakat if i have a mortgage"
+          ],
           "outline": [
             "Answer the exact question: do i pay zakat if i have a mortgage",
             "Explain the applicable distinctions and exceptions for do i pay zakat if i have a mortgage",
@@ -8360,7 +8722,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-090"],
+          "candidate_ids": [
+            "is-scale-090"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-inheritance",
           "stage": "assigned_not_written"
@@ -8368,7 +8732,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on inheritance"],
+          "questions": [
+            "do you pay zakat on inheritance"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on inheritance",
             "Explain the applicable distinctions and exceptions for do you pay zakat on inheritance",
@@ -8421,7 +8787,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-091"],
+          "candidate_ids": [
+            "is-scale-091"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-mehr",
           "stage": "assigned_not_written"
@@ -8429,7 +8797,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on mehr"],
+          "questions": [
+            "do you pay zakat on mehr"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on mehr",
             "Explain the applicable distinctions and exceptions for do you pay zakat on mehr",
@@ -8482,7 +8852,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-092"],
+          "candidate_ids": [
+            "is-scale-092"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-property",
           "stage": "assigned_not_written"
@@ -8490,7 +8862,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on property"],
+          "questions": [
+            "do you pay zakat on property"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on property",
             "Explain the applicable distinctions and exceptions for do you pay zakat on property",
@@ -8543,7 +8917,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-093"],
+          "candidate_ids": [
+            "is-scale-093"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-pay-zakat-on-stocks",
           "stage": "assigned_not_written"
@@ -8551,7 +8927,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you pay zakat on stocks"],
+          "questions": [
+            "do you pay zakat on stocks"
+          ],
           "outline": [
             "Answer the exact question: do you pay zakat on stocks",
             "Explain the applicable distinctions and exceptions for do you pay zakat on stocks",
@@ -8604,7 +8982,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-095"],
+          "candidate_ids": [
+            "is-scale-095"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/difference-between-sadaqah-and-zakat",
           "stage": "assigned_not_written"
@@ -8612,7 +8992,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["difference between sadaqah and zakat"],
+          "questions": [
+            "difference between sadaqah and zakat"
+          ],
           "outline": [
             "Answer the exact question: difference between sadaqah and zakat",
             "Explain the applicable distinctions and exceptions for difference between sadaqah and zakat",
@@ -8677,7 +9059,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-096"],
+          "candidate_ids": [
+            "is-scale-096"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-is-ramadan",
           "stage": "assigned_not_written"
@@ -8685,7 +9069,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what is ramadan"],
+          "questions": [
+            "what is ramadan"
+          ],
           "outline": [
             "Answer the exact question: what is ramadan",
             "Explain the applicable distinctions and exceptions for what is ramadan",
@@ -8738,7 +9124,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-100"],
+          "candidate_ids": [
+            "is-scale-100"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-drink-water-during-ramadan",
           "stage": "assigned_not_written"
@@ -8746,7 +9134,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you drink water during ramadan"],
+          "questions": [
+            "can you drink water during ramadan"
+          ],
           "outline": [
             "Answer the exact question: can you drink water during ramadan",
             "Explain the applicable distinctions and exceptions for can you drink water during ramadan",
@@ -8811,7 +9201,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-101"],
+          "candidate_ids": [
+            "is-scale-101"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/when-can-you-eat-during-ramadan",
           "stage": "assigned_not_written"
@@ -8819,7 +9211,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["when can you eat during ramadan"],
+          "questions": [
+            "when can you eat during ramadan"
+          ],
           "outline": [
             "Answer the exact question: when can you eat during ramadan",
             "Explain the applicable distinctions and exceptions for when can you eat during ramadan",
@@ -8872,7 +9266,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-102"],
+          "candidate_ids": [
+            "is-scale-102"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-have-sex-during-ramadan",
           "stage": "assigned_not_written"
@@ -8880,7 +9276,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you have sex during ramadan"],
+          "questions": [
+            "can you have sex during ramadan"
+          ],
           "outline": [
             "Answer the exact question: can you have sex during ramadan",
             "Explain the applicable distinctions and exceptions for can you have sex during ramadan",
@@ -8933,7 +9331,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-103"],
+          "candidate_ids": [
+            "is-scale-103"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-listen-to-music-during-ramadan",
           "stage": "assigned_not_written"
@@ -8941,7 +9341,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you listen to music during ramadan"],
+          "questions": [
+            "can you listen to music during ramadan"
+          ],
           "outline": [
             "Answer the exact question: can you listen to music during ramadan",
             "Explain the applicable distinctions and exceptions for can you listen to music during ramadan",
@@ -8964,7 +9366,10 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "how to say happy ramadan",
-      "secondary_keywords": ["what does ramadan kareem mean", "what does ramadan mubarak mean"],
+      "secondary_keywords": [
+        "what does ramadan kareem mean",
+        "what does ramadan mubarak mean"
+      ],
       "proposed_title": "Ramadan greetings kareem and mubarak",
       "target_path": "/blog/ramadan-greetings-kareem-and-mubarak",
       "source_file": "data/blog/en/ramadan-greetings-kareem-and-mubarak.mdx",
@@ -9018,7 +9423,11 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-104", "is-scale-105", "is-scale-106"],
+          "candidate_ids": [
+            "is-scale-104",
+            "is-scale-105",
+            "is-scale-106"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/ramadan-greetings-kareem-and-mubarak",
           "stage": "assigned_not_written"
@@ -9089,7 +9498,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-107"],
+          "candidate_ids": [
+            "is-scale-107"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/why-does-ramadan-change-every-year",
           "stage": "assigned_not_written"
@@ -9097,7 +9508,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["why does ramadan change every year"],
+          "questions": [
+            "why does ramadan change every year"
+          ],
           "outline": [
             "Answer the exact question: why does ramadan change every year",
             "Explain the applicable distinctions and exceptions for why does ramadan change every year",
@@ -9150,7 +9563,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-108"],
+          "candidate_ids": [
+            "is-scale-108"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/fidya",
           "stage": "assigned_not_written"
@@ -9158,7 +9573,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how much is fidya for ramadan 2026"],
+          "questions": [
+            "how much is fidya for ramadan 2026"
+          ],
           "outline": [
             "Answer the exact question: how much is fidya for ramadan 2026",
             "Explain the applicable distinctions and exceptions for how much is fidya for ramadan 2026",
@@ -9218,7 +9635,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-109"],
+          "candidate_ids": [
+            "is-scale-109"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-is-iftar-in-islam",
           "stage": "assigned_not_written"
@@ -9226,7 +9645,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what is iftar in islam"],
+          "questions": [
+            "what is iftar in islam"
+          ],
           "outline": [
             "Answer the exact question: what is iftar in islam",
             "Explain the applicable distinctions and exceptions for what is iftar in islam",
@@ -9249,7 +9670,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "when are the last 10 days of ramadan 2026",
-      "secondary_keywords": ["when is the 27th night of ramadan 2026"],
+      "secondary_keywords": [
+        "when is the 27th night of ramadan 2026"
+      ],
       "proposed_title": "Last ten nights of Ramadan",
       "target_path": "/blog/last-ten-nights-of-ramadan",
       "source_file": "data/blog/en/last-ten-nights-of-ramadan.mdx",
@@ -9291,7 +9714,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-110", "is-scale-111"],
+          "candidate_ids": [
+            "is-scale-110",
+            "is-scale-111"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/last-ten-nights-of-ramadan",
           "stage": "assigned_not_written"
@@ -9359,7 +9785,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-112"],
+          "candidate_ids": [
+            "is-scale-112"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-is-ramadan-determined",
           "stage": "assigned_not_written"
@@ -9367,7 +9795,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how is ramadan determined"],
+          "questions": [
+            "how is ramadan determined"
+          ],
           "outline": [
             "Answer the exact question: how is ramadan determined",
             "Explain the applicable distinctions and exceptions for how is ramadan determined",
@@ -9420,7 +9850,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-136"],
+          "candidate_ids": [
+            "is-scale-136"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-vomiting-break-your-fast",
           "stage": "assigned_not_written"
@@ -9428,7 +9860,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can vomiting break your fast"],
+          "questions": [
+            "can vomiting break your fast"
+          ],
           "outline": [
             "Answer the exact question: can vomiting break your fast",
             "Explain the applicable distinctions and exceptions for can vomiting break your fast",
@@ -9482,7 +9916,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-137"],
+          "candidate_ids": [
+            "is-scale-137"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-chewing-gum-break-a-fast",
           "stage": "assigned_not_written"
@@ -9490,7 +9926,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does chewing gum break a fast"],
+          "questions": [
+            "does chewing gum break a fast"
+          ],
           "outline": [
             "Answer the exact question: does chewing gum break a fast",
             "Explain the applicable distinctions and exceptions for does chewing gum break a fast",
@@ -9544,7 +9982,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-139"],
+          "candidate_ids": [
+            "is-scale-139"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-swearing-break-your-fast",
           "stage": "assigned_not_written"
@@ -9552,7 +9992,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does swearing break your fast"],
+          "questions": [
+            "does swearing break your fast"
+          ],
           "outline": [
             "Answer the exact question: does swearing break your fast",
             "Explain the applicable distinctions and exceptions for does swearing break your fast",
@@ -9576,7 +10018,9 @@
       "priority": 60,
       "locale": "en",
       "primary_keyword": "does bleeding break fast",
-      "secondary_keywords": ["does a blood test break fast"],
+      "secondary_keywords": [
+        "does a blood test break fast"
+      ],
       "proposed_title": "Bleeding and blood tests while fasting",
       "target_path": "/blog/bleeding-and-blood-tests-while-fasting",
       "source_file": "data/blog/en/bleeding-and-blood-tests-while-fasting.mdx",
@@ -9618,7 +10062,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-140", "is-scale-144"],
+          "candidate_ids": [
+            "is-scale-140",
+            "is-scale-144"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/bleeding-and-blood-tests-while-fasting",
           "stage": "assigned_not_written"
@@ -9626,7 +10073,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does bleeding break fast", "does a blood test break fast"],
+          "questions": [
+            "does bleeding break fast",
+            "does a blood test break fast"
+          ],
           "outline": [
             "Answer the exact question: does bleeding break fast",
             "Explain the applicable distinctions and exceptions for does bleeding break fast",
@@ -9683,7 +10133,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-141"],
+          "candidate_ids": [
+            "is-scale-141"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-brushing-teeth-break-fast",
           "stage": "assigned_not_written"
@@ -9691,7 +10143,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does brushing teeth break fast"],
+          "questions": [
+            "does brushing teeth break fast"
+          ],
           "outline": [
             "Answer the exact question: does brushing teeth break fast",
             "Explain the applicable distinctions and exceptions for does brushing teeth break fast",
@@ -9757,7 +10211,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-142"],
+          "candidate_ids": [
+            "is-scale-142"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-breaks-your-fast-islam",
           "stage": "assigned_not_written"
@@ -9765,7 +10221,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what breaks your fast islam"],
+          "questions": [
+            "what breaks your fast islam"
+          ],
           "outline": [
             "Answer the exact question: what breaks your fast islam",
             "Explain the applicable distinctions and exceptions for what breaks your fast islam",
@@ -9835,7 +10293,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-143"],
+          "candidate_ids": [
+            "is-scale-143"
+          ],
           "decision": "Existing target reused",
           "canonical_target": "/blog/dua-for-iftar",
           "stage": "assigned_not_written"
@@ -9843,7 +10303,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what to say when breaking fast"],
+          "questions": [
+            "what to say when breaking fast"
+          ],
           "outline": [
             "Answer the exact question: what to say when breaking fast",
             "Explain the applicable distinctions and exceptions for what to say when breaking fast",
@@ -9897,7 +10359,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-145"],
+          "candidate_ids": [
+            "is-scale-145"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-kissing-break-your-fast",
           "stage": "assigned_not_written"
@@ -9905,7 +10369,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does kissing break your fast"],
+          "questions": [
+            "does kissing break your fast"
+          ],
           "outline": [
             "Answer the exact question: does kissing break your fast",
             "Explain the applicable distinctions and exceptions for does kissing break your fast",
@@ -9959,7 +10425,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-146"],
+          "candidate_ids": [
+            "is-scale-146"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-masturbation-break-fast",
           "stage": "assigned_not_written"
@@ -9967,7 +10435,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does masturbation break fast"],
+          "questions": [
+            "does masturbation break fast"
+          ],
           "outline": [
             "Answer the exact question: does masturbation break fast",
             "Explain the applicable distinctions and exceptions for does masturbation break fast",
@@ -10021,7 +10491,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-147"],
+          "candidate_ids": [
+            "is-scale-147"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-precum-break-fast",
           "stage": "assigned_not_written"
@@ -10029,7 +10501,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does precum break fast"],
+          "questions": [
+            "does precum break fast"
+          ],
           "outline": [
             "Answer the exact question: does precum break fast",
             "Explain the applicable distinctions and exceptions for does precum break fast",
@@ -10083,7 +10557,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-148"],
+          "candidate_ids": [
+            "is-scale-148"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-a-wet-dream-break-your-fast",
           "stage": "assigned_not_written"
@@ -10091,7 +10567,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does a wet dream break your fast"],
+          "questions": [
+            "does a wet dream break your fast"
+          ],
           "outline": [
             "Answer the exact question: does a wet dream break your fast",
             "Explain the applicable distinctions and exceptions for does a wet dream break your fast",
@@ -10145,7 +10623,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-149"],
+          "candidate_ids": [
+            "is-scale-149"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-paracetamol-break-a-fast",
           "stage": "assigned_not_written"
@@ -10153,7 +10633,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does paracetamol break a fast"],
+          "questions": [
+            "does paracetamol break a fast"
+          ],
           "outline": [
             "Answer the exact question: does paracetamol break a fast",
             "Explain the applicable distinctions and exceptions for does paracetamol break a fast",
@@ -10207,7 +10689,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-150"],
+          "candidate_ids": [
+            "is-scale-150"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/does-smoking-break-a-fast",
           "stage": "assigned_not_written"
@@ -10215,7 +10699,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["does smoking break a fast"],
+          "questions": [
+            "does smoking break a fast"
+          ],
           "outline": [
             "Answer the exact question: does smoking break a fast",
             "Explain the applicable distinctions and exceptions for does smoking break a fast",
@@ -10269,7 +10755,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-117"],
+          "candidate_ids": [
+            "is-scale-117"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-long-does-umrah-take",
           "stage": "assigned_not_written"
@@ -10277,7 +10765,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how long does umrah take"],
+          "questions": [
+            "how long does umrah take"
+          ],
           "outline": [
             "Answer the exact question: how long does umrah take",
             "Explain the applicable distinctions and exceptions for how long does umrah take",
@@ -10330,7 +10820,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-118"],
+          "candidate_ids": [
+            "is-scale-118"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-have-to-shave-your-head-for-umrah",
           "stage": "assigned_not_written"
@@ -10338,7 +10830,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you have to shave your head for umrah"],
+          "questions": [
+            "do you have to shave your head for umrah"
+          ],
           "outline": [
             "Answer the exact question: do you have to shave your head for umrah",
             "Explain the applicable distinctions and exceptions for do you have to shave your head for umrah",
@@ -10361,7 +10855,9 @@
       "priority": 80,
       "locale": "en",
       "primary_keyword": "how much is umrah visa from uk",
-      "secondary_keywords": ["how to apply umrah visa from uk"],
+      "secondary_keywords": [
+        "how to apply umrah visa from uk"
+      ],
       "proposed_title": "Umrah visa from UK",
       "target_path": "/blog/umrah-visa-from-uk",
       "source_file": "data/blog/en/umrah-visa-from-uk.mdx",
@@ -10403,7 +10899,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-119", "is-scale-120"],
+          "candidate_ids": [
+            "is-scale-119",
+            "is-scale-120"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/umrah-visa-from-uk",
           "stage": "assigned_not_written"
@@ -10411,7 +10910,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how much is umrah visa from uk", "how to apply umrah visa from uk"],
+          "questions": [
+            "how much is umrah visa from uk",
+            "how to apply umrah visa from uk"
+          ],
           "outline": [
             "Answer the exact question: how much is umrah visa from uk",
             "Explain the applicable distinctions and exceptions for how much is umrah visa from uk",
@@ -10467,7 +10969,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-121"],
+          "candidate_ids": [
+            "is-scale-121"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-is-the-difference-between-hajj-and-umrah",
           "stage": "assigned_not_written"
@@ -10475,7 +10979,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what is the difference between hajj and umrah"],
+          "questions": [
+            "what is the difference between hajj and umrah"
+          ],
           "outline": [
             "Answer the exact question: what is the difference between hajj and umrah",
             "Explain the applicable distinctions and exceptions for what is the difference between hajj and umrah",
@@ -10498,7 +11004,9 @@
       "priority": 80,
       "locale": "en",
       "primary_keyword": "what to say to someone going umrah",
-      "secondary_keywords": ["how to reply to umrah mubarak"],
+      "secondary_keywords": [
+        "how to reply to umrah mubarak"
+      ],
       "proposed_title": "What to say to someone going Umrah?",
       "target_path": "/blog/what-to-say-to-someone-going-umrah",
       "source_file": "data/blog/en/what-to-say-to-someone-going-umrah.mdx",
@@ -10540,7 +11048,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-122", "is-scale-135"],
+          "candidate_ids": [
+            "is-scale-122",
+            "is-scale-135"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-to-say-to-someone-going-umrah",
           "stage": "assigned_not_written"
@@ -10548,7 +11059,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what to say to someone going umrah", "how to reply to umrah mubarak"],
+          "questions": [
+            "what to say to someone going umrah",
+            "how to reply to umrah mubarak"
+          ],
           "outline": [
             "Answer the exact question: what to say to someone going umrah",
             "Explain the applicable distinctions and exceptions for what to say to someone going umrah",
@@ -10604,7 +11118,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-123"],
+          "candidate_ids": [
+            "is-scale-123"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-much-does-umrah-cost-from-uk",
           "stage": "assigned_not_written"
@@ -10612,7 +11128,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how much does umrah cost from uk"],
+          "questions": [
+            "how much does umrah cost from uk"
+          ],
           "outline": [
             "Answer the exact question: how much does umrah cost from uk",
             "Explain the applicable distinctions and exceptions for how much does umrah cost from uk",
@@ -10692,7 +11210,11 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-124", "is-scale-125", "is-scale-131"],
+          "candidate_ids": [
+            "is-scale-124",
+            "is-scale-125",
+            "is-scale-131"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/umrah-during-hajj-season",
           "stage": "assigned_not_written"
@@ -10765,7 +11287,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-126"],
+          "candidate_ids": [
+            "is-scale-126"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-do-umrah-for-someone-else",
           "stage": "assigned_not_written"
@@ -10773,7 +11297,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you do umrah for someone else"],
+          "questions": [
+            "can you do umrah for someone else"
+          ],
           "outline": [
             "Answer the exact question: can you do umrah for someone else",
             "Explain the applicable distinctions and exceptions for can you do umrah for someone else",
@@ -10826,7 +11352,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-127"],
+          "candidate_ids": [
+            "is-scale-127"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-you-do-umrah-on-tourist-visa",
           "stage": "assigned_not_written"
@@ -10834,7 +11362,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can you do umrah on tourist visa"],
+          "questions": [
+            "can you do umrah on tourist visa"
+          ],
           "outline": [
             "Answer the exact question: can you do umrah on tourist visa",
             "Explain the applicable distinctions and exceptions for can you do umrah on tourist visa",
@@ -10887,7 +11417,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-128"],
+          "candidate_ids": [
+            "is-scale-128"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/can-women-perform-umrah-without-mahram-in-islam",
           "stage": "assigned_not_written"
@@ -10895,7 +11427,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["can women perform umrah without mahram in islam"],
+          "questions": [
+            "can women perform umrah without mahram in islam"
+          ],
           "outline": [
             "Answer the exact question: can women perform umrah without mahram in islam",
             "Explain the applicable distinctions and exceptions for can women perform umrah without mahram in islam",
@@ -10954,7 +11488,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-129"],
+          "candidate_ids": [
+            "is-scale-129"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/how-to-perform-umrah-for-ladies",
           "stage": "assigned_not_written"
@@ -10962,7 +11498,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["how to perform umrah for ladies"],
+          "questions": [
+            "how to perform umrah for ladies"
+          ],
           "outline": [
             "Answer the exact question: how to perform umrah for ladies",
             "Explain the applicable distinctions and exceptions for how to perform umrah for ladies",
@@ -10985,7 +11523,9 @@
       "priority": 80,
       "locale": "en",
       "primary_keyword": "what to pack for umrah",
-      "secondary_keywords": ["how to prepare for umrah"],
+      "secondary_keywords": [
+        "how to prepare for umrah"
+      ],
       "proposed_title": "What to pack for Umrah?",
       "target_path": "/blog/what-to-pack-for-umrah",
       "source_file": "data/blog/en/what-to-pack-for-umrah.mdx",
@@ -11027,7 +11567,10 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-130", "is-scale-134"],
+          "candidate_ids": [
+            "is-scale-130",
+            "is-scale-134"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-to-pack-for-umrah",
           "stage": "assigned_not_written"
@@ -11035,7 +11578,10 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what to pack for umrah", "how to prepare for umrah"],
+          "questions": [
+            "what to pack for umrah",
+            "how to prepare for umrah"
+          ],
           "outline": [
             "Answer the exact question: what to pack for umrah",
             "Explain the applicable distinctions and exceptions for what to pack for umrah",
@@ -11091,7 +11637,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-132"],
+          "candidate_ids": [
+            "is-scale-132"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/do-you-do-umrah-barefoot",
           "stage": "assigned_not_written"
@@ -11099,7 +11647,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["do you do umrah barefoot"],
+          "questions": [
+            "do you do umrah barefoot"
+          ],
           "outline": [
             "Answer the exact question: do you do umrah barefoot",
             "Explain the applicable distinctions and exceptions for do you do umrah barefoot",
@@ -11152,7 +11702,9 @@
       "research_additions": [
         {
           "batch": "semrush-scale-2026-10-13",
-          "candidate_ids": ["is-scale-133"],
+          "candidate_ids": [
+            "is-scale-133"
+          ],
           "decision": "New distinct reader task after full current English inventory and candidate review",
           "canonical_target": "/blog/what-vaccinations-do-i-need-for-umrah",
           "stage": "assigned_not_written"
@@ -11160,7 +11712,9 @@
       ],
       "brief_addenda": [
         {
-          "questions": ["what vaccinations do i need for umrah"],
+          "questions": [
+            "what vaccinations do i need for umrah"
+          ],
           "outline": [
             "Answer the exact question: what vaccinations do i need for umrah",
             "Explain the applicable distinctions and exceptions for what vaccinations do i need for umrah",

@@ -116,5 +116,11 @@
     "article_sha256": "f19105937cc53fb5e41df20fd6b5e889f990697fe05b4a5023b8ebe5851282c4"
   },
   "prepared_at": "2026-10-26T02:12:45.336Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-26T06:29:34.722Z",
+    "commit": "4bcd0f5ba5552e21f892bdc4ba0a453c6bd6a7b0",
+    "deployment_id": 7322574800,
+    "url": "https://www.islamful.com/blog/does-cutting-nails-break-wudu"
+  }
 }

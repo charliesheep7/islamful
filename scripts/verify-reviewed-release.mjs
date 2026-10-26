@@ -11,21 +11,26 @@ export function readiness(states) {
     'Production deployment failed or became inactive; article remains awaiting_release'
   )
 }
-export async function verifyWhenReady() {
-  const doc = loadQueue(),
+export async function verifyWhenReady({
+  readQueue = loadQueue,
+  readHead = () => execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+  githubRead = github,
+  verify = verifyRelease,
+} = {}) {
+  const doc = readQueue(),
     pending = doc.items.filter((x) => x.status === 'awaiting_release')
   if (!pending.length) return { state: 'nothing_pending', ids: [] }
-  const sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim()
+  const sha = readHead()
   const repo = doc.site === 'deenback' ? 'charliesheep7/deenback-website' : 'charliesheep7/islamful'
-  const deployments = github(
+  const deployments = githubRead(
     `repos/${repo}/deployments?sha=${sha}&environment=Production&per_page=100`
   ).filter((d) => d.sha === sha && d.environment === 'Production')
   const states = deployments.map(
-    (d) => github(`repos/${repo}/deployments/${d.id}/statuses`)[0]?.state || 'pending'
+    (d) => githubRead(`repos/${repo}/deployments/${d.id}/statuses`)[0]?.state || 'pending'
   )
   const state = readiness(states)
   if (state !== 'ready') return { state, commit: sha, ids: pending.map((x) => x.id) }
-  return { state: 'verified', commit: sha, ids: await verifyRelease(sha) }
+  return { state: 'verified', commit: sha, ids: await verify(undefined, sha) }
 }
 if (import.meta.url === pathToFileURL(process.argv[1] || '').href)
   verifyWhenReady()
