@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "is-067",
+  "action": "new_article",
+  "target_path": "/blog/does-cutting-nails-break-wudu",
+  "source_file": "data/blog/en/does-cutting-nails-break-wudu.mdx",
+  "assignment_sha256": "37c263ac2e193baea5832ec210803d0be9835199bef1b11d4f703266b856cc31",
+  "baseline_sha256": null,
+  "content_sha256": "56c4e7059e542b88d6dcbd195a45e0ba32af2d5d361aecc0c1d623d8cf26e700",
+  "marker": "6333dd86e0feee5007fd5bb9",
+  "hero": {
+    "src": "/static/images/blog/does-cutting-nails-break-wudu.webp",
+    "alt": "Green illustration with the title Does Cutting Nails Break Wudu",
+    "sha256": "d97794af954c2b7135e985e9924006b3b223d42b93d39b7b66cb23434be70c21"
+  },
+  "sources": [
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7859/does-the-clipping-of-nails-nullify-ablution",
+      "title": "Does the clipping of nails nullify ablution? Egypt's Dar al-Ifta fatwa 7859",
+      "supports": "Clipping nails does not nullify ablution; preferable to wash hands afterwards.",
+      "checked_at": "2026-10-26T02:11:48.720Z",
+      "content_sha256": "4e4fa84e1121b2fd7261d7a8c6ede9f8859080193d345f028c75501389d23607"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/8093/clipping-nails-and-ablution",
+      "title": "Clipping nails and ablution, Egypt's Dar al-Ifta fatwa 8093",
+      "supports": "Same ruling in a second fatwa.",
+      "checked_at": "2026-10-26T02:11:47.818Z",
+      "content_sha256": "9de28b49375d4042dd0708372f9f695a7d132b555defa88acdbd64c146af191f"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/does-cutting-nails-or-hair-break-wudhu/",
+      "title": "Does cutting nails or hair break wudhu, Darul Ifta Birmingham",
+      "supports": "Cutting nails or removing unwanted hair does not break wudu.",
+      "checked_at": "2026-10-26T02:11:45.612Z",
+      "content_sha256": "19007185b1f36be5891c98c6b1c6435ac3b9a327bc0f43f7e7ade9b5bb31032a"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/does-a-woman-need-to-repeat-her-wudu-if-she-waxes-her-body-or-tweezes-her-hair-from-the-root/",
+      "title": "Does a woman need to repeat wudu if she waxes or tweezes, Darul Ifta Birmingham",
+      "supports": "Hanafi list of nullifiers; waxing/tweezing does not break wudu unless blood comes out and flows.",
+      "checked_at": "2026-10-26T02:11:51.665Z",
+      "content_sha256": "fb2bac3bf6d6bbf02875500d5c889c9107405a780bb4dc6ec57184109c3f7f1a"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/6125/can-i-pray-with-my-nail-polish-or-should-i-remove-it-for-ablution",
+      "title": "Can I pray with my nail polish or should I remove it for ablution? Egypt's Dar al-Ifta fatwa 6125",
+      "supports": "Polish does not invalidate ablution; water-blocking polish must be removed before wudu; dye and henna need not be.",
+      "checked_at": "2026-10-26T02:11:49.577Z",
+      "content_sha256": "f78bdea1074651fb73d82f39ca44cce3754dba2c96477399904e77fe6b0936df"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Surah Al-Ma'idah), Quran.com",
+      "supports": "Command to wash hands to the elbows and feet to the ankles.",
+      "checked_at": "2026-10-26T02:11:54.442Z",
+      "content_sha256": "eba2010aef173a27aeb9efaa4d600ef7e290010021f0f62223fd614cd2400d12"
+    },
+    {
+      "url": "https://sunnah.com/muslim:258",
+      "title": "Sahih Muslim 258, Sunnah.com",
+      "supports": "Forty-night limit for trimming moustache, cutting nails and other fitrah acts.",
+      "checked_at": "2026-10-26T02:11:52.925Z",
+      "content_sha256": "a3fe4c349dde965b32119e01c8b25e863b0c79b5862a5b1c5fb7fb0273c2868b"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read each retrieved page text captured 2026-10-26: Dar al-Ifta fatwas 7859, 8093 and 6125; Darul Ifta Birmingham fatwas on cutting nails/hair and on waxing/tweezing; Quran 5:6; Sahih Muslim 258. Bukhari 176 (403) and Muslim 257 (404) were not cited. The bleeding exception is attributed to the Hanafi school via Darul Ifta Birmingham and other schools are only said to differ, linking the existing bleeding guide. Hero inspected: 1200x630 meadow-palette title card, not duplicated in body. No app CTA; links to /prayer-times and existing wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "Clipping nails does not nullify ablution; preferable to wash hands afterwards",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7859/does-the-clipping-of-nails-nullify-ablution",
+        "explanation": "Answer: 'No, it does not, and it is preferable to wash the hands afterwards.'",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta gave the same answer in a separate fatwa",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/8093/clipping-nails-and-ablution",
+        "explanation": "Fatwa 8093 answer is identical.",
+        "supported": true
+      },
+      {
+        "claim": "Cutting nails or removing unwanted hair does not break wudu (Darul Ifta Birmingham)",
+        "source_url": "https://daruliftabirmingham.co.uk/does-cutting-nails-or-hair-break-wudhu/",
+        "explanation": "Answer text states exactly this.",
+        "supported": true
+      },
+      {
+        "claim": "Hanafi nullifiers list and blood that comes out and moves from its place breaks wudu after waxing or tweezing",
+        "source_url": "https://daruliftabirmingham.co.uk/home/does-a-woman-need-to-repeat-her-wudu-if-she-waxes-her-body-or-tweezes-her-hair-from-the-root/",
+        "explanation": "Lists two passages, flowing blood/pus, mouthful vomit, sleeping lying/reclining, fainting/insanity, laughing in salah with ruku and sajdah; then the blood caveat.",
+        "supported": true
+      },
+      {
+        "claim": "Water-blocking nail polish must be removed before wudu; dye and henna need not be; polish does not invalidate ablution",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/6125/can-i-pray-with-my-nail-polish-or-should-i-remove-it-for-ablution",
+        "explanation": "Answer text states each point.",
+        "supported": true
+      },
+      {
+        "claim": "Quran commands washing hands to the elbows and feet to the ankles",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Clear Quran translation of 5:6.",
+        "supported": true
+      },
+      {
+        "claim": "Nails and other fitrah acts should not be left more than forty nights",
+        "source_url": "https://sunnah.com/muslim:258",
+        "explanation": "Anas: a time limit was prescribed... not neglected more than forty nights.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "f19105937cc53fb5e41df20fd6b5e889f990697fe05b4a5023b8ebe5851282c4"
+  },
+  "prepared_at": "2026-10-26T02:12:45.336Z",
+  "state": "awaiting_release"
+}

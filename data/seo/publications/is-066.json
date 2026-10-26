@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "is-066",
+  "action": "new_article",
+  "target_path": "/blog/dua-during-wudu",
+  "source_file": "data/blog/en/dua-during-wudu.mdx",
+  "assignment_sha256": "e51bccfa9ba37d9ab3ec102dec5b356ed583d00333b3dbfc0d2da54cdce4bb6a",
+  "baseline_sha256": null,
+  "content_sha256": "f4f6e3db13aadc1b3c95fb4254410b45f9f2340e912f6c05ede129f400e3bcda",
+  "marker": "a5aefda36d551e8b997f5d6a",
+  "hero": {
+    "src": "/static/images/blog/dua-during-wudu.webp",
+    "alt": "Soft cream and green illustration with the title Dua During Wudu",
+    "sha256": "03953f24d3e25572133b6c4b37d672840420e079a52f6b99a4b5180eea4af80d"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/abudawud:101",
+      "title": "Sunan Abi Dawud 101, Sunnah.com",
+      "supports": "No wudu for one who does not mention Allah's name; graded sahih by al-Albani.",
+      "checked_at": "2026-10-26T02:08:42.449Z",
+      "content_sha256": "aa64e450c4193847d5d7c0f3ea0af9366703f614d6e35ef116ce7de36794ad7c"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:25",
+      "title": "Jami' at-Tirmidhi 25, Sunnah.com",
+      "supports": "Tasmiyah hadith, graded hasan; Ahmad's remark on the chains and Ishaq's view on forgetting versus deliberate omission.",
+      "checked_at": "2026-10-26T02:08:41.865Z",
+      "content_sha256": "42c545a4070f204789e27a904a84aae4b7fe07cbf8ed3b77c08ff44021f8f11f"
+    },
+    {
+      "url": "https://sunnah.com/ibnmajah:397",
+      "title": "Sunan Ibn Majah 397, Sunnah.com",
+      "supports": "Tasmiyah hadith via Abu Sa'id, graded hasan.",
+      "checked_at": "2026-10-26T02:08:44.042Z",
+      "content_sha256": "b6cea69bf51142d51948dbf724c109a29c5fa514c13d77ec78505543897b2722"
+    },
+    {
+      "url": "https://sunnah.com/nasai:148",
+      "title": "Sunan an-Nasa'i 148, Sunnah.com",
+      "supports": "Shahada after wudu and the eight gates of Paradise, graded sahih.",
+      "checked_at": "2026-10-26T02:09:09.425Z",
+      "content_sha256": "830f8869951592d7c8bce22b3868ad2f217329919c85262edbf767712fb9bcdf"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:55",
+      "title": "Jami' at-Tirmidhi 55, Sunnah.com",
+      "supports": "Longer post-wudu dua with tawwabin/mutatahhirin; Tirmidhi notes idtirab; graded da'if.",
+      "checked_at": "2026-10-26T02:08:40.776Z",
+      "content_sha256": "4a8a671f2121975251742904ff7adc67abe3928c2a5ba9e3fa90244b42dc7b23"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:3500",
+      "title": "Jami' at-Tirmidhi 3500, Sunnah.com",
+      "supports": "Allahummaghfir li dhanbi wording heard at night, no mention of wudu, graded da'if.",
+      "checked_at": "2026-10-26T02:08:43.201Z",
+      "content_sha256": "172d144b516ecebde9409bfa37b50966d50312de0f1234e4279f0c93c2c8961c"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Surah Al-Ma'idah), Quran.com",
+      "supports": "Wudu command and purpose: not to burden but to purify and complete His favour.",
+      "checked_at": "2026-10-26T02:08:46.324Z",
+      "content_sha256": "713d082e60e16a2c0754e923b2993161bd310eea6d0ddf21a5250608ce9b1b6a"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+      "title": "How to perform Wudhu (Ablution), Egypt's Dar al-Ifta",
+      "supports": "Intention and Bismillah at start, shahada at end, no limb-specific duas listed.",
+      "checked_at": "2026-10-26T02:09:53.024Z",
+      "content_sha256": "a909feeca847e8c786ee8057fd5ee8653673e9ebcccc4fa2f4111e2d8d836441"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read each retrieved page text captured 2026-10-26: Abu Dawud 101, Tirmidhi 25, Ibn Majah 397, Nasa'i 148, Tirmidhi 55, Tirmidhi 3500, Quran 5:6 (Clear Quran) and Dar al-Ifta article 249. Sahih Muslim 234 and Abu Dawud 169 returned 403/404 and were not cited. Arabic and translations taken from the captures. Limb-by-limb duas are described only as absent from these sources and subject to scholarly disagreement; no named scholar's position is asserted without a captured source. Hero inspected: 1200x630 dawn-palette title card, no duplicate in body. No app CTA; links to /prayer-times, /dua and existing wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "There is no wudu for one who does not mention Allah's name over it",
+        "source_url": "https://sunnah.com/tirmidhi:25",
+        "explanation": "English text of Tirmidhi 25, graded Hasan (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Ibn Majah 397 via Abu Sa'id graded hasan; Abu Dawud 101 via Abu Hurairah graded sahih by al-Albani",
+        "source_url": "https://sunnah.com/abudawud:101",
+        "explanation": "Abu Dawud 101 narrated by Abu Hurayrah, Grade Sahih (Al-Albani); Ibn Majah 397 narrated from Abu Sa'eed, Hasan (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Ahmad knew no hadith on tasmiyah with a good chain; Ishaq: deliberate omission repeats wudu, forgetting is valid",
+        "source_url": "https://sunnah.com/tirmidhi:25",
+        "explanation": "Arabic note: قال أحمد بن حنبل لا أعلم في هذا الباب حديثا له إسناد جيد؛ وقال إسحاق إن ترك التسمية عامدا أعاد الوضوء وإن كان ناسيا أو متأولا أجزأه.",
+        "supported": true
+      },
+      {
+        "claim": "Shahada after wudu opens the eight gates of Paradise, graded sahih",
+        "source_url": "https://sunnah.com/nasai:148",
+        "explanation": "Nasa'i 148 English and Arabic text, Grade Sahih (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Tirmidhi 55 adds the tawwabin/mutatahhirin line; Tirmidhi notes idtirab; graded da'if",
+        "source_url": "https://sunnah.com/tirmidhi:55",
+        "explanation": "Text includes the addition; Tirmidhi: وهذا حديث في إسناده اضطراب; Grade Da'if (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Allahummaghfir li dhanbi wording reported heard at night, no wudu mentioned, graded da'if",
+        "source_url": "https://sunnah.com/tirmidhi:3500",
+        "explanation": "Man heard the supplication 'last night'; no reference to wudu; Grade Da'if (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta lists intention and Bismillah first and the shahada at the end, with no limb duas",
+        "source_url": "https://www.dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+        "explanation": "Steps 1-9 contain no limb supplications; step 1 Bismillah, closing recitation is the shahada.",
+        "supported": true
+      },
+      {
+        "claim": "Quran 5:6: not to burden you but to purify you and complete His favour",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Clear Quran translation text matches the quotation.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "5824525e9a5fcb36175ab338fb2471fc2d599d5e711d092bef737cb4f5c94749"
+  },
+  "prepared_at": "2026-10-26T02:11:23.870Z",
+  "state": "awaiting_release"
+}
