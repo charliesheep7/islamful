@@ -4749,10 +4749,10 @@
       "proposed_title": "Does passing wind break Wudu?",
       "target_path": "/blog/does-passing-wind-break-wudu",
       "source_file": "data/blog/en/does-passing-wind-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does passing wind break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4809,6 +4809,12 @@
           "alt": "Dark green title card reading Does Passing Wind Break Wudu?",
           "sha256": "a8d25c934147ff88aa7a5632b7631bc1147b187f6a026b5f4263555a5a45f4c0"
         }
+      },
+      "release": {
+        "date": "2026-10-27T02:09:07.774Z",
+        "commit": "94a821f893cadd1d8f557ce73cf7780fe8cd2e98",
+        "deployment_id": 7348472142,
+        "url": "https://www.islamful.com/blog/does-passing-wind-break-wudu"
       }
     },
     {
@@ -4820,10 +4826,10 @@
       "proposed_title": "Does showering count as Wudu?",
       "target_path": "/blog/does-showering-count-as-wudu",
       "source_file": "data/blog/en/does-showering-count-as-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does showering count as wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4880,6 +4886,12 @@
           "alt": "Green title card reading Does Showering Count as Wudu?",
           "sha256": "f88150e18125a5a0121f093dc3fd8a6e0d49d68dd04fb030cb1fc032bb3b8586"
         }
+      },
+      "release": {
+        "date": "2026-10-27T02:09:08.095Z",
+        "commit": "94a821f893cadd1d8f557ce73cf7780fe8cd2e98",
+        "deployment_id": 7348472142,
+        "url": "https://www.islamful.com/blog/does-showering-count-as-wudu"
       }
     },
     {

@@ -122,5 +122,11 @@
     "article_sha256": "df4415a0a604a73d69b743836913e5e82a70ac00eb1b2a40bcadc90bc9319d02"
   },
   "prepared_at": "2026-10-27T02:04:28.965Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-27T02:09:07.774Z",
+    "commit": "94a821f893cadd1d8f557ce73cf7780fe8cd2e98",
+    "deployment_id": 7348472142,
+    "url": "https://www.islamful.com/blog/does-passing-wind-break-wudu"
+  }
 }

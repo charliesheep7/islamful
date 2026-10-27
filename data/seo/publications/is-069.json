@@ -96,5 +96,11 @@
     "article_sha256": "f972873370c80263e2b932e0729a586fe8f751d8e82d7af8892663c1310f2e30"
   },
   "prepared_at": "2026-10-27T02:05:47.469Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-27T02:09:08.095Z",
+    "commit": "94a821f893cadd1d8f557ce73cf7780fe8cd2e98",
+    "deployment_id": 7348472142,
+    "url": "https://www.islamful.com/blog/does-showering-count-as-wudu"
+  }
 }
