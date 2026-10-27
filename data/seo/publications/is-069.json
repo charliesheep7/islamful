@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "is-069",
+  "action": "new_article",
+  "target_path": "/blog/does-showering-count-as-wudu",
+  "source_file": "data/blog/en/does-showering-count-as-wudu.mdx",
+  "assignment_sha256": "99c2bca0569df4687c3fbb34677912f4a04f9b7cdbf4778f798352144a60eb98",
+  "baseline_sha256": null,
+  "content_sha256": "a2f985ff413ba14b8c60d0f6624b90e1cee5292ea4e62e1c5ea2edc76fe5bd82",
+  "marker": "24c049a5854ee4e785277a56",
+  "hero": {
+    "src": "/static/images/blog/does-showering-count-as-wudu.webp",
+    "alt": "Green title card reading Does Showering Count as Wudu?",
+    "sha256": "f88150e18125a5a0121f093dc3fd8a6e0d49d68dd04fb030cb1fc032bb3b8586"
+  },
+  "sources": [
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/24065/praying-without-making-ablution-after-taking-a-purificatory-bath",
+      "title": "Egypt's Dar al-Ifta fatwa 24065: praying without ablution after a purificatory bath",
+      "supports": "Ablution is included within the purificatory bath; cites Aisha and Ibn Umar; prayer valid.",
+      "checked_at": "2026-10-27T02:04:53.384Z",
+      "content_sha256": "706e441a05ca42aa424efbd1541791787bc072697e5bf497bb4e41b3bf940319"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:250",
+      "title": "Sunan Abi Dawud 250: performing wudu after ghusl",
+      "supports": "Aisha: the Prophet bathed and prayed without performing ablution afresh; graded sahih by al-Albani.",
+      "checked_at": "2026-10-27T02:02:32.262Z",
+      "content_sha256": "6afc1a389491980c8cb0be666ea797d85378c05f0f5244c55a16f38c8b9e6e89"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:248",
+      "title": "Sahih al-Bukhari 248: ablution before taking a bath",
+      "supports": "The Prophet's ghusl after janabah began with ablution like that for prayer.",
+      "checked_at": "2026-10-27T02:02:30.007Z",
+      "content_sha256": "65a82842667e826798669a738d0f85d81c256849aaf1ca50305d6e4be3cd894a"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/?p=13339",
+      "title": "Darul Ifta Birmingham fatwa 03298: Fardh and Sunnah of Ghusl",
+      "supports": "Hanafi: three fardh acts of ghusl; Sunnah acts include intention and wudu before ghusl.",
+      "checked_at": "2026-10-27T02:04:54.975Z",
+      "content_sha256": "6451a905c824b1e7982cbb0797b9befa61e85100c5a4f392b0edf52242045223"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Qur'an 5:6 (Al-Ma'idah)",
+      "supports": "Wudu for prayer and full bath for major impurity in one verse.",
+      "checked_at": "2026-10-27T02:02:31.609Z",
+      "content_sha256": "fd4e89c629c857aa06fcaa7ea07c41c3833d317aa72dccd6caf685df37658424"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read each retrieved page text captured 2026-10-27: Dar al-Ifta fatwa 24065, Abu Dawud 250 (sahih per al-Albani), Bukhari 248, Darul Ifta Birmingham fatwa 03298 and Qur'an 5:6. Tirmidhi 107 returned 403 and is not cited; Aisha's report and Ibn Umar's comment are attributed via the Dar al-Ifta fatwa that quotes them. Jordanian and other non-allowlisted fatwas were not used. No ruling is given on whether a plain non-ghusl shower lifts minor impurity: readers are advised to make wudu or ask a scholar. Hanafi fardh list attributed to that school. Hero inspected: 1200x630 meadow-palette title card, not duplicated in body. No app CTA; links /prayer-times and existing guides.",
+    "claim_checks": [
+      {
+        "claim": "Ablution is included within the purificatory bath; intention for major impurity covers minor; funeral prayer valid",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/24065/praying-without-making-ablution-after-taking-a-purificatory-bath",
+        "explanation": "Answer: 'It is established in Islamic law that ablution is included within the purificatory bath... the lesser is included in the intention of the greater'; prayer valid.",
+        "supported": true
+      },
+      {
+        "claim": "Aisha: Prophet would not make ablution after the bath; Ibn Umar: 'You have gone beyond what is necessary'",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/24065/praying-without-making-ablution-after-taking-a-purificatory-bath",
+        "explanation": "Both reports quoted in the fatwa.",
+        "supported": true
+      },
+      {
+        "claim": "Aisha: he bathed, prayed two rak'ahs and the dawn prayer, 'I do not think he performed ablution afresh after taking a bath'; sahih per al-Albani",
+        "source_url": "https://sunnah.com/abudawud:250",
+        "explanation": "Exact English text and grade Sahih (Al-Albani) on page.",
+        "supported": true
+      },
+      {
+        "claim": "Prophet's ghusl after janabah: washed hands, 'then performed ablution like that for the prayer', then poured water over head and body",
+        "source_url": "https://sunnah.com/bukhari:248",
+        "explanation": "Exact narration text.",
+        "supported": true
+      },
+      {
+        "claim": "Qur'an 5:6 mentions washing limbs for prayer and full bath for major impurity",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "'wash your faces and your hands up to the elbows, wipe your heads, and wash your feet... if you are in a state of full impurity, then take a full bath.'",
+        "supported": true
+      },
+      {
+        "claim": "Hanafi fardh of ghusl: rinse mouth, water into nose and blow out, wash whole body; missing any leaves obligation; Sunnah includes Bismillah, intention, wudu before ghusl",
+        "source_url": "https://daruliftabirmingham.co.uk/home/?p=13339",
+        "explanation": "Fatwa 03298 lists the three fardh and nine Sunnah acts verbatim.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "f972873370c80263e2b932e0729a586fe8f751d8e82d7af8892663c1310f2e30"
+  },
+  "prepared_at": "2026-10-27T02:05:47.469Z",
+  "state": "awaiting_release"
+}

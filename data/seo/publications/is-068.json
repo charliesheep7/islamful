@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "id": "is-068",
+  "action": "new_article",
+  "target_path": "/blog/does-passing-wind-break-wudu",
+  "source_file": "data/blog/en/does-passing-wind-break-wudu.mdx",
+  "assignment_sha256": "833c07a6b3e900dc4dbb979d45355b01e08c27c7a24dd3dc9767770d3bf96b6f",
+  "baseline_sha256": null,
+  "content_sha256": "3da6ad553977e0ee18a7ec3fafd4da8e2ffed28a3192ddc6bfef66e0231b62c1",
+  "marker": "8c9de3e6caa72ca45b0e0fb1",
+  "hero": {
+    "src": "/static/images/blog/does-passing-wind-break-wudu.webp",
+    "alt": "Dark green title card reading Does Passing Wind Break Wudu?",
+    "sha256": "a8d25c934147ff88aa7a5632b7631bc1147b187f6a026b5f4263555a5a45f4c0"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/tirmidhi:74",
+      "title": "Jami at-Tirmidhi 74: no wudu except for a sound or a smell",
+      "supports": "Hadith that wudu is required for wind (sound or smell); graded hasan sahih by Tirmidhi.",
+      "checked_at": "2026-10-27T02:01:55.234Z",
+      "content_sha256": "ec59c38d026435bcaa3194d859c91ecec82ab52f60921cd07e596a56925bccdc"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:75",
+      "title": "Jami at-Tirmidhi 75: do not leave until hearing a sound or smelling",
+      "supports": "Hadith on feeling wind in the masjid; Tirmidhi's note on scholars' view and Ibn al-Mubarak on doubt.",
+      "checked_at": "2026-10-27T02:01:55.695Z",
+      "content_sha256": "763c1c5de3287235b25be2d3b728fe1e4ee851025cd42d4e1b0b23c315f194b1"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:137",
+      "title": "Sahih al-Bukhari 137: doubt about passing wind in prayer",
+      "supports": "One who imagines passing wind should not leave prayer unless he hears sound or smells something.",
+      "checked_at": "2026-10-27T02:01:54.082Z",
+      "content_sha256": "ef223fb1fe24ad22f553249e110bca37750da8a7681c0ce37df6ded48103c5d3"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:177",
+      "title": "Sahih al-Bukhari 177: one should not leave prayer unless he hears sound or smells",
+      "supports": "Parallel narration of the certainty principle.",
+      "checked_at": "2026-10-27T02:01:54.690Z",
+      "content_sha256": "2406da69107264c4f779b7024eb39cc5f7b66e2f308802109c9f8612588fbfc1"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/?p=976",
+      "title": "Darul Ifta Birmingham: Passing Wind",
+      "supports": "Hanafi ruling: exits from both passages nullify wudu except air from a woman's front passage; certainty without sound or smell breaks wudu; doubt does not.",
+      "checked_at": "2026-10-27T02:03:06.896Z",
+      "content_sha256": "a2483fd80241e1653b1c244eda0de11f7ed9b421d4f6d762559d522aa046863d"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Qur'an 5:6 (Al-Ma'idah)",
+      "supports": "Relieving oneself among the things requiring purification before prayer.",
+      "checked_at": "2026-10-27T02:01:57.188Z",
+      "content_sha256": "4ba0e0642cf9bde82a5ee376bef67feebd438b371e1674305f2c9842ca450e49"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:205",
+      "title": "Sunan Abi Dawud 205: breaking wind during prayer",
+      "supports": "Narration to leave, perform wudu and repeat the prayer; graded Da'if by al-Albani.",
+      "checked_at": "2026-10-27T02:01:57.717Z",
+      "content_sha256": "e638e6c46b3a93e955b629060d51b633baa03a6703095a7b7ee188b60679800f"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read each retrieved page text captured 2026-10-27: Tirmidhi 74 and 75, Bukhari 137 and 177, Abu Dawud 205 (Da'if per al-Albani, cited only with that grade), Qur'an 5:6 and Darul Ifta Birmingham 'Passing Wind'. Bukhari 135, Muslim 360/362a and Bukhari 228 returned 403 and are not cited; the 'prayer not accepted' hadith is attributed via the Birmingham page that quotes it. Front-passage exception attributed to the Hanafi school only; no claim about other schools. Continuous-excuse case is only referred to a scholar without a ruling. Hero inspected: 1200x630 forest-palette title card, not duplicated in body. No app CTA; links /prayer-times and existing wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "There is no Wudu except for a sound or a smell; graded hasan sahih",
+        "source_url": "https://sunnah.com/tirmidhi:74",
+        "explanation": "Abu Hurairah narrated: 'There no Wudu except for a sound or a smell.' Abu Eisa: hasan sahih.",
+        "supported": true
+      },
+      {
+        "claim": "Man who imagined passing wind in prayer should not leave unless he hears sound or smells something",
+        "source_url": "https://sunnah.com/bukhari:137",
+        "explanation": "Abbad bin Tamim's uncle asked; reply: 'He should not leave his prayers unless he hears sound or smells something.'",
+        "supported": true
+      },
+      {
+        "claim": "Parallel narration in Bukhari 177",
+        "source_url": "https://sunnah.com/bukhari:177",
+        "explanation": "'One should not leave his prayer unless he hears sound or smells something.'",
+        "supported": true
+      },
+      {
+        "claim": "Feeling wind in the masjid: do not go out until hearing a sound or smelling; scholars' view and Ibn al-Mubarak on doubt",
+        "source_url": "https://sunnah.com/tirmidhi:75",
+        "explanation": "Hadith text plus Tirmidhi: scholars hold wudu not obligatory except from a hadath heard or smelled; Ibn al-Mubarak: if in doubt, wudu not required until certain.",
+        "supported": true
+      },
+      {
+        "claim": "Exits from front or back passage nullify wudu except air from a woman's front passage (Hanafi, Raddul Muhtar)",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=976",
+        "explanation": "'Anything that exists from the front and back passage nullifies wudu except the air, which comes out from the front passage (of a female).'",
+        "supported": true
+      },
+      {
+        "claim": "Certain passing of even small gas breaks wudu without sound or smell; prayer not accepted after breaking wind until wudu",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=976",
+        "explanation": "Cites Fatawa Hindiyyah and Fathul Bari on certainty, and quotes the Bukhari hadith on prayer not accepted until wudu.",
+        "supported": true
+      },
+      {
+        "claim": "Relieving oneself is among things requiring purification before prayer",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Verse: 'or have relieved yourselves ... then purify yourselves'.",
+        "supported": true
+      },
+      {
+        "claim": "Abu Dawud narration to leave, perform wudu and repeat prayer is graded weak by al-Albani",
+        "source_url": "https://sunnah.com/abudawud:205",
+        "explanation": "Text: 'he should turn away and perform ablution and repeat the prayer.' Grade: Da'if (Al-Albani).",
+        "supported": true
+      }
+    ],
+    "article_sha256": "df4415a0a604a73d69b743836913e5e82a70ac00eb1b2a40bcadc90bc9319d02"
+  },
+  "prepared_at": "2026-10-27T02:04:28.965Z",
+  "state": "awaiting_release"
+}
