@@ -4904,7 +4904,7 @@
       "target_path": "/blog/how-to-perform-tayammum",
       "source_file": "data/blog/en/how-to-perform-tayammum.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer how to do wudu without water. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4923,7 +4923,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -4953,7 +4953,12 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "f36b59e0b76bbe675752e5da2098d5125549e00d5080576e643af7b98d8fe2b4",
+        "marker": "2b893e1738147ffb308e9503",
+        "audit_file": "data/seo/publications/is-070.json"
+      }
     },
     {
       "id": "is-071",
@@ -4965,7 +4970,7 @@
       "target_path": "/blog/can-you-do-wudu-with-socks-on",
       "source_file": "data/blog/en/can-you-do-wudu-with-socks-on.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you do wudu with socks on. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -4984,7 +4989,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5014,7 +5019,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "b956b1cea7cabff312e328c98ce0fcd5bc51a432ef1fa919c8034086af66dc92",
+        "marker": "5c62ba71da8592c1aaf57ea5",
+        "audit_file": "data/seo/publications/is-071.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-do-wudu-with-socks-on.webp",
+          "alt": "Cream title card reading Can You Do Wudu With Socks On?",
+          "sha256": "1e445dbffc2016d927b39702cafb4af4b6e12c83af62bc4ae7e28bc9dc84e6ea"
+        }
+      }
     },
     {
       "id": "is-072",

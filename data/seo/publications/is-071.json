@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "is-071",
+  "action": "new_article",
+  "target_path": "/blog/can-you-do-wudu-with-socks-on",
+  "source_file": "data/blog/en/can-you-do-wudu-with-socks-on.mdx",
+  "assignment_sha256": "19a7795d0107f94c09c7a921fe274f2783f0c82ba81fede1c912eaa148f6e6f9",
+  "baseline_sha256": null,
+  "content_sha256": "b956b1cea7cabff312e328c98ce0fcd5bc51a432ef1fa919c8034086af66dc92",
+  "marker": "5c62ba71da8592c1aaf57ea5",
+  "hero": {
+    "src": "/static/images/blog/can-you-do-wudu-with-socks-on.webp",
+    "alt": "Cream title card reading Can You Do Wudu With Socks On?",
+    "sha256": "1e445dbffc2016d927b39702cafb4af4b6e12c83af62bc4ae7e28bc9dc84e6ea"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Qur'an 5:6 (Surah Al-Ma'idah) on Quran.com",
+      "supports": "Wudu command including washing the feet to the ankles.",
+      "checked_at": "2026-10-28T02:07:35.525Z",
+      "content_sha256": "5c50e78ca120ff6d4c7393d3794aab93cafdca19dec4e48f1369dab5631f95d9"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:182",
+      "title": "Sahih al-Bukhari 182: the Prophet wiped over his khuffs during wudu on a journey",
+      "supports": "Al-Mughirah poured water; the Prophet washed face and forearms, wiped head, and wiped over the two khuffs.",
+      "checked_at": "2026-10-28T02:09:37.661Z",
+      "content_sha256": "08bdbcdaa12019fc1aa9a8d32167b75d212fdeb67abb618ce65d293e2b2af232"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:206",
+      "title": "Sahih al-Bukhari 206: khuffs put on while the feet were pure",
+      "supports": "The Prophet told al-Mughirah to leave his khuffs as he had put them on after ablution while pure, then wiped over them.",
+      "checked_at": "2026-10-28T02:07:32.218Z",
+      "content_sha256": "0fde0d0966ff25c25f73a31e917fb99ecdd3856bcb3a69a0791e1d0a5300afdd"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:99",
+      "title": "Jami at-Tirmidhi 99: wiping over socks and sandals, with jurists' views",
+      "supports": "Prophet wiped over jawrab and sandals; Tirmidhi hasan sahih, Darussalam da'if; Thawri, Ibn al-Mubarak, Shafi'i, Ahmad, Ishaq allow if thick; Abu Hanifa report.",
+      "checked_at": "2026-10-28T02:07:31.588Z",
+      "content_sha256": "0e91421750f3d31752e6ffff9a7b9a2bc1a88d890adccf9d52bd29b97f733f69"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:96",
+      "title": "Jami at-Tirmidhi 96: wiping over khuffs for the traveller and resident",
+      "supports": "Travellers told not to remove khuffs three days and nights except for janabah; jurists hold one day and night for resident, three for traveller; some set no limit.",
+      "checked_at": "2026-10-28T02:09:35.818Z",
+      "content_sha256": "59b038ed1dce9408e9675168f97a8c783b5cdf5a504204c4ea17628fd3b5e385"
+    },
+    {
+      "url": "https://sunnah.com/nasai:127",
+      "title": "Sunan an-Nasa'i 127: time limit for wiping over khuffs",
+      "supports": "Safwan ibn Assal: wipe over khuffs and do not remove them for three nights for defecating, urinating or sleeping, only for janabah; graded hasan.",
+      "checked_at": "2026-10-28T02:09:36.460Z",
+      "content_sha256": "827a93fcd23524a972377f5794f4b5b4eae24c3c0e5f105273a417e740e3afe1"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:162",
+      "title": "Sunan Abi Dawud 162: wiping the upper part of the khuff",
+      "supports": "Ali: if religion were by opinion the underside would be wiped, but I saw the Messenger of Allah wipe the upper part; sahih per al-Albani.",
+      "checked_at": "2026-10-28T02:09:37.033Z",
+      "content_sha256": "ea9096f183c74ca3c179fbe07b9f852d55d4fe81a787d5e0f15a23b115fc00da"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read every capture retrieved 2026-10-28 including Arabic jurist notes in Tirmidhi 96 and 99. Muslim 276 (resident duration) returned 404/403, so the resident one-day rule is attributed to the jurists listed by at-Tirmidhi rather than to a hadith. Tirmidhi 99's grading conflict (hasan sahih by at-Tirmidhi, da'if per Darussalam) is disclosed. Thin socks are presented as a scholarly difference without a universal ruling; contemporary leniency is stated generally without attribution. Abu Dawud 161 and Ibn Majah 559 were fetched but not cited. Hero generated locally with the sand palette and inspected: 1200x630 legible title card, not duplicated in body. No app CTA; links /prayer-times and existing wudu, ghusl, tayammum and passing-wind guides.",
+    "claim_checks": [
+      {
+        "claim": "Prophet wiped over his two khuffs during wudu on a journey",
+        "source_url": "https://sunnah.com/bukhari:182",
+        "explanation": "He 'washed his face, forearms and passed his wet hand over his head and over the two Khuff'.",
+        "supported": true
+      },
+      {
+        "claim": "Socks must be put on while in a state of purity",
+        "source_url": "https://sunnah.com/bukhari:206",
+        "explanation": "'He ordered me to leave them as he had put them after performing ablution. So he passed wet hands over them'; Arabic: adkhaltuhuma tahiratayn.",
+        "supported": true
+      },
+      {
+        "claim": "Tirmidhi 99 report on socks and sandals, grading dispute, jurists allow thick socks, Abu Hanifa report",
+        "source_url": "https://sunnah.com/tirmidhi:99",
+        "explanation": "English text of hadith; Arabic note hasan sahih and named jurists 'idha kana thakhinayn'; Abu Muqatil's report of Abu Hanifa; Grade Da'if (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Three days and nights for travellers except janabah; resident one day and night per named jurists; some set no limit",
+        "source_url": "https://sunnah.com/tirmidhi:96",
+        "explanation": "Safwan's narration; Arabic note: yamsahu al-muqim yawman wa laylatan wal-musafir thalathata ayyam; some scholars did not set a time. Grade Hasan.",
+        "supported": true
+      },
+      {
+        "claim": "Same three-night limit for travellers in an-Nasa'i",
+        "source_url": "https://sunnah.com/nasai:127",
+        "explanation": "Safwan: wipe over khuffs and not take them off for three nights for defecating, urinating or sleeping, only for janabah. Grade Hasan.",
+        "supported": true
+      },
+      {
+        "claim": "Wipe the upper part of the khuff, per Ali",
+        "source_url": "https://sunnah.com/abudawud:162",
+        "explanation": "'I have seen the Messenger of Allah wiping over the upper part'; Grade Sahih (Al-Albani).",
+        "supported": true
+      },
+      {
+        "claim": "Qur'an commands washing the feet to the ankles in wudu",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Translation: 'wash your faces and your hands up to the elbows, wipe your heads, and wash your feet to the ankles.'",
+        "supported": true
+      }
+    ],
+    "article_sha256": "b9f8e8dc86284602b997bedb1633ef8eee9f2c5897aec08f68a05a05e49c2bd7"
+  },
+  "prepared_at": "2026-10-28T02:11:05.293Z",
+  "state": "awaiting_release"
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "is-070",
+  "action": "update_article",
+  "target_path": "/blog/how-to-perform-tayammum",
+  "source_file": "data/blog/en/how-to-perform-tayammum.mdx",
+  "assignment_sha256": "59eaa98c40a74a2bd1db6b8574ed63f9d4aad1d8db7065b20a2cdee9dadad3f9",
+  "baseline_sha256": "cd95f00b9af0b988aca21c71347f7117de898348f5f44e117583fcbe2cd0cd1b",
+  "content_sha256": "f36b59e0b76bbe675752e5da2098d5125549e00d5080576e643af7b98d8fe2b4",
+  "marker": "2b893e1738147ffb308e9503",
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Qur'an 5:6 (Surah Al-Ma'idah) on Quran.com",
+      "supports": "Wudu and ghusl commands; if ill, on a journey or no water is found, purify with clean earth by wiping faces and hands; Allah does not intend hardship.",
+      "checked_at": "2026-10-28T02:07:24.346Z",
+      "content_sha256": "0431205a479f0f86c16cf49cc320ff890b295621edf8115963d03bf1d6b8996a"
+    },
+    {
+      "url": "https://quran.com/4/43",
+      "title": "Qur'an 4:43 (Surah An-Nisa) on Quran.com",
+      "supports": "If ill, on a journey or unable to find water, purify with clean earth wiping faces and hands.",
+      "checked_at": "2026-10-28T02:07:26.198Z",
+      "content_sha256": "5eec15e58c6f86b2beb375f3e8a2d83c26e3b8359fab5fad62e89d382061d72b"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:338",
+      "title": "Sahih al-Bukhari 338: Ammar ibn Yasir and the method of tayammum",
+      "supports": "Ammar became junub with no water; the Prophet struck the earth lightly, blew off the dust and wiped his face and hands, saying that was sufficient.",
+      "checked_at": "2026-10-28T02:07:26.981Z",
+      "content_sha256": "faa51deefe33deaf324d94ff5250199e76388a561a7d70317e74e200c5dd9a5f"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:335",
+      "title": "Sahih al-Bukhari 335: the earth made a place of prayer and means of tayammum",
+      "supports": "The earth has been made for the Prophet's followers a place for praying and a thing to perform tayammum, so they can pray wherever prayer time is due.",
+      "checked_at": "2026-10-28T02:07:28.677Z",
+      "content_sha256": "0a1344afbe29738e46220fd01accc0804c617adb91b5ab11cbd2315ddffdab83"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:334",
+      "title": "Sunan Abi Dawud 334: Amr ibn al-As and tayammum in severe cold",
+      "supports": "Amr feared he would die if he washed on a cold night, made tayammum, led the dawn prayer; the Prophet laughed and said nothing. Graded sahih by al-Albani.",
+      "checked_at": "2026-10-28T02:07:28.795Z",
+      "content_sha256": "07f5065fc2b1ba293f336bbbc8fe5091e4d2fc2cbdc51b5c3af08e9d55bab7e8"
+    },
+    {
+      "url": "https://sunnah.com/nasai:322",
+      "title": "Sunan an-Nasa'i 322: clean earth is the wudu of the Muslim",
+      "supports": "Clean earth is the wudu of the Muslim even if he does not find water for ten years; chapter titled Several Prayers With One Tayammum; graded hasan.",
+      "checked_at": "2026-10-28T02:07:30.639Z",
+      "content_sha256": "eb4c316a465bfb1280ced2a62951f28f6745c28b1157d428a7d4535a7697ce99"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:338",
+      "title": "Sunan Abi Dawud 338: finding water after praying with tayammum",
+      "supports": "Two travellers prayed with tayammum then found water within the time; the one who did not repeat followed the sunnah; the other had double reward. Al-Albani sahih; Abu Dawud notes chain issue.",
+      "checked_at": "2026-10-28T02:07:30.060Z",
+      "content_sha256": "ec01789aa1346cf230cfa5441609e99545568ac15f8c815d95169a21f7553447"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read every capture retrieved 2026-10-28: Qur'an 5:6 and 4:43, Bukhari 338 and 335, Abu Dawud 334 and 338, Nasa'i 322 with displayed grades. Bukhari 347 (cited in the old page) returned 403, so the Ammar method is cited from Bukhari 338 instead. The old page's madhab table and surface table had no checked source, so they were reduced to an attributed statement that schools differ, with a direction to follow one's madhab; Bismillah step and 'only drinking water' claims were removed or framed as an example. Abu Dawud's remark on the chain of 338 is disclosed. No app CTA; links /prayer-times and existing wudu, ghusl and showering guides. Update retains original title, date, author and hero.",
+    "claim_checks": [
+      {
+        "claim": "If ill, travelling or unable to find water, purify with clean earth wiping face and hands",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Translation: 'if you are ill, on a journey... and cannot find water, then purify yourselves with clean earth by wiping your faces and hands.'",
+        "supported": true
+      },
+      {
+        "claim": "Same concession appears in Surah An-Nisa 4:43",
+        "source_url": "https://quran.com/4/43",
+        "explanation": "Translation: 'if you are ill, on a journey... and cannot find water, then purify yourselves with clean earth, wiping your faces and hands.'",
+        "supported": true
+      },
+      {
+        "claim": "Prophet struck the earth lightly, blew off dust and wiped face and hands, after Ammar rolled in dust while junub",
+        "source_url": "https://sunnah.com/bukhari:338",
+        "explanation": "Narration states Ammar rolled on the ground; the Prophet 'stroked lightly the earth with his hands and then blew off the dust and passed his hands over his face and hands.'",
+        "supported": true
+      },
+      {
+        "claim": "The earth made for the Prophet's followers a place of prayer and means of tayammum, so they can pray wherever prayer time arrives",
+        "source_url": "https://sunnah.com/bukhari:335",
+        "explanation": "Item 2 of the five things: 'The earth has been made for me... a place for praying and a thing to perform Tayammum, therefore anyone of my followers can pray wherever the time of a prayer is due.'",
+        "supported": true
+      },
+      {
+        "claim": "Amr ibn al-As made tayammum fearing death from cold while junub, led dawn prayer, Prophet laughed and did not object; graded sahih by al-Albani",
+        "source_url": "https://sunnah.com/abudawud:334",
+        "explanation": "Text: cold night at Dhat as-Salasil, 'I was afraid, if I washed I would die... performed tayammum and led my companions in the dawn prayer... laughed and did not say anything.' Grade Sahih (Al-Albani).",
+        "supported": true
+      },
+      {
+        "claim": "Clean earth is the wudu of the Muslim even if he finds no water for ten years; chapter 'Several Prayers With One Tayammum'; hasan",
+        "source_url": "https://sunnah.com/nasai:322",
+        "explanation": "Chapter (203) 'Several Prayers With One Tayammum'; hadith text quoted; Grade Hasan (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Traveller who did not repeat prayer after finding water within the time followed the sunnah; the one who repeated had double reward; chain remark by Abu Dawud",
+        "source_url": "https://sunnah.com/abudawud:338",
+        "explanation": "Text matches; Abu Dawud says mention of Abu Sa'id 'is not guarded'; Grade Sahih (Al-Albani).",
+        "supported": true
+      }
+    ],
+    "article_sha256": "af8d6b7fee3b02f8d3b7a050432279bb1a8db31905665c672dbedaabf2692844"
+  },
+  "prepared_at": "2026-10-28T02:09:16.523Z",
+  "state": "awaiting_release"
+}
