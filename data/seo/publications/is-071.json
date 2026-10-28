@@ -116,5 +116,11 @@
     "article_sha256": "b9f8e8dc86284602b997bedb1633ef8eee9f2c5897aec08f68a05a05e49c2bd7"
   },
   "prepared_at": "2026-10-28T02:11:05.293Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-28T02:14:41.233Z",
+    "commit": "8096cf021efcfd014e71741480c08c39d6ed46ee",
+    "deployment_id": 7375341272,
+    "url": "https://www.islamful.com/blog/can-you-do-wudu-with-socks-on"
+  }
 }

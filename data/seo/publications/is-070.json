@@ -111,5 +111,11 @@
     "article_sha256": "af8d6b7fee3b02f8d3b7a050432279bb1a8db31905665c672dbedaabf2692844"
   },
   "prepared_at": "2026-10-28T02:09:16.523Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-28T02:14:40.767Z",
+    "commit": "8096cf021efcfd014e71741480c08c39d6ed46ee",
+    "deployment_id": 7375341272,
+    "url": "https://www.islamful.com/blog/how-to-perform-tayammum"
+  }
 }

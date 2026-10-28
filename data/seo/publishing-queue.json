@@ -4903,10 +4903,10 @@
       "proposed_title": "How to Perform Tayammum: Step-by-Step Guide",
       "target_path": "/blog/how-to-perform-tayammum",
       "source_file": "data/blog/en/how-to-perform-tayammum.mdx",
-      "action": "update_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer how to do wudu without water. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -4958,6 +4958,12 @@
         "content_sha256": "f36b59e0b76bbe675752e5da2098d5125549e00d5080576e643af7b98d8fe2b4",
         "marker": "2b893e1738147ffb308e9503",
         "audit_file": "data/seo/publications/is-070.json"
+      },
+      "release": {
+        "date": "2026-10-28T02:14:40.767Z",
+        "commit": "8096cf021efcfd014e71741480c08c39d6ed46ee",
+        "deployment_id": 7375341272,
+        "url": "https://www.islamful.com/blog/how-to-perform-tayammum"
       }
     },
     {
@@ -4969,10 +4975,10 @@
       "proposed_title": "Can you do Wudu with socks on?",
       "target_path": "/blog/can-you-do-wudu-with-socks-on",
       "source_file": "data/blog/en/can-you-do-wudu-with-socks-on.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you do wudu with socks on. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5029,6 +5035,12 @@
           "alt": "Cream title card reading Can You Do Wudu With Socks On?",
           "sha256": "1e445dbffc2016d927b39702cafb4af4b6e12c83af62bc4ae7e28bc9dc84e6ea"
         }
+      },
+      "release": {
+        "date": "2026-10-28T02:14:41.233Z",
+        "commit": "8096cf021efcfd014e71741480c08c39d6ed46ee",
+        "deployment_id": 7375341272,
+        "url": "https://www.islamful.com/blog/can-you-do-wudu-with-socks-on"
       }
     },
     {
