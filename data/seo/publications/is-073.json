@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "id": "is-073",
+  "action": "new_article",
+  "target_path": "/blog/does-kissing-break-wudu",
+  "source_file": "data/blog/en/does-kissing-break-wudu.mdx",
+  "assignment_sha256": "8c4c3a57c7dc1fe53eedc2a6ebe165b1cf24d08a02024e806f13fb4694e49680",
+  "baseline_sha256": null,
+  "content_sha256": "1e60cd3c04c5073dfc6f3e3be147129ded34cefc412ced1eb09fd552071e4fc9",
+  "marker": "80f5c3b1609483da32c43d92",
+  "hero": {
+    "src": "/static/images/blog/does-kissing-break-wudu.webp",
+    "alt": "Cream title card reading Does Kissing Break Wudu?",
+    "sha256": "13b9e42f97f9d8bc61defd242938c98be8471d2352b493e3c3472efd662b3d34"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/tirmidhi:86",
+      "title": "Jami at-Tirmidhi 86 on Sunnah.com",
+      "supports": "A'ishah's report of the Prophet kissing and praying without wudu; at-Tirmidhi's record of scholars on both sides; al-Qattan's and al-Bukhari's criticism of the chain; Darussalam grading.",
+      "checked_at": "2026-10-29T02:17:53.825Z",
+      "content_sha256": "1bd646176100aa811e018a3d64395de2faf8a80f963c821e6c5b382878f6d239"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:179",
+      "title": "Sunan Abi Dawud 179 on Sunnah.com",
+      "supports": "Same report with 'Urwah's question and A'ishah laughing; graded sahih by al-Albani.",
+      "checked_at": "2026-10-29T02:17:51.949Z",
+      "content_sha256": "1d6ab48f6b504dfcc8dd602689b3f39755f1d7910c6f2be28158391ff8d7bf6d"
+    },
+    {
+      "url": "https://sunnah.com/nasai:170",
+      "title": "Sunan an-Nasa'i 170 on Sunnah.com",
+      "supports": "Prophet used to kiss some of his wives and pray without wudu; an-Nasa'i says nothing better in the chapter though mursal; graded hasan by Darussalam.",
+      "checked_at": "2026-10-29T02:17:53.487Z",
+      "content_sha256": "0b4bdc02fbac74217ce2f4e6268cf17d307e27d3bdb7d652d3c17918995e88c6"
+    },
+    {
+      "url": "https://quran.com/4/43",
+      "title": "Qur'an 4:43 (Surah An-Nisa') on Quran.com",
+      "supports": "Arabic phrase aw lamastum an-nisa' and Clear Quran rendering 'been intimate with your wives'.",
+      "checked_at": "2026-10-29T02:17:49.588Z",
+      "content_sha256": "667c8ac165ea62accce894fd8c73a79ea4c711b049d2df5a9a1dfd4c0f6d6f70"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Qur'an 5:6 (Surah Al-Ma'idah) on Quran.com",
+      "supports": "The wudu verse containing the same phrase.",
+      "checked_at": "2026-10-29T02:17:51.042Z",
+      "content_sha256": "7e1c7d0aff5b7fcbafe0f253501143adbc93da8ca7aea7f3a25efedb8a46b644"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:382",
+      "title": "Sahih al-Bukhari 382 on Sunnah.com",
+      "supports": "Prophet nudged A'ishah's legs during prostration and continued praying.",
+      "checked_at": "2026-10-29T02:17:54.282Z",
+      "content_sha256": "fe76827f50fc610e3e54551a518bfe60e9e6b255d8cb854310b492e01ef4343f"
+    },
+    {
+      "url": "https://sunnah.com/muslim:486",
+      "title": "Sahih Muslim 486 on Sunnah.com",
+      "supports": "A'ishah's hand touched the Prophet's feet during prostration while he supplicated.",
+      "checked_at": "2026-10-29T02:17:54.643Z",
+      "content_sha256": "efef7a5569cd9a2bf3c6754ced67ad4e15376fb8d7edd65cb9df4851237a25ec"
+    },
+    {
+      "url": "https://sunnah.com/muslim:303a",
+      "title": "Sahih Muslim 303a on Sunnah.com",
+      "supports": "One who has madhi should wash his private part and perform wudu.",
+      "checked_at": "2026-10-29T02:20:56.963Z",
+      "content_sha256": "e7fd862652a9ffb4767e9f6f233ac38442d49a5ac5caf145b29277507a60bd91"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read every capture retrieved 2026-10-29, including the full Arabic commentary under Tirmidhi 86. Scholar positions are attributed exactly as at-Tirmidhi lists them; no madhab-specific conditions (such as desire) are asserted because no checked source states them. The grading dispute is disclosed in both directions: Albani sahih and Darussalam hasan as shown on Sunnah.com, versus al-Qattan, al-Bukhari and the mursal note by an-Nasa'i. The literal-touch versus intercourse readings of lamastum are presented as interpretations, with the Clear Quran rendering quoted. Bukhari 382 and Muslim 486 are described only as contact during prayer, not as kissing. Abu Dawud 178 and Bukhari 269 returned HTTP 403 and are not cited; Muslim 303a is used for madhi instead. Hero generated locally with the dawn palette and inspected: 1200x630 legible title card, not duplicated in body. No app CTA; links /prayer-times and existing wudu, discharge and what-breaks-wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "Sufyan ath-Thawri and the people of Kufa held no wudu for a kiss; Malik, al-Awza'i, ash-Shafi'i, Ahmad and Ishaq held wudu is required",
+        "source_url": "https://sunnah.com/tirmidhi:86",
+        "explanation": "Arabic: wa huwa qawlu Sufyan ath-Thawri wa ahl al-Kufa qalu laysa fi al-qubla wudu'; wa qala Malik ibn Anas wa al-Awza'i wa ash-Shafi'i wa Ahmad wa Ishaq fi al-qubla wudu'.",
+        "supported": true
+      },
+      {
+        "claim": "A'ishah reported the Prophet kissed one of his wives and prayed without wudu; 'Urwah asked who but you and she laughed",
+        "source_url": "https://sunnah.com/abudawud:179",
+        "explanation": "'The Prophet kissed one of his wives and went out to pray (salah). He did not perform ablution. Urwah said: I said to her: Who is she except you! Thereupon she laughed.' Grade: Sahih (Al-Albani).",
+        "supported": true
+      },
+      {
+        "claim": "An-Nasa'i's narration; he said nothing better in the chapter though mursal; Darussalam hasan",
+        "source_url": "https://sunnah.com/nasai:170",
+        "explanation": "'used to kiss one of his wives then pray without performing Wudu'... There is nothing for this chapter which is better than this hadith, even though it is Mursal.' Grade: Hasan (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "Yahya al-Qattan weakened the hadith severely; al-Bukhari weakened it because Habib did not hear from 'Urwah; those requiring wudu left it for its chain",
+        "source_url": "https://sunnah.com/tirmidhi:86",
+        "explanation": "Arabic: da''afa Yahya ibn Sa'id al-Qattan hadha al-hadith jiddan; sami'tu Muhammad ibn Isma'il yuda''ifu hadha al-hadith wa qala Habib ibn Abi Thabit lam yasma' min 'Urwa; innama taraka ashabuna hadith 'A'isha... li-hal al-isnad. Grade shown: Hasan (Darussalam).",
+        "supported": true
+      },
+      {
+        "claim": "4:43 contains aw lamastum an-nisa', rendered in the Clear Quran as been intimate with your wives",
+        "source_url": "https://quran.com/4/43",
+        "explanation": "Arabic text includes أَوۡ لَٰمَسۡتُمُ ٱلنِّسَآءَ; English: 'or been intimate with your wives and cannot find water'.",
+        "supported": true
+      },
+      {
+        "claim": "5:6 is the wudu verse and contains the same phrase",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Capture contains the wudu command and the phrase lamastum an-nisa'.",
+        "supported": true
+      },
+      {
+        "claim": "Prophet nudged A'ishah's legs in prostration and continued praying",
+        "source_url": "https://sunnah.com/bukhari:382",
+        "explanation": "'my legs were opposite his Qibla and in prostration he pushed my legs and I withdrew then and when he stood, I stretched them.'",
+        "supported": true
+      },
+      {
+        "claim": "A'ishah's hand touched the Prophet's feet while he was prostrating and supplicating",
+        "source_url": "https://sunnah.com/muslim:486",
+        "explanation": "'my hand touched the soles of his feet while he was in the state of prostration... and he was saying: O Allah, I seek refuge...'",
+        "supported": true
+      },
+      {
+        "claim": "One who has madhi should wash his private part and make wudu",
+        "source_url": "https://sunnah.com/muslim:303a",
+        "explanation": "'He should wash his male organ and perform ablution.'",
+        "supported": true
+      }
+    ],
+    "article_sha256": "693f91da0b51bf5e93828a923b52259bc3a3ba8caa6edd3bcff5916b2e4abe7b"
+  },
+  "prepared_at": "2026-10-29T02:21:54.798Z",
+  "state": "awaiting_release"
+}

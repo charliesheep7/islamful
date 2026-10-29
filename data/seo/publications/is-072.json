@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "id": "is-072",
+  "action": "new_article",
+  "target_path": "/blog/can-you-read-quran-on-phone-without-wudu",
+  "source_file": "data/blog/en/can-you-read-quran-on-phone-without-wudu.mdx",
+  "assignment_sha256": "2c9e3e7cec0cb7f4160c0992a6478aba3f147f05e4fefb77620e744a20204165",
+  "baseline_sha256": null,
+  "content_sha256": "c97d4b92c8cfd1295efa05bc22287b7cbd38d69833eefe9fb05e83bff3aa0cd9",
+  "marker": "0a434e230668fa8a26cc48c3",
+  "hero": {
+    "src": "/static/images/blog/can-you-read-quran-on-phone-without-wudu.webp",
+    "alt": "Green title card reading Reading Quran on Your Phone Without Wudu",
+    "sha256": "6acd2b6eed6eeec6ec0bc2af72a79ba2076bb30f01adfa9945a68cb9c7db76e6"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/bukhari:183",
+      "title": "Sahih al-Bukhari 183 on Sunnah.com",
+      "supports": "Prophet recited the last ten verses of Al Imran after waking, before making wudu; chapter on reciting after hadath.",
+      "checked_at": "2026-10-29T02:17:46.057Z",
+      "content_sha256": "ba5135f17f4d6d1fe20ec2c566446f20019a3998c7769ea35b73af5de3fdedd6"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:146",
+      "title": "Jami at-Tirmidhi 146 on Sunnah.com",
+      "supports": "Prophet recited in all conditions except when junub; jurists named hold reciting without wudu is allowed but reading from the mushaf requires purity.",
+      "checked_at": "2026-10-29T02:17:46.835Z",
+      "content_sha256": "1d85cc0b7f18d025f44103f2314b3065889c8af499b1b693d2797c763a0f1024"
+    },
+    {
+      "url": "https://sunnah.com/muslim:373",
+      "title": "Sahih Muslim 373 on Sunnah.com",
+      "supports": "The Prophet remembered Allah at all times.",
+      "checked_at": "2026-10-29T02:17:46.454Z",
+      "content_sha256": "ee9f667b37ae662c8406081a5056c70cd9d80359c7c074f0cb2ea8921529a0dd"
+    },
+    {
+      "url": "https://quran.com/56/77-80",
+      "title": "Qur'an 56:77-80 (Surah Al-Waqi'ah) on Quran.com",
+      "supports": "Text of the verses describing the Quran in a well-preserved Record touched by none except the purified.",
+      "checked_at": "2026-10-29T02:17:43.572Z",
+      "content_sha256": "513eb42508aa2c4f064ec34cde7626d1fae3bed87920cbf1e5a28cd159e09e1c"
+    },
+    {
+      "url": "https://quran.com/56/79",
+      "title": "Qur'an 56:79 on Quran.com",
+      "supports": "Clear Quran translation renders the purified as angels.",
+      "checked_at": "2026-10-29T02:17:44.942Z",
+      "content_sha256": "2ec85adbfa8654526f1cd112614e42d85d5ba0e3dff2f90c185ab6393affd87e"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/will-it-be-permissible-to-touch-the-mobile-phone-screen-when-reading-the-quran-without-wudhu/",
+      "title": "Darul Ifta Birmingham fatwa 05038: touching the phone screen when reading Quran without wudhu",
+      "supports": "Touching a phone screen displaying the Quran does not require wudu; pixels behind glass are not permanent writing; recommends staying in wudu.",
+      "checked_at": "2026-10-29T02:18:55.513Z",
+      "content_sha256": "59b3febd2a448af0f0bb8d7a8c7db0bf9bbe28e75de256dc3105e2240d61d0bb"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read every capture retrieved 2026-10-29. The phone-screen ruling is attributed only to Darul Ifta Birmingham (a Hanafi fatwa body), not stated as universal; the fatwa's recommendation to stay in wudu is included. The mushaf-purity view is attributed to the jurists named by at-Tirmidhi in the Arabic note under hadith 146, and the 56:79 angels interpretation is disclosed rather than used to derive a ruling. Menstruation is flagged as a scholarly difference without a ruling and deferred to the existing guide. Muwatta Malik 15/1 returned HTTP 403 and IslamQA is not an approved domain; neither is cited. Distinct from the existing can-you-read-quran-without-wudu page by focusing on phone use and linking to it. Hero generated locally with the meadow palette and inspected: 1200x630 legible title card, not duplicated in body. No app CTA; links /quran, /prayer-times and existing wudu, ghusl and what-breaks-wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "Prophet recited the last ten verses of Al Imran on waking before making wudu",
+        "source_url": "https://sunnah.com/bukhari:183",
+        "explanation": "'He then, recited the last ten verses of Sura Al-Imran, got up and went to a hanging water-skin. He then Performed the ablution'; chapter: recitation of Quran after hadath.",
+        "supported": true
+      },
+      {
+        "claim": "Prophet recited the Quran in all conditions as long as he was not junub",
+        "source_url": "https://sunnah.com/tirmidhi:146",
+        "explanation": "'Allah's Messenger would recite the Qur'an in all conditions, as long as he was not Junub.'",
+        "supported": true
+      },
+      {
+        "claim": "Sufyan ath-Thawri, ash-Shafi'i, Ahmad and Ishaq held one may recite without wudu but read from the mushaf only while pure",
+        "source_url": "https://sunnah.com/tirmidhi:146",
+        "explanation": "Arabic note: qalu yaqra'u ar-rajulu al-Qur'ana 'ala ghayri wudu' wa la yaqra'u fi al-mushafi illa wa huwa tahir; wa bihi yaqulu Sufyan ath-Thawri wa ash-Shafi'i wa Ahmad wa Ishaq.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet remembered Allah at all times",
+        "source_url": "https://sunnah.com/muslim:373",
+        "explanation": "'The Apostle of Allah used to remember Allah at all moments.'",
+        "supported": true
+      },
+      {
+        "claim": "Touching a phone screen showing the Quran does not require wudu, because pixels behind glass are not permanent writing; staying in wudu is still recommended",
+        "source_url": "https://daruliftabirmingham.co.uk/will-it-be-permissible-to-touch-the-mobile-phone-screen-when-reading-the-quran-without-wudhu/",
+        "explanation": "'it will be permissible to touch the screen without wudhu when the Quran app is displayed'; mentions pixels and glass shield; 'A believer should however always be in the state of wudhu even though it may not be necessary.'",
+        "supported": true
+      },
+      {
+        "claim": "56:79 says touched by none except the purified, rendered in the Clear Quran as angels",
+        "source_url": "https://quran.com/56/79",
+        "explanation": "'touched by none except the purified ˹angels˺.'",
+        "supported": true
+      }
+    ],
+    "article_sha256": "73c4f1454de5d7604b41e5d07cde55d580927f82c7b6f064c6e63f283d7dc79f"
+  },
+  "prepared_at": "2026-10-29T02:20:29.837Z",
+  "state": "awaiting_release"
+}

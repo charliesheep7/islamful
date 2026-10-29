@@ -5053,7 +5053,7 @@
       "target_path": "/blog/can-you-read-quran-on-phone-without-wudu",
       "source_file": "data/blog/en/can-you-read-quran-on-phone-without-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you read quran on phone without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5072,7 +5072,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5102,7 +5102,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "c97d4b92c8cfd1295efa05bc22287b7cbd38d69833eefe9fb05e83bff3aa0cd9",
+        "marker": "0a434e230668fa8a26cc48c3",
+        "audit_file": "data/seo/publications/is-072.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-read-quran-on-phone-without-wudu.webp",
+          "alt": "Green title card reading Reading Quran on Your Phone Without Wudu",
+          "sha256": "6acd2b6eed6eeec6ec0bc2af72a79ba2076bb30f01adfa9945a68cb9c7db76e6"
+        }
+      }
     },
     {
       "id": "is-073",
@@ -5114,7 +5124,7 @@
       "target_path": "/blog/does-kissing-break-wudu",
       "source_file": "data/blog/en/does-kissing-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does kissing break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5133,7 +5143,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5163,7 +5173,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "1e60cd3c04c5073dfc6f3e3be147129ded34cefc412ced1eb09fd552071e4fc9",
+        "marker": "80f5c3b1609483da32c43d92",
+        "audit_file": "data/seo/publications/is-073.json",
+        "hero": {
+          "src": "/static/images/blog/does-kissing-break-wudu.webp",
+          "alt": "Cream title card reading Does Kissing Break Wudu?",
+          "sha256": "13b9e42f97f9d8bc61defd242938c98be8471d2352b493e3c3472efd662b3d34"
+        }
+      }
     },
     {
       "id": "is-074",
