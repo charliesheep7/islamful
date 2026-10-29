@@ -103,5 +103,11 @@
     "article_sha256": "73c4f1454de5d7604b41e5d07cde55d580927f82c7b6f064c6e63f283d7dc79f"
   },
   "prepared_at": "2026-10-29T02:20:29.837Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-29T02:26:00.438Z",
+    "commit": "3ae8f9ebd5f4521b2f934c8ebf90835fed6e07f5",
+    "deployment_id": 7402404987,
+    "url": "https://www.islamful.com/blog/can-you-read-quran-on-phone-without-wudu"
+  }
 }

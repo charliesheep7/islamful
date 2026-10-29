@@ -135,5 +135,11 @@
     "article_sha256": "693f91da0b51bf5e93828a923b52259bc3a3ba8caa6edd3bcff5916b2e4abe7b"
   },
   "prepared_at": "2026-10-29T02:21:54.798Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-29T02:26:00.754Z",
+    "commit": "3ae8f9ebd5f4521b2f934c8ebf90835fed6e07f5",
+    "deployment_id": 7402404987,
+    "url": "https://www.islamful.com/blog/does-kissing-break-wudu"
+  }
 }

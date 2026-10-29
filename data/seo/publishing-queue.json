@@ -5052,10 +5052,10 @@
       "proposed_title": "Can you read Quran on phone without Wudu?",
       "target_path": "/blog/can-you-read-quran-on-phone-without-wudu",
       "source_file": "data/blog/en/can-you-read-quran-on-phone-without-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you read quran on phone without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5112,6 +5112,12 @@
           "alt": "Green title card reading Reading Quran on Your Phone Without Wudu",
           "sha256": "6acd2b6eed6eeec6ec0bc2af72a79ba2076bb30f01adfa9945a68cb9c7db76e6"
         }
+      },
+      "release": {
+        "date": "2026-10-29T02:26:00.438Z",
+        "commit": "3ae8f9ebd5f4521b2f934c8ebf90835fed6e07f5",
+        "deployment_id": 7402404987,
+        "url": "https://www.islamful.com/blog/can-you-read-quran-on-phone-without-wudu"
       }
     },
     {
@@ -5123,10 +5129,10 @@
       "proposed_title": "Does kissing break Wudu?",
       "target_path": "/blog/does-kissing-break-wudu",
       "source_file": "data/blog/en/does-kissing-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does kissing break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5183,6 +5189,12 @@
           "alt": "Cream title card reading Does Kissing Break Wudu?",
           "sha256": "13b9e42f97f9d8bc61defd242938c98be8471d2352b493e3c3472efd662b3d34"
         }
+      },
+      "release": {
+        "date": "2026-10-29T02:26:00.754Z",
+        "commit": "3ae8f9ebd5f4521b2f934c8ebf90835fed6e07f5",
+        "deployment_id": 7402404987,
+        "url": "https://www.islamful.com/blog/does-kissing-break-wudu"
       }
     },
     {
