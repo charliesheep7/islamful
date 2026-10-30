@@ -128,5 +128,11 @@
     "article_sha256": "83044b078f79a0d41f29cbe9232c0713e7ade5ec4d388a1d9c5701e051750c0b"
   },
   "prepared_at": "2026-10-30T02:11:01.547Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-30T02:16:38.851Z",
+    "commit": "e48fd1cba56a0fdacd9527d68627c842e554976a",
+    "deployment_id": 7429014948,
+    "url": "https://www.islamful.com/blog/does-laughing-break-wudu"
+  }
 }

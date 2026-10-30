@@ -5206,10 +5206,10 @@
       "proposed_title": "Does laughing break Wudu?",
       "target_path": "/blog/does-laughing-break-wudu",
       "source_file": "data/blog/en/does-laughing-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does laughing break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5266,6 +5266,12 @@
           "alt": "Green title card reading Does Laughing Break Wudu?",
           "sha256": "cd7ca805210e894073a918a39ce81098bd5496a3b536c4abcf433b422f27df8b"
         }
+      },
+      "release": {
+        "date": "2026-10-30T02:16:38.851Z",
+        "commit": "e48fd1cba56a0fdacd9527d68627c842e554976a",
+        "deployment_id": 7429014948,
+        "url": "https://www.islamful.com/blog/does-laughing-break-wudu"
       }
     },
     {
@@ -5277,10 +5283,10 @@
       "proposed_title": "Does touching private parts break Wudu?",
       "target_path": "/blog/does-touching-private-parts-break-wudu",
       "source_file": "data/blog/en/does-touching-private-parts-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does touching private parts break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5337,6 +5343,12 @@
           "alt": "Cream title card reading Does Touching Private Parts Break Wudu?",
           "sha256": "0519a922a87694e3afd4078270a72260b30dbfc97d4d021a99a1926d9bd3ffae"
         }
+      },
+      "release": {
+        "date": "2026-10-30T02:16:39.111Z",
+        "commit": "e48fd1cba56a0fdacd9527d68627c842e554976a",
+        "deployment_id": 7429014948,
+        "url": "https://www.islamful.com/blog/does-touching-private-parts-break-wudu"
       }
     },
     {

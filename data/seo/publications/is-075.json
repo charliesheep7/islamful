@@ -148,5 +148,11 @@
     "article_sha256": "a45ce236189fc2ecd32ec272709c4d30460016a48ed714d633bfe25f3981a18b"
   },
   "prepared_at": "2026-10-30T02:12:53.863Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-30T02:16:39.111Z",
+    "commit": "e48fd1cba56a0fdacd9527d68627c842e554976a",
+    "deployment_id": 7429014948,
+    "url": "https://www.islamful.com/blog/does-touching-private-parts-break-wudu"
+  }
 }
