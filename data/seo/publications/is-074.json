@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "id": "is-074",
+  "action": "new_article",
+  "target_path": "/blog/does-laughing-break-wudu",
+  "source_file": "data/blog/en/does-laughing-break-wudu.mdx",
+  "assignment_sha256": "642dcbbf1a4fed6b75da71d0dfbbaa39d4546cc8f13a45107033e429fa28a452",
+  "baseline_sha256": null,
+  "content_sha256": "43e8ff29eb1f9e51a6cc22cf449c2afd7ff92dfde87c560a4668cee2a6d47fc8",
+  "marker": "e377261977466298206e0e35",
+  "hero": {
+    "src": "/static/images/blog/does-laughing-break-wudu.webp",
+    "alt": "Green title card reading Does Laughing Break Wudu?",
+    "sha256": "cd7ca805210e894073a918a39ce81098bd5496a3b536c4abcf433b422f27df8b"
+  },
+  "sources": [
+    {
+      "url": "https://daruliftabirmingham.co.uk/?p=4479",
+      "title": "Darul Ifta Birmingham: Loud laughter invalidating wudhu",
+      "supports": "Hanafi four conditions; the three levels of laughter and their effects on wudu and prayer; the al-Tabarani narration from Abu Musa al-Ash'ari; Sharh al-Wiqayah reference.",
+      "checked_at": "2026-10-30T02:09:03.120Z",
+      "content_sha256": "8907dcabc0b45df04809ac7dc9b4b3ee2fe3d60b05e686e6bce09e731ea1f5e5"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:74",
+      "title": "Jami at-Tirmidhi 74 on Sunnah.com",
+      "supports": "Hadith: no wudu except for a sound or a smell; at-Tirmidhi's hasan sahih grading.",
+      "checked_at": "2026-10-30T02:07:45.663Z",
+      "content_sha256": "229afef738b606533665a1ea6a9be0f3c7ceab3e34f0b9392986b1ee2d1400c7"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:135",
+      "title": "Sahih al-Bukhari 135 on Sunnah.com",
+      "supports": "Prayer of one who does hadath is not accepted until wudu; Abu Hurayrah's explanation of hadath as passing wind.",
+      "checked_at": "2026-10-30T02:07:48.364Z",
+      "content_sha256": "1999e66f69feb54dc81a530c0ac7982c0217689ab6cd32a3349f00511d4404c7"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:137",
+      "title": "Sahih al-Bukhari 137 on Sunnah.com",
+      "supports": "Do not leave the prayer unless one hears a sound or notices a smell.",
+      "checked_at": "2026-10-30T02:07:45.009Z",
+      "content_sha256": "9bb442509502c31ce2b2ed665e3722eb05a8d17c289b8c2192c2c098199235a1"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:177",
+      "title": "Sahih al-Bukhari 177 on Sunnah.com",
+      "supports": "Al-Bukhari's chapter title: whoever considers wudu only from what comes out of the two passages, front and back.",
+      "checked_at": "2026-10-30T02:09:03.908Z",
+      "content_sha256": "28f3237ab94f90b8ed7f372201126642f3fcb99f116c7424eb4a6f06077df872"
+    },
+    {
+      "url": "https://sunnah.com/muslim:362",
+      "title": "Sahih Muslim 362 on Sunnah.com",
+      "supports": "One in doubt should not leave the mosque unless he hears a sound or perceives a smell.",
+      "checked_at": "2026-10-30T02:07:46.239Z",
+      "content_sha256": "c2321b0dbeae175ecbc9cb71cad924bb60c1fb7bc2a66abd96d004a4591b2c26"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Surah Al-Ma'idah 5:6 on Quran.com",
+      "supports": "The wudu verse, which names relieving oneself among things requiring purification.",
+      "checked_at": "2026-10-30T02:07:47.778Z",
+      "content_sha256": "a5a41ad8767236518dd0a0cfc88f8925859db4dcce0deebd5630a3ac8d360e82"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read every capture retrieved 2026-10-29/30. The Hanafi conditions, three levels of laughter and the al-Tabarani narration are attributed to Darul Ifta Birmingham exactly as its page states; the narration is described as cited by them, not graded by us. No majority or other-madhab position is asserted because the checked sources do not state one: islamqa.info, seekersguidance.org and islamweb.net were outside the publisher's approved domains, and sunnah.com/bukhari:176 (which carries al-Hasan's chapter quote) returned HTTP 403, so they are not cited. Readers of other schools are directed to a scholar of their school. Funeral-prayer and outside-prayer statements follow directly from Birmingham's fourth condition. Hero generated locally with the meadow palette and inspected: 1200x630 legible title card, not duplicated in body. No app CTA; links /prayer-times and existing wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "Hanafi ruling requires four conditions: adult, awake, loud laughter, prayer with ruku and sajdah",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=4479",
+        "explanation": "Page lists: 1. One is an adult 2. One is awake 3. One's laughter is loud 4. The prayer contains Ruku and Sajdah.",
+        "supported": true
+      },
+      {
+        "claim": "Loud laughter the neighbour would hear breaks wudu and prayer; laughter audible only to oneself breaks prayer not wudu; smiling has no effect",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=4479",
+        "explanation": "Page describes loud laughing (wudhu and Salah break), laughing (prayer only invalidated, not wudhu) and smiling (no effect on validity), extracted from Sharhul Wiqayah.",
+        "supported": true
+      },
+      {
+        "claim": "Hanafi evidence is al-Tabarani's narration from Abu Musa about a man falling into a hole and the Prophet ordering those who laughed to repeat wudu and prayer",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=4479",
+        "explanation": "Page quotes this narration as the evidence from hadith.",
+        "supported": true
+      },
+      {
+        "claim": "There is no wudu except for a sound or a smell; at-Tirmidhi graded it hasan sahih",
+        "source_url": "https://sunnah.com/tirmidhi:74",
+        "explanation": "English text and Arabic note hadha hadithun hasanun sahih.",
+        "supported": true
+      },
+      {
+        "claim": "Prayer of one who does hadath is not accepted until wudu; Abu Hurayrah explained hadath as passing wind",
+        "source_url": "https://sunnah.com/bukhari:135",
+        "explanation": "Hadith text and the Hadramawt man's question.",
+        "supported": true
+      },
+      {
+        "claim": "One who imagines passing wind should not leave the prayer unless hearing a sound or noticing a smell",
+        "source_url": "https://sunnah.com/bukhari:137",
+        "explanation": "Abbad bin Tamim's uncle's question and the Prophet's reply.",
+        "supported": true
+      },
+      {
+        "claim": "Muslim records the doubt hadith with not leaving the mosque unless sound or smell",
+        "source_url": "https://sunnah.com/muslim:362",
+        "explanation": "Abu Huraira's narration in Sahih Muslim 362.",
+        "supported": true
+      },
+      {
+        "claim": "Al-Bukhari's chapter title: whoever considers wudu only from what comes out of the two passages",
+        "source_url": "https://sunnah.com/bukhari:177",
+        "explanation": "Chapter 34 heading shown on the page, in English and Arabic, with hadith 177 under it.",
+        "supported": true
+      },
+      {
+        "claim": "Quran 5:6 names relieving oneself among things requiring purification",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Clear Quran translation: 'or have relieved yourselves'.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "83044b078f79a0d41f29cbe9232c0713e7ade5ec4d388a1d9c5701e051750c0b"
+  },
+  "prepared_at": "2026-10-30T02:11:01.547Z",
+  "state": "awaiting_release"
+}

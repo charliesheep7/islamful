@@ -5207,7 +5207,7 @@
       "target_path": "/blog/does-laughing-break-wudu",
       "source_file": "data/blog/en/does-laughing-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does laughing break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5226,7 +5226,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5256,7 +5256,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "43e8ff29eb1f9e51a6cc22cf449c2afd7ff92dfde87c560a4668cee2a6d47fc8",
+        "marker": "e377261977466298206e0e35",
+        "audit_file": "data/seo/publications/is-074.json",
+        "hero": {
+          "src": "/static/images/blog/does-laughing-break-wudu.webp",
+          "alt": "Green title card reading Does Laughing Break Wudu?",
+          "sha256": "cd7ca805210e894073a918a39ce81098bd5496a3b536c4abcf433b422f27df8b"
+        }
+      }
     },
     {
       "id": "is-075",
@@ -5268,7 +5278,7 @@
       "target_path": "/blog/does-touching-private-parts-break-wudu",
       "source_file": "data/blog/en/does-touching-private-parts-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does touching private parts break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5287,7 +5297,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5317,7 +5327,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "5b07fcbb46338412d7439d54c746b6fec997ae83d031581d1abf650edf5bca60",
+        "marker": "c9e1d626dd7e28f481d28595",
+        "audit_file": "data/seo/publications/is-075.json",
+        "hero": {
+          "src": "/static/images/blog/does-touching-private-parts-break-wudu.webp",
+          "alt": "Cream title card reading Does Touching Private Parts Break Wudu?",
+          "sha256": "0519a922a87694e3afd4078270a72260b30dbfc97d4d021a99a1926d9bd3ffae"
+        }
+      }
     },
     {
       "id": "is-076",

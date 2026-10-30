@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "id": "is-075",
+  "action": "new_article",
+  "target_path": "/blog/does-touching-private-parts-break-wudu",
+  "source_file": "data/blog/en/does-touching-private-parts-break-wudu.mdx",
+  "assignment_sha256": "ae1082d71ceb43cd8f0a8a8fd115bb84b8d564026b18426bd3364efa1d955ceb",
+  "baseline_sha256": null,
+  "content_sha256": "5b07fcbb46338412d7439d54c746b6fec997ae83d031581d1abf650edf5bca60",
+  "marker": "c9e1d626dd7e28f481d28595",
+  "hero": {
+    "src": "/static/images/blog/does-touching-private-parts-break-wudu.webp",
+    "alt": "Cream title card reading Does Touching Private Parts Break Wudu?",
+    "sha256": "0519a922a87694e3afd4078270a72260b30dbfc97d4d021a99a1926d9bd3ffae"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/tirmidhi:82",
+      "title": "Jami at-Tirmidhi 82 on Sunnah.com",
+      "supports": "Busrah's hadith: whoever touches his penis is not to pray until he performs wudu; hasan sahih per at-Tirmidhi; Darussalam sahih.",
+      "checked_at": "2026-10-30T02:07:49.960Z",
+      "content_sha256": "b1268887779694b5df0071a1dbd79548cc8f430a0b87e8b139222df8d48ed9dc"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:84",
+      "title": "Jami at-Tirmidhi 84 on Sunnah.com",
+      "supports": "Scholars holding wudu is required (Companions, Successors, al-Awza'i, ash-Shafi'i, Ahmad, Ishaq); al-Bukhari's and Abu Zur'ah's assessments.",
+      "checked_at": "2026-10-30T02:09:26.542Z",
+      "content_sha256": "4cec3cbac92141eb8c936118cc782317650fc6874b70d0a4d8f16c5dec27362c"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:85",
+      "title": "Jami at-Tirmidhi 85 on Sunnah.com",
+      "supports": "Talq's hadith; scholars holding no wudu (Companions, Successors, people of Kufa, Ibn al-Mubarak); at-Tirmidhi calls it the best narrated in its chapter; Darussalam sahih.",
+      "checked_at": "2026-10-30T02:07:50.534Z",
+      "content_sha256": "0ea921f0fd2866ecbb63bfb16a8b2178618a548976f7383d5a93907b4b98323d"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:181",
+      "title": "Sunan Abi Dawud 181 on Sunnah.com",
+      "supports": "Marwan and 'Urwah story with Busrah's report; al-Albani sahih.",
+      "checked_at": "2026-10-30T02:09:27.203Z",
+      "content_sha256": "5fddb3f4020c90cb9b59fde4797e0adb2e2f7da4108d8699777230230d22e373"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:182",
+      "title": "Sunan Abi Dawud 182 on Sunnah.com",
+      "supports": "Talq's report of the Bedouin's question after wudu and the reply; al-Albani sahih.",
+      "checked_at": "2026-10-30T02:07:49.298Z",
+      "content_sha256": "2ebfda3a49411963090fa06ac4944ca7b52fa8dc428a451fd4d445a010689498"
+    },
+    {
+      "url": "https://sunnah.com/nasai:163",
+      "title": "Sunan an-Nasa'i 163 on Sunnah.com",
+      "supports": "Busrah's hadith via Marwan and 'Urwah.",
+      "checked_at": "2026-10-30T02:07:51.100Z",
+      "content_sha256": "673c99ecd3d0b1aa32fa041a35cf183b9bd8afc82382cec9992d4b72b0850882"
+    },
+    {
+      "url": "https://sunnah.com/nasai:165",
+      "title": "Sunan an-Nasa'i 165 on Sunnah.com",
+      "supports": "Talq's version where the man touched during the prayer.",
+      "checked_at": "2026-10-30T02:07:51.659Z",
+      "content_sha256": "bafd821e2917e47e2eab4aa6f10f68984bfb919967f2fed71d7e053ab6fe3cd0"
+    },
+    {
+      "url": "https://sunnah.com/ibnmajah:479",
+      "title": "Sunan Ibn Majah 479 on Sunnah.com",
+      "supports": "Busrah's hadith; Darussalam hasan.",
+      "checked_at": "2026-10-30T02:07:52.221Z",
+      "content_sha256": "a0303ddd1f1f81e33be4849c5ac9bb3654db27bcb96b4321c84305212b978393"
+    },
+    {
+      "url": "https://sunnah.com/ibnmajah:483",
+      "title": "Sunan Ibn Majah 483 on Sunnah.com",
+      "supports": "Talq's version: it does not require ablution, it is a part of you; Darussalam sahih.",
+      "checked_at": "2026-10-30T02:07:52.786Z",
+      "content_sha256": "ef5201a4891784e30742396a80135c7e3bae70f8236ee82c1fd16e2c2894bfc4"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Re-read every capture retrieved 2026-10-30, including at-Tirmidhi's Arabic commentary under 84 and 85. Scholar positions are attributed exactly as at-Tirmidhi lists them (named individuals and 'the people of Kufa'); no madhab-level conditions (palm, barrier, desire, women) are asserted because no checked source states them, and the article says so explicitly. 'Muhammad' in Tirmidhi 84 is identified as al-Bukhari, at-Tirmidhi's teacher, as conventional in the Jami. Gradings in the table are copied from each Sunnah.com page. Tirmidhi 83 returned HTTP 403 and is not cited; Abu Dawud 181 succeeded on retry. Hero generated locally with the sand palette and inspected: 1200x630 legible title card, not duplicated in body. No app CTA; links /prayer-times and existing wudu guides.",
+    "claim_checks": [
+      {
+        "claim": "Many Companions and Successors, al-Awza'i, ash-Shafi'i, Ahmad and Ishaq held touching the penis requires wudu",
+        "source_url": "https://sunnah.com/tirmidhi:84",
+        "explanation": "Arabic: wa huwa qawlu ghayri wahidin min ashab an-Nabi wa at-tabi'in wa bihi yaqulu al-Awza'i wa ash-Shafi'i wa Ahmad wa Ishaq.",
+        "supported": true
+      },
+      {
+        "claim": "Al-Bukhari said the most authentic report on the subject is Busrah's; Abu Zur'ah graded Umm Habibah's report sahih",
+        "source_url": "https://sunnah.com/tirmidhi:84",
+        "explanation": "Arabic: qala Muhammad wa asahhu shay'in fi hadha al-bab hadith Busrah; wa qala Abu Zur'ah hadith Umm Habibah fi hadha al-bab sahih.",
+        "supported": true
+      },
+      {
+        "claim": "Other Companions and Successors, the people of Kufa and Ibn al-Mubarak held no wudu; at-Tirmidhi called Talq's hadith the best narrated in this chapter",
+        "source_url": "https://sunnah.com/tirmidhi:85",
+        "explanation": "Arabic: lam yaraw al-wudu' min mass adh-dhakar wa huwa qawlu ahl al-Kufa wa Ibn al-Mubarak; wa hadha al-hadith ahsanu shay'in ruwiya fi hadha al-bab.",
+        "supported": true
+      },
+      {
+        "claim": "Busrah: whoever touches his penis is not to pray until he performs wudu; hasan sahih; Darussalam sahih",
+        "source_url": "https://sunnah.com/tirmidhi:82",
+        "explanation": "English text, Arabic hasan sahih note by Abu Isa and the Darussalam grade line on the page.",
+        "supported": true
+      },
+      {
+        "claim": "Marwan and 'Urwah story; Busrah heard: He who touches his penis should perform ablution; al-Albani sahih",
+        "source_url": "https://sunnah.com/abudawud:181",
+        "explanation": "English narration of the Marwan and Urwah exchange and the Al-Albani sahih grade line.",
+        "supported": true
+      },
+      {
+        "claim": "An-Nasa'i records Busrah's hadith via Marwan and 'Urwah",
+        "source_url": "https://sunnah.com/nasai:163",
+        "explanation": "Narration text: Urwah entered upon Marwan, who cited Busrah bint Safwan hearing the Prophet.",
+        "supported": true
+      },
+      {
+        "claim": "Ibn Majah records Busrah's hadith, Darussalam hasan",
+        "source_url": "https://sunnah.com/ibnmajah:479",
+        "explanation": "Narration 'If anyone of you touches his penis, let him perform ablution' and Hasan (Darussalam) grade line.",
+        "supported": true
+      },
+      {
+        "claim": "Talq: a Bedouin asked about touching after wudu; reply: that is only a part of his body; al-Albani sahih",
+        "source_url": "https://sunnah.com/abudawud:182",
+        "explanation": "English narration of the Bedouin's question after ablution, the reply, and the Al-Albani sahih grade line.",
+        "supported": true
+      },
+      {
+        "claim": "In an-Nasa'i's version the man touched during the prayer; reply: it is just a part of you",
+        "source_url": "https://sunnah.com/nasai:165",
+        "explanation": "English narration: a man who touched his penis during the Salah; reply 'It is just a part of you'.",
+        "supported": true
+      },
+      {
+        "claim": "Ibn Majah: That does not require ablution, because it is a part of you; Darussalam sahih",
+        "source_url": "https://sunnah.com/ibnmajah:483",
+        "explanation": "English narration from Qais bin Talq's father and the Sahih (Darussalam) grade line.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "a45ce236189fc2ecd32ec272709c4d30460016a48ed714d633bfe25f3981a18b"
+  },
+  "prepared_at": "2026-10-30T02:12:53.863Z",
+  "state": "awaiting_release"
+}
