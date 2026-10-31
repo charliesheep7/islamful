@@ -156,5 +156,11 @@
     "article_sha256": "053ac342481a5713f50b36231efd6e1e04da1c1ef3cfae849630a0cd9efddd33"
   },
   "prepared_at": "2026-10-31T02:12:24.567Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-31T02:16:29.001Z",
+    "commit": "431a1355b1c8578c19f025891ad7a28e9da793bd",
+    "deployment_id": 7452884945,
+    "url": "https://www.islamful.com/blog/how-many-rakat-in-wudu"
+  }
 }

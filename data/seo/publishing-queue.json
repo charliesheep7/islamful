@@ -5360,10 +5360,10 @@
       "proposed_title": "Can you do Wudu with makeup on?",
       "target_path": "/blog/can-you-do-wudu-with-makeup-on",
       "source_file": "data/blog/en/can-you-do-wudu-with-makeup-on.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you do wudu with makeup on. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5420,6 +5420,12 @@
           "alt": "Green title card reading Can You Do Wudu With Makeup On?",
           "sha256": "88617f0bd5cb8c3aafa9a5de168373a7f1dcb07019357088a4bf1c68b44fd611"
         }
+      },
+      "release": {
+        "date": "2026-10-31T02:16:28.683Z",
+        "commit": "431a1355b1c8578c19f025891ad7a28e9da793bd",
+        "deployment_id": 7452884945,
+        "url": "https://www.islamful.com/blog/can-you-do-wudu-with-makeup-on"
       }
     },
     {
@@ -5431,10 +5437,10 @@
       "proposed_title": "How many rakat in Wudu?",
       "target_path": "/blog/how-many-rakat-in-wudu",
       "source_file": "data/blog/en/how-many-rakat-in-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer how many rakat in wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5491,6 +5497,12 @@
           "alt": "Cream title card reading How Many Rakat in Wudu?",
           "sha256": "0c9fe63a0aacadc3c78414b735c357883cd1156d7088eb219ab7e7f4e0120d1d"
         }
+      },
+      "release": {
+        "date": "2026-10-31T02:16:29.001Z",
+        "commit": "431a1355b1c8578c19f025891ad7a28e9da793bd",
+        "deployment_id": 7452884945,
+        "url": "https://www.islamful.com/blog/how-many-rakat-in-wudu"
       }
     },
     {

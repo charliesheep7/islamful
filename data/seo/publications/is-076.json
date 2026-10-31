@@ -150,5 +150,11 @@
     "article_sha256": "509d96abca94fcf63d9a180c3f67d07851686321a82ea57b6d8a879fb0ce4639"
   },
   "prepared_at": "2026-10-31T02:12:24.260Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-10-31T02:16:28.683Z",
+    "commit": "431a1355b1c8578c19f025891ad7a28e9da793bd",
+    "deployment_id": 7452884945,
+    "url": "https://www.islamful.com/blog/can-you-do-wudu-with-makeup-on"
+  }
 }
