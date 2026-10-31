@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "id": "is-077",
+  "action": "new_article",
+  "target_path": "/blog/how-many-rakat-in-wudu",
+  "source_file": "data/blog/en/how-many-rakat-in-wudu.mdx",
+  "assignment_sha256": "f98e2441596215a7de68290761305f7ec1ecc311a267487638b274a8ceb905d2",
+  "baseline_sha256": null,
+  "content_sha256": "dd8a375c7ed6456b48a94b80e7b5e46cdab1779d893f3eff1339d1881da6e48e",
+  "marker": "5624cb45bdbc64cbfeba3481",
+  "hero": {
+    "src": "/static/images/blog/how-many-rakat-in-wudu.webp",
+    "alt": "Cream title card reading How Many Rakat in Wudu?",
+    "sha256": "0c9fe63a0aacadc3c78414b735c357883cd1156d7088eb219ab7e7f4e0120d1d"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/bukhari:164",
+      "title": "Sahih al-Bukhari 164 on Sunnah.com",
+      "supports": "Uthman's wudu demonstration with washing three times; two rak'ahs without distraction and forgiveness of past sins.",
+      "checked_at": "2026-10-31T02:07:56.110Z",
+      "content_sha256": "f954f270e6bd223ea444fd8bc86778010b2e701e4318e6c16da94af831f180bb"
+    },
+    {
+      "url": "https://sunnah.com/muslim:226a",
+      "title": "Sahih Muslim 226a on Sunnah.com",
+      "supports": "Uthman's narration: two rak'ahs after wudu without distracted thoughts; previous sins expiated.",
+      "checked_at": "2026-10-31T02:07:57.851Z",
+      "content_sha256": "e69572fd5d0ae71ac86d4a9840c331e369394cdac895accfd6facce923825eec"
+    },
+    {
+      "url": "https://sunnah.com/muslim:234a",
+      "title": "Sahih Muslim 234a on Sunnah.com",
+      "supports": "Uqbah ibn Amir: wudu done well then two rak'ahs with heart and face; Paradise guaranteed.",
+      "checked_at": "2026-10-31T02:07:58.403Z",
+      "content_sha256": "1ff71a31b0ff0f6878369a672a82d6660eb2edf3cbdac3725e5052bc7dd87ad1"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:906",
+      "title": "Sunan Abi Dawud 906 on Sunnah.com",
+      "supports": "Same meaning as Muslim 234a; graded sahih by al-Albani.",
+      "checked_at": "2026-10-31T02:07:58.967Z",
+      "content_sha256": "ae7abc15713a9856899f039ed723b89521f11aa6fca957f2f212c639b009f9db"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:1149",
+      "title": "Sahih al-Bukhari 1149 on Sunnah.com",
+      "supports": "Bilal praying after every purification as much as was written for him, with no number given.",
+      "checked_at": "2026-10-31T02:07:24.653Z",
+      "content_sha256": "2338db5b3ebac1b1a00e0816ee1a6abcc2fd606f2a29a59ad33e07d3ed56675b"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/article/details/1892/voluntary-prayers",
+      "title": "Dar al-Ifta: Voluntary prayers",
+      "supports": "Prayer after wudu is voluntary; Bilal's two rak'a practice known as the two rak'as of wudu.",
+      "checked_at": "2026-10-31T02:09:09.493Z",
+      "content_sha256": "08afcc7d0d61c79d8c28035e1882fd48c73fa43f895cf38021cb75ae22d38243"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/6454/disliked-prayer-times",
+      "title": "Dar al-Ifta: Disliked prayer times",
+      "supports": "Prayers with a prior reason, including the two rak'as after ablution, permitted at disliked times; istikhara contrast.",
+      "checked_at": "2026-10-31T02:09:07.789Z",
+      "content_sha256": "cd04e60077dd47e2062b9fd3309cf5d3b91168e0a806fd0b5e337d3cb224a211"
+    },
+    {
+      "url": "https://sunnah.com/muslim:831",
+      "title": "Sahih Muslim 831 on Sunnah.com",
+      "supports": "Three forbidden times: sunrise, midday height of the sun, and sunset.",
+      "checked_at": "2026-10-31T02:07:26.864Z",
+      "content_sha256": "3f2df395e52a30f973c2eac6222e0c7235865790f1a014ae9bd60a80d981e025"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:586",
+      "title": "Sahih al-Bukhari 586 on Sunnah.com",
+      "supports": "No prayer after the morning prayer until sunrise or after Asr until sunset.",
+      "checked_at": "2026-10-31T02:07:25.762Z",
+      "content_sha256": "832e226aa7166d4fae1289db59f8746180fe5695a0bd8ad671ebcbc5efc39acb"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/which-salahs-cant-be-performed-at-makrooh-times/",
+      "title": "Darul Ifta Birmingham: Which salahs can't be performed at makrooh times?",
+      "supports": "Makruh to pray any nafl after the Fajr and Asr prayers.",
+      "checked_at": "2026-10-31T02:08:41.867Z",
+      "content_sha256": "0c1bc6d268466cdad3e789b83dc3691eed2231d03b134afc7a70a815c480cb04"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/tahiyatul-masjid-at-the-time-of-zawaal/",
+      "title": "Darul Ifta Birmingham: Tahiyatul Masjid at the time of Zawaal",
+      "supports": "Hanafi scholars hold the greeting prayer prohibitively disliked in the restricted times.",
+      "checked_at": "2026-10-31T02:08:40.115Z",
+      "content_sha256": "7805efa4898d47ff96b401909d8d847d0e0ee6c650016dbd7bc7b0a44ee930bc"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text. No checked source names the prayer after wudu in a Hanafi ruling, so the article states that the application to it comes from the words any nafl. Dar al-Ifta's exception is reported as its explanation and not as consensus.",
+    "claim_checks": [
+      {
+        "claim": "Whoever makes wudu like this and prays two rak'ahs without distraction has past sins forgiven.",
+        "source_url": "https://sunnah.com/bukhari:164",
+        "explanation": "The captured narration from Humran about Uthman says this in the Prophet's words.",
+        "supported": true
+      },
+      {
+        "claim": "Any Muslim who makes wudu well then prays two rak'ahs with heart and face set on them is guaranteed Paradise.",
+        "source_url": "https://sunnah.com/muslim:234a",
+        "explanation": "The captured narration from Uqbah ibn Amir states this.",
+        "supported": true
+      },
+      {
+        "claim": "Bilal prayed after every purification as much as was written for him.",
+        "source_url": "https://sunnah.com/bukhari:1149",
+        "explanation": "The text gives no number, as the article notes.",
+        "supported": true
+      },
+      {
+        "claim": "The prayer after wudu is voluntary and is known as the two rak'as of wudu.",
+        "source_url": "https://www.dar-alifta.org/en/article/details/1892/voluntary-prayers",
+        "explanation": "The section The prayer after wudu uses this description.",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta lists the two rak'as after ablution among prayers allowed at disliked times, unlike istikhara.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/6454/disliked-prayer-times",
+        "explanation": "The fatwa names both and gives the prior-reason distinction.",
+        "supported": true
+      },
+      {
+        "claim": "It is makruh to pray any nafl after the Fajr prayer and after the Asr prayer.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/which-salahs-cant-be-performed-at-makrooh-times/",
+        "explanation": "Items two and three of the answer state this.",
+        "supported": true
+      },
+      {
+        "claim": "The greeting of the mosque is not allowed during times when salah is not permitted.",
+        "source_url": "https://daruliftabirmingham.co.uk/tahiyatul-masjid-at-the-time-of-zawaal/",
+        "explanation": "The conclusion says so, attributing the dislike to Hanafi scholars.",
+        "supported": true
+      },
+      {
+        "claim": "Three restricted times at sunrise, midday and sunset.",
+        "source_url": "https://sunnah.com/muslim:831",
+        "explanation": "The narration from Uqbah lists these three.",
+        "supported": true
+      },
+      {
+        "claim": "No prayer after the morning prayer until sunrise or after Asr until sunset.",
+        "source_url": "https://sunnah.com/bukhari:586",
+        "explanation": "The narration from Abu Said al-Khudri says this.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "053ac342481a5713f50b36231efd6e1e04da1c1ef3cfae849630a0cd9efddd33"
+  },
+  "prepared_at": "2026-10-31T02:12:24.567Z",
+  "state": "awaiting_release"
+}

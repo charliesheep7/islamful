@@ -5361,7 +5361,7 @@
       "target_path": "/blog/can-you-do-wudu-with-makeup-on",
       "source_file": "data/blog/en/can-you-do-wudu-with-makeup-on.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you do wudu with makeup on. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5380,7 +5380,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5410,7 +5410,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "b992ab793d06416f3d9c9588793d21614100dd5744abbf2a4ba1a585e9a73672",
+        "marker": "783845efd683451ec0dcbabd",
+        "audit_file": "data/seo/publications/is-076.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-do-wudu-with-makeup-on.webp",
+          "alt": "Green title card reading Can You Do Wudu With Makeup On?",
+          "sha256": "88617f0bd5cb8c3aafa9a5de168373a7f1dcb07019357088a4bf1c68b44fd611"
+        }
+      }
     },
     {
       "id": "is-077",
@@ -5422,7 +5432,7 @@
       "target_path": "/blog/how-many-rakat-in-wudu",
       "source_file": "data/blog/en/how-many-rakat-in-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer how many rakat in wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5441,7 +5451,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5471,7 +5481,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "dd8a375c7ed6456b48a94b80e7b5e46cdab1779d893f3eff1339d1881da6e48e",
+        "marker": "5624cb45bdbc64cbfeba3481",
+        "audit_file": "data/seo/publications/is-077.json",
+        "hero": {
+          "src": "/static/images/blog/how-many-rakat-in-wudu.webp",
+          "alt": "Cream title card reading How Many Rakat in Wudu?",
+          "sha256": "0c9fe63a0aacadc3c78414b735c357883cd1156d7088eb219ab7e7f4e0120d1d"
+        }
+      }
     },
     {
       "id": "is-078",

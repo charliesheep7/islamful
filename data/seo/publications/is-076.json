@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "id": "is-076",
+  "action": "new_article",
+  "target_path": "/blog/can-you-do-wudu-with-makeup-on",
+  "source_file": "data/blog/en/can-you-do-wudu-with-makeup-on.mdx",
+  "assignment_sha256": "06d1b9f40df75b2d361e952ff7b52fdd7adde7d47df62aa339b16c3b579043c0",
+  "baseline_sha256": null,
+  "content_sha256": "b992ab793d06416f3d9c9588793d21614100dd5744abbf2a4ba1a585e9a73672",
+  "marker": "783845efd683451ec0dcbabd",
+  "hero": {
+    "src": "/static/images/blog/can-you-do-wudu-with-makeup-on.webp",
+    "alt": "Green title card reading Can You Do Wudu With Makeup On?",
+    "sha256": "88617f0bd5cb8c3aafa9a5de168373a7f1dcb07019357088a4bf1c68b44fd611"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Surah Al-Ma'idah 5:6 on Quran.com",
+      "supports": "The Quranic command to wash the face, hands to the elbows and feet, and wipe the head.",
+      "checked_at": "2026-10-31T02:07:20.088Z",
+      "content_sha256": "62ded90ba21cee23897ab6bcbed9cd0b255ebfc34837290af8afbe5065afdd8d"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:165",
+      "title": "Sahih al-Bukhari 165 on Sunnah.com",
+      "supports": "Abu Hurayrah urging thorough ablution, quoting: Save your heels from the Hell-fire.",
+      "checked_at": "2026-10-31T02:07:22.081Z",
+      "content_sha256": "b59489fa84410d62c97c742eea62062c806097dbc430b261ec98537bec62564a"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:173",
+      "title": "Sunan Abi Dawud 173 on Sunnah.com",
+      "supports": "Man who left a nail-sized spot on his foot told to go back and perform ablution well.",
+      "checked_at": "2026-10-31T02:07:21.489Z",
+      "content_sha256": "d07bc29c45f94d1c39ff801a70617f8743c7cec5c0f9492e6594a2d834442a11"
+    },
+    {
+      "url": "https://sunnah.com/ibnmajah:666",
+      "title": "Sunan Ibn Majah 666 on Sunnah.com",
+      "supports": "Man who missed a fingernail-sized spot commanded to repeat ablution and prayer; Darussalam sahih grade.",
+      "checked_at": "2026-10-31T02:08:38.592Z",
+      "content_sha256": "560dd0bc97768ced522862ff357b49c22095a3b170e14298cbce69703cfd9e61"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/?p=31836",
+      "title": "Darul Ifta Birmingham: Wudhu With Makeup (Fatwa 07322)",
+      "supports": "Wudu invalid if something prevents water reaching the skin; makeup usually does not; speck found afterwards, wudu and prayer should be valid.",
+      "checked_at": "2026-10-31T02:07:46.064Z",
+      "content_sha256": "a4f4187a98cbd3824c495a0e8c8ec2adf71b0e49c09248815813a29a9cd7e669"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/?p=29711",
+      "title": "Darul Ifta Birmingham: How to differentiate makeup that prevents water reaching the skin (Fatwa 06957)",
+      "supports": "All specks of makeup to be removed; tissue or swab test; wudu before applying makeup; creams and oils not a barrier.",
+      "checked_at": "2026-10-31T02:07:47.522Z",
+      "content_sha256": "836ea7720f21b6b811d7755fa2c7b341f8032705b69091d71b12af372797639d"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/silicone-products/",
+      "title": "Darul Ifta Birmingham: Silicone products and barriers",
+      "supports": "Thick, visible barrier that stops water invalidates wudu; nail polish versus oil and Vaseline.",
+      "checked_at": "2026-10-31T02:08:29.094Z",
+      "content_sha256": "1ef39973cc0aa819c66e96e075f6bf6026f72f7d770736d3aafb2bcc28b4e55f"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/can-you-make-wudhu-when-you-have-a-cream-on-your-face-thats-water-resistant/",
+      "title": "Darul Ifta Birmingham: Wudu with water-resistant cream",
+      "supports": "Waterproof substances must be removed; water-resistant sunscreen allows valid wudu unless applied in a thick layer.",
+      "checked_at": "2026-10-31T02:08:34.040Z",
+      "content_sha256": "f95905e88a285f61fe1ca5fb6ef6f7cd0f40451a9fc79bc70c750175edb4f759"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/doubts-in-removing-makeup-before-commencing-the-wudhu/",
+      "title": "Darul Ifta Birmingham: Doubts in removing makeup before wudhu",
+      "supports": "Mascara that is not watertight allows wudu and ghusl; cotton pads and cleanser; medical advice for OCD.",
+      "checked_at": "2026-10-31T02:08:30.443Z",
+      "content_sha256": "6daa9063d16b94a140a1fdce030514fa12200e1683e13da45e52f6cdcfd475ba"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/is-it-permissible-to-apply-nail-polish/",
+      "title": "Darul Ifta Birmingham: Is it permissible to apply nail polish?",
+      "supports": "Water must reach the nails; gel nails must be removed; doubt over permeable polish.",
+      "checked_at": "2026-10-31T02:08:32.586Z",
+      "content_sha256": "39cccc970f9b608aae3bc419d87dfe46aa73e2add3978528a630d8f1a6725ee5"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/would-the-wudhu-be-valid-if-some-specs-of-paint-remain/",
+      "title": "Darul Ifta Birmingham: Specks of paint and wudhu",
+      "supports": "Water must reach the entire limb; paint removable only by scraping with a tool is excused due to difficulty.",
+      "checked_at": "2026-10-31T02:08:35.418Z",
+      "content_sha256": "348fc847fdc5e130a2e7c1475219b67aeb33bd2d49413370ed4e20da7e1c237f"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text. Sunnah.com returned 403 for Sahih Muslim 243, so Abu Dawud 173 and Ibn Majah 666 are cited instead. The harmonising reading of the two Birmingham answers is labelled as Islamful's own, and the reliance on one Hanafi service is disclosed in the article.",
+    "claim_checks": [
+      {
+        "claim": "Waterproof substances must be removed while water-resistant sunscreen allows valid wudu unless thick.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/can-you-make-wudhu-when-you-have-a-cream-on-your-face-thats-water-resistant/",
+        "explanation": "The answer states waterproof substances prevent wudu and need removal, and wudu with water-resistant sunblock is valid with care over thick layers.",
+        "supported": true
+      },
+      {
+        "claim": "All specks of makeup must be removed and a swab test can confirm removal; wudu may be made before applying makeup.",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=29711",
+        "explanation": "Fatwa 06957 states these points directly and says oils, creams and lotions fall outside the ruling.",
+        "supported": true
+      },
+      {
+        "claim": "Makeup usually does not prevent water reaching the skin and the wudu with a speck found later should be valid.",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=31836",
+        "explanation": "Fatwa 07322 uses this wording about makeup and concludes the wudu and salah should be valid.",
+        "supported": true
+      },
+      {
+        "claim": "Man commanded to repeat ablution and prayer after missing a nail-sized spot; graded sahih by Darussalam.",
+        "source_url": "https://sunnah.com/ibnmajah:666",
+        "explanation": "The captured hadith text and the grade line both match this description.",
+        "supported": true
+      },
+      {
+        "claim": "Man told to go back and perform ablution well after leaving a nail-sized spot.",
+        "source_url": "https://sunnah.com/abudawud:173",
+        "explanation": "The captured English narration from Anas says exactly this.",
+        "supported": true
+      },
+      {
+        "claim": "A thick, visible barrier that stops water invalidates wudu, while oil and Vaseline do not.",
+        "source_url": "https://daruliftabirmingham.co.uk/silicone-products/",
+        "explanation": "The answer gives this rule with nail polish, Vaseline and oil as examples.",
+        "supported": true
+      },
+      {
+        "claim": "Mascara that is not watertight allows wudu and ghusl; cotton pads with cleanser are advised.",
+        "source_url": "https://daruliftabirmingham.co.uk/doubts-in-removing-makeup-before-commencing-the-wudhu/",
+        "explanation": "The answer says this and recommends medical advice for OCD.",
+        "supported": true
+      },
+      {
+        "claim": "Paint removable only by scraping with a tool is not an obstacle to wudu.",
+        "source_url": "https://daruliftabirmingham.co.uk/would-the-wudhu-be-valid-if-some-specs-of-paint-remain/",
+        "explanation": "The answer states this because of the difficulty, citing Fatawa Hindiyyah.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "509d96abca94fcf63d9a180c3f67d07851686321a82ea57b6d8a879fb0ce4639"
+  },
+  "prepared_at": "2026-10-31T02:12:24.260Z",
+  "state": "awaiting_release"
+}
