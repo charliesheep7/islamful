@@ -130,5 +130,11 @@
     "article_sha256": "2ed41d1db6221562c60c89ea7015bd070665b3d1676622e6b194ac2a992f1374"
   },
   "prepared_at": "2026-11-01T08:40:06.332Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-01T08:43:48.036Z",
+    "commit": "c60bea329b94f352da11bb259915f3c11dbbc5b6",
+    "deployment_id": 7470732149,
+    "url": "https://www.islamful.com/blog/can-you-do-wudu-with-water-resistant-sunscreen"
+  }
 }

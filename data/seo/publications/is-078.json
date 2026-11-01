@@ -183,5 +183,11 @@
     "article_sha256": "82eb92511d8c1b8826b6783ed2cbd95e52dcb87dea28f706b5d093d358298519"
   },
   "prepared_at": "2026-11-01T08:40:05.183Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-01T08:43:47.870Z",
+    "commit": "c60bea329b94f352da11bb259915f3c11dbbc5b6",
+    "deployment_id": 7470732149,
+    "url": "https://www.islamful.com/blog/can-you-do-wudu-over-shoes"
+  }
 }

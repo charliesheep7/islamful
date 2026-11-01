@@ -5514,10 +5514,10 @@
       "proposed_title": "Can you do Wudu over shoes?",
       "target_path": "/blog/can-you-do-wudu-over-shoes",
       "source_file": "data/blog/en/can-you-do-wudu-over-shoes.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you do wudu over shoes. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5574,6 +5574,12 @@
           "alt": "Dark green title card reading Can You Do Wudu Over Shoes?",
           "sha256": "01da55b94fa6a5f36cba1025bffd5bef0ff0c841e5a7eb1300de4aff09119d97"
         }
+      },
+      "release": {
+        "date": "2026-11-01T08:43:47.870Z",
+        "commit": "c60bea329b94f352da11bb259915f3c11dbbc5b6",
+        "deployment_id": 7470732149,
+        "url": "https://www.islamful.com/blog/can-you-do-wudu-over-shoes"
       }
     },
     {
@@ -5585,10 +5591,10 @@
       "proposed_title": "Can you do Wudu with water resistant sunscreen?",
       "target_path": "/blog/can-you-do-wudu-with-water-resistant-sunscreen",
       "source_file": "data/blog/en/can-you-do-wudu-with-water-resistant-sunscreen.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you do wudu with water resistant sunscreen. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5645,6 +5651,12 @@
           "alt": "Pale cream title card reading Wudu With Water Resistant Sunscreen",
           "sha256": "44f88f148056abb7ee317dc17d83e651f0cbb1e8b2d66730ec6ae37b9a8c726a"
         }
+      },
+      "release": {
+        "date": "2026-11-01T08:43:48.036Z",
+        "commit": "c60bea329b94f352da11bb259915f3c11dbbc5b6",
+        "deployment_id": 7470732149,
+        "url": "https://www.islamful.com/blog/can-you-do-wudu-with-water-resistant-sunscreen"
       }
     },
     {
