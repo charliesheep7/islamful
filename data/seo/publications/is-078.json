@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "id": "is-078",
+  "action": "new_article",
+  "target_path": "/blog/can-you-do-wudu-over-shoes",
+  "source_file": "data/blog/en/can-you-do-wudu-over-shoes.mdx",
+  "assignment_sha256": "27af69d89980f2b4aa950d17037b75633fdfa484ff0fb7bf9c3bed71667a26c9",
+  "baseline_sha256": null,
+  "content_sha256": "d36551d1c2d13c211b0b26d62af777ad7e16013b474affe8feee5751b6063906",
+  "marker": "ad3b075480458dbc025dbbb4",
+  "hero": {
+    "src": "/static/images/blog/can-you-do-wudu-over-shoes.webp",
+    "alt": "Dark green title card reading Can You Do Wudu Over Shoes?",
+    "sha256": "01da55b94fa6a5f36cba1025bffd5bef0ff0c841e5a7eb1300de4aff09119d97"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Surah Al-Ma'idah 5:6 on Quran.com",
+      "supports": "The Quranic command to wash the feet to the ankles in wudu.",
+      "checked_at": "2026-11-01T08:36:36.410Z",
+      "content_sha256": "f7736bd7f929567bac50d407129026896fadcc2a982ccb96dcfb467e2d14f67d"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:182",
+      "title": "Sahih al-Bukhari 182 on Sunnah.com",
+      "supports": "Al-Mughirah pouring water while the Prophet wiped over his two khuffs on a journey.",
+      "checked_at": "2026-11-01T08:36:39.205Z",
+      "content_sha256": "9fc4a436ccc8b7f58259ef9abd191a34de991f7801a149e789646088dbe0a3dc"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:206",
+      "title": "Sahih al-Bukhari 206 on Sunnah.com",
+      "supports": "The Prophet leaving his khuffs on because he put them on after ablution, then wiping.",
+      "checked_at": "2026-11-01T08:36:38.152Z",
+      "content_sha256": "c126af67a1b1d6ef4c95c30eee3dfdf120eb7cd1889b7b53c489abd08524a893"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:99",
+      "title": "Jami at-Tirmidhi 99 on Sunnah.com",
+      "supports": "Report of wiping over socks and sandals, at-Tirmidhi's hasan sahih grade and Darussalam's da'if grade.",
+      "checked_at": "2026-11-01T08:36:37.301Z",
+      "content_sha256": "b4b37d0370138e2db5f9c37857d4a4a6c994c6109d4879d7ed46ec68b964480f"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:96",
+      "title": "Jami at-Tirmidhi 96 on Sunnah.com",
+      "supports": "Safwan ibn Assal on not removing khuffs for three days and nights when travelling except for janabah.",
+      "checked_at": "2026-11-01T08:36:39.016Z",
+      "content_sha256": "a6df0ebf6d5727535c70683a73464df4d0ba4a7eb3851ae40737b719d4c18d63"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:162",
+      "title": "Sunan Abi Dawud 162 on Sunnah.com",
+      "supports": "Ali's report of the Prophet wiping the upper part, graded sahih by al-Albani.",
+      "checked_at": "2026-11-01T08:36:38.665Z",
+      "content_sha256": "a89f9014e0c20d754a6abbd7517145070bf73a80f721e4e4c92719bde9753738"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:386",
+      "title": "Sahih al-Bukhari 386 on Sunnah.com",
+      "supports": "Anas confirming that the Prophet prayed with his shoes on.",
+      "checked_at": "2026-11-01T08:36:38.485Z",
+      "content_sha256": "ebf8a59dcccb1a99f99ff4f25cbc8ab23dda4a0fe02c1ef4ed64d383422e7fa4"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:650",
+      "title": "Sunan Abi Dawud 650 on Sunnah.com",
+      "supports": "Instruction to check sandals for filth at the mosque, wipe it off and pray in them; al-Albani sahih grade.",
+      "checked_at": "2026-11-01T08:36:37.814Z",
+      "content_sha256": "e76590f262f1bbfcf950c8702a7c8efc7c0376fa21a422c239326dc7badc7e2a"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/masah-over-normal-socks/",
+      "title": "Darul Ifta Birmingham: Masah over normal socks",
+      "supports": "Not permissible to wipe over shoes or trainers, the majority view, its explanation of the reports, and imams who weakened the Tirmidhi hadith.",
+      "checked_at": "2026-11-01T08:37:15.326Z",
+      "content_sha256": "85d9958e2a5d8b9345d5133108fe903cd32d5c8fbb50a2e962aa2e095412ac43"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/masah-on-cotton-socks/",
+      "title": "Darul Ifta Birmingham: Masah on Cotton Socks (Fatwa 03316)",
+      "supports": "Scholarly consensus on wiping over soft leather boots at home or travelling, not extending to other materials.",
+      "checked_at": "2026-11-01T08:37:13.707Z",
+      "content_sha256": "99116a34d368b1f9b48b34ba44c6a9d0e40c9b5ca3d4f24a9c5c8655b06c6f64"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/the-definition-of-jarmuq-and-the-ruling-on-wiping-over-it/",
+      "title": "Darul Ifta Birmingham: The definition of Jarmuq and the ruling on wiping over it",
+      "supports": "Four conditions of the khuff: coverage to the ankles, walkable, resists seepage, worn in purity.",
+      "checked_at": "2026-11-01T08:37:14.643Z",
+      "content_sha256": "481698e242a07105239eb605da6e0d8d8507371ebcbdc477b8241ebcd8bb72dc"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+      "title": "Egypt's Dar al-Ifta: How to perform Wudhu",
+      "supports": "Allowance to wipe over socks, shoes or sandals covering most of the foot if put on with wudu, for 24 hours or three days.",
+      "checked_at": "2026-11-01T08:37:17.296Z",
+      "content_sha256": "3eff2dced39f7b4c912ede286d2f17a47871fdc20a5072d616d6a070186dc6df"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7844/why-women-are-obliged-to-remove-their-nail-polish-in-ablution-while-they-are-all",
+      "title": "Egypt's Dar al-Ifta: Fatwa 7844 on nail polish and wiping over socks",
+      "supports": "Worship is not decided by logical analogy; wiping applies to socks and shoes only, not gloves or sleeves.",
+      "checked_at": "2026-11-01T08:37:24.986Z",
+      "content_sha256": "1533e098328796cc37e153df37e580dcf9e61caaaa6cdefc10a0343480cf0657"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/8355/praying-in-shoes-inside-mosques",
+      "title": "Egypt's Dar al-Ifta: Praying in shoes inside mosques",
+      "supports": "Better not to pray in shoes in carpeted mosques, with an exception for legitimate difficulty and clean shoes.",
+      "checked_at": "2026-11-01T08:37:19.002Z",
+      "content_sha256": "11926f4e06ab9d6e093d599566896680d0fc6fccb94de631b831b2902a281974"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text. Sunnah.com returned 403 for Abu Dawud 159, so it is not cited. Fatwa sites outside the approved source list were read only in search summaries and are not cited. The Ibn Khuzaymah report is attributed to the Birmingham answer and disclosed as unchecked. Applying the ankle condition to low trainers and the worked example are our application of the cited conditions.",
+    "claim_checks": [
+      {
+        "claim": "Wiping over shoes or trainers is not permissible and this is the majority view.",
+        "source_url": "https://daruliftabirmingham.co.uk/masah-over-normal-socks/",
+        "explanation": "The answer states this in these terms, citing Maarifus Sunan, and explains the reports as wiping while already in wudu.",
+        "supported": true
+      },
+      {
+        "claim": "Footwear covering most of the foot put on with wudu may be wiped for 24 hours or three days when travelling.",
+        "source_url": "https://www.dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+        "explanation": "The closing note of the article states this for socks, shoes or sandals covering most of the foot.",
+        "supported": true
+      },
+      {
+        "claim": "Four conditions apply to leather footwear being wiped.",
+        "source_url": "https://daruliftabirmingham.co.uk/the-definition-of-jarmuq-and-the-ruling-on-wiping-over-it/",
+        "explanation": "The answer lists coverage to the ankles, walking without tearing, resisting seepage and being worn in purity.",
+        "supported": true
+      },
+      {
+        "claim": "Consensus exists on wiping over soft leather boots at home or travelling and does not extend to other materials.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/masah-on-cotton-socks/",
+        "explanation": "Fatwa 03316 says this directly.",
+        "supported": true
+      },
+      {
+        "claim": "The socks-and-sandals report was graded hasan sahih by at-Tirmidhi while Darussalam grades it da'if.",
+        "source_url": "https://sunnah.com/tirmidhi:99",
+        "explanation": "The Arabic text carries at-Tirmidhi's grade and the page shows the Darussalam grade.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet told al-Mughirah to leave the khuffs as he put them on after ablution, then wiped.",
+        "source_url": "https://sunnah.com/bukhari:206",
+        "explanation": "The captured English narration matches.",
+        "supported": true
+      },
+      {
+        "claim": "Khuffs need not be removed for three days and nights when travelling except for janabah.",
+        "source_url": "https://sunnah.com/tirmidhi:96",
+        "explanation": "Safwan's narration says this.",
+        "supported": true
+      },
+      {
+        "claim": "Ali saw the Messenger wiping the upper part; graded sahih by al-Albani.",
+        "source_url": "https://sunnah.com/abudawud:162",
+        "explanation": "The narration and grade line both match.",
+        "supported": true
+      },
+      {
+        "claim": "Better not to pray in shoes in carpeted mosques, except for legitimate difficulty with clean shoes.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/8355/praying-in-shoes-inside-mosques",
+        "explanation": "The ruling section of the fatwa says this.",
+        "supported": true
+      },
+      {
+        "claim": "Wiping applies to socks and shoes only, not gloves or sleeves, and worship is not settled by logical analogy.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7844/why-women-are-obliged-to-remove-their-nail-polish-in-ablution-while-they-are-all",
+        "explanation": "The fatwa says both points.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "82eb92511d8c1b8826b6783ed2cbd95e52dcb87dea28f706b5d093d358298519"
+  },
+  "prepared_at": "2026-11-01T08:40:05.183Z",
+  "state": "awaiting_release"
+}

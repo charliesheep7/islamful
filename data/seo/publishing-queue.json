@@ -5515,7 +5515,7 @@
       "target_path": "/blog/can-you-do-wudu-over-shoes",
       "source_file": "data/blog/en/can-you-do-wudu-over-shoes.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you do wudu over shoes. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5534,7 +5534,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5564,7 +5564,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "d36551d1c2d13c211b0b26d62af777ad7e16013b474affe8feee5751b6063906",
+        "marker": "ad3b075480458dbc025dbbb4",
+        "audit_file": "data/seo/publications/is-078.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-do-wudu-over-shoes.webp",
+          "alt": "Dark green title card reading Can You Do Wudu Over Shoes?",
+          "sha256": "01da55b94fa6a5f36cba1025bffd5bef0ff0c841e5a7eb1300de4aff09119d97"
+        }
+      }
     },
     {
       "id": "is-079",
@@ -5576,7 +5586,7 @@
       "target_path": "/blog/can-you-do-wudu-with-water-resistant-sunscreen",
       "source_file": "data/blog/en/can-you-do-wudu-with-water-resistant-sunscreen.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you do wudu with water resistant sunscreen. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5595,7 +5605,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5625,7 +5635,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "10d4657970c38585e6473b3d1073407bc036a0f29d0c3e33ac378e760bc4c41b",
+        "marker": "162d8b02537efdbfd0da4cb0",
+        "audit_file": "data/seo/publications/is-079.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-do-wudu-with-water-resistant-sunscreen.webp",
+          "alt": "Pale cream title card reading Wudu With Water Resistant Sunscreen",
+          "sha256": "44f88f148056abb7ee317dc17d83e651f0cbb1e8b2d66730ec6ae37b9a8c726a"
+        }
+      }
     },
     {
       "id": "is-080",

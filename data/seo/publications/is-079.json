@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "id": "is-079",
+  "action": "new_article",
+  "target_path": "/blog/can-you-do-wudu-with-water-resistant-sunscreen",
+  "source_file": "data/blog/en/can-you-do-wudu-with-water-resistant-sunscreen.mdx",
+  "assignment_sha256": "695b5d314c63e76e0b82b59aa48af7c2818daf3860098cc5b989e3672496050d",
+  "baseline_sha256": null,
+  "content_sha256": "10d4657970c38585e6473b3d1073407bc036a0f29d0c3e33ac378e760bc4c41b",
+  "marker": "162d8b02537efdbfd0da4cb0",
+  "hero": {
+    "src": "/static/images/blog/can-you-do-wudu-with-water-resistant-sunscreen.webp",
+    "alt": "Pale cream title card reading Wudu With Water Resistant Sunscreen",
+    "sha256": "44f88f148056abb7ee317dc17d83e651f0cbb1e8b2d66730ec6ae37b9a8c726a"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Surah Al-Ma'idah 5:6 on Quran.com",
+      "supports": "The Quranic command to wash the face, hands and feet and wipe the head in wudu.",
+      "checked_at": "2026-11-01T08:36:41.482Z",
+      "content_sha256": "38589612612306820fcff9d0d99a9ca352a7fd316849dcd12a25ca7842d63ad2"
+    },
+    {
+      "url": "https://sunnah.com/ibnmajah:666",
+      "title": "Sunan Ibn Majah 666 on Sunnah.com",
+      "supports": "Man who missed a fingernail-sized spot commanded to repeat ablution and prayer; Darussalam sahih grade.",
+      "checked_at": "2026-11-01T08:36:47.146Z",
+      "content_sha256": "d14429ce94c729395580d6929fb6f7db607fcbf2d7aa0285ec61ac12e119c1de"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:165",
+      "title": "Sahih al-Bukhari 165 on Sunnah.com",
+      "supports": "Abu Hurayrah urging thorough ablution, quoting: Save your heels from the Hell-fire.",
+      "checked_at": "2026-11-01T08:36:47.796Z",
+      "content_sha256": "18a8c7ec574be537a61a0d15bec4d1147b3d0cd5e2044a3439fbb83a07dd60a5"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/?p=25904",
+      "title": "Darul Ifta Birmingham: Wudhu with water-resistant cream (Fatwa 06208)",
+      "supports": "Waterproof substances must be removed; wudu with water-resistant sunblock is valid unless applied in a thick layer.",
+      "checked_at": "2026-11-01T08:36:45.446Z",
+      "content_sha256": "f95905e88a285f61fe1ca5fb6ef6f7cd0f40451a9fc79bc70c750175edb4f759"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/?p=27455",
+      "title": "Darul Ifta Birmingham: Is one's wudhu valid after applying suncream? (Fatwa 06531)",
+      "supports": "Mineral sunscreens tend to be less water-resistant; check with the manufacturer whether ingredients stop water.",
+      "checked_at": "2026-11-01T08:36:43.828Z",
+      "content_sha256": "c80a4f70f303bec8c9776ce1675ab942f102193d88efdacba9260b551780be7e"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/silicone-products/",
+      "title": "Darul Ifta Birmingham: Silicone products and barriers (Fatwa 04614)",
+      "supports": "Silicone in large quantities can form a barrier; apply after fard of wudu; thick visible barrier test with nail polish and Vaseline examples.",
+      "checked_at": "2026-11-01T08:37:20.426Z",
+      "content_sha256": "e321d7ce1f3e00942787c4e39ef172eee1e42a0ff5766b89ba1f229b26163800"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/how-to-differentiate-between-make-up-that-prevents-water-reaching-the-skin-and-makeup-that-doesnt/",
+      "title": "Darul Ifta Birmingham: Differentiating makeup that prevents water reaching the skin",
+      "supports": "Oils, creams and lotions fall outside the barrier ruling; wudu may be done before applying makeup and prayer offered with it on.",
+      "checked_at": "2026-11-01T08:37:21.482Z",
+      "content_sha256": "57fd241796ea3a5b3394c2231094d659a727f551592512bb4ac4ad9c84556a05"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7844/why-women-are-obliged-to-remove-their-nail-polish-in-ablution-while-they-are-all",
+      "title": "Egypt's Dar al-Ifta: Fatwa 7844 on nail polish and ablution",
+      "supports": "A substance preventing water from reaching the skin invalidates ablution; a stain such as henna does not.",
+      "checked_at": "2026-11-01T08:37:24.986Z",
+      "content_sha256": "1533e098328796cc37e153df37e580dcf9e61caaaa6cdefc10a0343480cf0657"
+    },
+    {
+      "url": "https://www.nhs.uk/live-well/seasonal-health/sunscreen-and-sun-safety/",
+      "title": "NHS: Sunscreen and sun safety",
+      "supports": "Water washes sunscreen off; reapply after water even if water resistant, and about every 2 hours.",
+      "checked_at": "2026-11-01T08:37:25.847Z",
+      "content_sha256": "23308dfbc48f98a0708cc818a38e7539c177a2ea9c7b1d4843b7bb44efa4cfbc"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text. Stricter answers appeared in search summaries on sites outside the approved source list, so they are not cited, and the article discloses its reliance on one Hanafi service and that others may differ. The harmonising reading, the water-beading tip and the application of the makeup answer to sunscreen are labelled as Islamful's own.",
+    "claim_checks": [
+      {
+        "claim": "Wudu with water-resistant sunblock is valid unless it forms a thick layer; waterproof substances must be removed.",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=25904",
+        "explanation": "Fatwa 06208 states each of these points and explains that water-resistant creams wash off when fully submerged.",
+        "supported": true
+      },
+      {
+        "claim": "Mineral sunscreens tend to be less water-resistant and the manufacturer can say whether a product stops water.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/?p=27455",
+        "explanation": "Fatwa 06531 says this directly.",
+        "supported": true
+      },
+      {
+        "claim": "Silicone can form a barrier in large amounts and a thick visible barrier invalidates wudu, unlike Vaseline and oil.",
+        "source_url": "https://daruliftabirmingham.co.uk/silicone-products/",
+        "explanation": "Fatwa 04614 gives this with its advice to apply after the fard of wudu.",
+        "supported": true
+      },
+      {
+        "claim": "Oils, creams and lotions fall outside the barrier ruling and wudu may be done before applying makeup.",
+        "source_url": "https://daruliftabirmingham.co.uk/how-to-differentiate-between-make-up-that-prevents-water-reaching-the-skin-and-makeup-that-doesnt/",
+        "explanation": "The closing lines of the answer say so, and the question also asks about sunscreen.",
+        "supported": true
+      },
+      {
+        "claim": "Water washes sunscreen off and it should be reapplied after water even if water resistant, and about every 2 hours.",
+        "source_url": "https://www.nhs.uk/live-well/seasonal-health/sunscreen-and-sun-safety/",
+        "explanation": "The NHS page says this in its reapplication and swimming sections.",
+        "supported": true
+      },
+      {
+        "claim": "A substance preventing water from reaching the skin invalidates ablution, while henna does not.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7844/why-women-are-obliged-to-remove-their-nail-polish-in-ablution-while-they-are-all",
+        "explanation": "The fatwa states both.",
+        "supported": true
+      },
+      {
+        "claim": "A man who missed a nail-sized spot was commanded to repeat ablution and prayer; graded sahih by Darussalam.",
+        "source_url": "https://sunnah.com/ibnmajah:666",
+        "explanation": "Reused from captured narration and grade reviewed in an earlier assignment and re-fetched today.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "2ed41d1db6221562c60c89ea7015bd070665b3d1676622e6b194ac2a992f1374"
+  },
+  "prepared_at": "2026-11-01T08:40:06.332Z",
+  "state": "awaiting_release"
+}
