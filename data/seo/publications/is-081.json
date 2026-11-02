@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "id": "is-081",
+  "action": "new_article",
+  "target_path": "/blog/is-istinja-mandatory-for-wudu",
+  "source_file": "data/blog/en/is-istinja-mandatory-for-wudu.mdx",
+  "assignment_sha256": "4865611d0b6a8af72c5a5e383310de5c32bc6444433b623f60a5edf835d65bb0",
+  "baseline_sha256": null,
+  "content_sha256": "78059e25ea19cca1b55ac10f041bf68a3cb72c90c1346294ae0efe27a3143ff1",
+  "marker": "89b373ad8ba5865a5f415f77",
+  "hero": {
+    "src": "/static/images/blog/is-istinja-mandatory-for-wudu.webp",
+    "alt": "Dark green title card reading Is Istinja Mandatory for Wudu?",
+    "sha256": "0108795f6c5b305e4348e279199da6d782c02db905dfeb1a4dc1d02ec68a50f8"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Surah Al-Ma'idah 5:6 on Quran.com",
+      "supports": "The wudu command lists washing the face, hands to elbows and feet and wiping the head.",
+      "checked_at": "2026-11-02T02:53:20.093Z",
+      "content_sha256": "cdece38c8789c5268e4f9cf11e564544b4a29eb0a35c051fc8a29fa0a5b98fbc"
+    },
+    {
+      "url": "https://quran.com/9/108",
+      "title": "Surah At-Tawbah 9:108 on Quran.com",
+      "supports": "The verse: in it are men who love to be purified, and Allah loves those who purify themselves.",
+      "checked_at": "2026-11-02T02:53:18.139Z",
+      "content_sha256": "25b4727c2345d37ce605888afec85bf517876e14a98b36a611fac7d4d031ae66"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+      "title": "Dar al-Ifta: How to perform Wudhu (Ablution)",
+      "supports": "Steps of wudu without istinja; prayer preparation includes being clean from physical impurities.",
+      "checked_at": "2026-11-02T02:54:24.298Z",
+      "content_sha256": "6f235e25bd42d1de4b694401589434cac01f486a618aaeff8f332e76810c4900"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7853/is-washing-the-private-part-after-urinating-istinjaa-a-condition-and-is-it-d",
+      "title": "Dar al-Ifta: Is washing the private part after urinating a condition? (Fatwa 7853)",
+      "supports": "Istinja obligatory for removing impurity; paper, stone or water; soap not a condition.",
+      "checked_at": "2026-11-02T02:54:16.271Z",
+      "content_sha256": "0f3d2ffb2cf405aff2d96b19898cb32ed8dc8f9dc3c9f5ea59ec4a330a4060fe"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/the-sunnah-method-of-istinjaah/",
+      "title": "Darul Ifta Birmingham: The Sunnah method of Istinjaah",
+      "supports": "Sunnah, wajib and fard grades by spread of impurity; compulsory to ensure urine drops ceased.",
+      "checked_at": "2026-11-02T02:54:17.315Z",
+      "content_sha256": "520cc56db887f09fbec2b839ab7328ee12546df891dc7b0f51287f0f871f8ac2"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/is-it-permissible-to-do-istinjah-with-baby-wipes/",
+      "title": "Darul Ifta Birmingham: Is It Permissible To Do Istinjah With Baby Wipes (Fatwa 04898)",
+      "supports": "Emphasised sunnah; water wajib beyond a dirham; tissue or wipes sufficient after urine if not spread.",
+      "checked_at": "2026-11-02T02:54:20.233Z",
+      "content_sha256": "9816d7efafc2c547ba188ee525c3646b2a2833beb7a861cda318d969df13d2c1"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:218",
+      "title": "Sahih al-Bukhari 218 on Sunnah.com",
+      "supports": "Two graves; one man never saved himself from being soiled with urine.",
+      "checked_at": "2026-11-02T02:53:11.956Z",
+      "content_sha256": "c443e3c4131f033a400705d6dc28043048d6580e5b460b567497d1e478e22122"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:152",
+      "title": "Sahih al-Bukhari 152 on Sunnah.com",
+      "supports": "Anas carried a tumbler of water for the Prophet when he answered the call of nature.",
+      "checked_at": "2026-11-02T02:53:09.885Z",
+      "content_sha256": "ee62898cc9e8283ed4c7c10841ee0424c6678469a6fc20ae7c5fde1b681ac113"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:44",
+      "title": "Sunan Abi Dawud 44 on Sunnah.com",
+      "supports": "People of Quba cleansed with water and the verse 9:108; sahih per al-Albani.",
+      "checked_at": "2026-11-02T02:53:13.783Z",
+      "content_sha256": "a9d006ae089851169c96046fb1b5a8644db9b29ca4258e03bab31b43739aaf73"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:40",
+      "title": "Sunan Abi Dawud 40 on Sunnah.com",
+      "supports": "Three stones are enough; hasan per al-Albani.",
+      "checked_at": "2026-11-02T02:53:13.240Z",
+      "content_sha256": "35e33770f1e789abcf30533e5811b7dbff053c898a56477e509be2aea4436b5f"
+    },
+    {
+      "url": "https://sunnah.com/muslim:262a",
+      "title": "Sahih Muslim 262a on Sunnah.com",
+      "supports": "Forbidding cleaning with the right hand, under three pebbles, dung or bone.",
+      "checked_at": "2026-11-02T02:53:12.601Z",
+      "content_sha256": "3bf3e63350b285816b9d29539320fefb879fc9c4be75504e05be49d1eab7e56e"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:269",
+      "title": "Sahih al-Bukhari 269 on Sunnah.com",
+      "supports": "Perform ablution after washing your organ, showing the order for madhi.",
+      "checked_at": "2026-11-02T02:52:45.468Z",
+      "content_sha256": "2ef80c05faa1586f93357c05db1760cdf5e29020b5f2ede2fc3cbff67c04c52f"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/passing-wind/",
+      "title": "Darul Ifta Birmingham: Passing Wind",
+      "supports": "Passing wind breaks wudu when certain.",
+      "checked_at": "2026-11-02T02:54:21.403Z",
+      "content_sha256": "3d0c444b8717246edb665fd6d675472c6e8623d18ab72235e3f8229b92598138"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/the-effect-of-discharge-bleeding-and-passing-wind-during-ghusl/",
+      "title": "Darul Ifta Birmingham: The Effect Of Discharge, Bleeding And Passing Wind During Ghusl (Fatwa 09389)",
+      "supports": "In Hanafi fiqh istinja is only required for what exits and is visible.",
+      "checked_at": "2026-11-02T02:54:18.272Z",
+      "content_sha256": "1a181cba7ec8c9e726a4ce0ab0680b74d38d706a6d69ffdb6f594ff906c18490"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/when-is-a-woman-obliged-to-perform-istinja-if-she-feels-madhy/",
+      "title": "Darul Ifta Birmingham: When is a woman obliged to perform istinja if she feels madhy? (Fatwa 02816)",
+      "supports": "Area cleaned by istinja, then wudu performed.",
+      "checked_at": "2026-11-02T02:53:53.204Z",
+      "content_sha256": "7ce14ac6510b5ab576a56daf83a86526174407801547c795b498a1c7708ed685"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/validity-of-wudhu-when-touching-ones-private-parts/",
+      "title": "Darul Ifta Birmingham: Validity Of Wudhu When Touching Ones Private Parts",
+      "supports": "Touching does not break wudu in the Hanafi school; in the Shafi'i school it does regardless of desire.",
+      "checked_at": "2026-11-02T02:57:32.081Z",
+      "content_sha256": "005ed8075b2de2da1e4ccd7cb2168cb9577950fbe605db89624563a73374ed3a"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/finding-wetness-on-front-passage-after-salah/",
+      "title": "Darul Ifta Birmingham: Finding Wetness On The Front Passage After Salah (Fatwa 07475)",
+      "supports": "Leftover istinja water does not break wudu; doubts are not acted on.",
+      "checked_at": "2026-11-02T02:53:55.752Z",
+      "content_sha256": "82136df491abc279f9e3d99a6d9f4563fe4dbcfdb2e078246123908e634167b3"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text. No approved source gave Shafi'i, Maliki or Hanbali grading of istinja, and the article says so instead of stating them from memory. Its applications to wind and to a Shafi'i washing after wudu are labelled as its own reading, and it states no checked source rules directly on wudu before istinja. A search summary about wind was not found in the capture, so only the visible-exit sentence is used.",
+    "claim_checks": [
+      {
+        "claim": "The wudu verse lists the face, hands to elbows, head and feet.",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "The captured translation lists exactly these.",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta's wudu steps omit istinja and preparation includes being clean from physical impurities.",
+        "source_url": "https://www.dar-alifta.org/en/article/details/249/how-to-perform-wudhu-ablution",
+        "explanation": "The nine captured steps have no istinja and the introduction says this.",
+        "supported": true
+      },
+      {
+        "claim": "Istinja is obligatory for removing impurity, by paper, stone or water, paper then water being preferable; soap is no condition.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7853/is-washing-the-private-part-after-urinating-istinjaa-a-condition-and-is-it-d",
+        "explanation": "Fatwa 7853 states each point.",
+        "supported": true
+      },
+      {
+        "claim": "Sunnah if not spread past the entrance, wajib at a dirham, fard beyond; urine drops must have ceased.",
+        "source_url": "https://daruliftabirmingham.co.uk/the-sunnah-method-of-istinjaah/",
+        "explanation": "The answer states these grades and the compulsory check.",
+        "supported": true
+      },
+      {
+        "claim": "Emphasised sunnah; water wajib beyond a dirham; tissue or wipes fine after urine if not spread.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/is-it-permissible-to-do-istinjah-with-baby-wipes/",
+        "explanation": "Fatwa 04898 says this.",
+        "supported": true
+      },
+      {
+        "claim": "One man in the grave never saved himself from being soiled with urine.",
+        "source_url": "https://sunnah.com/bukhari:218",
+        "explanation": "The narration from Ibn Abbas says this.",
+        "supported": true
+      },
+      {
+        "claim": "Anas carried a tumbler of water.",
+        "source_url": "https://sunnah.com/bukhari:152",
+        "explanation": "The narration says this, with water for cleaning.",
+        "supported": true
+      },
+      {
+        "claim": "The Quba verse relates to people who cleansed with water.",
+        "source_url": "https://sunnah.com/abudawud:44",
+        "explanation": "The narration says this, graded sahih by al-Albani.",
+        "supported": true
+      },
+      {
+        "claim": "Three stones are enough.",
+        "source_url": "https://sunnah.com/abudawud:40",
+        "explanation": "Aisha's narration says this, graded hasan by al-Albani.",
+        "supported": true
+      },
+      {
+        "claim": "Cleaning with the right hand, under three pebbles, dung or bone was forbidden.",
+        "source_url": "https://sunnah.com/muslim:262a",
+        "explanation": "Salman's report lists these.",
+        "supported": true
+      },
+      {
+        "claim": "Perform ablution after washing your organ.",
+        "source_url": "https://sunnah.com/bukhari:269",
+        "explanation": "The Prophet's reply in the narration.",
+        "supported": true
+      },
+      {
+        "claim": "Passing wind breaks wudu if one is certain.",
+        "source_url": "https://daruliftabirmingham.co.uk/passing-wind/",
+        "explanation": "The answer concludes this.",
+        "supported": true
+      },
+      {
+        "claim": "Istinja is only required for what exits and is visible.",
+        "source_url": "https://daruliftabirmingham.co.uk/the-effect-of-discharge-bleeding-and-passing-wind-during-ghusl/",
+        "explanation": "Fatwa 09389 says this in Hanafi fiqh.",
+        "supported": true
+      },
+      {
+        "claim": "The area is cleaned by istinja then wudu performed.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/when-is-a-woman-obliged-to-perform-istinja-if-she-feels-madhy/",
+        "explanation": "Fatwa 02816 says this.",
+        "supported": true
+      },
+      {
+        "claim": "Touching breaks wudu in the Shafi'i school but not the Hanafi school.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/validity-of-wudhu-when-touching-ones-private-parts/",
+        "explanation": "The answer states both.",
+        "supported": true
+      },
+      {
+        "claim": "Leftover istinja water does not break wudu and doubts are not acted on.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/finding-wetness-on-front-passage-after-salah/",
+        "explanation": "Fatwa 07475 says this.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "a17ea5c2d4058ef7e7c2620004340c709a3ab332ed3f78d1399426ca27031f28"
+  },
+  "prepared_at": "2026-11-02T02:59:28.948Z",
+  "state": "awaiting_release"
+}

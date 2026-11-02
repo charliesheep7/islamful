@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "id": "is-080",
+  "action": "new_article",
+  "target_path": "/blog/does-precum-break-wudu",
+  "source_file": "data/blog/en/does-precum-break-wudu.mdx",
+  "assignment_sha256": "87c54ded6abf9fd581515d1261d21763990eac6c3841d653657cb8a388b88b7e",
+  "baseline_sha256": null,
+  "content_sha256": "5ef0eab645d035dcd0ee619e6c4901a5328ba9bbbad0b75e168ca1a7e556dc09",
+  "marker": "b3e952938ba1d4d731f4af0a",
+  "hero": {
+    "src": "/static/images/blog/does-precum-break-wudu.webp",
+    "alt": "Green title card reading Does Precum Break Wudu?",
+    "sha256": "d73eef6906d70c4b1ced4ca96282f63fdafcc120f6b4fc2ae1c6fbfa9d9eba3a"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/bukhari:269",
+      "title": "Sahih al-Bukhari 269 on Sunnah.com",
+      "supports": "Ali's question through another man; perform ablution after washing the organ.",
+      "checked_at": "2026-11-02T02:52:45.468Z",
+      "content_sha256": "2ef80c05faa1586f93357c05db1760cdf5e29020b5f2ede2fc3cbff67c04c52f"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:178",
+      "title": "Sahih al-Bukhari 178 on Sunnah.com",
+      "supports": "Ali felt shy; Al-Miqdad bin Al-Aswad asked; one has to perform ablution.",
+      "checked_at": "2026-11-02T02:52:43.758Z",
+      "content_sha256": "a9846e1fe0b7e7923ad18c08437d920788d08ee38824ea6bdf8d3283b47293f4"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:206",
+      "title": "Sunan Abi Dawud 206 on Sunnah.com",
+      "supports": "Ali's excessive bathing; wash the penis and make ablution for prostatic fluid, bathe for seminal emission; sahih per al-Albani.",
+      "checked_at": "2026-11-02T02:52:46.761Z",
+      "content_sha256": "95a5be04b1a1518d388d60bdf0cf9ee28c8f094844a0216c73db00c7b4470de5"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:208",
+      "title": "Sunan Abi Dawud 208 on Sunnah.com",
+      "supports": "Wording to wash the penis and testicles; sahih per al-Albani.",
+      "checked_at": "2026-11-02T02:53:44.587Z",
+      "content_sha256": "63bc8638f17cf1f32d2135cadb522146e11d135ec0c433c56139a66d951e545f"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:210",
+      "title": "Sunan Abi Dawud 210 on Sunnah.com",
+      "supports": "Sahl ibn Hunayf: ablution suffices; a handful of water sprinkled on clothing; hasan per al-Albani.",
+      "checked_at": "2026-11-02T02:53:45.259Z",
+      "content_sha256": "3a604ce37edd1431fad7d55edc18c360b9eafede4c0dec12027348bc9023ede9"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/discharge-of-mazi-after-sexual-thoughts/",
+      "title": "Darul Ifta Birmingham: Discharge of Mazi after sexual thoughts (Fatwa 01532)",
+      "supports": "Descriptions of mani, madhi and wadi and what each requires; madhi impure and must be washed from body and clothing.",
+      "checked_at": "2026-11-02T02:53:52.131Z",
+      "content_sha256": "3fb2c5969627e16035e7f260ddba0fd1699a7ae5594b83cc80a9e165e75a2968"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/definition-of-mazi-mani-and-wadi/",
+      "title": "Darul Ifta Birmingham: Definition of mazi, mani and wadi (Fatwa 02470)",
+      "supports": "Mathy is thin and sticky, from both sexes, usually unnoticed at exit; wudu breaks, no ghusl.",
+      "checked_at": "2026-11-02T02:53:48.909Z",
+      "content_sha256": "e865d8fadc1be950083502c9f0d88d1f90c48f41c35bac88d7b6c2be0f4effe0"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/discharging-of-madhi/",
+      "title": "Darul Ifta Birmingham: Discharging of Madhi (Fatwa 02182)",
+      "supports": "Madhi breaks wudu without ghusl; palm-hollow rule for prayer in soiled clothes; wash three times; tissue advice.",
+      "checked_at": "2026-11-02T02:53:06.448Z",
+      "content_sha256": "2800a31a33e2d7b112070af1af9dcbabaab059a924a66d154cd3ea0af85ecbf9"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/mazi-coming-out-after-speaking-to-my-wife/",
+      "title": "Darul Ifta Birmingham: Mazi coming out after speaking to my wife (Fatwa 01950)",
+      "supports": "Washing machines may clean impure clothes if no visible impurity remains.",
+      "checked_at": "2026-11-02T02:53:49.972Z",
+      "content_sha256": "ba6974950f2d0a2911075e450a8c090afc6fd29dc855b423830921578d1c461a"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/when-is-a-woman-obliged-to-perform-istinja-if-she-feels-madhy/",
+      "title": "Darul Ifta Birmingham: When is a woman obliged to perform istinja if she feels madhy? (Fatwa 02816)",
+      "supports": "Madhy reaching the labia minora breaks wudu; clean by istinja then make wudu; external area only.",
+      "checked_at": "2026-11-02T02:53:51.517Z",
+      "content_sha256": "7ce14ac6510b5ab576a56daf83a86526174407801547c795b498a1c7708ed685"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/wudu-and-madhi/",
+      "title": "Darul Ifta Birmingham: Wudu and madhi (Fatwa 02268)",
+      "supports": "Excused person rules, tissue or cloth advice, and advice to consult a doctor.",
+      "checked_at": "2026-11-02T02:53:05.103Z",
+      "content_sha256": "4de399afc2520398e66df60d9d6ef6adc09af79fc8ebc9cf11c928962c9d589e"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/finding-wetness-on-front-passage-after-salah/",
+      "title": "Darul Ifta Birmingham: Finding Wetness On The Front Passage After Salah (Fatwa 07475)",
+      "supports": "Presumption of purity unless certain of impurity; caution against obsessive doubts in Hanafi fiqh.",
+      "checked_at": "2026-11-02T02:53:55.752Z",
+      "content_sha256": "82136df491abc279f9e3d99a6d9f4563fe4dbcfdb2e078246123908e634167b3"
+    },
+    {
+      "url": "https://www.nhs.uk/conditions/prostatitis/",
+      "title": "NHS: Prostatitis",
+      "supports": "Listed symptoms of prostatitis and advice to see a GP.",
+      "checked_at": "2026-11-02T02:53:08.648Z",
+      "content_sha256": "d53ad98b3e2a50849052109159b3707126f5cf779a6a2dc2dd70f1b43505923e"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text. Sahih Muslim 303a and a Saudi Permanent Committee fatwa on sprinkling could not be retrieved, so neither is cited, and the sprinkling view rests on the hadith text alone. The article discloses its reliance on one Hanafi service. Links to other schools' detailed rulings were not available in approved sources, so none are asserted.",
+    "claim_checks": [
+      {
+        "claim": "Ali was told to perform ablution after washing his organ.",
+        "source_url": "https://sunnah.com/bukhari:269",
+        "explanation": "The captured narration states this and mentions him being the son-in-law.",
+        "supported": true
+      },
+      {
+        "claim": "Ali felt shy, Al-Miqdad asked, and one has to perform ablution.",
+        "source_url": "https://sunnah.com/bukhari:178",
+        "explanation": "The captured narration says each of these points.",
+        "supported": true
+      },
+      {
+        "claim": "Ali bathed until his back cracked and was told to wash and make ablution, bathing only for seminal emission.",
+        "source_url": "https://sunnah.com/abudawud:206",
+        "explanation": "The captured text says this and shows the sahih grade from al-Albani.",
+        "supported": true
+      },
+      {
+        "claim": "One wording says to wash the penis and testicles.",
+        "source_url": "https://sunnah.com/abudawud:208",
+        "explanation": "The captured text says this and shows the sahih grade from al-Albani.",
+        "supported": true
+      },
+      {
+        "claim": "A handful of water sprinkled on clothing suffices.",
+        "source_url": "https://sunnah.com/abudawud:210",
+        "explanation": "Sahl ibn Hunayf's narration says this, graded hasan by al-Albani.",
+        "supported": true
+      },
+      {
+        "claim": "Madhi and wadi require wudu, mani requires ghusl, and madhi on body or clothing must be washed.",
+        "source_url": "https://daruliftabirmingham.co.uk/discharge-of-mazi-after-sexual-thoughts/",
+        "explanation": "Fatwa 01532 gives the three definitions and the washing requirement.",
+        "supported": true
+      },
+      {
+        "claim": "Mathy comes from both sexes and one is usually unaware when it is discharged.",
+        "source_url": "https://daruliftabirmingham.co.uk/definition-of-mazi-mani-and-wadi/",
+        "explanation": "Fatwa 02470 says this directly.",
+        "supported": true
+      },
+      {
+        "claim": "Soiled portion washed three times; palm-hollow rule; tissue recommended.",
+        "source_url": "https://daruliftabirmingham.co.uk/discharging-of-madhi/",
+        "explanation": "Fatwa 02182 states all three.",
+        "supported": true
+      },
+      {
+        "claim": "Clothes can be purified in a washing machine if no visible impurity remains.",
+        "source_url": "https://daruliftabirmingham.co.uk/mazi-coming-out-after-speaking-to-my-wife/",
+        "explanation": "Fatwa 01950 says this.",
+        "supported": true
+      },
+      {
+        "claim": "Madhy reaching the labia minora breaks wudu; clean by istinja then wudu; external part only.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/when-is-a-woman-obliged-to-perform-istinja-if-she-feels-madhy/",
+        "explanation": "Fatwa 02816 says this directly.",
+        "supported": true
+      },
+      {
+        "claim": "Excused-person rules exist, tissue is advised and a doctor may be consulted.",
+        "source_url": "https://daruliftabirmingham.co.uk/wudu-and-madhi/",
+        "explanation": "Fatwa 02268 says all three.",
+        "supported": true
+      },
+      {
+        "claim": "Purity is assumed without certainty and jurists caution against obsessive doubts.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/finding-wetness-on-front-passage-after-salah/",
+        "explanation": "Fatwa 07475 gives both under its headings on doubts and waswasa.",
+        "supported": true
+      },
+      {
+        "claim": "Pain when peeing, pain on ejaculating and high temperature are prostatitis symptoms; see a GP.",
+        "source_url": "https://www.nhs.uk/conditions/prostatitis/",
+        "explanation": "The NHS page lists these and the advice.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "a9cb57b2699fdaf774c561cd6c85bcb801e1e2e8f091a1910714b5bc76f6f86d"
+  },
+  "prepared_at": "2026-11-02T02:57:13.246Z",
+  "state": "awaiting_release"
+}

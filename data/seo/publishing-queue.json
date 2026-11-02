@@ -5669,7 +5669,7 @@
       "target_path": "/blog/does-precum-break-wudu",
       "source_file": "data/blog/en/does-precum-break-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer does precum break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5688,7 +5688,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5718,7 +5718,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "5ef0eab645d035dcd0ee619e6c4901a5328ba9bbbad0b75e168ca1a7e556dc09",
+        "marker": "b3e952938ba1d4d731f4af0a",
+        "audit_file": "data/seo/publications/is-080.json",
+        "hero": {
+          "src": "/static/images/blog/does-precum-break-wudu.webp",
+          "alt": "Green title card reading Does Precum Break Wudu?",
+          "sha256": "d73eef6906d70c4b1ced4ca96282f63fdafcc120f6b4fc2ae1c6fbfa9d9eba3a"
+        }
+      }
     },
     {
       "id": "is-081",
@@ -5730,7 +5740,7 @@
       "target_path": "/blog/is-istinja-mandatory-for-wudu",
       "source_file": "data/blog/en/is-istinja-mandatory-for-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer is istinja mandatory for wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5749,7 +5759,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5779,7 +5789,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "78059e25ea19cca1b55ac10f041bf68a3cb72c90c1346294ae0efe27a3143ff1",
+        "marker": "89b373ad8ba5865a5f415f77",
+        "audit_file": "data/seo/publications/is-081.json",
+        "hero": {
+          "src": "/static/images/blog/is-istinja-mandatory-for-wudu.webp",
+          "alt": "Dark green title card reading Is Istinja Mandatory for Wudu?",
+          "sha256": "0108795f6c5b305e4348e279199da6d782c02db905dfeb1a4dc1d02ec68a50f8"
+        }
+      }
     },
     {
       "id": "is-082",
