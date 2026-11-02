@@ -194,5 +194,11 @@
     "article_sha256": "a9cb57b2699fdaf774c561cd6c85bcb801e1e2e8f091a1910714b5bc76f6f86d"
   },
   "prepared_at": "2026-11-02T02:57:13.246Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-02T03:03:09.740Z",
+    "commit": "6a6053c9d560d6e9b1a4a8f5b776272b495e4bde",
+    "deployment_id": 7483225585,
+    "url": "https://www.islamful.com/blog/does-precum-break-wudu"
+  }
 }

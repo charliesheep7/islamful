@@ -5668,10 +5668,10 @@
       "proposed_title": "Does precum break Wudu?",
       "target_path": "/blog/does-precum-break-wudu",
       "source_file": "data/blog/en/does-precum-break-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer does precum break wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5728,6 +5728,12 @@
           "alt": "Green title card reading Does Precum Break Wudu?",
           "sha256": "d73eef6906d70c4b1ced4ca96282f63fdafcc120f6b4fc2ae1c6fbfa9d9eba3a"
         }
+      },
+      "release": {
+        "date": "2026-11-02T03:03:09.740Z",
+        "commit": "6a6053c9d560d6e9b1a4a8f5b776272b495e4bde",
+        "deployment_id": 7483225585,
+        "url": "https://www.islamful.com/blog/does-precum-break-wudu"
       }
     },
     {
@@ -5739,10 +5745,10 @@
       "proposed_title": "Is istinja mandatory for Wudu?",
       "target_path": "/blog/is-istinja-mandatory-for-wudu",
       "source_file": "data/blog/en/is-istinja-mandatory-for-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer is istinja mandatory for wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5799,6 +5805,12 @@
           "alt": "Dark green title card reading Is Istinja Mandatory for Wudu?",
           "sha256": "0108795f6c5b305e4348e279199da6d782c02db905dfeb1a4dc1d02ec68a50f8"
         }
+      },
+      "release": {
+        "date": "2026-11-02T03:03:10.000Z",
+        "commit": "6a6053c9d560d6e9b1a4a8f5b776272b495e4bde",
+        "deployment_id": 7483225585,
+        "url": "https://www.islamful.com/blog/is-istinja-mandatory-for-wudu"
       }
     },
     {
