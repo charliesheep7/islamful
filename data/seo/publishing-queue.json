@@ -5823,7 +5823,7 @@
       "target_path": "/blog/dhikr-and-dua-without-wudu",
       "source_file": "data/blog/en/dhikr-and-dua-without-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can i do dhikr without wudu; can you make dua without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5854,7 +5854,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5887,7 +5887,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "a3138c10b78df0c77af1a91f5e49f466163650afec0f4c8bd96b6ba106d8b234",
+        "marker": "abbfb1241b42d8aa28a14c21",
+        "audit_file": "data/seo/publications/is-082.json",
+        "hero": {
+          "src": "/static/images/blog/dhikr-and-dua-without-wudu.webp",
+          "alt": "Green title card reading Dhikr and Dua Without Wudu",
+          "sha256": "0cadbbbd0b319cf18b9f5b5cb89d89b2c2ecc41ee8dcfdc0e90f8a90a04bfb21"
+        }
+      }
     },
     {
       "id": "is-083",
@@ -5899,7 +5909,7 @@
       "target_path": "/blog/can-you-pray-with-nail-polish-after-wudu",
       "source_file": "data/blog/en/can-you-pray-with-nail-polish-after-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can you pray with nail polish after wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -5918,7 +5928,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -5948,7 +5958,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "be27cf91dd2b576fa915ced90221f4e2e5b7dd0612e68b03d355af428afc30f2",
+        "marker": "3826477f7b9f38fc5607c72e",
+        "audit_file": "data/seo/publications/is-083.json",
+        "hero": {
+          "src": "/static/images/blog/can-you-pray-with-nail-polish-after-wudu.webp",
+          "alt": "Dark green title card reading Nail Polish After Wudu",
+          "sha256": "8afcbbcb60dec8284be8cae664d8117588a55f99f4633facd2148c899e22c7db"
+        }
+      }
     },
     {
       "id": "is-084",

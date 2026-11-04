@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "id": "is-082",
+  "action": "new_article",
+  "target_path": "/blog/dhikr-and-dua-without-wudu",
+  "source_file": "data/blog/en/dhikr-and-dua-without-wudu.mdx",
+  "assignment_sha256": "496d58802b66a7056c5264eac42e713a3756534c840b8b0e982d41287b5227d3",
+  "baseline_sha256": null,
+  "content_sha256": "a3138c10b78df0c77af1a91f5e49f466163650afec0f4c8bd96b6ba106d8b234",
+  "marker": "abbfb1241b42d8aa28a14c21",
+  "hero": {
+    "src": "/static/images/blog/dhikr-and-dua-without-wudu.webp",
+    "alt": "Green title card reading Dhikr and Dua Without Wudu",
+    "sha256": "0cadbbbd0b319cf18b9f5b5cb89d89b2c2ecc41ee8dcfdc0e90f8a90a04bfb21"
+  },
+  "sources": [
+    {
+      "url": "https://quran.com/3/191",
+      "title": "Quran 3:191 (Al Imran), The Clear Quran translation",
+      "supports": "Praise for those who remember Allah standing, sitting and lying on their sides.",
+      "checked_at": "2026-11-03T02:08:05.433Z",
+      "content_sha256": "90d741df738aee58b09fe572079d7360d53942adfbb45e670920d26339752b15"
+    },
+    {
+      "url": "https://quran.com/33/41",
+      "title": "Quran 33:41 (Al-Ahzab), The Clear Quran translation",
+      "supports": "Command to the believers to remember Allah often.",
+      "checked_at": "2026-11-03T02:08:06.692Z",
+      "content_sha256": "2c9bd2984d7de83007760782dafce9e36eebf4bccd3aaf6f46c34ed639ed7df5"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Al-Ma'idah), The Clear Quran translation",
+      "supports": "The wudu verse opens with the command for when you rise up for prayer.",
+      "checked_at": "2026-11-03T02:08:26.488Z",
+      "content_sha256": "eef9f920dfeec84ee0d3db07de1234ed41b868c1072d68008a4a7e0a10a1abf6"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:971",
+      "title": "Sahih al-Bukhari 971",
+      "supports": "Menstruating women were ordered to come out on Eid, say takbir with the people and invoke Allah with them.",
+      "checked_at": "2026-11-03T02:08:10.284Z",
+      "content_sha256": "70042a11b8be84046a3796528f64a54fe926c2932629a86ecaefea53aee8f485"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:146",
+      "title": "Jami at-Tirmidhi 146",
+      "supports": "The Prophet recited the Quran in all conditions except when junub; al-Tirmidhi names scholars who allow recitation without wudu but reading from the mushaf only while pure.",
+      "checked_at": "2026-11-03T02:08:11.344Z",
+      "content_sha256": "b6614434fda5370ce4171e5ee975ff23e31d4cd8797a6fda7773a30890c8f531"
+    },
+    {
+      "url": "https://sunnah.com/abudawud:17",
+      "title": "Sunan Abi Dawud 17",
+      "supports": "The Prophet did not return a greeting until he made wudu and said he disliked remembering Allah except in a state of purity.",
+      "checked_at": "2026-11-03T02:08:09.285Z",
+      "content_sha256": "d9ffd90be95afa87a2527343c70fff71937e995f4502ecb50a686d71de0822fd"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:247",
+      "title": "Sahih al-Bukhari 247",
+      "supports": "Instruction to make wudu as for prayer before sleeping, then say the bedtime supplication.",
+      "checked_at": "2026-11-03T02:08:11.153Z",
+      "content_sha256": "40eca2f086c1c8d4ac3a1024c71743431b00c115164a85826a79da88bebeb92c"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:4323",
+      "title": "Sahih al-Bukhari 4323",
+      "supports": "The Prophet asked for water, performed ablution, raised his hands and made dua for Abu Amir.",
+      "checked_at": "2026-11-03T02:08:10.919Z",
+      "content_sha256": "2953e063e3c6df5c91b5ad598560c2da861307b3b1044c13aa5975c4dca6c18c"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/can-a-woman-in-her-periods-recite-durud-shareef-2/",
+      "title": "Darul Ifta Birmingham fatwa 02055: Can a woman on her periods recite Durud Shareef?",
+      "supports": "Hanafi answer permitting durud and other dhikr during menstruation, and Quranic verses with the intention of dua but not recitation.",
+      "checked_at": "2026-11-03T02:09:03.408Z",
+      "content_sha256": "c126dcfcab4ef0986df6cacdb93c03f400f8ec648a8dd83c86bfc5836cdbd1ab"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/reciting-quran-whilst-menstruating/",
+      "title": "Darul Ifta Birmingham fatwa 05270: Reciting Quran whilst menstruating",
+      "supports": "Hanafi answer allowing Ikhlas, Falaq, Nas and Ayat al-Kursi as dua or dhikr during menstruation and advising against Kahf, Mulk and Kafirun.",
+      "checked_at": "2026-11-03T02:09:05.696Z",
+      "content_sha256": "8aa30205112e180728da55beed206754e08917efee598e834aadb8d6586068a3"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured source text. The conclusions that dhikr is a lighter case than Quran recitation and that Abu Dawud 17 shows a preference rather than a condition are labelled as this guide's reading. Menstruation rulings are attributed to one Hanafi fatwa service, and the article states that other schools were not checked. No counts, grades or scholar positions were added from memory.",
+    "claim_checks": [
+      {
+        "claim": "Quran 3:191 praises those who remember Allah while standing, sitting and lying on their sides.",
+        "source_url": "https://quran.com/3/191",
+        "explanation": "The captured translation reads: those who remember Allah while standing, sitting, and lying on their sides.",
+        "supported": true
+      },
+      {
+        "claim": "Quran 33:41 tells the believers to remember Allah often.",
+        "source_url": "https://quran.com/33/41",
+        "explanation": "The captured translation reads: O believers! Always remember Allah often.",
+        "supported": true
+      },
+      {
+        "claim": "The wudu verse opens with when you rise up for prayer.",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "The captured translation of 5:6 begins: O believers! When you rise up for prayer, wash your faces.",
+        "supported": true
+      },
+      {
+        "claim": "Menstruating women were told to come out on Eid, say takbir and invoke Allah with the people.",
+        "source_url": "https://sunnah.com/bukhari:971",
+        "explanation": "Umm Atiya says they were ordered to bring out menstruating women so they might stand behind the men, say takbir along with them and invoke Allah along with them.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet recited the Quran in every condition except when junub, and al-Tirmidhi names Sufyan al-Thawri, al-Shafi'i, Ahmad and Ishaq as allowing recitation without wudu but reading from the mushaf only while pure.",
+        "source_url": "https://sunnah.com/tirmidhi:146",
+        "explanation": "The English text gives Ali's report; the Arabic commentary says a man may recite the Quran without wudu and only read in the mushaf while pure, and names those four scholars.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet did not reply to Muhajir's greeting until he made wudu and said he disliked remembering Allah except in purity.",
+        "source_url": "https://sunnah.com/abudawud:17",
+        "explanation": "The captured narration states he did not return the salutation until he performed ablution, then said: I disliked remembering Allah except in the state of purification.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet told al-Bara to make wudu as for prayer before bed, lie on his right side and say the bedtime dua.",
+        "source_url": "https://sunnah.com/bukhari:247",
+        "explanation": "The captured hadith gives this instruction followed by the supplication beginning Allahumma aslamtu wajhi ilaika.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet asked for water, made wudu, raised his hands and made dua for Abu Amir.",
+        "source_url": "https://sunnah.com/bukhari:4323",
+        "explanation": "The captured text says the Prophet asked for water, performed ablution and then raised hands, saying O Allah forgive Ubaid, Abu Amir.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham permits a menstruating woman to read durud and other dhikr, and Quranic verses with the intention of dua but not recitation.",
+        "source_url": "https://daruliftabirmingham.co.uk/can-a-woman-in-her-periods-recite-durud-shareef-2/",
+        "explanation": "Fatwa 02055 concludes it is permissible for women to read Durud Shareef and other zikrs in their periods and verses with the intention of dua, not recitation.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham allows Ikhlas, Falaq, Nas and Ayat al-Kursi as dua or dhikr during menstruation and advises against Kahf, Mulk and Kafirun.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/reciting-quran-whilst-menstruating/",
+        "explanation": "Fatwa 05270 says she may read those four and should abstain from Kahf, Mulk and Kaafiroon as they do not bear the meaning of supplications or zikr.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "860ab88dc22c650f33cb08b8d257db4573047ea86f73c7fc857a77f6f94a07ee"
+  },
+  "prepared_at": "2026-11-04T01:49:01.842Z",
+  "state": "awaiting_release"
+}

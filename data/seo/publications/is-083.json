@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "is-083",
+  "action": "new_article",
+  "target_path": "/blog/can-you-pray-with-nail-polish-after-wudu",
+  "source_file": "data/blog/en/can-you-pray-with-nail-polish-after-wudu.mdx",
+  "assignment_sha256": "434a105a9d8142dddc1451e63e4860a03b9c3140c9c92c2cd410246277a39126",
+  "baseline_sha256": null,
+  "content_sha256": "be27cf91dd2b576fa915ced90221f4e2e5b7dd0612e68b03d355af428afc30f2",
+  "marker": "3826477f7b9f38fc5607c72e",
+  "hero": {
+    "src": "/static/images/blog/can-you-pray-with-nail-polish-after-wudu.webp",
+    "alt": "Dark green title card reading Nail Polish After Wudu",
+    "sha256": "8afcbbcb60dec8284be8cae664d8117588a55f99f4633facd2148c899e22c7db"
+  },
+  "sources": [
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/6125/can-i-pray-with-my-nail-polish-or-should-i-remove-it-for-ablution",
+      "title": "Dar al-Ifta (Egypt) fatwa 6125: Can I pray with my nail polish or should I remove it for ablution?",
+      "supports": "Using nail polish is permissible and does not invalidate ablution; waterproof polish must be removed before ablution, while dye and henna need not be.",
+      "checked_at": "2026-11-04T01:49:31.191Z",
+      "content_sha256": "90ca4026b90fa93bd44715e1954d7335aa60cac025f9945af9f53c723ea71904"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/6144/making-ablution-while-wearing-makeup-and-nail-polish",
+      "title": "Dar al-Ifta (Egypt) fatwa 6144: Making ablution while wearing makeup and nail polish",
+      "supports": "After wudu for Fajr then makeup, anything blocking water, including nail polish, must be removed before the next ablution.",
+      "checked_at": "2026-11-04T01:49:33.675Z",
+      "content_sha256": "1da983fa6341e196587aab1f40d9d4bb22c797d93c8cd40f64202a8404356c22"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/wearing-fake-nails-and-nail-polish-during-period/",
+      "title": "Darul Ifta Birmingham: Wearing fake nails and nail polish during period",
+      "supports": "The nail polish issue concerns validity of wudu and ghusl because water must reach the limbs; wearing it during a period is permissible if nothing impure.",
+      "checked_at": "2026-11-03T02:08:29.342Z",
+      "content_sha256": "dfb6bad61049c793892c634fcb02ef5ef223ac394b03133ce3068416da2aeaa5"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/silicone-products/",
+      "title": "Darul Ifta Birmingham: Silicone products",
+      "supports": "Recommends applying barrier products after the fard of wudu or ghusl; thick visible barriers like nail polish invalidate wudu, oil and Vaseline do not.",
+      "checked_at": "2026-11-03T02:09:00.180Z",
+      "content_sha256": "f2048e701b80d20620fa6fd14a3daea0a1fb51f8ccabc96639abf19c005debab"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Al-Ma'idah), The Clear Quran translation",
+      "supports": "Wudu requires washing the hands up to the elbows when rising for prayer.",
+      "checked_at": "2026-11-03T02:08:26.488Z",
+      "content_sha256": "eef9f920dfeec84ee0d3db07de1234ed41b868c1072d68008a4a7e0a10a1abf6"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/is-it-permissible-to-apply-nail-polish/",
+      "title": "Darul Ifta Birmingham: Is it permissible to apply nail polish?",
+      "supports": "Nails are part of the hands and water must reach them; wudu is not valid with gel nails on; breathable polish is doubtful.",
+      "checked_at": "2026-11-03T02:08:28.560Z",
+      "content_sha256": "7a7815139ad629b8ac77ef594107f07dfe677af2eaf2a58bc6144a27956ddc24"
+    },
+    {
+      "url": "https://sunnah.com/ibnmajah:666",
+      "title": "Sunan Ibn Majah 666",
+      "supports": "A man left a fingernail-sized spot on his foot unwashed and was told to repeat his ablution and prayer.",
+      "checked_at": "2026-11-03T02:08:27.588Z",
+      "content_sha256": "082ba14c55cdb5c75eee3771eb347fa3f36092384aab39fcb1ad51e9236f4a91"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/wudhu-with-makeup/",
+      "title": "Darul Ifta Birmingham: Wudhu with makeup",
+      "supports": "Quotes al-Fatawa al-Hindiyya that wudu suffices for a woman who dyed her finger with henna, with the fatwa on permissibility.",
+      "checked_at": "2026-11-03T02:09:01.101Z",
+      "content_sha256": "900a751d7eae491839703c514ee45b8e6dd2e3a8254a1ae1b366939753ac2a51"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against captured text from two fatwa services, the Quran and one hadith. The step from Ibn Majah 666 to repeating prayers prayed over polish, and the advice to remove polish before end-of-period ghusl, are labelled as this guide's application. The article says it checked only two services and found none allowing wudu over waterproof polish, rather than claiming consensus. No school positions were added from memory.",
+    "claim_checks": [
+      {
+        "claim": "Dar al-Ifta says using nail polish is permissible and does not invalidate ablution, that blocking polish must be removed before ablution, and that dye and henna need not be.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/6125/can-i-pray-with-my-nail-polish-or-should-i-remove-it-for-ablution",
+        "explanation": "The captured answer states it is permissible to use nail polish and it does not invalidate ablution, must be removed if it prevents water, and dye and Hinna need not be removed.",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta answered the case of wudu for Fajr, makeup after, and a new wudu for Dhuhr: blocking makeup and nail polish must be removed first.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/6144/making-ablution-while-wearing-makeup-and-nail-polish",
+        "explanation": "The captured question describes that exact scenario and the answer says it is obligatory to remove makeup that prevents water and the same applies to nail polish.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham says the polish issue concerns validity of wudu and ghusl since water must reach the limbs, and wearing it during a period is permissible if nothing impure.",
+        "source_url": "https://daruliftabirmingham.co.uk/wearing-fake-nails-and-nail-polish-during-period/",
+        "explanation": "The captured answer says this, adds that non-porous polish prevents water reaching the limbs, and that wudu and ghusl are not required during the period.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham recommends applying barrier products after the fard of wudu or ghusl and treats nail polish as a thick barrier but oil and Vaseline as not.",
+        "source_url": "https://daruliftabirmingham.co.uk/silicone-products/",
+        "explanation": "The captured silicone answer recommends applying such products after the Fardh of wudu or Ghusal and gives nail polish versus Vaseline and oil as the examples.",
+        "supported": true
+      },
+      {
+        "claim": "Wudu requires washing the hands up to the elbows.",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "The captured translation says: wash your faces and your hands up to the elbows.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham says nails are part of the hands, wudu is not valid with gel nails on, and breathable polish carries a huge doubt.",
+        "source_url": "https://daruliftabirmingham.co.uk/is-it-permissible-to-apply-nail-polish/",
+        "explanation": "The captured answer says the nails are part of the hands and water must reach them, gel nails must be removed as wudu will not be legitimate, and there is a huge doubt with permeable polish.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet told a man who left a fingernail-sized spot on his foot to repeat his wudu and prayer.",
+        "source_url": "https://sunnah.com/ibnmajah:666",
+        "explanation": "The captured narration from Umar says he missed a spot the size of a fingernail on his foot and was commanded to repeat the ablution and his prayer.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham quotes al-Fatawa al-Hindiyya that wudu suffices for a woman who dyed her finger with henna.",
+        "source_url": "https://daruliftabirmingham.co.uk/wudhu-with-makeup/",
+        "explanation": "The captured Arabic quote from al-Fatawa al-Hindiyya 1/4 includes the woman who dyed her finger with henna and says their wudu suffices, with the fatwa on permissibility.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "a109b4efa759ef52d270ec540c313cbe7012efaffd88e7e281edfa20d7dbe713"
+  },
+  "prepared_at": "2026-11-04T01:50:54.550Z",
+  "state": "awaiting_release"
+}
