@@ -5822,10 +5822,10 @@
       "proposed_title": "Dhikr and dua without Wudu",
       "target_path": "/blog/dhikr-and-dua-without-wudu",
       "source_file": "data/blog/en/dhikr-and-dua-without-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can i do dhikr without wudu; can you make dua without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5897,6 +5897,12 @@
           "alt": "Green title card reading Dhikr and Dua Without Wudu",
           "sha256": "0cadbbbd0b319cf18b9f5b5cb89d89b2c2ecc41ee8dcfdc0e90f8a90a04bfb21"
         }
+      },
+      "release": {
+        "date": "2026-11-04T01:55:04.462Z",
+        "commit": "68422c66892bed41731ea4129062462fc7b5d0af",
+        "deployment_id": 7535717129,
+        "url": "https://www.islamful.com/blog/dhikr-and-dua-without-wudu"
       }
     },
     {
@@ -5908,10 +5914,10 @@
       "proposed_title": "Can you pray with nail polish after Wudu?",
       "target_path": "/blog/can-you-pray-with-nail-polish-after-wudu",
       "source_file": "data/blog/en/can-you-pray-with-nail-polish-after-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can you pray with nail polish after wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -5968,6 +5974,12 @@
           "alt": "Dark green title card reading Nail Polish After Wudu",
           "sha256": "8afcbbcb60dec8284be8cae664d8117588a55f99f4633facd2148c899e22c7db"
         }
+      },
+      "release": {
+        "date": "2026-11-04T01:55:04.748Z",
+        "commit": "68422c66892bed41731ea4129062462fc7b5d0af",
+        "deployment_id": 7535717129,
+        "url": "https://www.islamful.com/blog/can-you-pray-with-nail-polish-after-wudu"
       }
     },
     {

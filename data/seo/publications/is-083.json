@@ -129,5 +129,11 @@
     "article_sha256": "a109b4efa759ef52d270ec540c313cbe7012efaffd88e7e281edfa20d7dbe713"
   },
   "prepared_at": "2026-11-04T01:50:54.550Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-04T01:55:04.748Z",
+    "commit": "68422c66892bed41731ea4129062462fc7b5d0af",
+    "deployment_id": 7535717129,
+    "url": "https://www.islamful.com/blog/can-you-pray-with-nail-polish-after-wudu"
+  }
 }

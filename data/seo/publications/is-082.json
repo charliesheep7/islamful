@@ -155,5 +155,11 @@
     "article_sha256": "860ab88dc22c650f33cb08b8d257db4573047ea86f73c7fc857a77f6f94a07ee"
   },
   "prepared_at": "2026-11-04T01:49:01.842Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-04T01:55:04.462Z",
+    "commit": "68422c66892bed41731ea4129062462fc7b5d0af",
+    "deployment_id": 7535717129,
+    "url": "https://www.islamful.com/blog/dhikr-and-dua-without-wudu"
+  }
 }
