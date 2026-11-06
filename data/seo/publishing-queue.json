@@ -5991,10 +5991,10 @@
       "proposed_title": "Can i do ruqyah without Wudu?",
       "target_path": "/blog/can-i-do-ruqyah-without-wudu",
       "source_file": "data/blog/en/can-i-do-ruqyah-without-wudu.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can i do ruqyah without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -6051,6 +6051,12 @@
           "alt": "Green title card reading Ruqyah Without Wudu",
           "sha256": "f0b9236c72f79e34c6c63fec51b3a86eadf2b803d52b3670589284a353b62d00"
         }
+      },
+      "release": {
+        "date": "2026-11-06T06:14:50.737Z",
+        "commit": "5c2d520a98eaff00e6ed28d47caa564b194a6b7f",
+        "deployment_id": 7593746076,
+        "url": "https://www.islamful.com/blog/can-i-do-ruqyah-without-wudu"
       }
     },
     {
@@ -6062,10 +6068,10 @@
       "proposed_title": "Can i do Wudu with a pimple patch on?",
       "target_path": "/blog/can-i-do-wudu-with-a-pimple-patch-on",
       "source_file": "data/blog/en/can-i-do-wudu-with-a-pimple-patch-on.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer can i do wudu with a pimple patch on. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -6122,6 +6128,12 @@
           "alt": "Green title card reading Wudu With a Pimple Patch",
           "sha256": "bd4a5727147779d81af3fc0ba26c0e353ca06b678ad63310848e6616d9bb85f9"
         }
+      },
+      "release": {
+        "date": "2026-11-06T06:14:51.353Z",
+        "commit": "5c2d520a98eaff00e6ed28d47caa564b194a6b7f",
+        "deployment_id": 7593746076,
+        "url": "https://www.islamful.com/blog/can-i-do-wudu-with-a-pimple-patch-on"
       }
     },
     {

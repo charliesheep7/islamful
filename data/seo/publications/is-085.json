@@ -96,5 +96,11 @@
     "article_sha256": "1871e12bfc0e5b58c6eabf7ecea799ea4c9079446e82cb14d60490cd09efd71d"
   },
   "prepared_at": "2026-11-06T06:10:31.606Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-06T06:14:51.353Z",
+    "commit": "5c2d520a98eaff00e6ed28d47caa564b194a6b7f",
+    "deployment_id": 7593746076,
+    "url": "https://www.islamful.com/blog/can-i-do-wudu-with-a-pimple-patch-on"
+  }
 }

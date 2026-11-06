@@ -148,5 +148,11 @@
     "article_sha256": "2349ce387280ee0daf2c7f435e9e9c6c9ecad9ec4f572b7a0f74dc32f86a30e1"
   },
   "prepared_at": "2026-11-06T06:09:33.744Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-06T06:14:50.737Z",
+    "commit": "5c2d520a98eaff00e6ed28d47caa564b194a6b7f",
+    "deployment_id": 7593746076,
+    "url": "https://www.islamful.com/blog/can-i-do-ruqyah-without-wudu"
+  }
 }
