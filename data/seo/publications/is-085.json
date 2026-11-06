@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "is-085",
+  "action": "new_article",
+  "target_path": "/blog/can-i-do-wudu-with-a-pimple-patch-on",
+  "source_file": "data/blog/en/can-i-do-wudu-with-a-pimple-patch-on.mdx",
+  "assignment_sha256": "9d9a1e698f1f9417a7096db3bcf1ae5d1fa192e218d8de5f8795dcec1b5971c6",
+  "baseline_sha256": null,
+  "content_sha256": "7693468426ed91b7d5e830b06ec3c3b5da0b658bcaf1a6abe0b93172796c8023",
+  "marker": "12f9d1106bb537a5dce9e957",
+  "hero": {
+    "src": "/static/images/blog/can-i-do-wudu-with-a-pimple-patch-on.webp",
+    "alt": "Green title card reading Wudu With a Pimple Patch",
+    "sha256": "bd4a5727147779d81af3fc0ba26c0e353ca06b678ad63310848e6616d9bb85f9"
+  },
+  "sources": [
+    {
+      "url": "https://daruliftabirmingham.co.uk/wudhu-with-makeup/",
+      "title": "Darul Ifta Birmingham fatwa 07322: Wudhu With Makeup",
+      "supports": "Wudu is invalid if something prevents water reaching the skin of washed parts; makeup usually does not form such a barrier.",
+      "checked_at": "2026-11-06T02:17:51.619Z",
+      "content_sha256": "900a751d7eae491839703c514ee45b8e6dd2e3a8254a1ae1b366939753ac2a51"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/?p=7535",
+      "title": "Darul Ifta Birmingham fatwa 01598: How to do ghusl if an area is covered with a bandage",
+      "supports": "A hospital patch over a spot with liquid: if the area cannot be washed or wiped, wiping the bandage with wet hands is compulsory for ghusl.",
+      "checked_at": "2026-11-06T02:17:48.102Z",
+      "content_sha256": "43310e00d2932fa2ab14c18c248e31baf246be9d64c2b635b2382a228563d23c"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/?p=12138",
+      "title": "Darul Ifta Birmingham fatwa 03049: Bandage wiping and wound healing",
+      "supports": "Citing Quduri, wiping continues if the bandage falls before healing and stops once healed; if water still causes pain it may be kept covered.",
+      "checked_at": "2026-11-06T02:17:49.659Z",
+      "content_sha256": "6b8580c5a15990e5cd603be268908a9937ca03d98df3c33fc13cb4cc330b1e2f"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/pus-coming-out-of-the-wound/",
+      "title": "Darul Ifta Birmingham fatwa 05471: Pus Coming Out of the Wound",
+      "supports": "Pus not flowing by itself does not break wudu; a plaster may be used; renew wudu if pus comes out beyond the plaster by itself.",
+      "checked_at": "2026-11-06T02:17:46.263Z",
+      "content_sha256": "62649e32ae37796bb5e554af6eb3afa9592b1eac0ce9e1176841ac983b4e7ed2"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Al-Ma'idah), The Clear Quran translation",
+      "supports": "Command to wash the face for prayer; It is not Allah's Will to burden you.",
+      "checked_at": "2026-11-06T02:16:42.670Z",
+      "content_sha256": "9f85c4dbd9be2f5ab3dda8abec98a5b29692aba3351f9f0a46afec1658f82fdc"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "All fiqh claims come from four Darul Ifta Birmingham (Hanafi) fatwas and are attributed as such; the article states other schools were not checked. Applying the barrier principle and the bandage-wiping rule to a pimple patch, and the ghusl-to-wudu extension of fatwa 01598, are explicitly labelled as this guide's reasoning. The makeup fatwa's statement that makeup usually is not a barrier is reported accurately and contrasted with a patch. The question of repeating past prayers is not ruled on and is referred to a local scholar. Quran 2:185 was captured but not used. Abu Dawud 336 could not be retrieved (HTTP 403) and is not cited.",
+    "claim_checks": [
+      {
+        "claim": "The wudu verse tells believers to wash their faces when they rise for prayer.",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Captured translation: When you rise up for prayer, wash your faces.",
+        "supported": true
+      },
+      {
+        "claim": "Quran 5:6 says It is not Allah's Will to burden you.",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Captured translation contains: It is not Allah's Will to burden you, but to purify you.",
+        "supported": true
+      },
+      {
+        "claim": "Wudu is invalid and incomplete if something prevents water reaching the skin of the washed parts, and makeup usually does not form such a barrier.",
+        "source_url": "https://daruliftabirmingham.co.uk/wudhu-with-makeup/",
+        "explanation": "Captured answer states both points.",
+        "supported": true
+      },
+      {
+        "claim": "For a hospital patch over a spot with liquid, if the area cannot be washed or wiped, one must wipe over the bandage with wet hands for ghusl to be valid.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/?p=7535",
+        "explanation": "Captured question describes a spot with liquid on the leg with a hospital patch; answer says it is compulsory to wipe the bandage with wet hands for ghusl to be valid.",
+        "supported": true
+      },
+      {
+        "claim": "Citing Quduri, wiping continues if the bandage falls before healing and is no longer allowed once healed; if water still causes pain the area may be kept covered.",
+        "source_url": "https://daruliftabirmingham.co.uk/?p=12138",
+        "explanation": "Captured answer quotes Imam Quduri to this effect and adds that if there is still pain due to water it may be kept covered.",
+        "supported": true
+      },
+      {
+        "claim": "Pus that does not flow out by itself does not break wudu, a plaster may be used, and wudu is renewed if pus comes out beyond the plaster by itself without pressing.",
+        "source_url": "https://daruliftabirmingham.co.uk/pus-coming-out-of-the-wound/",
+        "explanation": "Captured answer states each point.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "1871e12bfc0e5b58c6eabf7ecea799ea4c9079446e82cb14d60490cd09efd71d"
+  },
+  "prepared_at": "2026-11-06T06:10:31.606Z",
+  "state": "awaiting_release"
+}

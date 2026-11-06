@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "id": "is-084",
+  "action": "new_article",
+  "target_path": "/blog/can-i-do-ruqyah-without-wudu",
+  "source_file": "data/blog/en/can-i-do-ruqyah-without-wudu.mdx",
+  "assignment_sha256": "71623c2d72a94a12a89e67c318a0ed9feb5b5f153158d474e09f8fd029623293",
+  "baseline_sha256": null,
+  "content_sha256": "7166797de72d0612dfbe70d9a29bf0efb736620a01f8ab460860b98dfe32a051",
+  "marker": "de5b6d0b0494840c179e1e0b",
+  "hero": {
+    "src": "/static/images/blog/can-i-do-ruqyah-without-wudu.webp",
+    "alt": "Green title card reading Ruqyah Without Wudu",
+    "sha256": "f0b9236c72f79e34c6c63fec51b3a86eadf2b803d52b3670589284a353b62d00"
+  },
+  "sources": [
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7835/is-it-permissible-to-recite-the-quran-without-ablution",
+      "title": "Dar al-Ifta al-Misriyyah fatwa 7835: Is it permissible to recite the Qur'an without ablution?",
+      "supports": "No objection to reciting the Quran without ablution or reading from a copy without touching it; the Prophet recited in any state except janaba; cites Quran 56:79 for touching.",
+      "checked_at": "2026-11-06T02:17:35.365Z",
+      "content_sha256": "3dd4f2d060037013f58147e81b10380a6dc2e9f07a4e4677941274a617984942"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/1378/reciting-the-quran-without-ablution",
+      "title": "Dar al-Ifta al-Misriyyah fatwa 1378: Reciting the Quran without ablution",
+      "supports": "Same ruling: reciting or reading from a copy without ablution is permitted if one does not touch it.",
+      "checked_at": "2026-11-06T02:17:39.809Z",
+      "content_sha256": "8737585d00e637dd51d5db672ee5c22cfa9729b06f3c95fc664e497f4b428d8a"
+    },
+    {
+      "url": "https://dar-alifta.org/en/fatwa/details/7829/is-it-permissible-to-read-the-quran-without-making-wudu-ablution",
+      "title": "Dar al-Ifta al-Misriyyah fatwa 7829: Is it permissible to read the Qur'an without making wudu?",
+      "supports": "States purification from minor and major impurity is obligatory to read from the Quran, citing a narration from Ali, while allowing reading from memory without touching it.",
+      "checked_at": "2026-11-06T02:16:37.211Z",
+      "content_sha256": "bf20b205a3ab919c8f4b2b53e801df0663114a9c16d3e90d5047933be1248c5d"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/?p=9030",
+      "title": "Darul Ifta Birmingham fatwa 02148: Wudu to read the four Quls or Ayat al-Kursi without holding the Quran",
+      "supports": "Reciting without touching the Quran is permitted in minor ritual impurity and not permitted in major ritual impurity.",
+      "checked_at": "2026-11-06T02:17:41.564Z",
+      "content_sha256": "98ad0381e41b32f0e3f5cc4ca6355db568b7bccf8df187fd826ecc7b29294b91"
+    },
+    {
+      "url": "https://sunnah.com/muslim:2192",
+      "title": "Sahih Muslim 2192a",
+      "supports": "The Prophet blew over sick household members reciting the Mu'awwidhat; Aisha blew over him in his final illness and wiped him with his hand.",
+      "checked_at": "2026-11-06T02:17:44.879Z",
+      "content_sha256": "7b06c528a0470de4eb6b5a268b744cb76aad52bd1b50ccd24651bbcd939e2ae1"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:5017",
+      "title": "Sahih al-Bukhari 5017",
+      "supports": "Bedtime routine: cupping hands, blowing after reciting Al-Ikhlas, Al-Falaq and An-Nas, wiping the body starting with head and face, three times.",
+      "checked_at": "2026-11-06T02:17:43.738Z",
+      "content_sha256": "c1d993138e60f854a56790b471b875e3b6cfa0b20e7af4239f2ae1b8aad701bf"
+    },
+    {
+      "url": "https://sunnah.com/bukhari:2276",
+      "title": "Sahih al-Bukhari 2276",
+      "supports": "Companions recited Al-Fatiha as ruqya over a stung chief who recovered; the Prophet approved.",
+      "checked_at": "2026-11-06T02:17:44.336Z",
+      "content_sha256": "35d0298aaddf5f975d6655a574b3904e200beb39772f304e21c34519b625cd0e"
+    },
+    {
+      "url": "https://quran.com/17/82",
+      "title": "Quran 17:82 (Al-Isra), The Clear Quran translation",
+      "supports": "The Quran is sent down as a healing and mercy for the believers.",
+      "checked_at": "2026-11-06T02:16:40.793Z",
+      "content_sha256": "c250bf077485d46c3261502d91df1eb2f93364468bc26e7364d44a9b945ab0f0"
+    },
+    {
+      "url": "https://quran.com/56/79",
+      "title": "Quran 56:79 (Al-Waqi'ah), The Clear Quran translation",
+      "supports": "Translation renders the verse as touched by none except the purified angels.",
+      "checked_at": "2026-11-06T02:16:39.126Z",
+      "content_sha256": "7a4d0e795ddfe475028b8090510cf02181a9dd7b315575bf6cc5f72b43455d1b"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Every claim was checked against the captured source text. The conclusion that ruqyah follows the ruling on Quran recitation is labelled as the article's reasoning. The observation that the three narrations do not mention wudu was checked against their captured English text. The different reading of 56:79 is attributed to the Clear Quran translation, and the stricter wording of Dar al-Ifta fatwa 7829 is presented alongside fatwas 7835 and 1378. Menstruation is not ruled on here and is deferred to an existing guide. Bukhari 5016 could not be retrieved (HTTP 403) and is not cited. No grades, counts or scholar positions were added from memory.",
+    "claim_checks": [
+      {
+        "claim": "The Prophet blew over sick household members while reciting the Mu'awwidhat, and Aisha blew over him in his final illness and wiped him with his own hand.",
+        "source_url": "https://sunnah.com/muslim:2192",
+        "explanation": "Captured text: when any member of the household fell ill he used to blow over him by reciting Mu'awwidhatan; in his final illness she blew over him and rubbed his body with his hand.",
+        "supported": true
+      },
+      {
+        "claim": "At bedtime the Prophet cupped his hands, blew into them after reciting Al-Ikhlas, Al-Falaq and An-Nas, wiped his body starting with head and face, three times.",
+        "source_url": "https://sunnah.com/bukhari:5017",
+        "explanation": "Captured text describes exactly this routine and that he did it three times.",
+        "supported": true
+      },
+      {
+        "claim": "Companions recited Al-Fatiha over a stung chief who got up as if released from a chain, and the Prophet asked how they knew it was ruqya and approved.",
+        "source_url": "https://sunnah.com/bukhari:2276",
+        "explanation": "Captured text: recited Surat-ul-Fatiha, chief became all right as if released from a chain; the Prophet asked how they came to know Fatiha was recited as Ruqya and said they had done the right thing.",
+        "supported": true
+      },
+      {
+        "claim": "The Quran is described as a healing and mercy for the believers.",
+        "source_url": "https://quran.com/17/82",
+        "explanation": "Captured translation: We send down the Quran as a healing and mercy for the believers.",
+        "supported": true
+      },
+      {
+        "claim": "None of the three narrations mentions wudu.",
+        "source_url": "https://sunnah.com/bukhari:5017",
+        "explanation": "The captured English texts of Bukhari 5017, Bukhari 2276 and Muslim 2192 contain no mention of wudu or ablution.",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta says there is no objection to reciting the Quran without ablution or reading from a copy provided one does not touch it, and that the Prophet recited in any state except major ritual impurity.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7835/is-it-permissible-to-recite-the-quran-without-ablution",
+        "explanation": "Captured answer states both points verbatim and cites Quran 56:79.",
+        "supported": true
+      },
+      {
+        "claim": "Fatwa 1378 gives the same answer.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/1378/reciting-the-quran-without-ablution",
+        "explanation": "Captured answer: no objection to reciting the Quran or reading from a copy without ablution provided one does not touch it; Prophet recited except in janabah.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham permits reciting the four Quls or Ayat al-Kursi without touching the Quran in minor impurity but not in major impurity.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/?p=9030",
+        "explanation": "Captured answer: permitted to recite without touching in minor ritual impurity, not permitted in major ritual impurity (Bahishti Zewar).",
+        "supported": true
+      },
+      {
+        "claim": "The Clear Quran translation renders 56:79 as touched by none except the purified angels.",
+        "source_url": "https://quran.com/56/79",
+        "explanation": "Captured translation: touched by none except the purified ˹angels˺.",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta fatwa 7829 says purification from minor and major impurity is obligatory to read from the Quran, citing a narration from Ali, and allows reading from memory without touching.",
+        "source_url": "https://dar-alifta.org/en/fatwa/details/7829/is-it-permissible-to-read-the-quran-without-making-wudu-ablution",
+        "explanation": "Captured answer states the obligation, cites the hadith narrated by Ali, and says reading from memory without touching is fine.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "2349ce387280ee0daf2c7f435e9e9c6c9ecad9ec4f572b7a0f74dc32f86a30e1"
+  },
+  "prepared_at": "2026-11-06T06:09:33.744Z",
+  "state": "awaiting_release"
+}

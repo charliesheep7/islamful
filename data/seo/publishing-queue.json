@@ -5992,7 +5992,7 @@
       "target_path": "/blog/can-i-do-ruqyah-without-wudu",
       "source_file": "data/blog/en/can-i-do-ruqyah-without-wudu.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can i do ruqyah without wudu. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -6011,7 +6011,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -6041,7 +6041,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "7166797de72d0612dfbe70d9a29bf0efb736620a01f8ab460860b98dfe32a051",
+        "marker": "de5b6d0b0494840c179e1e0b",
+        "audit_file": "data/seo/publications/is-084.json",
+        "hero": {
+          "src": "/static/images/blog/can-i-do-ruqyah-without-wudu.webp",
+          "alt": "Green title card reading Ruqyah Without Wudu",
+          "sha256": "f0b9236c72f79e34c6c63fec51b3a86eadf2b803d52b3670589284a353b62d00"
+        }
+      }
     },
     {
       "id": "is-085",
@@ -6053,7 +6063,7 @@
       "target_path": "/blog/can-i-do-wudu-with-a-pimple-patch-on",
       "source_file": "data/blog/en/can-i-do-wudu-with-a-pimple-patch-on.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer can i do wudu with a pimple patch on. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -6072,7 +6082,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -6102,7 +6112,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "7693468426ed91b7d5e830b06ec3c3b5da0b658bcaf1a6abe0b93172796c8023",
+        "marker": "12f9d1106bb537a5dce9e957",
+        "audit_file": "data/seo/publications/is-085.json",
+        "hero": {
+          "src": "/static/images/blog/can-i-do-wudu-with-a-pimple-patch-on.webp",
+          "alt": "Green title card reading Wudu With a Pimple Patch",
+          "sha256": "bd4a5727147779d81af3fc0ba26c0e353ca06b678ad63310848e6616d9bb85f9"
+        }
+      }
     },
     {
       "id": "is-086",
