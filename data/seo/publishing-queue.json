@@ -6145,10 +6145,10 @@
       "proposed_title": "Do you have to do Wudu after eating camel meat?",
       "target_path": "/blog/do-you-have-to-do-wudu-after-eating-camel-meat",
       "source_file": "data/blog/en/do-you-have-to-do-wudu-after-eating-camel-meat.mdx",
-      "action": "new_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer do you have to do wudu after eating camel meat. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [],
       "observations": [
@@ -6205,6 +6205,12 @@
           "alt": "Cream title card reading Wudu After Camel Meat",
           "sha256": "dd9e5de746bb6203c7691c4ddb14c3ecc38eae013559e9a71332831fd0fb4f89"
         }
+      },
+      "release": {
+        "date": "2026-11-08T02:52:08.929Z",
+        "commit": "bb842ef1774ff8343a353ac7013218ec8b0ad7bf",
+        "deployment_id": 7630490804,
+        "url": "https://www.islamful.com/blog/do-you-have-to-do-wudu-after-eating-camel-meat"
       }
     },
     {
@@ -6216,10 +6222,10 @@
       "proposed_title": "How to Perform Ghusl: Step-by-Step Guide",
       "target_path": "/blog/how-to-perform-ghusl",
       "source_file": "data/blog/en/how-to-perform-ghusl.mdx",
-      "action": "update_article",
-      "status": "awaiting_release",
+      "action": "live",
+      "status": "live_reviewed",
       "brief": "Answer how to do ghusl; fard of ghusl; ghusl dua; how to do ghusl without showering. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
-      "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
+      "next_step": "Measure search performance and the relevant next-step events after sufficient exposure.",
       "conversion_or_tool_path": "/prayer-times",
       "existing_overlap_candidates": [
         {
@@ -6327,6 +6333,12 @@
         "content_sha256": "3fd876b3e7de0d07377852c42ac5279f19c839486e133bff84282b7318405710",
         "marker": "334c06d5b532545880d7f803",
         "audit_file": "data/seo/publications/is-087.json"
+      },
+      "release": {
+        "date": "2026-11-08T02:52:09.125Z",
+        "commit": "bb842ef1774ff8343a353ac7013218ec8b0ad7bf",
+        "deployment_id": 7630490804,
+        "url": "https://www.islamful.com/blog/how-to-perform-ghusl"
       }
     },
     {

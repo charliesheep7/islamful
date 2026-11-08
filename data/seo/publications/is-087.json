@@ -98,5 +98,11 @@
     "article_sha256": "67a14f048f4a905bd0b5378073a4f3b4eb033b36722e738f18f1ef6e57610c6b"
   },
   "prepared_at": "2026-11-08T02:47:24.661Z",
-  "state": "awaiting_release"
+  "state": "live_reviewed",
+  "release": {
+    "date": "2026-11-08T02:52:09.125Z",
+    "commit": "bb842ef1774ff8343a353ac7013218ec8b0ad7bf",
+    "deployment_id": 7630490804,
+    "url": "https://www.islamful.com/blog/how-to-perform-ghusl"
+  }
 }
