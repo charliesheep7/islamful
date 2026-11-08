@@ -6,15 +6,16 @@ import {
 } from './AdhkarPagesTranslated'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Noto_Naskh_Arabic } from 'next/font/google'
+import localFont from 'next/font/local'
 import { buildLanguageAlternates } from 'app/seo'
 import { routines, type RoutineId } from '@/data/adhkar'
 import corpus from '@/data/quran/corpus.json'
 import QuranSources from '@/components/quran/QuranSources'
 import JsonLd from '@/components/seo/JsonLd'
 import AdhkarRoutine from './AdhkarRoutine'
-const naskh = Noto_Naskh_Arabic({
-  subsets: ['arabic'],
+// Self-hosted copies of the Google Fonts files next/font/google used to fetch, so builds don't depend on reaching Google Fonts.
+const naskh = localFont({
+  src: '../../app/fonts/noto-naskh-arabic-arabic.woff2',
   weight: '400',
   display: 'swap',
   variable: '--font-quran',

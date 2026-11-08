@@ -4,7 +4,7 @@ import { navigation } from '@/data/locales/navigation'
 import ShareArrival from '@/components/ShareArrival'
 import 'css/tailwind.css'
 
-import { Noto_Sans, Noto_Sans_Arabic, Spectral } from 'next/font/google'
+import localFont from 'next/font/local'
 import SiteAnalytics from '@/components/SiteAnalytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -16,23 +16,26 @@ import { Metadata } from 'next'
 import { headers } from 'next/headers'
 import RTLHandler from '@/components/RTLHandler'
 
-const noto_sans = Noto_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+// Self-hosted copies of the Google Fonts files next/font/google used to fetch, so builds don't depend on reaching Google Fonts.
+const noto_sans = localFont({
+  src: './fonts/noto-sans-latin.woff2',
+  weight: '400 700',
   display: 'swap',
   variable: '--font-noto-sans',
 })
 
-const noto_sans_arabic = Noto_Sans_Arabic({
-  subsets: ['arabic'],
-  weight: ['400', '500', '600', '700'],
+const noto_sans_arabic = localFont({
+  src: './fonts/noto-sans-arabic-arabic.woff2',
+  weight: '400 700',
   display: 'swap',
   variable: '--font-noto-sans-arabic',
 })
 
-const spectral = Spectral({
-  subsets: ['latin'],
-  weight: ['400', '700'],
+const spectral = localFont({
+  src: [
+    { path: './fonts/spectral-latin-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/spectral-latin-700.woff2', weight: '700', style: 'normal' },
+  ],
   display: 'swap',
   variable: '--font-spectral',
 })
@@ -84,8 +87,9 @@ export async function generateStaticParams() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const basePath = process.env.BASE_PATH || ''
-  const headersList = await headers()
-  const requestedLocale = headersList.get('x-locale') || 'en'
+  // A static export has no request headers: scripts/cloudflare-locale-html.mjs
+  // writes each localized page's lang and dir into its HTML after the build.
+  const requestedLocale = process.env.EXPORT ? 'en' : (await headers()).get('x-locale') || 'en'
   const locale = isLocale(requestedLocale) ? requestedLocale : 'en'
   const isArabic = locale === 'ar'
 

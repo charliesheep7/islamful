@@ -57,3 +57,6 @@ google-indexing-key.json
 
 # Staged publisher drafts and full source extracts
 /.publishing-runs/
+
+# Cloudflare
+.wrangler

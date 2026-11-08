@@ -1,0 +1,30 @@
+# The site is prebuilt, so "today" (prayer-time, Ramadan and calendar pages, the
+# home dashboard) is as fresh as the last build. Cloudflare Workers Builds
+# rebuilds on every push to main; this makes sure that happens at least daily.
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: '5 0 * * *' # 00:05 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+      - name: Push an empty commit unless main already changed today
+        run: |
+          if [ -n "$(git log --since='23 hours ago' --format=%H -1)" ]; then
+            echo "main changed in the last day; that push already rebuilt the site."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "Daily rebuild"
+          git push
