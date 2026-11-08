@@ -6146,7 +6146,7 @@
       "target_path": "/blog/do-you-have-to-do-wudu-after-eating-camel-meat",
       "source_file": "data/blog/en/do-you-have-to-do-wudu-after-eating-camel-meat.mdx",
       "action": "new_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer do you have to do wudu after eating camel meat. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -6165,7 +6165,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -6195,7 +6195,17 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "b4f64226d4c3987d0f4bc96be77309523964d1ffcfa625ed5b2023faa4b122cc",
+        "marker": "37752d89f647da41440f7a1d",
+        "audit_file": "data/seo/publications/is-086.json",
+        "hero": {
+          "src": "/static/images/blog/do-you-have-to-do-wudu-after-eating-camel-meat.webp",
+          "alt": "Cream title card reading Wudu After Camel Meat",
+          "sha256": "dd9e5de746bb6203c7691c4ddb14c3ecc38eae013559e9a71332831fd0fb4f89"
+        }
+      }
     },
     {
       "id": "is-087",
@@ -6207,7 +6217,7 @@
       "target_path": "/blog/how-to-perform-ghusl",
       "source_file": "data/blog/en/how-to-perform-ghusl.mdx",
       "action": "update_article",
-      "status": "queued",
+      "status": "awaiting_release",
       "brief": "Answer how to do ghusl; fard of ghusl; ghusl dua; how to do ghusl without showering. Source named scholarly views and applicable evidence; distinguish disagreement, context and exceptions. Verify every quotation. No universal fatwa inferred from a keyword. Lead to the relevant usable website tool; do not show an app-download CTA.",
       "next_step": "Research and verify primary sources for the assigned questions; write or update only the chosen target. Validate content, links and build, deploy, then record verified live URL and commit.",
       "conversion_or_tool_path": "/prayer-times",
@@ -6268,7 +6278,7 @@
           "source": "SEMrush visible keyword table"
         }
       ],
-      "source_review_status": "required_before_publication",
+      "source_review_status": "agent_source_review",
       "publishing_policy": "Retain existing URL, title, date, author and image on updates. Do not overwrite another destination or invent missing search metrics.",
       "admission_batch": "semrush-scale-2026-10-13",
       "research_additions": [
@@ -6312,7 +6322,12 @@
             "Do not create separate pages for these combined keyword variants."
           ]
         }
-      ]
+      ],
+      "publication": {
+        "content_sha256": "3fd876b3e7de0d07377852c42ac5279f19c839486e133bff84282b7318405710",
+        "marker": "334c06d5b532545880d7f803",
+        "audit_file": "data/seo/publications/is-087.json"
+      }
     },
     {
       "id": "is-088",

@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "id": "is-087",
+  "action": "update_article",
+  "target_path": "/blog/how-to-perform-ghusl",
+  "source_file": "data/blog/en/how-to-perform-ghusl.mdx",
+  "assignment_sha256": "c23415d13831f22a7f2160053c22a5f18d9a92db58a0896ae9fcf21c2cfe1397",
+  "baseline_sha256": "158a8572e6b319d9923cfe14277373361d73ecc47edb7a5d3c9ad353e3109b26",
+  "content_sha256": "3fd876b3e7de0d07377852c42ac5279f19c839486e133bff84282b7318405710",
+  "marker": "334c06d5b532545880d7f803",
+  "sources": [
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/?p=13339",
+      "title": "Darul Ifta Birmingham fatwa 03298: What are the Fardh and Sunnah of Ghusl?",
+      "supports": "Hanafi: three fard acts (mouth, nose, whole body), obligation remains if any is missing; nine sunnah acts including Bismillah, intention, wudu before ghusl.",
+      "checked_at": "2026-11-08T02:46:11.998Z",
+      "content_sha256": "77cd445ce97f580277570945ca3b6e8ac4e2c065da5ff9282eff3d844041501d"
+    },
+    {
+      "url": "https://sunnah.com/muslim:316a",
+      "title": "Sahih Muslim 316a: description of ghusl for janabah",
+      "supports": "Aishah: the Prophet washed hands, private parts, made wudu as for prayer, moved fingers through hair roots, poured three handfuls on head, then water over body, then washed feet.",
+      "checked_at": "2026-11-08T02:46:12.783Z",
+      "content_sha256": "9732545fd69b04b22cd5ac63fc2aa353a8b53c8a69c5b5a076d32e59072a9d5c"
+    },
+    {
+      "url": "https://sunnah.com/muslim:330a",
+      "title": "Sahih Muslim 330a: braids and ghusl",
+      "supports": "Umm Salama need not undo plaited hair for ghusl after intercourse; three handfuls on the head then pouring water over herself suffices.",
+      "checked_at": "2026-11-08T02:46:13.410Z",
+      "content_sha256": "f70b9d3e04041471c760a3053035a8c542791e279621f74315bd5d8ac31d47d2"
+    },
+    {
+      "url": "https://sunnah.com/muslim:234a",
+      "title": "Sahih Muslim 234a: remembrance after wudu",
+      "supports": "Whoever completes wudu well and says the testimony of faith will have the eight gates of Paradise opened.",
+      "checked_at": "2026-11-08T02:46:13.968Z",
+      "content_sha256": "608d6e10d0a77dbc8e703fed27dbf261ad27e48f638735ef2cd976af6bf1f1c7"
+    },
+    {
+      "url": "https://quran.com/5/6",
+      "title": "Quran 5:6 (Al-Ma'idah)",
+      "supports": "If in a state of full impurity, take a full bath; if ill or no water, purify with clean earth.",
+      "checked_at": "2026-11-08T02:46:16.444Z",
+      "content_sha256": "b878c12d5d796ad6318b646ab69095ca3f4a44a54acc11694117bb4b102ff57c"
+    },
+    {
+      "url": "https://quran.com/4/43",
+      "title": "Quran 4:43 (An-Nisa)",
+      "supports": "Do not approach prayer in a state of full impurity until you have bathed; clean earth if no water.",
+      "checked_at": "2026-11-08T02:46:17.577Z",
+      "content_sha256": "0cbe422474c6811b4bc5ddd3eb4da99769ccaf29c7fa5b9ac574b23f8fe0be02"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "Update rewrites the body around the four assigned questions (how to, fard, dua, without showering), preserving title, date, author and hero. The previous unsourced four-madhhab comparison table and the Bukhari 248 citation (HTTP 403 on recapture) were removed rather than carried forward; fard and sunnah lists are explicitly attributed to the Hanafi school via Darul Ifta Birmingham fatwa 03298, and readers of other schools are referred to their imam. The ghusl dua section states that Muslim 316a mentions no special dua and labels applying the post-wudu testimony (Muslim 234a) to ghusl as the guide's suggestion. Bucket/jug and bath guidance is reasoning from Muslim 330a's pouring method and the Hanafi fard list. The five-minute worked example is illustrative, not a ruling.",
+    "claim_checks": [
+      {
+        "claim": "The Hanafi fard of ghusl are rinsing the mouth, water into the nose and blowing it out, and washing the whole body; if any is missing, the obligation remains; the nine sunnah include Bismillah, intention, and wudu before ghusl.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/?p=13339",
+        "explanation": "Captured fatwa 03298 lists the three fardh and nine sunnah actions verbatim.",
+        "supported": true
+      },
+      {
+        "claim": "Aishah described the Prophet washing hands, private parts, making wudu, moving fingers through hair roots, pouring three handfuls on the head, then water over the body, then washing feet.",
+        "source_url": "https://sunnah.com/muslim:316a",
+        "explanation": "Captured English text of Muslim 316a matches each step.",
+        "supported": true
+      },
+      {
+        "claim": "The Prophet told Umm Salama she need not undo plaited hair; three handfuls on the head then pouring water over herself is enough.",
+        "source_url": "https://sunnah.com/muslim:330a",
+        "explanation": "Captured translation: No, it is enough for you to throw three handfuls of water on your head and then pour water over yourself.",
+        "supported": true
+      },
+      {
+        "claim": "Whoever completes wudu well and says the testimony will have the eight gates of Paradise opened.",
+        "source_url": "https://sunnah.com/muslim:234a",
+        "explanation": "Captured Muslim 234a contains this statement with the testimony wording quoted.",
+        "supported": true
+      },
+      {
+        "claim": "Quran 5:6 says if in a state of full impurity, take a full bath, and allows clean earth when ill or without water.",
+        "source_url": "https://quran.com/5/6",
+        "explanation": "Captured Clear Quran translation contains both statements.",
+        "supported": true
+      },
+      {
+        "claim": "Quran 4:43 forbids approaching prayer in full impurity until you have bathed.",
+        "source_url": "https://quran.com/4/43",
+        "explanation": "Captured translation: nor in a state of full impurity ... until you have bathed.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "67a14f048f4a905bd0b5378073a4f3b4eb033b36722e738f18f1ef6e57610c6b"
+  },
+  "prepared_at": "2026-11-08T02:47:24.661Z",
+  "state": "awaiting_release"
+}

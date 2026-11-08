@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "is-086",
+  "action": "new_article",
+  "target_path": "/blog/do-you-have-to-do-wudu-after-eating-camel-meat",
+  "source_file": "data/blog/en/do-you-have-to-do-wudu-after-eating-camel-meat.mdx",
+  "assignment_sha256": "f5b49b5aa80d5c23a1fa256acc2bcdb5548a1ee258d25ff0077a698df0a9d281",
+  "baseline_sha256": null,
+  "content_sha256": "b4f64226d4c3987d0f4bc96be77309523964d1ffcfa625ed5b2023faa4b122cc",
+  "marker": "37752d89f647da41440f7a1d",
+  "hero": {
+    "src": "/static/images/blog/do-you-have-to-do-wudu-after-eating-camel-meat.webp",
+    "alt": "Cream title card reading Wudu After Camel Meat",
+    "sha256": "dd9e5de746bb6203c7691c4ddb14c3ecc38eae013559e9a71332831fd0fb4f89"
+  },
+  "sources": [
+    {
+      "url": "https://sunnah.com/muslim:360a",
+      "title": "Sahih Muslim 360a: wudu after eating camel meat",
+      "supports": "Jabir ibn Samura: wudu after mutton is optional; asked about camel meat, the Prophet said yes, perform ablution.",
+      "checked_at": "2026-11-08T02:43:46.466Z",
+      "content_sha256": "f1f549e8cf279da85a221f840df8802aff0557d0c65adcdb76ab8f824d1b10fd"
+    },
+    {
+      "url": "https://sunnah.com/tirmidhi:81",
+      "title": "Jami at-Tirmidhi 81: wudu for camel meat",
+      "supports": "Al-Bara: perform wudu for camel meat, not for goat meat; graded sahih; Tirmidhi notes Ahmad and Ishaq required it, while al-Thawri and the people of Kufa did not.",
+      "checked_at": "2026-11-08T02:43:34.293Z",
+      "content_sha256": "af7adb8a62206fbb5b0560cfaa3e0700276e70d7f71d038911b8da2c25058c01"
+    },
+    {
+      "url": "https://www.dar-alifta.org/en/fatwa/details/7826/does-camel-meat-break-ablution",
+      "title": "Egypt's Dar al-Ifta fatwa 7826: Does camel meat break ablution?",
+      "supports": "Scholarly difference: al-Thawri, Malik, al-Shafi'i and ahl al-ra'y say no, citing Jabir's last-command report; Hanbalis say wudu is broken by camel meat raw or cooked; majority held al-Bara's report abrogated.",
+      "checked_at": "2026-11-08T02:43:33.325Z",
+      "content_sha256": "8ec34bc127a9cbddf378234968301ab44af0f3fe8dcace3a179a026089ce9782"
+    },
+    {
+      "url": "https://dar-alifta.org/en/fatwa/details/6239/camel-meat-and-ablution",
+      "title": "Egypt's Dar al-Ifta fatwa 6239: Camel meat and ablution",
+      "supports": "The opinion chosen for fatwa is that eating camel meat does not nullify ablution; ahl al-ra'y means scholars such as Abu Hanifah and his students.",
+      "checked_at": "2026-11-08T02:43:32.034Z",
+      "content_sha256": "cdd5750a3b7d36f4f08cfee876a8515b5dcec4ddd756412e375fdb0cc7bf5c05"
+    },
+    {
+      "url": "https://daruliftabirmingham.co.uk/home/?p=11161",
+      "title": "Darul Ifta Birmingham fatwa 02783: Does eating camel meat necessitate the making of wudhu?",
+      "supports": "Hanafi answer: wudu does not break; the hadith meant the literal meaning of wudu, washing the mouth, since camel meat is fatty and thick.",
+      "checked_at": "2026-11-08T02:43:45.279Z",
+      "content_sha256": "c6441af960ea6ce7a4f338ba7c90857c2c398791ee2d7e5a67b09c066815e429"
+    }
+  ],
+  "review": {
+    "method": "agent_source_review",
+    "passed": true,
+    "issues": [],
+    "notes": "All rulings are attributed to named schools via Dar al-Ifta (Egypt) and Darul Ifta Birmingham (Hanafi); both hadith were read from captured sunnah.com pages. Tirmidhi's remarks on Ahmad, Ishaq, al-Thawri and Kufa are taken from the Arabic commentary on the captured page. The table entry that Hanafis may simply rinse the mouth follows Birmingham's explanation. The advice that fresh wudu satisfies both views is explicitly labelled as the guide's practical observation. Camel milk/broth are explicitly not ruled on. Jabir's last-command hadith is cited only as reported by Dar al-Ifta because sunnah.com Abu Dawud and Nasa'i pages returned HTTP 403. The Maliki/Shafi'i positions rely on Dar al-Ifta's attribution to Imam Malik and al-Shafi'i. Revision v2 removed an unsourced four-schools generalisation and limited the FAQ to lamb/goat as in the hadith.",
+    "claim_checks": [
+      {
+        "claim": "In Sahih Muslim 360a, wudu after mutton is optional and the Prophet said yes, perform ablution after camel's flesh.",
+        "source_url": "https://sunnah.com/muslim:360a",
+        "explanation": "Captured translation: Perform ablution if you so desire... Yes, perform ablution (after eating) camel's flesh.",
+        "supported": true
+      },
+      {
+        "claim": "Tirmidhi 81 reports perform wudu for camel meat and not for goat meat, graded sahih; Tirmidhi attributes requiring wudu to Ahmad and Ishaq and not requiring it to al-Thawri and the people of Kufa.",
+        "source_url": "https://sunnah.com/tirmidhi:81",
+        "explanation": "Captured English text and grade Sahih (Darussalam); Arabic: وهو قول أحمد وإسحاق ... لم يروا الوضوء من لحوم الإبل وهو قول سفيان الثوري وأهل الكوفة.",
+        "supported": true
+      },
+      {
+        "claim": "Hanbalis hold wudu is nullified by eating camel meat raw or cooked whether or not the person knew; al-Thawri, Malik, al-Shafi'i and ahl al-ra'y hold it is not; majority considered al-Bara's report abrogated by Jabir's last-command report.",
+        "source_url": "https://www.dar-alifta.org/en/fatwa/details/7826/does-camel-meat-break-ablution",
+        "explanation": "Captured fatwa 7826 states each of these points.",
+        "supported": true
+      },
+      {
+        "claim": "Dar al-Ifta's opinion chosen for fatwa is that camel meat does not nullify ablution, and ahl al-ra'y refers to scholars such as Abu Hanifah and his students.",
+        "source_url": "https://dar-alifta.org/en/fatwa/details/6239/camel-meat-and-ablution",
+        "explanation": "Captured fatwa 6239: The opinion chosen for fatwa is that eating camel meat does not nullify ablution; footnote defines ahl al-ra'y.",
+        "supported": true
+      },
+      {
+        "claim": "Darul Ifta Birmingham says wudu does not break after camel meat and the hadith meant washing the mouth since camel meat is very fatty and thick.",
+        "source_url": "https://daruliftabirmingham.co.uk/home/?p=11161",
+        "explanation": "Captured fatwa 02783 contains this answer verbatim.",
+        "supported": true
+      }
+    ],
+    "article_sha256": "1a2534b33f26bb98340eee2977da0d31cdb3030bd906b53b189492be27e90c87"
+  },
+  "prepared_at": "2026-11-08T02:45:28.973Z",
+  "state": "awaiting_release"
+}
