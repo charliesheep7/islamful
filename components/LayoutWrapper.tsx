@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import SectionContainer from './SectionContainer'
 import { ReactNode } from 'react'
 import Header from './Header'
@@ -7,8 +7,11 @@ interface Props {
   children: ReactNode
 }
 
-const inter = Inter({
-  subsets: ['latin'],
+// Self-hosted copies of the Google Fonts files next/font/google used to fetch, so builds don't depend on reaching Google Fonts.
+const inter = localFont({
+  src: '../app/fonts/inter-latin.woff2',
+  weight: '100 900',
+  display: 'swap',
 })
 
 const LayoutWrapper = ({ children }: Props) => {

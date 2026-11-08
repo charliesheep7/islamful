@@ -6,7 +6,9 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildLanguageAlternates } from 'app/seo'
 
-export const dynamic = 'force-dynamic'
+// Prebuilt; the daily rebuild refreshes today's date (the calendar also
+// updates in the browser).
+export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: 'Islamic Calendar — Hijri to Gregorian Date Converter',

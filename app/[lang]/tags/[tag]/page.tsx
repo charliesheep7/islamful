@@ -7,6 +7,17 @@ import { genPageMetadata, buildLanguageAlternates } from 'app/seo'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+// The tags of this language's posts, the same posts the page lists.
+export const dynamicParams = false
+export function generateStaticParams({ params }: { params: { lang: string } }) {
+  const tags = new Set(
+    allBlogs
+      .filter((post) => post.lang === params.lang)
+      .flatMap((post) => (post.tags || []).map((t) => slug(t)))
+  )
+  return [...tags].map((tag) => ({ tag }))
+}
+
 const POSTS_PER_PAGE = 5
 
 export async function generateMetadata(props: {

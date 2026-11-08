@@ -1,0 +1,18 @@
+{
+  // Cloudflare Workers deploy of the Next.js static export (`out/`), with a Worker
+  // (worker/index.ts) for what a static export can't do: the browser-language
+  // redirect, /auth/callback, the unsubscribe form and /api/engagement.
+  // Build with `npm run build:cf`, deploy with `npx wrangler deploy`.
+  "name": "islamful",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    // Pages go through the Worker for the language redirect; files don't.
+    "run_worker_first": ["/*", "!/_next/*", "!/static/*", "!/*.*"]
+  },
+  "observability": { "enabled": true }
+}

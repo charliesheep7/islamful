@@ -12,7 +12,9 @@ export function generateStaticParams() {
   return ['ar', 'fr', 'de'].map((lang) => ({ lang }))
 }
 
-export const dynamic = 'force-dynamic'
+// Prebuilt; the daily rebuild refreshes today's date (the calendar also
+// updates in the browser).
+export const dynamic = 'force-static'
 
 export async function generateMetadata({
   params,

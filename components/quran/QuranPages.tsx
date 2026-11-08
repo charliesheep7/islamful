@@ -1,7 +1,7 @@
 import RelatedReading from '@/components/seo/RelatedReading'
 import QuranPagesTranslated, { translatedQuranMetadata } from './QuranPagesTranslated'
 import Link from 'next/link'
-import { Noto_Naskh_Arabic } from 'next/font/google'
+import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import { buildLanguageAlternates } from 'app/seo'
 import { chapters, quranPath } from '@/data/quran'
@@ -10,8 +10,9 @@ import JsonLd from '@/components/seo/JsonLd'
 import QuranIndex from './QuranIndex'
 import QuranReader from './QuranReader'
 import QuranSources from './QuranSources'
-const naskh = Noto_Naskh_Arabic({
-  subsets: ['arabic'],
+// Self-hosted copies of the Google Fonts files next/font/google used to fetch, so builds don't depend on reaching Google Fonts.
+const naskh = localFont({
+  src: '../../app/fonts/noto-naskh-arabic-arabic.woff2',
   weight: '400',
   display: 'swap',
   variable: '--font-quran',

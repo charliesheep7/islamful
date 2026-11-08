@@ -14,7 +14,8 @@
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
     "format": "prettier --write .",
     "prepare": "husky",
-    "postinstall": "node ./scripts/ensure-lightningcss-binary.mjs"
+    "postinstall": "node ./scripts/ensure-lightningcss-binary.mjs",
+    "build:cf": "cross-env EXPORT=1 CF_IMAGES=1 npm run build && node ./scripts/cloudflare-locale-html.mjs ar:rtl fr de && node ./scripts/cloudflare-routes.mjs"
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
@@ -96,5 +97,5 @@
     "safari >= 15.4",
     "ios_saf >= 15.4"
   ],
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "npm@10.9.2"
 }
